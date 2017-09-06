@@ -15,6 +15,6 @@
   "dependencies": {
     "connect": "^3.6.3",
     "lodash": "^4.17.4",
-    "pug": "^2.0.0-rc.3"
+    "nunjucks": "^3.0.1"
   }
 }
