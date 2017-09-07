@@ -1,0 +1,13 @@
+<!--footer-->
+<footer>
+    <!--resources-->
+    <ul class="resources">
+        {% for resource in footer.resources %}
+        <li class="resource">
+            <a href="{{ resource.href }}">{{ resource.text }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!--copyright-->
+    <span class="copyright">{{ footer.copyright }}</span>
+</footer>

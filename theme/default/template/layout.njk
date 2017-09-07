@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--keywords-->
+    <meta name="keywords" content="{{ keywords | join(",") }}">
+    <!--description-->
+    <meta name="description" content="{{ description }}">
+    {% block meta %}
+    {% endblock %}
+    <!--title-->
+    <title>{% block title %}AntV{% endblock %}</title>
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="{{ assets }}/common.css" />
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<!--header-->
+{% block header %}
+{% endblock %}
+<!--content-->
+{% block content %}
+{% endblock %}
+<!--footer-->
+{% block footer %}
+{% endblock %}
+{% include "partial/footer.njk" %}
+<script type="text/javascript" src="{{ assets }}/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{{ assets }}/lazyload-2.0.0-beta.2.min.js"></script>
+{% block js %}
+{% endblock %}
+</body>
+</html>
