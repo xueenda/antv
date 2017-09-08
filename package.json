@@ -3,24 +3,40 @@
   "version": "0.0.1",
   "description": "homepage for antv",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:datavis/antv.git"
-  },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.11.0",
     "connect": "^3.6.3",
+    "debug": "^3.0.1",
+    "get-port": "^3.2.0",
     "lodash": "^4.17.4",
     "markdown-it": "^8.4.0",
     "markdown-it-meta": "0.0.1",
     "nunjucks": "^3.0.1",
+    "path-is-absolute": "^1.0.1",
     "semver": "^5.4.1",
     "serve-index": "^1.9.0",
     "serve-static": "^1.12.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-plugin-html": "^3.2.1",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": {
+    "run": [
+      "lint"
+    ],
+    "silent": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:datavis/antv.git"
+  },
+  "scripts": {
+    "lint": "eslint --ext .html,.js ./",
+    "lint-fix": "eslint --ext .html,.js --fix ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

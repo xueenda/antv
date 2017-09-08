@@ -1,0 +1,13 @@
+<!--site map-->
+<div class="site-map">
+    <ul class="sites">
+        {% for site in siteMap %}
+        <li>
+            <h2>{{ site.header }}</h2>
+            {% for link in site.links %}
+            <a href="{{ link.href }}">{{ link.text }}</a>
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
