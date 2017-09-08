@@ -40,9 +40,12 @@ app.use(base, serveIndex(process.cwd()));
 app.use((req, res, next) => {
     if (req.method === 'GET') {
         const pathname = parseurl(req).pathname;
-        if (pathname.indexOf(base) === 0 && extname(pathname) === '.md') {
+        const ext = extname(pathname);
+        if (pathname.indexOf(base) === 0 && (ext === '.md' || ext === '.html')) {
             debug(pathname);
-            const relativePathname = pathname.replace(base, '');
+            const relativePathname = pathname
+                .replace(base, '')
+                .replace(/\.html$/, '.md');
             const filename = resolve(config.src, relativePathname);
             const content = md2html(filename, config.src, config, templateMap, program.dev);
             res.end(content);
