@@ -3,6 +3,6 @@
 ```
 .
 ├── README.md
-├── static
-└── template
+├── assets
+└── templates
 ```
