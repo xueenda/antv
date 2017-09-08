@@ -4,17 +4,15 @@ const {
 const pkg = require('./package.json');
 
 module.exports = {
-    dest: '_site',
+    assets: '/assets',
+    base: '/',
+    dest: resolve(process.cwd(), './dist'),
     pkg,
     port: 2047,
-    src: 'site',
+    src: resolve(process.cwd(), './site'),
     theme: {
         root: resolve(__dirname, './theme/default'),
         assets: './assets',
         templates: './templates',
-    },
-    path: {
-        assets: '/assets',
-        base: '/',
     },
 };
