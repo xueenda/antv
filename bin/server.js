@@ -24,13 +24,15 @@ program
     .option('-d, --dev', 'developing')
     .parse(process.argv);
 
-const config = loadConfig(program.config);
+const CONFIG = loadConfig(program.config);
 const {
+    port,
+    src,
     assets,
     base,
     theme
-} = config;
-const templateMap = loadTemplates(resolve(theme.root, theme.templates));
+} = CONFIG;
+const TEMPLATE_MAP = loadTemplates(resolve(theme.root, theme.templates));
 
 const app = connect();
 // static server
@@ -46,8 +48,10 @@ app.use((req, res, next) => {
             const relativePathname = pathname
                 .replace(base, '')
                 .replace(/\.html$/, '.md');
-            const filename = resolve(config.src, relativePathname);
-            const content = md2html(filename, config.src, config, templateMap, program.dev);
+            const filename = resolve(src, relativePathname);
+            const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
+            const config = program.dev ? loadConfig(program.config) : CONFIG;
+            const content = md2html(filename, src, config, templateMap, program.dev);
             res.end(content);
         }
     }
@@ -56,16 +60,16 @@ app.use((req, res, next) => {
 
 function serve(port) {
     http.createServer(app).listen(port);
-    debug(config.port);
+    debug(port);
     if (program.open) {
         open(`http://127.0.0.1:${port}`);
     }
 }
 
-if (config.port) {
-    serve(config.port);
+if (port) {
+    serve(port);
 } else {
-    getPort().then(port => {
-        serve(port);
+    getPort().then(availablePort => {
+        serve(availablePort);
     });
 }

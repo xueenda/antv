@@ -1,0 +1,28 @@
+<header>
+    <a class="brand" href="{{ base }}{{ home }}">
+        <image class="lazy logo" src="{{ brand.logo }}"></image>
+        <span class="name">{{ brand.name }}</span>
+    </a>
+    <a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>
+    <ul class="nav">
+        {% for nav in header.navItems %}
+        <li class="nav-item">
+            <a href="{{ nav.href }}">{{ nav.text }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul class="floating-right">
+        <li>
+            <div class="search-bar">
+                <input type="text" required>
+                <div class="placeholder">
+                    <span class="placeholder-text">Search</span>
+                    <span class="btn-clear"></span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <span>extra links</span>
+        </li>
+    </ul>
+</header>

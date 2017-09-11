@@ -1,4 +1,16 @@
 module.exports = {
+    header: {
+        navItems: [
+            { text: '首页', href: '${home}' },
+            { text: 'G2', href: '${home}/g2/index.html' },
+            { text: 'G6', href: '${home}/g6/index.html' },
+            { text: 'F2', href: '${home}/f2/index.html' },
+        ]
+    },
+    previous: {
+        href: '/old/index.html',
+        text: '返回旧版'
+    },
     keywords: [
         'Ant',
         'AntV',
