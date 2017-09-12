@@ -10,9 +10,11 @@
     <!--title-->
     <title>{% block title %}AntV{% endblock %}</title>
     <!--css-->
-    <link rel="stylesheet" type="text/css" href="{{ assets }}/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="{{ assets }}/common.css" />
-    {% block css %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="{{ assets }}/{{ pkg.version }}/common.css" />
+    {% for css in resource.cssFiles %}
+    <link rel="stylesheet" type="text/css" href="{{ css }}" />
+    {% endfor %}
 </head>
 <body>
 <!--header-->
@@ -24,6 +26,8 @@
 {% include "partial/footer.html" %}
 <script type="text/javascript" src="{{ assets }}/lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{ assets }}/lib/lazyload-2.0.0-beta.2.min.js"></script>
-{% block js %}{% endblock %}
+{% for js in resource.jsFiles %}
+<script type="text/javascript" src="{{ js }}"></script>
+{% endfor %}
 </body>
 </html>

@@ -12,7 +12,7 @@ module.exports = {
     port: 2047,
     src: resolve(process.cwd(), './site'),
     brand: {
-        logo: '',
+        logo: 'http://via.placeholder.com/48x48',
         name: 'AntV',
     },
     theme: {

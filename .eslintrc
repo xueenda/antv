@@ -5,6 +5,10 @@
     "node": true
   },
   "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "plugins": [
     "html"
   ]

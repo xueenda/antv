@@ -4,17 +4,15 @@
         <span class="name">{{ brand.name }}</span>
     </a>
     <a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>
-    <ul class="nav">
+    <nav>
         {% for nav in header.navItems %}
         {% set extraClassname = '' %}
         {% if loop.index0 == header.activeNavItemIndex %}
         {% set extraClassname = ' active' %}
         {% endif %}
-        <li class="nav-item{{ extraClassname }}">
-            <a href="{{ nav.href }}">{{ nav.text }}</a>
-        </li>
+        <a class="nav-item{{ extraClassname }}" href="{{ nav.href }}">{{ nav.text }}</a>
         {% endfor %}
-    </ul>
+    </nav>
     <ul class="floating-right">
         <li>
             <div class="search-bar">

@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 const debug = require('debug')('app:server');
-const program = require('commander');
 const connect = require('connect');
+const getPort = require('get-port');
 const http = require('http');
 const open = require('open');
 const parseurl = require('parseurl');
-const getPort = require('get-port');
+const program = require('commander');
+const serveIndex = require('serve-index');
+const serveStatic = require('serve-static');
 const {
     extname,
     resolve
 } = require('path');
-const pkg = require('../package.json');
-const serveStatic = require('serve-static');
-const serveIndex = require('serve-index');
 const loadConfig = require('../lib/load-config');
 const loadTemplates = require('../lib/load-templates');
 const md2html = require('../lib/md2html');
+const pkg = require('../package.json');
 
 program
     .version(pkg.version)

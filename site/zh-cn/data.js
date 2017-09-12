@@ -1,4 +1,10 @@
 module.exports = {
+    resource: {
+        cssFiles: [
+        ],
+        jsFiles: [
+        ],
+    },
     header: {
         activeNavItemIndex: 0,
         navItems: [
