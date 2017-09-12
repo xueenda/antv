@@ -6,7 +6,11 @@
     <a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>
     <ul class="nav">
         {% for nav in header.navItems %}
-        <li class="nav-item">
+        {% set extraClassname = '' %}
+        {% if loop.index0 == header.activeNavItemIndex %}
+        {% set extraClassname = ' active' %}
+        {% endif %}
+        <li class="nav-item{{ extraClassname }}">
             <a href="{{ nav.href }}">{{ nav.text }}</a>
         </li>
         {% endfor %}
