@@ -3,4 +3,4 @@ coverage/
 dist/
 mocks/
 node_modules/
-theme/*/assets/lib/
+theme/*/assets/

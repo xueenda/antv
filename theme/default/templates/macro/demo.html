@@ -1,0 +1,15 @@
+{% macro demo(title, content) %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<div id="mountNode"></div>
+<script type="text/javascript" src="https://unpkg.alipay.com/jquery@3.2.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.alipay.com/@alipay/g2@3.0.0-rc3.7/build/g2.js"></script>
+{{ content | safe }}
+</body>
+</html>
+{% endmacro %}

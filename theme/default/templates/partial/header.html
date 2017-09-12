@@ -3,6 +3,8 @@
         <image class="lazy logo" src="{{ brand.logo }}"></image>
         <span class="name">{{ brand.name }}</span>
     </a>
+    {% if subHeader %}
+    {% endif %}
     <a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>
     <nav>
         {% for nav in header.navItems %}
