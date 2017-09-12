@@ -5,9 +5,10 @@ const pkg = require('./package.json');
 
 module.exports = {
     assets: '/assets',
+    dist: '${assets}/dist/${pkg.version}',
     base: '/',
     dest: resolve(process.cwd(), './dist'),
-    home: 'index.html',
+    home: 'zh-cn/index.html',
     pkg,
     port: 2047,
     src: resolve(process.cwd(), './site'),

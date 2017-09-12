@@ -8,7 +8,7 @@ module.exports = {
     header: {
         activeNavItemIndex: 0,
         navItems: [
-            { text: '首页', href: '${base}${home}' },
+            { text: '首页', href: '#' },
             { text: 'G2', href: '${base}g2/index.html' },
             { text: 'G6', href: '${base}g6/index.html' },
             { text: 'F2', href: '${base}f2/index.html' },

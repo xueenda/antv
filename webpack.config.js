@@ -1,8 +1,13 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const {
     resolve
 } = require('path');
 const pkg = require('./package.json');
+
+const extractLess = new ExtractTextPlugin({
+    filename: "[name].css",
+});
 
 module.exports = {
     entry: {
@@ -10,7 +15,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: resolve(__dirname, `./theme/default/assets/${pkg.version}/`)
+        path: resolve(__dirname, `./theme/default/assets/dist/${pkg.version}/`)
     },
     module: {
         rules: [
@@ -20,9 +25,6 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         babelrc: false,
-                        plugins: [
-                            'transform-remove-strict-mode'
-                        ],
                         presets: [
                             'es2015',
                             'stage-0'
@@ -32,21 +34,21 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [
-                    {
-                        loader: "style-loader" // creates style nodes from JS strings
-                    },
-                    {
-                        loader: "css-loader" // translates CSS into CommonJS
-                    },
-                    {
-                        loader: "less-loader" // compiles Less to CSS
-                    }
-                ]
+                use: extractLess.extract({
+                    use: [
+                        {
+                            loader: "css-loader" // translates CSS into CommonJS
+                        },
+                        {
+                            loader: "less-loader" // compiles Less to CSS
+                        }
+                    ]
+                })
             }
         ]
     },
     plugins: [
+        extractLess,
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.AggressiveMergingPlugin()
     ]

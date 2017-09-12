@@ -10,8 +10,8 @@
     <!--title-->
     <title>{% block title %}AntV{% endblock %}</title>
     <!--css-->
-    <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="{{ assets }}/{{ pkg.version }}/common.css" />
+    <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/normalize-7.0.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ dist }}/common.css" />
     {% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />
     {% endfor %}

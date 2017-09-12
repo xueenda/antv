@@ -32,62 +32,60 @@ AntV 是蚂蚁金服全新一代数据可视化解决方案，主要包含「数
 
 <section class="features">
 
-<ul class="figures">
-<li>
+<div class="feature">
 
 ![专业](http://via.placeholder.com/160x160)
 
 此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。
 
-</li>
-<li>
+</div>
+<div class="feature">
 
 ![简单](http://via.placeholder.com/160x160)
 
 此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。
 
-</li>
-<li>
+</div>
+<div class="feature">
 
 ![无限可能](http://via.placeholder.com/160x160)
 
 此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。
 
-</li>
-</ul>
+</div>
 
 </section>
 <section class="organizations">
 
 ## 200+ 家公司正在使用
 
-<ul class="logos">
-<li class="logo">
+<div class="row">
+<div class="logo">
 
 ![](http://via.placeholder.com/300x120)
 
-</li>
-<li class="logo">
+</div>
+<div class="logo">
 
 ![](http://via.placeholder.com/300x120)
 
-</li>
-<li class="logo">
+</div>
+<div class="logo">
 
 ![](http://via.placeholder.com/300x120)
 
-</li>
-<li class="logo">
+</div>
+<div class="logo">
 
 ![](http://via.placeholder.com/300x120)
 
-</li>
-<li class="logo">
+</div>
+<div class="logo">
 
 ![](http://via.placeholder.com/300x120)
 
-</li>
-</ul>
+</div>
+</div>
 </section>
 
 </article>

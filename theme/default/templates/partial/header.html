@@ -13,18 +13,14 @@
         <a class="nav-item{{ extraClassname }}" href="{{ nav.href }}">{{ nav.text }}</a>
         {% endfor %}
     </nav>
-    <ul class="floating-right">
-        <li>
-            <div class="search-bar">
-                <input type="text" required>
-                <div class="placeholder">
-                    <span class="placeholder-text">Search</span>
-                    <span class="btn-clear"></span>
-                </div>
+    <div class="floating-right">
+        <div class="search-bar">
+            <input type="text" required>
+            <div class="placeholder">
+                <span class="placeholder-text">Search</span>
+                <span class="btn-clear"></span>
             </div>
-        </li>
-        <li>
-            <span>extra links</span>
-        </li>
-    </ul>
+        </div>
+        <span>extra links</span>
+    </div>
 </header>
