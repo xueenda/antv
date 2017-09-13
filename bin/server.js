@@ -60,9 +60,10 @@ app.use((req, res, next) => {
 
 function serve(port) {
     http.createServer(app).listen(port);
-    debug(port);
+    const url = `http://127.0.0.1:${port}`;
+    debug(`server is ready on port ${port}! url: ${url}`);
     if (program.open) {
-        open(`http://127.0.0.1:${port}`);
+        open(url);
     }
 }
 

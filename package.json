@@ -49,7 +49,7 @@
     "url": "git@gitlab.alibaba-inc.com:datavis/antv.git"
   },
   "scripts": {
-    "server": "node bin/server.js -d -o",
+    "server": "DEBUG=lib:*,app:* node bin/server.js -d -o",
     "dev": "webpack --config webpack-dev.config.js",
     "lint": "eslint --ext .html,.js ./",
     "lint-fix": "eslint --ext .html,.js --fix ./",

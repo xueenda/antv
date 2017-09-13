@@ -11,6 +11,7 @@
     <title>{{ title }}</title>
     <!--css-->
     <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/normalize-7.0.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
     <link rel="stylesheet" type="text/css" href="{{ dist }}/common.css" />
     {% block css %}{% endblock %}
     {% for css in resource.cssFiles %}
@@ -22,11 +23,15 @@
 {% include "partial/header.html" %}
 <!--content-->
 {% block content %}{% endblock %}
+<!--scroll2top-->
+<div class="scroll2top">top</div>
+{% block plugins %}{% endblock %}
 <!--footer-->
 {% block footer %}{% endblock %}
 {% include "partial/footer.html" %}
 <script type="text/javascript" src="{{ assets }}/lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{ assets }}/lib/lazyload-2.0.0-beta.2.min.js"></script>
+<script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>
 <script type="text/javascript" src="{{ dist }}/common.js"></script>
 {% block js %}{% endblock %}
 {% for js in resource.jsFiles %}

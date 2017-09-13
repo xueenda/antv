@@ -11,7 +11,8 @@ const extractLess = new ExtractTextPlugin({
 
 module.exports = {
     entry: {
-        'common': resolve(__dirname, './theme/default/src/common.js')
+        common: resolve(__dirname, './theme/default/src/common.js'),
+        scroll2top: resolve(__dirname, './theme/default/src/scroll2top.js'),
     },
     output: {
         filename: '[name].js',
@@ -46,6 +47,9 @@ module.exports = {
                 })
             }
         ]
+    },
+    externals: {
+        jquery: 'jQuery'
     },
     plugins: [
         extractLess,
