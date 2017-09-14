@@ -13,7 +13,6 @@
     <!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/normalize-7.0.0.min.css" />-->
     <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/bootstrap-4.0.0-beta/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/bootstrap-4.0.0-beta/css/bootstrap-grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
     <link rel="stylesheet" type="text/css" href="{{ dist }}/common.css" />
     {% block css %}{% endblock %}
     {% for css in resource.cssFiles %}
@@ -25,8 +24,6 @@
 {% include "partial/header.html" %}
 <!--content-->
 {% block content %}{% endblock %}
-<!--scroll2top-->
-<div class="scroll2top">top</div>
 {% block plugins %}{% endblock %}
 <!--footer-->
 {% block footer %}{% endblock %}
@@ -35,7 +32,6 @@
 <script type="text/javascript" src="{{ assets }}/lib/popper.js-1.12.5/dist/umd/popper.min.js"></script>
 <script type="text/javascript" src="{{ assets }}/lib/bootstrap-4.0.0-beta/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ assets }}/lib/lazyload-2.0.0-beta.2.min.js"></script>
-<script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>
 <script type="text/javascript" src="{{ dist }}/common.js"></script>
 {% block js %}{% endblock %}
 {% for js in resource.jsFiles %}

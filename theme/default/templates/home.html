@@ -1,5 +1,15 @@
 {% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
+{% endblock %}
 {% block content %}{{ content | safe }}{% endblock %}
+{% block plugins %}
+<!--scroll2top-->
+<div class="scroll2top">top</div>
+{% endblock %}
 {% block footer %}
 {% include "partial/site-map.html" %}
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>
 {% endblock %}

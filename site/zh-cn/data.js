@@ -31,31 +31,54 @@ module.exports = {
         {
             header: 'G2',
             links: [
-                { text: '', href: '' }
+                { text: '介绍', href: '' },
+                { text: '图表示例', href: '' },
+                { text: '使用教程', href: '' },
+                { text: 'API', href: '' },
+                { text: '更新日志', href: '' },
             ]
         },
         {
             header: 'G6',
             links: [
-                { text: '', href: '' }
+                { text: '介绍', href: '' },
+                { text: '图表示例', href: '' },
+                { text: '使用教程', href: '' },
+                { text: 'API', href: '' },
+                { text: '工具箱', href: '' },
+                { text: '更新日志', href: '' },
             ]
         },
         {
             header: 'F2',
             links: [
-                { text: '', href: '' }
+                { text: '介绍', href: '' },
+                { text: '图表示例', href: '' },
+                { text: '使用教程', href: '' },
+                { text: 'API', href: '' },
+                { text: '更新日志', href: '' },
             ]
         },
         {
             header: '可视化研究院',
             links: [
-                { text: '', href: '' }
+                { text: '设计原则', href: '' },
+                { text: '图表用法', href: '' },
+                { text: '资源', href: '' },
+                { text: '经典文献', href: '' },
             ]
         },
         {
             header: '体验云产品',
             links: [
-                { text: '', href: '' }
+                { text: 'AntD', href: '' },
+                { text: 'AntG', href: '' },
+                { text: 'AntV', href: '' },
+                { text: 'Chair/Egg', href: '' },
+                { text: '九色鹿', href: '' },
+                { text: 'Basement', href: '' },
+                { text: '凤蝶', href: '' },
+                { text: '云雀', href: '' },
             ]
         },
     ],

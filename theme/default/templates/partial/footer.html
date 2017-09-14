@@ -1,7 +1,8 @@
 <!--footer-->
 <!--<footer>-->
-    <!--resources-->
-    <ul class="nav justify-content-center fixed-bottom">
+<!--resources-->
+<div class="container bg-light border-dark">
+    <ul class="nav justify-content-center">
         {% for resource in footer.resources %}
         <li class="nav-item">
             <a class="nav-link" href="{{ resource.href }}">{{ resource.text }}</a>
@@ -11,5 +12,7 @@
             <a href="#" class="nav-link disabled">{{ footer.copyright }}</a>
         </li>
     </ul>
-    <!--copyright-->
+</div>
+
+<!--copyright-->
 <!--</footer>-->

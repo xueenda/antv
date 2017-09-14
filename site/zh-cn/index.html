@@ -1,20 +1,51 @@
 ---
 keywords:
-- G2
+  - G2
 template: home
+introCards:
+  - img: http://via.placeholder.com/360x240
+    title: G2
+  - img: http://via.placeholder.com/360x240
+    title: G6
+  - img: http://via.placeholder.com/360x240
+    title: F2
+featuresCards:
+  - img: http://via.placeholder.com/160x160
+    title: 专业
+    description: 此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。
+  - img: http://via.placeholder.com/160x160
+    title: 简单
+    description: 此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。
+  - img: http://via.placeholder.com/160x160
+    title: 无限可能
+    description: 此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。
+organizationsCardSets:
+  -
+    - img: http://via.placeholder.com/300x120
+    - img: http://via.placeholder.com/300x120
+    - img: http://via.placeholder.com/300x120
+    - img: http://via.placeholder.com/300x120
+  -
+    - img: http://via.placeholder.com/300x120
+    - img: http://via.placeholder.com/300x120
+    - img: http://via.placeholder.com/300x120
 ---
 
 <section class="intro jumbotron">
   <div class="container">
     <h1>AntV: 蚂蚁数据可视化解决方案</h1>
     <p>AntV(Ant Visualization) blabla</p>
-    <div class="figures">
-      <!-- G2 -->
-      <img src="http://via.placeholder.com/360x240" alt="">
-      <!-- G6 -->
-      <img src="http://via.placeholder.com/360x240" alt="">
-      <!-- F2 -->
-      <img src="http://via.placeholder.com/360x240" alt="">
+    <div class="figures row">
+      {% for card in introCards %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{ card.img }}" alt="" class="card-img-top">
+          <div class="card-body">
+            <h2 class="card-title">{{ card.title }}</h2>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -26,42 +57,35 @@ template: home
 </section>
 
 <section class="features container">
-  <div class="row">
+  <div class="figures row">
+    {% for card in featuresCards %}
     <div class="feature col-md-4">
-      <!-- 专业 -->
-      <img src="http://via.placeholder.com/160x160" alt="">
-      <p>此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。</p>
+      <div class="card border-light">
+        <img src="{{ card.img }}" alt="" width="160" height="160">
+        <div class="card-body">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+        </div>
+      </div>
     </div>
-    <div class="feature col-md-4">
-      <!-- 简单 -->
-      <img src="http://via.placeholder.com/160x160" alt="">
-      <p>此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。</p>
-    </div>
-    <div class="feature col-md-4">
-      <!-- 无限可能 -->
-      <img src="http://via.placeholder.com/160x160" alt="">
-      <p>此处需要30字介绍特性此处需要30字介绍特性此处需要30字介绍特性。</p>
-    </div>
+    {% endfor %}
   </div>
 </section>
+
 <section class="organizations container">
   <h2>200+ 家公司正在使用</h2>
+  {% for cardSet in organizationsCardSets %}
   <div class="row">
-    <div class="logo col-md-2">
-      <img src="http://via.placeholder.com/300x120" alt="">
+    {% for card in cardSet %}
+    <div class="logo col-md-3">
+      <div class="card border-light">
+        <img src="{{ card.img }}" alt="">
+        <div class="card-body"></div>
+      </div>
     </div>
-    <div class="logo col-md-2">
-      <img src="http://via.placeholder.com/300x120" alt="">
-    </div>
-    <div class="logo col-md-2">
-      <img src="http://via.placeholder.com/300x120" alt="">
-    </div>
-    <div class="logo col-md-2">
-      <img src="http://via.placeholder.com/300x120" alt="">
-    </div>
-    <div class="logo col-md-2">
-      <img src="http://via.placeholder.com/300x120" alt="">
-    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
   </div>
 </section>
 
