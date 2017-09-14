@@ -1,0 +1,46 @@
+html, body, .demo-container, .demo-container .flex-column, .demo-container .flex-row {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.demo-container {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+  .col {
+    margin: 0;
+    padding: 0;
+    &.menu {
+      flex: 0 0 18rem;
+    }
+    &.detail {
+      min-width: 36rem;
+      flex: 1;
+    }
+    &.code-panel {
+      flex: 0 0 40rem;
+    }
+  }
+  .row {
+    margin: 0;
+    padding: 0;
+    &.toolbox {
+      flex: 0 0 3rem;
+      padding: 0 1rem;
+    }
+    &.code {
+      flex: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 90rem) {
+  .demo-container {
+    .flex-row {
+      flex-direction: column !important;
+    }
+    .col.menu, .col.code-panel {
+      display: none;
+    }
+  }
+}

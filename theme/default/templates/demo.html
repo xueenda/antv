@@ -3,10 +3,31 @@
 <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/select-1.1.0/css/select-theme-default.css" />
 <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether.min.css" />
 <link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether-theme-basic.min.css" />
+<link rel="stylesheet" type="text/css" href="{{ dist }}/demo.css" />
 {% endblock %}
 {% block content %}
+<div class="container-fluid demo-container">
+    <div class="d-flex flex-row border-secondary">
+        <div class="col menu bg-dark"></div>
+        <div class="col detail"></div>
+        <div class="col code-panel bg-secondary">
+            <div class="d-flex flex-column">
+                <div class="row toolbox navbar bg-light justify-content-between">
+                    <a href="#" class="nav-link">{{ resource.translate.sourceCode }}</a>
+                    <form class="form-inline">
+                        <button type="button" class="btn btn-light">{{ resource.translate.copy }}</button>
+                        <button type="button" class="btn btn-primary">{{ resource.translate.execute }}</button>
+                    </form>
+                </div>
+                <div class="row code"></div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript" src="{{ assets }}/lib/clipboard-1.7.1.min.js"></script>
 <script type="text/javascript" src="{{ assets }}/lib/tether-1.4.0/js/tether.min.js"></script>
 <script type="text/javascript" src="{{ assets }}/lib/select-1.1.0/js/select.min.js"></script>
+<script type="text/javascript" src="{{ dist }}/demo.js"></script>
 {% endblock %}

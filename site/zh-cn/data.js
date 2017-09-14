@@ -1,5 +1,10 @@
 module.exports = {
     resource: {
+        translate: {
+            copy: '复制',
+            execute: '运行',
+            sourceCode: '源码',
+        },
         cssFiles: [
         ],
         jsFiles: [
@@ -83,6 +88,7 @@ module.exports = {
         },
     ],
     footer: {
+        isFixed: false,
         resources: [
             { text: '关于我们', href: '' },
             { text: '版权说明', href: '' },

@@ -1,18 +1,17 @@
 <!--footer-->
-<!--<footer>-->
-<!--resources-->
-<div class="container bg-light border-dark">
-    <ul class="nav justify-content-center">
-        {% for resource in footer.resources %}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ resource.href }}">{{ resource.text }}</a>
-        </li>
-        {% endfor %}
-        <li class="nav-item">
-            <a href="#" class="nav-link disabled">{{ footer.copyright }}</a>
-        </li>
-    </ul>
-</div>
-
-<!--copyright-->
-<!--</footer>-->
+<footer class="bg-light border-dark{% if footer.isFixed %} fixed-bottom{% endif %}">
+    <div class="container">
+        <!--resources-->
+        <ul class="nav justify-content-center">
+            {% for resource in footer.resources %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ resource.href }}">{{ resource.text }}</a>
+            </li>
+            {% endfor %}
+            <!--copyright-->
+            <li class="nav-item">
+                <a href="#" class="nav-link disabled">{{ footer.copyright }}</a>
+            </li>
+        </ul>
+    </div>
+</footer>

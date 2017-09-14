@@ -1,14 +1,20 @@
-{% macro demo(title, content) %}
+{% macro g2demo(title, content, resource) %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
+    {% for css in resource.cssFiles %}
+    <link rel="stylesheet" type="text/css" href="{{ css }}" />
+    {% endfor %}
 </head>
 <body>
 <div id="mountNode"></div>
-<script type="text/javascript" src="https://unpkg.alipay.com/jquery@3.2.1/dist/jquery.min.js"></script>
 <script type="text/javascript" src="https://unpkg.alipay.com/@alipay/g2@3.0.0-rc3.7/build/g2.js"></script>
+{% for js in resource.jsFiles %}
+<script type="text/javascript" src="{{ js }}"></script>
+{% endfor %}
+<!-- content with <script> tag only -->
 {{ content | safe }}
 </body>
 </html>

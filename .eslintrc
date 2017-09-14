@@ -4,6 +4,12 @@
     "es6": true,
     "node": true
   },
+  "globals": {
+    "$": true,
+    "DataSet": true,
+    "G2": true,
+    "_": true
+  },
   "extends": "eslint:recommended",
   "parser": "babel-eslint",
   "parserOptions": {
