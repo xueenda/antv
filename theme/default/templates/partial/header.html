@@ -1,28 +1,30 @@
-<header>
-    <a class="brand" href="{{ base }}{{ home }}">
-        <image class="lazy logo" src="{{ brand.logo }}"></image>
-        <span class="name">{{ brand.name }}</span>
-    </a>
-    {% if subHeader %}
-    {% endif %}
-    <a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>
-    <nav>
-        {% for nav in header.navItems %}
-        {% set extraClassname = '' %}
-        {% if loop.index0 == header.activeNavItemIndex %}
-        {% set extraClassname = ' active' %}
+<!--<header>-->
+    <nav class="navbar nav-expand-md navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="{{ base }}{{ home }}"><!-- TODO when it is home, use # -->
+            <image class="lazy logo" width="30" height="30" src="{{ brand.logo }}"></image>
+            {{ brand.name }}
+        </a>
+        {% if subHeader %}
         {% endif %}
-        <a class="nav-item{{ extraClassname }}" href="{{ nav.href }}">{{ nav.text }}</a>
-        {% endfor %}
-    </nav>
-    <div class="floating-right">
-        <div class="search-bar">
-            <input type="text" required>
-            <div class="placeholder">
-                <span class="placeholder-text">Search</span>
-                <span class="btn-clear"></span>
-            </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--<a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+            {% for nav in header.navItems %}
+            {% set extraClassname = '' %}
+            {% if loop.index0 == header.activeNavItemIndex %}
+            {% set extraClassname = ' active' %}
+            {% endif %}
+                <li class="nav-item{{ extraClassname }}">
+                    <a class="nav-link" href="{{ nav.href }}">{{ nav.text }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </form>
         </div>
-        <span>extra links</span>
-    </div>
-</header>
+    </nav>
+<!--</header>-->

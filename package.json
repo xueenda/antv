@@ -6,6 +6,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@lite-js/try2get": "0.0.1",
     "commander": "^2.11.0",
     "connect": "^3.6.3",
     "debug": "^3.0.1",

@@ -9,6 +9,9 @@ const program = require('commander');
 const serveIndex = require('serve-index');
 const serveStatic = require('serve-static');
 const {
+    one: try2getOne
+} = require('@lite-js/try2get');
+const {
     extname,
     resolve
 } = require('path');
@@ -34,6 +37,13 @@ const {
 } = CONFIG;
 const TEMPLATE_MAP = loadTemplates(resolve(theme.root, theme.templates));
 
+function renderFile(filename) {
+    filename = resolve(src, filename);
+    const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
+    const config = program.dev ? loadConfig(program.config) : CONFIG;
+    return md2html(filename, src, config, templateMap, program.dev);
+}
+
 const app = connect();
 // static server
 app.use(assets, serveStatic(resolve(theme.root, theme.assets)));
@@ -45,13 +55,14 @@ app.use((req, res, next) => {
         const ext = extname(pathname);
         if (pathname.indexOf(base) === 0 && (ext === '.md' || ext === '.html')) {
             debug(pathname);
-            const relativePathname = pathname
-                .replace(base, '')
-                .replace(/\.html$/, '.md');
-            const filename = resolve(src, relativePathname);
-            const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
-            const config = program.dev ? loadConfig(program.config) : CONFIG;
-            const content = md2html(filename, src, config, templateMap, program.dev);
+            const relativeHtml = pathname
+                .replace(base, '');
+            const relativeMd = relativeHtml.replace(/\.html$/, '.md');
+            const content = try2getOne(
+                () => renderFile(relativeMd),
+                () => renderFile(relativeHtml)
+            );
+            
             res.end(content);
         }
     }
