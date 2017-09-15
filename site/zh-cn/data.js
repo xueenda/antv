@@ -4,6 +4,9 @@ module.exports = {
             copy: '复制',
             execute: '运行',
             sourceCode: '源码',
+            plotDescription: '图表简介',
+            usage: '使用说明',
+            relativePlots: '关联图表',
         },
         cssFiles: [
         ],

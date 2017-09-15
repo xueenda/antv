@@ -13,6 +13,7 @@ module.exports = {
     entry: {
         common: resolve(__dirname, './theme/default/src/common.js'),
         demo: resolve(__dirname, './theme/default/src/demo.js'),
+        'demo-detail': resolve(__dirname, './theme/default/src/demo-detail.js'),
         scroll2top: resolve(__dirname, './theme/default/src/scroll2top.js'),
     },
     output: {
@@ -50,7 +51,8 @@ module.exports = {
         ]
     },
     externals: {
-        jquery: 'jQuery'
+        codemirror: 'CodeMirror',
+        jquery: 'jQuery',
     },
     plugins: [
         extractLess,

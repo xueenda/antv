@@ -62,7 +62,6 @@ app.use((req, res, next) => {
                 () => renderFile(relativeMd),
                 () => renderFile(relativeHtml)
             );
-            
             res.end(content);
         }
     }

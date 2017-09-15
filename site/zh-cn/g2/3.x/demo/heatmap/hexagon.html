@@ -1,8 +1,14 @@
 <!--
+title: 六边形分箱
 template: g2-demo
 resource:
   jsFiles:
     - https://unpkg.alipay.com/@alipay/data-set@0.3.0/build/data-set.js
+plotDescription: 六边形分箱图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
 -->
 <script>
     const data = [];
@@ -23,7 +29,7 @@ resource:
     });
 
     const chart = new G2.Chart({
-        container: 'canvas',
+        container: 'mountNode',
         forceFit: true,
         height: window.innerHeight
     });

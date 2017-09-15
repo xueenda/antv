@@ -37,5 +37,12 @@
 {% for js in resource.jsFiles %}
 <script type="text/javascript" src="{{ js }}"></script>
 {% endfor %}
+{% if isDev %}
+<script type="text/javascript">
+    /* eslint-disable */
+    window.__data = {{ __self | safe }};
+    console.log(window.__data);
+</script>
+{% endif %}
 </body>
 </html>

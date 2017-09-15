@@ -1,15 +1,75 @@
 {% extends "layout.html" %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/select-1.1.0/css/select-theme-default.css" />
-<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether.min.css" />
-<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether-theme-basic.min.css" />
+<!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/select-1.1.0/css/select-theme-default.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether.min.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether-theme-basic.min.css" />-->
+<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/lib/codemirror.css">
+<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/addon/fold/foldgutter.css">
+<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/addon/hint/show-hint.css">
 <link rel="stylesheet" type="text/css" href="{{ dist }}/demo.css" />
 {% endblock %}
 {% block content %}
 <div class="container-fluid demo-container">
     <div class="d-flex flex-row border-secondary">
-        <div class="col menu bg-dark"></div>
-        <div class="col detail"></div>
+        <div class="col menu">
+            <div id="accordion" role="tablist">
+                {% for name, cat in demosByCategory %}
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ name }}" aria-controls="collapse-{{ name }}">
+                                {{ cat.title }}
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapse-{{ name }}" class="collapse" role="tabpanel" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                {% for demo in cat.demos %}
+                                <li class="list-group-item">{{ demo.title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col detail">
+            <div class="card">
+                <div class="navbar justify-content-between">
+                    <a href="#" class="nav-link">{{ title }}</a>
+                    <form class="form-inline">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary">Default</button>
+                            <button type="button" class="btn btn-light">Dark</button>
+                        </div>
+                    </form>
+                </div>
+                <iframe frameborder="0" class="demo" id="preview"></iframe>
+            </div>
+            <section class="description">
+                <h4>{{ resource.translate.plotDescription }}</h4>
+                <div> {{ plotDescription | safe }} </div>
+            </section>
+            <section class="usage">
+                <h4>{{ resource.translate.usage }}</h4>
+                <div> {{ plotUsage | safe }} </div>
+            </section>
+            <section class="relative-plots">
+                <h4>{{ resource.translate.relativePlots }}</h4>
+                <ul>
+                    {% for plot in relativePlots %}
+                    <li>
+                        <a href="{{ plot.url }}">
+                            <span>{{ plot.icon }}</span>
+                            {{ plot.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
         <div class="col code-panel bg-secondary">
             <div class="d-flex flex-column">
                 <div class="row toolbox navbar bg-light justify-content-between">
@@ -19,7 +79,9 @@
                         <button type="button" class="btn btn-primary">{{ resource.translate.execute }}</button>
                     </form>
                 </div>
-                <div class="row code"></div>
+                <div class="row code">
+                    <textarea name="code" id="code">{{ renderedContent | safe }}</textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -27,7 +89,20 @@
 {% endblock %}
 {% block js %}
 <script type="text/javascript" src="{{ assets }}/lib/clipboard-1.7.1.min.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/tether-1.4.0/js/tether.min.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/select-1.1.0/js/select.min.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/lib/codemirror.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/foldcode.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/foldgutter.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/brace-fold.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/xml-fold.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/comment-fold.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/hint/show-hint.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/hint/xml-hint.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/hint/html-hint.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/xml/xml.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/javascript/javascript.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/css/css.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/htmlmixed/htmlmixed.js"></script>
+<!--<script type="text/javascript" src="{{ assets }}/lib/tether-1.4.0/js/tether.min.js"></script>-->
+<!--<script type="text/javascript" src="{{ assets }}/lib/select-1.1.0/js/select.min.js"></script>-->
 <script type="text/javascript" src="{{ dist }}/demo.js"></script>
 {% endblock %}

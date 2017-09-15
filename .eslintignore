@@ -4,3 +4,4 @@ dist/
 mocks/
 node_modules/
 theme/*/assets/
+theme/default/templates/layout.html
