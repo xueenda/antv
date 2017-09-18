@@ -7,7 +7,7 @@ module.exports = {
     assets: '/assets',
     dist: '${assets}/dist/${pkg.version}',
     base: '/',
-    dest: resolve(process.cwd(), './dist'),
+    dest: resolve(process.cwd(), './_site'),
     home: 'zh-cn/index.html',
     pkg,
     port: 2047,

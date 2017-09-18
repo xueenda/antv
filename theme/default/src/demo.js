@@ -28,7 +28,7 @@ function syncCode() {
 }
 
 function resizePreview() {
-    $iframeContainer.height($iframeContainer.width() / 3 * 2);
+    $iframeContainer.height($iframeContainer.width() / 16 * 9);
     syncCode();
 }
 resizePreview();

@@ -1,6 +1,7 @@
 build/
 coverage/
 dist/
+_site/
 mocks/
 node_modules/
 theme/*/assets/
