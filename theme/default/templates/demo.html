@@ -3,9 +3,7 @@
 <!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/select-1.1.0/css/select-theme-default.css" />-->
 <!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether.min.css" />-->
 <!--<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tether-1.4.0/css/tether-theme-basic.min.css" />-->
-<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/lib/codemirror.css">
-<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/addon/fold/foldgutter.css">
-<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/addon/hint/show-hint.css">
+<link rel="stylesheet" href="{{ assets }}/lib/codemirror-5.29.0/lib/codemirror-merged.min.css">
 <link rel="stylesheet" type="text/css" href="{{ dist }}/demo.css" />
 {% endblock %}
 {% block content %}
@@ -75,8 +73,8 @@
                 <div class="row toolbox navbar bg-light justify-content-between">
                     <a href="#" class="nav-link">{{ resource.translate.sourceCode }}</a>
                     <form class="form-inline">
-                        <button type="button" class="btn btn-light">{{ resource.translate.copy }}</button>
-                        <button type="button" class="btn btn-primary">{{ resource.translate.execute }}</button>
+                        <button id="btn-copy" type="button" class="btn btn-light">{{ resource.translate.copy }}</button>
+                        <button id="btn-execute" type="button" class="btn btn-primary">{{ resource.translate.execute }}</button>
                     </form>
                 </div>
                 <div class="row code">
@@ -89,19 +87,7 @@
 {% endblock %}
 {% block js %}
 <script type="text/javascript" src="{{ assets }}/lib/clipboard-1.7.1.min.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/lib/codemirror.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/foldcode.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/foldgutter.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/brace-fold.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/xml-fold.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/fold/comment-fold.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/hint/show-hint.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/hint/xml-hint.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/addon/hint/html-hint.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/xml/xml.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/javascript/javascript.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/css/css.js"></script>
-<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/mode/htmlmixed/htmlmixed.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/codemirror-5.29.0/lib/codemirror-merged.min.js"></script>
 <!--<script type="text/javascript" src="{{ assets }}/lib/tether-1.4.0/js/tether.min.js"></script>-->
 <!--<script type="text/javascript" src="{{ assets }}/lib/select-1.1.0/js/select.min.js"></script>-->
 <script type="text/javascript" src="{{ dist }}/demo.js"></script>
