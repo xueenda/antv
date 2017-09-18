@@ -13,10 +13,7 @@ relativePlots:
 <script>
     const data = [];
     for (let i = 0; i < 1000; i++) {
-        data.push({
-            x: Math.random() * 10,
-            y: Math.random() * 10
-        });
+        data.push({ x: Math.random() * 10, y: Math.random() * 10 });
     }
     const ds = new DataSet();
     const dv = ds.createView().source(data);
@@ -25,7 +22,7 @@ relativePlots:
         type: 'bin.hexagon',
         fields: [ 'x', 'y' ],
         // offset: [ -0.2, -0.2 ],
-        binWidth: [ 2, 2 ]
+        binWidth: [ 2, 4 ]
     });
 
     const chart = new G2.Chart({
@@ -34,24 +31,11 @@ relativePlots:
         height: window.innerHeight
     });
     chart.scale({
-        x: {
-            sync: true
-        },
-        y: {
-            sync: true
-        }
+        x: { sync: true },
+        y: { sync: true }
     });
 
     const binView = chart.view();
-    binView.axis('x', {
-        grid: {
-            lineStyle: {
-                stroke: '#d9d9d9',
-                lineWidth: 1,
-                lineDash: [ 2, 2 ]
-            }
-        }
-    });
     binView.source(dv);
     binView.tooltip(false);
     binView.polygon()
@@ -67,7 +51,7 @@ relativePlots:
     pointView.tooltip(false);
     pointView.point()
         .position('x*y')
-        .size(2)
+        .size(1)
         .shape('circle')
         .color('grey');
 

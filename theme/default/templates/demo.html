@@ -34,45 +34,53 @@
             </div>
         </div>
         <div class="col detail">
-            <div class="card">
-                <div class="navbar justify-content-between">
-                    <a href="#" class="nav-link">{{ title }}</a>
-                    <form class="form-inline">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-primary">Default</button>
-                            <button type="button" class="btn btn-light">Dark</button>
-                        </div>
-                    </form>
+            <div class="container">
+                <div class="card">
+                    <div class="navbar justify-content-between">
+                        <a href="#" class="nav-link">{{ title }}</a>
+                        <form class="form-inline">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary">Default</button>
+                                <button type="button" class="btn btn-light">Dark</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="demo" id="preview"></div>
                 </div>
-                <iframe frameborder="0" class="demo" id="preview"></iframe>
+                <section class="description">
+                    <h4>{{ resource.translate.plotDescription }}</h4>
+                    <div> {{ plotDescription | safe }} </div>
+                </section>
+                <section class="usage">
+                    <h4>{{ resource.translate.usage }}</h4>
+                    <div> {{ plotUsage | safe }} </div>
+                </section>
+                <section class="relative-plots">
+                    <h4>{{ resource.translate.relativePlots }}</h4>
+                    <ul>
+                        {% for plot in relativePlots %}
+                        <li>
+                            <a href="{{ plot.url }}">
+                                <span>{{ plot.icon }}</span>
+                                {{ plot.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </section>
             </div>
-            <section class="description">
-                <h4>{{ resource.translate.plotDescription }}</h4>
-                <div> {{ plotDescription | safe }} </div>
-            </section>
-            <section class="usage">
-                <h4>{{ resource.translate.usage }}</h4>
-                <div> {{ plotUsage | safe }} </div>
-            </section>
-            <section class="relative-plots">
-                <h4>{{ resource.translate.relativePlots }}</h4>
-                <ul>
-                    {% for plot in relativePlots %}
-                    <li>
-                        <a href="{{ plot.url }}">
-                            <span>{{ plot.icon }}</span>
-                            {{ plot.name }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </section>
         </div>
         <div class="col code-panel bg-secondary">
             <div class="d-flex flex-column">
                 <div class="row toolbox navbar bg-light justify-content-between">
                     <a href="#" class="nav-link">{{ resource.translate.sourceCode }}</a>
                     <form class="form-inline">
+                        <span id="alert-copy-success" class="text-success" style="display: none;">
+                            {{ resource.translate.copySuccess }}
+                        </span>
+                        <span id="alert-copy-fail" class="text-danger" style="display: none;">
+                            {{ resource.translate.copyFail }}
+                        </span>
                         <button id="btn-copy" type="button" class="btn btn-light">{{ resource.translate.copy }}</button>
                         <button id="btn-execute" type="button" class="btn btn-primary">{{ resource.translate.execute }}</button>
                     </form>

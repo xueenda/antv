@@ -17,8 +17,43 @@ const htmlEditor = CodeMirror.fromTextArea($code[0], {
     lineWrapping: false
 });
 
-const $iframe = $('#preview');
-const iframeDoc = $iframe[0].contentDocument || $iframe[0].contentWindow.document;
-iframeDoc.open();
-iframeDoc.write(htmlEditor.getValue());
-iframeDoc.close();
+const $iframeContainer = $('#preview');
+function syncCode() {
+    $iframeContainer.html('<iframe></iframe>');
+    const iframe = $iframeContainer.find('iframe')[0];
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(htmlEditor.getValue());
+    iframeDoc.close();
+}
+
+function resizePreview() {
+    $iframeContainer.height($iframeContainer.width() / 3 * 2);
+    syncCode();
+}
+resizePreview();
+
+const $execute = $('#btn-execute');
+$execute.click(syncCode);
+
+const $copy = $('#btn-copy');
+const $alertCopySuccess = $('#alert-copy-success');
+const $alertCopyFail = $('#alert-copy-fail');
+const clipboard = new Clipboard($copy[0], {
+    text() {
+        return htmlEditor.getValue();
+    }
+});
+clipboard.on('success', e => {
+    e.clearSelection();
+    $alertCopySuccess.fadeIn();
+    $alertCopySuccess.fadeOut();
+});
+
+clipboard.on('error', e => {
+    e.clearSelection();
+    $alertCopyFail.fadeIn();
+    $alertCopyFail.fadeOut();
+});
+
+$(window).resize(resizePreview);

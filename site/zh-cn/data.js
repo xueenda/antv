@@ -2,6 +2,8 @@ module.exports = {
     resource: {
         translate: {
             copy: '复制',
+            copySuccess: '复制成功',
+            copyFail: '复制失败',
             execute: '运行',
             sourceCode: '源码',
             plotDescription: '图表简介',
