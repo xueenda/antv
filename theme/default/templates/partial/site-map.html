@@ -2,9 +2,9 @@
 <div class="site-map row bg-light">
     {% for site in siteMap %}
     <div class="sites col-md-5ths">
-        <h3 class="text-center">{{ site.header }}</h3>
+        <h3 class="text-center">{{ site.name }}</h3>
         <ul class="nav flex-column">
-            {% for link in site.links %}
+            {% for key, link in site.link %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ link.href }}">{{ link.text }}</a>
             </li>
