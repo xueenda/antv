@@ -4,6 +4,14 @@ const {
 const pkg = require('./package.json');
 
 module.exports = {
+    screenshotRoot: '${assets}/dist/${pkg.version}/screenshots',
+    screenshots: [
+        {
+            src: 'zh-cn/g2/3.x/demo',
+            dest: '${assets}/dist/${pkg.version}/g2/3.x',
+            template: 'g2-demo-standalone'
+        },
+    ],
     assets: '/assets',
     dist: '${assets}/dist/${pkg.version}',
     base: '/',

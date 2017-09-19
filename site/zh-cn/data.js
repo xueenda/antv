@@ -6,7 +6,7 @@ module.exports = {
             link: {
                 home: { text: '${resource.translate.intro}', href: ''  },
                 demo: { text: '${resource.translate.demo}', href: '' },
-                usage: { text: '${resource.translate.usage}', href: '' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '' },
                 api: { text: '${resource.translate.api}', href: '' },
                 changelog: { text: '${resource.translate.changelog}', href: '' }
             }
@@ -17,7 +17,7 @@ module.exports = {
             link: {
                 home: { text: '${resource.translate.intro}', href: ''  },
                 demo: { text: '${resource.translate.demo}', href: '' },
-                usage: { text: '${resource.translate.usage}', href: '' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '' },
                 api: { text: '${resource.translate.api}', href: '' },
                 toolbox: { text: '${resource.translate.toolbox}', href: '' },
                 changelog: { text: '${resource.translate.changelog}', href: '' }
@@ -29,7 +29,7 @@ module.exports = {
             link: {
                 home: { text: '${resource.translate.intro}', href: ''  },
                 demo: { text: '${resource.translate.demo}', href: '' },
-                usage: { text: '${resource.translate.usage}', href: '' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '' },
                 api: { text: '${resource.translate.api}', href: '' },
                 changelog: { text: '${resource.translate.changelog}', href: '' }
             }
@@ -52,13 +52,13 @@ module.exports = {
             copyFail: '复制失败',
             copySuccess: '复制成功',
             demo: '图表示例',
-            toolbox: '工具箱',
             execute: '运行',
             intro: '介绍',
             plotDescription: '图表简介',
             relativePlots: '关联图表',
             sourceCode: '源码',
-            usage: '使用教程',
+            toolbox: '工具箱',
+            tutorials: '使用教程',
         },
         cssFiles: [
         ],

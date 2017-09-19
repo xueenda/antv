@@ -51,6 +51,7 @@ forIn(demosByCategory, item => {
 });
 
 module.exports = {
+    template: 'g2-demo',
     demosByCategory,
     footer: {
         isFixed: true
