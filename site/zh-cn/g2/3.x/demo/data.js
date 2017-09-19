@@ -1,4 +1,7 @@
 const {
+    forIn
+} = require('lodash');
+const {
     lstatSync,
     readdirSync
 } = require('fs');
@@ -33,13 +36,18 @@ demoDirs.forEach(dir => {
             meta
         } = renderMd(file);
         const {
+            index,
             title
         } = meta;
         demosByCategory[category].demos.push({
+            index,
             name: basename(file, '.html'),
             title,
         });
     });
+});
+forIn(demosByCategory, item => {
+    item.demos.sort((a, b) => a.index - b.index);
 });
 
 module.exports = {
