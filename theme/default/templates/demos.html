@@ -18,13 +18,14 @@
     <div class="row">
         {% for demo in demos %}
         <div class="col-md-4 text-center">
-            <a href="./{{ demo.name }}.html"></a>
-            <div class="card">
-                <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
-                <div class="card-body">
-                    <p class="card-title">{{ demo.title }}</p>
+            <a href="./{{ name }}/{{ demo.name }}.html">
+                <div class="card">
+                    <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ demo.title }}</h4>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         {% endfor %}
     </div>
