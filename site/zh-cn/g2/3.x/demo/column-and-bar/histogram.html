@@ -1,0 +1,53 @@
+<!--
+index: 6
+title: 柱状直方图
+resource:
+  jsFiles:
+    - https://unpkg.alipay.com/@alipay/data-set@0.3.0/build/data-set.js
+plotDescription: 柱状直方图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+$.getJSON(
+  'https://gw.alipayobjects.com/os/rmsportal/gehagAEbaaiNEsphCzfN.json',
+  data => {
+    const ds = new DataSet();
+    const dv = ds.createView('diamond').source(data);
+    dv.transform({
+      type: 'bin.histogram',
+      field: 'depth',
+      binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小
+      as: ['depth', 'count'],
+    });
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.source(dv, {
+      depth: {
+        tickInterval: 6,
+      },
+    });
+    chart.axis('count', {
+      label: {
+        textStyle: {
+          fontSize: 11,
+        },
+      },
+    });
+    chart.axis('depth', {
+      label: {
+        textStyle: {
+          fontSize: 11,
+        },
+      },
+    });
+    chart.interval().position('depth*count');
+    chart.render();
+  },
+);
+</script>
