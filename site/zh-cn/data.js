@@ -59,6 +59,7 @@ module.exports = {
             sourceCode: '源码',
             toolbox: '工具箱',
             tutorial: '使用教程',
+            usage: '图表用法',
         },
         cssFiles: [
         ],
