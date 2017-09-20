@@ -1,5 +1,5 @@
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 const {
     resolve
 } = require('path');
@@ -8,13 +8,18 @@ const pkg = require('./package.json');
 const extractLess = new ExtractTextPlugin({
     filename: "[name].css",
 });
+function resolveTheme(src) {
+    return resolve(__dirname, './theme/default/src/', src);
+}
 
 module.exports = {
     entry: {
-        common: resolve(__dirname, './theme/default/src/common.js'),
-        demo: resolve(__dirname, './theme/default/src/demo.js'),
-        'demo-detail': resolve(__dirname, './theme/default/src/demo-detail.js'),
-        scroll2top: resolve(__dirname, './theme/default/src/scroll2top.js'),
+        'demo-detail': resolveTheme('demo-detail.js'),
+        common: resolveTheme('common.js'),
+        demo: resolveTheme('demo.js'),
+        doc: resolveTheme('doc.js'),
+        scroll2top: resolveTheme('scroll2top.js'),
+        toc: resolveTheme('toc.js'),
     },
     output: {
         filename: '[name].js',
@@ -51,8 +56,10 @@ module.exports = {
         ]
     },
     externals: {
+        'wolfy87-eventemitter': 'EventEmitter',
         codemirror: 'CodeMirror',
         jquery: 'jQuery',
+        routie: 'Routie',
     },
     plugins: [
         extractLess,
