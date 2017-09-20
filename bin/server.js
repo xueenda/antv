@@ -13,6 +13,7 @@ const {
 } = require('@lite-js/try2get');
 const {
     extname,
+    join,
     resolve
 } = require('path');
 const loadConfig = require('../lib/load-config');
@@ -29,6 +30,8 @@ program
 
 const CONFIG = loadConfig(program.config);
 const {
+    dest,
+    dist,
     port,
     src,
     assets,
@@ -48,6 +51,8 @@ const app = connect();
 // static server
 app.use(assets, serveStatic(resolve(theme.root, theme.assets)));
 app.use(base, serveIndex(process.cwd()));
+app.use(`${dist}/`, serveIndex(join(dest, `${dist}/`)));
+app.use(`${dist}/`, serveStatic(join(dest, `${dist}/`)));
 // markdown rendering
 app.use((req, res, next) => {
     if (req.method === 'GET') {
