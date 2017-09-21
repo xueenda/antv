@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
+<link rel="stylesheet" type="text/css" href="{{ dist }}/doc.css" />
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block plugins %}
+<!--scroll2top-->
+<div class="scroll2top">top</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{{ assets }}/lib/clipboard-1.7.1.min.js"></script>
+<script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>
+<script type="text/javascript" src="{{ dist }}/doc.js"></script>
+{% endblock %}

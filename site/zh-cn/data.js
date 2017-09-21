@@ -58,7 +58,8 @@ module.exports = {
             relativePlots: '关联图表',
             sourceCode: '源码',
             toolbox: '工具箱',
-            tutorials: '使用教程',
+            tutorial: '使用教程',
+            usage: '图表用法',
         },
         cssFiles: [
         ],

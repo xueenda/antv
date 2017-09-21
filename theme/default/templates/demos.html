@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block css %}
+{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 4rem; height: 4rem;">
+    <form class="float-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary">Default</button>
+            <button type="button" class="btn btn-light">Dark</button>
+        </div>
+    </form>
+</div>
+<div class="container">
+    {% for name, cat in demosByCategory %}
+    <h3>{{ cat.title }}</h3>
+    <hr>
+    {% for demos in cat.demos | batch(3) %}
+    <div class="row">
+        {% for demo in demos %}
+        <div class="col-md-4 text-center">
+            <a href="./{{ name }}/{{ demo.name }}.html">
+                <div class="card">
+                    <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ demo.title }}</h4>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

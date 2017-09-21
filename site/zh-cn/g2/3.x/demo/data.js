@@ -14,6 +14,10 @@ const {
     plotByName
 } = require('../data');
 const renderMd = require('../../../../../lib/render-md');
+const {
+    assets,
+    pkg
+} = require('../../../../../site-config');
 
 const isDirectory = source => lstatSync(source).isDirectory();
 const isFile = source => lstatSync(source).isFile();
@@ -39,9 +43,11 @@ demoDirs.forEach(dir => {
             index,
             title
         } = meta;
+        const name = basename(file, '.html');
         demosByCategory[category].demos.push({
+            screenshot: join(`${assets}/dist/${pkg.version}/g2/3.x/`, `${category}/${name}.png`),
             index,
-            name: basename(file, '.html'),
+            name,
             title,
         });
     });
