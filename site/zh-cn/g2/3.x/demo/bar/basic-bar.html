@@ -1,0 +1,62 @@
+<!--
+index: 8
+title: 基础条形图
+resource:
+  jsFiles:
+    - https://unpkg.alipay.com/@alipay/data-set@0.3.0/build/data-set.js
+plotDescription: 基础条形图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+  const data = [
+    { country: '中国', population: 131744 },
+    { country: '印度', population: 104970 },
+    { country: '美国', population: 29034 },
+    { country: '印尼', population: 23489 },
+    { country: '巴西', population: 18203 }
+  ];
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.source(data)
+    .transform({
+      type: 'sort',
+      callback(a, b) { // 排序依据，和原生js的排序callback一致
+        return a.population - b.population > 0;
+      }
+    });
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv);
+  chart.axis('country', {
+    line: {
+      lineWidth: 1,
+      stroke: '#CCD6EC'
+    },
+    tickLine: {
+      lineWidth: 1,
+      stroke: '#CCD6EC',
+      length: 4
+    },
+    grid: null
+  });
+  chart.axis('population', {
+    line: null,
+    tickLine: null,
+    grid: {
+      lineStyle: {
+        stroke: '#E9E9E9',
+        lineWidth: 1,
+        lineDash: [ 3, 3 ]
+      }
+    }
+  });
+  chart.coord().transpose();
+  chart.interval().position('country*population');
+  chart.render();
+</script>

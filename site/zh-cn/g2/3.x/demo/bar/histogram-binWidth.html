@@ -1,20 +1,18 @@
 <!--
-index: 6
-title: 柱状直方图
+index: 7
+title: 柱状直方图范围刻度
 resource:
   jsFiles:
     - https://unpkg.alipay.com/@alipay/data-set@0.3.0/build/data-set.js
     - ${assets}/lib/jquery-3.2.1.min.js
-plotDescription: 柱状直方图
+plotDescription: 柱状直方图范围刻度
 plotUsage: blablablalalalala
 relativePlots:
   - ${plotByName.pie}
   - ${plotByName.line}
 -->
 <script>
-$.getJSON(
-  '/assets/data/diamond.json',
-  data => {
+$.getJSON('/assets/data/diamond.json', data => {
     const ds = new DataSet();
     const dv = ds.createView('diamond').source(data);
     dv.transform({
@@ -30,22 +28,8 @@ $.getJSON(
     });
     chart.source(dv, {
       depth: {
-        tickInterval: 6,
-      },
-    });
-    chart.axis('count', {
-      label: {
-        textStyle: {
-          fontSize: 11,
-        },
-      },
-    });
-    chart.axis('depth', {
-      label: {
-        textStyle: {
-          fontSize: 11,
-        },
-      },
+        tickInterval: 4
+      }
     });
     chart.interval().position('depth*count');
     chart.render();
