@@ -50,6 +50,8 @@ function renderFile(filename) {
     return md2html(filename, src, config, templateMap, null, program.dev);
 }
 
+// indexing
+
 const walker = walk(src, { followLinks: false });
 walker.on('file', (root, stat, next) => {
     const relativeName = relative(src, join(root, stat.name));

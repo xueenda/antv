@@ -4,7 +4,6 @@ const {
 const pkg = require('./package.json');
 
 module.exports = {
-    screenshotRoot: '${assets}/dist/${pkg.version}/screenshots',
     screenshots: [
         {
             src: 'zh-cn/g2/3.x/demo',
