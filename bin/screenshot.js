@@ -113,7 +113,7 @@ getPort().then(port => {
                         })
                         .end()
                         .catch(e => {
-                            debug(`${fileBasename} failed to take a screenshot`)
+                            debug(`${fileBasename} failed to take a screenshot`);
                             callback(e);
                         });
                 });
