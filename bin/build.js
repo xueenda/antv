@@ -20,6 +20,7 @@ const {
 const loadConfig = require('../lib/load-config');
 const loadTemplates = require('../lib/load-templates');
 const md2html = require('../lib/md2html');
+const minifyHtml = require('../lib/minify-html');
 const pkg = require('../package.json');
 
 program
@@ -58,7 +59,7 @@ walker.on('file', (root, stat, next) => {
     debug(`[file]: ${relativeName}`);
     const ext = extname(stat.name);
     if (ext === '.html' || ext === '.md') {
-        const htmlContent = renderFile(resolve(root, stat.name));
+        const htmlContent = minifyHtml(renderFile(resolve(root, stat.name)));
         writeFile(join(dest, relativeName), htmlContent, 'utf8', err => {
             if (err) {
                 debug(err.message || `${err.code}: ${err.path}`);
