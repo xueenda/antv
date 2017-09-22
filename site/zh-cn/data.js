@@ -1,4 +1,5 @@
 module.exports = {
+    locale: 'zh-cn',
     product: {
         g2: {
             version: '3.0.0',

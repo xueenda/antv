@@ -20,6 +20,7 @@ const {
 const loadConfig = require('../lib/load-config');
 const loadTemplates = require('../lib/load-templates');
 const md2html = require('../lib/md2html');
+const minifyHtml = require('../lib/minify-html');
 const pkg = require('../package.json');
 
 program
@@ -50,13 +51,15 @@ function renderFile(filename) {
     return md2html(filename, src, config, templateMap, null, program.dev);
 }
 
+// indexing
+
 const walker = walk(src, { followLinks: false });
 walker.on('file', (root, stat, next) => {
     const relativeName = relative(src, join(root, stat.name));
     debug(`[file]: ${relativeName}`);
     const ext = extname(stat.name);
     if (ext === '.html' || ext === '.md') {
-        const htmlContent = renderFile(resolve(root, stat.name));
+        const htmlContent = minifyHtml(renderFile(resolve(root, stat.name)));
         writeFile(join(dest, relativeName), htmlContent, 'utf8', err => {
             if (err) {
                 debug(err.message || `${err.code}: ${err.path}`);

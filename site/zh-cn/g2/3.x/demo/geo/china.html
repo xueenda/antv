@@ -1,0 +1,87 @@
+<!--
+index: 0
+title: 中国地图
+resource:
+  jsFiles:
+    - https://unpkg.alipay.com/@alipay/data-set@0.4.0/build/data-set.js
+    - ${assets}/lib/jquery-3.2.1.min.js
+plotDescription: 中国地图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+    $.getJSON('/assets/data/china-geo.json', data => {
+        const {
+            features
+        } = data;
+        const userData = [];
+        for(let i=0; i<features.length; i++) {
+            const name = features[i].properties.name;
+            userData.push({
+                name,
+                value: Math.round(Math.random()*1000)
+            });
+        }
+        // data set
+        const ds = new DataSet();
+        // geo data
+        const dvGeo = ds.createView().source(data, {
+            type: 'GeoJSON'
+        });
+        // user data
+        const dvData = ds.createView().source(userData);
+        // assign centroid point (x, y) to user data
+        dvData.transform({
+            type: 'geo.centroid',
+            field: 'name',
+            geoDataView: dvGeo,
+            as: ['x', 'y']
+        });
+        dvGeo.transform({
+            type: 'rename',
+            map: {
+                longitude: 'x',
+                latitude: 'y',
+            }
+        });
+
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+        // force sync scales
+        chart.scale({
+            x: { sync: true, nice: false },
+            y: { sync: true, nice: false }
+        });
+        chart.legend(false);
+        chart.axis(false);
+
+        // the map
+        const bgView = chart.view();
+        bgView.source(dvGeo);
+        bgView.tooltip(false);
+        bgView.polygon()
+            .position('x*y')
+            .style({
+                stroke: '#ddd',
+                lineWidth: 0.5
+            });
+
+        // names of regions
+        const pointView = chart.view();
+        pointView.source(dvData);
+        pointView.tooltip(false);
+        pointView.point()
+            .position('x*y')
+            .size(0)
+            .label('name', {
+                offset: 0,
+            });
+
+        chart.render();
+    });
+</script>
