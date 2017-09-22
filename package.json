@@ -58,12 +58,14 @@
     "url": "git@gitlab.alibaba-inc.com:datavis/antv.git"
   },
   "scripts": {
-    "dist": "webpack",
     "build": "webpack && DEBUG=lib:*,app:* node bin/build.js",
-    "server": "DEBUG=lib:*,app:* node bin/server.js -d",
     "dev": "webpack --config webpack-dev.config.js",
+    "dist": "webpack",
+    "indexing": "DEBUG=lib:*,app:* node bin/indexing.js",
     "lint": "eslint --ext .html,.js ./",
     "lint-fix": "eslint --ext .html,.js --fix ./",
+    "screenshot": "DEBUG=lib:*,app:* node bin/screenshot.js",
+    "server": "DEBUG=lib:*,app:* node bin/server.js -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
