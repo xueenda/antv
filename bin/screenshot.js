@@ -100,7 +100,7 @@ getPort().then(port => {
                 q.defer(callback => {
                     const t0 = Date.now();
                     const nightmare = Nightmare({
-                        show: true
+                        show: false
                     });
                     nightmare
                         .viewport(800, 450) // 16 x 9
@@ -108,11 +108,12 @@ getPort().then(port => {
                         .wait('#mountNode canvas')
                         .wait(DELAY)
                         .screenshot(outputFilename, () => {
-                            debug(`${fileBasename} toke ${Date.now() - t0} to take a screenshot.`);
+                            debug(`${fileBasename} took ${Date.now() - t0} to take a screenshot.`);
                             callback(null);
                         })
                         .end()
                         .catch(e => {
+                            debug(`${fileBasename} failed to take a screenshot`)
                             callback(e);
                         });
                 });
