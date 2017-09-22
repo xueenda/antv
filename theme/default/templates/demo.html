@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="card">
                     <div class="navbar justify-content-between">
-                        <a href="#" class="nav-link">{{ title }}</a>
+                        <h2 class="nav-link">{{ title }}</h2>
                         <form class="form-inline">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-primary">Default</button>
@@ -47,27 +47,29 @@
                     </div>
                     <div class="demo" id="preview"></div>
                 </div>
-                <section class="description">
-                    <h4>{{ resource.translate.plotDescription }}</h4>
-                    <div> {{ plotDescription | safe }} </div>
-                </section>
-                <section class="usage">
-                    <h4>{{ resource.translate.usage }}</h4>
-                    <div> {{ plotUsage | safe }} </div>
-                </section>
-                <section class="relative-plots">
-                    <h4>{{ resource.translate.relativePlots }}</h4>
-                    <ul>
-                        {% for plot in relativePlots %}
-                        <li>
-                            <a href="{{ plot.url }}">
-                                <span>{{ plot.icon }}</span>
-                                {{ plot.name }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </section>
+                <div class="card-extra">
+                    <section class="description">
+                        <h4>{{ resource.translate.plotDescription }}</h4>
+                        <div> {{ plotDescription | safe }} </div>
+                    </section>
+                    <section class="usage">
+                        <h4>{{ resource.translate.usage }}</h4>
+                        <div> {{ plotUsage | safe }} </div>
+                    </section>
+                    <section class="relative-plots">
+                        <h4>{{ resource.translate.relativePlots }}</h4>
+                        <ul>
+                            {% for plot in relativePlots %}
+                            <li>
+                                <a href="{{ plot.url }}">
+                                    <span>{{ plot.icon }}</span>
+                                    {{ plot.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                </div>
             </div>
         </div>
         <div class="col code-panel bg-secondary">
