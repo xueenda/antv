@@ -31,6 +31,9 @@ $.getJSON('/assets/data/diamond.json', data => {
         tickInterval: 4
       }
     });
+    chart.tooltip({
+      crosshairs: false
+    });
     chart.interval().position('depth*count');
     chart.render();
   },

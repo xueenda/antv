@@ -39,6 +39,9 @@ relativePlots:
       tickInterval: 1
     }
   });
+  chart.tooltip({
+    crosshairs: false
+  });
   chart.axis('value', {
     label: {
       formatter: val => {

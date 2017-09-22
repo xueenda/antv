@@ -33,29 +33,6 @@ relativePlots:
     height: window.innerHeight
   });
   chart.source(dv);
-  chart.axis('country', {
-    line: {
-      lineWidth: 1,
-      stroke: '#CCD6EC'
-    },
-    tickLine: {
-      lineWidth: 1,
-      stroke: '#CCD6EC',
-      length: 4
-    },
-    grid: null
-  });
-  chart.axis('population', {
-    line: null,
-    tickLine: null,
-    grid: {
-      lineStyle: {
-        stroke: '#E9E9E9',
-        lineWidth: 1,
-        lineDash: [ 3, 3 ]
-      }
-    }
-  });
   chart.coord().transpose();
   chart.interval().position('country*population');
   chart.render();

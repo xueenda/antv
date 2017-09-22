@@ -21,13 +21,8 @@ relativePlots:
   const ds = new DataSet();
   const dv = ds.createView().source(data);
   dv.transform({
-    type: 'sort',
-    callback(a, b) { // 排序依据，和原生js的排序callback一致
-      return a.series1 - b.series1 > 0;
-    }
-  }).transform({
     type: 'fold',
-    fields: [ 'series2', 'series1' ], // 展开字段集
+    fields: [ 'series1', 'series2' ], // 展开字段集
     key: 'type', // key字段
     value: 'value', // value字段
   });
@@ -38,7 +33,10 @@ relativePlots:
     height: window.innerHeight
   });
   chart.source(dv);
-  chart.coord().transpose();
+  chart.axis('value', {
+    position: 'right'
+  });
+  chart.coord().transpose().scale(1, -1);
   chart.interval().position('label*value').color('type').adjust([{
     type: 'dodge',
     marginRatio: 1 / 32

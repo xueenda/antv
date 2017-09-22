@@ -37,29 +37,6 @@ relativePlots:
     });
     chart.source(dv);
     chart.coord().transpose();
-    chart.axis('State', {
-      line: {
-        lineWidth: 1,
-        stroke: '#CCD6EC'
-      },
-      tickLine: {
-        lineWidth: 1,
-        stroke: '#CCD6EC',
-        length: 4
-      },
-      grid: null
-    });
-    chart.axis('人口数量', {
-      line: null,
-      tickLine: null,
-      grid: {
-        lineStyle: {
-          stroke: '#E9E9E9',
-          lineWidth: 1,
-          lineDash: [ 3, 3 ]
-        }
-      }
-    });
     chart.intervalStack().position('State*人口数量').color('年龄段');
     chart.render();
 </script>

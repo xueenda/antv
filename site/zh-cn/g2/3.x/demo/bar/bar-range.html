@@ -36,29 +36,6 @@ relativePlots:
   });
   chart.source(dv);
   chart.coord().transpose();
-  chart.axis('profession', {
-    line: {
-      lineWidth: 1,
-      stroke: '#CCD6EC'
-    },
-    tickLine: {
-      lineWidth: 1,
-      stroke: '#CCD6EC',
-      length: 4
-    },
-    grid: null
-  });
-  chart.axis('range', {
-    line: null,
-    tickLine: null,
-    grid: {
-      lineStyle: {
-        stroke: '#E9E9E9',
-        lineWidth: 1,
-        lineDash: [ 3, 3 ]
-      }
-    }
-  });
   chart.interval().position('profession*range');
   chart.render();
 </script>
