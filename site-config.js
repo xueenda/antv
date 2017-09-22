@@ -4,6 +4,11 @@ const {
 const pkg = require('./package.json');
 
 module.exports = {
+    url: {
+        dataSet: 'https://unpkg.alipay.com/@alipay/data-set@0.4.1/build/data-set.js',
+        g2: 'https://unpkg.alipay.com/@alipay/g2@3.0.0-rc4.2/build/g2.js',
+        jquery: '${assets}/lib/jquery-3.2.1.min.js',
+    },
     assets: '/assets',
     base: '/',
     dest: resolve(process.cwd(), './_site'),
