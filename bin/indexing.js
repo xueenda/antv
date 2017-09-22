@@ -2,7 +2,7 @@
 const debug = require('debug')('app:build');
 const program = require('commander');
 const {
-    merge,
+    forIn
 } = require('lodash');
 const {
     walk
@@ -64,7 +64,13 @@ indices.forEach(indexing => {
             }, indexingMeta);
             doc.href = join('/', relativeName);
             result.docs.push(doc);
-            merge(result.invertedList, invertedList);
+            forIn(invertedList, (item, key) => {
+                if (result.invertedList[key]) {
+                    result.invertedList[key] = result.invertedList[key].concat(item);
+                } else {
+                    result.invertedList[key] = item;
+                }
+            });
         }
         next();
     });
