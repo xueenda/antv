@@ -53,6 +53,15 @@ mkdir('-p', destAssets);
 
 const app = connect();
 app.use('/', serveStatic(dest));
+
+// markdown rendering
+function renderFile(filename, template) {
+    filename = resolve(src, filename);
+    const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
+    const config = program.dev ? loadConfig(program.config) : CONFIG;
+    return md2html(filename, src, config, templateMap, template, program.dev);
+}
+
 getPort().then(port => {
     http.createServer(app).listen(port);
     const url = `http://127.0.0.1:${port}`;
@@ -60,13 +69,6 @@ getPort().then(port => {
     const DELAY = 6000;
     const q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
 
-// markdown rendering
-    function renderFile(filename, template) {
-        filename = resolve(src, filename);
-        const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
-        const config = program.dev ? loadConfig(program.config) : CONFIG;
-        return md2html(filename, src, config, templateMap, template, program.dev);
-    }
 
     screenshots.forEach(task => {
         const demoSrc = join(src, task.src);
@@ -79,6 +81,7 @@ getPort().then(port => {
         walker.on('file', (root, stat, next) => {
             const relativeName = relative(demoSrc, join(root, stat.name));
             debug(`[file]: ${relativeName}`);
+            // if (relativeName !== 'point/bubble.html') { next(); return; };
             if (relativeName === 'index.html') {
                 next();
                 return;
@@ -100,7 +103,8 @@ getPort().then(port => {
                 q.defer(callback => {
                     const t0 = Date.now();
                     const nightmare = Nightmare({
-                        show: false
+                        // show: true,
+                        show: false,
                     });
                     nightmare
                         .viewport(800, 450) // 16 x 9

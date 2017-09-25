@@ -64,7 +64,7 @@
     "indexing": "DEBUG=lib:*,app:* node bin/indexing.js",
     "lint": "eslint --ext .html,.js ./",
     "lint-fix": "eslint --ext .html,.js --fix ./",
-    "screenshot": "DEBUG=lib:*,app:* node bin/screenshot.js",
+    "screenshot": "npm run build && DEBUG=lib:*,app:* node bin/screenshot.js",
     "server": "DEBUG=lib:*,app:* node bin/server.js -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
