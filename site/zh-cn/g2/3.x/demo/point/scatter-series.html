@@ -1,0 +1,52 @@
+<!--
+index: 1
+title: 多色散点图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 多色散点图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+  $.getJSON('/assets/data/scatter.json', function(data){
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.source(data);
+    chart.tooltip({
+      showTitle: false,
+      crosshairs: {
+        type: 'cross'
+      },
+      itemTpl: '<li data-index={index} style="margin-bottom:4px;">'
+        + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
+        + '{name}<br/>'
+        + '{value}'
+        + '</li>'
+    });
+    chart.axis('weight', {
+      label: {
+        formatter: val => {
+          return val + ' kg';
+        }
+      }
+    });
+    chart.point().position('height*weight')
+      .color('gender')
+      .size(4)
+      .shape('circle')
+      .tooltip('gender*height*weight', (gender, height, weight) => {
+      return {
+        name: gender,
+        value: height + '(cm), ' + weight + '(kg)'
+      };
+    });
+    chart.render();
+  });
+</script>
