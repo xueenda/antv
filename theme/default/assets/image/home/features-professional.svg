@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="101px" viewBox="0 0 100 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>专业</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="98.8166299%" y1="3.51616424%" x2="-3.50909635%" y2="95.2086812%" id="linearGradient-1">
+            <stop stop-color="#A274FF" offset="0%"></stop>
+            <stop stop-color="#6854EE" offset="42.7720523%"></stop>
+            <stop stop-color="#7673FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="视觉稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-859.000000, -1678.000000)">
+            <g id="专业" transform="translate(859.000000, 1678.000000)">
+                <path d="M50,100.216216 C63.8937144,100.216216 76.4638627,94.5493558 85.5251775,85.4009022 C94.4735389,76.3664882 100,63.9367393 100,50.2162162 C100,22.6019787 77.6142375,0.216216216 50,0.216216216 C22.3857625,0.216216216 0,22.6019787 0,50.2162162 C0,77.8304537 22.3857625,100.216216 50,100.216216 Z" id="Oval-8" fill="#FCFCFF"></path>
+                <rect id="Rectangle-13" fill="#DDDAFF" x="75.0633211" y="79.8908834" width="24" height="5" rx="2.5"></rect>
+                <g id="Group-15" transform="translate(8.000000, 23.000000)">
+                    <path d="M41.5,57 C66.6515152,57 83,28.5 83,28.5 C83,28.5 66.6515152,0 41.5,0 C16.3484848,2.11529902e-15 0,28.5 0,28.5 C0,28.5 16.3484848,57 41.5,57 Z" id="Oval-5" fill="url(#linearGradient-1)"></path>
+                    <ellipse id="Oval-6" fill="#F083FF" cx="43" cy="27" rx="19" ry="18"></ellipse>
+                    <path d="M50,20 C52.209139,20 54,18.209139 54,16 C54,13.790861 52.209139,12 50,12 C47.790861,12 46,13.790861 46,16 C46,18.209139 47.790861,20 50,20 Z" id="Oval" fill="#FFFFFF" opacity="0.470090951"></path>
+                    <circle id="Oval-2" fill="#FFFFFF" cx="43" cy="26" r="7"></circle>
+                </g>
+                <g id="Group-11" transform="translate(1.300000, 10.100000)" fill="#DDD9FF">
+                    <rect id="Rectangle-13" x="0.0634480089" y="0" width="30.5408242" height="6.13944336" rx="3.06972168"></rect>
+                    <ellipse id="Oval-7" cx="39.4226001" cy="3.06972168" rx="3.05408242" ry="3.06972168"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

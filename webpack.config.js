@@ -18,6 +18,7 @@ module.exports = {
         common: resolveTheme('common.js'),
         demo: resolveTheme('demo.js'),
         doc: resolveTheme('doc.js'),
+        home: resolveTheme('home.js'),
         scroll2top: resolveTheme('scroll2top.js'),
         toc: resolveTheme('toc.js'),
     },
