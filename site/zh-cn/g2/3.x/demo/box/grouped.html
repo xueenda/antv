@@ -12,7 +12,7 @@ relativePlots:
   - ${plotByName.line}
 -->
 <script>
-  $.getJSON('/assets/data/iris_flower_data.json', function(data) {
+  $.getJSON('/assets/data/iris-flower.json', function(data) {
     const { DataView } = DataSet;
     const dv = new DataView().source(data);
     dv.transform({
