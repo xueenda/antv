@@ -1,0 +1,61 @@
+<!--
+index: 2
+title: 分组箱型图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 分组箱型图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+  $.getJSON('/assets/data/iris_flower_data.json', function(data) {
+    const { DataView } = DataSet;
+    const dv = new DataView().source(data);
+    dv.transform({
+      type: 'fold',
+      fields: [ '萼片长度','萼片宽度','花瓣长度','花瓣宽度' ], // 展开字段集
+      key: 'type',
+      value: 'value'
+    }).transform({
+      type: 'bin.quantile',
+      field: 'value',    // 计算分为值的字段
+      as: '_bin',    // 保存分为值的数组字段
+      groupBy: [ '品种', 'type' ],
+    });
+
+    const colorMap = {
+      'I. setosa': G2.Global.colors[0],
+      'I. versicolor': G2.Global.colors[1],
+      'I. virginica': G2.Global.colors[2]
+    };
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [ 20, 120, 95 ]
+    });
+    chart.source(dv);
+    chart.legend({
+      marker: 'circle'
+    });
+    chart.schema().position('type*_bin')
+      .color('品种', val => {
+        return colorMap[val];
+      })
+      .shape('box')
+      .style('品种', {
+        stroke: 'rgba(0, 0, 0, 0.45)',
+        fill: val => {
+          return colorMap[val];
+        },
+        fillOpacity: 0.3
+      })
+      .adjust('dodge');
+    chart.render();
+  });
+</script>
