@@ -10,72 +10,62 @@
 <div class="container-fluid demo-container">
     <div class="d-flex flex-row border-secondary">
         <div class="col menu">
-            <div id="accordion" role="tablist">
-                {% for name, cat in demosByCategory %}
-                <div class="card">
-                    <div class="card-header" role="tab">
-                        <h5 class="mb-0">
-                            <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ name }}" aria-controls="collapse-{{ name }}">
-                                {{ cat.title }}
-                            </a>
-                        </h5>
-                    </div>
-                    <div id="collapse-{{ name }}" class="collapse" role="tabpanel" data-parent="#accordion">
-                        <div class="card-body">
-                            <ul class="list-group">
-                                {% for demo in cat.demos %}
-                                <li class="list-group-item">{{ demo.title }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+            <div id="accordion" role="tablist" data-children=".item">
+                {% for cat in demos %}
+                <div class="item">
+                    <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">
+                        {{ cat.title }}
+                    </a>
+                    <div id="collapse-{{ cat.category }}" class="collapse" role="tabpanel" data-parent="#accordion">
+                        <ul>
+                            {% for demo in cat.demos %}
+                            <li><a href="{{ demo.href }}">{{ demo.title }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
-        <div class="col detail">
-            <div class="container">
-                <div class="card">
-                    <div class="navbar justify-content-between">
-                        <h2 class="nav-link">{{ title }}</h2>
-                        <form class="form-inline">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-primary">Default</button>
-                                <button type="button" class="btn btn-light">Dark</button>
-                            </div>
-                        </form>
+        <div class="col detail container">
+            <div class="navbar justify-content-between">
+                <h4 class="nav-link">{{ title }}</h4>
+                <form class="form-inline">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary">Default</button>
+                        <button type="button" class="btn btn-light">Dark</button>
                     </div>
-                    <div class="demo" id="preview"></div>
-                </div>
-                <div class="card-extra">
-                    <section class="description">
-                        <h4>{{ resource.translate.plotDescription }}</h4>
-                        <div> {{ plotDescription | safe }} </div>
-                    </section>
-                    <section class="usage">
-                        <h4>{{ resource.translate.usage }}</h4>
-                        <div> {{ plotUsage | safe }} </div>
-                    </section>
-                    <section class="relative-plots">
-                        <h4>{{ resource.translate.relativePlots }}</h4>
-                        <ul>
-                            {% for plot in relativePlots %}
-                            <li>
-                                <a href="{{ plot.url }}">
-                                    <span>{{ plot.icon }}</span>
-                                    {{ plot.name }}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </section>
-                </div>
+                </form>
+            </div>
+            <div class="demo" id="preview"></div>
+            <div class="card-extra container">
+                <section class="description">
+                    <h4>{{ resource.translate.plotDescription }}</h4>
+                    <div> {{ plotDescription | safe }} </div>
+                </section>
+                <section class="usage">
+                    <h4>{{ resource.translate.usage }}</h4>
+                    <div> {{ plotUsage | safe }} </div>
+                </section>
+                <section class="relative-plots">
+                    <h4>{{ resource.translate.relativePlots }}</h4>
+                    <ul>
+                        {% for plot in relativePlots %}
+                        <li>
+                            <a href="{{ plot.url }}">
+                                <span>{{ plot.icon }}</span>
+                                {{ plot.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </section>
             </div>
         </div>
         <div class="col code-panel bg-secondary">
             <div class="d-flex flex-column">
                 <div class="row toolbox navbar bg-light justify-content-between">
-                    <a href="#" class="nav-link">{{ resource.translate.sourceCode }}</a>
+                    <a href="#" class="nav-link disabled">{{ resource.translate.sourceCode }}</a>
                     <form class="form-inline">
                         <span id="alert-copy-success" class="text-success" style="display: none;">
                             {{ resource.translate.copySuccess }}

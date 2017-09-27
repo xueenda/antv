@@ -36,7 +36,7 @@ module.exports = {
             }
         },
         academy: {
-            name: '可视化研究院',
+            name: '${resource.translate.academy}',
             link: {
                 principles: { text: '设计原则', href: ''  },
                 cases: { text: '图表用法', href: '' },
@@ -47,6 +47,7 @@ module.exports = {
     },
     resource: {
         translate: {
+            academy: '可视化实验室',
             api: 'API',
             changelog: '更新日志',
             copy: '复制',
@@ -68,12 +69,12 @@ module.exports = {
         ],
     },
     header: {
-        activeNavItemIndex: 0,
+        activeNavItemIndex: -1,
         navItems: [
-            { text: '首页', href: '${base}zh-cn/index.html' },
             { text: 'G2', href: '${base}zh-cn/g2/3.x/index.html' },
             { text: 'G6', href: '${base}zh-cn/g6/1.x/index.html' },
             { text: 'F2', href: '${base}zh-cn/f2/1.x/index.html' },
+            { text: '${resource.translate.academy}', href: '${base}zh-cn/academy/index.html' },
         ]
     },
     previous: {

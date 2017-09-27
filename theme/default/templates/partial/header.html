@@ -1,31 +1,32 @@
 <!--header-->
-<header class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+<header class="navbar navbar-expand-lg navbar-light fixed-top">
+    {% if header.isFullSize %}{% else %}<div class="container">{% endif %}
     <a class="navbar-brand" href="{{ base }}{{ home }}"><!-- TODO when it is home, use # -->
         <image class="lazy logo" width="30" height="30" src="{{ brand.logo }}"></image>
         {{ brand.name }}
     </a>
     {% if subHeader %}
     {% endif %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <!--<a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>-->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarHeader">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+        <ul class="form-inline navbar-nav mt-2 mt-lg-0">
             {% for nav in header.navItems %}
             {% set extraClassname = '' %}
             {% if loop.index0 == header.activeNavItemIndex %}
             {% set extraClassname = ' active' %}
             {% endif %}
-            <li class="nav-item{{ extraClassname }}">
-                <a class="nav-link" href="{{ nav.href }}">{{ nav.text }}</a>
-            </li>
+            <a class="nav-link{{ extraClassname }}" href="{{ nav.href }}">{{ nav.text }}</a>
             {% endfor %}
+            <input class="query" type="text" placeholder="Search" aria-label="Search">
+            <!-- TODO icon imssing -->
+            <a class="nav-link">search</a>
+            <a class="nav-link">apps</a>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        </form>
-        <!-- TODO icon imssing -->
-        <span class="icon">more apps</span>
     </div>
+    {% if header.isFullSize %}{% else %}</div>{% endif %}
 </header>

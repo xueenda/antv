@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>无限可能</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="98.8166299%" y1="3.51616424%" x2="-3.50909635%" y2="95.2086812%" id="linearGradient-1">
+            <stop stop-color="#935EFF" offset="0%"></stop>
+            <stop stop-color="#6C57FF" offset="63.671875%"></stop>
+            <stop stop-color="#625EFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="视觉稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-1292.000000, -1660.000000)">
+            <g id="无限可能" transform="translate(1292.000000, 1660.000000)">
+                <circle id="Oval-8" fill="#FCFCFF" cx="50" cy="50" r="50"></circle>
+                <rect id="Rectangle-13" fill="#DDDAFF" x="73.7633211" y="78.7908834" width="24" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-13" fill="#DDDAFF" x="14.7633211" y="18.7908834" width="24" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-13" fill="#DDD9FF" x="0.0634480089" y="9" width="30.5408242" height="6.13944336" rx="3.06972168"></rect>
+                <ellipse id="Oval-7" fill="#DDD9FF" cx="39.4226001" cy="12.0697217" rx="3.05408242" ry="3.06972168"></ellipse>
+                <path d="M78.3985767,14.5432827 C78.6940117,13.4802256 78.1996134,13.1318698 77.3009773,13.760542 L11.5396506,59.7661689 L29.0007867,63.5527635 L34.8211653,78.6991422 L40.641544,69.2326555 L60.0428063,80.5924395 L78.3985767,14.5432827 Z" id="Path-8" fill="url(#linearGradient-1)"></path>
+                <polygon id="Path-11" fill="#F083FF" points="74.0939039 19.4282807 28.6987398 63.4333503 34.2591179 79.1585745"></polygon>
+                <path d="" id="Path-10"></path>
+            </g>
+        </g>
+    </g>
+</svg>

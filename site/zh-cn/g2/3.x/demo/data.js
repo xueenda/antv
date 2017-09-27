@@ -15,6 +15,7 @@ const {
 } = require('../data');
 const renderMd = require('../../../../../lib/render-md');
 const {
+    base,
     assets,
     pkg
 } = require('../../../../../site-config');
@@ -29,10 +30,15 @@ const demoDirs = getDirectories(__dirname);
 demoDirs.forEach(dir => {
     const category = basename(dir);
     const files = getFiles(dir).filter(file => extname(file) === '.html');
+    const plotInfo = plotByName[category] || {
+        index: 0,
+        title: category,
+    };
     demosByCategory[category] = {
-        title: plotByName[category] ? plotByName[category].name : category,
+        index: plotInfo.index,
+        title: plotInfo.name || plotInfo.title,
         category,
-        plot: plotByName[category],
+        plot: plotInfo,
         demos: [],
     };
     files.forEach(file => {
@@ -46,19 +52,27 @@ demoDirs.forEach(dir => {
         const name = basename(file, '.html');
         demosByCategory[category].demos.push({
             screenshot: join(`${assets}/dist/${pkg.version}/g2/3.x/`, `${category}/${name}.png`),
+            href: `${base}zh-cn/g2/3.x/demo/${category}/${name}.html`,
             index,
             name,
             title,
         });
     });
 });
+const demos = [];
 forIn(demosByCategory, item => {
+    demos.push(item);
     item.demos.sort((a, b) => a.index - b.index);
 });
+demos.sort((a, b) => a.index - b.index);
 
 module.exports = {
+    demos,
     template: 'g2-demo',
     demosByCategory,
+    header: {
+        isFullSize: true,
+    },
     footer: {
         isFixed: true
     }
