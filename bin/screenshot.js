@@ -109,7 +109,7 @@ getPort().then(port => {
                     nightmare
                         .viewport(800, 450) // 16 x 9
                         .goto(targetUrl)
-                        .wait('#mountNode canvas')
+                        // .wait('#mountNode canvas')
                         .wait(DELAY)
                         .screenshot(outputFilename, () => {
                             debug(`${fileBasename} took ${Date.now() - t0} to take a screenshot.`);

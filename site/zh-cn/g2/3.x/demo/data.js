@@ -29,10 +29,15 @@ const demoDirs = getDirectories(__dirname);
 demoDirs.forEach(dir => {
     const category = basename(dir);
     const files = getFiles(dir).filter(file => extname(file) === '.html');
+    const plotInfo = plotByName[category] || {
+        index: 0,
+        title: category,
+    };
     demosByCategory[category] = {
-        title: plotByName[category] ? plotByName[category].name : category,
+        index: plotInfo.index,
+        title: plotInfo.name || plotInfo.title,
         category,
-        plot: plotByName[category],
+        plot: plotInfo,
         demos: [],
     };
     files.forEach(file => {
@@ -52,11 +57,15 @@ demoDirs.forEach(dir => {
         });
     });
 });
+const demos = [];
 forIn(demosByCategory, item => {
+    demos.push(item);
     item.demos.sort((a, b) => a.index - b.index);
 });
+demos.sort((a, b) => a.index - b.index);
 
 module.exports = {
+    demos,
     template: 'g2-demo',
     demosByCategory,
     footer: {
