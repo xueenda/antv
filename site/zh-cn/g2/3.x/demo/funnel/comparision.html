@@ -1,0 +1,77 @@
+<!--
+index: 2
+title: 对比漏斗图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: 对比漏斗图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+  const expectData = [
+    {value: 100, name: '展现'},
+    {value: 80, name: '点击'},
+    {value: 60, name: '访问'},
+    {value: 40, name: '咨询'},
+    {value: 30, name: '订单'}
+  ];
+  const actualData = [
+    {value: 80, name: '展现'},
+    {value: 50, name: '点击'},
+    {value: 30, name: '访问'},
+    {value: 10, name: '咨询'},
+    {value: 5, name: '订单'}
+  ];
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight,
+    padding: [ 20, 120, 95 ]
+  });
+  chart.coord('rect').transpose().scale(1,-1);
+  chart.axis(false);
+  chart.legend(false);
+  chart.tooltip({
+    showTitle: null
+  });
+
+  const expectView = chart.view();
+  expectView.source(expectData, {
+    name: {
+      formatter: function(val) {
+        return '预期' + val;
+      }
+    }
+  });
+  expectView.intervalSymmetric()
+    .position('name*value')
+    .color('name', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ])
+    .shape('pyramid')
+    .label('name*value', (name, value) => {
+      return name + ' ' + value;
+    })
+    .opacity(0.65);
+
+  const actualView = chart.view();
+  actualView.source(actualData, {
+    name: {
+      formatter: function(val) {
+        return '实际' + val;
+      }
+    }
+  });
+  actualView.intervalSymmetric()
+    .position('name*value')
+    .color('name', [ '#0050B3', '#1890FF', '#40A9FF', '#69C0FF', '#BAE7FF' ])
+    .shape('pyramid')
+    .opacity(1)
+    .style({
+      lineWidth: 1,
+      stroke: '#fff'
+    });
+
+  chart.render();
+</script>
