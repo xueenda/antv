@@ -15,6 +15,7 @@ const {
 } = require('../data');
 const renderMd = require('../../../../../lib/render-md');
 const {
+    base,
     assets,
     pkg
 } = require('../../../../../site-config');
@@ -51,6 +52,7 @@ demoDirs.forEach(dir => {
         const name = basename(file, '.html');
         demosByCategory[category].demos.push({
             screenshot: join(`${assets}/dist/${pkg.version}/g2/3.x/`, `${category}/${name}.png`),
+            href: `${base}zh-cn/g2/3.x/demo/${category}/${name}.html`,
             index,
             name,
             title,
@@ -68,6 +70,9 @@ module.exports = {
     demos,
     template: 'g2-demo',
     demosByCategory,
+    header: {
+        isFullSize: true,
+    },
     footer: {
         isFixed: true
     }
