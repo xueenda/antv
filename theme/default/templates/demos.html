@@ -22,11 +22,11 @@
             {% for demo in demos %}
             <div class="col-md-4 text-center">
                 <div class="card">
-                    <a href="./{{ name }}/{{ demo.name }}.html">
+                    <a href="./{{ cat.category }}/{{ demo.name }}.html">
                         <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
                     </a>
                     <div class="card-body">
-                        <a href="./{{ name }}/{{ demo.name }}.html"> {{ demo.title }} </a>
+                        <a href="./{{ cat.category }}/{{ demo.name }}.html"> {{ demo.title }} </a>
                     </div>
                 </div>
             </div>
