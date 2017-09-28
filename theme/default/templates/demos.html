@@ -17,10 +17,9 @@
     <div class="container">
         {% for cat in demos %}
         <h5>{{ cat.title }}</h5>
-        {% for demos in cat.demos | batch(3) %}
         <div class="row">
-            {% for demo in demos %}
-            <div class="col-md-4 text-center">
+            {% for demo in cat.demos %}
+            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                 <div class="card">
                     <a href="./{{ cat.category }}/{{ demo.name }}.html">
                         <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
@@ -32,7 +31,6 @@
             </div>
             {% endfor %}
         </div>
-        {% endfor %}
         {% endfor %}
     </div>
 </div>
