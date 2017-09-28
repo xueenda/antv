@@ -4,15 +4,13 @@
 {% endblock %}
 {% block content %}
 <div class="demos">
-    <div class="container">
-        <h2>
-            <form class="float-right">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary">Default</button>
-                    <button type="button" class="btn btn-light">Dark</button>
-                </div>
-            </form>
-        </h2>
+    <div class="container header">
+        <form class="float-right">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary">Default</button>
+                <button type="button" class="btn btn-light">Dark</button>
+            </div>
+        </form>
     </div>
     <div class="container">
         {% for cat in demos %}
