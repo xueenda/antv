@@ -1,9 +1,21 @@
 {% extends "layout.html" %}
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/highlight-9.12.0/styles/solarized-light.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/doc.css" />
 {% endblock %}
 {% block content %}
+<div class="container-fluid doc-container">
+    <div class="d-flex flex-row border-secondary">
+        <div class="col menu">
+        </div>
+        <div class="col detail container">
+            {{ content | safe }}
+        </div>
+        <div class="col page-nav">
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block plugins %}
 <!--scroll2top-->

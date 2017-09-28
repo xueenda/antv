@@ -42,5 +42,8 @@
 {% for js in resource.jsFiles %}
 <script type="text/javascript" src="{{ js }}"></script>
 {% endfor %}
+{{ __userScripts | join | safe }}
+{% block userScript %}
+{% endblock %}
 </body>
 </html>
