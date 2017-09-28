@@ -1,17 +1,19 @@
 <!--site map-->
-<div class="site-map row">
+<div class="site-map">
     <div class="container">
-        {% for site in siteMap %}
-        <div class="sites col-md-5ths">
-            <h5>{{ site.name }}</h5>
-            <div class="nav flex-column">
-                {% for key, link in site.link %}
-                <div class="nav-item">
-                    <a href="{{ link.href }}">{{ link.text }}</a>
+        <div class="row">
+            {% for site in siteMap %}
+            <div class="sites col-md-5ths col-sm-4 col-xs-12">
+                <h5>{{ site.name }}</h5>
+                <div class="nav flex-column">
+                    {% for key, link in site.link %}
+                    <div class="nav-item">
+                        <a href="{{ link.href }}">{{ link.text }}</a>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>

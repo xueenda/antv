@@ -123,20 +123,18 @@ footer:
 
 <section class="users text-center">
     <h2>2000+用户正在使用</h2>
-    {% for cardSet in organizationsCards | batch(4) %}
     <div class="container">
         <div class="row">
-            {% for card in cardSet %}
-            <div class="logo col-md-3">
+            {% for card in organizationsCards %}
+            <div class="logo col-md-3 col-sm-6 col-xs-12">
                 <!--<div class="card border-light">-->
-                    <img src="{{ card.img }}" alt="">
-                    <!--<div class="card-body"></div>-->
+                <img src="{{ card.img }}" alt="">
+                <!--<div class="card-body"></div>-->
                 <!--</div>-->
             </div>
             {% endfor %}
         </div>
     </div>
-    {% endfor %}
     </div>
 </section>
 
