@@ -21,7 +21,6 @@ module.exports = {
         doc: resolveTheme('doc.js'),
         home: resolveTheme('home.js'),
         scroll2top: resolveTheme('scroll2top.js'),
-        toc: resolveTheme('toc.js'),
     },
     output: {
         filename: '[name].js',
@@ -62,6 +61,7 @@ module.exports = {
         codemirror: 'CodeMirror',
         jquery: 'jQuery',
         routie: 'Routie',
+        tocbot: 'tocbot',
     },
     plugins: [
         extractLess,

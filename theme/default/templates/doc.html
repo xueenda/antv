@@ -1,9 +1,19 @@
 {% extends "layout.html" %}
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/highlight-9.12.0/styles/solarized-light.css" />
+<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tocbot-3.0.2/tocbot.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/doc.css" />
 {% endblock %}
 {% block content %}
+<div class="doc-container">
+    <div class="menu">
+    </div>
+    <div class="detail content">
+        {{ content | safe }}
+    </div>
+    <div class="toc"></div>
+</div>
 {% endblock %}
 {% block plugins %}
 <!--scroll2top-->
@@ -11,6 +21,7 @@
 {% endblock %}
 {% block js %}
 <script type="text/javascript" src="{{ assets }}/lib/clipboard-1.7.1.min.js"></script>
+<script type="text/javascript" src="{{ assets }}/lib/tocbot-3.0.2/tocbot.min.js"></script>
 <script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>
 <script type="text/javascript" src="{{ dist }}/doc.js"></script>
 {% endblock %}

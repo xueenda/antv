@@ -12,16 +12,20 @@
         <div class="col menu">
             <div id="accordion" role="tablist" data-children=".item">
                 {% for cat in demos %}
-                <div class="item">
-                    <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">
-                        {{ cat.title }}
-                    </a>
+                <div class="item card">
+                    <div class="card-header" role="tab">
+                        <h5>
+                            <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">{{ cat.title }}</a>
+                        </h5>
+                    </div>
                     <div id="collapse-{{ cat.category }}" class="collapse" role="tabpanel" data-parent="#accordion">
-                        <ul>
-                            {% for demo in cat.demos %}
-                            <li><a href="{{ demo.href }}">{{ demo.title }}</a></li>
-                            {% endfor %}
-                        </ul>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                {% for demo in cat.demos %}
+                                <li class="list-group-item"><a href="{{ demo.href }}">{{ demo.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
