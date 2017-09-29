@@ -62,6 +62,7 @@ module.exports = {
         jquery: 'jQuery',
         routie: 'Routie',
         tocbot: 'tocbot',
+        clipboard: 'Clipboard',
     },
     plugins: [
         extractLess,

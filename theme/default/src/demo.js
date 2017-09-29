@@ -1,5 +1,6 @@
-import './demo.less';
 import CodeMirror from 'codemirror';
+import Clipboard from 'clipboard';
+import './demo.less';
 
 const $code = $('#code');
 
