@@ -60,7 +60,8 @@ walker.on('file', (root, stat, next) => {
     const ext = extname(stat.name);
     if (ext === '.html' || ext === '.md') {
         const htmlContent = minifyHtml(renderFile(resolve(root, stat.name)));
-        writeFile(join(dest, relativeName), htmlContent, 'utf8', err => {
+        const destFilename = join(dest, relativeName).replace(/\.md$/, '.html');
+        writeFile(destFilename, htmlContent, 'utf8', err => {
             if (err) {
                 debug(err.message || `${err.code}: ${err.path}`);
             } else {

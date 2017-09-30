@@ -63,6 +63,7 @@ module.exports = {
         routie: 'Routie',
         tocbot: 'tocbot',
         clipboard: 'Clipboard',
+        meta: '__meta',
     },
     plugins: [
         extractLess,
