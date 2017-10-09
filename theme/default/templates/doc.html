@@ -8,6 +8,10 @@
 {% block content %}
 <div class="doc-container">
     <div class="menu">
+        <h3>{{ docMenuHeader }}</h3>
+        {% if docFilteringSupport %}
+        <input type="text" id="doc-filtering-query">
+        {% endif %}
     </div>
     <div class="detail content">
         {{ content | safe }}
