@@ -70,8 +70,5 @@ module.exports = {
     demos,
     template: 'g2-demo',
     demosByCategory,
-    header: {
-        isFullSize: true,
-    },
     showFooter: false,
 };

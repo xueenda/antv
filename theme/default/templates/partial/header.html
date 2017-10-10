@@ -1,6 +1,6 @@
 <!--header-->
 <header class="navbar navbar-expand-lg navbar-light fixed-top">
-    {% if header.isFullSize %}{% else %}<div class="container">{% endif %}
+    <!--{% if header.isFullSize %}{% else %}<div class="container">{% endif %}-->
     <a class="navbar-brand" href="{{ base }}{{ home }}"><!-- TODO when it is home, use # -->
         <image class="lazy logo" width="30" height="30" src="{{ brand.logo }}"></image>
         {{ brand.name }}
@@ -28,5 +28,5 @@
             <a class="nav-link">apps</a>
         </ul>
     </div>
-    {% if header.isFullSize %}{% else %}</div>{% endif %}
+    <!--{% if header.isFullSize %}{% else %}</div>{% endif %}-->
 </header>
