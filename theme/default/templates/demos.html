@@ -1,37 +1,49 @@
 {% extends "layout.html" %}
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tocbot-3.0.2/tocbot.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/demos.css" />
 {% endblock %}
 {% block content %}
-<div class="demos">
-    <div class="container header">
-        <form class="float-right">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary">Default</button>
-                <button type="button" class="btn btn-light">Dark</button>
-            </div>
-        </form>
-    </div>
-    <div class="container">
-        {% for cat in demos %}
-        <h5>{{ cat.title }}</h5>
-        <div class="row">
-            {% for demo in cat.demos %}
-            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                <div class="card">
-                    <a href="./{{ cat.category }}/{{ demo.name }}.html">
-                        <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
-                    </a>
-                    <div class="card-body">
-                        <a href="./{{ cat.category }}/{{ demo.name }}.html"> {{ demo.title }} </a>
+<div class="demos container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-xl-1"></div>
+        <div class="col-12 col-md-12 col-xl-9">
+            <div class="container header">
+                <form class="float-right">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary">Default</button>
+                        <button type="button" class="btn btn-light">Dark</button>
                     </div>
-                </div>
+                </form>
             </div>
-            {% endfor %}
+            <div class="container content">
+                {% for cat in demos %}
+                <h5>{{ cat.title }}</h5>
+                <div class="row">
+                    {% for demo in cat.demos %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                        <div class="card">
+                            <a href="./{{ cat.category }}/{{ demo.name }}.html">
+                                <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
+                            </a>
+                            <div class="card-body">
+                                <a href="./{{ cat.category }}/{{ demo.name }}.html"> {{ demo.title }} </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
+        <div class="toc-container d-none d-xl-block col-xl-2 bd-toc">
+            <div class="toc">
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript" src="{{ assets }}/lib/tocbot-3.0.2/tocbot.min.js"></script>
+<script type="text/javascript" src="{{ dist }}/demos.js"></script>
 {% endblock %}
