@@ -1,15 +1,29 @@
 .doc-container {
-  padding: 4rem;
-  .content {
-    padding: 2rem 18rem;
+  padding: 64px 16px 0 16px;
+  .menu, .toc-container, .content {
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
-  .menu, .toc {
-    top: 4rem;
+  .content {
+    order: 1;
+    //padding: 2rem 18rem;
+  }
+  .menu .inner, .toc {
     position: fixed;
+    //top: 4rem;
+    //position: fixed;
+  }
+  @media (max-width: 768px) {
+    .menu .inner {
+      position: relative;
+    }
   }
   .menu {
+    box-shadow: 2px 0 4px rgba(63, 62, 67, .1);
+    order: 0;
   }
-  .toc {
+  .toc-container {
+    order: 2;
     right: 1rem;
   }
   .highlight {
