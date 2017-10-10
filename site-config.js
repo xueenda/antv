@@ -32,7 +32,7 @@ module.exports = {
         {
             src: 'zh-cn',
             meta: require('./site/zh-cn/data'),
-            dest: '${assets}/data/_indexing.zh-cn.json',
+            dest: '${assets}/dist/${pkg.version}/_indexing.zh-cn.json',
         }
     ],
     theme: {

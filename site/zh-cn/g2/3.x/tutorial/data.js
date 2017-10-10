@@ -1,3 +1,5 @@
 module.exports = {
-    template: 'doc'
+    template: 'doc',
+    docMenuHeader: '${resource.translate.tutorial}',
+    docFilteringSupport: true
 };

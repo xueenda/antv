@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const debug = require('debug')('app:build');
+const debug = require('debug')('app:indexing');
 const program = require('commander');
 const {
     forIn

@@ -48,7 +48,7 @@ module.exports = {
     resource: {
         translate: {
             academy: '可视化实验室',
-            api: 'API',
+            api: 'API文档',
             changelog: '更新日志',
             copy: '复制',
             copyFail: '复制失败',

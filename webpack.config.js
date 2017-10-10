@@ -61,7 +61,10 @@ module.exports = {
         codemirror: 'CodeMirror',
         jquery: 'jQuery',
         routie: 'Routie',
+        lodash: '_',
         tocbot: 'tocbot',
+        clipboard: 'Clipboard',
+        meta: '__meta',
     },
     plugins: [
         extractLess,
