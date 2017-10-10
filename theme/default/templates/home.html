@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{{ dist }}/headroom.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/home.css" />
 {% endblock %}
@@ -13,6 +14,7 @@
 {% endblock %}
 {% block js %}
 <script type="text/javascript" src="{{ assets }}/lib/jquery.headroom-0.9.4.min.js"></script>
+<script type="text/javascript" src="{{ dist }}/headroom.js"></script>
 <script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>
 <script type="text/javascript" src="{{ dist }}/home.js"></script>
 {% endblock %}
