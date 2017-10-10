@@ -62,6 +62,7 @@ module.exports = {
             toolbox: '工具箱',
             tutorial: '使用教程',
             usage: '图表用法',
+            getStarted: '开始使用',
         },
         cssFiles: [
         ],
@@ -109,6 +110,7 @@ module.exports = {
             }
         },
     ],
+    showFooter: true,
     footer: {
         isFixed: false,
         resources: [

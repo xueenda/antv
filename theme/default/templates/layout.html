@@ -27,7 +27,9 @@
 {% block plugins %}{% endblock %}
 <!--footer-->
 {% block footer %}{% endblock %}
+{% if showFooter %}
 {% include "partial/footer.html" %}
+{% endif %}
 <script type="text/javascript">
     /* eslint-disable */
     {% if isDev %}window.__data = {{ __self | safe }}; console.log(window.__data);{% endif %}
