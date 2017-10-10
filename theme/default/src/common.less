@@ -2,13 +2,25 @@
 @import "./less/font.less";
 @import "./less/autocomplete.less";
 
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1208px;
+  }
+}
+
 .navbar {
-  padding: 0 1rem;
+  padding: 0 32px;
+}
+
+.navbar-brand {
+  font-size: 32px;
+  line-height: 0;
+  padding: 4px 0;
 }
 
 .navbar-light {
   background: #FDFDFD;
-  box-shadow: 0 2px 8px #E5E5E5;
+  box-shadow: 0 2px 8px rgba(229, 229, 229, .5);
 }
 
 .site-map {
