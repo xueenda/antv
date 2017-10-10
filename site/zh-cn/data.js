@@ -109,6 +109,7 @@ module.exports = {
             }
         },
     ],
+    showFooter: true,
     footer: {
         isFixed: false,
         resources: [

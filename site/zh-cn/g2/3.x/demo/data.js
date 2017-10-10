@@ -73,7 +73,5 @@ module.exports = {
     header: {
         isFullSize: true,
     },
-    footer: {
-        isFixed: true
-    }
+    showFooter: false,
 };
