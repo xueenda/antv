@@ -6,6 +6,7 @@ const plotByName = {
     geo:     { index: 0, icon: '', name: '地图', url: '#', },
     guage:   { index: 0, icon: '', name: '仪表盘', url: '#', },
     heatmap: { index: 0, icon: '', name: '热力图', url: '#', },
+    // heatmap: { index: 0, icon: '', name: 'heatmap plots', url: '#', },
     line:    { index: 0, icon: '', name: '折线图', url: '#', },
     other:   { index: Infinity, icon: '', name: '其他图表', url: '#', },
     pie:     { index: 0, icon: '', name: '饼图'  , url: '#', },

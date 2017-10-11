@@ -1,8 +1,8 @@
 <!--header-->
 <header class="navbar navbar-expand-lg navbar-light fixed-top headroom animated">
     <!--{% if header.isFullSize %}{% else %}<div class="container">{% endif %}-->
+    <image class="lazy logo" width="56" height="56" src="{{ brand.logo }}"></image>
     <a class="navbar-brand" href="{{ base }}{{ home }}"><!-- TODO when it is home, use # -->
-        <image class="lazy logo" width="56" height="56" src="{{ brand.logo }}"></image>
         {{ brand.name }}
     </a>
     {% if subHeader %}
@@ -22,10 +22,11 @@
             {% endif %}
             <a class="nav-link{{ extraClassname }}" href="{{ nav.href }}">{{ nav.text }}</a>
             {% endfor %}
-            <input id="query" class="query" type="text" placeholder="Search" aria-label="Search">
+            <input id="query" class="form-control query" type="text" placeholder="Search" aria-label="Search">
             <!-- TODO icon imssing -->
             <a class="nav-link">search</a>
             <a class="nav-link">apps</a>
+            <a class="nav-link">old version</a>
         </ul>
     </div>
     <!--{% if header.isFullSize %}{% else %}</div>{% endif %}-->

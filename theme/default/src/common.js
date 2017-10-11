@@ -46,6 +46,7 @@ function buildFlattenIndices(docs, invertedList) {
     return uniqueIndices;
 }
 
+// search
 $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     const {
         docs,
@@ -61,13 +62,43 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
         });
     });
 
+    function onSelect(suggestion) {
+        const doc = docById[suggestion.id];
+        window.location = `${doc.href}${doc.anchorById[suggestion.anchorId].href}`;
+    }
+
     const flattenIndices = buildFlattenIndices(docs, invertedList);
     $('#query').autocomplete({
         lookup: flattenIndices,
         triggerSelectOnValidInput: false,
-        onSelect(suggestion) {
-            const doc = docById[suggestion.id];
-            window.location = `${doc.href}${doc.anchorById[suggestion.anchorId].href}`;
-        }
+        onSelect,
     });
+
+    // for doc filtering
+    const $docFilteringQuery = $('#doc-filtering-query');
+    const filteringCategories = [
+        'api',
+        'demo',
+        'doc',
+        'tutorial',
+    ];
+    if ($docFilteringQuery.length) { // filtering feature enabled
+        const pathParts = meta.href.split('/');
+        while (pathParts.length && filteringCategories.indexOf(pathParts[pathParts.length - 1]) === -1) {
+            pathParts.pop();
+        }
+        const matchedPath = pathParts.join('/');
+        const matchedIds = [];
+        _.forIn(docById, doc => {
+            if (doc.href.indexOf(matchedPath) > -1) {
+                matchedIds.push(doc.id);
+            }
+        });
+        const docIndices = flattenIndices.filter(index => matchedIds.indexOf(index.id) > -1);
+        $docFilteringQuery.autocomplete({
+            lookup: docIndices,
+            triggerSelectOnValidInput: false,
+            onSelect,
+        });
+    }
 });

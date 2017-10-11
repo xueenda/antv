@@ -2,6 +2,7 @@ import Clipboard from 'clipboard';
 import tocbot from 'tocbot';
 import './doc.less';
 
+// toc
 tocbot.init({
     tocSelector: '.toc',
     contentSelector: '.doc-container .content',
@@ -9,9 +10,9 @@ tocbot.init({
     collapseDepth: 4
 });
 
+// copy code
 const BTN_COPY_ID = 'btn-copy';
 const BTN_COPY_SELECTOR = `#${BTN_COPY_ID}`;
-
 $('pre').hover(
     e => { // handle in
         let $target = $(e.target);
@@ -24,7 +25,6 @@ $('pre').hover(
         $(BTN_COPY_SELECTOR).remove();
     }
 );
-
 const clipboard = new Clipboard(BTN_COPY_SELECTOR, {
     target: () => $(BTN_COPY_SELECTOR).parent().find('.highlight')[0],
 });
@@ -45,4 +45,6 @@ clipboard.on('error', e => {
         $(BTN_COPY_SELECTOR).text('Copy');
     }, 2000);
 });
+
+// FIXME doc filtering is in ./common.js
 
