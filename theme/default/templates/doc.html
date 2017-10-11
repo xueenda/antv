@@ -14,6 +14,11 @@
                 {% if docFilteringSupport %}
                 <input type="text" class="form-control" id="doc-filtering-query">
                 {% endif %}
+                <ul class="list-group">
+                    {% for doc in docList %}
+                    <li class="list-group-item"><a href="{{ doc.href }}">{{ doc.title }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
         <div class="toc-container d-none d-xl-block col-xl-2 bd-toc">
@@ -22,6 +27,20 @@
         </div>
         <div class="detail content col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
             {{ content | safe }}
+            <!-- previous and next pages -->
+            {% set docIndex = docIndexByHref[__href] %}
+            {% set hasPrev = (docIndex > 0)  %}
+            {% set hasNext = (docIndex < (docsCount - 1))  %}
+            <div class="prev-next">
+                {% if hasPrev %}
+                {% set prevDoc = docList[docIndex - 1] %}
+                <a href="{{ prevDoc.href }}" class="float-left">{{ prevDoc.title }}</a>
+                {% endif %}
+                {% if hasNext %}
+                {% set nextDoc = docList[docIndex + 1] %}
+                <a href="{{ nextDoc.href }}" class="float-right">{{ nextDoc.title }}</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
