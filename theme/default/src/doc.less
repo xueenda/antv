@@ -14,8 +14,45 @@
     //position: fixed;
   }
   @media (max-width: 768px) {
-    .menu .inner {
-      position: relative;
+    .menu {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      .inner {
+        position: relative;
+      }
+    }
+  }
+  @media (min-width: 881px) {
+    .menu {
+      -ms-flex: 0 0 220px;
+      flex: 0 0 220px;
+      max-width: 220px;
+      .inner {
+        width: 190px;
+      }
+    }
+  }
+  @media (max-width: 881px) {
+    .menu {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      .inner {
+        position: relative;
+      }
+    }
+    .content {
+      -ms-flex: 1;
+      flex: 1;
+      max-width: 100%;
+    }
+  }
+  @media (min-width: 1200px) {
+    .menu {
+      -ms-flex: 0 0 220px;
+      flex: 0 0 220px;
+      max-width: 220px;
     }
   }
   .menu {
