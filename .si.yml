@@ -1,0 +1,6 @@
+before_deploy:
+  - tnpm install
+  - tnpm run screenshot
+  - tnpm run indexing
+options:
+  dist: './_site'
