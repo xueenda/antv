@@ -1,145 +1,138 @@
 #!/usr/bin/env node
-const debug = require('debug')('app:screenshot');
-const MAX_POOL_SIZE = require('os').cpus().length;
-const Nightmare = require('nightmare');
-const connect = require('connect');
-const getPort = require('get-port');
-const http = require('http');
-const serveStatic = require('serve-static');
-const program = require('commander');
-const {
-    writeFileSync
-} = require('fs');
-const {
-    queue
-} = require('d3-queue');
-const {
-    walk
-} = require('walk');
-const {
-    mkdir
-} = require('shelljs');
-const {
-    extname,
-    join,
-    relative,
-    resolve
-} = require('path');
-const loadConfig = require('../lib/load-config');
-const loadTemplates = require('../lib/load-templates');
-const md2html = require('../lib/md2html');
-const pkg = require('../package.json');
+'use strict';
 
-program
-    .version(pkg.version)
-    .option('-c, --config', 'configuration')
-    .parse(process.argv);
+var debug = require('debug')('app:screenshot');
+var MAX_POOL_SIZE = require('os').cpus().length;
+var Nightmare = require('nightmare');
+var connect = require('connect');
+var getPort = require('get-port');
+var http = require('http');
+var serveStatic = require('serve-static');
+var program = require('commander');
 
-const CONFIG = loadConfig(program.config);
-const {
-    screenshots,
-    dest,
-    src,
-    assets,
-    theme
-} = CONFIG;
-const TEMPLATE_MAP = loadTemplates(resolve(theme.root, theme.templates));
+var _require = require('fs'),
+    writeFileSync = _require.writeFileSync;
 
-const destAssets = join(dest, assets);
+var _require2 = require('d3-queue'),
+    queue = _require2.queue;
+
+var _require3 = require('walk'),
+    walk = _require3.walk;
+
+var _require4 = require('shelljs'),
+    mkdir = _require4.mkdir;
+
+var _require5 = require('path'),
+    extname = _require5.extname,
+    join = _require5.join,
+    relative = _require5.relative,
+    resolve = _require5.resolve;
+
+var loadConfig = require('../lib/load-config');
+var loadTemplates = require('../lib/load-templates');
+var md2html = require('../lib/md2html');
+var pkg = require('../package.json');
+
+program.version(pkg.version).option('-c, --config', 'configuration').parse(process.argv);
+
+var CONFIG = loadConfig(program.config);
+var screenshots = CONFIG.screenshots,
+    dest = CONFIG.dest,
+    src = CONFIG.src,
+    assets = CONFIG.assets,
+    theme = CONFIG.theme;
+
+var TEMPLATE_MAP = loadTemplates(resolve(theme.root, theme.templates));
+
+var destAssets = join(dest, assets);
 debug(screenshots);
 
 // assets
 mkdir('-p', destAssets);
 
-const app = connect();
+var app = connect();
 app.use('/', serveStatic(dest));
 
 // markdown rendering
 function renderFile(filename, template) {
     filename = resolve(src, filename);
-    const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
-    const config = program.dev ? loadConfig(program.config) : CONFIG;
+    var templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
+    var config = program.dev ? loadConfig(program.config) : CONFIG;
     return md2html(filename, src, config, templateMap, template, program.dev);
 }
 
-getPort().then(port => {
+getPort().then(function (port) {
     http.createServer(app).listen(port);
-    const url = `http://127.0.0.1:${port}`;
-    debug(`server is ready on port ${port}! url: ${url}`);
-    const DELAY = 6000;
-    const q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
+    var url = 'http://127.0.0.1:' + port;
+    debug('server is ready on port ' + port + '! url: ' + url);
+    var DELAY = 6000;
+    var q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
 
-
-    screenshots.forEach(task => {
-        const demoSrc = join(src, task.src);
-        const screenshotDest = join(dest, task.dest);
-        const template = task.template;
+    screenshots.forEach(function (task) {
+        var demoSrc = join(src, task.src);
+        var screenshotDest = join(dest, task.dest);
+        var template = task.template;
 
         debug(demoSrc, screenshotDest, template);
 
-        const walker = walk(demoSrc, { followLinks: false });
-        walker.on('file', (root, stat, next) => {
-            const relativeName = relative(demoSrc, join(root, stat.name));
-            debug(`[file]: ${relativeName}`);
+        var walker = walk(demoSrc, { followLinks: false });
+        walker.on('file', function (root, stat, next) {
+            var relativeName = relative(demoSrc, join(root, stat.name));
+            debug('[file]: ' + relativeName);
             // if (relativeName !== 'point/bubble.html') { next(); return; };
             if (relativeName === 'index.html') {
                 next();
                 return;
             }
-            const ext = extname(stat.name);
+            var ext = extname(stat.name);
             if (ext === '.html' || ext === '.md') {
-                const htmlContent = renderFile(resolve(root, stat.name), template);
-                const fileBasename = relativeName
-                    .replace(/\.html$/, '')
-                    .replace(/\.md$/, '');
-                const targetFilename = join(screenshotDest, `${fileBasename}.html`);
+                var htmlContent = renderFile(resolve(root, stat.name), template);
+                var fileBasename = relativeName.replace(/\.html$/, '').replace(/\.md$/, '');
+                var targetFilename = join(screenshotDest, fileBasename + '.html');
                 writeFileSync(targetFilename, htmlContent, 'utf8');
 
-                const relativeUrl = relative(dest, targetFilename);
-                const targetUrl = join(url, relativeUrl);
+                var relativeUrl = relative(dest, targetFilename);
+                var targetUrl = join(url, relativeUrl);
 
-                const outputFilename = join(screenshotDest, `${fileBasename}.png`);
-                debug(`target: ${outputFilename}`);
-                q.defer(callback => {
-                    const t0 = Date.now();
-                    const nightmare = Nightmare({
+                var outputFilename = join(screenshotDest, fileBasename + '.png');
+                debug('target: ' + outputFilename);
+                q.defer(function (callback) {
+                    var t0 = Date.now();
+                    var nightmare = Nightmare({
                         // show: true,
-                        show: false,
+                        show: false
                     });
-                    nightmare
-                        .viewport(800, 450) // 16 x 9
-                        .goto(targetUrl)
-                        // .wait('#mountNode canvas')
-                        .wait(DELAY)
-                        .screenshot(outputFilename, () => {
-                            debug(`${fileBasename} took ${Date.now() - t0} to take a screenshot.`);
-                            callback(null);
-                        })
-                        .end()
-                        .catch(e => {
-                            debug(`${fileBasename} failed to take a screenshot`);
-                            callback(e);
-                        });
+                    nightmare.viewport(800, 450) // 16 x 9
+                    .goto(targetUrl)
+                    // .wait('#mountNode canvas')
+                    .wait(DELAY).screenshot(outputFilename, function () {
+                        debug(fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
+                        callback(null);
+                    }).end().catch(function (e) {
+                        debug(fileBasename + ' failed to take a screenshot');
+                        callback(e);
+                    });
                 });
             }
             next();
         });
-        walker.on('directory', (root, stat, next) => {
-            const relativeName = relative(demoSrc, join(root, stat.name));
-            debug(`[directory]: ${relativeName}`);
+        walker.on('directory', function (root, stat, next) {
+            var relativeName = relative(demoSrc, join(root, stat.name));
+            debug('[directory]: ' + relativeName);
             mkdir('-p', resolve(screenshotDest, relativeName));
             next();
         });
-        walker.on('errors', (root, nodeStatsArray, next) => { // plural
+        walker.on('errors', function (root, nodeStatsArray, next) {
+            // plural
             nodeStatsArray.forEach(function (n) {
-                debug(`[ERROR] ${n.name}`);
-                debug(n.error.message || `${n.error.code}: ${n.error.path}`);
+                debug('[ERROR] ' + n.name);
+                debug(n.error.message || n.error.code + ': ' + n.error.path);
             });
             next();
         });
-        walker.on('end', () => {
+        walker.on('end', function () {
             debug('stop walking');
-            q.awaitAll(error => {
+            q.awaitAll(function (error) {
                 if (error) {
                     debug(error);
                     process.exit(1);
