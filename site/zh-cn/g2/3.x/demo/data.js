@@ -27,6 +27,7 @@ const getFiles = source => readdirSync(source).map(name => join(source, name)).f
 
 const demosByCategory = {};
 const demoDirs = getDirectories(__dirname);
+const categoryByHref = {};
 demoDirs.forEach(dir => {
     const category = basename(dir);
     const files = getFiles(dir).filter(file => extname(file) === '.html');
@@ -50,13 +51,15 @@ demoDirs.forEach(dir => {
             title
         } = meta;
         const name = basename(file, '.html');
+        const href = `${base}zh-cn/g2/3.x/demo/${category}/${name}.html`;
         demosByCategory[category].demos.push({
             screenshot: join(`${assets}/dist/${pkg.version}/g2/3.x/`, `${category}/${name}.png`),
-            href: `${base}zh-cn/g2/3.x/demo/${category}/${name}.html`,
+            href,
             index,
             name,
             title,
         });
+        categoryByHref[href] = category;
     });
 });
 const demos = [];
@@ -70,5 +73,6 @@ module.exports = {
     demos,
     template: 'g2-demo',
     demosByCategory,
+    categoryByHref,
     showFooter: false,
 };

@@ -12,17 +12,19 @@
         <div class="col menu">
             <div id="accordion" role="tablist" data-children=".item">
                 {% for cat in demos %}
+                {% set isCurrentCat = (categoryByHref[__href] === cat.category) %}
                 <div class="item card">
                     <div class="card-header" role="tab">
                         <h5>
                             <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">{{ cat.title }}</a>
                         </h5>
                     </div>
-                    <div id="collapse-{{ cat.category }}" class="collapse" role="tabpanel" data-parent="#accordion">
+                    <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}" role="tabpanel" data-parent="#accordion">
                         <div class="card-body">
                             <ul class="list-group">
                                 {% for demo in cat.demos %}
-                                <li class="list-group-item"><a href="{{ demo.href }}">{{ demo.title }}</a></li>
+                                {% set isCurrentPage = (__href === demo.href) %}
+                                <li class="list-group-item{% if isCurrentPage %} active{% endif %}"><a href="{{ demo.href }}">{{ demo.title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>

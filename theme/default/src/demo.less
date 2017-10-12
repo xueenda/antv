@@ -13,10 +13,21 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
     &.menu {
       overflow-y: scroll;
       flex: 0 0 18rem;
-      background: #36364F;
-      color: #A8AABC;
+      background: white;
+      color: rgba(0, 0, 0, .65);
+      box-shadow: 2px 0 4px rgba(63, 62, 67, .1);
+      .card-header {
+        background: white;
+        border: none;
+      }
+      .list-group-item {
+        border: none;
+        &.active a {
+          color: rgba(16, 110, 233, 1);
+        }
+      }
       a {
-        color: #A8AABC;
+        color: rgba(0, 0, 0, .65);
       }
     }
     &.detail {
@@ -26,7 +37,7 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
       flex: 1;
     }
     &.code-panel {
-      flex: 0 0 40rem;
+      flex: 0 0 32rem;
     }
   }
   .row {
