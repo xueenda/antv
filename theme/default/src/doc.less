@@ -61,6 +61,31 @@
   .menu {
     box-shadow: 2px 0 4px rgba(63, 62, 67, .1);
     order: 0;
+    .list-group {
+      margin-right: -15px;
+      margin-top: .75em;
+      .list-group-item {
+        border: none;
+        a {
+          color: rgba(0, 0, 0, .65);
+        }
+        &.active {
+          background: white;
+          border-right: 2px solid rgba(9, 109, 217, 1);
+          a {
+            color: rgba(9, 109, 217, 1);
+          }
+        }
+        &:last-child {
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+        &:first-child {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
   }
   .toc-container {
     order: 2;

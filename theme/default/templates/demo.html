@@ -15,9 +15,9 @@
                 {% set isCurrentCat = (categoryByHref[__href] === cat.category) %}
                 <div class="item card">
                     <div class="card-header" role="tab">
-                        <h5>
+                        <h6>
                             <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">{{ cat.title }}</a>
-                        </h5>
+                        </h6>
                     </div>
                     <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}" role="tabpanel" data-parent="#accordion">
                         <div class="card-body">

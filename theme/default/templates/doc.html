@@ -16,7 +16,8 @@
                 {% endif %}
                 <ul class="list-group">
                     {% for doc in docList %}
-                    <li class="list-group-item"><a href="{{ doc.href }}">{{ doc.title }}</a></li>
+                    {% set isCurrentPage = (doc.href === __href) %}
+                    <li class="list-group-item{% if isCurrentPage %} active{% endif %}"><a href="{{ doc.href }}">{{ doc.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
