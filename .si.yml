@@ -1,4 +1,5 @@
 before_deploy:
+  - 'NODE_VERSION=6'
   - tnpm install
   - tnpm run screenshot
   - tnpm run indexing
