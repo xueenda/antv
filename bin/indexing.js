@@ -1,70 +1,69 @@
 #!/usr/bin/env node
-const debug = require('debug')('app:indexing');
-const program = require('commander');
-const {
-    forIn
-} = require('lodash');
-const {
-    walk
-} = require('walk');
-const {
-    mkdir
-} = require('shelljs');
-const {
-    readFileSync,
-    writeFile
-} = require('fs');
-const {
-    extname,
-    join,
-    relative,
-} = require('path');
-const loadConfig = require('../lib/load-config');
-const indexHtml = require('../lib/index-html');
-const pkg = require('../package.json');
+'use strict';
 
-program
-    .version(pkg.version)
-    .option('-c, --config', 'configuration')
-    .parse(process.argv);
+var debug = require('debug')('app:indexing');
+var program = require('commander');
 
-const CONFIG = loadConfig(program.config);
-const {
-    assets,
-    dest,
-    indices
-} = CONFIG;
-const destData = join(dest, assets, './data');
+var _require = require('lodash'),
+    forIn = _require.forIn;
+
+var _require2 = require('walk'),
+    walk = _require2.walk;
+
+var _require3 = require('shelljs'),
+    mkdir = _require3.mkdir;
+
+var _require4 = require('fs'),
+    readFileSync = _require4.readFileSync,
+    writeFile = _require4.writeFile;
+
+var _require5 = require('path'),
+    extname = _require5.extname,
+    join = _require5.join,
+    relative = _require5.relative;
+
+var loadConfig = require('../lib/load-config');
+var indexHtml = require('../lib/index-html');
+var pkg = require('../package.json');
+
+program.version(pkg.version).option('-c, --config', 'configuration').parse(process.argv);
+
+var CONFIG = loadConfig(program.config);
+var assets = CONFIG.assets,
+    dest = CONFIG.dest,
+    indices = CONFIG.indices;
+
+var destData = join(dest, assets, './data');
 
 // assets
 mkdir('-p', destData);
 
-indices.forEach(indexing => {
-    const result = {
+indices.forEach(function (indexing) {
+    var result = {
         docs: [],
         invertedList: {}
     };
-    const indexingSrc = join(dest, indexing.src);
-    const indexingDest = join(dest, indexing.dest);
-    const indexingMeta = indexing.meta;
+    var indexingSrc = join(dest, indexing.src);
+    var indexingDest = join(dest, indexing.dest);
+    var indexingMeta = indexing.meta;
     // indexing
-    const walker = walk(indexingSrc, { followLinks: false });
-    walker.on('file', (root, stat, next) => {
-        const filename = join(root, stat.name);
-        const relativeName = relative(dest, filename);
-        debug(`[file]: ${relativeName}`);
-        const ext = extname(stat.name);
-        const weight = relativeName.split('/').length + 1;
+    var walker = walk(indexingSrc, { followLinks: false });
+    walker.on('file', function (root, stat, next) {
+        var filename = join(root, stat.name);
+        var relativeName = relative(dest, filename);
+        debug('[file]: ' + relativeName);
+        var ext = extname(stat.name);
+        var weight = relativeName.split('/').length + 1;
         if (ext === '.html') {
-            const {
-                doc,
-                invertedList
-            } = indexHtml(readFileSync(filename, 'utf8'), {
-                weight,
-            }, indexingMeta);
+            var _indexHtml = indexHtml(readFileSync(filename, 'utf8'), {
+                weight: weight
+            }, indexingMeta),
+                doc = _indexHtml.doc,
+                invertedList = _indexHtml.invertedList;
+
             doc.href = join('/', relativeName);
             result.docs.push(doc);
-            forIn(invertedList, (item, key) => {
+            forIn(invertedList, function (item, key) {
                 if (result.invertedList[key]) {
                     result.invertedList[key] = result.invertedList[key].concat(item);
                 } else {
@@ -74,22 +73,22 @@ indices.forEach(indexing => {
         }
         next();
     });
-    walker.on('errors', (root, nodeStatsArray, next) => { // plural
+    walker.on('errors', function (root, nodeStatsArray, next) {
+        // plural
         nodeStatsArray.forEach(function (n) {
-            debug(`[ERROR] ${n.name}`);
-            debug(n.error.message || `${n.error.code}: ${n.error.path}`);
+            debug('[ERROR] ' + n.name);
+            debug(n.error.message || n.error.code + ': ' + n.error.path);
         });
         next();
     });
-    walker.on('end', () => {
-        writeFile(indexingDest, JSON.stringify(result, null, 4), 'utf8', err => {
+    walker.on('end', function () {
+        writeFile(indexingDest, JSON.stringify(result, null, 4), 'utf8', function (err) {
             if (err) {
-                debug(err.message || `${err.code}: ${err.path}`);
+                debug(err.message || err.code + ': ' + err.path);
             } else {
-                debug(`${indexing.dest} written`);
+                debug(indexing.dest + ' written');
             }
         });
         debug('all done');
     });
 });
-

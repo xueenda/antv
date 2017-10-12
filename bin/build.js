@@ -1,44 +1,43 @@
 #!/usr/bin/env node
-const debug = require('debug')('app:build');
-const program = require('commander');
-const {
-    walk
-} = require('walk');
-const {
-    cp,
-    mkdir
-} = require('shelljs');
-const {
-    writeFile
-} = require('fs');
-const {
-    extname,
-    join,
-    relative,
-    resolve
-} = require('path');
-const loadConfig = require('../lib/load-config');
-const loadTemplates = require('../lib/load-templates');
-const md2html = require('../lib/md2html');
-const minifyHtml = require('../lib/minify-html');
-const pkg = require('../package.json');
+'use strict';
 
-program
-    .version(pkg.version)
-    .option('-c, --config', 'configuration')
-    .parse(process.argv);
+var debug = require('debug')('app:build');
+var program = require('commander');
 
-const CONFIG = loadConfig(program.config);
-const {
-    dest,
-    src,
-    assets,
-    theme
-} = CONFIG;
-const TEMPLATE_MAP = loadTemplates(resolve(theme.root, theme.templates));
+var _require = require('walk'),
+    walk = _require.walk;
 
-const themeAssets = join(theme.root, theme.assets);
-const destAssets = join(dest, assets);
+var _require2 = require('shelljs'),
+    cp = _require2.cp,
+    mkdir = _require2.mkdir;
+
+var _require3 = require('fs'),
+    writeFile = _require3.writeFile;
+
+var _require4 = require('path'),
+    extname = _require4.extname,
+    join = _require4.join,
+    relative = _require4.relative,
+    resolve = _require4.resolve;
+
+var loadConfig = require('../lib/load-config');
+var loadTemplates = require('../lib/load-templates');
+var md2html = require('../lib/md2html');
+var minifyHtml = require('../lib/minify-html');
+var pkg = require('../package.json');
+
+program.version(pkg.version).option('-c, --config', 'configuration').parse(process.argv);
+
+var CONFIG = loadConfig(program.config);
+var dest = CONFIG.dest,
+    src = CONFIG.src,
+    assets = CONFIG.assets,
+    theme = CONFIG.theme;
+
+var TEMPLATE_MAP = loadTemplates(resolve(theme.root, theme.templates));
+
+var themeAssets = join(theme.root, theme.assets);
+var destAssets = join(dest, assets);
 
 // assets
 mkdir('-p', destAssets);
@@ -46,44 +45,45 @@ cp('-R', join(themeAssets, './*'), join(destAssets, '/'));
 
 function renderFile(filename) {
     filename = resolve(src, filename);
-    const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
-    const config = program.dev ? loadConfig(program.config) : CONFIG;
+    var templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
+    var config = program.dev ? loadConfig(program.config) : CONFIG;
     return md2html(filename, src, config, templateMap, null, program.dev);
 }
 
 // indexing
 
-const walker = walk(src, { followLinks: false });
-walker.on('file', (root, stat, next) => {
-    const relativeName = relative(src, join(root, stat.name));
-    debug(`[file]: ${relativeName}`);
-    const ext = extname(stat.name);
+var walker = walk(src, { followLinks: false });
+walker.on('file', function (root, stat, next) {
+    var relativeName = relative(src, join(root, stat.name));
+    debug('[file]: ' + relativeName);
+    var ext = extname(stat.name);
     if (ext === '.html' || ext === '.md') {
-        const htmlContent = minifyHtml(renderFile(resolve(root, stat.name)));
-        const destFilename = join(dest, relativeName).replace(/\.md$/, '.html');
-        writeFile(destFilename, htmlContent, 'utf8', err => {
+        var htmlContent = minifyHtml(renderFile(resolve(root, stat.name)));
+        var destFilename = join(dest, relativeName).replace(/\.md$/, '.html');
+        writeFile(destFilename, htmlContent, 'utf8', function (err) {
             if (err) {
-                debug(err.message || `${err.code}: ${err.path}`);
+                debug(err.message || err.code + ': ' + err.path);
             } else {
-                debug(`${relativeName} written`);
+                debug(relativeName + ' written');
             }
         });
     }
     next();
 });
-walker.on('directory', (root, stat, next) => {
-    const relativeName = relative(src, join(root, stat.name));
-    debug(`[directory]: ${relativeName}`);
+walker.on('directory', function (root, stat, next) {
+    var relativeName = relative(src, join(root, stat.name));
+    debug('[directory]: ' + relativeName);
     mkdir(resolve(dest, relativeName));
     next();
 });
-walker.on('errors', (root, nodeStatsArray, next) => { // plural
+walker.on('errors', function (root, nodeStatsArray, next) {
+    // plural
     nodeStatsArray.forEach(function (n) {
-        debug(`[ERROR] ${n.name}`);
-        debug(n.error.message || `${n.error.code}: ${n.error.path}`);
+        debug('[ERROR] ' + n.name);
+        debug(n.error.message || n.error.code + ': ' + n.error.path);
     });
     next();
 });
-walker.on('end', () => {
+walker.on('end', function () {
     debug('all done');
 });
