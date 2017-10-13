@@ -40,6 +40,7 @@ relativePlots:
     chart.point().position('height*weight')
       .color('gender')
       .size(4)
+      .opacity(0.65)
       .shape('circle')
       .tooltip('gender*height*weight', (gender, height, weight) => {
       return {
