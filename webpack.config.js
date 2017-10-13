@@ -22,7 +22,7 @@ module.exports = {
         demo: resolveTheme('demo.js'),
         demos: resolveTheme('demos.js'),
         doc: resolveTheme('doc.js'),
-        headroom: resolveTheme('headroom.js'),
+        // headroom: resolveTheme('headroom.js'),
         home: resolveTheme('home.js'),
         scroll2top: resolveTheme('scroll2top.js')
     },

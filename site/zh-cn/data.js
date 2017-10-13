@@ -53,6 +53,8 @@ module.exports = {
             copyFail: '复制失败',
             copySuccess: '复制成功',
             demo: '图表示例',
+            download: '下载',
+            downloadAndUse: '下载使用',
             execute: '运行',
             getStarted: '开始使用',
             intro: '介绍',
@@ -90,7 +92,7 @@ module.exports = {
         '${products.academy}',
         {
             name: '体验云产品',
-            link: {
+            links: {
                 antd: { text: 'AntD', href: '' },
                 antg: { text: 'AntG', href: '' },
                 antv: { text: 'AntV', href: '' },

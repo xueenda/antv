@@ -6,7 +6,7 @@
             <div class="sites col-md-5ths col-sm-4 col-xs-12">
                 <h5>{{ site.name }}</h5>
                 <div class="nav flex-column">
-                    {% for key, link in site.link %}
+                    {% for key, link in site.links %}
                     <div class="nav-item"><a href="{{ link.href }}">{{ link.text }}</a></div>
                     {% endfor %}
                 </div>

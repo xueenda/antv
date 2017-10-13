@@ -1,7 +1,10 @@
 <!--
-keywords:
-  - G2
 template: home
+keywords:
+  - Data Visualization
+  - DataVis
+  - Ant Visualization
+  - 蚂蚁数据可视化
 introCards:
   - img: ${assets}/image/home/intro-g2.svg
     title: G2
@@ -100,13 +103,8 @@ isHome: true
 
 <section class="comments text-center">
     <div class="container">
-        <div id="commentsCarousel" class="carousel slide" data-ride="carousel">
-            <!--<ol class="carousel-indicators">-->
-            <!--{% for item in commentsCarouselItems %}-->
-            <!--<li data-target="#commentsCarousel" data-slide-to="{{ loop.index0 }}"{% if loop.index0 === 0 %} class="active"{% endif %}></li>-->
-            <!--{% endfor %}-->
-            <!--</ol>-->
-            <div class="carousel-inner">
+        <div id="commentsCarousel" class="carousel">
+            <div class="carousel-inner slick">
                 {% for item in commentsCarouselItems %}
                 <div class="carousel-item{% if loop.index0 === 0 %} active{% endif %}">
                     <div class="d-block w-100">
