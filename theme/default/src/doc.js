@@ -1,4 +1,5 @@
 import tocbot from 'tocbot';
+import './copy-code';
 import './doc.less';
 
 // toc

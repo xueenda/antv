@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import './copy-code';
 import './home.less';
 
 $('header').headroom({
