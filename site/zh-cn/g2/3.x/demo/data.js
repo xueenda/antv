@@ -89,6 +89,7 @@ demos.sort(function (a, b) {
 });
 
 module.exports = {
+    navName: 'demo',
     demos: demos,
     template: 'g2-demo',
     demosByCategory: demosByCategory,

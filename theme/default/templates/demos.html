@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{{ assets }}/lib/tocbot-3.0.2/tocbot.css" />
+<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/tocbot-3.0.2/tocbot.css" />
 <link rel="stylesheet" type="text/css" href="{{ dist }}/demos.css" />
 {% endblock %}
 {% block content %}
@@ -27,7 +27,7 @@
                                 <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
                             </a>
                             <div class="card-body">
-                                <a href="./{{ cat.category }}/{{ demo.name }}.html"> {{ demo.title }} </a>
+                                <a href="{{ demo.href }}"> {{ demo.title }} </a>
                             </div>
                         </div>
                     </div>
@@ -44,6 +44,6 @@
 </div>
 {% endblock %}
 {% block js %}
-<script type="text/javascript" src="{{ assets }}/lib/tocbot-3.0.2/tocbot.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/tocbot-3.0.2/tocbot.min.js"></script>
 <script type="text/javascript" src="{{ dist }}/demos.js"></script>
 {% endblock %}

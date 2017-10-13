@@ -38,18 +38,14 @@
             {% for name, link in product.links %}
             {% if link.hideFromNav %}
             {% else %}
-            <a class="nav-link" href="{{ link.href }}">{{ link.text }}</a>
+            {% set isCurrentNav = (name === navName) %}
+            <a class="nav-link{% if isCurrentNav  %} active{% endif %}" href="{{ link.href }}">{{ link.text }}</a>
             {% endif %}
             {% endfor %}
             {% endif %}
             <input id="query" class="form-control query" type="text" placeholder="Search" aria-label="Search">
-            <!-- TODO icon imssing -->
-            <a class="nav-link">
-                <img src="{{ assets }}/image/icon/search.svg" alt="">
-            </a>
-            <a class="nav-link">
-                <img src="{{ assets }}/image/icon/more-apps.svg" alt="">
-            </a>
+            <a class="nav-link"><img src="{{ assets }}/image/icon/search.svg" alt=""></a>
+            <!--<a class="nav-link"><img src="{{ assets }}/image/icon/more-apps.svg" alt=""></a>-->
             <a class="btn border nav-link">{{ resource.translate.back2oldVersion }}</a>
         </ul>
     </div>

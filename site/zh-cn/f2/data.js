@@ -1,3 +1,3 @@
 module.exports = {
-    currentProduct: 'g2'
+    currentProduct: 'f2'
 };

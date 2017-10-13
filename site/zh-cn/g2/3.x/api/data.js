@@ -51,6 +51,7 @@ docList.forEach(function (doc, index) {
 });
 
 module.exports = {
+    navName: 'api',
     docList: docList,
     docIndexByHref: indexByHref,
     docsCount: docList.length,
