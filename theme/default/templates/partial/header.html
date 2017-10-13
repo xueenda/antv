@@ -36,7 +36,10 @@
             {% else %}
             {% set product = products[currentProduct] %}
             {% for name, link in product.links %}
+            {% if link.hideFromNav %}
+            {% else %}
             <a class="nav-link" href="{{ link.href }}">{{ link.text }}</a>
+            {% endif %}
             {% endfor %}
             {% endif %}
             <input id="query" class="form-control query" type="text" placeholder="Search" aria-label="Search">

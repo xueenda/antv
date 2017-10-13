@@ -9,6 +9,7 @@ module.exports = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/g2/3.x/api/index.html' },
                 tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g2/3.x/tutorial/index.html' },
+                changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g2/3.x/tutorial/changelog.html' },
             }
         },
         g6: {
@@ -20,6 +21,7 @@ module.exports = {
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/1.x/api/index.html' },
                 tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g6/1.x/tutorial/index.html' },
                 toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
+                changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/1.x/tutorial/changelog.html' },
             }
         },
         f2: {
@@ -30,6 +32,7 @@ module.exports = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/1.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/1.x/api/index.html' },
                 tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/1.x/tutorial/index.html' },
+                changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/1.x/tutorial/changelog.html' },
             }
         },
         academy: {
@@ -77,12 +80,12 @@ module.exports = {
         text: '返回旧版'
     },
     keywords: [
-        'Ant',
-        'AntV',
-        'Data Visualization',
-        'Visualization',
-        '可视化',
-        '数据可视化',
+        // 'Ant',
+        // 'AntV',
+        // 'Data Visualization',
+        // 'Visualization',
+        // '可视化',
+        // '数据可视化',
     ],
     title: '蚂蚁数据可视化',
     siteMap: [
