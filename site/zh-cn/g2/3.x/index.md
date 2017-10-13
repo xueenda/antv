@@ -18,12 +18,9 @@ featuresCards:
 footer:
   isDark: true
 resource:
-  cssFiles:
-    - https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/highlight-9.12.0/solarized-light.css
   jsFiles:
     - ${url.g2}
     - ${url.dataSet}
-    - https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/clipboard-1.7.1.min.js
 -->
 
 <section class="intro">
