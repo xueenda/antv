@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>柱状图</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="视觉稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图表示例-detail" transform="translate(-18.000000, -85.000000)" fill="#ABB3C9">
+            <g id="柱状图" transform="translate(18.000000, 85.000000)">
+                <g id="Rectangle">
+                    <polygon points="12 8 16 8 16 14 12 14"></polygon>
+                    <polygon points="0 6 4 6 4 14 0 14"></polygon>
+                    <rect x="6" y="0" width="4" height="14"></rect>
+                    <polygon transform="translate(8.000000, 15.500000) rotate(90.000000) translate(-8.000000, -15.500000) " points="7.5 7.5 8.5 7.5 8.5 23.5 7.5 23.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

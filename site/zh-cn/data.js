@@ -1,43 +1,41 @@
 module.exports = {
     locale: 'zh-cn',
-    product: {
+    products: {
         g2: {
             version: '3.0.0',
             name: 'G2',
-            link: {
-                home: { text: '${resource.translate.intro}', href: ''  },
-                demo: { text: '${resource.translate.demo}', href: '' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '' },
-                api: { text: '${resource.translate.api}', href: '' },
-                changelog: { text: '${resource.translate.changelog}', href: '' }
+            href: '${base}zh-cn/g2/3.x/index.html',
+            links: {
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g2/3.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: '${base}zh-cn/g2/3.x/api/index.html' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g2/3.x/tutorial/index.html' },
             }
         },
         g6: {
             version: '1.0.0',
             name: 'G6',
-            link: {
-                home: { text: '${resource.translate.intro}', href: ''  },
-                demo: { text: '${resource.translate.demo}', href: '' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '' },
-                api: { text: '${resource.translate.api}', href: '' },
-                toolbox: { text: '${resource.translate.toolbox}', href: '' },
-                changelog: { text: '${resource.translate.changelog}', href: '' }
+            href: '${base}zh-cn/g6/1.x/index.html',
+            links: {
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/1.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/1.x/api/index.html' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g6/1.x/tutorial/index.html' },
+                toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
             }
         },
         f2: {
             version: '1.0.0',
             name: 'F2',
-            link: {
-                home: { text: '${resource.translate.intro}', href: ''  },
-                demo: { text: '${resource.translate.demo}', href: '' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '' },
-                api: { text: '${resource.translate.api}', href: '' },
-                changelog: { text: '${resource.translate.changelog}', href: '' }
+            href: '${base}zh-cn/f2/1.x/index.html',
+            links: {
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/1.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/1.x/api/index.html' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/1.x/tutorial/index.html' },
             }
         },
         academy: {
             name: '${resource.translate.academy}',
-            link: {
+            href: '${base}zh-cn/academy/index.html',
+            links: {
                 principles: { text: '设计原则', href: ''  },
                 cases: { text: '图表用法', href: '' },
                 resources: { text: '资源', href: '' },
@@ -49,12 +47,14 @@ module.exports = {
         translate: {
             academy: '可视化实验室',
             api: 'API文档',
+            back2oldVersion: '返回旧版',
             changelog: '更新日志',
             copy: '复制',
             copyFail: '复制失败',
             copySuccess: '复制成功',
             demo: '图表示例',
             execute: '运行',
+            getStarted: '开始使用',
             intro: '介绍',
             plotDescription: '图表简介',
             relativePlots: '关联图表',
@@ -62,7 +62,6 @@ module.exports = {
             toolbox: '工具箱',
             tutorial: '使用教程',
             usage: '图表用法',
-            getStarted: '开始使用',
         },
         cssFiles: [
         ],
@@ -70,13 +69,6 @@ module.exports = {
         ],
     },
     header: {
-        activeNavItemIndex: -1,
-        navItems: [
-            { text: 'G2', href: '${base}zh-cn/g2/3.x/index.html' },
-            { text: 'G6', href: '${base}zh-cn/g6/1.x/index.html' },
-            { text: 'F2', href: '${base}zh-cn/f2/1.x/index.html' },
-            { text: '${resource.translate.academy}', href: '${base}zh-cn/academy/index.html' },
-        ]
     },
     previous: {
         href: '/old/index.html',
@@ -92,10 +84,10 @@ module.exports = {
     ],
     title: '蚂蚁数据可视化',
     siteMap: [
-        '${product.g2}',
-        '${product.g6}',
-        '${product.f2}',
-        '${product.academy}',
+        '${products.g2}',
+        '${products.g6}',
+        '${products.f2}',
+        '${products.academy}',
         {
             name: '体验云产品',
             link: {

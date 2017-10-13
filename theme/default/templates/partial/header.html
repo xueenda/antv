@@ -13,20 +13,41 @@
     <!--<a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>-->
     <div class="collapse navbar-collapse" id="navbarHeader">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            {% if isHome %}
+            {% else %}
+            {% set product = products[currentProduct] %}
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{ product.name }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="">
+                    {% for name, item in products %}
+                    <a href="{{ item.href }}" class="dropdown-item">{{ item.name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
         </ul>
         <ul class="form-inline navbar-nav mt-2 mt-lg-0">
-            {% for nav in header.navItems %}
-            {% set extraClassname = '' %}
-            {% if loop.index0 == header.activeNavItemIndex %}
-            {% set extraClassname = ' active' %}
-            {% endif %}
-            <a class="nav-link{{ extraClassname }}" href="{{ nav.href }}">{{ nav.text }}</a>
+            {% if isHome %}
+            {% for name, item in products %}
+            <a class="nav-link" href="{{ item.href }}">{{ item.name }}</a>
             {% endfor %}
+            {% else %}
+            {% set product = products[currentProduct] %}
+            {% for name, link in product.links %}
+            <a class="nav-link" href="{{ link.href }}">{{ link.text }}</a>
+            {% endfor %}
+            {% endif %}
             <input id="query" class="form-control query" type="text" placeholder="Search" aria-label="Search">
             <!-- TODO icon imssing -->
-            <a class="nav-link">search</a>
-            <a class="nav-link">apps</a>
-            <a class="nav-link">old version</a>
+            <a class="nav-link">
+                <img src="{{ assets }}/image/icon/search.svg" alt="">
+            </a>
+            <a class="nav-link">
+                <img src="{{ assets }}/image/icon/more-apps.svg" alt="">
+            </a>
+            <a class="btn border nav-link">{{ resource.translate.back2oldVersion }}</a>
         </ul>
     </div>
     <!--{% if header.isFullSize %}{% else %}</div>{% endif %}-->
