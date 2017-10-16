@@ -12,30 +12,29 @@ relativePlots:
   - ${plotByName.line}
 -->
 <script>
-$.getJSON('/assets/data/diamond.json', data => {
-    const ds = new DataSet();
-    const dv = ds.createView('diamond').source(data);
-    dv.transform({
-      type: 'bin.histogram',
-      field: 'depth',
-      binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小
-      as: ['depth', 'count'],
+    $.getJSON('/assets/data/diamond.json', data => {
+        const ds = new DataSet();
+        const dv = ds.createView('diamond').source(data);
+        dv.transform({
+            type: 'bin.histogram',
+            field: 'depth',
+            binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小
+            as: ['depth', 'count'],
+        });
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+        chart.source(dv, {
+            depth: {
+                tickInterval: 4
+            }
+        });
+        chart.tooltip({
+            crosshairs: false
+        });
+        chart.interval().position('depth*count');
+        chart.render();
     });
-    const chart = new G2.Chart({
-      container: 'mountNode',
-      forceFit: true,
-      height: window.innerHeight
-    });
-    chart.source(dv, {
-      depth: {
-        tickInterval: 4
-      }
-    });
-    chart.tooltip({
-      crosshairs: false
-    });
-    chart.interval().position('depth*count');
-    chart.render();
-  },
-);
 </script>
