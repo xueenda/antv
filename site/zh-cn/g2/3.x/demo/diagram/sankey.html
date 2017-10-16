@@ -1,0 +1,75 @@
+<!--
+index: 3
+title: 桑基图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 桑基图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+    $.getJSON('/assets/data/energy.json', data => {
+        // arc diagram layout
+        const ds = new DataSet();
+        const dv = ds.createView().source(data, {
+            type: 'graph',
+            edges: d => d.links
+        });
+        dv.transform({
+            type: 'diagram.sankey'
+        });
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+        chart.legend(false);
+        chart.tooltip({
+            showTitle: false
+        });
+
+        chart.scale({
+            x: {
+                sync: true
+            },
+            y: {
+                sync: true
+            }
+        });
+
+        // edge view
+        const edgeView = chart.view();
+        edgeView.source(dv.edges);
+        edgeView.axis(false);
+        edgeView.edge()
+            .position('x*y')
+            .shape('arc')
+            .color('#bbb')
+            .opacity(0.6)
+            .tooltip('value');
+
+        // node view
+        const nodeView = chart.view();
+        nodeView.axis(false);
+        nodeView.source(dv.nodes);
+        nodeView.polygon()
+            .position('x*y') // nodes数据的x、y由layout方法计算得出
+            .color('name')
+            // .label('name', {
+            //     // labelEmit: true,
+            //     textStyle: {
+            //         fill: 'black',
+            //         textAlign: 'left'
+            //     },
+            //     offset: 0
+            // })
+            .style({
+                stroke: '#ccc'
+            });
+        chart.render();
+    });
+</script>
