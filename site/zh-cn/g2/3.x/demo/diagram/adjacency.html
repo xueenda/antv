@@ -1,0 +1,44 @@
+<!--
+index: 5
+title: 相邻层次图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 相邻层次图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+    $.getJSON('/assets/data/flare.json', data => {
+        const ds = new DataSet();
+        const dv = ds.createView().source(data, {
+            type: 'hierarchy'
+        });
+        dv.transform({
+            type: 'hierarchy.partition'
+        });
+
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+        chart.source(dv.getAllNodes().map(node => ({
+            name: node.data.name,
+            value: node.value,
+            depth: node.depth,
+            x: node.x,
+            y: node.y
+        })));
+        chart.axis(false);
+        chart.legend(false);
+        chart.polygon()
+            .position('x*y')
+            .color('name');
+        
+        chart.render();
+    });
+</script>
