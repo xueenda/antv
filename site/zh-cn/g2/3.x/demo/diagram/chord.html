@@ -1,11 +1,11 @@
 <!--
-index: 1
-title: 极坐标弧长链接图
+index: 2
+title: 和弦图
 resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 极坐标弧长链接图
+plotDescription: 和弦图
 plotUsage: blablablalalalala
 relativePlots:
   - ${plotByName.pie}
@@ -21,8 +21,10 @@ relativePlots:
         });
         dv.transform({
             type: 'diagram.arc',
-            marginRatio: 0.5,
-            // sortBy: 'frequency' // id, weight, frequency, {function}
+            sourceWeight: e => e.sourceWeight,
+            targetWeight: e => e.targetWeight,
+            weight: true,
+            marginRatio: 0.3
         });
 
         const chart = new G2.Chart({
@@ -35,30 +37,33 @@ relativePlots:
             showTitle: false
         });
 
+        chart.scale({
+            x: {
+                sync: true
+            },
+            y: {
+                sync: true
+            }
+        });
+
         const edgeView = chart.view();
-        edgeView.coord('polar').reflect('y');
         edgeView.source(dv.edges);
+        edgeView.coord('polar').reflect('y');
         edgeView.axis(false);
         edgeView.edge()
             .position('x*y')
             .shape('arc')
             .color('source')
             .opacity(0.5)
-            .tooltip('source*target');
+            .tooltip('source*target*value');
 
         const nodeView = chart.view();
-        nodeView.coord('polar').reflect('y');
         nodeView.source(dv.nodes);
+        nodeView.coord('polar').reflect('y');
         nodeView.axis(false);
-        nodeView.point()
+        nodeView.polygon()
             .position('x*y')
-            .shape('circle')
-            .size('value')
             .color('id')
-            .opacity(0.5)
-            .style({
-                stroke: 'grey'
-            })
             .label('name', {
                 labelEmit: true,
                 textStyle: {
