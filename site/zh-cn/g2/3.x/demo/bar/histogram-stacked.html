@@ -1,0 +1,50 @@
+<!--
+index: 7
+title: 层叠直方图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 层叠直方图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+$.getJSON('/assets/data/diamond.json', data => {
+    const ds = new DataSet();
+    const dv = ds.createView().source(data);
+    dv.transform({
+        type: 'bin.histogram',
+        field: 'depth',
+        binWidth: 1,
+        // offset: -0.3,
+        groupBy: [ 'cut' ],
+        as: [ 'depth', 'count' ]
+    });
+    const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight
+    });
+    chart.source(dv);
+    chart.axis('depth', {
+        grid: {
+            lineStyle: {
+                stroke: '#d9d9d9',
+                lineWidth: 1,
+                lineDash: [ 2, 2 ]
+            }
+        }
+    });
+    chart.intervalStack()
+        .position('depth*count')
+        .color('cut');
+//        .style({
+//            stroke: 'green',
+//            lineWidth: 1
+//        });
+    chart.render();
+});
+</script>

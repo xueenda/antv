@@ -41,7 +41,8 @@
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/bootstrap-4.0.0-beta/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/lazyload-2.0.0-beta.2.min.js"></script>
 {% for js in resource.jsFiles %}
-<script type="text/javascript" src="{{ js }}"></script>
+{% set isNotJquery = (js !== url.jquery) %}
+{% if isNotJquery %}<script type="text/javascript" src="{{ js }}"></script>{% endif %}
 {% endfor %}
 {% block js %}{% endblock %}
 <script type="text/javascript" src="{{ dist }}/common.js"></script>
