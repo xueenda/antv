@@ -1,11 +1,11 @@
 <!--
 index: 0
-title: 六边形分箱图
+title: 矩形分箱图
 resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 六边形分箱图
+plotDescription: 矩形分箱图
 plotUsage: blablablalalalala
 relativePlots:
   - ${plotByName.pie}
@@ -18,13 +18,13 @@ relativePlots:
                 sizeEncoding: false
             }
         });
-        const dv = ds.createView().source(data)
-            .transform({
-                sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
-                type: 'bin.hexagon',
-                fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
-                bins: [ 10, 5 ]
-            });
+        const dv = ds.createView('diamond').source(data);
+        dv.transform({
+            sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+            type: 'bin.rectangle',
+            fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
+            bins: [ 20, 10 ]
+        });
 
         const chart = new G2.Chart({
             container: 'mountNode',
@@ -32,10 +32,7 @@ relativePlots:
             height: window.innerHeight
         });
         chart.source(dv);
-        chart.tooltip({
-            showTitle: false,
-            crosshairs: false
-        });
+        chart.tooltip(false);
         chart.axis('x', {
             grid: {
                 lineStyle: {
@@ -45,12 +42,9 @@ relativePlots:
                 }
             }
         });
-        chart.polygon().position('x*y')
-            .color('count', [ 'rgb(200, 200, 255)', 'rgb(0, 0, 255)' ])
-            .style({
-                lineWidth: 1,
-                stroke: '#fff'
-            });
+        chart.polygon()
+            .position('x*y')
+            .color('count', [ 'rgb(200, 200, 255)', 'rgb(0, 0, 255)' ]);
         chart.render();
 
         const $sizeEncoding = $('#size-encoding');
