@@ -91,7 +91,7 @@ demos.sort(function (a, b) {
 module.exports = {
     navName: 'demo',
     demos: demos,
-    template: 'g2-demo',
+    template: 'g6-demo',
     demosByCategory: demosByCategory,
     categoryByHref: categoryByHref,
     showFooter: false
