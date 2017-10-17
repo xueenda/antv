@@ -30,6 +30,12 @@ relativePlots:
     height: window.innerHeight
   });
   chart.source(dv);
-  chart.intervalStack().position('月份*月均降雨量').color('name');
+  chart.intervalStack()
+    .position('月份*月均降雨量')
+    .color('name')
+    .style({
+      stroke: '#fff',
+      lineWidth: 1
+    });
   chart.render();
 </script>

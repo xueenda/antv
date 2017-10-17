@@ -53,10 +53,7 @@ relativePlots:
     .position('percent')
     .color('type')
     .label('type', {
-      offset: -25,
-      textStyle: {
-        rotate: 0
-      }
+      offset: -10
     })
     .tooltip('name*percent', (item, percent) => {
       percent = (percent * 100).toFixed(2) + '%';

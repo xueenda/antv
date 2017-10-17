@@ -43,6 +43,11 @@ relativePlots:
     chart.legend({
       marker: 'circle'
     });
+    chart.tooltip({
+      crosshairs: {
+        type: 'rect'
+      }
+    });
     chart.schema().position('type*_bin')
       .color('品种', val => {
         return colorMap[val];

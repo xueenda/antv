@@ -75,7 +75,7 @@ relativePlots:
     zIndex: 2,
     line: null,
     label: {
-      offset: -20,
+      offset: -16,
       textStyle: {
         fontSize: 18,
         fill: 'rgba(0, 0, 0, 0.25)',
@@ -90,7 +90,7 @@ relativePlots:
       strokeOpacity: 1
     },
     tickLine: {
-      length: -15,
+      length: -18,
       stroke: '#fff',
       strokeOpacity: 1
     },
@@ -123,12 +123,12 @@ relativePlots:
     end: [ data[0].value, 0.965 ],
     style: {
       stroke: '#1890FF',
-      lineWidth: 20,
+      lineWidth: 18,
     }
   });
   // 绘制指标数字
   chart.guide().html({
-    position: [ '50%', '90%' ],
+    position: [ '50%', '95%' ],
     html: '<div style="width: 300px;text-align: center;font-size: 12px!important;">'
      + '<p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p>'
      + '<p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">' + data[0].value * 10  + '%</p>'
