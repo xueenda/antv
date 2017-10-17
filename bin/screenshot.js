@@ -136,7 +136,7 @@ getPort().then(function (port) {
         walker.on('end', function () {
             walkingEnded ++;
             debug('stop walking');
-            if (screenshots.length === 0 && walkingEnded === screenshotTasksCount) {
+            if (walkingEnded === screenshotTasksCount) {
                 q.awaitAll(function (error) {
                     if (error) {
                         debug(error);
