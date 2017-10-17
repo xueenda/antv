@@ -10,6 +10,7 @@
     "DataSet": true,
     "CodeMirror": true,
     "G2": true,
+    "G6": true,
     "_": true
   },
   "extends": "eslint:recommended",

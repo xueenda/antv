@@ -21,6 +21,9 @@ featuresCards:
     description: 任何图表，都可以基于图形语法灵活绘制，满足你无限的创意。 - 有向图
 footer:
   isDark: true
+resource:
+  jsFiles:
+    - ${url.g6}
 -->
 
 <section class="intro">
@@ -32,7 +35,14 @@ footer:
                 <a href="{{ products.g6.links.demo.href }}" class="btn btn-primary btn-lg">{{ resource.translate.getStarted }}</a>
                 <a href="{{base}}zh-cn/g6/1.x/tutorial/download.html" class="btn btn-light border btn-lg">{{ resource.translate.downloadAndUse }}</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 slick">
+                <div id="commentsCarousel" class="carousel">
+                    <div class="carousel-inner slick">
+                        <div id="c1" class="carousel-item active"></div>
+                        <div id="c2" class="carousel-item"></div>
+                        <div id="c3" class="carousel-item"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -61,4 +71,17 @@ footer:
     <a href="{{ products.g6.links.tutorial.href }}" class="btn btn-primary btn-lg">更多教程</a>
 </section>
 
+<!-- chart1 -->
 
+```js-
+```
+
+<!-- chart2 -->
+
+```js-
+```
+
+<!-- chart3 -->
+
+```js-
+```

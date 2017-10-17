@@ -67,8 +67,10 @@ getPort().then(function (port) {
     debug('server is ready on port ' + port + '! url: ' + url);
     var DELAY = 6000;
     var q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
+    var walkingEnded = 0;
+    var screenshotTasksCount = screenshots.length;
 
-    screenshots.forEach(function (task) {
+    screenshots.forEach(task => {
         var demoSrc = join(src, task.src);
         var screenshotDest = join(dest, task.dest);
         var template = task.template;
@@ -95,6 +97,7 @@ getPort().then(function (port) {
                 var targetUrl = join(url, relativeUrl);
 
                 var outputFilename = join(screenshotDest, fileBasename + '.png');
+                debug(screenshotDest, fileBasename);
                 debug('target: ' + outputFilename);
                 q.defer(function (callback) {
                     var t0 = Date.now();
@@ -103,9 +106,9 @@ getPort().then(function (port) {
                         show: false
                     });
                     nightmare.viewport(800, 450) // 16 x 9
-                    .goto(targetUrl)
-                    // .wait('#mountNode canvas')
-                    .wait(DELAY).screenshot(outputFilename, function () {
+                        .goto(targetUrl)
+                        // .wait('#mountNode canvas')
+                        .wait(DELAY).screenshot(outputFilename, function () {
                         debug(fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
                         callback(null);
                     }).end().catch(function (e) {
@@ -131,16 +134,19 @@ getPort().then(function (port) {
             next();
         });
         walker.on('end', function () {
+            walkingEnded ++;
             debug('stop walking');
-            q.awaitAll(function (error) {
-                if (error) {
-                    debug(error);
-                    process.exit(1);
-                } else {
-                    debug('screenshots are all captured!');
-                    process.exit();
-                }
-            });
+            if (walkingEnded === screenshotTasksCount) {
+                q.awaitAll(function (error) {
+                    if (error) {
+                        debug(error);
+                        process.exit(1);
+                    } else {
+                        debug('screenshots are all captured!');
+                        process.exit();
+                    }
+                });
+            }
         });
     });
 });

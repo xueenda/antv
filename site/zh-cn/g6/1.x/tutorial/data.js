@@ -36,7 +36,7 @@ docFiles.forEach(function (file) {
 
     var name = basename(file, '.md');
     docList.push({
-        href: base + 'zh-cn/g2/3.x/api/' + name + '.html',
+        href: base + 'zh-cn/g6/1.x/tutorial/' + name + '.html',
         index: index,
         name: name,
         title: title
@@ -51,7 +51,7 @@ docList.forEach(function (doc, index) {
 });
 
 module.exports = {
-    navName: 'api',
+    navName: 'tutorial',
     docList: docList,
     docIndexByHref: indexByHref,
     docsCount: docList.length,

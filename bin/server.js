@@ -60,8 +60,7 @@ app.use((req, res, next) => {
         const ext = extname(pathname);
         if (pathname.indexOf(base) === 0 && (ext === '.md' || ext === '.html')) {
             debug(pathname);
-            const relativeHtml = pathname
-                .replace(base, '');
+            const relativeHtml = pathname.replace(base, '');
             const relativeMd = relativeHtml.replace(/\.html$/, '.md');
             const content = try2getOne(
                 () => renderFile(relativeMd),
