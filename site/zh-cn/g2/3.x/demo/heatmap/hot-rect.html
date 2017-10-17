@@ -1,0 +1,38 @@
+<!--
+index: 3
+title: 分块热力图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 分块热力图
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+  $.getJSON('/assets/data/diamond.json', function(data) {
+    const { DataView } = DataSet;
+    const dv = new DataView();
+    dv.source(data)
+      .transform({
+        type: 'bin.rectangle',
+        fields: [ 'carat', 'price' ]
+      });
+    const chart = new G2.Chart({
+      id: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [ 20, 80, 120, 85 ]
+    });
+    chart.source(dv);
+    chart.tooltip({
+      showTitle: false
+    });
+    chart.polygon()
+      .position('x*y')
+      .color('count', [ '#BAE7FF', '#1890FF', '#0050B3' ]);
+    chart.render();
+  });
+</script>
