@@ -33,6 +33,11 @@ relativePlots:
     height: window.innerHeight
   });
   chart.source(dv);
+  chart.axis('country', {
+    label: {
+      offset: 12
+    }
+  });
   chart.coord().transpose();
   chart.interval().position('country*population');
   chart.render();

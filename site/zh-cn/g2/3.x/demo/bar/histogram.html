@@ -37,10 +37,15 @@ relativePlots:
       nice: false,
       min: 0,
       tickInterval: 1
+    },
+    count: {
+      max: 14
     }
   });
   chart.tooltip({
-    crosshairs: false
+    crosshairs: false,
+    inPlot: false,
+    position: 'top'
   });
   chart.axis('value', {
     label: {

@@ -75,7 +75,7 @@ relativePlots:
     zIndex: 2,
     line: null,
     label: {
-      offset: -30,
+      offset: -20,
       formatter: val => {
         if (val === '2.25') {
           return '差';
@@ -89,7 +89,8 @@ relativePlots:
       },
       textStyle: {
         fontSize: 24,
-        fill: 'rgba(0, 0, 0, 0.65)'
+        fill: 'rgba(0, 0, 0, 0.65)',
+        textAlign: 'center'
       }
     },
     tickLine: null,
@@ -106,7 +107,7 @@ relativePlots:
   // 绘制仪表盘刻度线
   chart.guide().line({
     start: [ 3, 0.92 ],
-    end: [ 3.0035, 0.88 ],
+    end: [ 3.0035, 0.85 ],
     lineStyle: {
       stroke: '#19AFFA', // 线的颜色
       lineDash: null, // 虚线的设置
@@ -115,7 +116,7 @@ relativePlots:
   });
   chart.guide().line({
     start: [ 4.5, 0.92 ],
-    end: [ 4.5, 0.88 ],
+    end: [ 4.5, 0.85 ],
     lineStyle: {
       stroke: '#19AFFA', // 线的颜色
       lineDash: null, // 虚线的设置
@@ -125,7 +126,7 @@ relativePlots:
 
   chart.guide().line({
     start: [ 6, 0.92 ],
-    end: [ 6.0035, 0.88 ],
+    end: [ 6.0035, 0.85 ],
     lineStyle: {
       stroke: '#19AFFA', // 线的颜色
       lineDash: null, // 虚线的设置
@@ -157,7 +158,7 @@ relativePlots:
   });
   // 绘制指标数字
   chart.guide().html({
-    position: [ '50%', '90%' ],
+    position: [ '50%', '95%' ],
     html: '<div style="width: 300px;text-align: center;font-size: 12px!important;">'
      + '<p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p>'
      + '<p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">' + data[0].value * 10  + '%</p>'

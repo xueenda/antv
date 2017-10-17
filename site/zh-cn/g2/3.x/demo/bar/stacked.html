@@ -37,6 +37,11 @@ relativePlots:
     });
     chart.source(dv);
     chart.coord().transpose();
+    chart.axis('State', {
+      label: {
+        offset: 12
+      }
+    });
     chart.intervalStack().position('State*人口数量').color('年龄段');
     chart.render();
 </script>

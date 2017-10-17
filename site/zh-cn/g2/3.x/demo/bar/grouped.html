@@ -36,6 +36,11 @@ relativePlots:
   chart.axis('value', {
     position: 'right'
   });
+  chart.axis('label', {
+    label: {
+      offset: 12
+    }
+  });
   chart.coord().transpose().scale(1, -1);
   chart.interval().position('label*value').color('type').adjust([{
     type: 'dodge',
