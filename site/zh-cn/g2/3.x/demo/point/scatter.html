@@ -30,13 +30,6 @@ relativePlots:
         + '{value}'
         + '</li>'
     });
-    chart.axis('weight', {
-      label: {
-        formatter: val => {
-          return val + ' kg';
-        }
-      }
-    });
     chart.point().position('height*weight')
       .size(4)
       .shape('circle')
