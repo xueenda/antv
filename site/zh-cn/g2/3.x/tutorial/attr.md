@@ -1,5 +1,5 @@
 <!--
-index: 7
+index: 8
 title: 图形属性
 resource:
   jsFiles:

@@ -1,5 +1,5 @@
 <!--
-index: 10
+index: 11
 title: Legend 图例
 resource:
   jsFiles:

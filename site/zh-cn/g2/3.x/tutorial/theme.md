@@ -1,5 +1,5 @@
 <!--
-index: 14
+index: 15
 title: Theme 图表皮肤主题
 resource:
   jsFiles:
@@ -42,17 +42,17 @@ G2.Global.colors['default'] = ['red','blue','yellow']; // 更改默认的颜色
 (2) 方式二： 使用 Global.setTheme 方法。推荐使用这种方式，使用方法如下：
 
 ```js
-var theme = G2.Util.mix(true, {}, G2.Theme, {
+var theme = G2.Util.defaultsDeep({
   animate: false,
   colors: {...},
   shapes: {...}
   // 具体的配置项详见 api/global.html
-});
+}, G2.Theme);
 
 G2.Global.setTheme(theme); // 将主题设置为用户自定义的主题
 ```
 
-对于数据级别或者更细粒度的样式设置，可以通过 color 图形属性或者各个 chart 配置项上的图形属性设置。
+对于数据级别或者更细粒度的样式设置，可以通过 geom 对象上的 color 图形属性方法或者各个 chart 配置项上的图形属性设置。
 
 更多 Global 上关于主题的配置属性，请查看 [Global TODO]() API。
 
@@ -62,7 +62,8 @@ G2.Global.setTheme(theme); // 将主题设置为用户自定义的主题
 <div id="c2"></div>
 
 ```js+
-var theme = G2.Util.mix({}, G2.Theme, {
+var Util = G2.Util;
+var theme = Util.defaultsDeep({
   shape: {
     polygon: {
       stroke: '#213c51', // 地图轮廓线颜色
@@ -79,26 +80,25 @@ var theme = G2.Util.mix({}, G2.Theme, {
   },
   axis: {
     bottom: {
-      labels: {
-        label: { fill: '#999'} // 底部标签文本的颜色
+      label: {
+        textStyle: { fill: '#999'} // 底部标签文本的颜色
       }
     },
     left: {
-      labels: {
-        label: { fill: '#999'} // 左部标签文本的颜色
+      label: {
+        textStyle: { fill: '#999'} // 左部标签文本的颜色
       }
     },
     right: {
-      labels: {
-        label: { fill: '#999'} // 右部标签文本的颜色
+      label: {
+        textStyle: { fill: '#999'} // 右部标签文本的颜色
       }
     }
   }
-});
+}, G2.Theme.default);
 G2.Global.setTheme(theme);
 
-$.getJSON('../../../../../static/data/china.json', function(mapData) {
-  var Stat = G2.Stat;
+$.getJSON('/assets/data/china-geo.json', function(mapData) {
   var userData = [];
   var features = mapData.features;
   for(var i=0; i<features.length; i++) {
@@ -108,24 +108,34 @@ $.getJSON('../../../../../static/data/china.json', function(mapData) {
       "value": Math.round(Math.random()*1000)
     });
   }
+
+  // 绘制地图背景
+  var ds = new DataSet();
+  var bgDataView = ds.createView('back')
+    .source(mapData, {
+      type: 'GeoJSON'
+    });
+  var userPolygonDv = ds.createView()
+    .source(userData)
+    .transform({
+      geoDataView: bgDataView,
+      field: 'name',
+      type: 'geo.region',
+      as: [ 'longitude', 'latitude' ]
+  });
   var chart = new G2.Chart({
-    id: 'c1',
+    container: 'c1',
     width: 600,
     height: 320,
-    plotCfg: {
-      margin: [20, 80, 0, 80]
-    }
+    padding: [20, 80, 0, 80]
   });
-  chart.source(userData); 
+  chart.source(userPolygonDv);
   chart.tooltip({
-    title: null,
-    map: {
-      name: "name",
-      value: "value"
-    }
+    showTitle: false
   });
+  chart.axis(false);
   chart.legend(false);
-  chart.polygon().position(Stat.map.region('name', mapData)).color('value','#39ccf4-#20546b').style({
+  chart.polygon().position('longitude*latitude').color('value','#39ccf4-#20546b').style({
     lineWidth: 1,
     stroke: '#999'
   });
@@ -140,26 +150,28 @@ $.getJSON('../../../../../static/data/china.json', function(mapData) {
     {'time': '10:35', 'call': 8, 'waiting': 2, 'people': 1},
     {'time': '10:40', 'call': 13, 'waiting': 1, 'people': 2}
   ];
-  var Frame = G2.Frame;
-  var frame = new Frame(data);
-  frame = Frame.combinColumns(frame,['call','waiting'],'count','type',['time', 'people']);
+  var dv = new DataSet.DataView();
+  dv.source(data).transform({
+    type: 'fold',
+    fields: ['call','waiting'],
+    key: 'type',
+    value: 'count',
+    retains: ['time', 'people']
+  });
   var chart2 = new G2.Chart({
-    id: 'c2',
+    container: 'c2',
     width: 600,
     height: 250
   });
-  chart2.source(frame, {
+  chart2.source(dv, {
     'count': {alias: '话务量（通）', min: 0},
     'people': {alias: '人数（人）', min: 0}
-  });
-  chart2.axis('time', {
-    title: null // 去除 X 轴标题
   });
   chart2.legend(false);// 不显示图例
   chart2.intervalStack().position('time*count').color('type', ['#348cd1', '#43b5d8']); // 绘制层叠柱状图
   chart2.line().position('time*people').color('#5ed470').size(4).shape('smooth'); // 绘制曲线图
-  chart2.point().position('time*people').color('#5ed470'); // 绘制点图
+  chart2.point().position('time*people').color('#5ed470').tooltip(false); // 绘制点图
   chart2.render();
 });
-````
+```
 

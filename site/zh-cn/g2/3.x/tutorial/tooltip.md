@@ -1,5 +1,5 @@
 <!--
-index: 11
+index: 12
 title: Tooltip 提示信息
 resource:
   jsFiles:
