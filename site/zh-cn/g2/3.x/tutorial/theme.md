@@ -95,7 +95,7 @@ var theme = Util.defaultsDeep({
       }
     }
   }
-}, G2.Theme.default);
+}, G2.Global);
 G2.Global.setTheme(theme);
 
 $.getJSON('/assets/data/china-geo.json', function(mapData) {
