@@ -18,7 +18,7 @@ chart.on('eventType', fn); // 绑定事件
 chart.off('eventType', fn); // 移除事件
 ```
 
-其中 eventType 对应时间名称，均使用小写。
+其中 eventType 对应事件名称，均使用小写。
 
 对于事件的移除，`chart.off('eventType', fn)` 其中如果 fn 不指定，表示删除所有 eventType 事件，如果 eventType 和 fn 都不指定，则表示删除 chart 上所有的事件。
 
