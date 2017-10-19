@@ -1,5 +1,5 @@
 <!--
-index: 9
+index: 10
 title: Axes 坐标轴
 resource:
   jsFiles:

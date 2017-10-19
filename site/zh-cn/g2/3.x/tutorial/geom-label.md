@@ -1,5 +1,5 @@
 <!--
-index: 15
+index: 16
 title: Label 图形文本
 resource:
   jsFiles:

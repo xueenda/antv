@@ -1,5 +1,5 @@
 <!--
-index: 14
+index: 15
 title: Theme 图表皮肤主题
 resource:
   jsFiles:
