@@ -95,11 +95,10 @@ var theme = Util.defaultsDeep({
       }
     }
   }
-}, G2.Theme);
+}, G2.Theme.default);
 G2.Global.setTheme(theme);
 
 $.getJSON('/assets/data/china-geo.json', function(mapData) {
-  var Stat = G2.Stat;
   var userData = [];
   var features = mapData.features;
   for(var i=0; i<features.length; i++) {
@@ -159,7 +158,6 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
     value: 'count',
     retains: ['time', 'people']
   });
-  console.log(dv);
   var chart2 = new G2.Chart({
     container: 'c2',
     width: 600,
