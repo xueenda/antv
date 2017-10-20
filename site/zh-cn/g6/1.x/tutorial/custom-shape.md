@@ -418,7 +418,7 @@ G6.registerNode('custom', {
 
 ### 综合示例
 
-![image](/static/images/g6/04-editor/perventLink.gif)
+![image](/assets/image/g6/04-editor/perventLink.gif)
 
 [示例源码](/g6/demo/04-editor/perventLink.html)
 
@@ -508,7 +508,7 @@ net.render();
 
 #### 简单示例
 
-![image](/static/images/g6/06-other/htmlnode.png)
+![image](/assets/image/g6/06-other/htmlnode.png)
 
 [示例源码](/g6/demo/06-other/htmlnode.html)
 
@@ -542,20 +542,6 @@ net.render();
 * 尺寸：cfg.size
 * 原始数据：cfg.model
 
-
-<!--
-
-### 修饰边
-
-path 元素的 `getPoint` 方法能按比率帮助用户取到该  path 上的一点。这个方法看似简单简单，却非常强大，我们可以利用这个方法做很多有趣的事情，比如做一些边上的修饰动画：
-
-<div id="getPointAniamte"></div>
-
-<script>
-</script>
-
--->
-
 ### 自定义箭头
 
 自定义箭头是常见的需求，但这个需求看似简单，真正实现起来却没那么简单。目前 G6 里还没有提供十分便捷的添加箭头的方式，只提供了一个比较基础的工具方法，若有自定义箭头的需求，不妨使用。
@@ -564,7 +550,7 @@ path 元素的 `getPoint` 方法能按比率帮助用户取到该  path 上的�
 
 [Demo源码](/g6/demo/06-other/custom-arrow.html)
 
-<script>
+```js-
 var Util = G6.Util;
 G6.registerEdge('bezierQuadratic', {
   afterDraw: function(cfg, group, keyShape) {
@@ -653,5 +639,5 @@ var net = new G6.Net({
 net.read(data);
 net.edge().shape('bezierQuadratic');
 net.render();
-</script>
+```
 

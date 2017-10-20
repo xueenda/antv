@@ -65,7 +65,7 @@ net.removeBehaviour(['wheelZoom']);
 <button id='autoZoom'>自动缩放 autoZoom</button>&nbsp;&nbsp;<button id='autoSize'>自动画布尺寸 autoSize</button>&nbsp;&nbsp;<button id='restore'>还原</button>
 <div id='fitView'></div>
 
-<script>
+```js-
 var Matrix = G6.Matrix.Matrix3;
 var autoZoom = $('#autoZoom');
 var autoSize = $('#autoSize');
@@ -122,7 +122,7 @@ restore.on('click', function(){
   net.source(data.nodes, data.edges);
   net.render();
 });
-</script>
+```
 
 ## 统一输入输出 save && read
 

@@ -47,7 +47,7 @@
 </style>
 <div id="construction"></div>
 
-<script >
+```js-
   var tree = new G6.Tree({
     id: 'construction',
     height: 500,
@@ -107,24 +107,14 @@
   });
   tree.edge().shape('smooth');
   tree.render();
-</script>
-
-
-<!--
-![image](https://zos.alipayobjects.com/rmsportal/fAuKmAeUdAkGHXkrnKjV.png)
-
-在 G6 中，每一幅关系图都由最基本的两个元素：**节点**和**边**组成。通过操作节点及边的位置，生成特定的**布局**。开发者可以基于 G6 ，通过自定义节点和自定义边生成特点的**样式**，再通过事件和基础交互生成特定**交互**。布局、样式、交互三者共同地组成了特定的关系图图表。
-
-
-G6 既是关系图模板的**合集**，与此同时其自身也是**默认模版**，同时也是关系图的**基础框架**。使用者可以通过使用用G6沉淀的专业模板绘制出有严格定义的、专业的关系图，如：树图、UML图等。也可使用默认基础模板画出任何未被定义的关系图。开发者们亦可以基于G6开发特定的关系图。
--->
+```
 
 ## 图
  图 Graph 是所有上层图类的基类，如：Net 网、 Tree 树，都继承于Graph。与以往不同，1.0 后，Graph 已沉为一个抽象类(Abstract)，只实现了基础的功能，定义了接口规范，用户可基于 Graph 进行拓展，但不能直接用于画关系图。以后 G6 里还要容纳更多的关系图如 UML、Flow、Force都将基于 Graph ，详见：[Graph API](/g6/api/graph.html)。
 
 <div id="graph"></div>
 
-<script >
+```js-
   var tree = new G6.Tree({
     id: 'graph',
     height: 500,
@@ -144,17 +134,17 @@ G6 既是关系图模板的**合集**，与此同时其自身也是**默认模�
     .shape('smooth')
     .label('继承');
   tree.render();
-</script>
+```
 
 ## 网
 网图 Net 是 G6 提供的、可用于直接画关系图的、最基础的图类。它不仅能画由一组`nodes`、`edges`，确定的关系图，还集成了，如：拖拽节点（dragNode）、拖拽画布（dragCanvas）、拖拽边（dragEdge）、节点变形（resizeNode）等等，一系列的`基础`的编辑交互模式，用户可以比较方便的基于该类，绘制做一个关系图的展示视图或图编辑器。详见：[网图指南](/g6/doc/tutorial/start/net.html)，[Net API](/g6/api/net.html)。
 
 <div id='net' style="width: 800px;background: #222222"></div>
 
-<script>
-$.getJSON('/static/data/influenceNetwork.json',function(data){
+```js-
+$.getJSON('/assets/data/influenceNetwork.json',function(data){
   var Util = G6.Util;
-
+  console.log(data)
   G6.registNode('circle', {
     afterDraw: function(cfg, group, keyShape){
       var model = cfg.model;
@@ -286,15 +276,15 @@ $.getJSON('/static/data/influenceNetwork.json',function(data){
     net.autoZoom();
   });
 });
-</script>
+```
 
 ## 树
 树 Tree 是 G6 1.0 发布后，我们尝试封装的第一个的图类。我们精细打磨的树相关的交互，已经提供 `20 +` 种树的布局，欢迎大家使用！详见[Tree Demo](/g6/demo/index.html#树图)，[Tree API](/g6/api/tree.html)。
 
 <div id="tree"></div>
 
-<script>
-$.getJSON('/static/data/g6-npm-ls-tiny-tree.json',function(data){
+```js-
+$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
   function hasClass (shape, className) {
     if (shape) {
      var clasees = shape.get('class');
@@ -435,7 +425,7 @@ $.getJSON('/static/data/g6-npm-ls-tiny-tree.json',function(data){
    }
   });
 });
-</script>
+```
 
 ## 数据
 在使用关系图开发的过程中，我们常常需要导出导入数据，以满足关系图的存储、分享、编辑的功能。 G6 1.0 后，我们对这部分的需求做了总结。在 Graph 定义了一对相互对照的接口，read <==> save，后面用户应该严格通过这两个该接口导入导出数据。参看[Demo](/g6/demo/06-other/saveAndread.html)
@@ -470,7 +460,7 @@ graph.save();
 
 <div id="interaction" style="800px"></div>
 
-<script>
+```js-
 var data = {
   source: {
     "nodes": [
@@ -557,13 +547,13 @@ var net = new G6.Net({
 });
 net.read(data);
 net.render();
-</script>
+```
 
 ### 事件 -- event
 
 <div id="c0"></div>
 
-<script type="text/javascript">
+```js-
 $(function() {
   var data = {
     nodes: [
@@ -632,7 +622,7 @@ $(function() {
     net.refresh();
   });
 });
-</script>
+```
 
 [Demo源码](/g6/demo/06-other/event.html)
 
@@ -702,201 +692,3 @@ graph.changeMode(modeName);
 ```
 
 参看[Demo](/g6/demo/06-other/mode.html)
-
-<!--
-## 映射
-
-与 G2 类似， G6 中也有数据到图形属性映射的概念。但 G6 中映射的功能比较简单，边和节点各自有**形状（shape）**、**颜色（color）**、**大小（size）**、**文本（text）**、**提示信息（tooltip）** 等多个映射通道，每个通道均只支持回调函数。
-
-<div id='c2'></div>
-
-<script type="text/javascript">
-$(function() {
-  var data = {
-    "nodes": [
-      {
-        "x": 550,
-        "y": 300,
-        "type": "type2",
-        "value": 20,
-        "active": true,
-        "id": "系统二"
-      },
-      {
-        "x": 360,
-        "y": 300,
-        "type": "type1",
-        "value": 30,
-        "active": true,
-        "id": "系统一"
-      },
-      {
-        "x": 780,
-        "y": 300,
-        "type": "type3",
-        "value": 15,
-        "active": false,
-        "id": "系统三"
-      }
-    ],
-    "edges": [
-      {
-        "type": "type1",
-        "source": "系统一",
-        "id": "32cb9f22",
-        "value": 30,
-        "active": true,
-        "target": "系统二"
-      },
-      {
-        "type": "type2",
-        "source": "系统二",
-        "id": "795e94a7",
-        "value": 20,
-        "active": false,
-        "target": "系统三"
-      },
-      {
-        "type": "type3",
-        "source": "系统三",
-        "id": "55fe688d",
-        "target": "系统一",
-        "value": 5,
-        "active": false,
-        "controlPoints": [
-          {
-            "x": 780,
-            "y": 269.5
-          },
-          {
-            "x": 640,
-            "y": 160
-          },
-          {
-            "x": 420.5,
-            "y": 239.5
-          }
-        ]
-      }
-    ]
-  };
-  var Util = G6.Util;
-  var graph = new G6.Graph({
-    id: 'c2',           // 容器ID
-    width: 500,         // 画布宽
-    height: 500,        // 画布高
-    dragable: true,     // 是否支持元素拖动
-    resizeable: true,   // 是否支持元素变形
-    selectable: true,   // 是否允许选中
-    grid: {
-      forceAlign: true, // 是否支持网格对齐
-      cell: 10          // 网格大小
-    }
-  });
-  graph.source(data.nodes, data.edges);
-  graph.node()
-    .size('value', function(val){
-      return val/30 * 120;
-    })
-    .color('active', function(val){
-      if(val){
-        return 'green';
-      } else {
-        return 'red';
-      }
-    })
-    .shape('type', function(val){
-      if(val === 'type1') return 'circle';
-      if(val === 'type2') return 'rect';
-      if(val === 'type3') return 'rhombus';
-    })
-    .label('id');
-  graph.edge()
-    .size('value', function(val){
-      return val/30 * 10;
-    })
-    .shape('type', function(val){
-      if(val === 'type1') return 'line';
-      if(val === 'type2') return 'arrow';
-      if(val === 'type3') return 'smoothArrow';
-    })
-    .label('value');
-  graph.render();
-  graph.autoZoom();
-});
-</script>
-
-[Demo源码](/g6/demo/06-other/mapping.html)
-
-* graph.node().color(dim, fun) 节点颜色映射
-* graph.node().size(dim, fun)  节点大小映射
-* graph.node().shape(dim, fun) 节点形状映射
-* graph.node().label(dim, fun) 节点文本映射
-* graph.node().style(dim, fun) 节点样式映射
-* graph.edge().color(dim, fun) 边颜色映射
-* graph.edge().size(dim, fun)  边大小映射
-* graph.edge().shape(dim, fun) 边形状映射
-* graph.edge().label(dim, fun) 边文本映射
-* graph.edge().style(dim, fun) 边样式映射
-
-
-
-## 布局
-
-G6 内置了[G2布局算法](/g2/api/layout.html)，包括树形布局(Layout.Tree)、线性布局(Layout.Linear)、桑基图(Layout.sankey)。除此之外，G6 还实现了一套一般的流布局算法(Layout.Flow)，封装了一套力导布局(Layout.Force)。
-
-```js
-var Layout = G6.Layout;
-Layout.Tree; // 树形布局
-Layout.Linear; // 线性布局
-Layout.Sankey; // 桑基布局
-Layout.Layout; // 流布局
-```
-
-### 流布局 -- flow
-流布局适用于展示，有流向的数据。它可以在给定节点和边的连接后，自动生成一份节点不重叠、边尽量少交叉的**节点**布局。
-
-![image](https://zos.alipayobjects.com/skylark/56b5651a-2587-48bf-a173-d0e6875481b1/attach/2816/3b743d86f5279dbc/image.png)
-
-[Demo源码](/g6/demo/01-businessFlow/business-flow.html)
-
-```js
-var Layout = G6.Layout;
-var flow = new Layout.Flow({
-  nodes: data.nodes,
-  edges: data.edges
-});
-nodes = flow.getNodes(); // 获得布局后的0～1空间数据
-```
-
-### 力导布局 -- force
-力导布局适用于展示网状的数据结构，其物理模型是引力模型，由四个参数可供配置，stiffness 是硬度，硬度越大节点加速度越大，damping 是阻尼，阻尼越接近0退火越快，接近1退火越慢， minEnergyThreshold 是最小能量域值，系统总能量小于该阈值时，则会停止布局，repulsion是斥力，斥力越大节点群越稀疏。
-
-值得注意的一点：minEnergyThreshold 最小能量域值，越大布局会越快，但越不精细。越小越慢，布局越精细。开发者应根据时实际场景调整该参数。
-
-![image](https://zos.alipayobjects.com/rmsportal/gKDziJMihANmbToKkfwD.gif)
-
-[Demo源码](/g6/demo/05-force/force.html)
-
-![image](https://zos.alipayobjects.com/skylark/b7576891-22b2-4f53-adb1-68d13ef10d23/attach/2816/ea7a6133bd70dd06/image.png)
-
-[Demo源码](/g6/demo/05-force/systemNet.html)
-
-```js
-var Layout = G6.Layout;
-var force = new Layout.Force({
-  nodes: data.nodes,
-  edges: data.edges,
-  stiffness: 100.0,        // 硬度
-  damping: 0.1,            // 阻尼
-  minEnergyThreshold: 0.1, // 能量域值
-  repulsion: 2000.0        // 斥力
-});
-layout.onNodeChange = function(id, point){
-  // 当节点变更 16 ms 执行一次
-};
-layout.onFinish = function(){
-  // 当布局完毕（总能量小于域值时执行）
-};
-```
--->
