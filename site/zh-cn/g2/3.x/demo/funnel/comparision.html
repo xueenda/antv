@@ -51,7 +51,13 @@ relativePlots:
           value
         };
       })
-      .label('name')
+      .label('name', {
+        offset: 35,
+        labelLine: {
+          lineWidth: 1,
+          stroke: 'rgba(0, 0, 0, 0.15)'
+        }
+      })
       .opacity(0.65);
 
     const actualView = chart.view();
