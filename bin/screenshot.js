@@ -54,26 +54,30 @@ var app = connect();
 app.use('/', serveStatic(dest));
 
 // markdown rendering
-function renderFile(filename, template) {
+function renderFile(filename, overrideConfig) {
     filename = resolve(src, filename);
     var templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
     var config = program.dev ? loadConfig(program.config) : CONFIG;
-    return md2html(filename, src, config, templateMap, template, program.dev);
+    return md2html(filename, src, config, templateMap, overrideConfig, program.dev);
 }
 
 getPort().then(function (port) {
     http.createServer(app).listen(port);
     var url = 'http://127.0.0.1:' + port;
     debug('server is ready on port ' + port + '! url: ' + url);
-    var DELAY = 6000;
-    var q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
-    var walkingEnded = 0;
-    var screenshotTasksCount = screenshots.length;
+    var DELAY = 3000;
 
-    screenshots.forEach(task => {
+    function screenshotTasks(tasks, index) {
+        var task = tasks[index];
+        if (!task) {
+            debug('screenshots are all captured!');
+            process.exit();
+        }
+        var q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
         var demoSrc = join(src, task.src);
         var screenshotDest = join(dest, task.dest);
         var template = task.template;
+        var demoTheme = task.demoTheme;
 
         debug(demoSrc, screenshotDest, template);
 
@@ -88,33 +92,41 @@ getPort().then(function (port) {
             }
             var ext = extname(stat.name);
             if (ext === '.html' || ext === '.md') {
-                var htmlContent = renderFile(resolve(root, stat.name), template);
+                var htmlContent = renderFile(resolve(root, stat.name), {
+                    template: template,
+                    demoTheme: demoTheme,
+                });
                 var fileBasename = relativeName.replace(/\.html$/, '').replace(/\.md$/, '');
-                var targetFilename = join(screenshotDest, fileBasename + '.html');
+                var targetFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.html');
                 writeFileSync(targetFilename, htmlContent, 'utf8');
 
                 var relativeUrl = relative(dest, targetFilename);
                 var targetUrl = join(url, relativeUrl);
 
-                var outputFilename = join(screenshotDest, fileBasename + '.png');
+                var outputFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.png');
                 debug(screenshotDest, fileBasename);
-                debug('target: ' + outputFilename);
                 q.defer(function (callback) {
+                    debug('target: ' + outputFilename);
                     var t0 = Date.now();
                     var nightmare = Nightmare({
                         // show: true,
-                        show: false
+                        show: false,
+                        gotoTimeout: 60000,
                     });
                     nightmare.viewport(800, 450) // 16 x 9
                         .goto(targetUrl)
                         // .wait('#mountNode canvas')
-                        .wait(DELAY).screenshot(outputFilename, function () {
-                        debug(fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
-                        callback(null);
-                    }).end().catch(function (e) {
-                        debug(fileBasename + ' failed to take a screenshot');
-                        callback(e);
-                    });
+                        .wait(DELAY)
+                        .click('canvas')
+                        .screenshot(outputFilename, function () {
+                            debug(fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
+                            callback(null);
+                        })
+                        .end()
+                        .catch(function (e) {
+                            debug(fileBasename + ' failed to take a screenshot');
+                            callback(e);
+                        });
                 });
             }
             next();
@@ -134,19 +146,17 @@ getPort().then(function (port) {
             next();
         });
         walker.on('end', function () {
-            walkingEnded ++;
             debug('stop walking');
-            if (walkingEnded === screenshotTasksCount) {
-                q.awaitAll(function (error) {
-                    if (error) {
-                        debug(error);
-                        process.exit(1);
-                    } else {
-                        debug('screenshots are all captured!');
-                        process.exit();
-                    }
-                });
-            }
+            q.awaitAll(function (error) {
+                if (error) {
+                    debug(error);
+                    process.exit(1);
+                } else {
+                    screenshotTasks(tasks, index++);
+                }
+            });
         });
-    });
+    }
+
+    screenshotTasks(screenshots, 0);
 });
