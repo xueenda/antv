@@ -65,7 +65,7 @@ getPort().then(function (port) {
     http.createServer(app).listen(port);
     var url = 'http://127.0.0.1:' + port;
     debug('server is ready on port ' + port + '! url: ' + url);
-    var DELAY = 3000;
+    var DELAY = 6000;
 
     function screenshotTasks(tasks, index) {
         var task = tasks[index];
@@ -73,6 +73,7 @@ getPort().then(function (port) {
             debug('screenshots are all captured!');
             process.exit();
         }
+        var taskQueue = [];
         var q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
         var demoSrc = join(src, task.src);
         var screenshotDest = join(dest, task.dest);
@@ -105,28 +106,10 @@ getPort().then(function (port) {
 
                 var outputFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.png');
                 debug(screenshotDest, fileBasename);
-                q.defer(function (callback) {
-                    debug('target: ' + outputFilename);
-                    var t0 = Date.now();
-                    var nightmare = Nightmare({
-                        // show: true,
-                        show: false,
-                        gotoTimeout: 60000,
-                    });
-                    nightmare.viewport(800, 450) // 16 x 9
-                        .goto(targetUrl)
-                        // .wait('#mountNode canvas')
-                        .wait(DELAY)
-                        .click('canvas')
-                        .screenshot(outputFilename, function () {
-                            debug(fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
-                            callback(null);
-                        })
-                        .end()
-                        .catch(function (e) {
-                            debug(fileBasename + ' failed to take a screenshot');
-                            callback(e);
-                        });
+                taskQueue.push({
+                    fileBasename: fileBasename,
+                    outputFilename: outputFilename,
+                    targetUrl: targetUrl,
                 });
             }
             next();
@@ -147,12 +130,38 @@ getPort().then(function (port) {
         });
         walker.on('end', function () {
             debug('stop walking');
+            taskQueue.forEach(function (t) {
+                q.defer(function (callback) {
+                    debug('target: ' + t.outputFilename);
+                    var t0 = Date.now();
+                    var nightmare = Nightmare({
+                        // show: true,
+                        show: false,
+                        gotoTimeout: 600000,
+                    });
+                    nightmare.viewport(800, 450) // 16 x 9
+                        .goto(t.targetUrl)
+                        // .wait('#mountNode canvas')
+                        .wait(DELAY)
+                        .click('canvas')
+                        .screenshot(t.outputFilename, function () {
+                            debug(t.fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
+                            callback(null);
+                        })
+                        .end()
+                        .catch(function (e) {
+                            debug(t.fileBasename + ' failed to take a screenshot');
+                            callback(e);
+                        });
+                });
+            });
             q.awaitAll(function (error) {
                 if (error) {
                     debug(error);
                     process.exit(1);
                 } else {
-                    screenshotTasks(tasks, index++);
+                    index ++;
+                    screenshotTasks(tasks, index);
                 }
             });
         });
