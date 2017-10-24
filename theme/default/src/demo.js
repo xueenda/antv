@@ -1,8 +1,20 @@
 import CodeMirror from 'codemirror';
 import Clipboard from 'clipboard';
+import getQueryVariable from './utils/get-query-variable';
 import './demo.less';
 
 const $code = $('#code');
+const $codeDefault = $('#code-default');
+const $codeDark = $('#code-dark');
+
+const theme = getQueryVariable('theme');
+const isDark = theme === 'dark';
+
+if (isDark) {
+    $code.val($codeDark.val());
+} else {
+    $code.val($codeDefault.val());
+}
 
 const htmlEditor = CodeMirror.fromTextArea($code[0], {
     mode: "text/html",

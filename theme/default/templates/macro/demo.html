@@ -10,8 +10,8 @@
 <div id="mountNode"></div>
 <script type="text/javascript" src="{{ url.g2 }}"></script>{% for js in resource.jsFiles %}
 <script type="text/javascript" src="{{ js }}"></script>{% endfor %}{% if demoTheme %}
-<script>G2.Global.setTheme('{{ demoTheme }}');</script>
-{% endif %}{{ content | safe }}</body>
+<script>G2.Global.setTheme('{{ demoTheme }}');</script>{% endif %}
+{{ content | safe }}</body>
 </html>
 {% endmacro %}
 {% macro g6demo(title, content, resource, dist, url) %}

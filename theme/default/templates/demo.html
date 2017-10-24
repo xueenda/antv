@@ -35,8 +35,8 @@
                 <h4 class="nav-link">{{ title }}</h4>
                 <form class="form-inline">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary">Default</button>
-                        <button type="button" class="btn btn-light">Dark</button>
+                        <a href="?theme=default" class="btn btn-primary">Default</a>
+                        <a href="?theme=dark" class="btn btn-light">Dark</a>
                     </div>
                 </form>
             </div>
@@ -80,8 +80,10 @@
                         <button id="btn-execute" type="button" class="btn btn-primary">{{ resource.translate.execute }}</button>
                     </form>
                 </div>
+                <textarea id="code-default" style="display: none;">{{ renderedContent | safe }}</textarea>
+                <textarea id="code-dark" style="display: none;">{{ renderedContentDark | safe }}</textarea>
                 <div class="row code">
-                    <textarea name="code" id="code">{{ renderedContent | safe }}</textarea>
+                    <textarea name="code" id="code"></textarea>
                 </div>
             </div>
         </div>
