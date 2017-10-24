@@ -51,7 +51,7 @@ view.interval().position('x*y').color('x'); // 使用图形语法绘制图表
 chart.render(); // 由 chart 负责统一的渲染
 ```
 
-关于 view 的更多方法请查看 [view TODO]() api。
+关于 view 的更多方法请查看 [view](/zh-cn/g2/3.x/api/view.html) api。
 
 ## 示例
 
@@ -97,7 +97,6 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
     .source(mapData, {
       type: 'GeoJSON'
     });
-    console.log(worldMap);
   var worldMapView = chart.view();
   worldMapView.source(worldMap);
   worldMapView.tooltip(false);

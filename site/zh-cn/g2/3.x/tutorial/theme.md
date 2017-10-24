@@ -54,7 +54,7 @@ G2.Global.setTheme(theme); // 将主题设置为用户自定义的主题
 
 对于数据级别或者更细粒度的样式设置，可以通过 geom 对象上的 color 图形属性方法或者各个 chart 配置项上的图形属性设置。
 
-更多 Global 上关于主题的配置属性，请查看 [Global TODO]() API。
+更多 Global 上关于主题的配置属性，可以直接查看 `G2.Global` 的返回值。
 
 #### demo 演示
 

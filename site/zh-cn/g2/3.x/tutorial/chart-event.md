@@ -71,7 +71,7 @@ chart.on('axis-label:click', ev => {});
 <img src="https://gw.alipayobjects.com/zos/rmsportal/IXRZJVKWYEdafYAzbsXO.png" width="80%">
 
 
-详细的使用详见 [api TODO](/g2/api/chart.html#事件)。
+详细的使用详见 [api](/zh-cn/g2/3.x/api/chart.html#_事件)。
 
 ## 如何使用
 
