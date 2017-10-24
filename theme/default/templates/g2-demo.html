@@ -1,3 +1,4 @@
 {% extends "demo.html" %}
 {% import "macro/demo.html" as demo %}
 {% set renderedContent = demo.g2demo(title, content=content, resource=resource, dist=dist, url=url) %}
+{% set renderedContentDark = demo.g2demo(title, content=content, resource=resource, dist=dist, url=url, demoTheme='dark') %}

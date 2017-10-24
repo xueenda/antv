@@ -11,8 +11,8 @@
             <div class="container header">
                 <form class="float-right">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary">Default</button>
-                        <button type="button" class="btn btn-light">Dark</button>
+                        <a class="btn btn-primary" href="?theme=default">Default</a>
+                        <a class="btn btn-light" href="?theme=dark">Dark</a>
                     </div>
                 </form>
             </div>
@@ -24,7 +24,12 @@
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                         <div class="card">
                             <a href="./{{ cat.category }}/{{ demo.name }}.html">
-                                <img class="card-img-top" src="{{ demo.screenshot }}" alt="{{ demo.title }}">
+                                <!--data-original="{{ demo.screenshot }}"-->
+                                <img
+                                    class="card-img-top screenshot lazyload"
+                                    data-default="{{ demo.screenshot }}"
+                                    data-dark="{{ demo.screenshotDark }}"
+                                    alt="{{ demo.title }}">
                             </a>
                             <div class="card-body">
                                 <a href="{{ demo.href }}"> {{ demo.title }} </a>
@@ -45,5 +50,6 @@
 {% endblock %}
 {% block js %}
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/tocbot-3.0.2/tocbot.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/routie-0.3.2.min.js"></script>
 <script type="text/javascript" src="{{ dist }}/demos.js"></script>
 {% endblock %}

@@ -1,4 +1,6 @@
+import $ from 'jquery';
 import tocbot from 'tocbot';
+import getQueryVariable from './utils/get-query-variable';
 import './demos.less';
 
 tocbot.init({
@@ -8,3 +10,15 @@ tocbot.init({
     collapseDepth: 4
 });
 
+const theme = getQueryVariable('theme');
+const isDark = theme === 'dark';
+$('.screenshot').each(function () {
+    const $img = $(this);
+    if (isDark) {
+        $img.attr('data-src', $img.data('dark'));
+    } else {
+        $img.attr('data-src', $img.data('default'));
+    }
+});
+
+$('.lazyload').lazyload();

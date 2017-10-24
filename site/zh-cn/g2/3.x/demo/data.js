@@ -69,6 +69,7 @@ demoDirs.forEach(function (dir) {
         var href = base + 'zh-cn/g2/3.x/demo/' + category + '/' + name + '.html';
         demosByCategory[category].demos.push({
             screenshot: join(assets + '/dist/' + pkg.version + '/g2/3.x/', category + '/' + name + '.png'),
+            screenshotDark: join(assets + '/dist/' + pkg.version + '/g2/3.x/', category + '/' + name + '-dark.png'),
             href: href,
             index: index,
             name: name,

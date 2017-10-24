@@ -103,5 +103,4 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     }
 });
 
-
 // FIXME doc filtering is in ./common.js
