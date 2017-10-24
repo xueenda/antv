@@ -195,7 +195,7 @@ line| 'line','smooth','dot','dash','spline'| --
 area| 'area','smooth','line','smoothLine'| --
 interval| 'rect','hollowRect','line','tick'| hollowRect 是空心的矩形，line 和 tick 都是线段
 polygon | 'polygon','hollow'| polygon 多边形、hollow 空心多边形。
-schema | 'box','candle' | 目前仅支持箱须图、K线图
+schema | 'box','candle' | 目前仅支持箱型图、K线图
 
 #### 代码示例
 
