@@ -26,7 +26,7 @@ G2 目前支持 **6** 种辅助标记类型：
 
 ## 如何使用
 
-下面列出了各个 guide 辅助标记类型的使用，更详细的配置项参见 [Guide API TODO ]()。
+下面列出了各个 guide 辅助标记类型的使用，更详细的配置项参见 [Guide API](/zh-cn/g2/3.x/api/chart.html#_chart.guide-)。
 
 ### line 辅助线
 
@@ -369,7 +369,7 @@ chart.render();
 
 * 可以使用'min', 'median', 'max' 字符串代表原始值的最小值、平均值、最大值，例如： [0, 'min'] 表示 x 轴上数值为 0，y 轴位置在数值的最小值上；
 * 表示位置的数组可以换成回调函数，函数原型： `function(xScale, yScale) {return [];}`
-  + xScale, yScale 映射到 x 轴上的字段生成的度量，详情查看 [度量](./scale.html), [api TODO](/g2/api/chart.html#scales);
+  + xScale, yScale 映射到 x 轴上的字段生成的度量，详情查看 [度量](./scale.html), [api](/zh-cn/g2/3.x/api/scale.html);
   + 分类度量常用的值是 `values` 包含了所有的分类，连续度量常用的是 min, max
 
 <div id="c6"></div>

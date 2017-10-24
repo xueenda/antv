@@ -67,7 +67,7 @@ chart.interval().position('genre*sold').color('genre').label('sold');
 chart.render();
 ```
 
-更多配置项请查看 [label TODO](/g2/api/geom.html#label) api。
+更多配置项请查看 [label](/zh-cn/g2/3.x/api/geom.html#_label) api。
 
 ## 格式化文本
 

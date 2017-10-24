@@ -25,10 +25,10 @@ Shape.registerShape(/* geomName */, /* shapeName */, { // 向Shape工厂注册�
 
 * geomName 几何标记名称
 * shapeName 注册的具体图形形状名称
-* getPoints 自定义[标记点 TODO]()
+* getPoints 自定义
 * draw 执行图形绘制逻辑、调用绘图引擎
 
-上述方法更详细的使用说明详见： [Shape API TODO](/g2/api/shape.html)。
+上述方法更详细的使用说明详见： [Shape API TODO](/zh-cn/g2/3.x/api/shape.html)。
 
 ## 1分钟上手自定义Shape
 
@@ -130,7 +130,7 @@ Shape.registerShape('interval', 'triangle', {
 
 1. 通过 `getPoints()`  方法返回三角形的三个关键点（即三个顶点）。此时 cfg 中会传入，x, y, y0, size。其中 x, y 是柱子最高点的坐标，y0 是横坐标轴的 y 坐标，size 是柱子默认宽度。
 
-2. 得到标记点后，我们在 `draw()` 方法中拿到 cfg.points 数据和数据映射后的图形属性数据（比如 cfg.color），再通过绘图库提供的多边形（[Polgon TODO]()）图形，将三个点依次头尾相连，生成每个三角形。
+2. 得到标记点后，我们在 `draw()` 方法中拿到 cfg.points 数据和数据映射后的图形属性数据（比如 cfg.color），再通过绘图库提供的多边形图形，将三个点依次头尾相连，生成每个三角形。
 
 
 > 注意：points 数据和参与 points 计算的配置项都是 0-1 空间的数据！

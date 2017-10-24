@@ -1,0 +1,48 @@
+<!--
+index: 2
+title: 行分面
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 行分面
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+
+<script>
+$.getJSON('/assets/data/diamond.json', function(data) {
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: 450,
+    padding: [40, 80, 80, 80]
+  });
+  chart.source(data, {
+    carat: {
+      sync: true
+    },
+    price: {
+      sync: true,
+      tickCount: 3
+    },
+    clarity: {
+      sync: true
+    }
+  });
+  chart.facet('rect', {
+    fields: [ null, 'clarity' ],
+    eachView(view) {
+      view.point()
+        .position('carat*price')
+        .color('clarity')
+        .shape('circle')
+        .opacity(0.3)
+        .size(3);
+    }
+  });
+  chart.render();
+});
+</script>

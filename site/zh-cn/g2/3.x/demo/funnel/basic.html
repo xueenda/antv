@@ -55,7 +55,11 @@ relativePlots:
     .label('action*pv', (action, pv) => {
       return action + ' ' + pv;
     }, {
-      offset: 5
+      offset: 35,
+      labelLine: {
+        lineWidth: 1,
+        stroke: 'rgba(0, 0, 0, 0.15)'
+      }
     })
     .tooltip('action*pv*percent', (action, pv, percent) => {
       return {

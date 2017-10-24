@@ -50,7 +50,7 @@ chart.tooltip({
 
 ![image](https://zos.alipayobjects.com/skylark/750725d4-2e58-4420-b886-4abe1c0335c2/attach/2378/ad8fe2daa557ad62/image.png)
 
-更详细的配置请查看 [tooltip api TODO]()。
+更详细的配置请查看 [tooltip api](/zh-cn/g2/3.x/api/chart.html#_chart.tooltip-)。
 
 （2）geom 对象上的 tooltip 配置
 
