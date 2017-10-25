@@ -214,8 +214,10 @@ tree.on('mouseleave', function(ev){
 ```
 
 ### 通过 npm 安装
-外部用户暂时不提供npm安装，阿里集团内部同学，可通过 `tnpm i @ali/g6` 安装。
 
+```
+var G6 = require('@antv/g6');
+```
 
 ## 快速开始
 

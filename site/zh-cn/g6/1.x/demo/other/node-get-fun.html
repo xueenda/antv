@@ -1,92 +1,14 @@
 <!--
- index: 3
- title: Item
- resource:
-   jsFiles:
-     - ${url.g6}
+title: 节点方法
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
 -->
 
-# Item
-
-Item 子项，是 G6 内部`节点 (node) `和边`边 (edge) `的抽象概念。本文档将向大家说明，节点和边已开放的 API 。
-
-* [节点——Node](#节点——node)
-* [边——Edge](#边——edge)
-
-# 节点——Node
-
-## 方法
-
-### [show](#show) {Function}
-
-显示
-
-### [hide](#hide) {Function}
-
-隐藏
-
-### [getKeyShape](#getKeyShape) {Function}
-
-获取关键形
-
-### [getBBox](#getBBox) {Function}
-
-获取包围盒
-
-
-### [getModel](#getModel) {Function}
-
-获取数据模型
-
-### [getGroup](#getGroup) {Function}
-
-获取图形图组
-
-### [getShapeCfg](#getShapeCfg) {Function}
-
-获取绘制配置项
-
-### [getAnchor](#getAnchor) {Function}
-
-获取锚点
-
-```js
-/**
- * 获取锚点
- * @param  {Object} 输入是一个点则返回该点对应的锚点 {x: number, y: number}
- * @return {Object} point 锚点 {x: number, y: number}
- */
-node.getAnchor(param);
-```
-
-### [getEdges](#getEdges) {Function}
-
-获取该节点所有边
-
-### [getLinkNodes](#getLinkNodes) {Function}
-
-获取有连接的子项
-
-### [getUnLinkNodes](#getUnLinkNodes) {Function}
-
-获取无连接的子项
-
-### [getRelativeItems](#getRelativeItems) {Function}
-
-获取有关联的子项
-
-### [getUnRelativeItems](#getUnRelativeItems) {Function}
-
-获取无关联的子项
-
-<button id="getEdges">getEdges</button> &nbsp;&nbsp;<button id="getLinkNodes">getLinkNodes</button> &nbsp;&nbsp;<button id="getUnLinkNodes">getUnLinkNodes</button> &nbsp;&nbsp;<button id="getRelativeItems">getRelativeItems</button> &nbsp;&nbsp;<button id="getUnRelativeItems">getUnRelativeItems</button> &nbsp;&nbsp;
-
-
-<div id="c0"></div>
-
-[示例源码](../demo/other/event.html)
-
-```js-
+<script type="text/javascript">
+$('body').prepend('<button id="getEdges">getEdges</button> &nbsp;&nbsp;<button id="getLinkNodes">getLinkNodes</button> &nbsp;&nbsp;<button id="getUnLinkNodes">getUnLinkNodes</button> &nbsp;&nbsp;<button id="getRelativeItems">getRelativeItems</button> &nbsp;&nbsp;<button id="getUnRelativeItems">getUnRelativeItems</button> &nbsp;&nbsp;')
 var Util = G6.Util;
 // 第三步：设置数据
 var data = {
@@ -193,11 +115,11 @@ var data = {
 };
 // 第四步：配置G6画布
 var net = new G6.Net({
-    id: 'c0',      // 容器ID
+    id: 'mountNode',      // 容器ID
     fitView: 'autoZoom',
     mode: 'none',
-    width: 500,    // 画布宽
-    height: 500    // 画布高
+    fitView:'cc',    // 画布宽
+    height: window.innerHeight    // 画布高
   });
 // 第五步：载入数据
 net.read(Util.clone(data));
@@ -269,36 +191,4 @@ function reRender(){
   net.read(Util.clone(data));
   net.render();
 }
-```
-
-# 边——Edge
-
-## 方法
-
-### [show](#show) {Function}
-
-显示
-
-### [hide](#hide) {Function}
-
-隐藏
-
-### [getKeyShape](#getKeyShape) {Function}
-
-获取关键形
-
-### [getGroup](#getGroup) {Function}
-
-获取图形图组
-
-### [getBBox](#getBBox) {Function}
-
-获取包围盒
-
-### [getModel](#getModel) {Function}
-
-获取数据模型
-
-### [getShapeCfg](#getShapeCfg) {Function}
-
-获取绘制配置项
+</script>

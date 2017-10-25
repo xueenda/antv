@@ -1,0 +1,75 @@
+<!--
+title: G6是什么？
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+$('body').append('<button id="up">上一页</button>');
+$('body').append('<button id="down">下一页</button>');
+$.getJSON('/assets/data/g6ppt.json',function(data){
+  var Util = G6.Util;
+  var Matrix = G6.Matrix.Matrix3;
+  var GMath = G6.Math;
+  var scale = 1.2; // 放大倍数
+  var scalemin = 0.8;
+  var i = 0; // 从零开始
+  var matrixInit = new Matrix();
+  var canvas;
+
+  // 从一点缩放到另一个点
+  // p0 起始点
+  // p1 目标点
+  function zoom(p0, p1, width, height) {
+    // 借用canvas animate接口用作定时器
+    canvas.animate({
+      onUpdate:  function(f, ratio){
+        if(GMath.equal(ratio, 0.00001)){
+          return;
+        }
+        var matrix = new Matrix();
+        var x = p0.x + (p1.x - p0.x) * ratio;
+        var y = p0.y + (p1.y - p0.y) * ratio;
+        var s = 4 * (scale - 1) * (ratio - 0.5) * (ratio - 0.5) + scalemin;
+        matrix.translate(-x, -y);
+        matrix.scale(s, s);
+        matrix.translate(width/2, height/2);
+        net.updateMatrix(matrix);
+        net.refresh();
+      }
+    }, 1800);
+  }
+
+  var net = new G6.Net({
+    id: 'mountNode',           // 容器ID
+    height: window.innerHeight         // 画布高
+  });
+  var width = net.get('width');
+  var height = net.get('height');
+  net.source(data.nodes, data.edges);
+  matrixInit.translate(-data.nodes[0].x, -data.nodes[0].y);
+  matrixInit.scale(scale, scale);
+  matrixInit.translate(width/2, height/2);
+  net.updateMatrix(matrixInit);
+  net.render();
+  net.changeMode('drag');
+  canvas = net.get('canvas');
+  canvas.tween.set('autoDraw', false);
+  $('#down').on('click', function(ve){
+    if(!data.nodes[i] || !data.nodes[i+1]) return;
+    event.preventDefault();
+    zoom(data.nodes[i], data.nodes[i+1], width, height);
+    i++;
+  });
+  $('#up').on('click', function(ve){
+    if(!data.nodes[i] || !data.nodes[i-1]) return;
+    event.preventDefault();
+    zoom(data.nodes[i], data.nodes[i-1], width, height);
+    i--;
+  });
+
+});
+</script>

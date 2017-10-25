@@ -1,0 +1,86 @@
+<!--
+title: 锚点交互
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+G6.registNode('custom', {
+  getAnchorPoints: function(cfg){
+    var model = cfg.model;
+    // 将锚点与数据源关联
+    return model.anchorPoints;
+  }
+});
+
+var data = {
+  nodes: [
+    {
+      x: 240,
+      y: 210,
+      id: 'node1',
+      shape: 'custom',
+      anchorPoints: [
+        [0, 0.5],   // 左边中点 索引为 0
+        [1, 0.5]    // 右边中点 索引为 1
+      ]
+    },
+    {
+      x: 370,
+      y: 170,
+      id: 'node2',
+      shape: 'custom',
+      anchorPoints: [
+        [0, 0.5],   // 左边中点 索引为 0
+        [1, 0.5]    // 右边中点 索引为 1
+      ]
+    },
+  ],
+  edges: [
+    {
+      source: 'node1',
+      id: 'edge1',
+      target: 'node2',
+    },
+  ],
+};
+var net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  fitView:'cc',    // 画布宽
+  height: window.innerHeight,   // 画布高
+  mode: 'edit'
+});
+net.on('itemclick', function(ev){
+  var item = ev.item;
+  var anchorPoints = [
+    [0,   0.5, {
+      style: {
+        fill: 'red',
+        fillOpacity: 0.7
+      },
+      hoverStyle: {
+        stroke: null
+      }
+    }],   // 左边中点 索引为 0
+    [0.5, 0],     // 左边中点 索引为 1
+    [0.5, 1],     // 左边中点 索引为 2
+    [1, 0.5]      // 右边中点 索引为 3
+  ];
+  
+  net.update(item, {
+    anchorPoints: anchorPoints
+  });
+  net.showAnchor();
+});
+net.on('mouseenter', function(ev){
+  var shape = ev.shape;
+  if(shape && shape.hasClass('anchor-point')){
+     console.log(shape.get('index')); // 锚点索引（可以凭此在原数据模型中查询对应的锚点）
+   }
+});
+net.source(data.nodes, data.edges);
+net.render();
+</script>

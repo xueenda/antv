@@ -1,0 +1,73 @@
+<!--
+title: 加载树数据
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var tree = new G6.Tree({
+  id: 'mountNode',
+  height: window.innerHeight,
+  fitView: 'autoSize',
+  behaviourFilter: ['wheelZoom', 'dragBlank', 'dragCanvas']
+});
+tree.source({
+  label: 'G6',
+  children: [{
+    label: '图类',
+    children: [
+      {
+        label: 'Graph'
+      },
+      {
+        label: 'Net'
+      },
+      {
+        label: 'Tree'
+      },
+      {
+        label: '……'
+      }
+    ]
+  },
+  {
+    label: '基础类',
+    isCollapsed: true,
+    children: [
+      {
+        label: 'Canvas'
+      },
+      {
+        label: 'Handler'
+      },
+      {
+        label: 'Layout'
+      },
+      {
+        label: 'Global'
+      }
+    ]
+  },
+  {
+    label: '工具类',
+    children: [
+      {
+        label: 'Matrix',
+        color: 'red'
+      },
+      {
+        label: 'Color'
+      },
+      {
+        label: 'Util',
+        size: 30
+      }
+    ]
+  }]
+});
+tree.edge().shape('smooth');
+tree.render();
+</script>

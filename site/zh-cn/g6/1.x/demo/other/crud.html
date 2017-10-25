@@ -1,0 +1,73 @@
+<!--
+title: 增删改查
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+
+<script type="text/javascript">
+$('body').append('<button id="addCircle">新增圆</button>');
+$('body').append('<button id="addRect">新增矩形</button>');
+$('body').append('<button id="delete">删除</button>');
+$('body').append('<button id="findUpdate">查找并更新</button>');
+var i = 1;
+var btnAddCircle = $('#addCircle');
+var btnAddRect = $('#addRect');
+var btnDelete = $('#delete');
+var btnFindUpdate = $('#findUpdate');
+var data = {
+  nodes: [],
+  edges: []
+};
+var net = new G6.Net({
+  id: 'mountNode',           // 容器ID
+  height: window.innerHeight         // 画布高
+});
+net.source(data.nodes, data.edges);
+net.render();
+
+btnAddCircle.on('click', function(ev){
+  net.add('node', {
+    shape: 'circle',
+    id: 'id' + i++,
+    x: 50 + i * 10,
+    y: 50 + i * 10
+  });
+  net.refresh();
+});
+
+btnAddRect.on('click', function(ev){
+  net.add('node', {
+    shape: 'rect',
+    id: 'id' + i++,
+    x: 50 + i * 10,
+    y: 50 + i * 10
+  });
+  net.refresh();
+});
+
+btnDelete.on('click', function(ev){
+  if(i > 1){
+    i = i-1;
+    var item = net.find('id' + i);
+    net.remove(item);
+    net.refresh();
+  }
+});
+
+
+btnFindUpdate.on('click', function(ev){
+  if(i > 1){
+    i = i-1;
+    var item = net.find('id' + i);
+    net.update(item, {
+      color: 'red'
+    });
+    net.refresh();
+  }
+});
+
+</script>

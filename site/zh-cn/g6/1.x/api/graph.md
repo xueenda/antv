@@ -65,7 +65,7 @@ graph.get('属性名');
 
 <div id='fitView'></div>
 
-[示例源码](/g6/demo/06-other/fitView.html)
+[示例源码](../demo/other/fitView.html)
 
 </br>
 
@@ -268,43 +268,6 @@ grid: null
 
 ## 实例方法
 
-### [source](#source) {Function}
-
-加载数据源
-
-**以下字段对默认的`node`有特定含义**
-
-```js
-{
-  id,      // 唯一标识
-  x,       // x 坐标
-  y,       // y 坐标
-  size,    // 尺寸
-  style,   // 样式
-  color,   // 颜色
-  shape,   // 形状
-  label    // 标注
-}
-```
-
-**以下字段对默认的`edge`有特定含义**
-
-```js
-{
-  id,            // 唯一标识
-  size,          // 尺寸
-  style,         // 样式
-  color,         // 颜色
-  shape,         // 形状
-  label,         // 标注
-  controlPoints, // 控制点
-  sourceAnchor,  // 连接源节点锚点索引
-  targetAnchor   // 连接目标节点锚点索引
-}
-```
-
-[示例](/g6/demo/06-other/source.html)
-
 ### [render](#render) {Function}
 
 渲染数据
@@ -356,7 +319,7 @@ graph.node().style(param)
 graph.node().tooltip(param) 
 ```
 
-[示例](/g6/demo/06-other/mapping.html)
+[示例](../demo/other/mapping.html)
 
 ### [edge](#node) {Function}
 
@@ -395,7 +358,7 @@ graph.edge().style(param)
 graph.edge().tooltip(param) 
 ```
 
-[示例](/g6/demo/06-other/mapping.html)
+[示例](../demo/other/mapping.html)
 
 ### [tooltip](#tooltip) {Function}
 
@@ -466,7 +429,7 @@ graph.node().tooltip('id');
 graph.render();
 ```
 
-[示例源码](/g6/demo/06-other/tooltip-true.html)
+[示例源码](../demo/other/tooltip-true.html)
 
 ```js
 graph.tooltip({
@@ -520,7 +483,7 @@ graph.node().tooltip('id');
 graph.render();
 ```
 
-[示例源码](/g6/demo/06-other/tooltip-cfg.html)
+[示例源码](../demo/other/tooltip-cfg.html)
 
 ### [on](#on) {Function}
 
@@ -570,7 +533,7 @@ graph.on('itemmouseleave', function(ev){});  // 子项鼠标离开事件
 graph.on('afteritemrender', function(ev){}); // 子项渲染结束后事件
 ```
 
-[示例](/g6/demo/06-other/event.html)
+[示例](../demo/other/event.html)
 
 ### [off](#off) {Function}
 

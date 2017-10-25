@@ -24,7 +24,7 @@
 
 ### [registNode](#registNode) {Function}
 
-注册节点，参见文档[自定义图形](/g6/doc/tutorial/start/custom-shape.html)。
+注册节点，参见文档[自定义图形](../tutorial/custom-shape.html)。
 
 ```js
 // 注册节点
@@ -54,13 +54,13 @@ G6.registNode(name, {
 | 文本 `text` |  |    ![image](https://zos.alipayobjects.com/rmsportal/iUqRYTSlLKuwDYXVDveG.png) |
 | 图片 `image` | 也可以传`http`开头的图片链接 |    ![image](https://zos.alipayobjects.com/rmsportal/RkCSIGsYUXlMIBsIuiKM.png) |
 | 树节点 `tree-node` | 继承于`rect`， |    ![image](https://zos.alipayobjects.com/rmsportal/NuPQuritLREvKVzPlAsM.png) |
-| HTML 节点 `html`      | html 节点。参考实例：[Demo](/g6/demo/06-other/htmlnode.html) | ![image](https://gw.alipayobjects.com/zos/rmsportal/SuJoNCCrlhudIOzNvWVA.png) |
+| HTML 节点 `html`      | html 节点。参考实例：[Demo](../demo/other/htmlnode.html) | ![image](https://gw.alipayobjects.com/zos/rmsportal/SuJoNCCrlhudIOzNvWVA.png) |
 
 `注意：如果注册已有的图形，将会直接复写该图形对应的方法。`
 
 ### [registEdge](#registEdge) {Function}
 
-注册边，参见文档[自定义图形](/g6/doc/tutorial/start/custom-shape.html)。
+注册边，参见文档[自定义图形](../tutorial/custom-shape.html)。
 
 ```js
 // 注册边

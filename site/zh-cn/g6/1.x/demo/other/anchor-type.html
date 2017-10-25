@@ -1,0 +1,77 @@
+<!--
+title: 锚点类型
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+G6.registNode('custom1', {
+  // 常规锚点
+  getAnchorPoints: function(){
+    return [
+      [0, 0.5],   // 左边中点 索引为 0
+      [1, 0.5]    // 右边中点 索引为 1
+    ];
+  }
+});
+
+G6.registNode('custom2', {
+  // 自动锚点
+  getAnchorPoints: function(){
+    return 'auto';
+  }
+});
+
+G6.registNode('custom3', {
+  // 不使用锚点（ 自动连接中心 ）
+  getAnchorPoints: function(){
+    return null;
+  }
+});
+
+var data = {
+  nodes: [
+    {
+      x: 240,
+      y: 210,
+      id: 'node1',
+      shape: 'custom1'
+    },
+    {
+      x: 370,
+      y: 170,
+      id: 'node2',
+      shape: 'custom2'
+    },
+    {
+      x: 370,
+      y: 270,
+      id: 'node3',
+      shape: 'custom3'
+    },
+  ],
+  edges: [
+    {
+      source: 'node1',
+      id: 'edge1',
+      target: 'node2',
+    },
+    {
+      source: 'node1',
+      id: 'edge2',
+      target: 'node3',
+    },
+  ],
+};
+var net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  fitView: 'cc',
+  height: window.innerHeight,   // 画布高
+  mode: 'edit'
+});
+net.source(data.nodes, data.edges);
+net.render();
+</script>

@@ -15,7 +15,7 @@
 
 ## 树布局
 
-G6 内置了4类树布局算法，共21种不同的树布局效果。具体树布局属性参数配置可以通过[G6树图布局工具](/g6/demo/02-tree/tree-layout.html)调试和预览。
+G6 内置了4类树布局算法，共21种不同的树布局效果。具体树布局属性参数配置可以通过[G6树图布局工具](../demo/02-tree/tree-layout.html)调试和预览。
 
 * [紧凑树——CompactBoxTree](#紧凑树——compactboxtree)
 * [生态树——Dendrogram](#生态树——dendrogram)
@@ -62,9 +62,9 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 紧凑盒树布局。这是树图的默认布局，其特点是布局时统合考虑每个树节点的包围盒，由经典的[Reingold–Tilford tidy布局算法](http://emr.cs.iit.edu/~reingold/tidier-drawings.pdf)演进而来，适合于脑图等应用场景。
 
-[紧凑盒树Demo](/g6/demo/02-tree/tree.html)
+[紧凑盒树Demo](../demo/02-tree/tree.html)
 
-[脑图Demo](/g6/demo/02-tree/mind.html)
+[脑图Demo](../demo/02-tree/mind.html)
 
 ![图片](https://zos.alipayobjects.com/skylark/8aee7a6b-9e79-41f2-918c-7c5269011e68/attach/5286/9f92b3c9ea6abea7/right-logical.png)
 
@@ -95,7 +95,7 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 [生态树](https://en.wikipedia.org/wiki/Dendrogram)布局。特点是所有子节点布局在同一层级，适用于表示层次聚类。
 
-[生态树Demo](/g6/demo/02-tree/dendrogram.html)
+[生态树Demo](../demo/02-tree/dendrogram.html)
 
 ![图片](http://alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com/skylark/attach/5286/17725fb0e7af3a7a/dendrogram-lr.png)
 
@@ -142,7 +142,7 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 缩进树布局。树节点的层级通过水平方向的缩进量来表示，常用场景是文件目录结构。
 
-[缩进树Demo](/g6/demo/02-tree/indented.html)
+[缩进树Demo](../demo/02-tree/indented.html)
 
 ![图片](http://alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com/skylark/attach/5286/665db9cced8fc459d82b1fb5fba0ca9b)
 
@@ -177,7 +177,7 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 分层紧凑树。节点的位置由层级决定，也是比较通用的树布局。
 
-[分层紧凑树Demo](/g6/demo/02-tree/layered-tidy.html)
+[分层紧凑树Demo](../demo/02-tree/layered-tidy.html)
 
 ![图片](http://alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com/skylark/attach/5286/a19056f79765b75c/layered-tidy-lr.png)
 

@@ -120,16 +120,40 @@ net.add(type, model);
 
 ### [source](#source) {Function}
 
-加载数据源，接受 `nodes`、`edges`
+加载数据源
+
+**以下字段对默认的`node`有特定含义**
 
 ```js
-/**
- * 加载数据源
- * @param  {Array} nodes 节点集
- * @param  {Array} edges 边集
- */
-net.source(nodes, edges);
+{
+  id,      // 唯一标识
+  x,       // x 坐标
+  y,       // y 坐标
+  size,    // 尺寸
+  style,   // 样式
+  color,   // 颜色
+  shape,   // 形状
+  label    // 标注
+}
 ```
+
+**以下字段对默认的`edge`有特定含义**
+
+```js
+{
+  id,            // 唯一标识
+  size,          // 尺寸
+  style,         // 样式
+  color,         // 颜色
+  shape,         // 形状
+  label,         // 标注
+  controlPoints, // 控制点
+  sourceAnchor,  // 连接源节点锚点索引
+  targetAnchor   // 连接目标节点锚点索引
+}
+```
+
+[示例](../demo/other/source.html)
 
 
 编辑器示例：
@@ -230,7 +254,7 @@ save.on('click', function(ev) {
 net.render();
 ```
 
-[示例源码](/g6/demo/06-other/editor.html)
+[示例源码](../demo/other/editor.html)
 
 ### [beginAdd](#beginAdd) {Function}
 

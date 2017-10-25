@@ -1,0 +1,99 @@
+<!--
+title: 自定义箭头
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var Util = G6.Util;
+G6.registEdge('bezierQuadratic', {
+  afterDraw: function(cfg, group, keyShape) {
+    var points = cfg.points;
+    var start = points[0];
+    var end = points[points.length - 1];
+    var center = keyShape.getPoint(0.5);
+    var lineWidth = keyShape.attr('lineWidth');
+    if(lineWidth < 5){
+      lineWidth = 5;
+    }
+    // 关于自身坐标系构造一个形，作为箭头
+    var arrow = group.addShape('polyline', {
+      attrs:{
+        points: [
+          [-lineWidth/4, lineWidth/2],
+          [lineWidth/4, 0],
+          [-lineWidth/4, -lineWidth/2]
+        ],
+        stroke: '#333'
+      },
+      class: 'arrow'
+    });
+    Util.arrowTo(arrow, center.x, center.y, center.x, center.y, end.x, end.y);
+  }
+});
+var data = {
+  "source": {
+    "nodes": [
+      {
+        "shape": "rect",
+        "label": "文本",
+        "x": 550,
+        "y": 260,
+        "id": "af11b7bc"
+      },
+      {
+        "shape": "rect",
+        "label": "文本",
+        "x": 780,
+        "y": 260,
+        "id": "313ed868"
+      }
+    ],
+    "edges": [
+      {
+        "source": "af11b7bc",
+        "target": "313ed868",
+        "id": "bd2bc602"
+      },
+      {
+        "source": "313ed868",
+        "target": "af11b7bc",
+        "id": "1be6dc9f",
+        "size": 2,
+        "targetAnchor": 2,
+        "sourceAnchor": 2
+      },
+      {
+        "source": "af11b7bc",
+        "target": "313ed868",
+        "id": "3d463cd1",
+        "targetAnchor": 0,
+        "sourceAnchor": 0
+      },
+      {
+        "source": "313ed868",
+        "target": "af11b7bc",
+        "id": "ba7e057c",
+        "size": 6
+      }
+    ]
+  }
+};
+var net = new G6.Net({
+    id: 'mountNode',           // 容器ID
+    fitView:'cc',         // 画布宽
+    height: window.innerHeight,        // 画布高
+    fitView: 'cc',      // 图居中自适应
+    mode: 'none',       // 模式
+    grid: {
+      forceAlign: true, // 是否支持网格对齐
+      cell: 10          // 网格大小
+    }
+  });
+net.read(data);
+net.edge().shape('bezierQuadratic');
+net.render();
+</script>

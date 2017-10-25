@@ -1,0 +1,119 @@
+<!--
+title: 扫码业务流程
+description: 重点展示 HTML 节点的使用
+index: 2
+
+-->
+<style>
+  .node-conatiner{
+    width: 200px;
+    height: 100px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .node-conatiner .node-conatiner-title{
+    color: white;
+    padding-left: 10px;
+    line-height: 48px;
+    height: 60px;
+  }
+  .node-conatiner .node-conatiner-success{
+    background: #228ACC;
+  }
+  .node-conatiner .node-conatiner-fail{
+    background: #FF0030;
+  }
+  .node-conatiner .node-conatiner-list{
+    background: white;
+    padding-left: 10px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .node-conatiner .node-delete{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 10; /* 使得该元素z层级大于最上层canvas */
+  }
+</style>
+<script type="text/javascript">
+var Util = G6.Util;
+G6.registerNode('customNode', {
+  cssSize: true, // 不使用内部 size 作为节点尺寸
+  getHtml: function(cfg, group){
+    var model = cfg.model;
+    var container = Util.createDOM('<div class="node-conatiner"></div>');
+    var title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
+      ${model.name}
+    </div>`);
+    var list = Util.createDOM(`<div class="node-conatiner-list">
+      <span>数量：</span>
+      <span>${model.count}</span>
+    </div>`);
+    var botton = Util.createDOM(`<button class="node-delete">X</button>`);
+    botton.addEventListener('click', function(){
+      net.remove(net.find(model.id));
+    });
+    container.appendChild(botton);
+    container.appendChild(title);
+    container.appendChild(list);
+    return container;
+  }
+}, 'html');
+var data = {
+  "nodes": [
+    {
+      "id": "c952611b",
+      "name": "扫码请求成功数",
+      "count": 222190,
+      "x": 200,
+      "y": 160,
+      "status": 'success'
+    },
+    {
+      "id": "29o2611b",
+      "name": "扫码请求数",
+      "count": 2221902,
+      "x": 590,
+      "y": 160,
+      "status": 'success'
+    },
+    {
+      "id": "22139lzd",
+      "name": "请求创建交易总数",
+      "count": 221231,
+      "x": 580,
+      "y": 380,
+      "status": 'fail'
+    }
+  ],
+  "edges": [
+    {
+      "source": "29o2611b",
+      "target": "c952611b",
+      "id": "d952611b",
+      "precent": 100
+    },
+    {
+      "source": "c952611b",
+      "target": "22139lzd",
+      "id": "a893c28f",
+      "precent": 80
+    }
+  ]
+};
+var net = new G6.Net({
+    id: 'mountNode',
+    height: window.innerHeight,
+    fitView: 'tc'
+});
+net.source(data.nodes, data.edges);
+net.node()
+   .shape('customNode')
+   .style({
+     stroke: null // 去除默认边框
+   });
+net.edge().shape('arrow');
+net.render();
+</script>
