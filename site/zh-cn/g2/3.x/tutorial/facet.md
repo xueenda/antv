@@ -68,7 +68,7 @@ chart.facet('list', {
 });
 ```
 
-更多配置信息，请查阅 [Facet API TODO](/g2/api/chart.html#facet/g2/api/chart.html#facet)。
+更多配置信息，请查阅 [Facet API](/zh-cn/g2/3.x/api/chart.html#_chart.facet-)。
 
 ## 分面的类型
 
@@ -144,7 +144,6 @@ $.getJSON('/assets/data/diamond.json',function (data) {
     height: 400,
     padding: [30, 90, 80, 80]
   });
-  chart.source(data);
   chart.source(data, {
     carat: {
       sync: true

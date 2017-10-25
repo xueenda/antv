@@ -34,7 +34,7 @@ G2 生成的坐标轴由如下五部分组成：
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/XyHrQpWKgHCCbctRzwVT.png" width="100%">
 
-通常的图表都有 x 轴和 y 轴，默认情况下，x 轴显示在图表的底部，y 轴显示在左侧（多个 y 轴时可以是显示在左右两侧）。通过为坐标轴配置 `position` 属性可以改变坐标轴的显示位置，具体可详见 [api TODO]()。
+通常的图表都有 x 轴和 y 轴，默认情况下，x 轴显示在图表的底部，y 轴显示在左侧（多个 y 轴时可以是显示在左右两侧）。通过为坐标轴配置 `position` 属性可以改变坐标轴的显示位置，具体可详见 [api](/zh-cn/g2/3.x/api/chart.html#_chart.axis-)。
 
 ### 坐标轴标题 title
 
@@ -65,7 +65,7 @@ chart.scale('xField', {
 });
 ```
 
-更多关于坐标轴 title 属性的配置请查看API文档相关内容 [axis title TODO]()。
+更多关于坐标轴 title 属性的配置请查看API文档相关内容 [axis 的 title 属性配置](/zh-cn/g2/3.x/api/chart.html#_chart.axis-)。
 
 ### 坐标轴线 line
 

@@ -1,0 +1,2096 @@
+<!--
+index: 2
+title: Chart
+resource:
+  jsFiles:
+    - ${url.g2}
+    - ${url.dataSet}
+-->
+
+# Chart
+
+获取方式： `G2.Chart`
+
+## new G2.Chart()
+
+```js
+new G2.Chart({
+  container: string|HTMLDivElement,
+  width: number,
+  height: number,
+  padding?: object|number|Array,
+  background?: object,
+  plotBackground?: object,
+  forceFit?: boolean,
+  animate?: boolean,
+  pixelRatio?: number,
+  data?: array|DataView
+});
+```
+
+创建一个 chart 实例，返回一个 Chart 对象，建议在单个容器上只初始化一个 Chart 实例。
+
+### 参数
+
+- `container`
+
+对应图表的 DOM 容器，可以传入该 dom 的 id 或者直接传入容器的 html 节点对象。
+
+```html
+<div id="c1"></div>
+```
+
+```js
+var chart = new G2.Chart({
+  container: document.getElementById('c1'),
+  width : 1000,
+  height : 500
+});
+```
+
+> !注意：可以使用 `id` 代替 `container`。
+
+- `width`
+
+指定图表的宽度，默认单位为 'px'，当 `forceFit: true` 是宽度不生效。
+
+- `height`
+
+指定图表的高度，默认单位为 'px'。
+
+- `padding`
+
+设置图表的内边距，支持如下几种设置方式：
+
+1. `padding: [ 20, 30, 20, 30]`
+2. `padding: 20`
+3. `padding: { top: 20, right: 30, bottom: 20, left: 30 }`
+
+另外也支持设置百分比，如 `padding: [ 20%, 30% ]`，该百分比相对于整个图表的宽高。
+
+padding 为数字以及数组类型时使用方法同 CSS 盒模型
+
+- `background`
+
+设置图表整体的边框和背景样式，是一个对象，包含如下属性：
+
+```js
+background: {
+  fill: string, // 图表背景色
+  fillOpacity: number, // 图表背景透明度
+  stroke: string, // 图表边框颜色
+  strokeOpacity: number, // 图表边框透明度
+  opacity: number, // 图表整体透明度
+  lineWidth: number, // 图表边框粗度
+  radius: number // 图表圆角大小 
+}
+```
+
+- `plotBackground`
+
+图表绘图区域的边框和背景样式，是一个对象，包含如下属性：
+
+```js
+plotBackground: {
+  fill: string, // 图表背景色
+  fillOpacity: number, // 图表背景透明度
+  stroke: string, // 图表边框颜色
+  strokeOpacity: number, // 图表边框透明度
+  opacity: number, // 图表整体透明度
+  lineWidth: number, // 图表边框粗度
+  radius: number // 图表圆角大小 
+}
+```
+
+- `forceFit`
+
+图表的宽度自适应开关，默认为 false，设置为 true 时表示自动取 dom（实例容器）的宽度。
+
+- `animate`
+
+图表动画开关，默认为 true，即开启动画。
+
+- `pixelRatio`
+
+设置设备像素比，默认取浏览器的值 `window.devicePixelRatio`。
+
+- `data`
+
+设置图表的数据源，`data` 是一个包含 JSON 对象的数组或者 DataView 对象。
+
+建议使用 `chart.source(data)` 设置数据源。
+
+## chart.source()
+
+### chart.source(data)
+
+(data: Array|DataView)
+
+为 chart 装载数据，返回 chart 对象。
+
+#### 参数
+
+- `data`
+
+数据源数据，标准的 JSON 数组或者 DataView 对象。
+
+### chart.source(data, scaleConfig)
+
+(data: Array|DataView, scaleConfig?: object)
+
+#### 参数
+
+- `data`
+
+数据源数据，标准的 JSON 数组或者 DataView 对象。
+
+- `scaleConfig`
+
+可选，用于数据字段的列定义，如设置数据的类型，显示别名，时间类型的展示格式等，不同的数字类型的配置项不同，[详情可配置属性参考 Scale](./scale.html)。
+
+#### 示例
+
+```js
+var data = [
+  {type: 0, value: 1},
+  {type: 1, value: 2},
+  {type: 2, value: 3},
+  {type: 2, value: 3, color: '#f80'},
+];
+
+chart.source(data, {
+  type: {
+    type: 'cat', // 声明 type 字段为分类类型
+    values: ['A', 'B', 'C'] // 重新显示的值
+    alias: '类型' // 设置属性的别名
+  }
+});
+```
+
+## chart.scale()
+
+### chart.scale('field', scaleConfig)
+
+(field: string, scaleConfig: object)
+
+为指定的数据字段进行列定，返回 chart 实例。
+
+!注意: 如数据属性 field 在 `chart.source()` 和 `chart.scale()` 中均有定义，那么 `chart.scale()` 中的配置会覆盖 `chart.source()` 中的配置。 
+
+#### 参数
+
+- `field`
+
+设置列定义的数据字段名。
+
+- `scaleConfig`
+
+列定义配置，对象类型，可配置的属性如下：
+
+```js
+{
+  type: 'identity' | 'linear' | 'cat' | 'time' | 'timeCat' | 'log' | 'pow', // 指定数据类型
+  alias: string, // 数据字段的别名
+  formatter: function, // 格式化文本内容
+  range: array, // 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+  tickCount: number, // 设置坐标轴上刻度点的个数
+  ticks: array, // 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示
+  sync: boolean // 当 chart 存在不同数据源的 view 时，用于统一相同数据属性的值域范围
+}
+```
+
+!注意：除了以上属性外，不同的 type 还对应有各自的可配置属性，详见 [Scale 度量 API](./scale.html); 
+
+#### 示例
+
+```js
+var data = [
+  { x: 0, y: 1 },
+  { x: 1, y: 2 },
+  { x: 2, y: 3 }
+];
+
+// 为 x 字段设置列定义
+chart.scale('x', {
+  type: 'cat', // 声明 type 字段为分类类型
+  values: ['A', 'B', 'C'] // 重新显示的值
+  alias: '类型' // 设置属性的别名  
+});
+```
+
+### chart.scale(scaleConfig)
+
+(scaleConfig: object)
+
+为一个或者多个数据字段进行列定义配置。
+
+#### 参数
+
+- `scaleConfig`
+
+列定义配置，对象类型，可配置的属性如下：
+
+```js
+{
+  type: 'identity' | 'linear' | 'cat' | 'time' | 'timeCat' | 'log' | 'pow', // 指定数据类型
+  alias: string, // 数据字段的别名
+  formatter: function, // 格式化文本内容
+  range: array, // 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
+  tickCount: number, // 设置坐标轴上刻度点的个数
+  ticks: array, // 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示
+  sync: boolean // 当 chart 存在不同数据源的 view 时，用于统一相同数据属性的值域范围
+}
+```
+
+#### 示例
+
+```js
+var data = [
+  { x: 0, y: 1 },
+  { x: 1, y: 2 },
+  { x: 2, y: 3 }
+];
+
+// 为多个字段设置列定义
+chart.scale({
+  x: {
+    type: 'cat', // 声明 type 字段为分类类型
+    values: ['A', 'B', 'C'] // 重新显示的值
+    alias: '类型' // 设置属性的别名
+  },
+  y: {
+    type: 'cat'
+  }
+});
+```
+
+
+## chart.coord()
+
+(type: string, coordConfig ?: object)
+
+设置坐标系类型，同时允许进行各种坐标系变换，默认为笛卡尔坐标系。
+
+> !注意：该方法不返回 `chart` 实例，而是同 Coord 坐标系对应的一个控制类对象，用于进行坐标系的各种变换。
+
+### 参数
+
+- `type`: string
+
+  坐标系的类型，具体包括：
+
+type | 说明 | 示例
+---- | ---- | ----
+ `rect` | 默认类型，直角坐标系，由 x, y 两个垂直的维度构成。 | <a href="/zh-cn/g2/3.x/demo/point/scatter.html"><img src="" style="width: 300px;">TODO</a>
+ `polar` | 极坐标系，由角度和半径 2 个维度构成。 | <a href="/zh-cn/g2/3.x/demo/pie/rose.html"><img src="" style="width: 300px;">TODO</a>
+`theta` | 一种半径固定的极坐标系，常用于饼图。 | <a href="/zh-cn/g2/3.x/demo/pie/labelline.html"><img src="" style="width: 300px;">TODO</a>
+`helix` | 螺旋坐标系，常用于周期性数据 | <a href="/zh-cn/g2/3.x/demo/other/helix-coordinate.html"><img src="" style="width: 300px;">TODO</a>
+
+- coordConfig: object
+
+  可选配置项，是一个对象类型，仅适用于极坐标类型，包括 `polar`、`theta`、`helix`。
+
+  可配置的属性如下：
+
+  ```js
+  chart.coord('polar', {
+    radius: 0.5, // 设置半径，值范围为 0 至 1
+    innerRadius: 0.3 // 空心圆的半径，值范围为 0 至 1
+    startAngle: -1 * Math.PI / 2, // 极坐标的起始角度，单位为弧度
+    endAngle: 3 * Math.PI / 2 // 极坐标的结束角度，单位为弧度
+  });
+  ```
+
+### 坐标系变换
+
+`chart.coord().<action>()`
+
+支持的变换操作如下：
+
+- `rotate(angle)`: 坐标系旋转，angle 表示旋转的度数，单位为角度。
+
+- `scale(sx, sy)`: 坐标系缩放，sx 代表 x 方向缩放比例，sy 代表 y 方向缩放比例，单位为数值。
+
+- `reflect('' | 'x' | 'y')`: 坐标系转置，将 x 或者 y 的起始、结束值倒置。
+
+- `transpose()`: 将坐标系 x 轴和 y 轴转置。
+
+上述操作均可支持链式调用，如下：
+
+```js
+chart.coord().rotate(70).scale(1.5, 1.5).reflect('xy').transpose();
+```
+
+## chart.axis()
+
+坐标轴配置，该方法返回 chart 对象。
+
+### chart.axis(false)
+
+不展示所有坐标轴：
+
+`chart.axis(false)`；
+
+### chart.axis('field', false)
+
+不展示 `field` 字段对应的坐标轴
+
+#### 参数
+
+- `field`
+
+数据源中的数据属性名称。
+
+### chart.axis('field', axisConfig)
+
+(field: string, axisConfig: object)
+
+为字段 `field` 对应的坐标轴进行配置。
+
+```js
+// 示例：配置 x 对应坐标轴线的颜色
+chart.axis('x', {
+  line: {
+    stroke: '#ff8800'
+  }
+});
+```
+
+#### 参数
+
+- `field`
+
+坐标轴对应的数据字段名。
+
+- axisConfig
+
+一个对象类型，用于设置坐标轴配置信息，可配置属性如下：
+
+  1. `position`: string
+
+  设置坐标轴的显示位置，可设置的值包含 `top`、`bottom`、`left`、`right`，即上下左右四个位置。
+
+  2. `line`: object |null
+
+  设置坐标轴线的样式，包括线的颜色、粗细等。如果该属性值为 `null` 则表示不展示坐标轴线。
+
+  ```js
+  line: {
+    stroke: string, // 坐标轴线的颜色
+    strokeOpacity: number, // 坐标轴线的透明度，数值范围为 0 - 1
+    lineDash: array, // 设置虚线的样式，如 [2, 3]第一个用来表示实线的像素，第二个用来表示空白的像素。如果提供了奇数个值，则这个值的数列重复一次，从而变成偶数个值
+    lineWidth: number // 设置坐标轴线的粗细
+  }
+  ```
+
+  3. `label`: object | null
+
+  设置坐标轴文本的样式。如果该属性值为 `null` 则表示不展示坐标轴文本。
+
+  ```js
+  label: {
+    // 数值，设置坐标轴文本 label 距离坐标轴线的距离
+    offset: number, 
+    // 设置文本的显示样式，还可以是个回调函数，回调函数的参数为该坐标轴对应字段的数值
+    textStyle: {
+      textAlign: 'center', // 文本对齐方向，可取值为： start middle end
+      fill: '#404040', // 文本的颜色
+      fontSize: '12', // 文本大小
+      fontWeight: 'bold', // 文本粗细
+      rotate: 30, 
+      textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+    } || function(text) {
+      // text: 坐标轴对应字段的数值
+    }, 
+    // 文本是否需要自动旋转，默认为 true
+    autoRotate: boolean,
+    // 回调函数，用于格式化坐标轴上显示的文本信息
+    formatter: function(text, item, index) {
+      // text: string: 文本值
+      // item: object 该文本值对应的原始数据记录
+      // index: 索引值
+    },
+    // 声明此属性表示使用 html 渲染文本
+    htmlTemplate: function(text, item, index) {
+      // text: string: 文本值
+      // item: object 该文本值对应的原始数据记录
+      // index: 索引值
+    }, // 使用 html 自定义 label
+  }
+  ```
+
+  4. `title`: object | null
+
+  设置坐标轴标题的显示样式。如果该属性值为 `null` 则表示不展示坐标轴标题，默认不展示。
+
+  ```js
+  title: {
+    // 是否需要自动旋转，默认为 true 
+    autoRotate: boolean,
+    // 数值，设置坐标轴标题距离坐标轴线的距离
+    offset: number,
+    // 设置标题的文本样式
+    textStyle: {
+      textAlign: 'center', // 文本对齐方向，可取值为： start middle end
+      fill: '#404040', // 文本的颜色
+      fontSize: '12', // 文本大小
+      fontWeight: 'bold', // 文本粗细
+      rotate: 30, // 文本旋转角度，以角度为单位，仅当 autoRotate 为 false 时生效
+      textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+    },
+    // 标题的显示位置（相对于坐标轴线），可取值为 start center end
+    position: 'start' || 'center' || 'end'
+  }
+  ```
+
+  5. `tickLine`: object | null
+
+  设置坐标轴的刻度线。如果该属性值为 `null` 则表示不展示。
+
+  ```js
+  tickLine: {
+    lineWidth: 1, // 刻度线宽
+    stroke: '#ccc', // 刻度线的颜色
+    strokeOpacity: 0.5, // 刻度线颜色的透明度
+    length: 5, // 刻度线的长度，可以为负值（表示反方向渲染）
+  }
+  ```
+
+  6. `subTickCount`: number
+
+  设置每两个刻度之间次刻度线的个数，默认为 0，即不展示次刻度线。
+
+  ```
+  // 设置次刻度线的个数，数值类型
+  subTickCount: 2
+  ```
+
+  7. `subTickLine`: object
+
+  设置次刻度线的样式，仅当 subTickCount 不为 0 时生效。
+
+  ```js
+  subTickLine: {
+    lineWidth: 1, // 次刻度线宽
+    stroke: '#ddd', // 次刻度线颜色
+    strokeOpacity: 0.5, // 次刻度线颜色的透明度
+    length: 3 // 次刻度线的长度，可以为负值（表示反方向渲染）
+  }
+  ```
+
+  8. `grid`: object | null
+
+  设置坐标轴网格线的样式，网格线与坐标轴线垂直。如果该属性值为 `null` 则表示不展示。
+
+  ```js
+  grid: {
+    // 声明网格顶点从两个刻度中间开始，默认从刻度点开始
+    align: 'center',
+    // 声明网格的类型，line 表示线，polygon 表示矩形框
+    type: 'line' || 'polygon', 
+    // 当网格类型 type 为 line 时，使用 lineStyle 设置样式
+    lineStyle: {
+      stroke: '#d9d9d9', // 网格线的颜色
+      lineWidth: 1, // 网格线的粗细
+      lineDash: [4, 4] // 网格线的虚线配置，第一个参数描述虚线的实部占多少像素，第二个参数描述虚线的虚部占多少像素
+    },
+    // 当网格类型 type 为 polygon 时，使用 alternateColor 为网格设置交替的颜色，指定一个值则先渲染奇数层，两个值则交替渲染
+    alternateColor: '#ccc' || ['#f80', '#ccc'],
+  }
+  ```
+
+## chart.legend()
+
+配置图表图例。
+
+### chart.legend(false)
+
+不显示所有的图例。
+
+### chart.legend(field, false)
+
+不显示 `field` 字段对应的图例。
+
+### chart.legend(field, legendConfig)
+
+(field: string|true, legendConfig: object)
+
+为数据字段 field 对应的图例进行配置，如下所示：
+
+```js 
+chart.legend('gender', {
+  position: 'right'
+});
+```
+
+#### 参数
+
+- `field`: string | true
+
+图例对应的字段名。如果值为 `true`，表示该配置对所有的图例生效。
+
+- legendConfig: object
+
+是一个对象，该对象可配置的属性如下：
+
+  1. `position`: string
+
+  设置图例的显示位置，可设置的值为：`top`、`right`、`bottom`、`left`，分别表示上、右、下、左。默认为 `bottom`。
+
+  2. `layout`: string
+
+  对分类类型的图例生效，用于设置各个图例项的排列方式，可设置值包括：`vertical`、`horizontal`，分别表示垂直和水平排布。
+
+  3. `title`: object | null
+
+  图例标题的显示样式设置，如果值为 null，表示不展示图例标题，默认不展示。
+
+  ```js
+  title: {
+    textAlign: 'center', // 文本对齐方向，可取值为： start middle end
+    fill: '#404040', // 文本的颜色
+    fontSize: '12', // 文本大小
+    fontWeight: 'bold', // 文本粗细
+    rotate: 30, // 文本旋转角度，以角度为单位，仅当 autoRotate 为 false 时生效
+    textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+  }
+  ```
+
+  4. `offsetX`: number
+
+  图例 x 方向的偏移值，数值类型，数值单位为 'px'，默认值为 0。
+  
+  5. `offsetY`: number
+  
+  图例 Y 方向的偏移值，数值类型，数值单位为 'px'，默认值为 0。
+
+  6. `itemGap`: number
+
+  对分类类型的图例生效，表示图例每项之间的间距，如果是水平排布则为左右间距，如果是竖直排布则为上下间距。
+
+  7. `itemMarginBottom`: number 
+
+  对分类类型的图例生效，表示各个图例项垂直方向的间距。
+
+  8. `itemWidth`: number 
+
+  对分类类型的图例生效，设置图例项的宽度，当图例有很多图例项，并且用户想要这些图例项能垂直对齐时，此时这个属性可帮用户实现此效果。
+
+  [在线示例](/zh-cn/g2/3.x/demo/other/polar-interval.html)：
+  
+  <div id="c1"></div>
+
+  ```js-
+  const data = [{country:'中国',cost:96},{country:'德国',cost:121},{country:'美国',cost:100},{country:'日本',cost:111},{country:'韩国',cost:102},{country:'法国',cost:124},{country:'意大利',cost:123},{country:'荷兰',cost:111},{country:'比利时',cost:123},{country:'英国',cost:109},{country:'加拿大',cost:115},{country:'俄罗斯',cost:99},{country:'墨西哥',cost:91},{country:'印度',cost:87},{country:'瑞士',cost:125},{country:'澳大利亚',cost:130},{country:'西班牙',cost:109},{country:'巴西',cost:123},{country:'泰国',cost:91},{country:'印尼',cost:83},{country:'波兰',cost:101},{country:'瑞典',cost:116},{country:'奥地利',cost:111},{country:'捷克',cost:107}];
+  const chart = new G2.Chart({
+    container: 'c1',
+    forceFit: true,
+    height: 500,
+    padding: [ 40, 40, 130, 40 ]
+  });
+  chart.source(data, {
+    'cost': {
+      min: 0
+    }
+  });
+  chart.coord('polar');
+  chart.axis('cost', {
+    label: null,
+    tickLine: null,
+    line: {
+      stroke: '#E9E9E9',
+      lineDash: [ 3, 3 ]
+    }
+  });
+  chart.axis('country', {
+    grid: {
+      align: 'center'
+    },
+    tickLine: null,
+    label: {
+      Offset: 10,
+      textStyle: {
+        textAlign: 'center' // 设置坐标轴 label 的文本对齐方向
+      }
+    }
+  });
+  chart.legend('country', {
+    itemWidth: 50 // 设置图例项的宽度，使其在垂直方向上能够排列整齐
+  });
+  chart.interval()
+    .position('country*cost')
+    .color('country', [ 'rgb(252,143,72)', 'rgb(255,215,135' ])
+    .label('cost', {
+      offset: -15,
+      textStyle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 11
+      }
+    })
+    .style({
+      lineWidth: 1,
+      stroke: '#fff'
+    });
+  chart.render();
+  ```
+  
+  9. `unCheckColor`: string
+
+  对分类类型的图例生效，用于取消选中的图例文本颜色。
+
+  10. `background`: object
+  
+  对分类类型的图例生效，用于设置图例的背景样式。
+  
+  ```js
+  background: {
+    // 图形属性
+    fill: '#000',
+    fillOpacity: 0.3
+  }
+  ```
+
+  11. `allowAllCanceled`: boolean
+
+  对分类类型的图例生效，表示是否允许所有图例项被取消选中，默认为 false，即必须保留一个被选中的图例项。
+
+  12. `itemFormatter`: function
+
+  回调函数，用于格式化图例每项的文本显示。
+
+  ```js
+  itemFormatter: function(val) {
+    // val 为每个图例项的文本值
+    return val;
+  }
+  ```
+  
+  13. `marker`: string | function
+
+  对分类类型的图例生效，用于设置图例的 marker 样式，默认按照 geom 的类型显示。
+
+  * 当为 string 类型时，即表示使用 G2 默认提供的类型，支持的类型如下：
+
+  type | 样式
+  ---- | ----
+  circle | <img src="/assets/image/g2/tutorial/circle.png" width="50%">
+  square | <img src="/assets/image/g2/tutorial/square.png" width="50%">
+  bowtie | <img src="/assets/image/g2/tutorial/bowtie.png" width="50%">
+  diamond | <img src="/assets/image/g2/tutorial/diamond.png" width="50%">
+  hexagon | <img src="/assets/image/g2/tutorial/hexagon.png" width="50%">
+  triangle | <img src="/assets/image/g2/tutorial/triangle.png" width="50%">
+  triangle-down | <img src="/assets/image/g2/tutorial/triangle-down.png" width="50%">
+  cross | <img src="/assets/image/g2/tutorial/cross.png" width="50%">
+  tick | <img src="/assets/image/g2/tutorial/tick.png" width="50%">
+  plus | <img src="/assets/image/g2/tutorial/plus.png" width="50%">
+  hyphen | <img src="/assets/image/g2/tutorial/hyphen.png" width="50%">
+  line | <img src="/assets/image/g2/tutorial/line.png" width="50%">
+  hollowCircle | <img src="/assets/image/g2/tutorial/hollowCircle.png" width="50%">
+  hollowSquare | <img src="/assets/image/g2/tutorial/hollowSquare.png" width="50%">
+  hollowBowtie | <img src="/assets/image/g2/tutorial/hollowBowtie.png" width="50%">
+  hollowDiamond | <img src="/assets/image/g2/tutorial/hollowDiamond.png" width="50%">
+  hollowHexagon | <img src="/assets/image/g2/tutorial/hollowHexagon.png" width="50%">
+  hollowTriangle | <img src="/assets/image/g2/tutorial/hollowTriangle.png" width="50%">
+  hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.png" width="50%">
+
+  * marker 也支持自定义 shape，使用方式如下，
+
+  ```js
+  marker: function(x, y, r, ctx) {
+    // x 为该 marker 的横轴坐标
+    // y 为该 marker 的纵轴坐标
+    // r 为该 marker 的半径大小
+    // ctx 为 canvas 的上下文对象
+  }
+  ```
+
+  以下代码绘制了如图所示的 marker：<img src="https://gw.alipayobjects.com/zos/rmsportal/WOOfsuIGEAPWdtgsdciZ.png" width="20px">
+
+  ```js
+  marker: (x, y, r, ctx) => {
+    ctx.lineWidth = 1;
+    ctx.fillStyle = ctx.strokeStyle;
+    ctx.moveTo(x - r - 3, y);
+    ctx.lineTo(x + r + 3, y);
+    ctx.arc(x, y, r - 1, 0, Math.PI * 2, false);
+    ctx.fill();
+  }
+  ```
+
+  14. `textStyle`: object
+
+  用于设置图例项的文本样式。
+
+  ```js
+  textStyle: {
+    textAlign: 'center', // 文本对齐方向，可取值为： start middle end
+    fill: '#404040', // 文本的颜色
+    fontSize: '12', // 文本大小
+    fontWeight: 'bold', // 文本粗细
+    rotate: 30, // 文本旋转角度，以角度为单位，仅当 autoRotate 为 false 时生效
+    textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
+  }
+  ```
+
+  15. `clickable`: boolean
+
+  对分类类型的图例生效，设置图例项是否允许点击，默认为 true，即允许点击。
+
+  16. `hoverable`: boolean
+
+  对分类类型的图例生效，设置是否开启鼠标 hover 至图例的交互效果，默认为 true，即开启动画。
+
+  17.  `selectedMode`: string
+
+  针对分类类型图例，当 clickable 为 true 时该配置项生效，用于设置图例的选中交互模式，可配置的属性:
+
+    * `selectedMode: 'single'`：表示开启单选模式；
+    * `selectedMode: 'multiple'`：表示开启多选模式，默认为 `multiple`。
+
+  18. `onHover`: function
+
+  针对分类类型的图例，用于自定义鼠标 hover 图例项的交互，当 `hoverable` 为 false 不生效。
+  
+  ```js
+  onHover: function(ev) {
+    // 自定义图例项鼠标 hover 事件，hoverable 为 false 不生效
+  }
+  ```
+
+  19. `onClick`: function
+
+  针对分类类型的图例，用于自定义鼠标点击图例项的交互，当 `clickable` 为 false 不生效。
+  
+  ```js
+  onClick: function(ev) {
+    // 自定义图例项点击事件， clickable 为 false 不生效
+  }
+  ```
+
+  20. `useHtml`: boolean
+
+  针对分类类型图例，用于开启是否使用 html 渲染图例，默认为 false，true 表示使用 html 渲染图例。
+
+  21. `container`: string
+
+  **当 `useHtml` 为 true 时生效**，用于指定生成图例的 dom 容器，那么该值必须为 dom 容器的 id 值为分类类型的话，则支持传入索引值。
+
+  22. `containerTpl`: string
+
+  **当 `useHtml` 为 true 时生效**，用于指定图例容器的模板，默认值如下：
+
+  ```js
+  containerTpl: '<div class="g2-legend" style="position:absolute;top:20px;right:60px;width:auto;">'
+    + '<h4 class="g2-legend-title"></h4>' 
+    + '<ul class="g2-legend-itemlist" style="list-style-type:none;margin:0;padding:0;"></ul>'
+    + '</div>';
+  ```
+
+  如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
+
+  23. `itemTpl`: string
+
+  **当 `useHtml` 为 true 时生效**，用于指定生成图例的图例项 html 模板，默认值如下：
+  
+  ```js
+  itemTpl: '<li class="g2-legend-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 14px;">'
+    + '<i class="g2-legend-marker" style="width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:10px;background-color: {color};"></i>'
+    + '<span class="g2-legend-text">{value}</span>'
+    + '</li>';
+  ```
+
+  !注意：自定义模板时必须包含各个 dom 节点的 class，样式可以自定义。
+
+  24. `scroll`: boolean
+
+  **当 `useHtml` 为 true 时生效**，当用户使用 html 的时候，用于设置超出高度或者宽度是否出现滚动条，默认为 true。
+
+  25. `slidable`: boolean
+
+  **针对连续图例**，用于设置连续图例是否允许滑动，默认为 true，即开启滑动操作。
+
+  26. `width`: number
+
+  **针对连续图例**，用于设置图例的宽度。
+
+  27. `height`: number
+
+  **针对连续图例**，用于设置图例的高度。
+
+  28. `custom`: boolean
+
+  默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义图例，包括具体的图例项以及 click、hover 交互。
+
+  自定义图例时需要用户自己声明具体的图例项 `items`(该属性是一个对象数组，数组中每一项为一个对象类型，结构为：
+  `{ value: '', fill: '', marker: '' }`)以及图例项的 hover 和 click 事件。
+  
+  具体使用如下：
+
+  ```js
+  chart.legend({
+    custom: true,
+    items: [
+      { 
+        value: 'waiting', // 图例项的文本内容
+        fill: '#3182bd',  // 该图例项 marker 的填充颜色
+        marker: 'shape'  // 该图例项 marker 的形状，参见 marker 参数的说明
+      },
+      { value: 'call', fill: '#99d8c9', marker: 'shape' },
+      { value: 'people', fill: '#fdae6b', marker: 'shape' },
+    ],
+    onHover: ev => {}, // 自定义 hover 事件  
+    onClick: ev => {}, // 自定义 click 事件
+  });
+  ```
+
+  具体示例：
+
+  <div id="c2"></div>
+
+  ```js+
+  const data = [
+    { time: '10:10', call: 4, waiting: 2, people: 2},
+    { time: '10:15', call: 2, waiting: 6, people: 3},
+    { time: '10:20', call: 13, waiting: 2, people: 5},
+    { time: '10:25', call: 9, waiting: 9, people: 1},
+    { time: '10:30', call: 5, waiting: 2, people: 3},
+    { time: '10:35', call: 8, waiting: 2, people: 1},
+    { time: '10:40', call: 13, waiting: 1, people: 2 }
+  ];
+
+  const chart = new G2.Chart({
+    container: 'c2',
+    forceFit: true,
+    height: 400
+  });
+  chart.source(data, {
+    call: {
+      min: 0
+    },
+    people: {
+      min: 0
+    },
+    waiting: {
+      min: 0
+    }
+  });
+  chart.legend({
+    custom: true,
+    allowAllCanceled: true,
+    items: [
+      { value: 'waiting', fill: '#3182bd' }, 
+      { value: 'call', fill: '#99d8c9' }, 
+      { value: 'people', fill: '#fdae6b' }
+    ],
+    onClick: ev => {
+      const item = ev.item;
+      const value = item.value;
+      const checked = ev.checked;
+      const geoms = chart.getAllGeoms();
+      for (let i = 0; i < geoms.length; i++) {
+        const geom = geoms[i];
+        if (geom.getYScale().field === value) {
+          if (checked) {
+            geom.show();
+          } else {
+            geom.hide();
+          }
+        }
+      }
+    }
+  });
+  chart.axis('waiting', false);
+  chart.axis('call', false);
+  chart.axis('people', false);
+  chart.interval()
+    .position('time*waiting')
+    .color('#3182bd');
+  chart.line()
+    .position('time*call')
+    .color('#99d8c9')
+    .size(3)
+    .shape('smooth');
+  chart.line()
+    .position('time*people')
+    .color('#fdae6b')
+    .size(3)
+    .shape('smooth');
+  chart.point()
+    .position('time*people')
+    .color('#fdae6b')
+    .size(3)
+    .shape('circle');
+  chart.render();
+  ```
+
+## chart.tooltip()
+
+图表的 tooltip 配置，G2 图表的 tooltip 使用 html 渲染。
+
+### chart.tootip(false)
+
+关闭 tooltip 功能。
+
+### chart.tooltip(tooltipConfig)
+
+(tooltipConfig: object)
+
+配置 tooltip，该方法也可以如下调用：
+
+```js
+chart.tooltip(true, {
+  showTitle: false,
+  inPlot: false
+});
+```
+
+#### 参数
+
+- tooltipConfig: object
+
+是一个对象类型，支持的属性如下：
+
+  1. `showTitle`: boolean
+
+  是否展示提示信息的标题，默认为 true，即展示，通过设置为 false 来隐藏标题。
+
+  2. `title`: string
+
+  设置 tooltip 的标题展示的数据字段，设置该字段后，该标题即会展示该字段对应的数值。`showTitle` 为 false 时，该设置不生效。
+
+  3. `crosshairs`: object
+
+  是一个对象类型，用于设置 tooltip 的辅助线或者辅助框。
+
+  默认我们为 geom 为 ‘line’, ‘area’, ‘path’, ‘areaStack’ 开启了垂直辅助线；geom 为‘interval’ 默认会展示矩形背景框。如下图所示：
+
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/rCwHiXNfIVepGgMWKqdf.png" style="width: 100%;max-width:600px;">
+
+  该属性可支持的配置如下：
+
+  ```js
+  crosshairs: {
+    type: 'rect' || 'x' || 'y' || 'cross',
+    style: {
+      // 图形样式
+      fill: string, // 填充的颜色
+      stroke: string, // 边框的颜色
+      strokeOpacity: number, // 边框颜色的透明度，数值为 0 - 1 范围
+      fillOpacity: number, // 填充的颜色透明度，数值为 0 - 1 范围
+      lineWidth: number, // 边框的粗细
+      lineDash: number | array // 线的虚线样式
+    }
+  }
+  ```
+
+  > crosshairs.type 说明： `rect` 表示矩形框，`x` 表示水平辅助线，`y` 表示垂直辅助线，`cross` 表示十字辅助线。
+
+  4. `offset`: number
+
+  设置 tooltip 距离鼠标的偏移量。
+
+  5. `inPlot`: boolean
+
+  设置是否将 tooltip 限定在绘图区域内，默认为 true，即限定在绘图区域内。
+
+  6. `follow`: boolean
+
+  设置 tooltip 是否跟随鼠标移动。默认为 true，即跟随。
+
+  7. `shared`: boolean
+  
+  设置 tooltip 只展示单条数据。
+
+  8. `enterable`: boolean
+
+  用于控制是否允许鼠标进入 tooltip，默认为 false，即不允许进入。
+
+  9. `position`: string
+
+  该属性设置之后，就会在固定位置展示 tooltip，可设置的值为：`left`、`right`、`top`、`bottom`。
+
+  10. `containerTpl`: string
+
+  tooltip 默认的容器模板，默认值如下：
+
+  ```js
+  containerTpl: '<div class="g2-tooltip">'
+    + '<div class="g2-tooltip-title" style="margin:10px 0;"></div>'
+    + '<ul class="g2-tooltip-list"></ul>'
+    + '</div>',
+  ```
+
+  如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
+
+  11. `itemTpl`: string
+
+  tooltip 每项记录的默认模板，默认值如下：
+
+  ```js
+  itemTpl: '<li data-index={index}>'
+    + '<span style="background-color:{color};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>'
+    + '{name}: {value}'
+    + '</li>',
+  ```
+
+  如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
+
+  [自定义 html 模板示例](/zh-cn/g2/3.x/demo/other/cutomize-tooltip.html)
+  
+  <div id="c3"></div>
+  <style type="text/css">
+  .g2-tooltip{
+    position:absolute;
+    visibility:hidden;
+    border : 1px solid #efefef!important;
+    background-color: white!important;
+    color: #000!important;
+    opacity: .8;
+    padding: 5px 15px;
+
+    transition: top 200ms,left 200ms;
+    -moz-transition:  top 200ms,left 200ms;  /* Firefox 4 */
+    -webkit-transition:  top 200ms,left 200ms; /* Safari 和 Chrome */
+    -o-transition:  top 200ms,left 200ms;
+  }
+  .custom-table {
+    margin: 10px;
+  }
+  .custom-table td{
+    border: 1px solid #cdcdcd;
+    padding: 5px 8px;
+  }
+  </style>
+
+  ```js-
+const data = [
+    {"month": '一月', "tem":7, "city": "tokyo" },
+    {"month": '二月', "tem":6.9, "city": "tokyo" },
+    {"month": '三月', "tem":9.5, "city": "tokyo" },
+    {"month": '四月', "tem":14.5, "city": "tokyo" },
+    {"month": '五月', "tem":18.2, "city": "tokyo" },
+    {"month": '六月', "tem":21.5, "city": "tokyo" },
+    {"month": '七月', "tem":25.2, "city": "tokyo" },
+    {"month": '八月', "tem":26.5, "city": "tokyo" },
+    {"month": '九月' , "tem":23.3, "city": "tokyo" },
+    {"month": '十月', "tem":18.3, "city": "tokyo" },
+    {"month": '十一月', "tem":13.9, "city": "tokyo" }
+  ];
+  const chart = new G2.Chart({
+    container: 'c3',
+    forceFit: true,
+    height: 300
+  });
+  chart.source(data);
+  chart.tooltip({
+    containerTpl: '<div class="g2-tooltip">'
+      + '<p class="g2-tooltip-title"></p>'
+      + '<table class="g2-tooltip-list custom-table"></table>'
+      + '</div>', // tooltip的外层模板
+    itemTpl: '<tr><td style="color:{color}">{name}</td><td>{value}</td></tr>', // 支持的字段 index,color,name,value
+    offset: 50
+  });
+  chart.line().position('month*tem');
+  chart.render();
+  ```
+
+## chart.guide()
+
+用于绘制图表的辅助元素，该方法的返回值不为 chart 对象，而是一个 guide 对应的控制类。
+
+### chart.guide().line(cfg)
+
+绘制辅助线。
+
+```js
+chart.guide().line({
+  top: true | false, // 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  start: {object} || {function} || {array}, // 辅助线起始位置，值为原始数据值，支持 callback
+  end: {object} || {function}|| {array},// 辅助线结束位置，值为原始数据值，支持 callback
+  lineStyle: {
+    stroke: '#999', // 线的颜色
+    lineDash: [0, 2, 2], // 虚线的设置
+    lineWidth: 3 // 线的宽度
+  }, // 图形样式配置
+  text: {
+    position: 'start' || 'center' || 'end' || '39%' || 0.5, // 文本的显示位置
+    autoRotate: {boolean}, // 是否沿线的角度排布，默认为 true
+    style: {
+      // 文本图形样式配置
+    },
+    content: {string}, // 文本的内容
+    offsetX: {number}, // x 方向的偏移量
+    offsetY: {number} // y 方向的偏移量
+  }
+});
+```
+
+#### 参数
+
+- `top`: boolean
+
+指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
+
+- `start`: object | array | function
+
+指定辅助线的起始位置，该值的类型如下：
+
+  * object: 使用图表 x,y 对应的原始数据例如： {time: '2010-01-01', value: 200}
+  * array: 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
+    + x，y 都是原始数据 ['2010-01-01', 200];
+    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：['median', 200]
+    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如['50%', '50%'] 使得辅助元素居中
+  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+    
+    ```js
+    chart.guide().text({
+      position: function(xScale, yScale){
+        return []; // 位置信息
+      },
+      content: '最大值'
+    });
+    ```
+
+- `end`: object | array | function
+
+指定辅助线的结束位置，使用同 `start`。
+
+- `lineStyle`: object
+
+用于设置辅助线的显示样式。
+
+- `text`: object
+
+辅助线可以带文本，该属性使用如下：
+
+```js
+text: {
+  // 文本的显示位置，值除了指定的常量外，还可以是百分比或者小数
+  position: 'start' || 'center' || 'end' || '39%' || 0.5, 
+  // 指定文本是否沿着线的方向排布，默认为 true，即沿着线排布
+  autoRotate: boolean,
+  // 设置文本的显示样式
+  style: {
+    fill: 'red'
+  },
+  content: string, // 文本的内容
+  offsetX: number, // x 方向的偏移量
+  offsetY: number // y 方向的偏移量
+}
+```
+
+### chart.guide().text(cfg)
+
+绘制辅助文本。
+
+```js
+chart.guide().text({
+  top: true | false, // 指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  position: {object} || {function} || {array}, // 文本的起始位置，值为原始数据值，支持 callback
+  content: {string}, // 显示的文本内容
+  style: {
+    fill: '#666', // 文本颜色
+    fontSize: '12', // 文本大小
+    fontWeight: 'bold' // 文本粗细
+    rotate: 30 // 旋转角度
+  }, // 文本的图形样式属性
+  offsetX: {number}, // x 方向的偏移量
+  offsetY: {number} // y 方向偏移量
+});
+```
+
+#### 参数
+
+- `top`: boolean
+
+指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
+
+- `position`: object | array | function
+
+指定辅助文本的显示位置，该值的类型如下：
+
+  * object: 使用图表 x,y 对应的原始数据例如： {time: '2010-01-01', value: 200}
+  * array: 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
+    + x，y 都是原始数据 ['2010-01-01', 200];
+    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：['median', 200]
+    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如['50%', '50%'] 使得辅助元素居中
+  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+    
+    ```js
+    chart.guide().text({
+      position: function(xScale, yScale){
+        return []; // 位置信息
+      },
+      content: '最大值'
+    });
+    ```
+
+- `content`: string
+
+辅助文本的显示内容。
+
+- `style`: object
+
+用于设置辅助文本的显示样式。
+
+- `offsetX`: number
+
+设置辅助文本 x 方向的偏移量。
+
+- `offsetY`: number
+
+设置辅助文本 y 方向的偏移量。
+
+### chart.guide().image(cfg)
+
+辅助图片。
+
+```js
+// 辅助图片 image，只是指定了 start，则该点表示图片左上角坐标
+chart.guide().image({
+  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  start: {object} || {function} || {Aarray}, // 图片起始位置， 值为原始数据值，支持 callback
+  src: {string}, // 图片路径
+  width: {number},
+  height: {number},
+  offsetX: {number}, // x 方向的偏移量
+  offsetY: {number} // y 方向偏移量
+});
+// 辅助图片 image，通过指定 start 和 end 确定图片的位置和宽高
+chart.guide().image({
+  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层 
+  start: {array} || {function} || {array}, // 图片起始位置， 值为原始数据值，支持 callback
+  end: {array} || {function} || {array}, // 图片结束位置， 值为原始数据值，支持 callback
+  src: {string}, // 图片路径
+  offsetX: {number}, // x 方向的偏移量
+  offsetY: {number} // y 方向偏移量
+});
+```
+
+#### 参数
+
+- `top`: boolean
+
+指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
+
+- `start`: object | array | function
+
+指定辅助图片的起始位置，即图片的左上角，该值的类型如下：
+
+  * object: 使用图表 x,y 对应的原始数据例如： {time: '2010-01-01', value: 200}
+  * array: 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
+    + x，y 都是原始数据 ['2010-01-01', 200];
+    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：['median', 200]
+    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如['50%', '50%'] 使得辅助元素居中
+  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+    
+    ```js
+    chart.guide().text({
+      position: function(xScale, yScale){
+        return []; // 位置信息
+      },
+      content: '最大值'
+    });
+    ```
+
+- `end`: object | array | function
+
+可选，指定辅助图片的结束位置，即图片的右下角，该属性用法同 `start`。当 `start` 和 `end` 属性同时声明时，即指定了图片的宽度和高度。
+
+- `src`: string
+
+指定图片的地址，可以是路径，也可以是 base64 编码。
+
+- `width`: number
+
+**当仅指定了 `start` 属性时**，用于设置图片的宽度。
+
+- `height`: number
+
+**当仅指定了 `start` 属性时**，用于设置图片的高度。
+
+- `offsetX`: number
+
+设置图片 x 方向的偏移量。
+
+- `offsetY`: number
+
+设置图片 y 方向的偏移量。
+
+### chart.guide.region(cfg)
+
+辅助背景框。
+
+```js
+chart.guide().region({
+  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  start: {object} || {function} || {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
+  end: {object} || {function} || {array},// 辅助框结束位置，值为原始数据值，支持 callback
+  style: {
+    lineWidth: 0, // 辅助框的边框宽度
+    fill: '#f80', // 辅助框填充的颜色
+    fillOpacity: 0.1, // 辅助框的背景透明度
+    stroke: '#ccc' // 辅助框的边框颜色设置
+  } // 辅助框的图形样式属性
+});
+```
+
+#### 参数
+
+- `top`: boolean
+
+指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
+
+- `start`: object | array | function
+
+指定辅助背景框的起始位置，即背景框的左上角，该值的类型如下：
+
+  * object: 使用图表 x,y 对应的原始数据例如： {time: '2010-01-01', value: 200}
+  * array: 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
+    + x，y 都是原始数据 ['2010-01-01', 200];
+    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：['median', 200]
+    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如['50%', '50%'] 使得辅助元素居中
+  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+    
+    ```js
+    chart.guide().text({
+      position: function(xScale, yScale){
+        return []; // 位置信息
+      },
+      content: '最大值'
+    });
+    ```
+
+- `end`: object | array | function
+
+指定辅助背景框的结束位置，即背景框的右下角，该属性用法同 `start`。
+
+- `style`: object
+
+用于设置辅助背景框的样式。
+
+### chart.guide().html(cfg)
+
+辅助 html。
+
+```js
+chart.guide().html({
+  position: {object} || {function} || {array}, // html 的中心位置， 值为原始数据值，支持 callback
+  alignX: 'left' || 'middle' || 'right',
+  alignY: 'top' || 'middle' || 'bottom',
+  offsetX: {number},
+  offsetY: {number},
+  html: {string}, // html 代码
+  zIndex: {number}
+});
+```
+
+#### 参数
+
+- `position`: object | function | array
+
+设置 html 的显示位置，该值的类型如下：
+
+  * object: 使用图表 x,y 对应的原始数据例如： {time: '2010-01-01', value: 200}
+  * array: 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
+    + x，y 都是原始数据 ['2010-01-01', 200];
+    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：['median', 200]
+    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如['50%', '50%'] 使得辅助元素居中
+  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+    
+    ```js
+    chart.guide().text({
+      position: function(xScale, yScale){
+        return []; // 位置信息
+      },
+      content: '最大值'
+    });
+    ```
+
+- `alignX`: string
+
+html 的水平对齐方式，可取值为： `left`、`middle`、`right`，默认值为 `middle`。
+
+- `alignY`: string
+
+html 的垂直对齐方式，可取值为： `top`、`middle`、`bottom`，默认值为 `middle`。
+
+- `html`: string
+
+需要显示的 html 内容。
+
+- `zIndex`: number
+
+html 层级。
+
+- `offsetX`: number
+
+设置 html 在 x 方向的偏移量。
+
+- `offsetY`: number
+
+设置 html 在 y 方向的偏移量。
+
+### chart.guide().arc(cfg)
+
+辅助圆弧。
+
+```js
+chart.arc({
+ top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  start: {object} || {function} || {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
+  end: {object} || {function} || {array},// 辅助框结束位置，值为原始数据值，支持 callback
+  style: {
+
+  } // 图形样式属性
+});
+```
+
+#### 参数
+
+- `top`: boolean
+
+指定 guide 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层。
+
+- `start`: object | array | function
+
+指定辅助圆弧的起始位置，该值的类型如下：
+
+  * object: 使用图表 x,y 对应的原始数据例如： {time: '2010-01-01', value: 200}
+  * array: 数组来配置位置 [x, y]，根据数组中的值的存在以下几种形式：
+    + x，y 都是原始数据 ['2010-01-01', 200];
+    + x，y 可以使用原始数据的替代字符串 'min', 'max', 'median' , 例如：['median', 200]
+    + x, y 都是用百分比的形式，在绘图区域定位，字符串中存在 '%', 例如['50%', '50%'] 使得辅助元素居中
+  * function: 回调函数，可以动态的确定辅助元素的位置，应用于数据动态更新，辅助元素的位置根据数据变化的场景
+    
+    ```js
+    chart.guide().text({
+      position: function(xScale, yScale){
+        return []; // 位置信息
+      },
+      content: '最大值'
+    });
+    ```
+
+- `end`: object | array | function
+
+指定辅助圆弧的结束位置，该属性用法同 `start`。
+
+- `style`: object
+
+设置圆弧的显示样式。
+
+## chart.facet()
+
+(type:string, config:object)
+
+用于生成分面。
+
+```js
+chart.facet(type, {
+  fileds: [field1, field2...],
+  showTitle: true, // 显示标题
+  autoSetAxis: true, // 自动设置坐标轴的文本，避免重复和遮挡
+  padding: 10, // 每个 view 之间的间距
+  eachView: function(view, facet) { // facet中有行列等信息
+    /*
+     facet 的常见属性：data, rows,cols,rowIndex,colIndex,rowField,colField
+    */
+  },
+  // 列标题
+  colTitle: {
+    offsetY: -15,
+    style: {
+      fontSize: 14,
+      textAlign: 'center',
+      fill: '#444'
+    }
+  },
+  // 行标题
+  rowTitle: {
+    offsetX: 15,
+    style: {
+      fontSize: 14,
+      textAlign: 'center',
+      rotate: 90,
+      fill: '#444'
+    }
+  }
+})
+```
+
+### 参数
+
+- `type`: string
+
+分面类型，现支持的类型为：`rect`, `list`, `tree`, `mirror`, `matrix`。
+
+- `fileds`: string | array
+
+设置分面的字段，用于划分数据集。
+
+- `showTitle`: boolean
+
+是否显示分面的标题，默认为 true，即展示。
+
+- `autoSetAxis`: boolean
+
+是否自动设置坐标轴的文本，避免重复和遮挡，默认为 true，即自动设置。
+
+- `padding`: number | array
+
+设置每个 view 之间的间距。`padding` 是view 的内部边距，所以不会影响布局。
+
+- `eachView`: function
+
+回调函数，用于绘制每一个分面对应 view。该回调函数的内容如下：
+
+```js
+eachView: function(view, facet) {
+  // 每个分面对应一个 view 对象
+  // facet 参数包含 data, rows,cols,rowIndex,colIndex,rowField,colField 如下属性。
+}
+```
+
+- `colTitle`: object | null
+
+分面列标题设置，可设置属性如下，如果属性值为 null，表示不展示列标题
+
+```js
+colTitle: {
+  offsetY: -15, // 列标题垂直方向的偏移
+  style: {
+    fontSize: 14,
+    textAlign: 'center',
+    fill: '#444'
+  } // 标题文本样式
+}
+```
+
+- `rowTitle`: object | null
+
+分面行标题设置，可设置属性如下，如果属性值为 null，表示不展示列标题
+
+```js
+rowTitle: {
+  offsetX: -15, // 列标题水平方向的偏移
+  style: {
+    fontSize: 14,
+    textAlign: 'center',
+    fill: '#444'
+  } // 标题文本样式
+}
+```
+
+!注意：`showTitle` 和 `autoSetAxis` 用于控制分面的默认行为；`colTitle` 和 `rowTitle` 是通过 `chart.guild().text()` 来实现的，所以所有 `chart.guild().text()` 的参数都生效。
+
+#### 示例
+
+<div id="c4"></div>
+
+```js+
+var data = [
+  {gender:'男',count:40,'class': '一班',grade: '一年级'},
+  {gender:'女',count:30,'class': '一班',grade: '一年级'},
+  {gender:'男',count:35,'class': '二班',grade: '一年级'},
+  {gender:'女',count:45,'class': '二班',grade: '一年级'},
+  {gender:'男',count:20,'class': '三班',grade: '一年级'},
+  {gender:'女',count:35,'class': '三班',grade: '一年级'},
+  {gender:'男',count:30,'class': '一班',grade: '二年级'},
+  {gender:'女',count:40,'class': '一班',grade: '二年级'},
+  {gender:'男',count:25,'class': '二班',grade: '二年级'},
+  {gender:'女',count:32,'class': '二班',grade: '二年级'},
+  {gender:'男',count:28,'class': '三班',grade: '二年级'},
+  {gender:'女',count:36,'class': '三班',grade: '二年级'}
+];
+var DataView = DataSet.DataView;
+var chart = new G2.Chart({
+  container: 'c4',
+  width: 800,
+  height: 400,
+  animate: false,
+  padding: [0, 90, 80, 80]
+});
+chart.source(data);
+chart.coord('theta');
+chart.tooltip({
+  showTitle: false
+});
+chart.facet('tree', {
+  fields: ['grade','class'],
+  line: {
+    stroke: '#00a3d7'
+  },
+  lineSmooth: true,
+  eachView(view, facet) {
+    var data = facet.data;
+    var dv = new DataView();
+    dv.source(data).transform({
+      type: 'percent',
+      field: 'count',
+      dimension: 'gender',
+      as: 'percent'
+    });
+    view.source(dv, {
+      percent: {
+        formatter(val) {
+          return (val * 100).toFixed(2) + '%';
+        }
+      }
+    });
+    view.intervalStack().position('percent').color('gender');
+  }
+}); 
+chart.render();
+```
+
+## chart.filter()
+
+(field:string, callback:function)
+
+过滤数据，如果存在对应的图例，则过滤掉的字段置灰。
+
+### 参数
+
+- `field`: string 
+
+  指定过滤的数据字段。
+
+- `callback`: function
+
+  回调函数，用于过滤满足条件的数据。使用如下：
+
+  ```js
+  chart.filter('x', val => {
+    // val 参数为 x 字段对应的数据值。
+    return val > 20; // 图表将会只渲染数值大于 20 的数值。
+  });
+  ```
+
+## chart.view()
+
+创建视图，返回 view 对象（详见 [View](./view.html)）。
+
+```js
+chart.view({
+  start: { x: 0, y: 0 },
+  end: { x: 0.5, y: 0.5 },
+  padding: 0,
+  animate: true
+});
+```
+
+### 参数
+
+- `start`: Object
+
+view 的绘图区域的起始点，结构如下：
+
+```js
+start: {
+  x: 0, // 为 0 - 1 范围的值
+  y: 0 // 为 0 - 1 范围的值
+}
+```
+
+- `end`: Object
+
+view 的绘图区域的结束点，结构如下：
+
+```js
+end: {
+  x: 1, // 为 0 - 1 范围的值
+  y: 1 // 为 0 - 1 范围的值
+}
+```
+
+- `padding`: number | array | object
+
+设置 view 的内边距，支持如下几种设置方式：
+
+1. `padding: [ 20, 30, 20, 30]`
+2. `padding: 20`
+3. `padding: { top: 20, right: 30, bottom: 20, left: 30 }`
+
+另外也支持设置百分比，如 `padding: [ 20%, 30% ]`，该百分比相对于整个图表的宽高。
+
+padding 为数字以及数组类型时使用方法同 CSS 盒模型。
+
+- `animate`: boolean
+
+是否视图默认带动画，默认为 true，即带动画。
+
+## chart.animate()
+
+(enable: boolean)
+
+用于动画的开启关闭。
+
+## chart.forceFit()
+
+当父元素宽度变化时，通过调用此方法达到宽度自适应。当然也可以在创建 chart 实例时设置 `forceFit` 属性。
+
+## chart.line()
+
+创建线图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.point()
+
+创建点图图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.path()
+
+创建路径图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.area()
+
+创建区域图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.interval()
+
+创建柱图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.polygon()
+
+创建多边形，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.schema()
+
+创建 K 线、箱型图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.edge()
+
+创建树图、流程图、关系图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.heatmap()
+
+创建热力图，返回一个 geom 对象，详见 [Geom](./geom.html)。
+
+## chart.render()
+
+图表绘制的最后一步，用于将图表渲染至画布。
+
+## chart.clear()
+
+清空图表上所有的绘制内容，但是不销毁图表。
+
+## chart.repaint()
+
+图表重绘。
+
+## chart.destroy()
+
+销毁图表，删除生成的图表对象。
+
+## chart.changeData()
+
+(data: array | DataView)
+
+用于修改图表的数据源，注意这里 data 的数据结构需要同原始的数据结构保持一致。
+
+## chart.changeSize()
+
+(width: number, height: number)
+
+更改图表的大小。
+
+### 参数
+
+- `width`: number
+ 
+  图表宽度。
+
+- `height`: number
+
+  图表高度。
+
+## chart.changeWidth()
+
+(width: number)
+
+更改图表的宽度。
+
+### 参数
+
+- `width`: number
+ 
+  图表宽度。
+
+## chart.changeHeight()
+
+(height: number)
+
+更改图表的高度。
+
+#### 参数
+
+- `height`: number
+ 
+  图表高度。
+
+## chart.getXScale()
+
+返回图表 x 轴对应的度量[Scale](./scale.html)。
+
+## chart.getYScales()
+
+获取图表所有 y 轴的度量[Scale](./scale.html)，以数组的形式返回。
+
+## chart.getXY()
+
+(item: object)
+
+获取数据对应在画布空间的坐标。返回的结果为一个对象，格式如下：
+
+```javascript
+{
+  x: 12, // 画布上的横坐标
+  y: 34 // 画布上的纵坐标
+}
+```
+
+如果传入的数据不在画布空间内，则返回 null。
+
+### 参数
+
+参数是一个 Object 类型，结构如下：
+
+```js
+{
+  'x 轴对应的字段名': '该字段名对应的数值',
+  'y 轴对应的字段名': '该字段名对应的数值'
+}
+```
+
+#### 代码实例
+
+```js
+var data = {
+  cut: 'a', price: 1,
+  cut: 'b', price: 2,
+  cut: 'c', price: 3,
+  cut: 'd', price: 4
+};
+
+chart.getXY({
+  cut: 'b',
+  price: 2
+});
+```
+
+## chart.getSnapRecords()
+
+(point: object)
+
+获取逼近的点 point 的原始数据集合。
+
+### 参数
+
+point 的格式如下，表示的是画布坐标：
+
+```js
+var point= {
+  x: 100,
+  y: 200
+}
+```
+
+返回结果为一个数组。
+
+## chart.getAllGeoms()
+
+获取图表中所有的几何标记对象 [geom](./geom.html)，返回的结果是一个数组： [geom, geom, ...]。
+
+## chart.changeVisible()
+
+(visible: boolean)
+
+显示或者隐藏。
+
+## chart.toDataURL()
+
+返回图表的 dataUrl 用于生成图片，返回 dataUrl 路径。
+
+## chart.downloadImage()
+
+(name: string)
+
+图表导出功能，通过传入 name 来指定下载图片的文件名。
+
+### 参数
+
+- `name`: string
+
+图片的名称，如不指定，则默认为 chart.png。
+
+## chart.showTooltip()
+
+(point: object)
+
+根据传入的坐标点显示对应的 tooltip 信息，这个方法通常同 `chart.getXY()`](/zh-cn/g2/3.x/api/Chart.html#_chart.getXY-) 配合使用。
+
+point 是一个对象，代表画布上的坐标点，参数格式如下：
+
+  ```js
+  {
+    x: 12, // 画布上的横坐标
+    y: 34 // 画布上的纵坐标
+  }
+  ```
+
+## chart.hideTooltip()
+
+隐藏 tooltip，返回 chart 对象。
+
+## chart.getTooltipItems() 
+
+(point: object)
+
+根据传入的坐标点 point，获取当前坐标点上的 tooltip 信息，point 的格式如下，表示的是画布坐标：
+
+```js
+var point= {
+  x: 100,
+  y: 200
+}
+```
+
+## 事件
+
+在 G2 中，我们将事件分为如下事件：
+
+1. 画布基础事件，如 mousedown click dblclick 等；
+
+```js
+chart.on('mousedown', ev => {});
+chart.on('mousemove', ev => {});
+chart.on('mouseleave', ev => {});
+chart.on('mouseup', ev => {});
+chart.on('click', ev => {});
+chart.on('dblclick', ev => {});
+chart.on('touchstart', ev => {});
+chart.on('touchmove', ev => {});
+chart.on('touchend', ev => {});
+```
+
+2. 绘图区域事件，如 plotmove plotclick 等；
+ 
+```js
+chart.on('plotenter', ev => {});
+chart.on('plotmove', ev => {});
+chart.on('plotleave', ev => {});
+chart.on('plotclick', ev => {});
+chart.on('plotdblclick', ev => {});
+```
+
+3. tooltip 事件；
+
+```js
+chart.on('tooltip:show', ev => {}); // tooltip 展示
+chart.on('tooltip:hide', ev => {}); // tooltip 隐藏
+chart.on('tooltip:change', ev => {}); // tooltip 内容发生变化的时候
+```
+ 
+4. 图形元素事件，即组成图表的各种图形元素；
+   我们以 『图形元素名』+ 『基础事件名』 的方式来组合图形元素上的事件，帮助用户进行更精准的事件监听，同时也给交互提供了更大的可能性。图形元素事件对象上都会携带 `shape` 属性，即表示当前被触发的图形元素。
+
+```javascript
+chart.on('point:click', ev => {});
+chart.on('axis-label:click', ev => {});
+```
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/IPADBHMAzjLQKQzPkxOO.png" width="60%">
+
+下图展示了图表各个组件的名称：
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/IXRZJVKWYEdafYAzbsXO.png" width="80%">
+
+下图通过监听 `interval:mouseenter` 和 `interval:mouseleave` 事件，定义当鼠标 hover 的交互。
+
+<div id="c5"></div>
+
+```js+
+    const data = [
+      { country: 'Lithuania', litres: 501.9 },
+      { country: 'Czech Republic', litres: 301.9 },
+      { country: 'Ireland', litres: 201.1 },
+      { country: 'Germany', litres: 165.8 },
+      { country: 'Australia', litres: 139.9 },
+      { country: 'Austria', litres: 128.3 },
+      { country: 'UK', litres: 99 },
+      { country: 'Belgium', litres: 60 },
+      { country: 'The Netherlands', litres: 50 }
+    ];
+
+    const ds = new DataSet();
+    const dv = ds.createView()
+      .source(data)
+      .transform({
+        type: 'percent',
+        field: 'litres',
+        dimension: 'country',
+        as: 'percent'
+      });
+
+    const chart = new G2.Chart({
+      container: 'c5',
+      forceFit: true,
+      height: 400
+    });
+    chart.source(dv, {
+      percent: {
+        formatter: val => {
+          val = (val * 100).toFixed(2) + '%';
+          return val;
+        }
+      },
+      nice: false
+    });
+    chart.coord('theta', {
+      innerRadius: 0.3,
+      radius: 0.95
+    });
+    chart.tooltip({
+      showTitle: false
+    });
+    chart.intervalStack()
+      .position('percent')
+      .color('country', [ '#67b7dc', '#84b761', '#fdd400', '#cc4748', '#cd82ad', '#2f4074', '#448e4d', '#b7b83f', '#b9783f' ])
+      .label('percent', {
+        formatter: (val, item) => {
+          return item.point.country + ': ' + val;
+        }
+      })
+      .style({
+        lineWidth: 2,
+        stroke: '#fff'
+      });
+    chart.render();
+    const canvas = chart.get('canvas');
+    chart.on('interval:mouseenter', ev => {
+      const shape = ev.shape;
+      const coord = chart.get('coord');
+      if (!shape.get('selected')) {
+        if (!shape.get('_originAttrs')) {
+          shape.set('_originAttrs', G2.Util.cloneDeep(shape.__attrs));
+        }
+        shape.attr('shadowBlur', 40);
+        shape.attr('shadowColor', 'rgba(0, 0, 0, 0.3)');
+        shape.attr('transform', [
+          [ 't', -coord.getCenter().x, -coord.getCenter().y ],
+          [ 's', 1.1, 1.1 ],
+          [ 't', coord.getCenter().x, coord.getCenter().y ]
+        ]);
+        canvas.draw();
+      }
+    });
+    chart.on('interval:mouseleave', ev => {
+      const shape = ev.shape;
+      if (!shape.get('selected') && shape.get('_originAttrs')) {
+        shape.__attrs = shape.get('_originAttrs');
+        shape.set('_originAttrs', null);
+        canvas.draw();
+      }
+    });
+```
