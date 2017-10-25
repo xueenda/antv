@@ -1,0 +1,48 @@
+<!--
+index: 10
+title: 分组
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 分组
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+    // TODO
+    $.getJSON('/assets/data/iris-flower.json', data => {
+        const dv = new DataSet.View().source(data);
+        dv
+            .transform({
+                type: 'bin.histogram',
+                field: '萼片长度',     // 对应坐标轴上的一个点
+                bins: 10,         // 两个方向上的分箱个数
+                groupBy: ['品种'],
+                as: [ 'x', 'count' ] //
+            })
+            .transform({
+                type: 'proportion',
+                field: 'count',
+                dimension: '品种',
+                as: 'proportion'
+            });
+
+        G2.Global.widthRatio.column = 1;
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+        });
+        chart.source(dv);
+        chart.coord('polar').transpose();
+
+        chart.intervalStack()
+            .position('品种*proportion')
+            .color('品种');
+
+        chart.render();
+    });
+</script>
