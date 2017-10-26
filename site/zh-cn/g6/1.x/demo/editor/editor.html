@@ -1,0 +1,127 @@
+<!--
+title: 网图编辑器（默认）
+description: 该图向大家展示了如何利用 G6 快速搭建流程图编辑器
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+G6.registNode('customNode1', {
+  draw: function(cfg, group) {
+    var shape = group.addShape('rect', {
+      attrs: {
+        x: cfg.x-40,
+        y: cfg.y-40,
+        width: 80,
+        height: 80,
+        fill: '#fff',
+        stroke: 'green'
+      }
+    });
+    return shape;
+  },
+  getAnchorPoints: function(){
+    return [
+      [0, 0.25],
+      [0, 0.5],
+      [0, 0.75],
+      [1, 0.25],
+      [1, 0.5],
+      [1, 0.75],
+      [0.25, 0],
+      [0.5, 0],
+      [0.75, 0],
+      [0.25, 1],
+      [0.5, 1],
+      [0.75, 1]
+    ];
+  }
+}, 'rect');
+
+G6.registNode('customNode2', {
+  draw: function(cfg, group) {
+    var shape = group.addShape('rect', {
+      attrs: {
+        x: cfg.x-40,
+        y: cfg.y-40,
+        width: 80,
+        height: 80,
+        fill: '#fff',
+        stroke: 'red'
+      }
+    });
+    return shape;
+  }
+}, 'customNode1');
+
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="addCustom1">自定义形1</button>');
+$('#toolBar').append('<button id="addCustom2">自定义形2</button>');
+$('#toolBar').append('<button id="addLine">添加直线</button>');
+$('#toolBar').append('<button id="addSmooth">添加曲线</button>');
+$('#toolBar').append('<button id="addPolyLineFlow">添加折线流程线</button>');
+$('#toolBar').append('<button id="drag">拖拽模式</button>');
+$('#toolBar').append('<button id="edit">编辑模式</button>');
+$('#toolBar').append('<button id="save">保存</button>');
+
+var addCustom1 = $('#addCustom1');
+var addCustom2 = $('#addCustom2');
+var drag = $('#drag');
+var edit = $('#edit');
+var addLine = $('#addLine');
+var addSmooth = $('#addSmooth');
+var addPolyLineFlow = $('#addPolyLineFlow')
+var save = $('#save');
+var net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  mode: 'edit',  // 编辑模式
+  fitView: 'cc', // 自适应视口为左上
+  height: window.innerHeight    // 画布高
+});
+addCustom1.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'customNode1'
+  });
+});
+
+addCustom2.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'customNode2'
+  });
+});
+
+addLine.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'line'
+  });
+});
+
+addSmooth.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'smooth'
+  });
+});
+
+addPolyLineFlow.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'polyLineFlow'
+  });
+});
+
+drag.on('click', function(ev) {
+  net.changeMode('drag');
+});
+
+edit.on('click', function(ev) {
+  net.changeMode('edit');
+});
+
+save.on('click', function(ev) {
+  var saveData = net.save();
+  var json = JSON.stringify(saveData, null, 2)
+  console.log(saveData, json);
+});
+net.render();
+</script>

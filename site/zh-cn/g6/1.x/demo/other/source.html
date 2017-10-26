@@ -1,0 +1,66 @@
+<!--
+title: 加载数据
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var data = {
+  "nodes": [
+    {
+      "shape": "circle",
+      "label": "文本",
+      "x": 150,
+      "y": 170,
+      "id": "0372c42e",
+      "size": 50,
+      "style": {
+        "fill": "red"
+      }
+    },
+    {
+      "shape": "rect",
+      "label": "文本",
+      "x": 340,
+      "y": 80,
+      "id": "2ba5018b"
+    }
+  ],
+  "edges": [
+    {
+      "shape": "smooth",
+      "source": "0372c42e",
+      "target": "2ba5018b",
+      "id": "2d69912a",
+      "targetAnchor": 2,
+      "sourceAnchor": 1,
+      "controlPoints": [
+        {
+          "x": 150,
+          "y": 144.5
+        },
+        {
+          "x": 280,
+          "y": 160
+        },
+        {
+          "x": 340,
+          "y": 96
+        }
+      ]
+    }
+  ]
+};
+var Util = G6.Util;
+var net = new G6.Net({
+  id: 'mountNode',            // 容器ID
+  grid: null,
+  fitView:'cc',
+  height: window.innerHeight          // 画布高
+});
+net.source(data.nodes, data.edges);
+net.render();
+</script>

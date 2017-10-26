@@ -1,195 +1,103 @@
 <!--
-title: 页面流量分析（一）
-description: 该图展示了页面之间的流量流转。该示例主要向大家展示，利用 fill 的技法，可简易的实现分层色块。
+title: 统一分层布局 DAGRE 
+description: 展示统一分层布局的使用
 index: 1
-
 -->
-<script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins/dist/g6-plugins.min.js"></script>
+<script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.17/dist/g6-plugins.min.js"></script>
 <script type="text/javascript">
-    const data = {
-        "nodes": [
-            {
-                "shape": "rect",
-                "label": "首页",
-                "keep": 90,
-                "runoff": 30,
-                "id": "add1174b"
-            },
-            {
-                "shape": "rect",
-                "label": "页面1",
-                "keep": 70,
-                "runoff": 30,
-                "id": "fbc69eaa"
-            },
-            {
-                "shape": "rect",
-                "label": "页面2",
-                "keep": 10,
-                "runoff": 90,
-                "id": "6d0df4b8"
-            },
-            {
-                "shape": "rect",
-                "label": "页面3",
-                "keep": 40,
-                "runoff": 60,
-                "id": "fcaedf74"
-            },
-            {
-                "shape": "rect",
-                "label": "页面4",
-                "keep": 1,
-                "runoff": 99,
-                "id": "0ce831a6"
-            },
-            {
-                "shape": "rect",
-                "label": "页面5",
-                "keep": 15,
-                "runoff": 85,
-                "id": "46c87dc5"
-            },
-            {
-                "shape": "rect",
-                "label": "页面6",
-                "keep": 1,
-                "runoff": 99,
-                "id": "a7ae06e1"
-            },
-            {
-                "shape": "rect",
-                "label": "页面7",
-                "keep": 1,
-                "runoff": 99,
-                "id": "97d725aa"
-            },
-            {
-                "shape": "rect",
-                "label": "页面8",
-                "keep": 1,
-                "runoff": 99,
-                "id": "1009d1ce"
-            }
-        ],
-        "edges": [
-            {
-                "source": "add1174b",
-                "target": "fbc69eaa",
-                "val": 80,
-                "id": "ae85ce02"
-            },
-            {
-                "source": "add1174b",
-                "target": "6d0df4b8",
-                "val": 40,
-                "id": "4f2a272a"
-            },
-            {
-                "source": "add1174b",
-                "target": "fcaedf74",
-                "val": 47,
-                "id": "e1d27d5d"
-            },
-            {
-                "source": "fbc69eaa",
-                "target": "0ce831a6",
-                "val": 70,
-                "id": "ebb1bb90"
-            },
-            {
-                "source": "fbc69eaa",
-                "target": "46c87dc5",
-                "val": 60,
-                "id": "de5483e7"
-            },
-            {
-                "source": "fcaedf74",
-                "target": "a7ae06e1",
-                "val": 50,
-                "id": "38631f93"
-            },
-            {
-                "source": "6d0df4b8",
-                "target": "97d725aa",
-                "val": 40,
-                "id": "ca7e320d"
-            },
-            {
-                "source": "46c87dc5",
-                "target": "1009d1ce",
-                "val": 30,
-                "id": "7dc8fe14"
-            },
-            {
-                "source": "fbc69eaa",
-                "target": "a7ae06e1",
-                "val": 20,
-                "id": "a0318c7b"
-            }
-        ]
-    };
-    const dagre = new G6.Plugins['layout.dagre']({
-        rankdir: 'LR',
-        nodesep: 100,
-        ranksep: 100
-    });
-    G6.registNode('rect', {
-        // 设置锚点
-        getAnchorPoints: function(){
-            return [
-                [1, 0.5], // 右边边的中点
-                [0, 0.5] // 左边边的中点
-            ];
-        }
-    });
-    const net = new G6.Net({
-        id: "mountNode",     // 此处替换容器id
-        height: 450,         // 此处替换高度
-        fitView: 'autoZoom', // 自动缩放
-        plugins: [dagre]
-    });
-    net.source(data.nodes, data.edges);
-    net.node()
-        .style(function(obj){
-            const domain = 100;
-            const keep = obj.keep;
-            const runoff = obj.runoff;
-            const keepRatio = keep/domain;
-            const attrs = {};
-            if(keep && runoff){
-                attrs.fill = 'l (0) 0:#00A263 ' + keepRatio + ':#00A263 ' + keepRatio + ':#E6504A';
-            }
-            attrs.fillOpacity = 0.4;
-            return attrs;
-        });
-    net.edge()
-        .size(function(obj){
-            return obj.val/100 * 6;
-        })
-        .shape('smooth')
-        .style({
-            stroke: "#00A263",
-            strokeOpacity: 0.6,
-            arrow: true
-        });
-    net.add('node', {
-        "shape": "circle",
-        "label": "留存",
-        "x": 370,
-        "y": 500,
-        "size": 40,
-        "color": "#00A263",
-        "id": "2ff55156"
-    });
-    net.add('node', {
-        "shape": "circle",
-        "label": "流失",
-        "x": 440,
-        "y": 500,
-        "size": 40,
-        "color": "#E54E48",
-        "id": "0c134755"
-    });
-    net.render();
+var data = {
+    "nodes": [
+      {
+        "shape": "rect",
+        "label": "流程b1",
+        "id": "e4d76a7f"
+      },
+      {
+        "shape": "rect",
+        "label": "流程a1",
+        "id": "f1484ff9"
+      },
+      {
+        "shape": "rect",
+        "label": "开始",
+        "id": "827c30fc"
+      },
+      {
+        "shape": "rect",
+        "label": "结束",
+        "id": "6ca66cc0"
+      },
+      {
+        "shape": "rect",
+        "label": "流程a3",
+        "id": "c06c2256"
+      },
+      {
+        "shape": "rect",
+        "label": "流程b2",
+        "id": "1de16a07"
+      },
+      {
+        "shape": "rect",
+        "label": "流程a2",
+        "id": "3b63e239"
+      }
+    ],
+    "edges": [
+      {
+        "source": "827c30fc",
+        "target": "e4d76a7f",
+        "id": "52eaf313"
+      },
+      {
+        "source": "827c30fc",
+        "target": "f1484ff9",
+        "id": "66daf43b"
+      },
+      {
+        "source": "e4d76a7f",
+        "target": "1de16a07",
+        "id": "e5c4e030"
+      },
+      {
+        "source": "f1484ff9",
+        "target": "3b63e239",
+        "id": "7ccbcdac"
+      },
+      {
+        "source": "1de16a07",
+        "target": "6ca66cc0",
+        "id": "5fca64c8"
+      },
+      {
+        "source": "3b63e239",
+        "target": "1de16a07",
+        "id": "0afb7710"
+      },
+      {
+        "source": "f1484ff9",
+        "target": "c06c2256",
+        "id": "c511e9b6"
+      },
+      {
+        "source": "c06c2256",
+        "target": "6ca66cc0",
+        "id": "e558b462"
+      }
+    ]
+  };
+var dagre = new G6.Plugins['layout.dagre']({
+    rankdir: 'LR',
+    nodesep: 100,
+    ranksep: 100,
+});
+var net = new G6.Net({
+    id: 'mountNode',
+    height: window.innerHeight,
+    fitView: 'cc',
+    plugins: [dagre]
+});
+net.source(data.nodes, data.edges);
+net.edge().shape('arrow');
+net.render();
 </script>

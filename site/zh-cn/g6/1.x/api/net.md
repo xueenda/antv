@@ -11,13 +11,13 @@
 
 ## 属性
 
-### [clipboard](#clipboard) {Boolean}
+### [clipboard](#_clipboard) {Boolean}
 剪贴板 `false`
 
-### [rollback](#rollback) {Boolean}
+### [rollback](#_rollback) {Boolean}
 回滚存储，默认值 `false`
 
-### [modes](#modes) {Object}
+### [modes](#_modes) {Object}
 
 默认值
 
@@ -46,7 +46,7 @@
 }
 ```
 
-### [behaviourSignal](#behaviourSignal) {Boolean}
+### [behaviourSignal](#_behaviourSignal) {Boolean}
 交互信号量
 
 ```js
@@ -58,7 +58,7 @@
 
 ## 实例方法
 
-### [updateAnchor](#updateAnchor) {Function}
+### [updateAnchor](#_updateAnchor) {Function}
 
 更新锚点
 
@@ -78,7 +78,7 @@ net.showAnchor(node, anchorIndex, {
 });
 ```
 
-### [showAnchor](#showAnchor) {Function}
+### [showAnchor](#_showAnchor) {Function}
 
 显示锚点
 
@@ -91,7 +91,7 @@ net.showAnchor(node, anchorIndex, {
 net.showAnchor(node);
 ```
 
-### [hideAnchor](#hideAnchor) {Function}
+### [hideAnchor](#_hideAnchor) {Function}
 
 隐藏锚点
 
@@ -104,7 +104,7 @@ net.showAnchor(node);
 net.hideAnchor(node);
 ```
 
-### [add](#add) {Function}
+### [add](#_add) {Function}
 
 添加节点或边
 
@@ -118,18 +118,42 @@ net.hideAnchor(node);
 net.add(type, model);
 ```
 
-### [source](#source) {Function}
+### [source](#_source) {Function}
 
-加载数据源，接受 `nodes`、`edges`
+加载数据源
+
+**以下字段对默认的`node`有特定含义**
 
 ```js
-/**
- * 加载数据源
- * @param  {Array} nodes 节点集
- * @param  {Array} edges 边集
- */
-net.source(nodes, edges);
+{
+  id,      // 唯一标识
+  x,       // x 坐标
+  y,       // y 坐标
+  size,    // 尺寸
+  style,   // 样式
+  color,   // 颜色
+  shape,   // 形状
+  label    // 标注
+}
 ```
+
+**以下字段对默认的`edge`有特定含义**
+
+```js
+{
+  id,            // 唯一标识
+  size,          // 尺寸
+  style,         // 样式
+  color,         // 颜色
+  shape,         // 形状
+  label,         // 标注
+  controlPoints, // 控制点
+  sourceAnchor,  // 连接源节点锚点索引
+  targetAnchor   // 连接目标节点锚点索引
+}
+```
+
+[示例](../demo/other/source.html)
 
 
 编辑器示例：
@@ -230,32 +254,32 @@ save.on('click', function(ev) {
 net.render();
 ```
 
-[示例源码](/g6/demo/06-other/editor.html)
+[示例源码](../demo/other/editor.html)
 
-### [beginAdd](#beginAdd) {Function}
+### [beginAdd](#_beginAdd) {Function}
 
 开始添加元素，通常配合编辑器一并使用。
 
-### [endAdd](#endAdd) {Function}
+### [endAdd](#_endAdd) {Function}
 
 结束添加元素，通常配合编辑器一并使用。
 
-### [copy](#copy) {Function}
+### [copy](#_copy) {Function}
 
 复制激活子项
 
-### [paste](#paste) {Function}
+### [paste](#_paste) {Function}
 
 粘贴激活子项
 
-### [del](#del) {Function}
+### [del](#_del) {Function}
 
 删除激活子项
 
-### [undo](#undo) {Function}
+### [undo](#_undo) {Function}
 
 撤销
 
-### [redo](#redo) {Function}
+### [redo](#_redo) {Function}
 
 重做

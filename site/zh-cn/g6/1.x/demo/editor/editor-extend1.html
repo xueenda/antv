@@ -1,0 +1,200 @@
+<!--
+title: 网图编辑器（变型1）
+description: 该图向大家展示了如何在 G6 默认的交互上，稍加修改，快速搭建流程图编辑器变型
+index: 2
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var data = {
+  "nodes": [{
+    "shape": "customNode1",
+    "x": 280,
+    "y": 100,
+    "id": "27c5046d"
+  }, {
+    "shape": "customNode1",
+    "x": 300,
+    "y": 330,
+    "id": "99d69b85"
+  }, {
+    "shape": "customNode2",
+    "x": 400,
+    "y": 220,
+    "id": "f8cfdbd2"
+  }, {
+    "shape": "customNode1",
+    "x": 80,
+    "y": 210,
+    "id": "3fabea06"
+  }],
+  "edges": [{
+    "shape": "polyLineFlow",
+    "source": "27c5046d",
+    "target": "99d69b85",
+    "id": "73b7ef7f",
+    "sourceAnchor": 10,
+    "targetAnchor": 7
+  }, {
+    "shape": "polyLineFlow",
+    "source": "27c5046d",
+    "target": "f8cfdbd2",
+    "id": "cc306f85",
+    "sourceAnchor": 4,
+    "targetAnchor": 7
+  }, {
+    "shape": "polyLineFlow",
+    "source": "27c5046d",
+    "target": "f8cfdbd2",
+    "id": "519d49a4",
+    "sourceAnchor": 7,
+    "targetAnchor": 3
+  }, {
+    "shape": "polyLineFlow",
+    "source": "27c5046d",
+    "target": "3fabea06",
+    "id": "286f8ca2",
+    "sourceAnchor": 2,
+    "targetAnchor": 3
+  }, {
+    "shape": "polyLineFlow",
+    "source": "27c5046d",
+    "target": "3fabea06",
+    "id": "f559fec8",
+    "sourceAnchor": 6,
+    "targetAnchor": 0
+  }, {
+    "shape": "polyLineFlow",
+    "source": "27c5046d",
+    "target": "3fabea06",
+    "id": "4b0a2dcf",
+    "sourceAnchor": 9,
+    "targetAnchor": 5
+  }, {
+    "shape": "polyLineFlow",
+    "source": "99d69b85",
+    "target": "f8cfdbd2",
+    "id": "c2514050",
+    "sourceAnchor": 11,
+    "targetAnchor": 9
+  }]
+};
+
+G6.registNode('customNode1', {
+  draw: function(cfg, group) {
+    var shape = group.addShape('rect', {
+      attrs: {
+        x: cfg.x-40,
+        y: cfg.y-40,
+        width: 80,
+        height: 80,
+        fill: '#fff',
+        stroke: 'green'
+      }
+    });
+    return shape;
+  },
+  getAnchorPoints: function(){
+    return [
+      [0, 0.25],
+      [0, 0.5],
+      [0, 0.75],
+      [1, 0.25],
+      [1, 0.5],
+      [1, 0.75],
+      [0.25, 0],
+      [0.5, 0],
+      [0.75, 0],
+      [0.25, 1],
+      [0.5, 1],
+      [0.75, 1]
+    ];
+  }
+}, 'rect');
+
+G6.registNode('customNode2', {
+  draw: function(cfg, group) {
+    var shape = group.addShape('rect', {
+      attrs: {
+        x: cfg.x-40,
+        y: cfg.y-40,
+        width: 80,
+        height: 80,
+        fill: '#fff',
+        stroke: 'red'
+      }
+    });
+    return shape;
+  }
+}, 'customNode1');
+
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="addCustom1">自定义形1</button>');
+$('#toolBar').append('<button id="addCustom2">自定义形2</button>');
+$('#toolBar').append('<button id="drag">拖拽模式</button>');
+$('#toolBar').append('<button id="edit">编辑模式</button>');
+$('#toolBar').append('<button id="save">保存</button>');
+var addCustom1 = $('#addCustom1');
+var addCustom2 = $('#addCustom2');
+var drag = $('#drag');
+var edit = $('#edit');
+var save = $('#save');
+
+var net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  mode: 'edit',  // 编辑模式
+  fitView: 'cc', // 自适应视口为左上
+  height: window.innerHeight    // 画布高
+});
+net.source(data.nodes, data.edges);
+
+addCustom1.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'customNode1'
+  });
+});
+addCustom2.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'customNode2'
+  });
+});
+drag.on('click', function(ev) {
+  net.changeMode('drag');
+});
+edit.on('click', function(ev) {
+  net.changeMode('edit');
+});
+save.on('click', function(ev) {
+  var saveData = net.save();
+  var json = JSON.stringify(saveData, null, 2)
+  console.log(saveData, json);
+});
+
+var dragging = false;
+net.on('dragstart', function(ev){
+  dragging = true;
+});
+net.on('dragend', function(ev){
+  dragging = false;
+});
+
+net.on('mouseenter', function(ev) {
+  var shape = ev.shape;
+  if(shape && shape.hasClass('anchor-point') && !dragging) {
+    net.beginAdd('edge', {
+      shape: 'polyLineFlow'
+    });
+  }
+});
+
+net.on('mouseleave', function(ev) {
+  var shape = ev.shape;
+  if(shape && shape.hasClass('anchor-point') && !dragging) {
+    net.changeMode('edit');
+  }
+});
+
+net.render();
+</script>

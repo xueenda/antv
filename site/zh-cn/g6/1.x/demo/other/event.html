@@ -1,0 +1,73 @@
+<!--
+title: 事件
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var data = {
+  nodes: [
+    {
+      "id": "node1",
+      "x": 100,
+      "y": 160
+    },
+    {
+      "id": "node2",
+      "x": 290,
+      "y": 160
+    }
+  ],
+  edges: [
+    {
+      "id": "node1-node2",
+      "target": "node1",
+      "source": "node2"
+    }
+  ]
+};
+var net = new G6.Net({
+  id: 'mountNode',           // 容器ID
+  height: window.innerHeight         // 画布高
+});
+net.source(data.nodes, data.edges);
+net.render();
+net.on('itemclick', function(ev){
+  alert("击中" + ev.item.get('model').id + "!");
+});
+net.on('itemmousedown', function(ev){
+  var item = ev.item;
+  if(net.isNode(item)){
+    net.update(item, {
+      shape: 'circle'
+    });
+    net.refresh();
+  }
+});
+net.on('itemmouseup', function(ev){
+  var item = ev.item;
+  if(net.isNode(item)){
+    net.update(item, {
+      shape: 'rect'
+    });
+    net.refresh();
+  }
+});
+net.on('itemmouseenter', function(ev){
+  var item = ev.item;
+  net.update(item, {
+    color: 'red'
+  });
+  net.refresh();
+});
+net.on('itemmouseleave', function(ev){
+  var item = ev.item;
+  net.update(item, {
+    color: null
+  });
+  net.refresh();
+});
+</script>

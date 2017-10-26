@@ -1,0 +1,102 @@
+<!--
+title: 图编辑器
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+// 第一步：注册节点
+G6.registNode('customNode', {
+  draw: function(cfg, group) {
+    var shape = group.addShape('rect', {
+      attrs: {
+        x: cfg.x,
+        y: cfg.y,
+        width: 80,
+        height: 20,
+        fill: '#fff',
+        stroke: 'green'
+      }
+    });
+    group.addShape('text', {
+      attrs: {
+        x: cfg.x,
+        y: cfg.y,
+        fill: 'black',
+        text: '自定义图形'
+      }
+    });
+    return shape;
+  },
+  getAnchorPoints: function(){
+    return [
+      [1, 0.5], // 右边边的中点
+      [0, 0.5] // 左边边的中点
+    ];
+  }
+});
+
+// 第二步：设置按钮
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="addCircle">圆形</button>');
+$('#toolBar').append('<button id="addRect">方形</button>');
+$('#toolBar').append('<button id="addCustom">自定义形</button>');
+$('#toolBar').append('<button id="addLine">添加直线</button>');
+$('#toolBar').append('<button id="addSmooth">添加曲线</button>');
+$('#toolBar').append('<button id="save">保存</button>');
+var addCircle = $('#addCircle');
+var addRect = $('#addRect');
+var addCustom = $('#addCustom');
+var addLine = $('#addLine');
+var addSmooth = $('#addSmooth');
+var save = $('#save');
+
+// 第三步：配置画布
+var net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  height: window.innerHeight    // 画布高
+});
+
+// 第四步：配置绑定事件
+addCircle.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'circle'
+  });
+});
+
+addRect.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'rect'
+  });
+});
+
+addCustom.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'customNode'
+  });
+});
+
+addLine.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'line'
+  });
+});
+
+addSmooth.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'smooth'
+  });
+});
+
+save.on('click', function(ev) {
+  var saveData = net.save();
+  var json = JSON.stringify(saveData, null, 2)
+  console.log(saveData, json);
+});
+
+// 第五步：渲染关系图
+net.render();
+</script>

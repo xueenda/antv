@@ -1,0 +1,123 @@
+<!--
+title: 视口自适应
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+
+$('#mountNode').append("<button id='restore'>还原</button>");
+$('#mountNode').append("<button id='tl'>tl</button>");
+$('#mountNode').append("<button id='lc'>lc</button>");
+$('#mountNode').append("<button id='bl'>bl</button>");
+$('#mountNode').append("<button id='cc'>cc</button>");
+$('#mountNode').append("<button id='tc'>tc</button>");
+$('#mountNode').append("<button id='tr'>tr</button>");
+$('#mountNode').append("<button id='rc'>rc</button>");
+$('#mountNode').append("<button id='br'>br</button>");
+$('#mountNode').append("<button id='bc'>bc</button>");
+$('#mountNode').append("<button id='autoZoom'>autoZoom</button>");
+$('#mountNode').append("<button id='autoSize'>autoSize</button>");
+
+var Matrix = G6.Matrix.Matrix3;
+var tl = $('#tl');
+var lc = $('#lc');
+var bl = $('#bl');
+var cc = $('#cc');
+var tc = $('#tc');
+var tr = $('#tr');
+var rc = $('#rc');
+var br = $('#br');
+var bc = $('#bc');
+var autoZoom = $('#autoZoom');
+var autoSize = $('#autoSize');
+var restore = $('#restore');
+var net = createNet();
+autoZoom.on('click', function(){
+  net.destroy();
+  net = createNet('autoZoom');
+});
+autoSize.on('click', function(){
+  net.destroy();
+  net = createNet('autoSize');
+});
+tl.on('click', function(){
+  net.destroy();
+  net = createNet('tl');
+});
+lc.on('click', function(){
+  net.destroy();
+  net = createNet('lc');
+});
+bl.on('click', function(){
+  net.destroy();
+  net = createNet('bl');
+});
+cc.on('click', function(){
+  net.destroy();
+  net = createNet('cc');
+});
+tc.on('click', function(){
+  net.destroy();
+  net = createNet('tc');
+});
+tr.on('click', function(){
+  net.destroy();
+  net = createNet('tr');
+});
+rc.on('click', function(){
+  net.destroy();
+  net = createNet('rc');
+});
+br.on('click', function(){
+  net.destroy();
+  net = createNet('br');
+});
+bc.on('click', function(){
+  net.destroy();
+  net = createNet('bc');
+});
+restore.on('click', function(){
+  net.destroy();
+  net = createNet();
+});
+function createNet(fitView){
+  // 第三步：设置数据
+  var data = {
+    "nodes": [
+      {
+        "x": 100,
+        "y": 130,
+        "id": "node1"
+      },
+      {
+        "x": 230,
+        "y": 130,
+        "id": "node2"
+      }
+    ],
+    "edges": [
+      {
+        "source": "node1",
+        "id": "edge1",
+        "target": "node2"
+      }
+    ]
+  };
+  // 第四步：配置G6画布
+  var net = new G6.Net({
+    id: 'mountNode', // 容器ID
+    fitView: fitView,
+    width: 430,    // 画布宽
+    height: 430    // 画布高
+  });
+  // 第五步：载入数据
+  net.source(data.nodes, data.edges);
+  // 第六步：渲染关系图
+  net.render();
+  return net;
+}
+</script>

@@ -1,0 +1,130 @@
+<!--
+title: 映射
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var data = {
+  "nodes": [
+    {
+      "x": 550,
+      "y": 300,
+      "type": "type2",
+      "value": 20,
+      "active": true,
+      "id": "系统二"
+    },
+    {
+      "x": 360,
+      "y": 300,
+      "type": "type1",
+      "value": 30,
+      "active": true,
+      "id": "系统一"
+    },
+    {
+      "x": 780,
+      "y": 300,
+      "type": "type3",
+      "value": 15,
+      "active": false,
+      "id": "系统三"
+    }
+  ],
+  "edges": [
+    {
+      "type": "type1",
+      "source": "系统一",
+      "id": "32cb9f22",
+      "value": 30,
+      "active": true,
+      "target": "系统二"
+    },
+    {
+      "type": "type2",
+      "source": "系统二",
+      "id": "795e94a7",
+      "value": 20,
+      "active": false,
+      "target": "系统三"
+    },
+    {
+      "type": "type3",
+      "source": "系统三",
+      "id": "55fe688d",
+      "target": "系统一",
+      "value": 5,
+      "active": false,
+      "controlPoints": [
+        {
+          "x": 780,
+          "y": 269.5
+        },
+        {
+          "x": 640,
+          "y": 160
+        },
+        {
+          "x": 420.5,
+          "y": 239.5
+        }
+      ]
+    }
+  ]
+};
+var Util = G6.Util;
+var net = new G6.Net({
+  fitView: 'autoZoom',
+  id: 'mountNode',           // 容器ID
+  height: window.innerHeight,        // 画布高
+});
+net.tooltip(true);
+net.source(data.nodes, data.edges);
+net.node()
+  .size(function(obj){
+    return obj.value/30 * 120;
+  })
+  .color(function(obj){
+    if(obj.active){
+      return 'green';
+    } else {
+      return 'red';
+    }
+  })
+  .shape(function(obj){
+    if(obj.type === 'type1') return 'circle';
+    if(obj.type === 'type2') return 'rect';
+    if(obj.type === 'type3') return 'rhombus';
+  })
+  .tooltip(function(obj){
+    return [
+      ['Id是', obj.id],
+      ['key', 'value']
+    ]
+  })
+  .label('id');
+
+net.edge()
+  .size(function(obj){
+    return obj.value/30 * 10;
+  })
+  .shape(function(obj){
+    if(obj.type === 'type1') return 'line';
+    if(obj.type === 'type2') return 'arrow';
+    if(obj.type === 'type3') return 'smoothArrow';
+  })
+  .style({
+    lineDash: [10, 10]
+  })
+  .label(function(obj){
+    return {
+      text: obj.value,
+      fill: 'green'
+    };
+  });
+net.render();
+</script>

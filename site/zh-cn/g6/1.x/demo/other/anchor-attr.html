@@ -1,0 +1,70 @@
+<!--
+title: 锚点配置
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var invalidCfg = {
+        style: {
+          fill: 'red',
+          fillOpacity: 0.7
+        },
+        hoverStyle: {
+          stroke: null
+        },
+        linkable: false
+      };
+G6.registNode('custom1', {
+  getAnchorPoints: function(){
+    return [
+      [0, 0.5, invalidCfg],
+      [0.5, 0],
+      [1, 0.5]
+    ];
+  }
+});
+
+G6.registNode('custom2', {
+  getAnchorPoints: function(){
+    return [
+      [0, 0.5],
+      [1, 0.5, invalidCfg]
+    ];
+  }
+});
+var data = {
+  nodes: [
+    {
+      x: 240,
+      y: 210,
+      id: 'node1',
+      shape: 'custom1'
+    },
+    {
+      x: 370,
+      y: 170,
+      id: 'node2',
+      shape: 'custom2'
+    },
+  ],
+  edges: [
+    {
+      source: 'node1',
+      id: 'edge1',
+      target: 'node2',
+    },
+  ],
+};
+var net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  fitView: 'cc',
+  height: window.innerHeight,   // 画布高
+  mode: 'edit'
+});
+net.source(data.nodes, data.edges);
+net.render();
+</script>

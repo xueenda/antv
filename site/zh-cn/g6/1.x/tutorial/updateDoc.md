@@ -10,6 +10,10 @@
 
 该文档是 G6 升大版本时的升级指南文档，如果有你觉得描述的不够清晰的地方，升级有困难的话，敬请[联系我们](/about/index.html)！
 
+## G6 1.1.X -> G6 1.2.X
+
+* [移除了两个内置网图布局](#_移除了两个内置网图布局)
+
 ## G6 0.X -> G6 1.X
 
 * [原来的 Graph 既是现在的 Net](#_原来的-graph-既是现在的-net)
@@ -18,11 +22,15 @@
 * [调整初始化视口应该用fitView](#_调整初始化视口应该用fitview)
 * [统一输入输出 save && read](#_统一输入输出-save-amp-amp-read)
 
-## 原来的 Graph 既是现在的 Net
+### 移除了两个内置网图布局
+
+
+
+### 原来的 Graph 既是现在的 Net
 
 Graph 在 G6 1.0 中已经沉为抽象类，用户不应该直接实例化 Graph 使用。1.0 中 Net 基本含 0.X Graph 所有属性、方法。从 0.X 迁 1.X 的用户应将所有的 Graph 改为 Net。
 
-## 新的锚点描述
+### 新的锚点描述
 
 锚点在关系图中无非是一个至关重要的概念，如果 0.X 中你使用了自定义锚点，应参看下文。
 
@@ -35,7 +43,7 @@ Graph 在 G6 1.0 中已经沉为抽象类，用户不应该直接实例化 Graph
 <img src="https://zos.alipayobjects.com/rmsportal/lneevqEqTkjvGYJPKoiK.png" style = "width: 500px;"/>
 
 
-## 再见无穷尽的xxxable
+### 再见无穷尽的xxxable
 
 诸如：`selectable`、`dragable`、`zoomable`，在 1.0 后，应用行为模式的交互插拔机制实现，比如：
 
@@ -57,7 +65,7 @@ net.removeBehaviour(['wheelZoom']);
 
 行为、模式的插拔组装，参见[Demo](/g6/demo/06-other/mode.html);
 
-## 调整初始化视口应该用fitView
+### 调整初始化视口应该用fitView
 
 0.x 中有时我们会`render`结束后，调用`autoZoom`方法，让图适应画布。1.X 中这种方法被废弃，需要在初始化图时配置`fitView`，以决定初始化时画布的视口。[Graph API](/g6/api/graph.html)，fitView 属性。
 
@@ -124,7 +132,7 @@ restore.on('click', function(){
 });
 ```
 
-## 统一输入输出 save && read
+### 统一输入输出 save && read
 
 在使用关系图开发的过程中，我们常常需要导出导入数据，以满足关系图的存储、分享、编辑的功能。0.X 中 `graph.save` 和 `graph.srouce` 并没有严格对照。 G6 1.0 后，我们对这部分的需求做了总结。在 Graph 定义了一对相互对照的接口，read <==> save，后面用户应该严格通过这两个该接口导入导出数据。
 

@@ -1,0 +1,80 @@
+<!--
+title: 行为与模式
+description: 
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<script type="text/javascript">
+var data = {
+  "nodes": [
+    {
+      "x": 140,
+      "y": 210,
+      "id": "node1"
+    },
+    {
+      "x": 270,
+      "y": 210,
+      "id": "node2"
+    }
+  ],
+  "edges": [
+    {
+      "source": "node1",
+      "id": "edge1",
+      "target": "node2"
+    }
+  ]
+};
+var net = new G6.Net({
+    id: 'mountNode',              // 容器ID
+    modes: {               // 模式集
+      // 默认模式
+      default: [
+        'dragNode', 'dragEdge', 'dragBlank', 'clickBlankClearActive', 'resizeEdge', 'clickActive',
+        'resizeNode', 'wheelZoom'
+      ],
+      // 编辑模式
+      edit: [
+        'dragNode', 'dragEdge', 'clickBlankClearActive', 'resizeEdge', 'clickActive',
+        'multiSelect', 'resizeNode', 'shortcut', 'wheelZoom'
+      ]
+    },
+    mode: 'default',       // 当前模式
+    height: window.innerHeight            // 画布高
+  });
+net.source(data.nodes, data.edges);
+net.render();
+
+// 第二步：设置按钮
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').prepend('<button id="addClickActive">添加点击激活行为</button>');
+$('#toolBar').prepend('<button id="removeClickActive">删除点击激活行为</button>');
+$('#toolBar').prepend('<button id="changeModeToDefault">切换到默认模式</button>');
+$('#toolBar').prepend('<button id="changeModeToEidt">切换到编辑模式</button>');
+
+var addClickActive = $('#addClickActive');
+var removeClickActive = $('#removeClickActive');
+var changeModeToDefault = $('#changeModeToDefault');
+var changeModeToEidt = $('#changeModeToEidt');
+
+addClickActive.on('click', function(){
+  net.addBehaviour(['clickActive']);
+});
+
+removeClickActive.on('click', function(){
+  net.removeBehaviour(['clickActive']);
+});
+
+changeModeToDefault.on('click', function(){
+  net.changeMode('default');
+});
+
+changeModeToEidt.on('click', function(){
+  net.changeMode('edit');
+});
+
+</script>

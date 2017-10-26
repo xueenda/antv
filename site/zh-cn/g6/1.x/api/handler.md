@@ -35,90 +35,90 @@
 
 鼠标悬浮节点显示锚点
 
-### [buttonPointer](#buttonPointer) {Function}
+### [buttonPointer](#_buttonPointer) {Function}
 
 当鼠标移到 `element.get('class')` 含 `button`  的图形元素上，指针变成小手的行为。
 
-### [clickActive](#clickActive) {Function}
+### [clickActive](#_clickActive) {Function}
 
 鼠标左键点击激活子项 `item`（激活行为互斥）的行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/qeKFxhoyNQlDvcsNcMko.gif)
 
-### [clickAddNode](#clickAddNode) {Function}
+### [clickAddNode](#_clickAddNode) {Function}
 
 点击增加节点的行为，适用于网图编辑器。
 
 ![image](https://zos.alipayobjects.com/rmsportal/GHEAPfFaFokQNWuRvsmQ.gif)
 
-### [clickBlankClearActive](#clickBlankClearActive) {Function}
+### [clickBlankClearActive](#_clickBlankClearActive) {Function}
 
 点击画布空白区域，清除激活子项的行为，适用于网图编辑器。
 
-### [dragCanvas](#dragCanvas) {Function}
+### [dragCanvas](#_dragCanvas) {Function}
 
 拖动画布的行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/ORxbdvErvjwPIOgHfSXF.gif)
 
-### [dragBlank](#dragBlank) {Function}
+### [dragBlank](#_dragBlank) {Function}
 
 拖动画布空白区域的行为。
 
-### [dragAddEdge](#dragAddEdge) {Function}
+### [dragAddEdge](#_dragAddEdge) {Function}
 
 拖动添加边的行为，适用于网图编辑器。
 
-### [dragEdge](#dragEdge) {Function}
+### [dragEdge](#_dragEdge) {Function}
 
 拖动边切换边连接的节点的行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/OWLYIqFtCWTWzJoQuBZr.gif)
 
-### [dragNode](#dragNode) {Function}
+### [dragNode](#_dragNode) {Function}
 
 拖动节点行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/uItgKmflYJiMFfYaulSb.gif)
 
-### [multiSelect](#multiSelect) {Function}
+### [multiSelect](#_multiSelect) {Function}
 
 多选行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/ZgqXtYqGqedNeiFMOMgY.gif)
 
-### [resizeEdge](#resizeEdge) {Function}
+### [resizeEdge](#_resizeEdge) {Function}
 
 边变形行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/wDwNAOjeEEbhILZGVEYT.gif)
 
-### [resizeNode](#resizeNode) {Function}
+### [resizeNode](#_resizeNode) {Function}
 
 节点变形行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/QiajcEBVGVECIlnYHGUs.gif)
 
-### [wheelZoom](#wheelZoom) {Function}
+### [wheelZoom](#_wheelZoom) {Function}
 
 滚轮缩放行为。
 
-### [dragHideEdges](#dragHideEdges) {Function}
+### [dragHideEdges](#_dragHideEdges) {Function}
 
 拖动边隐藏行为
 
-### [wheelZoomHideEdges](#wheelZoomHideEdges) {Function}
+### [wheelZoomHideEdges](#_wheelZoomHideEdges) {Function}
 
 滚轮缩放边隐藏行为
 
-### [shortcut](#dragNode) {Function}
+### [shortcut](#_dragNode) {Function}
 
 快捷键行为。`网图（Net）专有`
 
-### [collapse](#collapse) {Function}
+### [collapse](#_collapse) {Function}
 
 树图的折叠行为。`树图（Tree）专有`
 
-### [spreadout](#spreadout) {Function}
+### [spreadout](#_spreadout) {Function}
 
 树图的展开行为。`树图（Tree）专有`

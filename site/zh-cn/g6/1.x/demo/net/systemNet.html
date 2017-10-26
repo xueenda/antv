@@ -1,0 +1,79 @@
+<!--
+title: 系统网络
+description: 该图展示了某计算机集群内系统和系统之间的调用关系。该示例的目的在于向大家展示静态力导图的用法。（数据虚构）
+index: 8
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+# 系统网络
+
+- template: demo-detail
+- product: G6
+- type: 网图
+- index: 9
+- description: 该图展示了某计算机集群内系统和系统之间的调用关系。该示例的目的在于向大家展示静态力导图的用法。（数据纯属虚构）
+
+----
+<style>
+.node-tool{
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 14px;
+  color: #666;
+  list-style-type:none;
+  background: #fff;
+  box-shadow: 0 2px 5px #ccc;
+}
+.node-tool li{
+  padding: 4px 2px;
+}
+.node-tool li:hover{
+  color: #26A8FB;
+  cursor: pointer;
+}
+</style>
+<script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.17/dist/g6-plugins.min.js"></script>
+<script type="text/javascript">
+$.getJSON('/assets/data/systemNet.json',function(data){
+  var Mapper = G6.Plugins['enhance.d3.mapper'];
+  var template = new G6.Plugins['template.analysis.maxSpanningForest']();
+  var nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 90 ], {
+    legendCfg: {
+      callback: function(legend) {
+        legend.title('流量大小');
+      },
+      marginRight: 60,
+      marginBottom: 60,
+    }
+  });
+  var nodeColorMapper = new Mapper('node', 'health', 'color', ['#f46e65', '#3dbd7d', '#76d0a3', '#f79992', '#f46e65', '#f04134'], {
+    legendCfg: {
+      callback: function(legend) {
+        legend.title('系统健康度');
+      },
+      marginRight: 98,
+      marginBottom: 280,
+    }
+  });
+  var edgeSizeMapper = new Mapper('edge', 'weight', 'size', [ 3.5, 10 ], {
+    scaleCfg: {
+      type: "log"
+    },
+    legendCfg: null
+  });
+  var miniMapper = new Mapper();
+  var net = new G6.Net({
+    id: 'mountNode',
+    height: window.innerHeight,
+    plugins: [template, nodeSizeMapper, edgeSizeMapper, nodeColorMapper]
+  });
+  net.node().label('id');
+  net.edge().style({
+    stroke: '#3F69C0'
+  });
+  net.source(data);
+  net.render();
+});
+</script>
