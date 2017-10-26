@@ -7,8 +7,9 @@
   "globals": {
     "$": true,
     "Clipboard": true,
-    "DataSet": true,
     "CodeMirror": true,
+    "DataSet": true,
+    "F2": true,
     "G2": true,
     "G6": true,
     "_": true

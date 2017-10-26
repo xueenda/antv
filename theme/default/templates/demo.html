@@ -33,12 +33,14 @@
         <div class="col detail container">
             <div class="navbar justify-content-between">
                 <h4 class="nav-link">{{ title }}</h4>
+                {% if canSwitchThemes %}
                 <form class="form-inline">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="?theme=default" class="btn btn-primary">Default</a>
                         <a href="?theme=dark" class="btn btn-light">Dark</a>
                     </div>
                 </form>
+                {% endif %}
             </div>
             <div class="demo" id="preview"></div>
             <div class="card-extra container">

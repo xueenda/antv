@@ -66,10 +66,9 @@ demoDirs.forEach(function (dir) {
             title = meta.title;
 
         var name = basename(file, '.html');
-        var href = base + 'zh-cn/g2/3.x/demo/' + category + '/' + name + '.html';
+        var href = base + 'zh-cn/f2/3.x/demo/' + category + '/' + name + '.html';
         demosByCategory[category].demos.push({
-            screenshot: join(assets + '/dist/' + pkg.version + '/g2/3.x/', category + '/' + name + '.png'),
-            screenshotDark: join(assets + '/dist/' + pkg.version + '/g2/3.x/', category + '/' + name + '-dark.png'),
+            screenshot: join(assets + '/dist/' + pkg.version + '/f2/3.x/', category + '/' + name + '.png'),
             href: href,
             index: index,
             name: name,
@@ -92,8 +91,7 @@ demos.sort(function (a, b) {
 module.exports = {
     navName: 'demo',
     demos: demos,
-    template: 'g2-demo',
-    canSwitchThemes: true,
+    template: 'f2-demo',
     demosByCategory: demosByCategory,
     categoryByHref: categoryByHref,
     showFooter: false
