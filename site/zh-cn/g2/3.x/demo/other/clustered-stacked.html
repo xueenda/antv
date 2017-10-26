@@ -71,52 +71,12 @@ relativePlots:
           }
         }
       });
-      const items = [
-        { value: 'Under 5 Years', fill: '#98abc5' },
-        { value: '5 to 13 Years', fill: '#8a89a6' },
-        { value: '14 to 17 Years', fill: '#7b6888' },
-        { value: '18 to 24 Years', fill: '#6b486b' },
-        { value: '25 to 44 Years', fill: '#a05d56' },
-        { value: '45 to 64 Years', fill: '#d0743c' },
-        { value: '65 Years and Over', fill: 'darkorange' },
-      ];
-      function updateItems(value, checked) {
-        G2.Util.each(items, item => {
-          if (item.value === value) {
-            item.checked = checked;
-          }
-        });
-      }
       chart.legend({
-        custom: true,
-        position: 'right',
-        items,
-        title: {
-          text: 'age'
-        },
-        onClick: ev => {
-          const item = ev.item;
-          const value = item.value;
-          const checked = ev.checked;
-          if (!checked) {
-            G2.Util.Array.remove(ages, value);
-            chart.filter('age', val => {
-              return val !== value;
-            });
-          } else {
-            ages.push(value);
-            chart.filter('age', field => {
-              return G2.Util.inArray(ages, field);
-            });
-
-          }
-          updateItems(value, checked);
-          chart.repaint();
-        }
+        position: 'right'
       });
       chart.interval()
         .position('State*population')
-        .color('type*age', function(type, age) {
+        .color('age', function(age) {
           return colorMap[age];
         })
         .tooltip('age*population', (age, population) => {
