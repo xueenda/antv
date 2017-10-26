@@ -1,5 +1,5 @@
 <!--
-index: 2
+index: 1
 title: G2 图表组成
 resource:
   jsFiles:

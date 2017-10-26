@@ -1,5 +1,5 @@
 <!--
-index: 4
+index: 3
 title: 装载数据
 resource:
   jsFiles:

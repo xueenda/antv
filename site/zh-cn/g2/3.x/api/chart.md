@@ -24,7 +24,7 @@ new G2.Chart({
   forceFit?: boolean,
   animate?: boolean,
   pixelRatio?: number,
-  data?: array|DataView
+  data?: array|DataSet.View
 });
 ```
 
@@ -116,7 +116,7 @@ plotBackground: {
 
 - `data`
 
-设置图表的数据源，`data` 是一个包含 JSON 对象的数组或者 DataView 对象。
+设置图表的数据源，`data` 是一个包含 JSON 对象的数组或者 DataSet.View 对象。
 
 建议使用 `chart.source(data)` 设置数据源。
 
@@ -124,7 +124,7 @@ plotBackground: {
 
 ### chart.source(data)
 
-(data: Array|DataView)
+(data: Array|DataSet.View)
 
 为 chart 装载数据，返回 chart 对象。
 
@@ -132,17 +132,17 @@ plotBackground: {
 
 - `data`
 
-数据源数据，标准的 JSON 数组或者 DataView 对象。
+数据源数据，标准的 JSON 数组或者 DataSet.View 对象。
 
 ### chart.source(data, scaleConfig)
 
-(data: Array|DataView, scaleConfig?: object)
+(data: Array|DataSet.View, scaleConfig?: object)
 
 #### 参数
 
 - `data`
 
-数据源数据，标准的 JSON 数组或者 DataView 对象。
+数据源数据，标准的 JSON 数组或者 DataSet.View 对象。
 
 - `scaleConfig`
 
@@ -1604,7 +1604,6 @@ var data = [
   {gender:'男',count:28,'class': '三班',grade: '二年级'},
   {gender:'女',count:36,'class': '三班',grade: '二年级'}
 ];
-var DataView = DataSet.DataView;
 var chart = new G2.Chart({
   container: 'c4',
   width: 800,
@@ -1625,7 +1624,7 @@ chart.facet('tree', {
   lineSmooth: true,
   eachView(view, facet) {
     var data = facet.data;
-    var dv = new DataView();
+    var dv = new DataSet.View();
     dv.source(data).transform({
       type: 'percent',
       field: 'count',
@@ -1785,7 +1784,7 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 
 ## chart.changeData()
 
-(data: array | DataView)
+(data: array | DataSet.View)
 
 用于修改图表的数据源，注意这里 data 的数据结构需要同原始的数据结构保持一致。
 

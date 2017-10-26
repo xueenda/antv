@@ -28,7 +28,7 @@ G2 (The Grammar Of Graphics) 是一个由纯 JavaScript 编写、强大的语义
 
 ```html
 <!-- 引入在线资源 -->
-<script src="https://a.alipayobjects.com/g/datavis/g2/2.3.10/index.js"></script>
+<script src="{{ url.g2 }}"></script>
 ```
 
 ```html
@@ -37,12 +37,12 @@ G2 (The Grammar Of Graphics) 是一个由纯 JavaScript 编写、强大的语义
 ```
 
 ### 通过 npm 安装
-<a href="https://www.npmjs.com/package/g2" target="_blank"><img src="https://img.shields.io/npm/v/g2.svg?style=flat"></a>
+<a href="https://www.npmjs.com/package/@antv/g2" target="_blank"><img src="https://img.shields.io/npm/v/@antv/g2.svg?style=flat-square"></a>
 
 我们提供了 G2 npm 包，通过下面的命令即可完成安装
 
 ```bash
-npm install g2 --save
+npm install @antv/g2 --save
 ```
 成功安装完成之后，即可使用 `import` 或 `require` 进行引用。
 

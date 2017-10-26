@@ -56,6 +56,7 @@ module.exports = {
     docIndexByHref: indexByHref,
     docsCount: docList.length,
     template: 'doc',
-    docMenuHeader: '${resource.translate.tutorial}',
+    showFooter: false,
+    docMenuHeader: '${resource.translate.api}',
     docFilteringSupport: true
 };

@@ -4,11 +4,11 @@ import './copy-code.less';
 // copy code
 const BTN_COPY_ID = 'btn-copy';
 const BTN_COPY_SELECTOR = `#${BTN_COPY_ID}`;
-$('pre').hover(
+$('.highlight').hover(
     e => { // handle in
         let $target = $(e.target);
-        if ($target.prop('tagName') !== 'PRE') {
-            $target = $target.closest('pre');
+        if (!$target.hasClass('highlight')) {
+            $target = $target.closest('div');
         }
         $target.append(`<button id="${BTN_COPY_ID}">Copy</button>`);
     },
@@ -17,7 +17,7 @@ $('pre').hover(
     }
 );
 const clipboard = new Clipboard(BTN_COPY_SELECTOR, {
-    target: () => $(BTN_COPY_SELECTOR).parent().find('.highlight')[0],
+    target: () => $(BTN_COPY_SELECTOR).parent().find('pre')[0],
 });
 let timer;
 clipboard.on('success', e => {

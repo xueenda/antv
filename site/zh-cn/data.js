@@ -27,12 +27,12 @@ module.exports = {
         f2: {
             version: '1.0.0',
             name: 'F2',
-            href: '${base}zh-cn/f2/1.x/index.html',
+            href: '${base}zh-cn/f2/3.x/index.html',
             links: {
-                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/1.x/demo/index.html' },
-                api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/1.x/api/index.html' },
-                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/1.x/tutorial/index.html' },
-                changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/1.x/tutorial/changelog.html' },
+                demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
+                api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
+                tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/3.x/tutorial/index.html' },
+                changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }
         },
         academy: {

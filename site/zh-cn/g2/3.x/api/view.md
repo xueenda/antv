@@ -41,7 +41,6 @@ var view = chart.view({
 }
 ```
 
-
 ### 参数
 
 - `start`: object
@@ -142,39 +141,39 @@ chart.render();
 
 ## view.source()
 
-同 `chart.source()`。
+同 [`chart.source()`](./chart.html#_chart.source-)。
 
 ## view.getXScale()
 
-同 `chart.getXScale()`，只是返回该视图 x 轴对应的度量。
+同 [`chart.getXScale()`](./chart.html#_chart.getXScale-)，只是返回该视图 x 轴对应的度量。
 
 ## view.getYScales()
 
-同 `chart.getYScales()`，只是返回该视图 y 轴对应的度量。
+同 [`chart.getYScales()`](./chart.html#_chart.getYScales-)，只是返回该视图 y 轴对应的度量。
 
 ## view.getXY()
 
-同 `chart.getXY()`。
+同 [`chart.getXY()`](./chart.html#_chart.getXY-)。
 
 ## view.filter()
 
-同 `chart.filter()`。
+同 [`chart.filter()`](./chart.html#_chart.filter-)。
 
 ## view.axis()
 
-同 `chart.axis()`。
+同 [`chart.axis()`](./chart.html#_chart.axis-)。
 
 ## view.guide()
 
-同 `chart.guide()`。
+同 [`chart.guide()`](./chart.html#_chart.guide-)。
 
 ## view.scale()
 
-同 `chart.scale()`。
+同 [`chart.scale()`](./chart.html#_chart.scale-)。
 
 ## view.coord()
 
-同 `chart.coord()`。
+同 [`chart.coord()`](./chart.html#_chart.coord-)。
 
 ## view.tooltip()
 
@@ -188,60 +187,61 @@ view.tooltip(false); // 关闭 view 上的 tooltip
 
 ## view.animate()
 
-同 `chart.animate()`。
+同 [`chart.animate()`](./chart.html#_chart.animate-)。
 
 ## view.clear()
 
-同 `chart.clear()`。
+同 [`chart.clear()`](./chart.html#_chart.clear-)。
 
 ## view.changeData()
 
-同 `chart.changeData()`。
+同 [`chart.changeData()`](./chart.html#_chart.changeData-)。
 
 ## view.changeVisible()
 
-同 `chart.changeVisible()`。
+同 [`chart.changeVisible()`](./chart.html#_chart.changeVisible-)。
 
 ## view.repaint()
 
-同 `chart.repaint()`。
+同 [`chart.repaint()`](./chart.html#_chart.repaint-)。
 
 ## view.destroy()
 
-同 `chart.destroy()`。
+同 [`chart.destroy()`](./chart.html#_chart.destroy-)。
 
 ## view.line()
 
-同 `chart.line()`。
+同 [`chart.line()`](./chart.html#_chart.line-)。
 
 ## view.path()
 
-同 `chart.path()`。
+同 [`chart.path()`](./chart.html#_chart.path-)。
 
 ## view.interval()
 
-同 `chart.interval()`。
+同 [`chart.interval()`](./chart.html#_chart.interval-)。
 
 ## view.area()
 
-同 `chart.area()`。
+同 [`chart.area()`](./chart.html#_chart.area-)。
 
 ## view.point()
 
-同 `chart.point()`。
+同 [`chart.point()`](./chart.html#_chart.point-)。
 
 ## view.polygon()
 
-同 `chart.polygon()`。
+同 [`chart.polygon()`](./chart.html#_chart.polygon-)。
 
 ## view.edge()
 
-同 `chart.edge()`。
+同 [`chart.edge()`](./chart.html#_chart.edge-)。
 
 ## view.schema()
 
-同 `chart.schema()`。
+同 [`chart.schema()`](./chart.html#_chart.schema-)。
 
 ## view.heatmap()
 
-同 `chart.heatmap()`。
+同 [`chart.heatmap()`](./chart.html#_chart.heatmap-)。
+

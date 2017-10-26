@@ -1,0 +1,41 @@
+<!--
+index: 9
+title: 核函数概率密度分布
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 核函数概率密度分布
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+    $.getJSON('/assets/data/diamond.json', data => {
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+
+        const dv = new DataSet.View().source(data);
+        dv.transform({
+            type: 'kernel-smooth.density',
+            fields: [ 'carat', 'price' ],
+            as: [ 'carat', 'price', 'density' ]
+        });
+
+        chart.source(data);
+        chart.point()
+            .position('carat*price');
+
+        const view = chart.view();
+        view.source(dv);
+        view.heatmap()
+            .position('carat*price')
+            .color('density', 'blue-cyan-lime-yellow-red');
+
+        chart.render();
+    });
+</script>

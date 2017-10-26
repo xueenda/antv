@@ -8,6 +8,7 @@
     <div class="row flex-xl-nowrap">
         <div class="col-xl-1"></div>
         <div class="col-12 col-md-12 col-xl-10">
+            {% if canSwitchThemes %}
             <div class="container header">
                 <form class="float-right">
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -16,6 +17,7 @@
                     </div>
                 </form>
             </div>
+            {%  endif %}
             <div class="container content">
                 {% for cat in demos %}
                 <h5>{{ cat.title }}</h5>

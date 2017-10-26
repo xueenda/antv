@@ -66,11 +66,11 @@ resource:
   
   (1)分类信息展示在图例上
 
-    ![image](https://zos.alipayobjects.com/skylark/248c8c4d-1312-4949-869b-7c924167ac90/attach/1996/fd0e23a6193805bb/image.png)
+![image](https://zos.alipayobjects.com/skylark/248c8c4d-1312-4949-869b-7c924167ac90/attach/1996/fd0e23a6193805bb/image.png)
   
   (2)确定显示在坐标轴上坐标点 30，40，50，60，70
     
-    ![image](https://zos.alipayobjects.com/skylark/518327bc-2075-44aa-a2f2-17aeb1cc4f0d/attach/1996/edb205c7cbab6f6c/image.png)
+![image](https://zos.alipayobjects.com/skylark/518327bc-2075-44aa-a2f2-17aeb1cc4f0d/attach/1996/edb205c7cbab6f6c/image.png)
     
 所以每种度量必须包含以下信息：
 
