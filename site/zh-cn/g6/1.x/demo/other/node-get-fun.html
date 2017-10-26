@@ -8,7 +8,7 @@ resource:
 -->
 
 <script type="text/javascript">
-$('body').prepend('<button id="getEdges">getEdges</button> &nbsp;&nbsp;<button id="getLinkNodes">getLinkNodes</button> &nbsp;&nbsp;<button id="getUnLinkNodes">getUnLinkNodes</button> &nbsp;&nbsp;<button id="getRelativeItems">getRelativeItems</button> &nbsp;&nbsp;<button id="getUnRelativeItems">getUnRelativeItems</button> &nbsp;&nbsp;')
+$('body').prepend('<button id="getEdges">getEdges</button> &nbsp;&nbsp;<button id="getLinkNodes">getLinkNodes</button> &nbsp;&nbsp;<button id="getUnLinkNodes">getUnLinkNodes</button> &nbsp;&nbsp;<button id="getRelativeItems">getRelativeItems</button> &nbsp;&nbsp;<button id="getUnRelativeItems">getUnRelativeItems</button> &nbsp;&nbsp;');
 var Util = G6.Util;
 // 第三步：设置数据
 var data = {
@@ -118,7 +118,6 @@ var net = new G6.Net({
     id: 'mountNode',      // 容器ID
     fitView: 'autoZoom',
     mode: 'none',
-    fitView:'cc',    // 画布宽
     height: window.innerHeight    // 画布高
   });
 // 第五步：载入数据

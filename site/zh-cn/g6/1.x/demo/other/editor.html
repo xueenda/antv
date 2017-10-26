@@ -61,40 +61,40 @@ var net = new G6.Net({
 });
 
 // 第四步：配置绑定事件
-addCircle.on('click', function(ev){
+addCircle.on('click', function(){
   net.beginAdd('node', {
     shape: 'circle'
   });
 });
 
-addRect.on('click', function(ev){
+addRect.on('click', function(){
   net.beginAdd('node', {
     shape: 'rect'
   });
 });
 
-addCustom.on('click', function(ev){
+addCustom.on('click', function(){
   net.beginAdd('node', {
     shape: 'customNode'
   });
 });
 
-addLine.on('click', function(ev) {
+addLine.on('click', function() {
   net.beginAdd('edge', {
     shape: 'line'
   });
 });
 
-addSmooth.on('click', function(ev) {
+addSmooth.on('click', function() {
   net.beginAdd('edge', {
     shape: 'smooth'
   });
 });
 
-save.on('click', function(ev) {
+save.on('click', function() {
   var saveData = net.save();
-  var json = JSON.stringify(saveData, null, 2)
-  console.log(saveData, json);
+  var json = JSON.stringify(saveData, null, 2);
+  console.log(saveData, json); // eslint-disable-line no-console
 });
 
 // 第五步：渲染关系图

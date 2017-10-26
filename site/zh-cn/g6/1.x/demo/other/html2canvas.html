@@ -5,95 +5,92 @@ index: 1
 resource:
   jsFiles:
     - ${url.jquery}
+    - https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js
 -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-
 <script type="text/javascript">
+    $('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+    $('#toolBar').append('<button id="downloadCurrentImage">下载当前视口内图</button');
+    $('#toolBar').append('<button id="downloadFullImage">下载全图</button>');
 
-$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
-$('#toolBar').append('<button id="downloadCurrentImage">下载当前视口内图</button');
-$('#toolBar').append('<button id="downloadFullImage">下载全图</button>');
+    var downloadFullImage = $('#downloadFullImage');
+    var downloadCurrentImage = $('#downloadCurrentImage');
 
-var downloadFullImage = $('#downloadFullImage');
-var downloadCurrentImage = $('#downloadCurrentImage');
-
-G6.registNode('list', {
-  cssSize: true,
-  getHtml: function(cfg, group){
-    return '<ul><li>' + cfg.model.id + '</li><li>' + cfg.model.shape + '</li></ul>'
-  }
-}, 'html');
-var data = {
-  "nodes": [
-    {
-      "id": "node1",
-      "x": 220,
-      "y": 210,
-      "shape": "html",
-      "html": "<div class='dom'>我是 dom1 </div>"
-    },
-    {
-      "id": "node2",
-      "x": 220,
-      "y": 170,
-      "shape": "html",
-      "html": "<div class='dom'>我是 dom2 </div>"
-    },
-    {
-      "id": "node3",
-      "x": 20,
-      "y": 170,
-      "shape": "list"
-    },
-    {
-      "id": "node4",
-      "x": 100,
-      "y": 100,
-      "label": "文本"
+    G6.registNode('list', {
+        cssSize: true,
+        getHtml: function(cfg){
+            return '<ul><li>' + cfg.model.id + '</li><li>' + cfg.model.shape + '</li></ul>';
+        }
+    }, 'html');
+    var data = {
+        "nodes": [
+            {
+                "id": "node1",
+                "x": 220,
+                "y": 210,
+                "shape": "html",
+                "html": "<div class='dom'>我是 dom1 </div>"
+            },
+            {
+                "id": "node2",
+                "x": 220,
+                "y": 170,
+                "shape": "html",
+                "html": "<div class='dom'>我是 dom2 </div>"
+            },
+            {
+                "id": "node3",
+                "x": 20,
+                "y": 170,
+                "shape": "list"
+            },
+            {
+                "id": "node4",
+                "x": 100,
+                "y": 100,
+                "label": "文本"
+            }
+        ],
+        "edges": [
+            {
+                "source": "node1",
+                "id": "edge1",
+                "target": "node2"
+            }
+        ]
+    };
+    var net = new G6.Net({
+        id: 'mountNode',      // 容器ID
+        fitView:'cc',    // 画布宽
+        height: window.innerHeight    // 画布高
+    });
+    var graphContainer = net.get('graphContainer');
+    net.source(data.nodes, data.edges);
+    net.render();
+    downloadFullImage.on('click', function(){
+        downloadImage(true);
+    });
+    downloadCurrentImage.on('click', function(){
+        downloadImage();
+    });
+    /**
+     * 下载当前图片
+     */
+    function downloadImage(bool) {
+        var matrixStash = net.getMatrix(); // 缓存当前矩阵
+        if (bool) {
+            net.autoZoom(); // 图自动缩放以适应画布尺寸
+        }
+        html2canvas(graphContainer, {
+            onrendered: function(canvas) {
+                var dataURL = canvas.toDataURL('image/png');
+                var link = document.createElement('a');
+                var saveName = 'graph.png';
+                link.download = saveName;
+                link.href = dataURL.replace('image/png', 'image/octet-stream');
+                link.click();
+                net.updateMatrix(matrixStash); // 还原矩阵
+                net.refresh();
+            }
+        });
     }
-  ],
-  "edges": [
-    {
-      "source": "node1",
-      "id": "edge1",
-      "target": "node2"
-    }
-  ]
-};
-var net = new G6.Net({
-  id: 'mountNode',      // 容器ID
-  fitView:'cc',    // 画布宽
-  height: window.innerHeight    // 画布高
-});
-var graphContainer = net.get('graphContainer');
-net.source(data.nodes, data.edges);
-net.render();
-downloadFullImage.on('click', function(){
-  downloadImage(true);
-});
-downloadCurrentImage.on('click', function(){
-  downloadImage();
-});
-/**
- * 下载当前图片
- */
-function downloadImage(bool) {
-  var matrixStash = net.getMatrix(); // 缓存当前矩阵
-  if (bool) {
-    net.autoZoom(); // 图自动缩放以适应画布尺寸
-  }
-  html2canvas(graphContainer, {
-    onrendered: function(canvas) {
-      var dataURL = canvas.toDataURL('image/png');
-      var link = document.createElement('a');
-      var saveName = 'graph.png';
-      link.download = saveName;
-      link.href = dataURL.replace('image/png', 'image/octet-stream');
-      link.click();
-      net.updateMatrix(matrixStash); // 还原矩阵
-      net.refresh();
-    }
-  });
-}
 </script>

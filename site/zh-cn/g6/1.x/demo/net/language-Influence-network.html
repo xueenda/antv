@@ -36,7 +36,7 @@ $.getJSON('/assets/data/influenceNetwork.json',function(data){
             fontSize: 40,
             textBaseline: 'middle'
           }
-        })
+        });
       }
     }
   });
@@ -140,7 +140,7 @@ $.getJSON('/assets/data/influenceNetwork.json',function(data){
       hideItem = unRelativeItems; // 缓存被隐藏的子项
     }
   });
-  net.on('dblclick', function(ev) {
+  net.on('dblclick', function() {
     if(hideItem){
       Util.each(hideItem, function(subItem){
         subItem.show();

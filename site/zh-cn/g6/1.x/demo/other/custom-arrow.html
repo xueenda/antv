@@ -12,7 +12,6 @@ var Util = G6.Util;
 G6.registEdge('bezierQuadratic', {
   afterDraw: function(cfg, group, keyShape) {
     var points = cfg.points;
-    var start = points[0];
     var end = points[points.length - 1];
     var center = keyShape.getPoint(0.5);
     var lineWidth = keyShape.attr('lineWidth');
@@ -84,7 +83,6 @@ var data = {
 };
 var net = new G6.Net({
     id: 'mountNode',           // 容器ID
-    fitView:'cc',         // 画布宽
     height: window.innerHeight,        // 画布高
     fitView: 'cc',      // 图居中自适应
     mode: 'none',       // 模式
