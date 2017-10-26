@@ -396,7 +396,8 @@ interval().adjust('stack');
 interval().adjust([ 'dodge', 'stack' ]);
 interval().adjust([{
   type: 'dodge',
-  marginRatio: 0 
+  marginRatio: 0, // 数值范围为 0 至 1，用于调整分组中各个柱子的间距
+  dodgeBy: 'xx' // 声明按照 xx 字段进行分组，一般不需要声明
 }]);
 ```
 
@@ -446,6 +447,12 @@ chart.point().position('x*y').label('x');
 
 ```js
 chart.line().label('x', {
+  // 文本线的配置，如果值为 false，表示不展示文本线
+  labelLine: {
+    lineWidth: 1, // 线的粗细
+    stroke: '#ff8800', // 线的颜色
+    lineDash: [ 2, 1 ], // 虚线样式
+  } | false,
   // 数值，设置坐标轴文本 label 距离坐标轴线的距离
   offset: number, 
   // 设置文本的显示样式，还可以是个回调函数，回调函数的参数为该坐标轴对应字段的数值

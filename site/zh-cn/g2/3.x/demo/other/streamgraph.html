@@ -1,0 +1,106 @@
+<!--
+index: 10
+title: streamgraph
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: streamgraph
+plotUsage: streamgraph 由层叠区域图进行对称变化而来，用于连续时间序列的可视化。该图展示的是 1910 年至 2020 年名字以 'Kr' 开头的婴儿人数。
+relativePlots:
+  - ${plotByName.area}
+  - ${plotByName.line}
+-->
+<style type="text/css">
+    #mountNode .g2-legend {
+      top: 20px!important;
+      height: calc(100% - 70px);
+      border: 1px solid #bfbfbf;
+      padding-left: 10px;
+      overflow: scroll;
+    }
+    #mountNode .g2-legend-title {
+      margin: 0 0 8px 0;
+    }
+</style>
+<script>
+    $.getJSON('/assets/data/baby-names.json', data => {
+      const { DataView } = DataSet;
+      const dv = new DataView().source(data)
+        .transform({
+          type: 'fill-rows',
+          groupBy: [ 'name' ],
+          orderBy: [ 'year' ]
+        })
+        .transform({
+          type: 'impute',
+          field: 'n',
+          method: 'value',
+          value: 0
+        })
+        .transform({
+          type: 'aggregate',
+          fields: [ 'n' ],
+          operations: [ 'sum' ],
+          groupBy: [ 'year', 'name' ],
+          orderBy: [ 'year' ],
+          as: [ 'count' ]
+        });
+
+      const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: [ 20, 180, 50, 50 ],
+        plotBackground: {
+          stroke: '#ccc'
+        }
+      });
+      chart.source(dv, {
+        year: {
+          tickInterval: 10,
+          nice: false
+        },
+        count: {
+          nice: false
+        }
+      });
+      chart.legend({
+        useHtml: true,
+        itemTpl: '<li class="g2-legend-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 12px;">' +
+        '<i class="g2-legend-marker" style="width:8px;height:8px;display:inline-block;margin-right:8px;background-color: {color};"></i>' +
+        '<span class="g2-legend-text">{value}</span></li>'
+      });
+      chart.tooltip({
+        shared: false,
+        crosshairs: false
+      });
+      chart.axis('year', {
+        title: null,
+        line: null,
+        tickLine: null
+      });
+      chart.axis('count', {
+        title: null,
+        line: null,
+        tickLine: {
+          length: 8
+        },
+        subTickCount: 10,
+        subTickLine: {
+          lineWidth: 1, // 子刻度线宽
+          stroke: '#ddd', // 子刻度线颜色
+          length: 5
+        },
+        grid: null
+      });
+      chart.area()
+        .position('year*count')
+        .adjust([ 'stack', 'symmetric' ])
+        .color('name')
+        .shape('smooth')
+        .opacity(1);
+      chart.render();
+      // console.log(Date.now() - t0);
+    });
+</script>

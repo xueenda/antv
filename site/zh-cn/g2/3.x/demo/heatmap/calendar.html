@@ -21,7 +21,7 @@ relativePlots:
       const month = date.getMonth();
       const monthFirst = new Date(year, month, 0);
       const intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
-      const index = Math.round((intervalDays + monthFirst.getDay()) / 7);
+      const index = Math.floor((intervalDays + monthFirst.getDay()) / 7);
       return index;
     }
     // 加工数据

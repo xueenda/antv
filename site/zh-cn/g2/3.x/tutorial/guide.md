@@ -11,7 +11,7 @@ resource:
 
 Guide 作为 G2 图表的辅助元素，主要用于在图表上标识额外的标记注解。
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/ekrHtCkdfMttjnAXqApH.png" width="500px">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/ekrHtCkdfMttjnAXqApH.png" style="width: 50%;">
 
 ## guide 类型
 
@@ -63,7 +63,7 @@ $.getJSON('/assets/data/diamond.json', function(data) {
   var chart = new G2.Chart({ // 创建图表
     container : 'c1',
     forceFit: true,
-    height: 300
+    height: 450
   });
  
   chart.source(data); // 设置数据源
@@ -139,7 +139,7 @@ $.getJSON('/assets/data/diamond.json', function(data) {
   var chart = new G2.Chart({
     container: 'c2',
     forceFit: true,
-    height: 300
+    height: 450
   });
   chart.source(dv);
   chart.tooltip({
@@ -184,7 +184,7 @@ $.getJSON('/assets/data/diamond.json', function(data) {
   var chart = new G2.Chart({ // 创建图表
     container : 'c3',
     forceFit: true,
-    height: 300,
+    height: 450,
     padding: [ 20, 90, 60, 80 ]
   });
   var defs = {
@@ -278,7 +278,7 @@ var data = [
 var chart = new G2.Chart({
   container: 'c4',
   forceFit: true,
-  height: 300
+  height: 450
 });
 chart.source(data);
 chart.line().position('month*tem').color('city');
@@ -315,7 +315,7 @@ $.getJSON('/assets/data/diamond.json', function(data) {
   var chart = new G2.Chart({
     container: 'c5',
     forceFit: true,
-    height: 300
+    height: 450
   });
   chart.source(data);
   chart.point().position('carat*price');
@@ -401,7 +401,7 @@ function findMax() {
 var chart = new G2.Chart({ // 创建图表
   container: 'c6',
   forceFit: true,
-  height: 300
+  height: 450
 });
 
 chart.source(data, {
