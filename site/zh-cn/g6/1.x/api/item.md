@@ -10,43 +10,43 @@
 
 Item 子项，是 G6 内部`节点 (node) `和边`边 (edge) `的抽象概念。本文档将向大家说明，节点和边已开放的 API 。
 
-* [节点——Node](#节点——node)
-* [边——Edge](#边——edge)
+* [节点——Node](#_节点——node)
+* [边——Edge](#_边——edge)
 
 # 节点——Node
 
 ## 方法
 
-### [show](#show) {Function}
+### [show](#_show) {Function}
 
 显示
 
-### [hide](#hide) {Function}
+### [hide](#_hide) {Function}
 
 隐藏
 
-### [getKeyShape](#getKeyShape) {Function}
+### [getKeyShape](#_getKeyShape) {Function}
 
 获取关键形
 
-### [getBBox](#getBBox) {Function}
+### [getBBox](#_getBBox) {Function}
 
 获取包围盒
 
 
-### [getModel](#getModel) {Function}
+### [getModel](#_getModel) {Function}
 
 获取数据模型
 
-### [getGroup](#getGroup) {Function}
+### [getGroup](#_getGroup) {Function}
 
 获取图形图组
 
-### [getShapeCfg](#getShapeCfg) {Function}
+### [getShapeCfg](#_getShapeCfg) {Function}
 
 获取绘制配置项
 
-### [getAnchor](#getAnchor) {Function}
+### [getAnchor](#_getAnchor) {Function}
 
 获取锚点
 
@@ -59,23 +59,23 @@ Item 子项，是 G6 内部`节点 (node) `和边`边 (edge) `的抽象概念。
 node.getAnchor(param);
 ```
 
-### [getEdges](#getEdges) {Function}
+### [getEdges](#_getEdges) {Function}
 
 获取该节点所有边
 
-### [getLinkNodes](#getLinkNodes) {Function}
+### [getLinkNodes](#_getLinkNodes) {Function}
 
 获取有连接的子项
 
-### [getUnLinkNodes](#getUnLinkNodes) {Function}
+### [getUnLinkNodes](#_getUnLinkNodes) {Function}
 
 获取无连接的子项
 
-### [getRelativeItems](#getRelativeItems) {Function}
+### [getRelativeItems](#_getRelativeItems) {Function}
 
 获取有关联的子项
 
-### [getUnRelativeItems](#getUnRelativeItems) {Function}
+### [getUnRelativeItems](#_getUnRelativeItems) {Function}
 
 获取无关联的子项
 
@@ -275,30 +275,30 @@ function reRender(){
 
 ## 方法
 
-### [show](#show) {Function}
+### [show](#_show) {Function}
 
 显示
 
-### [hide](#hide) {Function}
+### [hide](#_hide) {Function}
 
 隐藏
 
-### [getKeyShape](#getKeyShape) {Function}
+### [getKeyShape](#_getKeyShape) {Function}
 
 获取关键形
 
-### [getGroup](#getGroup) {Function}
+### [getGroup](#_getGroup) {Function}
 
 获取图形图组
 
-### [getBBox](#getBBox) {Function}
+### [getBBox](#_getBBox) {Function}
 
 获取包围盒
 
-### [getModel](#getModel) {Function}
+### [getModel](#_getModel) {Function}
 
 获取数据模型
 
-### [getShapeCfg](#getShapeCfg) {Function}
+### [getShapeCfg](#_getShapeCfg) {Function}
 
 获取绘制配置项

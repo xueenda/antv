@@ -8,8 +8,9 @@ resource:
 -->
 
 <script type="text/javascript">
-$('body').append('<button id="up">上一页</button>');
-$('body').append('<button id="down">下一页</button>');
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="up">上一页</button>');
+$('#toolBar').append('<button id="down">下一页</button>');
 $.getJSON('/assets/data/g6ppt.json',function(data){
   var Util = G6.Util;
   var Matrix = G6.Matrix.Matrix3;

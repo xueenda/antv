@@ -10,19 +10,19 @@
 
 通过 `G6` 对象可调用的属性：
 
-* 图基类：[G6.Graph](./graph)
-* 网图类：[G6.Net](./layout)
-* 树图类：[G6.Tree](./layout)
-* 处理类：[G6.Handler](./handler)
-* 布局类：[G6.Layout](./layout)
-* 绘图类：[G6.Canvas](./canvas)
-* 全局配置项：[G6.Global](./global)
-* 矩阵类：[G6.Matrix](./matrix)
-* 工具类：[G6.Util](./util)
+* 图基类：[G6.Graph](./graph.html)
+* 网图类：[G6.Net](./net.html)
+* 树图类：[G6.Tree](./tree.html)
+* 处理类：[G6.Handler](./handler.html)
+* 绘图类：[G6.Canvas](./canvas.html)
+* 矩阵类：[G6.Matrix](./matrix.html)
+* 工具类：[G6.Util](./util.html)
+* 布局包：[G6.Layout](./layout.html)
+* 全局配置项：[G6.Global](./global.html)
 
 ## 静态方法
 
-### [registNode](#registNode) {Function}
+### [registNode](#_registNode) {Function}
 
 注册节点，参见文档[自定义图形](../tutorial/custom-shape.html)。
 
@@ -58,7 +58,7 @@ G6.registNode(name, {
 
 `注意：如果注册已有的图形，将会直接复写该图形对应的方法。`
 
-### [registEdge](#registEdge) {Function}
+### [registEdge](#_registEdge) {Function}
 
 注册边，参见文档[自定义图形](../tutorial/custom-shape.html)。
 

@@ -6,8 +6,9 @@ resource:
   jsFiles:
     - ${url.jquery}
 -->
-
+<script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.17/dist/g6-plugins.min.js"></script>
 <script type="text/javascript">
+var miniMap = new G6.Plugins['tool.minimap']();
 var Global = G6.Global;
 var Util = G6.Util;
 
@@ -104,7 +105,7 @@ var data = {
 };
 var tree = new G6.Tree({
   id: 'mountNode',
-  height: window.innerHeight,                    // 此处替换高度
+  height: 450,                    // 此处替换高度
   fitView: {                      // 自动对齐到中心点
     x: 0,
     y: 0
@@ -118,7 +119,8 @@ var tree = new G6.Tree({
     getVGap: function() {
       return 10;
     }
-  }
+  },
+  plugins: [ miniMap ]
 });
 var graphContainer = tree.get('graphContainer');
 var input = Util.createDOM('<input class="g6-label-input" />', {
@@ -212,6 +214,7 @@ tree.addBehaviour('default', ['clickBlankClearActive']);
 tree.node().label('name').style(nodeStyle);
 tree.edge().shape('smooth');
 tree.source(data);
+// 默认中心为树图根节点 (0, 0) 点
 tree.render();
 
 tree.on('itemmouseenter', function(ev){

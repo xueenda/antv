@@ -11,10 +11,10 @@ resource:
 
 <script type="text/javascript">
 
-$('#c1').append('<button id="downloadCurrentImage">下载当前视口内图</button');
-$('#c1').append('<button id="downloadFullImage">下载全图</button>');
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="downloadCurrentImage">下载当前视口内图</button');
+$('#toolBar').append('<button id="downloadFullImage">下载全图</button>');
 
-console.log(html2canvas);
 var downloadFullImage = $('#downloadFullImage');
 var downloadCurrentImage = $('#downloadCurrentImage');
 

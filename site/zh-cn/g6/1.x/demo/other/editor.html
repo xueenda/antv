@@ -40,12 +40,13 @@ G6.registNode('customNode', {
 });
 
 // 第二步：设置按钮
-$('#c1').append('<button id="addCircle">圆形</button>');
-$('#c1').append('<button id="addRect">方形</button>');
-$('#c1').append('<button id="addCustom">自定义形</button>');
-$('#c1').append('<button id="addLine">添加直线</button>');
-$('#c1').append('<button id="addSmooth">添加曲线</button>');
-$('#c1').append('<button id="save">保存</button>');
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="addCircle">圆形</button>');
+$('#toolBar').append('<button id="addRect">方形</button>');
+$('#toolBar').append('<button id="addCustom">自定义形</button>');
+$('#toolBar').append('<button id="addLine">添加直线</button>');
+$('#toolBar').append('<button id="addSmooth">添加曲线</button>');
+$('#toolBar').append('<button id="save">保存</button>');
 var addCircle = $('#addCircle');
 var addRect = $('#addRect');
 var addCustom = $('#addCustom');

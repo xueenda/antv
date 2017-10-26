@@ -8,79 +8,6 @@ resource:
 -->
 
 <script type="text/javascript">
-var data = {
-  "nodes": [{
-    "shape": "customNode1",
-    "x": 370,
-    "y": 30,
-    "id": "27c5046d"
-  }, {
-    "shape": "customNode1",
-    "x": 430,
-    "y": 330,
-    "id": "99d69b85"
-  }, {
-    "shape": "customNode2",
-    "x": 650,
-    "y": 220,
-    "id": "f8cfdbd2"
-  }, {
-    "shape": "customNode1",
-    "x": 80,
-    "y": 210,
-    "id": "3fabea06"
-  }],
-  "edges": [{
-    "shape": "polyLineFlow",
-    "source": "27c5046d",
-    "target": "99d69b85",
-    "id": "73b7ef7f",
-    "sourceAnchor": 10,
-    "targetAnchor": 7
-  }, {
-    "shape": "polyLineFlow",
-    "source": "27c5046d",
-    "target": "f8cfdbd2",
-    "id": "cc306f85",
-    "sourceAnchor": 4,
-    "targetAnchor": 7
-  }, {
-    "shape": "polyLineFlow",
-    "source": "27c5046d",
-    "target": "f8cfdbd2",
-    "id": "519d49a4",
-    "sourceAnchor": 7,
-    "targetAnchor": 3
-  }, {
-    "shape": "polyLineFlow",
-    "source": "27c5046d",
-    "target": "3fabea06",
-    "id": "286f8ca2",
-    "sourceAnchor": 2,
-    "targetAnchor": 3
-  }, {
-    "shape": "polyLineFlow",
-    "source": "27c5046d",
-    "target": "3fabea06",
-    "id": "f559fec8",
-    "sourceAnchor": 6,
-    "targetAnchor": 0
-  }, {
-    "shape": "polyLineFlow",
-    "source": "27c5046d",
-    "target": "3fabea06",
-    "id": "4b0a2dcf",
-    "sourceAnchor": 9,
-    "targetAnchor": 5
-  }, {
-    "shape": "polyLineFlow",
-    "source": "99d69b85",
-    "target": "f8cfdbd2",
-    "id": "c2514050",
-    "sourceAnchor": 11,
-    "targetAnchor": 9
-  }]
-};
 G6.registNode('customNode1', {
   draw: function(cfg, group) {
     var shape = group.addShape('rect', {
@@ -153,8 +80,6 @@ var net = new G6.Net({
   fitView: 'cc', // 自适应视口为左上
   height: window.innerHeight    // 画布高
 });
-
-net.source(data.nodes, data.edges);
 addCustom1.on('click', function(ev){
   net.beginAdd('node', {
     shape: 'customNode1'

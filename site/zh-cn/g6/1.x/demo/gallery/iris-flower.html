@@ -13,7 +13,7 @@ resource:
   top: 0px;
   left: 0px;
 }
-#c1{
+#mountNode{
   position: relative;
 }
 </style>
@@ -261,7 +261,7 @@ $.getJSON('/assets/data/Iris-flower.json',function(data){
   net.render();
 
   // 绘制图例
-  var containerDom = $('#c1');
+  var containerDom = $('#mountNode');
   containerDom.css('background', colorMap.background);
   // containerDom.css('width', width + 'px');
   containerDom.css('height', height + 'px');

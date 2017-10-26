@@ -7,21 +7,21 @@
 -->
 # Matrix
 
-* [三阶矩阵——Matrix3](#三阶矩阵——matrix3)
-* [二阶向量——Vector2](#二阶向量——vector2)
+* [三阶矩阵——Matrix3](#_三阶矩阵——matrix3)
+* [二阶向量——Vector2](#_二阶向量——vector2)
 
 # 三阶矩阵——Matrix3
 
 ## 静态方法
 
-### [multiply](#multiply) {Function}
+### [multiply](#_multiply) {Function}
 乘法
 
 ```js
 Matrix.Matrix3.multiply(m1, m2);
 ```
 
-### [equal](#equal) {Function}
+### [equal](#_equal) {Function}
 等于
 
 ```js
@@ -30,7 +30,7 @@ Matrix.Matrix3.equal(m1, m2);
 
 ## 实例方法
 
-### [set](#set) {Function}
+### [set](#_set) {Function}
 
 设置矩阵
 
@@ -54,7 +54,7 @@ matrix.set(
 );
 ```
 
-### [get](#get) {Function}
+### [get](#_get) {Function}
 
 获取矩阵元素
 
@@ -68,7 +68,7 @@ matrix.set(
 matrix.get(i, j);
 ```
 
-### [identity](#identity) {Function}
+### [identity](#_identity) {Function}
 
 矩阵归一
 
@@ -82,7 +82,7 @@ matrix.get(i, j);
 matrix.get(i, j);
 ```
 
-### [multiplyScalar](#multiplyScalar) {Function}
+### [multiplyScalar](#_multiplyScalar) {Function}
 
 乘算子
 
@@ -94,19 +94,19 @@ matrix.get(i, j);
 matrix.multiplyScalar(s);
 ```
 
-### [det](#det) {Function}
+### [det](#_det) {Function}
 
 求行列式
 
-### [inverse](#inverse) {Function}
+### [inverse](#_inverse) {Function}
 
 矩阵反转
 
-### [transpose](#transpose) {Function}
+### [transpose](#_transpose) {Function}
 
 矩阵转置
 
-### [multiply](#multiply) {Function}
+### [multiply](#_multiply) {Function}
 
 矩阵乘法
 
@@ -118,7 +118,7 @@ matrix.multiplyScalar(s);
 matrix.multiply(m);
 ```
 
-### [translate](#translate) {Function}
+### [translate](#_translate) {Function}
 
 仿射平移
 
@@ -131,7 +131,7 @@ matrix.multiply(m);
 matrix.translate(m);
 ```
 
-### [rotate](#rotate) {Function}
+### [rotate](#_rotate) {Function}
 
 仿射旋转
 
@@ -143,7 +143,7 @@ matrix.translate(m);
 matrix.rotate(rad);
 ```
 
-### [scale](#scale) {Function}
+### [scale](#_scale) {Function}
 
 仿射缩放
 
@@ -156,11 +156,11 @@ matrix.rotate(rad);
 matrix.scale(sx, sy);
 ```
 
-### [equal](#equal) {Function}
+### [equal](#_equal) {Function}
 
 等于
 
-### [copy](#copy) {Function}
+### [copy](#_copy) {Function}
 
 复制一个矩阵到自身
 
@@ -172,7 +172,7 @@ matrix.scale(sx, sy);
 matrix.copy(m);
 ```
 
-### [clone](#clone) {Function}
+### [clone](#_clone) {Function}
 
 克隆
 
@@ -184,7 +184,7 @@ matrix.copy(m);
 matrix.clone();
 ```
 
-### [to2DObject](#to2DObject) {Function}
+### [to2DObject](#_to2DObject) {Function}
 
 转换为2阶算子
 
@@ -196,7 +196,7 @@ matrix.clone();
 matrix.to2DObject();
 ```
 
-### [from2DObject](#from2DObject) {Function}
+### [from2DObject](#_from2DObject) {Function}
 
 解析2阶算子
 
@@ -212,7 +212,7 @@ matrix.from2DObject(obj);
 
 ## 静态方法
 
-### [add](#add) {Function}
+### [add](#_add) {Function}
 
 和
 
@@ -220,7 +220,7 @@ matrix.from2DObject(obj);
 Matrix.Vector2.add(v1, v2);
 ```
 
-### [sub](#sub) {Function}
+### [sub](#_sub) {Function}
 
 差
 
@@ -228,7 +228,7 @@ Matrix.Vector2.add(v1, v2);
 Matrix.Vector2.sub(v1, v2);
 ```
 
-### [lerp](#lerp) {Function}
+### [lerp](#_lerp) {Function}
 
 插值
 
@@ -236,7 +236,7 @@ Matrix.Vector2.sub(v1, v2);
 Matrix.Vector2.lerp(v1, v2, r);
 ```
 
-### [angle](#angle) {Function}
+### [angle](#_angle) {Function}
 
 夹角
 
@@ -244,7 +244,7 @@ Matrix.Vector2.lerp(v1, v2, r);
 Matrix.Vector2.angle(v1, v2);
 ```
 
-### [direction](#direction) {Function}
+### [direction](#_direction) {Function}
 
 方向
 
@@ -254,7 +254,7 @@ Matrix.Vector2.direction(v1, v2);
 
 ## 实例方法
 
-### [negate](#negate) {Function}
+### [negate](#_negate) {Function}
 
 向量反转
 
@@ -262,7 +262,7 @@ Matrix.Vector2.direction(v1, v2);
 vector.negate();
 ```
 
-### [dot](#dot) {Function}
+### [dot](#_dot) {Function}
 
 点积
 
@@ -274,7 +274,7 @@ vector.negate();
 vector.dot(v);
 ```
 
-### [vertical](#vertical) {Function}
+### [vertical](#_vertical) {Function}
 
 垂直
 
@@ -286,7 +286,7 @@ vector.dot(v);
 vector.vertical(left);
 ```
 
-### [length](#length) {Function}
+### [length](#_length) {Function}
 
 求向量模长
 
@@ -294,7 +294,7 @@ vector.vertical(left);
 vector.length();
 ```
 
-### [setLength](#setLength) {Function}
+### [setLength](#_setLength) {Function}
 
 设置向量长
 
@@ -306,7 +306,7 @@ vector.length();
 vector.setLength(length);
 ```
 
-### [lerp](#lerp) {Function}
+### [lerp](#_lerp) {Function}
 
 求插值
 
@@ -318,7 +318,7 @@ vector.setLength(length);
 vector.lerp(r);
 ```
 
-### [clone](#clone) {Function}
+### [clone](#_clone) {Function}
 
 克隆
 
@@ -326,7 +326,7 @@ vector.lerp(r);
 vector.clone();
 ```
 
-### [rotate](#rotate) {Function}
+### [rotate](#_rotate) {Function}
 
 旋转
 
@@ -338,7 +338,7 @@ vector.clone();
 vector.rotate(angle);
 ```
 
-### [angleTo](#angleTo) {Function}
+### [angleTo](#_angleTo) {Function}
 
 求角度
 
@@ -351,7 +351,7 @@ vector.rotate(angle);
 vector.angleTo(v, direct);
 ```
 
-### [angle](#angle) {Function}
+### [angle](#_angle) {Function}
 
 求角度
 

@@ -36,15 +36,15 @@ var net1 = new G6.Net({
 });
 net1.read(data);
 net1.render();
-$('#c1').append('<div>图一</div>');
+$('#mountNode').append('<div>图一</div>');
 var net2 = new G6.Net({
   id: 'mountNode',              // 容器ID
   height: 100,
   fitView: 'autoSize'
 });
-$('#c1').append('<div>图二</div>');
+$('#mountNode').append('<div>图二</div>');
 // 设置按钮
-$('#c1').prepend('<button id="saveAndread">将第一幅图的数据保存并读入第二幅图</button>');
+$('#mountNode').prepend('<button id="saveAndread">将第一幅图的数据保存并读入第二幅图</button>');
 
 var saveAndread = $('#saveAndread');
 

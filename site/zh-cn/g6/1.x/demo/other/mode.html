@@ -50,10 +50,11 @@ net.source(data.nodes, data.edges);
 net.render();
 
 // 第二步：设置按钮
-$('#c1').prepend('<button id="addClickActive">添加点击激活行为</button>');
-$('#c1').prepend('<button id="removeClickActive">删除点击激活行为</button>');
-$('#c1').prepend('<button id="changeModeToDefault">切换到默认模式</button>');
-$('#c1').prepend('<button id="changeModeToEidt">切换到编辑模式</button>');
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').prepend('<button id="addClickActive">添加点击激活行为</button>');
+$('#toolBar').prepend('<button id="removeClickActive">删除点击激活行为</button>');
+$('#toolBar').prepend('<button id="changeModeToDefault">切换到默认模式</button>');
+$('#toolBar').prepend('<button id="changeModeToEidt">切换到编辑模式</button>');
 
 var addClickActive = $('#addClickActive');
 var removeClickActive = $('#removeClickActive');
