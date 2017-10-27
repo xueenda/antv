@@ -1,6 +1,6 @@
 <!--
 title: 扫码业务流程
-description: 重点展示 HTML 节点的使用
+plotDescription:  重点展示 HTML 节点的使用
 index: 2
 
 -->
@@ -38,13 +38,13 @@ index: 2
   }
 </style>
 <script type="text/javascript">
-var Util = G6.Util;
+const Util = G6.Util;
 G6.registerNode('customNode', {
   cssSize: true, // 不使用内部 size 作为节点尺寸
   getHtml: function(cfg){
-    var model = cfg.model;
-    var container = Util.createDOM('<div class="node-conatiner"></div>');
-    var title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
+    const model = cfg.model;
+    const container = Util.createDOM('<div class="node-conatiner"></div>');
+    const title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
       ${model.name}
     </div>`);
     var list = Util.createDOM(`<div class="node-conatiner-list">
@@ -61,7 +61,7 @@ G6.registerNode('customNode', {
     return container;
   }
 }, 'html');
-var data = {
+const data = {
   "nodes": [
     {
       "id": "c952611b",

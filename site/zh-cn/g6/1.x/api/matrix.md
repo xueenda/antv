@@ -7,8 +7,8 @@
 -->
 # Matrix
 
-* [三阶矩阵——Matrix3](#_三阶矩阵——matrix3)
-* [二阶向量——Vector2](#_二阶向量——vector2)
+* [三阶矩阵——Matrix3](#_三阶矩阵——Matrix3)
+* [二阶向量——Vector2](#_二阶向量——Vector2)
 
 # 三阶矩阵——Matrix3
 

@@ -11,27 +11,27 @@
 
 ## 方法
 
-### [dragHideTexts](dragHideTexts) {Function}
+### [dragHideTexts](#_dragHideTexts) {Function}
 
 拖拽隐藏文本
 
-### [wheelZoomHideTexts](wheelZoomHideTexts) {Function}
+### [wheelZoomHideTexts](#_wheelZoomHideTexts) {Function}
 
 缩放隐藏文本
 
-### [dragEdgeEndHideAnchor](dragEdgeEndHideAnchor) {Function}
+### [dragEdgeEndHideAnchor](#_dragEdgeEndHideAnchor) {Function}
 
 多拽边结束后隐藏目标节点的锚点
 
-### [dragNodeEndHideAnchor](dragEdgeEndHideAnchor) {Function}
+### [dragNodeEndHideAnchor](#_dragEdgeEndHideAnchor) {Function}
 
 多拽节点结束后隐藏目标节点的锚点
 
-### [hoverAnchorSetActived](dragEdgeEndHideAnchor) {Function}
+### [hoverAnchorSetActived](#_dragEdgeEndHideAnchor) {Function}
 
 鼠标悬锚点激活锚点
 
-### [hoverNodeShowAnchor](dragEdgeEndHideAnchor) {Function}
+### [hoverNodeShowAnchor](#_dragEdgeEndHideAnchor) {Function}
 
 鼠标悬浮节点显示锚点
 
@@ -103,7 +103,7 @@
 
 滚轮缩放行为。
 
-### [dragHideEdges](#_dragHideEdges) {Function}
+### [dragHideEdges](#dragHideEdges) {Function}
 
 拖动边隐藏行为
 

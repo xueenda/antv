@@ -7,7 +7,7 @@
 -->
 # Net
 
-网图图类，继承于[Graph](./graph)，享有 Graph 上所有属性和方法。
+网图图类，继承于[Graph](./graph.html)，享有 Graph 上所有属性和方法。
 
 ## 属性
 

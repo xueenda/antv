@@ -8,7 +8,7 @@
 
 # Tree
 
-树图，支持树型数据，继承于[Graph](./graph)，享有 Graph 上所有属性和方法。
+树图，支持树型数据，继承于[Graph](./graph.html)，享有 Graph 上所有属性和方法。
 
 ## 属性
 
