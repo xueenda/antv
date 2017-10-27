@@ -39,16 +39,17 @@ module.exports = {
             name: '${resource.translate.academy}',
             href: '${base}zh-cn/academy/index.html',
             links: {
-                principles: { text: '设计原则', href: ''  },
-                cases: { text: '图表用法', href: '' },
-                resources: { text: '资源', href: '' },
-                publications: { text: '经典文献', href: '' },
+                blog: { text: '博客', href: '${base}zh-cn/academy/blog/index.html' },
+                design: { text: '设计原则', href: '${base}zh-cn/academy/design/index.html'  },
+                chart: { text: '图表用法', href: '${base}zh-cn/academy/chart/index.html' },
+                resource: { text: '资源', href: '${base}zh-cn/academy/resource/index.html' },
+                // publications: { text: '经典文献', href: '' },
             }
         }
     },
     resource: {
         translate: {
-            academy: '可视化实验室',
+            academy: '可视化工作坊',
             api: 'API文档',
             back2oldVersion: '返回旧版',
             changelog: '更新日志',
