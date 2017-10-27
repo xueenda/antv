@@ -9,6 +9,8 @@ var path = require('path'),
     extname = path.extname,
     join = path.join;
 
+var _ = require('lodash');
+
 var renderMd = require('../../../../lib/render-md');
 
 var siteConfig = require('../../../../site-config'),
@@ -31,7 +33,7 @@ docFiles.forEach(function (file) {
     var _renderMd = renderMd(file),
         meta = _renderMd.meta;
 
-    var index = meta.index || 999,
+    var index = _.isNumber(meta.index) ? meta.index : 999,
         title = meta.title;
 
     var name = basename(file, '.md');
