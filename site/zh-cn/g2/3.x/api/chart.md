@@ -828,7 +828,23 @@ chart.legend('gender', {
   具体使用如下：
 
   ```js
+  // 自定义图例
   chart.legend({
+    custom: true,
+    items: [
+      { 
+        value: 'waiting', // 图例项的文本内容
+        fill: '#3182bd',  // 该图例项 marker 的填充颜色
+        marker: 'shape'  // 该图例项 marker 的形状，参见 marker 参数的说明
+      },
+      { value: 'call', fill: '#99d8c9', marker: 'shape' },
+      { value: 'people', fill: '#fdae6b', marker: 'shape' },
+    ],
+    onHover: ev => {}, // 自定义 hover 事件  
+    onClick: ev => {}, // 自定义 click 事件
+  });
+  // 为特定的字段自定义图例
+  chart.legend('field', {
     custom: true,
     items: [
       { 
@@ -951,15 +967,23 @@ chart.tooltip(true, {
 
 是一个对象类型，支持的属性如下：
 
-  1. `showTitle`: boolean
+  1. `triggerOn`: string
+
+  tooltip 的触发方式，可配置的值为：'mousemove'、'click'、'none'，默认为 `mousemove`。 
+
+    * 'mousemove': 鼠标移动触发；
+    * 'click': 鼠标点击出发；
+    * 'none': 不触发 tooltip，用户通过 `chart.showTooltip()` 和 `chart.hideTooltip()` 来控制 tooltip 的显示和隐藏。
+
+  2. `showTitle`: boolean
 
   是否展示提示信息的标题，默认为 true，即展示，通过设置为 false 来隐藏标题。
 
-  2. `title`: string
+  3. `title`: string
 
   设置 tooltip 的标题展示的数据字段，设置该字段后，该标题即会展示该字段对应的数值。`showTitle` 为 false 时，该设置不生效。
 
-  3. `crosshairs`: object
+  4. `crosshairs`: object
 
   是一个对象类型，用于设置 tooltip 的辅助线或者辅助框。
 
@@ -986,31 +1010,31 @@ chart.tooltip(true, {
 
   > crosshairs.type 说明： `rect` 表示矩形框，`x` 表示水平辅助线，`y` 表示垂直辅助线，`cross` 表示十字辅助线。
 
-  4. `offset`: number
+  5. `offset`: number
 
   设置 tooltip 距离鼠标的偏移量。
 
-  5. `inPlot`: boolean
+  6. `inPlot`: boolean
 
   设置是否将 tooltip 限定在绘图区域内，默认为 true，即限定在绘图区域内。
 
-  6. `follow`: boolean
+  7. `follow`: boolean
 
   设置 tooltip 是否跟随鼠标移动。默认为 true，即跟随。
 
-  7. `shared`: boolean
+  8. `shared`: boolean
   
   设置 tooltip 只展示单条数据。
 
-  8. `enterable`: boolean
+  9. `enterable`: boolean
 
   用于控制是否允许鼠标进入 tooltip，默认为 false，即不允许进入。
 
-  9. `position`: string
+  10. `position`: string
 
   该属性设置之后，就会在固定位置展示 tooltip，可设置的值为：`left`、`right`、`top`、`bottom`。
 
-  10. `containerTpl`: string
+  11. `containerTpl`: string
 
   tooltip 默认的容器模板，默认值如下：
 
@@ -1023,7 +1047,7 @@ chart.tooltip(true, {
 
   如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
 
-  11. `itemTpl`: string
+  12. `itemTpl`: string
 
   tooltip 每项记录的默认模板，默认值如下：
 
@@ -1064,7 +1088,7 @@ chart.tooltip(true, {
   </style>
 
   ```js-
-const data = [
+  const data = [
     {"month": '一月', "tem":7, "city": "tokyo" },
     {"month": '二月', "tem":6.9, "city": "tokyo" },
     {"month": '三月', "tem":9.5, "city": "tokyo" },

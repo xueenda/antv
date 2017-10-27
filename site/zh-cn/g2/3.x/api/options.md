@@ -28,7 +28,7 @@ chart.render();
 
 可以先通过以下几个例子来了解下：
 
-* **实例 1：柱状图**
+## 实例 1：柱状图
 
 <div id="c1"></div>
 
@@ -86,7 +86,7 @@ chart.interval().position('genre*sold').color('genre')
 chart.render();
 ```
 
-* **实例 2: 散点图**
+## 实例 2: 散点图
 
 <div id="c2"></div>
 
@@ -143,7 +143,7 @@ $.getJSON('/assets/data/diamond.json', function(data){
   });
   chart.render();
 });
-````
+```
 
 对应函数式调用代码如下：
 
@@ -186,7 +186,7 @@ $.getJSON('/assets/data/diamond.json', function(data){
   chart.render(); // 图表渲染
 ```
 
-* **实例 3：多 views**
+## 实例 3：多 views
 
 <div id="c3"></div>
 
@@ -437,51 +437,38 @@ var options = {
 
 ```js
 scales: {
-  ${field1}: {Object}, // 为数据字段 field1 进行列定义
-  ${field2}: {Object}, // 为数据字段 field2 进行列定义
+  field1: {Object}, // 为数据字段 field1 进行列定义
+  field2: {Object}, // 为数据字段 field2 进行列定义
   ...
 }
 ```
 
 具体列定义的参数 API： [Scale](./scale.html)。
 
-代码示例，为以下数据源的 `time` `value` 两个数据字段定义对应的列定义：
+#### 示例
 
 ```js
-var data = [
-  {"value":10,"time":"2015-03-01T16:00:00.000Z"},
-  {"value":15,"time":"2015-03-01T16:10:00.000Z"},
-  {"value":26,"time":"2015-03-01T16:20:00.000Z"},
-  {"value":9,"time":"2015-03-01T16:30:00.000Z"},
-  {"value":12,"time":"2015-03-01T16:40:00.000Z"},
-  {"value":23,"time":"2015-03-01T16:50:00.000Z"},
-  {"value":18,"time":"2015-03-01T17:00:00.000Z"},
-  {"value":21,"time":"2015-03-01T17:10:00.000Z"},
-  {"value":22,"time":"2015-03-01T17:20:00.000Z"}
-];
-var chart = new G2.Chart({
-  id: 'c1',
-  forceFit: true,
-  height: 300,
-  data: data,
-  options: {
-    scales: {
-      'time': {
-        type: 'time',
-        nice: false,
-        mask: 'HH:MM'
-      },
-      'value': {
-        formatter: function(val) {
-            return val + ' k';
-        }
-      }
-    }
+chart.scale({
+  x: {
+    type: 'cat',
+    tickCount: 10
+  },
+  y: {
+    type: 'linear',
+    nica: false
   }
 });
-// 配置项声明同函数调用可以混合使用
-chart.line().position('time*value').color('red');
-chart.render();
+// 上述函数调用对应如下配置项声明
+scales: {
+  x: {
+    type: 'cat',
+    tickCount: 10
+  },
+  y: {
+    type: 'linear',
+    nica: false
+  }
+}
 ```
 
 ### [coord](#_coord)
@@ -510,6 +497,28 @@ actions: [
 ]
 ```
 
+#### 示例
+
+```js
+chart.coord('polar', {
+  innerRadius: 0.3,
+  startAngle: - Math.PI / 2,
+  endAngle: 3 * Math.PI / 2
+}).transpose();
+// 上述函数式调用对应如下配置
+coord: {
+  type: 'polar',
+  cfg: {
+    innerRadius: 0.3,
+    startAngle: - Math.PI / 2,
+    endAngle: 3 * Math.PI / 2
+  },
+  actions: [
+    [ 'transpose' ]
+  ]
+}
+```
+
 ### [axes](#_axes)
 
 类型：`Object`
@@ -521,25 +530,14 @@ actions: [
 1. 不展示坐标轴
 
 ```js
-axes: {
-  visible: false
-}
+axes: false
 ```
 
 2. 不展示某条坐标轴
 
 ```js
 axes: {
-  ${fields}: false, // 不展示数据字段 field1 对应的坐标轴
-}
-```
-或者
-
-```js
-axes: {
-  ${fields}: 
-    visible: false
-  }, // 不展示数据字段 field1 对应的坐标轴
+  field: false, // 不展示数据字段 field1 对应的坐标轴
 }
 ```
 
@@ -547,9 +545,49 @@ axes: {
 
 ```js
 axes: {
-   ${field1}: {Object}, // 具体配置同 https://antv.alipay.com/g2/api/chart.html#axis
-   ${field2}: {Object}, // 具体配置同 https://antv.alipay.com/g2/api/chart.html#axis
+   field1: {Object},
+   field2: {Object}
    // ...
+}
+```
+
+具体的配置属性同 `chart.axis(field, cfg)`。
+
+#### 示例
+
+```js
+chart.axis('x', false);
+chart.axis('y', {
+  tickLine: {
+    length: 5,
+    lineWidth: 2
+  },
+  label: {
+    formatter: val => {
+      return val + '$';
+    },
+    textStyle: {
+      fontSize: 12
+    }
+  }
+});
+// 上述函数式调用对应如下配置
+axes: {
+  x: false,
+  y: {
+    tickLine: {
+      length: 5,
+      lineWidth: 2
+    },
+    label: {
+      formatter: val => {
+        return val + '$';
+      },
+      textStyle: {
+        fontSize: 12
+      }
+    }
+  }
 }
 ```
 
@@ -562,9 +600,7 @@ axes: {
 1. 不显示所有的图例
 
 ```js
-legends: {
-  visible: false
-}
+legends: false
 ```
 
 2. 为默认的图例进行配置
@@ -572,7 +608,7 @@ legends: {
 ```js
 legends: {
   position: 'right', // 图例的显示位置，有 'top','left','right','bottom'四种位置，默认是'right'
-  // ... 其他属性同 https://antv.alipay.com/g2/api/chart.html#chart-legend-cfg
+  // ... 其他属性同 chart.legend()
 }
 ```
 
@@ -580,8 +616,24 @@ legends: {
 
 ```js
 legends: {
-  ${field1}: {Object}, // 具体的配置属性同 https://antv.alipay.com/g2/api/chart.html#chart-legend-dim-cfg
-  ${field2}: false // 不展示 field2 对应的图例 
+  field1: {Object}, 
+  field2: false // 不展示 field2 对应的图例 
+}
+```
+
+#### 示例
+
+```js
+chart.legend('x', false);
+chart.legend('y', {
+  position: 'top'
+});
+// 上述函数式调用对应如下配置
+legends: {
+  x: false,
+  y: {
+    position: 'top'
+  }
 }
 ```
 
@@ -606,6 +658,33 @@ legends: {
   ]
 ```
 
+#### 示例
+
+```js
+chart.guide().line({
+    start: [ caratAvg, 0 ], // 使用数组格式
+    end: [ caratAvg, 20000 ],
+    text: {
+      position: 'end',
+      autoRotate: false,
+      content: '克拉数均值:' + caratAvg
+    }
+  });
+// 上述函数式调用对应如下配置
+guides: [
+  {
+    type: 'line',
+    start: [ caratAvg, 0 ], // 使用数组格式
+    end: [ caratAvg, 20000 ],
+    text: {
+      position: 'end',
+      autoRotate: false,
+      content: '克拉数均值:' + caratAvg
+    }
+  }
+]
+```
+
 ### [filters](#_filters)
 
 类型：`Object`
@@ -620,17 +699,39 @@ filters: {
 }
 ```
 
+#### 示例
+
+```js
+chart.filter('x', val => {
+  return val > 20;
+});
+// 上述函数式调用对应如下配置
+filters: {
+  x: val => {
+    return val > 20;
+  }
+}
+```
+
 ### [tooltip](#_tooltip)
 
 类型：`Object`
 
-对应 `chart.tooltip()`。
+对应 `chart.tooltip()`
 
-### [facet](#_facet)
+#### 示例
 
-类型：`Object`
-
-对应 `chart.facet()`。
+```js
+chart.tooltip(false);
+chart.tooltip({
+  showTitle: false
+});
+// 上述函数式调用分别对应如下配置
+tooltip: false,
+tooltip: {
+  showTitle: false
+}
+```
 
 ### [geoms](#_geoms)
 
@@ -641,8 +742,8 @@ filters: {
 ```js
 geoms: [
   {
-    type: {String}, // 声明 geom 的类型：point line path area interval polygon schema edge heatmap contour pointStack pointJitter pointDodge intervalStack intervalDodge intervalSymmetric areaStack schemaDodge
-    adjusts: {String} || {Array}, // 数据调整方式声明，如果只有一种调整方式，可以直接声明字符串，如果有多种混合方式，则以数组格式传入
+    type: {String}, // 声明 geom 的类型：point line path area interval polygon schema edge heatmap pointStack pointJitter pointDodge intervalStack intervalDodge intervalSymmetric areaStack schemaDodge
+    adjust: {String} || {Array}, // 数据调整方式声明，如果只有一种调整方式，可以直接声明字符串，如果有多种混合方式，则以数组格式传入
     position: {String} || {Object}, // potision 图形属性配置
     color: {String} || {Object}, // color 图形属性配置
     shape: {String} || {Object}, // shape 图形属性配置
@@ -651,7 +752,7 @@ geoms: [
     label: {String} || {Object}, // 图形上文本标记的配置
     tooltip: {String}, // 配置 tooltip 上显示的字段名称
     style: {Object}, // 图形的样式属性配置
-    active: true | false, // 开启关闭 geom active 交互
+    active: {Boolean}, // 开启关闭 geom active 交互
     select: {Object}, // geom 选中交互配置
     animate: {Object} // 动画配置
   },
@@ -677,37 +778,36 @@ position: {
 }
 ```
 
-
 #### [color](#_color)
 
 1. `chart.geom().color(value)` 对应：
 
 ```js
-color: value, // value 可以是数据字段名、颜色值以及包含统计函数的声明
+color: value, // value 可以是数据字段名、颜色值
 ```
 
 或者
 
 ```js
 color: {
-  field: value, // value 可以是数据字段名、颜色值以及包含统计函数的声明
+  field: value, // value 可以是数据字段名、颜色值
 }
 ```
 
-2. `chart.geom().color(dim, colors)` 对应：
+2. `chart.geom().color(field, colors)` 对应：
 
 ```js
 color: {
-  field: ${field}, // 声明映射至 color 属性的数据字段名
-  colors: ${colors} // String | Array，可声明颜色、渐变颜色等
+  field: {string}, // 声明映射至 color 属性的数据字段名
+  colors: {array | string } // String | Array，可声明颜色、渐变颜色等
 }
 ```
 
-3. 回调函数声明 `chart.geom().color(dim, colorCallback)` 对应：
+3. 回调函数声明 `chart.geom().color(field, colorCallback)` 对应：
 
 ```js
 color: {
-  field: ${field}, // 声明映射至 color 属性的数据字段名
+  field: {string}, // 声明映射至 color 属性的数据字段名
   callback: {Function} // 用户自定义回调函数
 }
 ```
@@ -717,32 +817,32 @@ color: {
 1. `chart.geom().shape(value)` 对应：
 
 ```js
-shape: value, // value 可以是数据字段名、图形形状名以及包含统计函数的声明
+shape: value, // value 可以是数据字段名、图形形状名
 ```
 
 或者
 
 ```js
 shape: {
-  field: value, // value 可以是数据字段名、图形形状名以及包含统计函数的声明
+  field: value, // value 可以是数据字段名、图形形状名
 }
 ```
 
-2. `chart.geom().shape(dim, shapes)` 对应：
+2. `chart.geom().shape(field, shapes)` 对应：
 
 ```js
 shape: {
-  field: ${field}, // 声明映射至 shape 属性的数据字段名
-  shapes: ${shapes} // String | Array
+  field: {string}, // 声明映射至 shape 属性的数据字段名
+  shapes: {string | array} // String | Array
 }
 ```
 
-3. 回调函数声明 `chart.geom().shape(dim, callback)` 对应：
+3. 回调函数声明 `chart.geom().shape(field, callback)` 对应：
 
 ```js
 shape: {
-  field: ${field}, // 声明映射至 shape 属性的数据字段名
-  callback: {Function} // 用户自定义回调函数
+  field: {string}, // 声明映射至 shape 属性的数据字段名
+  callback: {function} // 用户自定义回调函数
 }
 ```
 
@@ -751,28 +851,27 @@ shape: {
 1. `chart.geom().size(value）` 对应
 
 ```js
-size: value // value 可以是数据字段名、数值以及包含统计函数的声明
+size: value // value 可以是数据字段名、数值
 ```
 
 或者
 
 ```js
 size: {
-  field: value, // value 可以是数据字段名、图形形状名以及包含统计函数的声明
+  field: value, // value 可以是数据字段名、图形形状名
 }
 ```
 
-2. `chart.geom().size(dim, [min, max])` 对应：
+2. `chart.geom().size(field, [min, max])` 对应：
 
 ```js
 size: {
   field: {String}, // 声明映射至 size 属性的数据字段名
-  min: {Number},
-  max: {Number}
+  range: [min, max] // 声明 size 的最大和最小值
 }
 ```
 
-3. `chart.geom().size(dim, callback)` 对应：
+3. `chart.geom().size(field, callback)` 对应：
 
 ```js
 size: {
@@ -784,21 +883,21 @@ size: {
 
 #### [opacity](#_opacity)
 
-1. `chart.geom().opacity(dim)` 对应：
+1. `chart.geom().opacity(field)` 对应：
 
 ```js
-opacity: dim, // dim 对应映射至 opacity 的数据字段名、具体透明度数值或者包含统计的声明
+opacity: field, // field 对应映射至 opacity 的数据字段名、具体透明度数值
 ```
 
 或者
 
 ```js
 opacity: {
-  field: dim // dim 对应映射至 opacity 的数据字段名、具体透明度数值或者包含统计的声明
+  field: field // field 对应映射至 opacity 的数据字段名、具体透明度数值
 }
 ```
 
-2. `chart.geom().opacity(dim, callback)` 对应
+2. `chart.geom().opacity(field, callback)` 对应
 
 ```js
 opacity: {
@@ -809,18 +908,18 @@ opacity: {
 
 #### [label](#_label)
 
-1. `chart.geom().label(dim)` 对应
+1. `chart.geom().label(field)` 对应
 
 ```js
-label: dim, // dim 对应字段名或者带有统计的声明
+label: field, // field 对应字段名或者带有统计的声明
 ```
 
-2. `chart.geom().label(dim, cfg)` 对应
+2. `chart.geom().label(field, cfg)` 对应
 
 ```js
 label: {
   field: {String}, // 需要标注的数据字段名
-  cfg: {Object} // 具体的 label 配置，参见https://antv.alipay.com/g2/api/geom.html#label
+  cfg: {Object} // 具体的 label 配置，参见 geom.label() 方法
 }
 ```
 
@@ -837,14 +936,26 @@ label: {
 #### [tooltip](#_tooltip)
 
 ```js
+// 对应 geom.tooltip('x')
 tooltip: {String} // 直接声明需要显示在 tooltip 上的字段名
+// 对应 geom.tooltip('x', function(val){})
+tooltip: {
+  field: {string},
+  callback: {function}
+}
 ```
 
 #### [style](#_style)
 
 ```js
+// 使用方式一
 style: {
-  // 图形属性声明
+  field: {string}, // 映射的字段
+  cfg: {object} // 配置信息
+};
+// 使用方式二
+style: {
+  lineWidth: 1 // 样式的配置信息
 }
 ```
 

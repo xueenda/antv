@@ -6,3 +6,4 @@ mocks/
 node_modules/
 theme/*/assets/
 theme/default/templates/layout.html
+site/zh-cn/g6

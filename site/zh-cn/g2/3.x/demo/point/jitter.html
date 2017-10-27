@@ -5,11 +5,10 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 扰动点图
-plotUsage: blablablalalalala
+plotDescription: Jitter Point Chart，扰动点图。
+plotUsage: 扰动点图用于展示一个数据集中连续变量如何随着分类变量水平的变化而变化。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.point}
 -->
 <script>
   $.getJSON('/assets/data/dv-grades.json', function(data){

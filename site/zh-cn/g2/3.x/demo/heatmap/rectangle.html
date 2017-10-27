@@ -6,10 +6,10 @@ resource:
     - ${url.dataSet}
     - ${url.jquery}
 plotDescription: 矩形分箱图
-plotUsage: blablablalalalala
+plotUsage: 矩形分箱图用于表现x,y都是连续数据，对x,y进行划分封装成一个个的方块，使用颜色的深浅标示数据的大小。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.point}
+  - ${plotByName.heatmap}
 -->
 <script>
     $.getJSON('/assets/data/gaussion-distribution.json', data => {

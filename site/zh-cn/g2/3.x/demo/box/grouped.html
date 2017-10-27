@@ -5,11 +5,10 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 分组箱型图
-plotUsage: blablablalalalala
+plotDescription: Grouped Box Chart，分组箱型图。
+plotUsage: 为了更清晰得比较各个分组中相同属性数值的区别。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.box}
 -->
 <script>
   $.getJSON('/assets/data/iris-flower.json', function(data) {

@@ -29,6 +29,7 @@ chart.tooltip(false); // 关闭 tooltip
 
 ```js
 chart.tooltip({
+  triggerOn: 'mousemove' | 'click' | 'none', // tooltip 的触发方式，默认为 mousemove 
   showTitle: {Boolean}, // 是否展示 title，默认为 true
   crosshairs: {
     type: 'rect' || 'x' || 'y' || 'cross',
@@ -58,6 +59,9 @@ chart.tooltip({
 
 ```js
 chart.<geom>.tooltip('field1*field2...*fieldN');
+chart.<geom>.tooltip('field1*field2...*fieldN', function(field1Value, field2Value, ..., fieldNValue) {
+
+});
 ```
 
 这个时候 tooltip 的显示内容如下：
@@ -323,9 +327,15 @@ crosshairs: {
 ‘line’, ‘area’, ‘path’, ‘areaStack’ 默认会展示垂直辅助线；‘interval’ 默认会展示矩形背景框。
 
 
-### 固定位置显示提示信息
+### 改变 tooltip 触发方式
 
-通过调用 `chart.showTooltip(point)` 可以控制在固定的位置显示提示信息，参数 `point` 为画布上的坐标点，格式如下：
+通过配置 `triggerOn` 参数来改变 tooltip 的触发方式，可配置值为：
+
+- `mousemove`: 鼠标移动至目标区域触发，默认方式；
+- `click`: 鼠标点击目标区域触发
+- `none`: 不触发 tooltip，由用户调用 `chart.showTooltip(point)` 和 `chart.hideTooltip()` 来控制提示框的显示隐藏。
+
+当然在任何触发方式下，用户都可以通过调用 `chart.showTooltip(point)` 可以控制在固定的位置显示提示信息，参数 `point` 为画布上的坐标点，格式如下：
 
 ```js
 var point = {
@@ -367,13 +377,15 @@ chart.scale('time',{
   nice:true,
 });
 chart.scale('runCount', {
-  alias: '运行数量', // 设置属性的别名
+  alias: '运行数量',
   min: 0
 });
 chart.scale('runTime', {
-  alias: '运行时间(ms)' // 设置属性的别名
+  alias: '运行时间(ms)'
 });
-chart.tooltip(false); // 关闭 tooltip
+chart.tooltip({
+  triggerOn: 'click' // 鼠标点击出发 tooltip
+}); // 关闭 tooltip
 chart.legend(false); // 不显示图例
 chart.line()
   .position('time*runTime')
@@ -393,13 +405,4 @@ chart.render();
 // 初始化到最新一个点
 var lastPoint  = chart.get('plotRange').br;
 chart.showTooltip(lastPoint);
-
-// 鼠标点击事件
-chart.on('plotclick',function(ev){
-  var point = {
-    x: ev.x,
-    y: ev.y
-  };
-  chart.showTooltip(point); // 接收的是画布坐标上的点
-});
 ```

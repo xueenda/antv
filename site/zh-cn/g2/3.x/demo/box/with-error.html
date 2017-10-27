@@ -5,11 +5,10 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 基础箱型图（有异常值）
-plotUsage: blablablalalalala
+plotDescription: Box Chart with error，有异常值的基础箱型图。
+plotUsage: 除了观察数据集的分布情况外，还可以显著标识出该数据集的异常点。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.box}
 -->
 <script>
   const data = [

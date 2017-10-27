@@ -6,6 +6,7 @@
   },
   "globals": {
     "$": true,
+    "ChinaGeoJSON": true,
     "Clipboard": true,
     "CodeMirror": true,
     "DataSet": true,

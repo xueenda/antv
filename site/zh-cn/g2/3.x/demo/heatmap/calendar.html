@@ -5,11 +5,11 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 日历色块图
-plotUsage: blablablalalalala
+plotDescription: Calendar Heatmap，日历热力图。
+plotUsage: 由小色块有序且紧凑的组成的图表，以日历格式展示，从而在基础热力图的基础上增加了时间的维度，用来展示一段时间内的数据分布情况。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.point}
+  - ${plotByName.heatmap}
 -->
 <script>
   $.getJSON('/assets/data/stock-calendar.json', function(data) {
@@ -21,7 +21,7 @@ relativePlots:
       const month = date.getMonth();
       const monthFirst = new Date(year, month, 0);
       const intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
-      const index = Math.round((intervalDays + monthFirst.getDay()) / 7);
+      const index = Math.floor((intervalDays + monthFirst.getDay()) / 7);
       return index;
     }
     // 加工数据
