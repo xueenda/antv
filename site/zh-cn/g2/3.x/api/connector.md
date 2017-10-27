@@ -7,7 +7,7 @@ resource:
     - ${url.dataSet}
 -->
 
-# DataSet Connector 数据接入
+# Connector 数据接入
 
 一个数据视图（DataSet.View）实例在接入数据时就会用到 Connector，其语法如下：
 
