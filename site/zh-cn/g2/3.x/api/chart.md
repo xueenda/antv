@@ -1060,31 +1060,36 @@ chart.tooltip(true, {
 
   如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
 
+  13. `g2-tooltip`: object
+
+  设置 tooltip 容器的 CSS 样式。
+
+  14. `g2-tooltip-title`: object
+
+  设置 tooltip 标题的 CSS 样式。
+
+  15. `g2-tooltip-list`: object
+
+  设置 tooltip 列表容器的 CSS 样式。
+
+  16. `g2-tooltip-list-item`: object
+
+  设置 tooltip 列表容器中每一项的 CSS 样式。
+
+  17. `g2-tooltip-marker`: object
+
+  设置tooltip 列表容器中每一项 marker 的 CSS 样式。
+
+  除了使用配置上述属性来自定义 tooltip 的样式外，用户也可以直接为 html 定义 CSS 样式。
+
   [自定义 html 模板示例](/zh-cn/g2/3.x/demo/other/cutomize-tooltip.html)
   
   <div id="c3"></div>
   <style type="text/css">
-  .g2-tooltip{
-    position:absolute;
-    visibility:hidden;
-    border : 1px solid #efefef!important;
-    background-color: white!important;
-    color: #000!important;
-    opacity: .8;
-    padding: 5px 15px;
-
-    transition: top 200ms,left 200ms;
-    -moz-transition:  top 200ms,left 200ms;  /* Firefox 4 */
-    -webkit-transition:  top 200ms,left 200ms; /* Safari 和 Chrome */
-    -o-transition:  top 200ms,left 200ms;
-  }
-  .custom-table {
-    margin: 10px;
-  }
-  .custom-table td{
-    border: 1px solid #cdcdcd;
-    padding: 5px 8px;
-  }
+    .g2-tooltip-list td{
+      border: 1px solid #cdcdcd;
+      padding: 5px 8px;
+    }
   </style>
 
   ```js-
@@ -1110,14 +1115,28 @@ chart.tooltip(true, {
   chart.tooltip({
     containerTpl: '<div class="g2-tooltip">'
       + '<p class="g2-tooltip-title"></p>'
-      + '<table class="g2-tooltip-list custom-table"></table>'
+      + '<table class="g2-tooltip-list"></table>'
       + '</div>', // tooltip的外层模板
-    itemTpl: '<tr><td style="color:{color}">{name}</td><td>{value}</td></tr>', // 支持的字段 index,color,name,value
-    offset: 50
+    itemTpl: '<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>', // 支持的字段 index,color,name,value
+    offset: 50,
+    'g2-tooltip': {
+      position: 'absolute',
+      visibility: 'hidden',
+      border : '1px solid #efefef',
+      backgroundColor: 'white',
+      color: '#000',
+      opacity: "0.8",
+      padding: '5px 15px',
+      'transition': 'top 200ms,left 200ms'
+    }, // 设置 tooltip 的 css 样式
+    'g2-tooltip-list': {
+      margin: '10px'
+    }
   });
   chart.line().position('month*tem');
   chart.render();
   ```
+  
 
 ## chart.guide()
 
