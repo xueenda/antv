@@ -301,6 +301,30 @@ chart.tooltip(true, {
 </li>
 ```
 
+对于 tooltip 的显示样式的配置，用户可以：
+
+1. 在自定义模板时使用内联的方式直接定义；
+2. 在 html 页面的 style 标签内，为对应的 dom 标签设置样式；
+3. 在 `chart.tooltip(cfg)` 中设置属性，如下，具体的说明详见 [API](/zh-cn/g2/3.x/api/chart.html#_chart.tooltip-tooltipConfig-)
+
+  ```js
+    chart.tooltip({
+      'g2-tooltip': {
+        position: 'absolute',
+        visibility: 'hidden',
+        border : '1px solid #efefef',
+        backgroundColor: 'white',
+        color: '#000',
+        opacity: "0.8",
+        padding: '5px 15px',
+        'transition': 'top 200ms,left 200ms'
+      }, // 设置 tooltip 的 css 样式
+      'g2-tooltip-list': {
+        margin: '10px'
+      }
+    });
+  ```
+
 ## 其他配置
 
 ### 显示辅助线（辅助框）
