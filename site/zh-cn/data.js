@@ -35,21 +35,20 @@ module.exports = {
                 changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }
         },
-        academy: {
-            name: '${resource.translate.academy}',
-            href: '${base}zh-cn/academy/index.html',
+        vis: {
+            name: '${resource.translate.vis}',
+            href: '${base}zh-cn/vis/index.html',
             links: {
-                blog: { text: '博客', href: '${base}zh-cn/academy/blog/index.html' },
-                design: { text: '设计原则', href: '${base}zh-cn/academy/design/index.html'  },
-                chart: { text: '图表用法', href: '${base}zh-cn/academy/chart/index.html' },
-                resource: { text: '资源', href: '${base}zh-cn/academy/resource/index.html' },
+                blog: { text: '${resource.translate.visBlog}', href: '${base}zh-cn/vis/blog/index.html' },
+                design: { text: '${resource.translate.visDesign}', href: '${base}zh-cn/vis/design/index.html'  },
+                chart: { text: '${resource.translate.visChart}', href: '${base}zh-cn/vis/chart/index.html' },
+                resource: { text: '${resource.translate.visResource}', href: '${base}zh-cn/vis/resource/index.html' },
                 // publications: { text: '经典文献', href: '' },
             }
         }
     },
     resource: {
         translate: {
-            academy: '可视化工作坊',
             api: 'API文档',
             back2oldVersion: '返回旧版',
             changelog: '更新日志',
@@ -68,6 +67,11 @@ module.exports = {
             toolbox: '工具箱',
             tutorial: '使用教程',
             usage: '图表用法',
+            vis: '可视化工作坊',
+            visBlog: '博客',
+            visChart: '图表用法',
+            visDesign: '设计原则',
+            visResource: '资源',
         },
         cssFiles: [
         ],
@@ -93,7 +97,7 @@ module.exports = {
         '${products.g2}',
         '${products.g6}',
         '${products.f2}',
-        '${products.academy}',
+        '${products.vis}',
         {
             name: '体验云产品',
             links: {

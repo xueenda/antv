@@ -1,10 +1,6 @@
 <!--
-index: 1
+index: 0
 title: 图表用法
-resource:
-  jsFiles:
-    - ${url.g2}
-    - ${url.dataSet}
 -->
 
 # 图表用法

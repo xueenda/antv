@@ -31,12 +31,12 @@ docFiles.forEach(function (file) {
     var _renderMd = renderMd(file),
         meta = _renderMd.meta;
 
-    var index = meta.index,
+    var index = meta.index || 999,
         title = meta.title;
 
     var name = basename(file, '.md');
     docList.push({
-        href: base + 'zh-cn/academy/chart/' + name + '.html',
+        href: base + 'zh-cn/vis/chart/' + name + '.html',
         index: index,
         name: name,
         title: title
@@ -56,7 +56,7 @@ module.exports = {
     docIndexByHref: indexByHref,
     docsCount: docList.length,
     template: 'doc',
-    docMenuHeader: '${resource.translate.api}',
+    docMenuHeader: '${resource.translate.visChart}',
     showFooter: false,
     docFilteringSupport: true
 };
