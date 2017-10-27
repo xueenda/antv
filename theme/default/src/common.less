@@ -2,12 +2,15 @@
 @import "./less/font.less";
 @import "./less/autocomplete.less";
 
-h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
-  display: block;
-  content: " ";
-  height: 64px;
-  margin-top: -64px;
-  visibility: hidden;
+.template-doc, .template-demos, .template-home {
+  h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    display: block;
+    content: " ";
+    height: 64px;
+    margin-top: -64px;
+    visibility: hidden;
+  }
+
 }
 
 table {

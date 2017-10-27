@@ -76,7 +76,6 @@ var data = {
     }
   ]
 };
-var Util = G6.Util;
 var net = new G6.Net({
   fitView: 'autoZoom',
   id: 'mountNode',           // 容器ID
@@ -104,7 +103,7 @@ net.node()
     return [
       ['Id是', obj.id],
       ['key', 'value']
-    ]
+    ];
   })
   .label('id');
 

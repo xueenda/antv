@@ -10,12 +10,12 @@ plotDescription: 中国地图-省市下钻
 plotUsage: 可视化的方法显示地理区域上的数据。 使用地图作为背景，通过图形的位置来表现数据的地理位置， 通常来展示数据在不同地理区域上的分布情况。
 relativePlots:
   - ${plotByName.geo}
-resource
 -->
 <div style="position:relative;padding-left:250px;">
   <div id="china" style="position: absolute;top:5px;left:5px;"></div>
   <div id="province"></div>
 </div>
+
 <script>
     function processData(mapData) {
         // 构造虚拟数据
@@ -28,7 +28,6 @@ resource
                 value: Math.round(Math.random() * 1000),
             });
         }
-
         const ds = new DataSet();
         const geoDataView = ds.createView().source(mapData, {
             type: 'GeoJSON',

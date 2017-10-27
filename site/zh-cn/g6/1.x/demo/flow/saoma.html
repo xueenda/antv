@@ -41,7 +41,7 @@ index: 2
 var Util = G6.Util;
 G6.registerNode('customNode', {
   cssSize: true, // 不使用内部 size 作为节点尺寸
-  getHtml: function(cfg, group){
+  getHtml: function(cfg){
     var model = cfg.model;
     var container = Util.createDOM('<div class="node-conatiner"></div>');
     var title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">

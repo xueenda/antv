@@ -150,33 +150,33 @@ var net = new G6.Net({
 });
 net.source(data.nodes, data.edges);
 
-addCustom1.on('click', function(ev){
+addCustom1.on('click', function(){
   net.beginAdd('node', {
     shape: 'customNode1'
   });
 });
-addCustom2.on('click', function(ev){
+addCustom2.on('click', function(){
   net.beginAdd('node', {
     shape: 'customNode2'
   });
 });
-drag.on('click', function(ev) {
+drag.on('click', function() {
   net.changeMode('drag');
 });
-edit.on('click', function(ev) {
+edit.on('click', function() {
   net.changeMode('edit');
 });
-save.on('click', function(ev) {
+save.on('click', function() {
   var saveData = net.save();
-  var json = JSON.stringify(saveData, null, 2)
-  console.log(saveData, json);
+  var json = JSON.stringify(saveData, null, 2);
+  console.log(saveData, json); // eslint-disable-line no-console
 });
 
 var dragging = false;
-net.on('dragstart', function(ev){
+net.on('dragstart', function(){
   dragging = true;
 });
-net.on('dragend', function(ev){
+net.on('dragend', function(){
   dragging = false;
 });
 

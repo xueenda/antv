@@ -1,0 +1,97 @@
+<!--
+index: 6
+title: Streamgraph
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Streamgraph
+plotUsage: blablablalalalala
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+    $.getJSON('/assets/data/baby-names.json', function(data) {
+        var dv = new DataSet.View().source(data)
+            .transform({
+                type: 'fill-rows',
+                groupBy: [ 'name' ],
+                orderBy: [ 'year' ]
+            })
+            .transform({
+                type: 'impute',
+                field: 'n',
+                method: 'value',
+                value: 0
+            })
+            .transform({
+                type: 'aggregate',
+                fields: [ 'n' ],
+                operations: [ 'sum' ],
+                groupBy: [ 'year', 'name' ],
+                orderBy: [ 'year' ],
+                as: [ 'count' ]
+            });
+
+        var chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: [ 20, 150, 50, 50 ],
+            plotBackground: {
+                stroke: '#ccc'
+            }
+        });
+        chart.source(dv, {
+            year: {
+                tickInterval: 10,
+                nice: false
+            },
+            count: {
+                nice: false
+            }
+        });
+        chart.legend({
+            useHtml: true,
+            itemTpl: '<li class="g2-legend-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 12px;">' +
+            '<i class="g2-legend-marker" style="width:8px;height:8px;display:inline-block;margin-right:8px;background-color: {color};"></i>' +
+            '<span class="g2-legend-text">{value}</span></li>',
+            onHover: function(ev) {
+                var shapes = ev.shapes;
+                var geom = ev.geom;
+                geom.highlightShapes(shapes);
+            }
+        });
+        chart.tooltip({
+            shared: false,
+            crosshairs: false
+        });
+        chart.axis('year', {
+            title: null,
+            line: null,
+            tickLine: null
+        });
+        chart.axis('count', {
+            title: null,
+            line: null,
+            tickLine: {
+                length: 8
+            },
+            subTickCount: 10,
+            subTickLine: {
+                lineWidth: 1, // 子刻度线宽
+                stroke: '#ddd', // 子刻度线颜色
+                length: 5
+            },
+            grid: null
+        });
+        chart.area()
+            .position('year*count')
+            .adjust([ 'stack', 'symmetric' ])
+            .color('name')
+            .shape('smooth')
+            .opacity(1);
+        chart.render();
+    });
+</script>
