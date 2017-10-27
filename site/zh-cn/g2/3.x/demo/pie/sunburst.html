@@ -4,11 +4,11 @@ title: 旭日图
 resource:
   jsFiles:
     - ${url.dataSet}
-plotDescription: 旭日图
-plotUsage: blablablalalalala
+plotDescription: Sunburst Chart，旭日图。
+plotUsage: 旭日图用于可视化同心圆描绘的分层数据。中心的圆圈表示根节点，层次结构从中心向外移动。内圈的一段与位于母段的角扫描内的外圆的那些段相分离。没有任何分级数据（一级别）的旭日图，看起来类似于甜甜圈图。然而，具有多个等级类别的旭日图显示了内外环的关联关系。
 relativePlots:
   - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.interval}
 -->
 <script>
   const { DataView } = DataSet;
