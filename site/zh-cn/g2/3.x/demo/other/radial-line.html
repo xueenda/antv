@@ -1,5 +1,5 @@
 <!--
-index: 6
+index: 5
 title: Radial Bar Chart
 resource:
   jsFiles:
@@ -37,8 +37,14 @@ relativePlots:
     innerRadius: 0.2,
     endAngle: Math.PI
   });
-  chart.interval().position('term*count').color('#009999').shape('line'); // 线状柱状图
-  chart.point().position('term*count').color('#009999').shape('circle');
+  chart.interval()
+      .position('term*count')
+      .color('#009999')
+      .shape('line'); // 线状柱状图
+  chart.point()
+      .position('term*count')
+      .color('#009999')
+      .shape('circle');
   for(let i = 0, l = data.length; i < l; i++) {
     const obj = data[i];
     chart.guide().text({

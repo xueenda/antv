@@ -5,139 +5,138 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
+    - https://a.alipayobjects.com/g/datavis/china-geojson/1.0.0/index.js
 plotDescription: 中国地图-省市下钻
 plotUsage: 可视化的方法显示地理区域上的数据。 使用地图作为背景，通过图形的位置来表现数据的地理位置， 通常来展示数据在不同地理区域上的分布情况。
 relativePlots:
   - ${plotByName.geo}
+resource
 -->
-<script src="https://a.alipayobjects.com/g/datavis/china-geojson/1.0.0/index.js"></script>
-
 <div style="position:relative;padding-left:250px;">
   <div id="china" style="position: absolute;top:5px;left:5px;"></div>
   <div id="province"></div>
 </div>
-
 <script>
-function processData(mapData) {
-  // 构造虚拟数据
-  const userData = [];
-  const features = mapData.features;
-  for (let i = 0; i < features.length; i++) {
-    const name = features[i].properties.name;
-    userData.push({
-      name: name,
-      value: Math.round(Math.random() * 1000),
+    function processData(mapData) {
+        // 构造虚拟数据
+        const userData = [];
+        const features = mapData.features;
+        for (let i = 0; i < features.length; i++) {
+            const name = features[i].properties.name;
+            userData.push({
+                name: name,
+                value: Math.round(Math.random() * 1000),
+            });
+        }
+
+        const ds = new DataSet();
+        const geoDataView = ds.createView().source(mapData, {
+            type: 'GeoJSON',
+        }); // geoJSON 经纬度数据
+
+        // 用户数据
+        const dvData = ds.createView().source(userData);
+        dvData.transform({
+            type: 'geo.region',
+            field: 'name',
+            geoDataView: geoDataView,
+            as: ['longitude', 'lantitude'],
+        });
+
+        return dvData;
+    }
+
+    function renderProvinceChart(provinceChart, name) {
+        const provinceData = ChinaGeoJSON[name];
+        provinceChart.clear();
+        if (!provinceData) {
+            return false;
+        }
+        provinceChart.source(processData(provinceData));
+        provinceChart.axis(false);
+        provinceChart.tooltip({
+            showTitle: false,
+        });
+        provinceChart
+            .polygon()
+            .position('longitude*lantitude')
+            .label('name', {
+                textStyle: {
+                    fill: '#333',
+                    fontSize: 10
+                },
+            })
+            .style({
+                stroke: '#fff',
+                lineWidth: 1,
+            })
+            .color('value', '#e5f5e0-#31a354');
+        provinceChart.render();
+    }
+
+    const mapData = ChinaGeoJSON['China'];
+    const chart = new G2.Chart({
+        container: 'china',
+        width: 250,
+        height: 180,
+        padding: 0,
+        animate: false
     });
-  }
+    chart.source(processData(mapData));
+    chart.tooltip({
+        showTitle: false,
+    });
+    chart.axis(false);
+    chart
+        .polygon()
+        .position('longitude*lantitude')
+        .tooltip('name')
+        .style({
+            stroke: '#999',
+            lineWidth: 1,
+            fill: '#ccc',
+            globalAlpha: 0.9,
+            cursor: 'pointer', // 设置鼠标手势
+        })
+        .select({
+            // 设置是否允许选中以及选中样式
+            mode: 'single', // 多选还是单选
+            style: {
+                fill: '#fe9929', // 选中的样式
+            },
+        });
+    chart.render();
 
-  const ds = new DataSet();
-  const geoDataView = ds.createView().source(mapData, {
-    type: 'GeoJSON',
-  }); // geoJSON 经纬度数据
+    const provinceChart = new G2.Chart({
+        container: 'province',
+        width: 500,
+        height: window.innerHeight,
+        padding: [20, 80, 40, 40],
+    });
 
-  // 用户数据
-  const dvData = ds.createView().source(userData);
-  dvData.transform({
-    type: 'geo.region',
-    field: 'name',
-    geoDataView: geoDataView,
-    as: ['longitude', 'lantitude'],
-  });
+    const shapes = chart.getAllGeoms()[0].getShapes();
+    for (let i = 0, len = shapes.length; i < len; i++) {
+        const shape = shapes[i];
+        const origin = shape.get('origin')['_origin'];
+        const name = origin.name;
+        if (name === '浙江') {
+            renderProvinceChart(provinceChart, name);
+            chart.getAllGeoms()[0].setShapeSelected(shape);
+        }
+    }
 
-  return dvData;
-}
-
-function renderProvinceChart(provinceChart, name) {
-  const provinceData = ChinaGeoJSON[name];
-  provinceChart.clear();
-  if (!provinceData) {
-    return false;
-  }
-  provinceChart.source(processData(provinceData));
-  provinceChart.axis(false);
-  provinceChart.tooltip({
-    showTitle: false,
-  });
-  provinceChart
-    .polygon()
-    .position('longitude*lantitude')
-    .label('name', {
-      textStyle: {
-        fill: '#333',
-        fontSize: 10
-      },
-    })
-    .style({
-      stroke: '#fff',
-      lineWidth: 1,
-    })
-    .color('value', '#e5f5e0-#31a354');
-  provinceChart.render();
-}
-
-const mapData = ChinaGeoJSON['China'];
-const chart = new G2.Chart({
-  container: 'china',
-  width: 250,
-  height: 180,
-  padding: 0,
-  animate: false
-});
-chart.source(processData(mapData));
-chart.tooltip({
-  showTitle: false,
-});
-chart.axis(false);
-chart
-  .polygon()
-  .position('longitude*lantitude')
-  .tooltip('name')
-  .style({
-    stroke: '#999',
-    lineWidth: 1,
-    fill: '#ccc',
-    globalAlpha: 0.9,
-    cursor: 'pointer', // 设置鼠标手势
-  })
-  .select({
-    // 设置是否允许选中以及选中样式
-    mode: 'single', // 多选还是单选
-    style: {
-      fill: '#fe9929', // 选中的样式
-    },
-  });
-chart.render();
-
-const provinceChart = new G2.Chart({
-  container: 'province',
-  width: 500,
-  height: window.innerHeight,
-  padding: [20, 80, 40, 40],
-});
-
-const shapes = chart.getAllGeoms()[0].getShapes();
-for (let i = 0, len = shapes.length; i < len; i++) {
-  const shape = shapes[i];
-  const origin = shape.get('origin')['_origin'];
-  const name = origin.name;
-  if (name === '浙江') {
-    renderProvinceChart(provinceChart, name);
-    chart.getAllGeoms()[0].setShapeSelected(shape);
-  }
-}
-
-chart.on('plotclick', function(ev) {
-  const shape = ev.shape;
-  if (!shape) {
-    return false;
-  }
-  if (shape.get('selected')) {
-    const item = shape.get('origin');
-    const data = item['_origin'];
-    const name = data.name;
-    renderProvinceChart(provinceChart, name);
-  } else {
-    provinceChart.clear();
-  }
-});
+    chart.on('plotclick', function(ev) {
+        const shape = ev.shape;
+        if (!shape) {
+            return false;
+        }
+        if (shape.get('selected')) {
+            const item = shape.get('origin');
+            const data = item['_origin'];
+            const name = data.name;
+            renderProvinceChart(provinceChart, name);
+        } else {
+            provinceChart.clear();
+        }
+    });
 </script>

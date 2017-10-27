@@ -1,5 +1,5 @@
 <!--
-index: 9
+index: 12
 title: 路径图
 resource:
   jsFiles:
@@ -12,7 +12,7 @@ relativePlots:
 -->
 
 <script>
-      const data = [
+    const data = [
         {consumption: 0.65, price: 1, year: 1965},
         {consumption: 0.66, price: 1.05, year: 1966},
         {consumption: 0.64, price: 1.1, year: 1967},
@@ -28,29 +28,29 @@ relativePlots:
         {consumption: 0.42, price: 0.89, year: 1977},
         {consumption: 0.28, price: 1, year: 1978},
         {consumption: 0.15, price: 1.1, year: 1979}
-      ];
-      const chart = new G2.Chart({
+    ];
+    const chart = new G2.Chart({
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight
-      });
-      chart.source(data);
-      chart.tooltip({
+    });
+    chart.source(data);
+    chart.tooltip({
         title: 'year'
-      });
-      chart.path()
+    });
+    chart.path()
         .position('price*consumption')
         .label('year', function(val) {
-          return val + '年';
+            return val + '年';
         })
         .size(2);
-      chart.point()
+    chart.point()
         .position('price*consumption')
         .shape('triangle')
         .size(5)
         .style({
-          lineWidth: 1,
-          stroke: '#fff'
+            lineWidth: 1,
+            stroke: '#fff'
         });
-      chart.render();
+    chart.render();
 </script>
