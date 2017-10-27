@@ -7,9 +7,18 @@ resource:
     - ${url.dataSet}
 -->
 
-# DataSet Connector
+# DataSet Connector 数据接入
 
-一个数据视图（DataSet.View）实例在接入数据时就会用到 Connector。举个例子：
+一个数据视图（DataSet.View）实例在接入数据时就会用到 Connector，其语法如下：
+
+```js
+dv.source(data, {
+    type: connectorName,
+    ...otherOptions
+});
+```
+
+举个例子：
 
 ```js
 const testCSV = `Expt,Run,Speed
@@ -21,13 +30,24 @@ const testCSV = `Expt,Run,Speed
 const dv = new DataSet.View().source(testCSV, {
     type: 'csv'
 });
+
+console.log(dv.rows);
+/*
+ * dv.rows:
+ * [
+ *     {Expt: " 1", Run: "1", Speed: "850"}
+ *     {Expt: " 1", Run: "2", Speed: "740"}
+ *     {Expt: " 1", Run: "3", Speed: "900"}
+ *     {Expt: " 1", Run: "4", Speed: "1070"}
+ * ]
+ */
 ```
 
 上述代码中，数据视图实例 `dv` 使用 `csv` 类型的 Connector 载入了一段 CSV 文本。
 
-目前 DataSet 支持以下几种常用的 Connector。
+目前 DataSet 支持以下几种常用的 Connector：
 
-## default
+## default 默认
 
 直接调用 `dv.source(data)`，不通过配置项指定使用的 Connector 时，则有以下两种默认的情形：
 

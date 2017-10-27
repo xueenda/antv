@@ -7,5 +7,7 @@ tocbot.init({
     tocSelector: '.toc',
     contentSelector: '.doc-container .content',
     headingSelector: 'h1, h2, h3, h4',
-    collapseDepth: 4
+    collapseDepth: 4,
+    positionFixedSelector: '.toc',
+    positionFixedClass: 'is-position-fixed',
 });
