@@ -1,0 +1,61 @@
+<!--
+index: 7
+title: Radial Bar Chart
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Radial Bar Chart，玉珏图。
+plotUsage: 玉玦图（又名，环形柱状图），是柱状图关于笛卡尔坐标系转换到极坐标系的仿射变换。其意义和用法与柱状图类似。
+relativePlots:
+  - ${plotByName.bar}
+-->
+<script>
+  const data = [
+    {"question":"问题 1","percent":0.21,"odd":0},
+    {"question":"问题 2","percent":0.47,"odd":1},
+    {"question":"问题 3","percent":0.49,"odd":0},
+    {"question":"问题 4","percent":0.52,"odd":1},
+    {"question":"问题 5","percent":0.53,"odd":0},
+    {"question":"问题 6","percent":0.54,"odd":1},
+    {"question":"问题 7","percent":0.6,"odd":0},
+    {"question":"问题 8","percent":0.67,"odd":1}
+  ];
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: 450
+  });
+  chart.source(data, {
+    'percent': { min: 0, max: 1 },
+    'odd': { type: 'cat' }
+  });
+  chart.tooltip({
+    title: 'question'
+  });
+  chart.legend(false);
+  chart.coord('polar', { innerRadius: 0.1 }).transpose();
+  chart.interval()
+    .position('question*percent')
+    .color('odd', value => {
+      return ['rgb(224,74,116)', 'rgb(211,0,57)'][value];
+    })
+    .tooltip('percent', val => {
+      return {
+        name: '占比',
+        value: val * 100 + '%'
+      };
+    })
+    .label('percent', {
+      offset: -5
+    });
+  data.map(obj => {
+    chart.guide().text({
+      position: [ obj.question, 0 ],
+      content: obj.question + ' ',
+      style: {
+        textAlign: 'right'
+      }
+    });
+  });
+  chart.render();
+</script>
