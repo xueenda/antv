@@ -1,5 +1,5 @@
 <!--
-index: 11
+index: 15
 title: streamgraph
 resource:
   jsFiles:
@@ -11,18 +11,6 @@ relativePlots:
   - ${plotByName.area}
   - ${plotByName.line}
 -->
-<style type="text/css">
-    #mountNode .g2-legend {
-      top: 20px!important;
-      height: calc(100% - 70px);
-      border: 1px solid #bfbfbf;
-      padding-left: 10px;
-      overflow: scroll;
-    }
-    #mountNode .g2-legend-title {
-      margin: 0 0 8px 0;
-    }
-</style>
 <script>
     $.getJSON('/assets/data/baby-names.json', data => {
       const { DataView } = DataSet;
@@ -51,7 +39,8 @@ relativePlots:
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight,
-        padding: [ 20, 180, 50, 50 ],
+        animate: false,
+        padding: [ 80, 180, 80, 50 ],
         plotBackground: {
           stroke: '#ccc'
         }
@@ -67,21 +56,29 @@ relativePlots:
       });
       chart.legend({
         useHtml: true,
-        itemTpl: '<li class="g2-legend-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 12px;">' +
-        '<i class="g2-legend-marker" style="width:8px;height:8px;display:inline-block;margin-right:8px;background-color: {color};"></i>' +
-        '<span class="g2-legend-text">{value}</span></li>'
+        position: 'right',
+        title: {
+          text: '图例可滚动'
+        },
+        'g2-legend-marker': {
+          borderRadius: 'none'
+        },
+        'g2-legend-title': {
+          fontSize: '12px',
+          fontWeight: 500,
+          margin: 0,
+          color: '#ff8800'
+        }
       });
       chart.tooltip({
         shared: false,
-        crosshairs: false
+        crosshairs: false,
+        inPlot: false
       });
       chart.axis('year', {
-        title: null,
-        line: null,
-        tickLine: null
+        line: null
       });
       chart.axis('count', {
-        title: null,
         line: null,
         tickLine: {
           length: 8
@@ -101,6 +98,5 @@ relativePlots:
         .shape('smooth')
         .opacity(1);
       chart.render();
-      // console.log(Date.now() - t0);
     });
 </script>
