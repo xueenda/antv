@@ -71,7 +71,7 @@ day（日期） | share (股票指数)
 
 <div id="c1"></div>
 
-<div class="code hide">
+```js-
   var data= [
     {"day": '2015/9/1',  "share": 10},
     {"day": '2015/9/2',  "share": 12},
@@ -105,24 +105,20 @@ day（日期） | share (股票指数)
     {"day": '2015/9/30', "share": 40}
   ];
 
-  var Stat = G2.Stat;
   var chart = new G2.Chart({
     id: 'c1',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
   });
   chart.source(data);
-  chart.col('day', {
+  chart.scale('day', {
     type: 'timeCat',
     tickCount: 10,
     nice: false,
-    mask: 'yyyy/m/d',
+    mask: 'YYYY/MM/DD',
     alias: 'Year/Month/Day'
   });
-  chart.col('share', {
+  chart.scale('share', {
     alias: 'The Share Price',
     formatter: function(val) {
       return '$' + val;
@@ -134,7 +130,7 @@ day（日期） | share (股票指数)
   chart.area().position('day*share');
   chart.line().position('day*share').size(2.5);
   chart.render();
-</div>
+```
 
 例子2：**包含多组值。**下图使用区域图展示了 1986 至 2005 年 ACME 和其竞争对手每年的股票价格对比。[数据来源：AnyChart](http://www.anychart.com/)
 
@@ -146,7 +142,8 @@ year (年)|ACME （Acme公司的指数）|Compitor （竞争公司的指数）
 。。。|。。。|。。。
 
 <div id="c11"></div>
-<div class="code hide">
+
+```js-
   var data= [
     {"year": "1986", "ACME": 162, "Compitor": 42},
     {"year": "1987", "ACME": 134, "Compitor": 54},
@@ -170,33 +167,34 @@ year (年)|ACME （Acme公司的指数）|Compitor （竞争公司的指数）
     {"year": "2005", "ACME": 184, "Compitor": 44}
   ];
 
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
-  var frame = new Frame(data);
-  frame = Frame.combinColumns(frame,['ACME','Compitor'],'value','type','year');
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: [ 'ACME', 'Compitor' ],
+    key: 'type',
+    value: 'value'
+  });
 
   var chart = new G2.Chart({
     id: 'c11',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
   });
-  chart.source(frame);
-  chart.col('value', {
+  chart.source(dv);
+  chart.scale('value', {
     alias: 'The Share Price in Dollars',
     formatter: function(val) {
       return '$' + val;
     }
   });
+
   chart.tooltip({
     crosshairs: true
   });
   chart.area().position('year*value').color('type').shape('smooth');
   chart.line().position('year*value').color('type').size(2.5).shape('smooth');
   chart.render();
-</div>
+```
 
 说明：
 
@@ -218,8 +216,9 @@ year（年） | city（城市） | value（盈利亏损）
 。。。|。。。|。。。
 
 <div id="c22"></div>
-<div class="code hide">
-    var data= [
+
+```js-
+  var data= [
     {"Year": "1996", "Florida": 322, "Texas": 242, "Nevada": 162},
     {"Year": "1997", "Florida": 324, "Texas": 254, "Nevada": 90},
     {"Year": "1998", "Florida": 329, "Texas": 226, "Nevada": 50},
@@ -242,21 +241,21 @@ year（年） | city（城市） | value（盈利亏损）
     {"Year": "2015", "Florida": 334, "Texas": 44,  "Nevada":-184}
   ];
 
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
-  var frame = new Frame(data);
-  frame = Frame.combinColumns(frame,['Florida','Texas','Nevada'],'Profit','City','Year');
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: [ 'Florida','Texas','Nevada' ],
+    key: 'City',
+    value: 'Profit'
+  });
 
   var chart = new G2.Chart({
     id: 'c22',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
   });
-  chart.source(frame);
-  chart.col('Profit', {
+  chart.source(dv);
+  chart.scale('Profit', {
     alias: 'Profit in Dollars',
     formatter: function(val) {
       return val + 'k';
@@ -268,7 +267,7 @@ year（年） | city（城市） | value（盈利亏损）
   chart.area().position('Year*Profit').color('City');
   chart.line().position('Year*Profit').color('City').size(2.5);
   chart.render();
-</div>
+```
 
 说明：
 
@@ -277,7 +276,6 @@ year（年） | city（城市） | value（盈利亏损）
 * city: 不同的城市使用 `颜色`进行区分，形成不同的面积图
 
 <div style="clear: both"></div>
-
 
 ### 不适合的场景
 
@@ -295,7 +293,7 @@ year（年） | city（城市） | value（盈利亏损）
   <div class="wrong tip">错误</div>
 </div>
 
-<div class="code hide">
+```js-
   var data = [
     {genre:'Shooter',sold:3500},
     {genre:'Sports',sold:27500},
@@ -316,7 +314,7 @@ year（年） | city（城市） | value（盈利亏损）
 
   chart.area().position('genre*sold')
   chart.render();
-</div>
+```
 
 不适合的原因：
 
@@ -334,7 +332,8 @@ time（时间）|min(最小温度)|max（最大温度）
 。。。|。。。|。。。
 
 <div id="c5"></div>
-<div class="code hide">
+
+```js-
   var tmp = [
     [1246406400000, 14.3, 27.7],
     [1246492800000, 14.5, 27.8],
@@ -373,11 +372,10 @@ time（时间）|min(最小温度)|max（最大温度）
     return {
       time: subArr[0],
       min: subArr[1],
-      max: subArr[2]
+      max: subArr[2],
+      sum: subArr[1] + subArr[2]
     };
   });
-
-  var Stat = G2.Stat;
 
   var chart = new G2.Chart({
     id: 'c5',
@@ -389,7 +387,7 @@ time（时间）|min(最小温度)|max（最大温度）
   chart.source(data, {
     time: {
       type:'time',
-      mask: 'mm-dd'
+      mask: 'MM-DD'
     },
     min: {
       alias: '最低温度'
@@ -398,10 +396,9 @@ time（时间）|min(最小温度)|max（最大温度）
     'min+max': {alias: '温度范围'}
   });
 
-  chart.area().position('time*(min+max)').tooltip('min*max');
+  chart.area().position('time*sum').tooltip('min*max');
   chart.render();
-  
-</div>
+```
 
 注意：
 

@@ -60,5 +60,11 @@ module.exports = {
     template: 'doc',
     docMenuHeader: '${resource.translate.visChart}',
     showFooter: false,
-    docFilteringSupport: true
+    docFilteringSupport: true,
+    resource: {
+        jsFiles: [
+            '${url.g2}',
+            '${url.dataSet}'
+        ],
+    }
 };

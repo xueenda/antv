@@ -81,7 +81,7 @@ variations:
 
 ## 柱状图的应用场景
 
-### 适合的场景： ** 表达数据之间的关系，以及关系的重要性 **
+### 适合的场景： **表达数据之间的关系，以及关系的重要性**
 
 例子1: 下图这个网络代表了维克多·雨果的经典小说“LesMisérables”中的人物关系
 
@@ -101,67 +101,60 @@ variations:
 
 <div id="c1"></div>
 
-<div class="code hide">
-$.getJSON('./data/miserables.json', function(data) {
-  var Stat = G2.Stat;
-  var Layout = G2.Layout;
-  var nodes = data.nodes;
-  var edges = data.edges;
+```js-
+$.getJSON('/assets/data/miserables.json', function(data) {
   var dataMap = {};
-  nodes.map(function(node,index) {
+  data.nodes.map(function(node,index) {
     node.id = index;
     node.value = 0;
     dataMap[index] = node;
   });
-
-  edges.forEach(function(edge){
-    dataMap[edge.source].value += edge.value;
-  });
-
-  nodes.sort(function(b, a){
+  data.nodes.sort(function(b, a){
     var deltGroup = a.group - b.group;
     var deltValue = a.value - b.value;
     return deltGroup * 100 + deltValue;
+  });
+  data.edges.forEach(function(edge){
+    dataMap[edge.source].value += edge.value;
+  });
+
+  var dv = new DataSet.View().source(data, {
+    type: 'graph',
   });
 
   var chart = new G2.Chart({
     id: 'c1',
     forceFit: true,
-    height: 500,
+    height: 400,
     animate: false,
-    plotCfg: {
-      margin: [20, 10, 120, 10]
-    }
   });
 
   chart.tooltip({
     title: null
   });
 
-  var layout = new Layout.Linear({
-    nodes: nodes
+  dv.transform({
+    type: 'diagram.arc',
   });
-
-  nodes = layout.getNodes();
 
   var defs = {
     value: {min:-2}
   };
   chart.legend(false);
 
-  var edgeView = chart.createView();
-  edgeView.source(edges, defs);
+  var edgeView = chart.view();
+  edgeView.source(dv.edges, defs);
   edgeView.axis(false);
   edgeView.edge()
-    .position(Stat.link('source*target',nodes))
+    .position('x*y')
     .shape('arc')
     .size('value')
     .color('#555')
     .opacity(0.5);
     
-  var nodeView = chart.createView();
+  var nodeView = chart.view();
   nodeView.axis(false);
-  nodeView.source(nodes, defs);
+  nodeView.source(dv.nodes, defs);
   nodeView.point()
     .position('x*y')
     .color('group')
@@ -169,7 +162,7 @@ $.getJSON('./data/miserables.json', function(data) {
     .shape('circle')
     .label('nodeName',{
       offset: -18,
-      label: {
+      textStyle: {
         rotate: 90, // 文本旋转的角度，一般自动计算
         textAlign: 'left',
         fontSize: '12'
@@ -178,7 +171,7 @@ $.getJSON('./data/miserables.json', function(data) {
     });
   chart.render();
 });
-</div>
+```
 
 说明：
  * group 字段，使用了`颜色`用于区分不同的节点类型
@@ -187,10 +180,17 @@ $.getJSON('./data/miserables.json', function(data) {
 
 <div id="c2"></div>
 
-<div class="code hide">
-$.getJSON('./data/relationship.json', function(data) {
-  var Stat = G2.Stat;// 统计算法对象
-  var Layout = G2.Layout;// 布局算法对像
+```js-
+$.getJSON('/assets/data/relationship.json', function(data) {
+  var dv = new DataSet.View().source(data, {
+    type: 'graph',
+    nodes: function (d) {
+      return d.nodes;
+    },
+    edges: function (d) {
+      return d.links;
+    },
+  });
 
   var nodes = data.nodes; // 节点数据
   var links = data.links; // 边数据
@@ -213,16 +213,11 @@ $.getJSON('./data/relationship.json', function(data) {
     forceFit: true,
     height: 500,
     animate: false,
-    plotCfg:{
-      margin: 80
-    }
   });
 
-  // 线性布局Linear
-  var layout = new Layout.Linear({
-    nodes: nodes
+  dv.transform({
+    type: 'diagram.arc'
   });
-  nodes = layout.getNodes();// 获取布局后的节点数据
 
   chart.legend(false);
   chart.tooltip({
@@ -230,20 +225,20 @@ $.getJSON('./data/relationship.json', function(data) {
   });
 
   // 创建边视图
-  var edgeView = chart.createView();
+  var edgeView = chart.view();
   edgeView.source(links);
   edgeView.coord('polar').reflect('y');  // 使用极坐标，反转y轴(布局方法默认给y赋值为0)
   edgeView.axis(false);
   edgeView.edge()
     // 由于边的坐标数据较多，此处使用统计函数简化语法，Stat.link计算布局后的边的坐标，放在..x和..y中，数值范围是 0-1
-    .position(Stat.link('source*target',nodes))
+    .position('x*y')
     .shape('arc') // 使用弧线完成边的绘制
     .color('type')
     .opacity(0.5)
     .tooltip('source*target'); 
 
   // 创建节点视图
-  var nodeView = chart.createView();
+  var nodeView = chart.view();
   nodeView.coord('polar').reflect('y');
   nodeView.axis(false);
   nodeView.source(nodes);
@@ -258,11 +253,10 @@ $.getJSON('./data/relationship.json', function(data) {
       labelEmit: true  // 配置label文字为放射状
     })
     .tooltip('size*modularity_class');
+
   chart.render();
 });
-
-</div>
-
+```
 
 ## 弧长链接图与其他图表的对比
 
@@ -274,6 +268,4 @@ $.getJSON('./data/relationship.json', function(data) {
 * 和弦图的节点使用权重线性布局，节点权重即决定节点大小，又决定节点位置
 * 和弦图的连线使用源权重和目标权重控制线宽，粗细非均匀
 * 和弦图的节点宽度为连线宽度之和，节点处的连线平铺不重叠
-
-
 

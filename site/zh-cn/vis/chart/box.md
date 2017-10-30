@@ -90,25 +90,49 @@ variations:
 
 <div id="c3"></div>
 
-<div class="code hide">
-$.getJSON('./data/iris_flower_data.json', function(data) {
-  var Stat = G2.Stat;
-  var Util = G2.Util;
-  var Frame = G2.Frame;
-  var frame = new Frame(data);
-  frame = Frame.combinColumns(frame,['萼片长度','萼片宽度','花瓣长度','花瓣宽度'],'value','type','品种');
+```js-
+$.getJSON('/assets/data/iris_flower_data.json', function(data) {
+  var dv = new DataSet.View().source(data);
+  dv
+    .transform({
+      type: 'fold',
+      fields: [ '萼片长度','萼片宽度','花瓣长度','花瓣宽度' ],
+      key: 'type',
+      value: 'value',
+      groupBy: '品种'
+    })
+    .transform({
+      type: 'bin.quantile',
+      field: 'value',
+      as: 'y',
+      groupBy: ['type', '品种']
+    });
+
+  var colorMap = {
+    'I. setosa': G2.Global.colors[0],
+    'I. versicolor': G2.Global.colors[1],
+    'I. virginica': G2.Global.colors[2],
+  };
 
   var chart = new G2.Chart({
     id: 'c1',
     forceFit: true,
     height : 400,
-    plotCfg: {
-      margin: [10, 120, 80, 80]
+  });
+  chart.source(dv);
+  console.log(dv);
+  chart.facet('rect', {
+    fields: [ '品种', null ],
+    eachView: function (view) {
+      view.schema()
+        .position('type*y')
+        .shape('box')
+        .size(50)
+        .color('品种', function(key) {
+          return colorMap[key];
+        });
     }
   });
-  chart.source(frame);
-  chart.facet(['品种']);
-  chart.schema().position(Stat.bin.quantile.letter('type*value')).color('品种').shape('box').size(50);
   chart.render();
   chart.on('tooltipchange', function(ev){
     var items = ev.items;
@@ -143,34 +167,44 @@ $.getJSON('./data/iris_flower_data.json', function(data) {
     id: 'c2',
     forceFit: true,
     height : 350,
-    plotCfg: {
-      margin: [10, 120, 80, 80]
-    }
   });
-  chart2.source(frame);
+  chart2.source(dv);
   chart2.tooltip({
     map: {
       title: '最小值-下四分位数-中位数-上四分位数-最大值'
     }
   });
-  chart2.schemaDodge().position(Stat.bin.quantile.letter('type*value')).color('品种').shape('box');
+  chart2.schemaDodge().position('type*y').color('品种').shape('box');
   chart2.render();
+
+  var dv1 = new DataSet.View().source(data);
+  dv1
+    .transform({
+      type: 'fold',
+      fields: [ '萼片长度','萼片宽度','花瓣长度','花瓣宽度' ],
+      key: 'type',
+      value: 'value',
+    })
+    .transform({
+      type: 'bin.quantile',
+      field: 'value',
+      as: 'y',
+      groupBy: ['type']
+    });
 
   var chart3 = new G2.Chart({
     id: 'c3',
     forceFit: true,
     height : 350,
-    plotCfg: {
-      margin: [0, 120, 80, 80]
-    }
   });
-  chart3.source(frame);
+  chart3.source(dv1);
+  chart3.coord().transpose();
   chart3.tooltip({
     map:{
       title: "type"
     }
   });
-  chart3.schemaDodge().position(Stat.bin.quantile.letter('value')).color('type').shape('box').size(50);
+  chart3.schemaDodge().position('1*y').color('type').shape('box').size(30);
   chart3.render();
   chart3.on('tooltipchange', function(ev){
     var items = ev.items;
@@ -204,8 +238,7 @@ $.getJSON('./data/iris_flower_data.json', function(data) {
     }));
   });
 });
-</div>
-
+```
 
 <!-- ## 箱形图的扩展
 

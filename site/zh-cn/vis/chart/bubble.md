@@ -12,8 +12,6 @@ variations:
 
 <img src="https://os.alipayobjects.com/rmsportal/TyzWQNPpfrsNAKH.jpg" />
 
-<script src="https://as.alipayobjects.com/g/datavis/g-plugin-map/1.1.0/index.js"></script>
-
 ## 气泡图的简介
 
 气泡图是一种多变量图表，是[散点图](/vis/doc/chart/details/scatter-plot.html)的变体，也可以认为是散点图和百分比区域图的组合。
@@ -69,9 +67,10 @@ variations:
 
 如下图所示，分别使用柱状图和气泡图展示了不同年龄段人群中有使用社交网络的数量占比。在气泡图中，使用气泡的大小来映射数据的大小，而柱状图中使用高度来代表，颜色代表不同的年龄段。相比于高度，面积的映射更直观。`虚构数据`
 
-<div id="c2" style="float:left;"></div>
-<div id="c22" style="float:right;"></div>
-<div class="code unvisiable-hide">
+<div id="c2"></div>
+<div id="c22"></div>
+
+```js-
   var data = [
     {age: '18-24', percentage: 29},
     {age: '25-34', percentage: 40},
@@ -83,47 +82,48 @@ variations:
   var Stat = G2.Stat;
 
   var chart = new G2.Chart({
-    id: 'c2',
-    width : 450,
-    height : 250,
-    plotCfg: {
-      margin: [40, 80, 60, 60]
-    }
+    container: 'c2',
+    forceFit: true,
+    height : 300,
   });
 
-  chart.col('percentage', {
+  chart.scale('percentage', {
     'alias': '百分比(%)'
   });
-  chart.col('age', {
+  chart.scale('age', {
     'alias': '年龄段'
   });
 
-
   chart.source(data);
   chart.legend('percentage', false);
-  chart.point().position('age*percentage').size('percentage', 32.5, 10).opacity(0.85).shape('circle').color('age');
+  chart.point()
+    .position('age*percentage')
+    .size('percentage', [ 10, 32.5 ])
+    .opacity(0.85)
+    .shape('circle')
+    .color('age');
   chart.render();
 
   var chart2 = new G2.Chart({
-    id: 'c22',
-    width : 450,
-    height : 250,
-    plotCfg: {
-      margin: [40, 80, 60, 60]
-    }
+    container: 'c22',
+    forceFit: true,
+    height : 300,
   });
 
-  chart2.col('percentage', {
+  chart2.scale('percentage', {
     'alias': '百分比(%)'
   });
-  chart2.col('age', {
+  chart2.scale('age', {
     'alias': '年龄段'
   });
 
   chart2.source(data);
-  chart2.interval().position('age*percentage').color('age');
+  chart2.interval()
+    .position('age*percentage')
+    .color('age');
   chart2.render();
-</div>
+```
+
 <div style="clear: both;"></div>
 
 
@@ -135,55 +135,57 @@ variations:
 
 其中 x 轴代表时间，y 轴为广告支出，气泡大小表示销售量。`虚构数据`
 
-
-<div class="hide">
 | time（季度） | adSpend（广告支出）| sales（销售额） |
 |------|----|------|
 |Q1|120|345|
 |Q2|350|500|
 |Q3|480|666|
 |Q4|370|549|
-</div>
 
 
 <div id="c3"></div>
 
-<div class="code unvisiable-hide">
+```js-
   var data = [
     {time: 'Q1', adSpend: 120, sales: 345},
     {time: 'Q2', adSpend: 350, sales: 500},
     {time: 'Q3', adSpend: 480, sales: 666},
     {time: 'Q4', adSpend: 370, sales: 549}
   ];
-  var Stat = G2.Stat;
-
   var chart = new G2.Chart({
-    id: 'c3',
-    width : 600,
-    height : 250,
-    plotCfg: {
-      margin: [40, 60, 80,60]
-    }
+    container: 'c3',
+    forceFit: true,
+    height : 300,
   });
 
-  chart.col('time', {
+  chart.scale('time', {
     alias: '季度'
   });
 
-  chart.col('adSpend', {
+  chart.scale('adSpend', {
     alias: '广告支出'
   });
   chart.source(data);
   chart.legend('sales', false);
-  chart.point().position('time*adSpend').size('sales', 37.25, 7.25).color('#2ca25f').opacity(0.85).shape('circle').label('sales', {offset:0,label:{fill: "#fff"}});
+  chart.point()
+    .position('time*adSpend')
+    .size('sales', [ 7.25, 37.25 ])
+    .color('#2ca25f')
+    .opacity(0.85)
+    .shape('circle')
+    .label('sales', {
+      offset:0,
+      textStyle:{
+        fill: "#fff"
+      }
+    });
   chart.render();
-</div>
+```
 
 除了大小的映射之外，我们还可以为每个气泡添加上颜色属性，这时候气泡图就为我们完美得展示了四个维度的数据。通常颜色属性用于表达数据的分类。
 
 下图展示了各大洲各个国家人均国内生产总值、人均寿命以及人口的数据。其中横坐标表示人均国内生产总值，纵坐标表示人均寿命，气泡的大小表示人口数量，然后用颜色来区分各个洲。可以看出人均国内生产总值和人均寿命的相关性，大致呈正相关性，并且人均寿命较长的地区主要集中在亚洲、欧洲和大洋洲。亚洲的人口较多。`数据来源丢失，数据不可靠！`
 
-<div class="hide">
 | continent（所属大洲） | Country（国家名）| LifeExpectancy（人均寿命） | GDP（人均国内生产总值$）|Population（人口总数） |
 |------|----|------|----|------|
 |Africa|Algeria|72.301|6223.367465|33333216.0|
@@ -192,25 +194,20 @@ variations:
 |Europe|Austria|79.829|36126.4927|8199783.0|
 |...|...|...|...|...|
 |Oceania|New Zealand| 80.204|25185.00911|4115771.0|
-</div>
 
 <div id="c4"></div>
 
-<div class="code unvisiable-hide">
-$.getJSON('./data/bubble-chart.json', function(data) {
-  var Stat = G2.Stat;
+```js-
+$.getJSON('/assets/data/bubble-chart.json', function(data) {
   var chart = new G2.Chart({
-    id: 'c4',
-    width : 800,
+    container: 'c4',
+    forceFit: true,
     height : 400,
-    plotCfg: {
-      margin: [20, 120, 80,80]
-    }
   });
-  chart.col('LifeExpectancy', {
+  chart.scale('LifeExpectancy', {
     alias: '人均寿命（年）'
   });
-  chart.col('GDP', {
+  chart.scale('GDP', {
     alias: '人均国内生产总值($)',
     tickCount: 10
   });
@@ -219,7 +216,7 @@ $.getJSON('./data/bubble-chart.json', function(data) {
       return (value/1000).toFixed(0) + 'k';
     }
   });
-  chart.col('Population',{
+  chart.scale('Population',{
     type: 'pow'
   });
   chart.tooltip({
@@ -232,10 +229,15 @@ $.getJSON('./data/bubble-chart.json', function(data) {
   chart.source(data);
   chart.legend('Population', false);
   chart.legend('Country', false);
-  chart.point().position('GDP*LifeExpectancy').size('Population',35,5).color('continent').opacity(0.65).shape('Country');
+  chart.point()
+    .position('GDP*LifeExpectancy')
+    .size('Population', [5, 35])
+    .color('continent')
+    .opacity(0.65)
+    .shape('Country');
   chart.render();
 });
-</div>
+```
 
 ### 三、与地图的结合（[Bubble Map](bubble-map.html)）
 
@@ -245,10 +247,12 @@ $.getJSON('./data/bubble-chart.json', function(data) {
 
 <div id="c5" style="width:800px;margin:0 auto;"></div>
 
-<div class="code unvisiable-hide">
-  $.getJSON('./data/world.geo.json', function(mapData) {
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
+```js-
+$.getJSON('/assets/data/world.geo.json', function(mapData) {
+  var ds = new DataSet();
+  var worldMapDv = ds.createView('world').source(mapData, {
+    type: 'GeoJSON'
+  });
   var userData = [
     {name: 'Iraq',value: 10701},
     {name: 'Pakistan',value: 7725},
@@ -261,30 +265,63 @@ $.getJSON('./data/bubble-chart.json', function(data) {
     {name: 'Thailand',value: 1620},
     {name: 'Libya',value: 1082}
   ];
+  var userDv = ds.createView().source(userData)
+    .transform({
+      type: 'geo.centroid',
+      geoDataView: 'world',
+      field: 'name',
+      as: [ 'longitude', 'latitude' ]
+    });
 
   var chart = new G2.Chart({
     id: 'c5',
-    width: 600,
+    forceFit: true,
     height: 300,
-    plotCfg: {
-      margin: [0]
-    }
   });
-  chart.source(userData);
   chart.tooltip({
+    showTitle: false
+  });
+  // 同步度量
+  chart.scale({
+    longitude: {
+      sync: true
+    },
+    latitude: {
+      sync: true
+    },
+  });
+  chart.axis(false);
+  chart.legend('trend', {
+    position: 'left'
+  });
+  chart.tooltip({
+    showTitle: false,
     crosshairs: false
   });
-  var gmap = new G2.Plugin.GMap({
-    chart: chart,
-    mapData: mapData,     // 地图数据地址
-    stroke: '#999',
-    fill: '#fff'
-  }).draw();
-  chart.legend('value', false);
-  chart.point().position(Stat.map.center('name', mapData)).size('value', 25, 4).opacity(0.85).shape('circle').color('value','#FFFFEE-#EE4B4B');
+
+  var worldMapView = chart.view();
+  worldMapView.source(worldMapDv);
+  worldMapView.tooltip(false);
+  worldMapView.polygon()
+    .position('longitude*latitude')
+    .style({
+      fill: '#fff',
+      stroke: '#ccc',
+      lineWidth: 1
+    });
+
+  var userView = chart.view();
+  userView.source(userDv);
+  userView.point()
+    .position('longitude*latitude')
+    .size('value', [ 4, 25 ])
+    .opacity(0.85)
+    .shape('circle')
+    .color('value');
+
   chart.render();
 });
-</div>
+```
 
 ## 气泡图的扩展阅读
 

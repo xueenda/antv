@@ -101,8 +101,7 @@ variations:
 
 <div id="c3"></div>
 
-<div class="code hide">
-
+```js-
   var data = [
     {genre:'Sports',sold:27500},
     {genre:'Strategy',sold:11500},
@@ -110,8 +109,6 @@ variations:
     {genre:'Shooter',sold:3500},
     {genre:'Other',sold:1500},
   ];
-
-  var Stat = G2.Stat;
 
   var chart = new G2.Chart({
     id: 'c3',
@@ -123,7 +120,7 @@ variations:
 
   chart.intervalStack().position('genre*sold').color('genre')
   chart.render();
-</div>
+```
 
 说明：
  * genre 字段，同时使用了`位置`和`颜色`用于区分不同的游戏类型
@@ -147,10 +144,8 @@ variations:
 
 <div id="c6"></div>
 
-
-<div class="code hide">
-
-  var data = [
+```js-
+var data = [
   {province:'北京市',population:19612368},
   {province:'天津市',population:12938693},
   {province:'河北省',population:71854210},
@@ -172,11 +167,9 @@ variations:
   {"province":"青海省","population":5626723}
 ];
 
-
-var Stat = G2.Stat;
-var Frame = G2.Frame;
-var frame = new Frame(data);
-frame = Frame.sort(frame, 'population');
+data.sort(function(a, b) {
+  return a.population - b.population;
+});
 
 var chart = new G2.Chart({
   id : 'c5',
@@ -193,7 +186,7 @@ chart.axis('province',{
 chart.axis('population',{
   titleOffset: 150
 });
-chart.source(frame);
+chart.source(data);
 chart.interval().position('province*population');
 
 chart.render();
@@ -208,7 +201,7 @@ var chart2 = new G2.Chart({
 
 });
 
-chart2.source(frame);
+chart2.source(data);
 chart2.axis('province',{
   title: null
 });
@@ -217,8 +210,7 @@ chart2.coord('rect').transpose();
 chart2.interval().position('province*population');
 
 chart2.render();
-
-</div>
+```
 
 例子2：**不适合表示趋势**
 柱状图使用矩形的长度（宽度）来对比分类数据的大小，非常方便临近的数据进行大小的对比，不适合展示连续数据的趋势。下图本想展示 ACME 这只股票在 2015 年 9 月份整个月的每日的价格走势，但是效果不尽人意。
@@ -229,8 +221,8 @@ chart2.render();
 
 <div id="c71"></div>
 
-<div class="code hide">
-var data= [
+```js-
+  var data= [
     {"day": '2015/9/1',  "share": 10},
     {"day": '2015/9/2',  "share": 12},
     {"day": '2015/9/3',  "share": 11},
@@ -273,14 +265,14 @@ var data= [
     }
   });
   chart.source(data);
-  chart.col('day', {
+  chart.scale('day', {
     type: 'timeCat',
     tickCount: 10,
     nice: false,
-    mask: 'm/d',
+    mask: 'M/D',
     alias: 'Month/Day'
   });
-  chart.col('share', {
+  chart.scale('share', {
     alias: 'The Share Price',
     formatter: function(val) {
       return '$' + val;
@@ -301,14 +293,14 @@ var data= [
     }
   });
   chart.source(data);
-  chart.col('day', {
+  chart.scale('day', {
     type: 'timeCat',
     tickCount: 10,
     nice: false,
-    mask: 'm/d',
+    mask: 'M/D',
     alias: 'Month/Day'
   });
-  chart.col('share', {
+  chart.scale('share', {
     alias: 'The Share Price',
     formatter: function(val) {
       return '$' + val;
@@ -320,7 +312,7 @@ var data= [
   chart.area().position('day*share');
   chart.line().position('day*share').size(5);
   chart.render();
-</div>
+```
 
 
 ## 柱状图与其他图表的对比
