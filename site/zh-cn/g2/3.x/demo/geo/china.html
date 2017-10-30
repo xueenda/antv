@@ -49,7 +49,8 @@ relativePlots:
         const chart = new G2.Chart({
             container: 'mountNode',
             forceFit: true,
-            height: window.innerHeight
+            height: window.innerHeight,
+            padding: [ 40, 90 ]
         });
         // force sync scales
         chart.scale({
@@ -78,7 +79,11 @@ relativePlots:
             .position('x*y')
             .size(0)
             .label('name', {
-                offset: 0,
+              offset: 0,
+              textStyle: {
+                fill: '#545454',
+                fontSize: 10
+              }
             });
 
         chart.render();
