@@ -62,11 +62,14 @@ Bubble Map 比[分级统计图](choropleth-map.html)更适用于比较带地理�
 |。。。|。。。|
 
 <div id="c1"></div>
-<script src="https://as.alipayobjects.com/g/datavis/g-plugin-map/1.0.5/index.js"></script>
-<div class="code hide">
-  $.getJSON('./data/world.geo.json?nowrap', function(mapData) {
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
+
+```js-
+$.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
+  var ds = new DataSet();
+  var mapDv = ds.createView('map').source(mapData, {
+    type: 'GeoJSON'
+  });
+
   var userData = [
     {name: 'Iraq',value: 10701},
     {name: 'Pakistan',value: 7725},
@@ -80,62 +83,61 @@ Bubble Map 比[分级统计图](choropleth-map.html)更适用于比较带地理�
     {name: 'Libya',value: 1082}
   ];
 
-  var map = [];
-  var features = mapData.features;
-  for(var i=0; i < features.length; i++) {
-    var name = features[i].properties.name;
-    map.push({
-      "name": name
-    });
-  }
+  var userDv = ds.createView().source(userData);
+  userDv.transform({
+    type: 'geo.centroid',
+    geoDataView: 'map',
+    field: 'name',
+    as: [ 'longitude', 'latitude' ]
+  });
 
   var chart = new G2.Chart({
     id: 'c1',
-    width: 800,
+    forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [0]
-    }
   });
 
-  chart.source(userData);
+  chart.source(userDv);
   chart.tooltip({
     crosshairs: false
   });
-  
-  var defs = {
-    '..long': {
+  chart.axis(false);
+  chart.scale({
+    longitude: {
       min: -180,
-      max: 180
+      max: 180,
+      sync: true
     },
-    '..lant': {
+    latitude: {
       min: -55.61183,
-      max: 83.64513
-    }
-  };
-  // 绘制世界地图背景
-  var view = chart.createView();
-  view.source(map, defs);
-  view.tooltip(false);
-  view.polygon().position(Stat.map.region('name', mapData)).shape('stroke').style({
-    fill: '#fff',
-    stroke: '#ccc',
-    lineWidth: 1
+      max: 83.64513,
+      sync: true
+    },
   });
 
-  var userView = chart.createView();
+  // 绘制世界地图背景
+  var view = chart.view();
+  view.source(mapDv);
+  view.tooltip(false);
+  view.polygon()
+    .position('longitude*latitude')
+    .shape('stroke').style({
+      fill: '#fff',
+      stroke: '#ccc',
+      lineWidth: 1
+    });
 
-  userView.source(userData, defs);
-
+  var userView = chart.view();
+  userView.source(userDv);
   userView.point()
-    .position(Stat.map.center('name', mapData))
-    .size('value', 25, 4)
+    .position('longitude*latitude')
+    .size('value', [5, 25])
     .opacity(0.85).shape('circle').color('value','#fee0d2-#de2d26')
     .label('value', {offset: 0, label:{fill:'#222', 'font-weight': 'bold'}});
 
   chart.render();
 });
-</div>
+```
 
 例子2：**展示各国癌症五年生存率。** 首先我们通过颜色来区分不同的国家，然后将各国的生存率数据映射为气泡的大小，这样就可以清晰对比不同国家的生存率。从图中可以明显发现中国癌症五年生存率为30.9%，远低于发达国家水平。
 
@@ -148,9 +150,13 @@ China|30.9
 
 <div id="c2"></div>
 
-<div class="code hide">
-$.getJSON('./data/world.geo.json?nowrap', function(mapData) {
-  var Stat = G2.Stat;
+```js-
+$.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
+  var ds = new DataSet();
+  var mapDv = ds.createView('map').source(mapData, {
+    type: 'GeoJSON'
+  });
+
   var userData = [
     {name: 'Japan', alias: '日本', value: 81.6},
     {name: 'South Korea',alias: '韩国', value: 53.4},
@@ -167,23 +173,18 @@ $.getJSON('./data/world.geo.json?nowrap', function(mapData) {
     {name: 'United States of America',alias: '美国', value: 66.0},
     {name: 'Canada',alias: '加拿大', value: 82.5}
   ];
-
-  var map = [];
-  var features = mapData.features;
-  for(var i=0; i < features.length; i++) {
-    var name = features[i].properties.name;
-    map.push({
-      "name": name
-    });
-  }
+  var userDv = ds.createView().source(userData);
+  userDv.transform({
+    type: 'geo.centroid',
+    geoDataView: 'map',
+    field: 'name',
+    as: [ 'longitude', 'latitude' ]
+  });
 
   var chart = new G2.Chart({
     id: 'c2',
-    width: 800,
+    forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [0]
-    }
   });
   chart.tooltip({
     title: null,
@@ -192,37 +193,48 @@ $.getJSON('./data/world.geo.json?nowrap', function(mapData) {
       name: 'alias'
     }
   });
-
   chart.legend(false);
-
-  var defs = {
-    '..long': {
-      min: -180,
-      max: 180
+  chart.axis(false);
+  chart.scale({
+    longitude: {
+      sync: true
     },
-    '..lant': {
-      min: -55.61183,
-      max: 83.64513
-    }
-  };
-  // 绘制世界地图背景
-  var view = chart.createView();
-  view.source(map, defs);
-  view.tooltip(false);
-  view.polygon().position(Stat.map.region('name', mapData)).shape('stroke').style({
-    stroke: '#fff',
-    fill: '#E6E6E6',
-    lineWidth: 1
+    latitude: {
+      sync: true
+    },
   });
 
-  var userView = chart.createView();
+  // 绘制世界地图背景
+  var view = chart.view();
+  view.source(mapDv);
+  view.tooltip(false);
+  view.polygon()
+    .position('longitude*latitude')
+    .shape('stroke')
+    .style({
+      stroke: '#fff',
+      fill: '#E6E6E6',
+      lineWidth: 1
+    });
 
-  userView.source(userData, defs);
-  userView.point().position(Stat.map.center('name', mapData)).size('value', 25, 4).opacity(0.8).shape('circle').color('name').label('alias', {offset: 0, label: {'fill': '#222'}});
+  var userView = chart.view();
+  userView.source(userDv);
+  userView.point()
+    .position('longitude*latitude')
+    .size('value', [5, 25])
+    .opacity(0.8)
+    .shape('circle')
+    .color('name')
+    .label('alias', {
+      offset: 0,
+      textStyle: {
+        'fill': '#222'
+      }
+    });
 
   chart.render();
 });
-</div>
+```
 
 例子3：**美国各州发生的抢劫案件数目。** 用气泡大小代表各州某年发生的抢劫案件数目，很清晰得就看到美国的东部是抢劫案件发生的集中区域，其中 Maryland 最多。
 
@@ -235,61 +247,75 @@ Arkansas|91.1
 
 <div id="c3"></div>
 
-<div class="code hide">
-$.getJSON('./data/USA.geo.json?nowrap', function(mapData) {
-  $.getJSON('./data/usa-forcible.json?nowrap', function(data) {
-
-    var map = [];
-    var features = mapData.features;
-    for(var i=0; i < features.length; i++) {
-      var name = features[i].properties.name;
-      map.push({
-        "name": name
+```js-
+$.getJSON('/assets/data/USA.geo.json?nowrap', function(mapData) {
+  $.getJSON('/assets/data/usa-forcible.json?nowrap', function(data) {
+    var ds = new DataSet();
+    var mapDv = ds.createView('map').source(mapData, {
+      type: 'GeoJSON'
+    });
+    var userDv = ds.createView().source(data);
+    userDv
+      .transform({
+        type: 'geo.centroid',
+        geoDataView: 'map',
+        field: 'state',
+        as: [ 'longitude', 'latitude' ]
+      })
+      .transform({
+        type: 'filter',
+        callback: function(row) {
+          return !!row.longitude && !!row.latitude;
+        }
       });
-    }
-    var Stat = G2.Stat;
+
     var chart = new G2.Chart({
       id: 'c3',
-      width: 600,
+      forceFit: true,
       height: 400,
       animate: false,
-      plotCfg: {
-        margin: [0,0,20,0]
-      }
+      padding: 0,
     });
     chart.tooltip({
       crosshairs: false
     });
+    chart.axis(false);
     chart.legend('Robbery', false);
-
-    var defs = {
-      '..long': {
-        max: -66,
-        min:-125
+    chart.scale({
+      longitude: {
+        sync: true
       },
-      '..lant': {
-        max: 50,
-        min:24
-      }
-    };
-    // 绘制世界地图背景
-    var view = chart.createView();
-    view.source(map, defs);
-    view.tooltip(false);
-    view.polygon().position(Stat.map.region('name', mapData)).shape('stroke').style({
-      fill: '#fff',
-      stroke: '#E6E6E6',
-      lineWidth: 1
+      latitude: {
+        sync: true
+      },
     });
 
-    var userView = chart.createView();
-    userView.source(data, defs);
-    userView.point().position(Stat.map.center('state', mapData)).size('Robbery', 25, 4).shape('circle').color('Robbery', '#fee0d2-#de2d26').opacity(0.9);
+    // 绘制世界地图背景
+    var view = chart.view();
+    view.source(mapDv);
+    view.tooltip(false);
+    view.polygon()
+      .position('longitude*latitude')
+      .shape('stroke')
+      .style({
+        fill: '#fff',
+        stroke: '#E6E6E6',
+        lineWidth: 1
+      });
+
+    var userView = chart.view();
+    userView.source(userDv);
+    userView.point()
+      .position('longitude*latitude')
+      .size('Robbery', [5, 25])
+      .shape('circle')
+      .color('Robbery', '#fee0d2-#de2d26')
+      .opacity(0.9);
     
     chart.render();
   });
 });
-</div>
+```
 
 ### 不适合的场景
 
@@ -308,32 +334,46 @@ longitude(经度) |latitude（维度）|temperature
   <div class="wrong tip">错误</div>
 </div>
 
-<div class="code hide">
-  $.getJSON('./data/china.json', function(mapData) {
-    $.getJSON('./data/temp.json', function(data) {
-      var Stat = G2.Stat;
-      var chart = new G2.Chart({
-        id: 'c4',
-        width: 600,
-        height: 400,
-        plotCfg: {
-          margin: [5, 225, 125, 65]
-        }
+```js-
+  $.getJSON('/assets/data/china.json', function(mapData) {
+    $.getJSON('/assets/data/temp.json', function(data) {
+      var ds = new DataSet();
+      var mapDv = ds.createView('map').source(mapData, {
+        type: 'GeoJSON',
       });
-      var defs = {
+      var userDv = ds.createView().source(data);
+      userDv
+        .transform({
+          type: 'map',
+          callback: function(row) {
+            row.province = row.province.replace('市', '').replace('省', '');
+            return row;
+          }
+        })
+        .transform({
+          type: 'geo.centroid',
+          geoDataView: 'map',
+          field: 'province',
+          as: [ 'longitude', 'latitude' ]
+        });
+
+      var chart = new G2.Chart({
+        container: 'c4',
+        forceFit: true,
+        height: 400,
+      });
+      chart.scale({
         'out-temperature': {
           alias: '室外温度'
         },
-        '..lant': {
-          min: 18.16933828300006,
-          max: 53.56779083300003
+        longitude: {
+          sync: true
         },
-        '..long': {
-          min: 73.60225630700012,
-          max: 134.77257938700012
-        }
-      };
-
+        latitude: {
+          sync: true
+        },
+      });
+      chart.axis(false);
       chart.tooltip({
         map: {
           'title': 'city',
@@ -341,44 +381,31 @@ longitude(经度) |latitude（维度）|temperature
         }
       });
 
-      var coordCfg = {
-        projection: 'mercator',
-        max: [134.77, 63.68],
-        min: [73.60, 18.48]
-      };
-
-      var map = [];
-      var features = mapData.features;
-      for(var i=0; i < features.length; i++) {
-        var name = features[i].properties.name;
-        map.push({
-          "name": name
-        });
-      }
-
-      // 绘制世界地图背景
-      var view = chart.createView();
-      view.source(map, defs);
+      // 绘制地图背景
+      var view = chart.view();
+      view.source(mapDv);
       view.tooltip(false);
-      view.coord('map', coordCfg);
-      view.polygon().position(Stat.map.region('name', mapData)).shape('stroke').style({
-        fill: '#fff',
-        stroke: '#E6E6E6',
-        lineWidth: 1
-      });
+      view.polygon()
+        .position('longitude*latitude')
+        .shape('stroke')
+        .style({
+          fill: '#fff',
+          stroke: '#E6E6E6',
+          lineWidth: 1
+        });
 
-      var userView = chart.createView();
-      userView.source(data, defs);
-      
-      userView.point().position(Stat.map.location('longitude*latitude'))
-        .size('temperature', 10, 2)
+      var userView = chart.view();
+      userView.source(userDv);
+      userView.point()
+        .position('longitude*latitude')
+        .size('temperature', [2, 10])
         .color('temperature','#50a3ba-#eac736-#d94e5d')
         .shape('circle')
         .opacity(0.8)
       chart.render();
     });
   });
-</div>
+```
 
 不适合的原因：
 
@@ -393,32 +420,46 @@ longitude(经度) |latitude（维度）|temperature
   <div class="right tip">正确</div>
 </div>
 
-<div class="code hide">
-  $.getJSON('./data/china.json', function(mapData) {
-    $.getJSON('./data/temp.json', function(data) {
-      var Stat = G2.Stat;
-      var chart = new G2.Chart({
-        id: 'c5',
-        width: 600,
-        height: 400,
-        plotCfg: {
-          margin: [5, 225, 125, 65]
-        }
+```js-
+  $.getJSON('/assets/data/china.json', function(mapData) {
+    $.getJSON('/assets/data/temp.json', function(data) {
+      var ds = new DataSet();
+      var mapDv = ds.createView('map').source(mapData, {
+        type: 'GeoJSON',
       });
-      var defs = {
+      var userDv = ds.createView().source(data);
+      userDv
+        .transform({
+          type: 'map',
+          callback: function(row) {
+            row.province = row.province.replace('市', '').replace('省', '');
+            return row;
+          }
+        })
+        .transform({
+          type: 'geo.centroid',
+          geoDataView: 'map',
+          field: 'province',
+          as: [ 'longitude', 'latitude' ]
+        });
+
+      var chart = new G2.Chart({
+        container: 'c5',
+        forceFit: true,
+        height: 400,
+      });
+      chart.scale({
         'out-temperature': {
           alias: '室外温度'
         },
-        '..lant': {
-          min: 18.16933828300006,
-          max: 53.56779083300003
+        longitude: {
+          sync: true
         },
-        '..long': {
-          min: 73.60225630700012,
-          max: 134.77257938700012
-        }
-      };
-
+        latitude: {
+          sync: true
+        },
+      });
+      chart.axis(false);
       chart.tooltip({
         map: {
           'title': 'city',
@@ -426,44 +467,35 @@ longitude(经度) |latitude（维度）|temperature
         }
       });
 
-      var coordCfg = {
-        projection: 'mercator',
-        max: [134.77, 63.68],
-        min: [73.60, 18.48]
-      };
-
-      var map = [];
-      var features = mapData.features;
-      for(var i=0; i < features.length; i++) {
-        var name = features[i].properties.name;
-        map.push({
-          "name": name
-        });
-      }
-
-      // 绘制世界地图背景
-      var view = chart.createView();
-      view.source(map, defs);
+      // 绘制地图背景
+      var view = chart.view();
+      view.source(mapDv);
       view.tooltip(false);
-      view.coord('map', coordCfg);
-      view.polygon().position(Stat.map.region('name', mapData)).shape('stroke').style({
-        fill: '#fff',
-        stroke: '#E6E6E6',
-        lineWidth: 1
-      });
+      view.polygon()
+        .position('longitude*latitude')
+        .shape('stroke')
+        .style({
+          fill: '#fff',
+          stroke: '#E6E6E6',
+          lineWidth: 1
+        });
 
-      var userView = chart.createView();
-      userView.source(data, defs);
-      
-      userView.heatmap().position(Stat.map.location('longitude*latitude'))
-        .size(15)
+      var userView = chart.view();
+      userView.source(userDv);
+      userView.heatmap()
+        .position('longitude*latitude')
+        .size(10)
         .color('temperature','#50a3ba-#eac736-#d94e5d')
-        .label('city',{label:{opacity: 0}}); // 设置文本但是不显示，使得tooltip可以显示对应的字段
+        .shape('circle')
+        .opacity(0.8)
+        .style({
+          blur: 10
+        });
 
       chart.render();
     });
   });
-</div>
+```
 
 
 ## 带气泡的地图同其他图表的对比
