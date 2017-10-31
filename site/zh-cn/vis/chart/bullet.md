@@ -69,8 +69,7 @@ variations:
 
 <div id="c1"></div>
 
-<div class="code hide">
-
+```js-
  var data = [
   {"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"actual":270,"target":250},
   {"title":"Profit","subtitle":"%","ranges":[20,25,30],"actual":23,"target":26},
@@ -83,17 +82,14 @@ var chart = new G2.Chart({
   id: 'c1',
   forceFit: true,
   height : 500,
-  plotCfg: {
-    margin: [100, 150]
-  }
-}); 
+});
 chart.legend(false); // 不展示图例
 
 var y = 0;
 var yGap = 0.1;
 for(var i=0, l = data.length; i < l; i++) {
   var ranges = data[i].ranges;
-  var view = chart.createView({
+  var view = chart.view({
     index: i,
     start: {
       x: 0,
@@ -129,25 +125,35 @@ for(var i=0, l = data.length; i < l; i++) {
     lineWidth: 2
   });
   view.interval().position('title*actual').color('#5b0101').size(15);
-  view.guide().rect([-1, 0], [1, ranges[0]], {
-    fill: '#e96e33',
-    fillOpacity: 0.5
-
+  view.guide().region({
+    start: [-1, 0],
+    end: [1, ranges[0]],
+    style: {
+      fill: '#e96e33',
+      fillOpacity: 0.5
+    }
   });
-  view.guide().rect([-1, ranges[0]], [1, ranges[1]], {
-    fill: '#f9ca47',
-    fillOpacity: 0.5
+  view.guide().region({
+    start: [-1, ranges[0]],
+    end: [1, ranges[1]],
+    style: {
+      fill: '#f9ca47',
+      fillOpacity: 0.5
+    }
   });
-  view.guide().rect([-1, ranges[1]], [1, ranges[2]], {
-    fill: '#88bb34',
-    fillOpacity: 0.5
-
+  view.guide().region({
+    start: [-1, ranges[1]],
+    end: [1, ranges[2]],
+    style: {
+      fill: '#88bb34',
+      fillOpacity: 0.5
+    }
   });
   y += yGap + 0.125;
 }
 
 chart.render();
-</div>
+```
 
 说明：
  * title 字段，用于区分不同的类型
@@ -168,7 +174,7 @@ chart.render();
 
 <div id="c2"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {"title":"开销","ranges":[1000,2000,5000],"actual":1700,"target":1500}
   ];
@@ -176,16 +182,13 @@ chart.render();
     id: 'c2',
     forceFit: true,
     height : 120,
-    plotCfg: {
-      margin: [40, 150]
-    }
-  }); 
+  });
   chart.legend(false); // 不展示图例
   var y = 0;
   var yGap = 1;
   for(var i=0, l = data.length; i < l; i++) {
     var ranges = data[i].ranges;
-    var view = chart.createView({
+    var view = chart.view({
       index: i,
       start: {
         x: 0,
@@ -221,22 +224,34 @@ chart.render();
       lineWidth: 2
     });
     view.interval().position('title*actual').color('#5b0101').size(15);
-    view.guide().rect([-1, 0], [1, ranges[0]], {
-      fill: '#e96e33',
-      fillOpacity: 0.5
+    view.guide().region({
+      start: [-1, 0],
+      end: [1, ranges[0]],
+      style: {
+        fill: '#e96e33',
+        fillOpacity: 0.5
+      }
     });
-    view.guide().rect([-1, ranges[0]], [1, ranges[1]], {
-      fill: '#f9ca47',
-      fillOpacity: 0.5
+    view.guide().region({
+      start: [-1, ranges[0]],
+      end: [1, ranges[1]],
+      style: {
+        fill: '#f9ca47',
+        fillOpacity: 0.5
+      }
     });
-    view.guide().rect([-1, ranges[1]], [1, ranges[2]], {
-      fill: '#88bb34',
-      fillOpacity: 0.5
+    view.guide().region({
+      start: [-1, ranges[1]],
+      end: [1, ranges[2]],
+      style: {
+        fill: '#88bb34',
+        fillOpacity: 0.5
+      }
     });
     y += yGap + 0.125;
   }
   chart.render();
-</div>
+```
 
 例子2:** 层叠子弹图 **
 
@@ -249,28 +264,28 @@ chart.render();
 
 <div id="c3"></div>
 
-<div class="code hide">
+```js-
 var data = [
     {"State":"年度收益","第一季度":3820,"第二季度":6080,"第三季度":2930,"第四季度":5390,"ranges":[12000,15000,20000],"target":16000}
   ];
-var Stat = G2.Stat;
-var Frame = G2.Frame;
-var frame = new Frame(data);
-frame = Frame.combinColumns(frame,["第一季度","第二季度","第三季度","第四季度"],'金额','季度',['State','target']);
+var dv = new DataSet.View().source(data);
+dv.transform({
+  type: 'fold',
+  fields: ["第一季度","第二季度","第三季度","第四季度"],
+  key: '季度',
+  value: '金额',
+});
 var chart = new G2.Chart({
-    id: 'c3',
-    height: 200,
+    container: 'c3',
     forceFit: true,
-    plotCfg: {
-      margin: [60,150,100,150]
-    }
+    height: 200,
   });
   chart.legend({
     position: 'bottom'
   });
 
   var ranges = data[0].ranges;
-  var view = chart.createView({
+  var view = chart.view({
       start: {
         x: 0,
         y: 0
@@ -280,7 +295,7 @@ var chart = new G2.Chart({
         y: 1
       }
     });
-  view.source(frame,{
+  view.source(dv, {
     '金额': {
       min: 0,
       max: ranges[2],
@@ -304,24 +319,36 @@ var chart = new G2.Chart({
 
   view.coord().transpose();
 
-  view.guide().rect([-1, 0], [1, ranges[0]], {
-    fill: '#de4b70',
-    fillOpacity: 0.5
+  view.guide().region({
+    start: [-1, 0],
+    end: [1, ranges[0]],
+    style: {
+      fill: '#e96e33',
+      fillOpacity: 0.5
+    }
   });
-  view.guide().rect([-1, ranges[0]], [1, ranges[1]], {
-    fill: '#c125c7',
-    fillOpacity: 0.5
+  view.guide().region({
+    start: [-1, ranges[0]],
+    end: [1, ranges[1]],
+    style: {
+      fill: '#f9ca47',
+      fillOpacity: 0.5
+    }
   });
-  view.guide().rect([-1, ranges[1]], [1, ranges[2]], {
-    fill: '#c3c34c',
-    fillOpacity: 0.5
+  view.guide().region({
+    start: [-1, ranges[1]],
+    end: [1, ranges[2]],
+    style: {
+      fill: '#88bb34',
+      fillOpacity: 0.5
+    }
   });
   view.point().position('State*target').color('#5b0101').shape('line').size(10).style({
     lineWidth: 2
   });
   view.intervalStack().position('State*金额').color('季度').size(12);
   chart.render();
-</div>
+```
 
 
 ## 子弹图与其他图表的对比

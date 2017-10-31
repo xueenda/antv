@@ -65,32 +65,69 @@ Florida|19893297|FL
 。。。|。。。|。。。
 
 <div id="c1"></div>
-<script src="https://as.alipayobjects.com/g/datavis/g-plugin-map/1.0.5/index.js"></script>
 
-<textarea class="code hide">
-$.getJSON('./data/USA.geo.json?nowrap', function(mapData) {
-  $.getJSON('./data/2014-usa-population.json?nowrap', function(data) {
-    var Stat = G2.Stat;
+```js-
+$.getJSON('/assets/data/USA.geo.json?nowrap', function(mapData) {
+  $.getJSON('/assets/data/2014-usa-population.json?nowrap', function(data) {
+    var ds = new DataSet();
+    var mapDv = ds.createView('map').source(mapData, {
+      type: 'GeoJSON'
+    });
+    var regionDv = ds.createView().source(data);
+    regionDv.transform({
+      type: 'geo.region',
+      geoDataView: mapDv,
+      field: 'State',
+      as: [ 'longitude', 'latitude' ]
+    });
+    var centroidDv = ds.createView().source(data);
+    centroidDv.transform({
+      type: 'geo.centroid',
+      geoDataView: mapDv,
+      field: 'State',
+      as: [ 'longitude', 'latitude' ]
+    });
+
     var chart = new G2.Chart({
-      id: 'c1',
+      container: 'c1',
       forceFit: true,
       height: 500,
-      plotCfg: {
-        margin: [40, 140]
+      padding: 0,
+    });
+    chart.scale({
+      longitude: {
+        sync: true
+      },
+      latitude: {
+        sync: true
       }
     });
-    chart.source(data);
+
     chart.legend(false);
-    chart.polygon().position(Stat.map.region('State', mapData)).color('Population','#e5f5e0-#31a354')
-         .style({
-           stroke: '#999',
-           lineWidth: 1
-         });
-    chart.point().position(Stat.map.center('State', mapData)).size(0).label('code', {offset: 0});
+    chart.axis(false);
+
+    var regionView = chart.view();
+    regionView.source(regionDv);
+    regionView.polygon()
+      .position('longitude*latitude')
+      .color('Population', '#e5f5e0-#31a354')
+      .style({
+        stroke: '#999',
+        lineWidth: 1
+      });
+      console.log(regionDv, centroidDv);
+
+    var centroidView = chart.view();
+    centroidView.source(centroidDv);
+    centroidView.point()
+      .position('longitude*latitude')
+      .size(0)
+      .label('code', {offset: 0});
+
     chart.render();
   });
 });
-</textarea>
+```
 
 注意： 
 
@@ -125,10 +162,8 @@ $.getJSON('./data/USA.geo.json?nowrap', function(mapData) {
 
 <div id="c2"></div>
 
-<div class="code hide">
-$.getJSON('./data/world.geo.json?nowrap', function(mapData) {
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
+```js-
+$.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
   var userData = [
     {name: 'Russia',value: 86.8},
     {name: 'China',value: 106.3},
@@ -153,39 +188,42 @@ $.getJSON('./data/world.geo.json?nowrap', function(mapData) {
     {name: 'Indonesia',value: 101.4}
   ];
 
-  var frame = new Frame(userData);
-  frame.addCol('trend', function(obj) {
-    return (obj.value > 100) ? 1 : 0;
+  var ds = new DataSet();
+  var mapDv = ds.createView().source(mapData, {
+    type: 'GeoJSON',
   });
-
-  var map = [];
-  var features = mapData.features;
-  for(var i=0; i < features.length; i++) {
-    var name = features[i].properties.name;
-    map.push({
-      "name": name
+  var userDv = ds.createView().source(userData);
+  userDv
+    .transform({
+      type: 'map',
+      callback: function(row) {
+        row.trend = row.value > 100 ? 1 : 0;
+        return row;
+      }
+    })
+    .transform({
+      type: 'geo.region',
+      geoDataView: mapDv,
+      field: 'name',
+      as: [ 'longitude', 'latitude' ]
     });
-  }
+
 
   var chart = new G2.Chart({
     id: 'c2',
     forceFit: true,
     height: 400,
-    plotCfg: {
-      margin: [0,0,60,80]
-    }
+    padding: 0
   });
   chart.legend('left');
-  var defs = {
-    '..long': {
-      min: -180,
-      max: 180
+  chart.scale({
+    longitude: {
+      sync: true
     },
-    '..lant': {
-      min: -55.61183,
-      max: 83.64513
+    latitude: {
+      sync: true
     }
-  };
+  });
   chart.tooltip({
     title: null,
     map:{
@@ -195,35 +233,34 @@ $.getJSON('./data/world.geo.json?nowrap', function(mapData) {
   });
 
   // 绘制世界地图背景
-  var view = chart.createView();
-  view.source(map, defs);
+  var view = chart.view();
+  view.source(mapDv);
   view.tooltip(false);
-  view.polygon().position(Stat.map.region('name', mapData)).shape('stroke').style({
-    fill: '#fff',
-    stroke: '#ccc',
-    lineWidth: 1
-  });
+  view.polygon()
+    .position('longitude*latitude')
+    .shape('stroke')
+    .style({
+      fill: '#fff',
+      stroke: '#ccc',
+      lineWidth: 1
+    });
 
-  var userView = chart.createView();
-  userView.source(frame, {
+  var userView = chart.view();
+  userView.source(userDv, {
     'trend': {
       type: 'cat',
       alias: '每100位女性对应的男性数量',
       values: ['女性更多', '男性更多']
     },
-    '..long': {
-      min: -180,
-      max: 180
-    },
-    '..lant': {
-      min: -55.61183,
-      max: 83.64513
-    }
   });
-  userView.polygon().position(Stat.map.region('name*value', mapData)).color('trend',['#C45A5A','#14647D']).opacity('value').tooltip('name*value');
+  userView.polygon()
+    .position('longitude*latitude')
+    .color('trend',['#C45A5A','#14647D'])
+    .opacity('value')
+    .tooltip('name*value');
   chart.render();
 });
-</div>
+```
 
 ### 不适合的场景
 
@@ -239,37 +276,68 @@ Arkansas|6|422310|638017
 。。。|。。。|。。。|。。。
 
 <div id="c3"></div>
-<div class="code hide">
-$.getJSON('./data/USA.geo.json?nowrap', function(mapData) {
-  $.getJSON('./data/2008-usa-president.json?nowrap', function(data) {
+
+```js-
+$.getJSON('/assets/data/USA.geo.json?nowrap', function(mapData) {
+  $.getJSON('/assets/data/2008-usa-president.json?nowrap', function(data) {
     G2.Global.shape.polygon = {
       'stroke-width': 0
     }
-    var Stat = G2.Stat;
-    var chart1 = new G2.Chart({
-      id: 'c3',
-      forceFit: true,
-      height: 450,
-      plotCfg: {
-        margin: [0,80,0,0]
+    var ds = new DataSet();
+    var mapDv = ds.createView('map').source(mapData, {
+      type: 'GeoJSON'
+    });
+    var userDv = ds.createView().source(data);
+    userDv.transform({
+      type: 'map',
+      callback: function(row) {
+        row['候选人'] = row.Obama > row.McCain ? 'Obama' : 'McCain';
+        return row;
       }
     });
-    var Frame = G2.Frame;
-    var frame = new Frame(data);
-    frame.addCol('候选人', function(obj) {
-      return obj['Obama'] > obj['McCain'] ? 1 : 0;
+    var regionDv = ds.createView().source(userDv);
+    regionDv.transform({
+      type: 'geo.region',
+      geoDataView: mapDv,
+      field: 'State',
+      as: [ 'longitude', 'latitude' ]
     });
-    chart1.source(frame);
-    chart1.col('候选人', {
-      type: 'cat',
-      values: [ 'McCain', 'Obama']
+    var centroidDv = ds.createView().source(userDv);
+    centroidDv.transform({
+      type: 'geo.centroid',
+      geoDataView: mapDv,
+      field: 'State',
+      as: [ 'longitude', 'latitude' ]
     });
-    chart1.polygon().position(Stat.map.region('State', mapData)).color('候选人',['#F07763', '#698DC5']).tooltip('候选人*Num');
-    chart1.point().position(Stat.map.center('State', mapData)).label('Num', {offset: 0, label: {'fill': '#fff', 'font-size': '16'}}).size(0);
-    chart1.render();
+
+    var chart = new G2.Chart({
+      container: 'c3',
+      forceFit: true,
+      height: 450,
+      padding: 0
+    });
+
+    chart.scale({
+      longitude: {
+        sync: true
+      },
+      latitude: {
+        sync: true
+      }
+    });
+
+    var regionView = chart.view();
+    regionView.source(regionDv);
+    regionView.polygon()
+      .position('longitude*latitude')
+      .color('候选人',['#F07763', '#698DC5'])
+      .label('Num', {offset: 0, label: {'fill': '#fff', 'font-size': '16'}})
+      .tooltip('候选人*Num');
+
+    chart.render();
   });
 });
-</div>
+```
 
 ## 分级统计地图与其他图表的对比
 

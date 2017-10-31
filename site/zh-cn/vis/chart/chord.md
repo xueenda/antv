@@ -51,21 +51,36 @@ variations:
 
 <div id="c1"></div>
 
-<div class="code hide">
-$.getJSON('./data/relationshipHasWeight.json', function(data) {
-  var Stat = G2.Stat;// 统计算法对象
-  var Layout = G2.Layout;// 布局算法对像
-
-  var nodes = data.nodes; // 节点数据
-  var links = data.links; // 边数据
+```js-
+$.getJSON('/assets/data/relationshipHasWeight.json', function(data) {
+  var dv = new DataSet.View().source(data, {
+    type: 'graph',
+    edges: function(d) {
+      return d.links;
+    }
+  });
+  dv.transform({
+     type: 'diagram.arc',
+     y: 0,
+     // thickness: 0.05,                   // 节点高度，区间 (0, 1)
+     weight: true,                      // 是否带权重，无权重为弧长链接图，带权重为和弦图
+     sourceWeight: e => e.sourceWeight,
+     targetWeight: e => e.targetWeight,
+     marginRatio: 0.3
+  });
 
   var chart = new G2.Chart({
-    id: 'c1',
+    container: 'c1',
     forceFit: true,
     height: 500,
     animate: false,
-    plotCfg: {
-      margin: [70,0,60,0]
+  });
+  chart.scale({
+    x: {
+      sync: true
+    },
+    y: {
+      sync: true
     }
   });
 
@@ -73,51 +88,34 @@ $.getJSON('./data/relationshipHasWeight.json', function(data) {
     title: null
   });
 
-  // 线性布局
-  var layout = new Layout.Linear({
-    nodes: nodes,
-    hasWeight: true, // 带权重的布局
-    margin: 0.004  // 节点边距
-  });
-  
-  nodes = layout.getNodes(); // 获取布局后的节点数据
-
-  // 创建边的视图
-  var edgeView = chart.createView();
-  edgeView.source(links);
-  edgeView.coord('polar').reflect('y'); // 使用极坐标，反转y轴(布局方法默认给y赋值为0)
+  var edgeView = chart.view();
+  edgeView.source(dv.edges);
+  edgeView.coord('polar').reflect('y');
   edgeView.axis(false);
-  chart.legend(false);
-  // 由于边的坐标数据较多，此处使用统计函数简化语法，Stat.link计算布局后的边的坐标，放在..x和..y中，数值范围是 0-1
   edgeView.edge()
-    .position(Stat.link.weight('source*target*sourceWeight*targetWeight',nodes))
-    .shape('arc') // 使用弧线完成边的绘制
+    .position('x*y')
+    .shape('arc')
     .color('source')
     .opacity(0.5)
-    .tooltip('sourceWeight*targetWeight');
+    .tooltip('source*target*value');
 
-  // 创建节点视图
-  var nodeView = chart.createView();
+  var nodeView = chart.view();
+  nodeView.source(dv.nodes);
   nodeView.coord('polar').reflect('y');
   nodeView.axis(false);
-  nodeView.source(nodes);
-  nodeView.point()
-    .position('x*y') // nodes数据的x、y由layout方法计算得出
+  nodeView.polygon()
+    .position('x*y')
     .color('id')
-    .size('width*height',function(width,height){ //将布局算法计算得出的节点宽高映射到size上
-      return [width,height];
-    })
-    .shape('rect').style({  
-      stroke:"#ccc"  // 节点边框
-    })
-    .tooltip('name*value')
-    .label('name',{
+    .label('name', {
       labelEmit: true,
-      fontSize:12
+      textStyle: {
+        fill: 'black'
+      }
     });
+
   chart.render();
 });
-</div>
+```
 
 
 例2：** 展示同级实体之间的流通关系 ** 下图展示了某个时段用户使用uber软件在美国旧金山各个城市之间乘车交通的情况，图中的节点表示城市，节点大小表示了交通流量的多少，从图中可以看出，交通行为主要发生在SoMa、Downtown、Financial District、Mission、Marina和Western Addition六个城市。边连接了有交通行为的两个城市，节点上边的条数表示与当前城市有交通行为的城市的数量，边的初始宽度表示从当前城市到目标城市的流通量，边的结束宽度表示从目标城市到当前城市的流通量，从图中可以看出，从 SoMa到Financial District的流量最大，[数据来源：uberdata](https://twitter.com/uberdata)
