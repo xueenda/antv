@@ -8,95 +8,111 @@ resource:
 -->
 
 <script type="text/javascript">
-// 第一步：注册节点
-G6.registNode('customNode', {
-  draw: function(cfg, group) {
-    var shape = group.addShape('rect', {
+G6.registerNode('customNode1', {
+  draw(cfg, group) {
+    const shape = group.addShape('rect', {
       attrs: {
-        x: cfg.x,
-        y: cfg.y,
+        x: cfg.x-40,
+        y: cfg.y-40,
         width: 80,
-        height: 20,
+        height: 80,
         fill: '#fff',
         stroke: 'green'
       }
     });
-    group.addShape('text', {
+    return shape;
+  },
+  getAnchorPoints() {
+    return [
+      [0, 0.25],
+      [0, 0.5],
+      [0, 0.75],
+      [1, 0.25],
+      [1, 0.5],
+      [1, 0.75],
+      [0.25, 0],
+      [0.5, 0],
+      [0.75, 0],
+      [0.25, 1],
+      [0.5, 1],
+      [0.75, 1]
+    ];
+  }
+}, 'rect');
+
+G6.registerNode('customNode2', {
+  draw(cfg, group) {
+    const shape = group.addShape('rect', {
       attrs: {
-        x: cfg.x,
-        y: cfg.y,
-        fill: 'black',
-        text: '自定义图形'
+        x: cfg.x-40,
+        y: cfg.y-40,
+        width: 80,
+        height: 80,
+        fill: '#fff',
+        stroke: 'red'
       }
     });
     return shape;
-  },
-  getAnchorPoints: function(){
-    return [
-      [1, 0.5], // 右边边的中点
-      [0, 0.5] // 左边边的中点
-    ];
   }
-});
+}, 'customNode1');
 
-// 第二步：设置按钮
 $('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
-$('#toolBar').append('<button id="addCircle">圆形</button>');
-$('#toolBar').append('<button id="addRect">方形</button>');
-$('#toolBar').append('<button id="addCustom">自定义形</button>');
+$('#toolBar').append('<button id="addCustom1">自定义形1</button>');
+$('#toolBar').append('<button id="addCustom2">自定义形2</button>');
 $('#toolBar').append('<button id="addLine">添加直线</button>');
 $('#toolBar').append('<button id="addSmooth">添加曲线</button>');
+$('#toolBar').append('<button id="drag">拖拽模式</button>');
+$('#toolBar').append('<button id="edit">编辑模式</button>');
 $('#toolBar').append('<button id="save">保存</button>');
-var addCircle = $('#addCircle');
-var addRect = $('#addRect');
-var addCustom = $('#addCustom');
-var addLine = $('#addLine');
-var addSmooth = $('#addSmooth');
-var save = $('#save');
 
-// 第三步：配置画布
-var net = new G6.Net({
+const addCustom1 = $('#addCustom1');
+const addCustom2 = $('#addCustom2');
+const drag = $('#drag');
+const edit = $('#edit');
+const addLine = $('#addLine');
+const addSmooth = $('#addSmooth');
+const save = $('#save');
+const net = new G6.Net({
   id: 'mountNode',      // 容器ID
+  mode: 'edit',  // 编辑模式
+  fitView: 'cc', // 自适应视口为左上
   height: window.innerHeight    // 画布高
 });
-
-// 第四步：配置绑定事件
-addCircle.on('click', function(){
+addCustom1.on('click', () => {
   net.beginAdd('node', {
-    shape: 'circle'
+    shape: 'customNode1'
   });
 });
 
-addRect.on('click', function(){
+addCustom2.on('click', () => {
   net.beginAdd('node', {
-    shape: 'rect'
+    shape: 'customNode2'
   });
 });
 
-addCustom.on('click', function(){
-  net.beginAdd('node', {
-    shape: 'customNode'
-  });
-});
-
-addLine.on('click', function() {
+addLine.on('click', () => {
   net.beginAdd('edge', {
     shape: 'line'
   });
 });
 
-addSmooth.on('click', function() {
+addSmooth.on('click', () => {
   net.beginAdd('edge', {
     shape: 'smooth'
   });
 });
-
-save.on('click', function() {
-  var saveData = net.save();
-  var json = JSON.stringify(saveData, null, 2);
-  console.log(saveData, json); // eslint-disable-line no-console
+drag.on('click', () => {
+  net.changeMode('drag');
 });
 
-// 第五步：渲染关系图
+edit.on('click', () => {
+  net.changeMode('edit');
+});
+
+save.on('click', () => {
+  const saveData = net.save();
+  const json = JSON.stringify(saveData, null, 2);
+  console.log(saveData, json); // eslint-disable-line no-console
+});
 net.render();
 </script>

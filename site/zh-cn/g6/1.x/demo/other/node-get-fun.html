@@ -9,9 +9,9 @@ resource:
 
 <script type="text/javascript">
 $('body').prepend('<button id="getEdges">getEdges</button> &nbsp;&nbsp;<button id="getLinkNodes">getLinkNodes</button> &nbsp;&nbsp;<button id="getUnLinkNodes">getUnLinkNodes</button> &nbsp;&nbsp;<button id="getRelativeItems">getRelativeItems</button> &nbsp;&nbsp;<button id="getUnRelativeItems">getUnRelativeItems</button> &nbsp;&nbsp;');
-var Util = G6.Util;
+const Util = G6.Util;
 // 第三步：设置数据
-var data = {
+const data = {
   "source": {
     "nodes": [
       {
@@ -114,7 +114,7 @@ var data = {
   }
 };
 // 第四步：配置G6画布
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'mountNode',      // 容器ID
     fitView: 'autoZoom',
     mode: 'none',
@@ -125,11 +125,11 @@ net.read(Util.clone(data));
 // 第六步：渲染关系图
 net.render();
 
-$('#getEdges').on('click', function(){
+$('#getEdges').on('click', () => {
   reRender(); // 重新渲染
-  var keyNode = net.find('keyNode');
-  var edges = keyNode.getEdges();
-  Util.each(edges, function(edge){
+  const keyNode = net.find('keyNode');
+  const edges = keyNode.getEdges();
+  Util.each(edges, edge => {
     net.update(edge, {
       color: '#00B07C'  
     });
@@ -137,11 +137,11 @@ $('#getEdges').on('click', function(){
   net.refresh();
 });
 
-$('#getLinkNodes').on('click', function(){
+$('#getLinkNodes').on('click', () => {
   reRender(); // 重新渲染
-  var keyNode = net.find('keyNode');
-  var nodes = keyNode.getLinkNodes();
-  Util.each(nodes, function(node){
+  const keyNode = net.find('keyNode');
+  const nodes = keyNode.getLinkNodes();
+  Util.each(nodes, node => {
     net.update(node, {
       color: '#00B07C'  
     });
@@ -149,11 +149,11 @@ $('#getLinkNodes').on('click', function(){
   net.refresh();
 });
 
-$('#getUnLinkNodes').on('click', function(){
+$('#getUnLinkNodes').on('click', () => {
   reRender(); // 重新渲染
-  var keyNode = net.find('keyNode');
-  var nodes = keyNode.getUnLinkNodes();
-  Util.each(nodes, function(node){
+  const keyNode = net.find('keyNode');
+  const nodes = keyNode.getUnLinkNodes();
+  Util.each(nodes, node => {
     net.update(node, {
       color: '#00B07C'  
     });
@@ -161,11 +161,11 @@ $('#getUnLinkNodes').on('click', function(){
   net.refresh();
 });
 
-$('#getRelativeItems').on('click', function(){
+$('#getRelativeItems').on('click', () => {
   reRender(); // 重新渲染
-  var keyNode = net.find('keyNode');
-  var items = keyNode.getRelativeItems();
-  Util.each(items, function(item){
+  const keyNode = net.find('keyNode');
+  const items = keyNode.getRelativeItems();
+  Util.each(items, item => {
     net.update(item, {
       color: '#00B07C'  
     });
@@ -173,11 +173,11 @@ $('#getRelativeItems').on('click', function(){
   net.refresh();
 });
 
-$('#getUnRelativeItems').on('click', function(){
+$('#getUnRelativeItems').on('click', () => {
   reRender(); // 重新渲染
-  var keyNode = net.find('keyNode');
-  var items = keyNode.getUnRelativeItems();
-  Util.each(items, function(item){
+  const keyNode = net.find('keyNode');
+  const items = keyNode.getUnRelativeItems();
+  Util.each(items, item => {
     net.update(item, {
       color: '#00B07C'  
     });

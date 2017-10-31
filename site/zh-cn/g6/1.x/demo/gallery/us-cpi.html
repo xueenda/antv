@@ -8,9 +8,9 @@ resource:
 -->
 <script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.17/dist/g6-plugins.min.js"></script>
 <script type="text/javascript">
-$.getJSON('/assets/data/us-cpi.json',function(data){
-  var Mapper = G6.Plugins['enhance.d3.mapper'];
-  var nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 60 ], {
+$.getJSON('/assets/data/us-cpi.json', data => {
+  const Mapper = G6.Plugins['enhance.d3.mapper'];
+  const nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 60 ], {
     legendCfg: {
       callback: function(legend) {
         legend.title("所占权重");
@@ -20,23 +20,23 @@ $.getJSON('/assets/data/us-cpi.json',function(data){
       }
     }
   });
-  var mappingColors = ['#007AE7', '#40BCD2', '#81D6C3', '#mountNodeE4BC', '#FFDD9B', '#FEAC4C', '#FF7C01', '#C4201D'];
-  var nodeColorMapper = new Mapper('node', 'percentChange', 'color', mappingColors, {
+  const mappingColors = ['#007AE7', '#40BCD2', '#81D6C3', '#c1E4BC', '#FFDD9B', '#FEAC4C', '#FF7C01', '#C4201D'];
+  const nodeColorMapper = new Mapper('node', 'percentChange', 'color', mappingColors, {
     legendCfg: {
       marginBottom: 240,
       marginRight: 24,
-      callback: function(legend) {
+      callback: legend => {
         legend.title("CPI");
-        legend.labelFormat(function(value){
+        legend.labelFormat(value => {
           return value.toFixed(0) + ' %';
         });
       }
     }
   });
-  var layout = new G6.Plugins['layout.d3.force']({
+  const layout = new G6.Plugins['layout.d3.force']({
     dynamic: true
   });
-  var net = new G6.Net({
+  const net = new G6.Net({
     id: 'mountNode',               // 容器ID
     height: window.innerHeight,   // 画布高
     mode: 'analysis',
@@ -54,131 +54,4 @@ $.getJSON('/assets/data/us-cpi.json',function(data){
     });
   net.render();
 });
-// $('#mountNode').append('<svg id="color-legend-container" class="legend"></svg>');
-// $('#mountNode').append('<svg id="size-legend-container" class="legend"></svg>');
-// $.getJSON('/assets/data/us-cpi.json',function(data){
-//   var Util = G6.Util;
-//   var canvasHeight = 450;
-//   var graphCenterX = 250;
-//   var graphCenterY = canvasHeight/2;
-
-//   // 工具方法
-//   var formatterPersent = function(percent, digit){
-//     return percent.toFixed(digit) + ' %';
-//   };
-
-//   // 生成度量
-//   var trainScale = function(dim, scale){
-//     var max = -Infinity;
-//     var min = Infinity;
-//     data.nodes.map(function(node){
-//       if(node[dim] > max){
-//         max = node[dim];
-//       }
-//       if(node[dim] < min){
-//         min = node[dim];
-//       }
-//     });
-//     scale.domain([min, max]);
-//   };
-//   var colors = ['#007AE7', '#40BCD2', '#81D6C3', '#mountNodeE4BC', '#FFDD9B', '#FEAC4C', '#FF7C01', '#C4201D'];
-//   var sizeScale = d3.scalePow().range([4, 20]).exponent(1/2);
-//   var colorScale = d3.scaleSequential(d3.interpolateRgbBasis(colors));
-//   trainScale('weight', sizeScale);
-//   trainScale('percentChange', colorScale);
-
-//   // 生成图
-//   var net = new G6.Net({
-//     id: 'mountNode',               // 容器ID
-//     height: canvasHeight,   // 画布高
-//     mode: 'analysis'
-//   });
-//   net.tooltip(true);
-//   net.node()
-//     .size(function(model){
-//       return sizeScale(model.weight)*2.2;
-//     })
-//     .color(function(model){
-//       return colorScale(model.percentChange);
-//     })
-//     .shape('circle')
-//     .style({
-//       stroke: '#666',
-//       strokeOpacity: 0.5,
-//       lineWidth: 1,
-//       fillOpacity: 1
-//     })
-//     .tooltip(function(model){
-//     return [
-//       ['类目', model.id],
-//       ['比重', formatterPersent(model.weight, 2)],
-//       ['波动', formatterPersent(model.percentChange, 2)]
-//     ]
-//   });
-//   net.source(data.nodes, data.edges);
-//   net.removeBehaviour(['dragCanvas', 'dragHideEdges', 'dragHideTexts']);
-//   net.addBehaviour(['dragBlank']);
-//   net.render();
-//   net.zoomAt(graphCenterX, graphCenterY, 0.5);
-
-//   // 生成布局
-//   var layoutNodes = data.nodes;
-//   var layoutEdges = Util.clone(data.edges);
-//   var ticked = function(){
-//     net.updateNodesPosition();
-//   };
-//   var forceStrength = -180;
-//   var simulation = d3.forceSimulation(layoutNodes)
-//   .force("link", d3.forceLink(layoutEdges).distance(20).strength(1).id(function(model) {
-//     return model.id;
-//   }))
-//   .force("charge", d3.forceManyBody().strength(forceStrength))
-//   .force("center", d3.forceCenter(graphCenterX, graphCenterY-20))
-//   .force("x", d3.forceX())
-//   .force("y", d3.forceY())
-//   .force('collide', d3.forceCollide(function(model){
-//     return sizeScale(model.weight)*2.2;
-//   }))
-//   .on("tick", ticked);
-
-//   // 生成颜色图例
-//   var svg = d3.select('#color-legend-container');
-//   svg.style('top', '270px');
-//   svg.style('left', '460px');
-//   svg.style('width', '170px');
-//   svg.style('height', '200px');
-//   svg.style('transform', 'scale(0.65, 0.65)');
-//   svg.append("g")
-//     .attr("class", "color-legend")
-//     .attr("transform", "translate(20,20)");
-
-//   var colorLegend = d3.legendColor()
-//     .cells(colors.length)
-//     .title('CPI')
-//     .labelFormat(function(v){
-//       return formatterPersent(v, 0);
-//     })
-//     .scale(colorScale);
-//   svg.select(".color-legend")
-//     .call(colorLegend);
-
-//   // 生成大小图例
-//   var svg = d3.select('#size-legend-container');
-//   svg.style('top', '80px');
-//   svg.style('left', '460px');
-//   svg.style('width', '170px');
-//   svg.style('height', '240px');
-//   svg.style('transform', 'scale(0.65, 0.65)');
-//   svg.append("g")
-//     .attr("class", "size-legend")
-//     .attr("transform", "translate(20,20)");
-
-//   var sizeLegend = d3.legendSize()
-//     .title('占总经济权重')
-//     .shape('circle')
-//     .shapePadding(7)
-//     .scale(sizeScale);
-//   svg.select(".size-legend")
-//     .call(sizeLegend);
-// });
 </script>

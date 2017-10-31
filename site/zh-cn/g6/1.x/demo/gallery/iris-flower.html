@@ -21,27 +21,26 @@ resource:
 </style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript">
-  $.getJSON('/assets/data/iris.json',function(data){
-    var Util = G6.Util;
-    var colorMap = {
+  $.getJSON('/assets/data/iris.json', irisData=>{
+    const Util = G6.Util;
+    const colorMap = {
       all: '#333',
       setosa: '#64A051',
       versicolor: '#F065B4',
       virginica: '#732096',
       background: '#F9F9F9'
     };
-    var width = 500;
-    var height = 450;
-    var edgeMarkerRadius = 4;
-    var pack = d3.pack()
+    const width = 500;
+    const height = 450;
+    const edgeMarkerRadius = 4;
+    const pack = d3.pack()
                  .padding(0.1);
-    var createChart = function  (dim) {
-      var container =  Util.createDOM('<div></div>');
-      const dv = new DataSet.View().source(data)
+    const createChart = dim => {
+      const container =  Util.createDOM('<div></div>');
+      const dv = new DataSet.View().source(irisData)
       .transform({
           type: 'bin.histogram',
           field: dim, 
-          // binWidth: 1.5,
           bins: 4, // binWidth的配置优先
           groupBy: 'Species',
           as: [ 'x', 'count' ]
@@ -73,9 +72,9 @@ resource:
       chart.source(dv);
           chart.intervalStack()
           .position('x*proportion')
-          .color('Species', function(val){
-            var rst = 'red';
-            Util.each(colorMap, function(v, k){
+          .color('Species', val=>{
+            let rst = 'red';
+            Util.each(colorMap, (v, k)=>{
               if(val.toLowerCase().indexOf(k) !== -1){
                 rst = v;
                 return false;
@@ -91,9 +90,9 @@ resource:
       chart.render();
       return chart;
     };
-    var honeycombLayout = function (center, nodes, gap){
-      var cgap = [];
-      var i;
+    const honeycombLayout = (center, nodes, gap) => {
+      const cgap = [];
+      let i;
   
       nodes[0].x = center.x;
       nodes[0].y = center.y;
@@ -101,20 +100,20 @@ resource:
         nodes[i].radius
       }
     };
-    var traverseTree = function(root, callback) {
-      var children = root.children;
-      Util.each(children, function(child) {
+    const traverseTree = (root, callback) => {
+      const children = root.children;
+      Util.each(children, child=> {
         callback(child, root);
         if (child.children) {
           TreeUtil.traverseTree(child, callback);
         }
       });
     };
-    var sepalLengthChart = createChart('SepalLength'); // SepalLength SepalWidth PetalLength PetalWidth
-    var sepalWidthChart = createChart('SepalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
-    var petalLengthChart = createChart('PetalLength'); // SepalLength SepalWidth PetalLength PetalWidth
-    var petalWidthChart = createChart('PetalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
-    var data = {
+    const sepalLengthChart = createChart('SepalLength'); // SepalLength SepalWidth PetalLength PetalWidth
+    const sepalWidthChart = createChart('SepalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
+    const petalLengthChart = createChart('PetalLength'); // SepalLength SepalWidth PetalLength PetalWidth
+    const petalWidthChart = createChart('PetalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
+    const data = {
       nodes: [{
         id: 'sepalLength',
         name: '花萼长度',
@@ -190,25 +189,25 @@ resource:
         ]
       }]
     };
-    var net = new G6.Net({
+    const net = new G6.Net({
       id: 'mountNode',        // dom 容器 id
-      fitView: 'cc',   // 自适应视口左中
+      fitView: 'tc',   // 自适应视口左中
       grid: null,
       height: height
     });
   
-    G6.registNode('customNode', {
-      getHtml: function(cfg){
-        var model = cfg.model;
-        var chart = model.chart;
-        var dom = chart.get('container');
-        var size = cfg.size;
+    G6.registerNode('customNode', {
+      getHtml: cfg => {
+        const model = cfg.model;
+        const chart = model.chart;
+        const dom = chart.get('container');
+        const size = cfg.size;
         chart.changeSize(size[0], size[1]);
         return dom;
       },
-      afterDraw: function(cfg, group){
-        var model = cfg.model;
-        var padding = [6, 4];
+      afterDraw: (cfg, group) => {
+        const model = cfg.model;
+        const padding = [6, 4];
         group.addShape('text', {
           attrs: {
             x: cfg.x + cfg.size[0]/2 + padding[0],
@@ -222,18 +221,18 @@ resource:
       }
     }, 'html');
   
-    G6.registEdge('customEdge', {
-      afterDraw: function(cfg, group, keyShape){
-        var model = cfg.model;
-        var children = model.children;
-        var center = keyShape.getPoint(0.5);
-        var markerGroup = group.addGroup();
-        var maxcorrelationChild;
-        var edgeColor;
-        var root;
+    G6.registerEdge('customEdge', {
+      afterDraw: (cfg, group, keyShape) => {
+        const model = cfg.model;
+        const children = model.children;
+        const center = keyShape.getPoint(0.5);
+        const markerGroup = group.addGroup();
+        let maxcorrelationChild;
+        let edgeColor;
+        let root;
         root = d3.hierarchy(model)
-                 .sum(function(d) { return Math.pow(d.correlation, 4); })
-                 .sort(function(a, b) { return b.correlation - a.correlation; });
+                 .sum(d => { return Math.pow(d.correlation, 4); })
+                 .sort((a, b) => { return b.correlation - a.correlation; });
         maxcorrelationChild = root.children[0];
         pack(root);
         markerGroup.translate(- maxcorrelationChild.x, - maxcorrelationChild.y);
@@ -251,7 +250,7 @@ resource:
           }
         });
         // 画标记 Marker
-        traverseTree(root, function(child){
+        traverseTree(root, child => {
           markerGroup.addShape('circle', {
             attrs: {
               x: child.x,
@@ -279,7 +278,7 @@ resource:
     net.render();
   
     // 绘制图例
-    var containerDom = $('#mountNode');
+    const containerDom = $('#mountNode');
     containerDom.css('background', colorMap.background);
     // containerDom.css('width', width + 'px');
     containerDom.css('height', height + 'px');

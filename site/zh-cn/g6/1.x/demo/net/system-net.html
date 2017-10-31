@@ -27,12 +27,12 @@ resource:
 </style>
 <script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.18/dist/g6-plugins.min.js"></script>
 <script type="text/javascript">
-$.getJSON('/assets/data/systemNet.json',function(data){
-  var Mapper = G6.Plugins['enhance.d3.mapper'];
-  var template = new G6.Plugins['template.analysis.maxSpanningForest']();
-  var nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 90 ], {
+$.getJSON('/assets/data/system-net.json', data => {
+  const Mapper = G6.Plugins['enhance.d3.mapper'];
+  const template = new G6.Plugins['template.analysis.maxSpanningForest']();
+  const nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 90 ], {
     legendCfg: {
-      callback: function(legend) {
+      callback: legend => {
         legend.title('流量大小');
       },
       fill: '#919191',
@@ -40,24 +40,24 @@ $.getJSON('/assets/data/systemNet.json',function(data){
       marginBottom: 60,
     }
   });
-  var colors = ['#3dbd7d', '#76d0a3', '#f78e3d', '#f56a00'];
-  var nodeColorMapper = new Mapper('node', 'health', 'color', colors, {
+  const colors = ['#3dbd7d', '#76d0a3', '#f78e3d', '#f56a00'];
+  const nodeColorMapper = new Mapper('node', 'health', 'color', colors, {
     legendCfg: {
-      callback: function(legend) {
+      callback: legend => {
         legend.title('系统健康度');
       },
       marginRight: 98,
       marginBottom: 280,
     }
   });
-  var edgeSizeMapper = new Mapper('edge', 'weight', 'size', [ 3.5, 10 ], {
+  const edgeSizeMapper = new Mapper('edge', 'weight', 'size', [ 3.5, 10 ], {
     scaleCfg: {
       type: "log"
     },
     legendCfg: null
   });
-  var miniMapper = new Mapper();
-  var net = new G6.Net({
+  const miniMapper = new Mapper();
+  const net = new G6.Net({
     id: 'mountNode',
     height: window.innerHeight,
     plugins: [template, nodeSizeMapper, edgeSizeMapper, nodeColorMapper]

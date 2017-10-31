@@ -7,7 +7,7 @@ resource:
     - ${url.jquery}
 -->
 <script type="text/javascript">
-var data = {
+const data = {
   source: {
     "nodes": [
       {
@@ -30,14 +30,14 @@ var data = {
     ]
   }
 };
-var net1 = new G6.Net({
+const net1 = new G6.Net({
   id: 'mountNode',              // 容器ID
   fitView: 'autoSize'
 });
 net1.read(data);
 net1.render();
 $('#mountNode').append('<div>图一</div>');
-var net2 = new G6.Net({
+const net2 = new G6.Net({
   id: 'mountNode',              // 容器ID
   height: 100,
   fitView: 'autoSize'
@@ -46,10 +46,10 @@ $('#mountNode').append('<div>图二</div>');
 // 设置按钮
 $('#mountNode').prepend('<button id="saveAndread">将第一幅图的数据保存并读入第二幅图</button>');
 
-var saveAndread = $('#saveAndread');
+const saveAndread = $('#saveAndread');
 
-saveAndread.on('click', function() {
-  var saveData = net1.save();
+saveAndread.on('click', () => {
+  const saveData = net1.save();
   net2.read(saveData);
   net2.render();
 });

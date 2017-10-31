@@ -47,11 +47,11 @@ G6.registerNode('customNode', {
     const title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
       ${model.name}
     </div>`);
-    var list = Util.createDOM(`<div class="node-conatiner-list">
+    const list = Util.createDOM(`<div class="node-conatiner-list">
       <span>数量：</span>
       <span>${model.count}</span>
     </div>`);
-    var botton = Util.createDOM(`<button class="node-delete">X</button>`);
+    const botton = Util.createDOM(`<button class="node-delete">X</button>`);
     botton.addEventListener('click', function(){
       net.remove(net.find(model.id));
     });
@@ -103,7 +103,7 @@ const data = {
     }
   ]
 };
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'mountNode',
     height: window.innerHeight,
     fitView: 'tc'

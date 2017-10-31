@@ -11,15 +11,34 @@
 
 ## 属性
 
-### [clipboard](#_clipboard) {Boolean}
-剪贴板 `false`
+### [layout](#_layout)
 
-### [rollback](#_rollback) {Boolean}
-回滚存储，默认值 `false`
+[Function] 
 
-### [modes](#_modes) {Object}
+### [behaviourSignal](#_behaviourSignal)
 
-默认值
+[Object] 只读字段，存储一些行为的信号量。如：
+
+```js
+{
+  draggingNode,   // 是否正在拖拽节点
+  frameSelecting, // 是否正在进行框选
+  draggingEdge,   // 是否正在进行拖拽边端点
+  resizingNode,   // 是否正在节点变形操作
+}
+```
+
+### [clipboard](#_clipboard)
+
+[Boolean] 剪贴板 `false`
+
+### [rollback](#_rollback)
+
+[Boolean] 回滚存储，默认值 `false`
+
+### [modes](#_modes)
+
+[Object] 默认值
 
 ```js
 {
@@ -46,8 +65,8 @@
 }
 ```
 
-### [behaviourSignal](#_behaviourSignal) {Boolean}
-交互信号量
+### [behaviourSignal](#_behaviourSignal)
+[Boolean] 交互信号量
 
 ```js
 {
@@ -58,7 +77,9 @@
 
 ## 实例方法
 
-### [updateAnchor](#_updateAnchor) {Function}
+### [layout](#_updateAnchor)
+
+### [updateAnchor](#_updateAnchor)
 
 更新锚点
 
@@ -78,7 +99,7 @@ net.showAnchor(node, anchorIndex, {
 });
 ```
 
-### [showAnchor](#_showAnchor) {Function}
+### [showAnchor](#_showAnchor)
 
 显示锚点
 
@@ -91,7 +112,7 @@ net.showAnchor(node, anchorIndex, {
 net.showAnchor(node);
 ```
 
-### [hideAnchor](#_hideAnchor) {Function}
+### [hideAnchor](#_hideAnchor)
 
 隐藏锚点
 
@@ -104,7 +125,7 @@ net.showAnchor(node);
 net.hideAnchor(node);
 ```
 
-### [add](#_add) {Function}
+### [add](#_add)
 
 添加节点或边
 
@@ -118,7 +139,7 @@ net.hideAnchor(node);
 net.add(type, model);
 ```
 
-### [source](#_source) {Function}
+### [source](#_source)
 
 加载数据源
 
@@ -162,7 +183,7 @@ net.add(type, model);
 
 ```js-
 // 第一步：注册节点
-G6.registNode('customNode', {
+G6.registerNode('customNode', {
   draw: function(cfg, group) {
     var shape = group.addShape('rect', {
       attrs: {
@@ -256,30 +277,30 @@ net.render();
 
 [示例源码](../demo/other/editor.html)
 
-### [beginAdd](#_beginAdd) {Function}
+### [beginAdd](#_beginAdd)
 
 开始添加元素，通常配合编辑器一并使用。
 
-### [endAdd](#_endAdd) {Function}
+### [endAdd](#_endAdd)
 
 结束添加元素，通常配合编辑器一并使用。
 
-### [copy](#_copy) {Function}
+### [copy](#_copy)
 
 复制激活子项
 
-### [paste](#_paste) {Function}
+### [paste](#_paste)
 
 粘贴激活子项
 
-### [del](#_del) {Function}
+### [del](#_del)
 
 删除激活子项
 
-### [undo](#_undo) {Function}
+### [undo](#_undo)
 
 撤销
 
-### [redo](#_redo) {Function}
+### [redo](#_redo)
 
 重做

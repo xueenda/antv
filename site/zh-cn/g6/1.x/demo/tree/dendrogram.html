@@ -8,21 +8,21 @@ index: 1
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
-  var Util = G6.Util;
+$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
+  const Util = G6.Util;
   // 准备布局配置
-  var layoutCfg = {
+  const layoutCfg = {
     "direction": "LR",
     "nodeSize": 20,
     "rankSep": 400,
   };
   // 自定义树节点
-  var DEFAULT_NODE_SIZE = layoutCfg.nodeSize;
-  G6.registNode('treeNode', {
+  const DEFAULT_NODE_SIZE = layoutCfg.nodeSize;
+  G6.registerNode('treeNode', {
     draw(cfg, group) {
-      var model = cfg.model;
-      var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
-      var shapeCfg = {
+      const model = cfg.model;
+      const r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+      const shapeCfg = {
         attrs: {
           x: cfg.x,
           y: cfg.y,
@@ -47,10 +47,10 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
       return group.addShape('circle', shapeCfg);
     },
     afterDraw(cfg, group) {
-      var model = cfg.model;
-      var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
-      var align = model.align;
-      var labelAttrs = {
+      const model = cfg.model;
+      const r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+      const align = model.align;
+      const labelAttrs = {
         text: model.name,
         fill: '#666',
         fontSize: 30,
@@ -80,7 +80,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
           rotate: -Math.PI / 2,
         });
       }
-      var label = group.addShape('text', {
+      const label = group.addShape('text', {
         attrs: labelAttrs,
       });
       return label;
@@ -88,7 +88,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
   });
 
   // 生成树图实例
-  var tree = new G6.Tree({
+  const tree = new G6.Tree({
     id: 'mountNode',
     layoutFn: G6.Layout.Dendrogram,
     layoutCfg: layoutCfg,
@@ -110,22 +110,22 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
   tree.render();
 
   // 添加事件
-  tree.on('mouseenter', function(ev){
-   var shape = ev.shape;
-   if (shape && shape.hasClass('Button')) {
-     shape.attr('fillOpacity', 0.2);
-     shape.attr('strokeOpacity', 0.8);
-     tree.refresh();
-   }
+  tree.on('mouseenter', ev => {
+    const shape = ev.shape;
+    if (shape && shape.hasClass('Button')) {
+      shape.attr('fillOpacity', 0.2);
+      shape.attr('strokeOpacity', 0.8);
+      tree.refresh();
+    }
   });
-  tree.on('mouseleave', function(ev){
-   var shape = ev.shape;
-   var attrStash;
-   if (shape && shape.hasClass('Button')) {
-     attrStash = shape.get('attrStash');
-     shape.attr(attrStash);
-     tree.refresh();
-   }
+  tree.on('mouseleave', ev => {
+    const shape = ev.shape;
+    let attrStash;
+    if (shape && shape.hasClass('Button')) {
+      attrStash = shape.get('attrStash');
+      shape.attr(attrStash);
+      tree.refresh();
+    }
   });
 });
 </script>

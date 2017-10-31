@@ -8,7 +8,7 @@ resource:
 -->
 
 <script type="text/javascript">
-var data = {
+const data = {
   "nodes": [
     {
       "x": 550,
@@ -76,7 +76,7 @@ var data = {
     }
   ]
 };
-var net = new G6.Net({
+const net = new G6.Net({
   fitView: 'autoZoom',
   id: 'mountNode',           // 容器ID
   height: window.innerHeight,        // 画布高
@@ -84,22 +84,22 @@ var net = new G6.Net({
 net.tooltip(true);
 net.source(data.nodes, data.edges);
 net.node()
-  .size(function(obj){
+  .size(obj => {
     return obj.value/30 * 120;
   })
-  .color(function(obj){
+  .color(obj => {
     if(obj.active){
       return 'green';
     } else {
       return 'red';
     }
   })
-  .shape(function(obj){
+  .shape(obj => {
     if(obj.type === 'type1') return 'circle';
     if(obj.type === 'type2') return 'rect';
     if(obj.type === 'type3') return 'rhombus';
   })
-  .tooltip(function(obj){
+  .tooltip( obj => {
     return [
       ['Id是', obj.id],
       ['key', 'value']
@@ -108,10 +108,10 @@ net.node()
   .label('id');
 
 net.edge()
-  .size(function(obj){
+  .size(obj=>{
     return obj.value/30 * 10;
   })
-  .shape(function(obj){
+  .shape(obj=>{
     if(obj.type === 'type1') return 'line';
     if(obj.type === 'type2') return 'arrow';
     if(obj.type === 'type3') return 'smoothArrow';
@@ -119,7 +119,7 @@ net.edge()
   .style({
     lineDash: [10, 10]
   })
-  .label(function(obj){
+  .label(obj=>{
     return {
       text: obj.value,
       fill: 'green'

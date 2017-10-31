@@ -10,14 +10,14 @@ resource:
     $('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
     $('#toolBar').append('<button id="up">上一页</button>');
     $('#toolBar').append('<button id="down">下一页</button>');
-    $.getJSON('/assets/data/g6ppt.json',function(data){
-        var Matrix = G6.Matrix.Matrix3;
-        var GMath = G6.Math;
-        var scale = 1.2; // 放大倍数
-        var scalemin = 0.8;
-        var i = 0; // 从零开始
-        var matrixInit = new Matrix();
-        var canvas;
+    $.getJSON('/assets/data/g6ppt.json', data => {
+        const Matrix = G6.Matrix.Matrix3;
+        const GMath = G6.Math;
+        const scale = 1.2; // 放大倍数
+        const scalemin = 0.8;
+        let i = 0; // 从零开始
+        const matrixInit = new Matrix();
+        let canvas;
 
         // 从一点缩放到另一个点
         // p0 起始点
@@ -25,7 +25,7 @@ resource:
         function zoom(p0, p1, width, height) {
             // 借用canvas animate接口用作定时器
             canvas.animate({
-                onUpdate:  function(f, ratio){
+                onUpdate(f, ratio){
                     if(GMath.equal(ratio, 0.00001)){
                         return;
                     }
@@ -42,12 +42,12 @@ resource:
             }, 1800);
         }
 
-        var net = new G6.Net({
+        const net = new G6.Net({
             id: 'mountNode',           // 容器ID
             height: window.innerHeight         // 画布高
         });
-        var width = net.get('width');
-        var height = net.get('height');
+        const width = net.get('width');
+        const height = net.get('height');
         net.source(data.nodes, data.edges);
         matrixInit.translate(-data.nodes[0].x, -data.nodes[0].y);
         matrixInit.scale(scale, scale);
@@ -57,13 +57,13 @@ resource:
         net.changeMode('drag');
         canvas = net.get('canvas');
         canvas.tween.set('autoDraw', false);
-        $('#down').on('click', function(){
+        $('#down').on('click', () => {
             if(!data.nodes[i] || !data.nodes[i+1]) return;
             event.preventDefault();
             zoom(data.nodes[i], data.nodes[i+1], width, height);
             i++;
         });
-        $('#up').on('click', function(){
+        $('#up').on('click', () => {
             if(!data.nodes[i] || !data.nodes[i-1]) return;
             event.preventDefault();
             zoom(data.nodes[i], data.nodes[i-1], width, height);

@@ -8,8 +8,8 @@ index: 1
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
-  var tree = new G6.Tree({
+$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
+  const tree = new G6.Tree({
     id: 'mountNode',            // 容器ID
     height: window.innerHeight,         // 画布高
     fitView: 'autoZoom', // 自动缩放

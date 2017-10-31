@@ -8,7 +8,7 @@ resource:
 -->
 
 <script type="text/javascript">
-G6.registNode('customNode1', {
+G6.registerNode('customNode1', {
   draw(cfg, group) {
     const shape = group.addShape('rect', {
       attrs: {
@@ -40,7 +40,7 @@ G6.registNode('customNode1', {
   }
 }, 'rect');
 
-G6.registNode('customNode2', {
+G6.registerNode('customNode2', {
   draw(cfg, group) {
     const shape = group.addShape('rect', {
       attrs: {
@@ -61,7 +61,6 @@ $('#toolBar').append('<button id="addCustom1">自定义形1</button>');
 $('#toolBar').append('<button id="addCustom2">自定义形2</button>');
 $('#toolBar').append('<button id="addLine">添加直线</button>');
 $('#toolBar').append('<button id="addSmooth">添加曲线</button>');
-$('#toolBar').append('<button id="addPolyLineFlow">添加折线流程线</button>');
 $('#toolBar').append('<button id="drag">拖拽模式</button>');
 $('#toolBar').append('<button id="edit">编辑模式</button>');
 $('#toolBar').append('<button id="save">保存</button>');
@@ -72,7 +71,6 @@ const drag = $('#drag');
 const edit = $('#edit');
 const addLine = $('#addLine');
 const addSmooth = $('#addSmooth');
-const addPolyLineFlow = $('#addPolyLineFlow');
 const save = $('#save');
 const net = new G6.Net({
   id: 'mountNode',      // 容器ID
@@ -101,12 +99,6 @@ addLine.on('click', () => {
 addSmooth.on('click', () => {
   net.beginAdd('edge', {
     shape: 'smooth'
-  });
-});
-
-addPolyLineFlow.on('click', () => {
-  net.beginAdd('edge', {
-    shape: 'polyLineFlow'
   });
 });
 

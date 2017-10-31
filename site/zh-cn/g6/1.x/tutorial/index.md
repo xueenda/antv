@@ -89,7 +89,7 @@ var layoutCfg = {
 };
 // 自定义树节点
 var DEFAULT_NODE_SIZE = 3;
-G6.registNode('treeNode', {
+G6.registerNode('treeNode', {
   draw(cfg, group) {
     var model = cfg.model;
     var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
@@ -209,15 +209,14 @@ tree.on('mouseleave', function(ev){
 ## 安装
 
 ### 浏览器引入
+
 ```js
 <script src="https://gw.alipayobjects.com/as/g/datavis/g6/1.1.6/index.js"></script>
 ```
 
 ### 通过 npm 安装
 
-```
-var G6 = require('@antv/g6');
-```
+外部暂不提供 npm 引入，阿里内部同学请安装 "@ali/g6"
 
 ## 快速开始
 

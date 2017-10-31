@@ -14,14 +14,14 @@
 
 ## 静态方法
 
-### [multiply](#_multiply) {Function}
+### [multiply](#_multiply)
 乘法
 
 ```js
 Matrix.Matrix3.multiply(m1, m2);
 ```
 
-### [equal](#_equal) {Function}
+### [equal](#_equal)
 等于
 
 ```js
@@ -30,7 +30,7 @@ Matrix.Matrix3.equal(m1, m2);
 
 ## 实例方法
 
-### [set](#_set) {Function}
+### [set](#_set)
 
 设置矩阵
 
@@ -54,7 +54,7 @@ matrix.set(
 );
 ```
 
-### [get](#_get) {Function}
+### [get](#_get)
 
 获取矩阵元素
 
@@ -68,7 +68,7 @@ matrix.set(
 matrix.get(i, j);
 ```
 
-### [identity](#_identity) {Function}
+### [identity](#_identity)
 
 矩阵归一
 
@@ -82,7 +82,7 @@ matrix.get(i, j);
 matrix.get(i, j);
 ```
 
-### [multiplyScalar](#_multiplyScalar) {Function}
+### [multiplyScalar](#_multiplyScalar)
 
 乘算子
 
@@ -94,19 +94,19 @@ matrix.get(i, j);
 matrix.multiplyScalar(s);
 ```
 
-### [det](#_det) {Function}
+### [det](#_det)
 
 求行列式
 
-### [inverse](#_inverse) {Function}
+### [inverse](#_inverse)
 
 矩阵反转
 
-### [transpose](#_transpose) {Function}
+### [transpose](#_transpose)
 
 矩阵转置
 
-### [multiply](#_multiply) {Function}
+### [multiply](#_multiply)
 
 矩阵乘法
 
@@ -118,7 +118,7 @@ matrix.multiplyScalar(s);
 matrix.multiply(m);
 ```
 
-### [translate](#_translate) {Function}
+### [translate](#_translate)
 
 仿射平移
 
@@ -131,7 +131,7 @@ matrix.multiply(m);
 matrix.translate(m);
 ```
 
-### [rotate](#_rotate) {Function}
+### [rotate](#_rotate)
 
 仿射旋转
 
@@ -143,7 +143,7 @@ matrix.translate(m);
 matrix.rotate(rad);
 ```
 
-### [scale](#_scale) {Function}
+### [scale](#_scale)
 
 仿射缩放
 
@@ -156,11 +156,11 @@ matrix.rotate(rad);
 matrix.scale(sx, sy);
 ```
 
-### [equal](#_equal) {Function}
+### [equal](#_equal)
 
 等于
 
-### [copy](#_copy) {Function}
+### [copy](#_copy)
 
 复制一个矩阵到自身
 
@@ -172,7 +172,7 @@ matrix.scale(sx, sy);
 matrix.copy(m);
 ```
 
-### [clone](#_clone) {Function}
+### [clone](#_clone)
 
 克隆
 
@@ -184,7 +184,7 @@ matrix.copy(m);
 matrix.clone();
 ```
 
-### [to2DObject](#_to2DObject) {Function}
+### [to2DObject](#_to2DObject)
 
 转换为2阶算子
 
@@ -196,7 +196,7 @@ matrix.clone();
 matrix.to2DObject();
 ```
 
-### [from2DObject](#_from2DObject) {Function}
+### [from2DObject](#_from2DObject)
 
 解析2阶算子
 
@@ -212,7 +212,7 @@ matrix.from2DObject(obj);
 
 ## 静态方法
 
-### [add](#_add) {Function}
+### [add](#_add)
 
 和
 
@@ -220,7 +220,7 @@ matrix.from2DObject(obj);
 Matrix.Vector2.add(v1, v2);
 ```
 
-### [sub](#_sub) {Function}
+### [sub](#_sub)
 
 差
 
@@ -228,7 +228,7 @@ Matrix.Vector2.add(v1, v2);
 Matrix.Vector2.sub(v1, v2);
 ```
 
-### [lerp](#_lerp) {Function}
+### [lerp](#_lerp)
 
 插值
 
@@ -236,7 +236,7 @@ Matrix.Vector2.sub(v1, v2);
 Matrix.Vector2.lerp(v1, v2, r);
 ```
 
-### [angle](#_angle) {Function}
+### [angle](#_angle)
 
 夹角
 
@@ -244,7 +244,7 @@ Matrix.Vector2.lerp(v1, v2, r);
 Matrix.Vector2.angle(v1, v2);
 ```
 
-### [direction](#_direction) {Function}
+### [direction](#_direction)
 
 方向
 
@@ -254,7 +254,7 @@ Matrix.Vector2.direction(v1, v2);
 
 ## 实例方法
 
-### [negate](#_negate) {Function}
+### [negate](#_negate)
 
 向量反转
 
@@ -262,7 +262,7 @@ Matrix.Vector2.direction(v1, v2);
 vector.negate();
 ```
 
-### [dot](#_dot) {Function}
+### [dot](#_dot)
 
 点积
 
@@ -274,7 +274,7 @@ vector.negate();
 vector.dot(v);
 ```
 
-### [vertical](#_vertical) {Function}
+### [vertical](#_vertical)
 
 垂直
 
@@ -286,7 +286,7 @@ vector.dot(v);
 vector.vertical(left);
 ```
 
-### [length](#_length) {Function}
+### [length](#_length)
 
 求向量模长
 
@@ -294,7 +294,7 @@ vector.vertical(left);
 vector.length();
 ```
 
-### [setLength](#_setLength) {Function}
+### [setLength](#_setLength)
 
 设置向量长
 
@@ -306,7 +306,7 @@ vector.length();
 vector.setLength(length);
 ```
 
-### [lerp](#_lerp) {Function}
+### [lerp](#_lerp)
 
 求插值
 
@@ -318,7 +318,7 @@ vector.setLength(length);
 vector.lerp(r);
 ```
 
-### [clone](#_clone) {Function}
+### [clone](#_clone)
 
 克隆
 
@@ -326,7 +326,7 @@ vector.lerp(r);
 vector.clone();
 ```
 
-### [rotate](#_rotate) {Function}
+### [rotate](#_rotate)
 
 旋转
 
@@ -338,7 +338,7 @@ vector.clone();
 vector.rotate(angle);
 ```
 
-### [angleTo](#_angleTo) {Function}
+### [angleTo](#_angleTo)
 
 求角度
 
@@ -351,7 +351,7 @@ vector.rotate(angle);
 vector.angleTo(v, direct);
 ```
 
-### [angle](#_angle) {Function}
+### [angle](#_angle)
 
 求角度
 

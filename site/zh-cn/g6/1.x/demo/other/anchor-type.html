@@ -8,9 +8,9 @@ resource:
 -->
 
 <script type="text/javascript">
-G6.registNode('custom1', {
+G6.registerNode('custom1', {
   // 常规锚点
-  getAnchorPoints: function(){
+  getAnchorPoints(){
     return [
       [0, 0.5],   // 左边中点 索引为 0
       [1, 0.5]    // 右边中点 索引为 1
@@ -18,21 +18,21 @@ G6.registNode('custom1', {
   }
 });
 
-G6.registNode('custom2', {
+G6.registerNode('custom2', {
   // 自动锚点
-  getAnchorPoints: function(){
+  getAnchorPoints(){
     return 'auto';
   }
 });
 
-G6.registNode('custom3', {
+G6.registerNode('custom3', {
   // 不使用锚点（ 自动连接中心 ）
-  getAnchorPoints: function(){
+  getAnchorPoints(){
     return null;
   }
 });
 
-var data = {
+const data = {
   nodes: [
     {
       x: 240,
@@ -66,7 +66,7 @@ var data = {
     },
   ],
 };
-var net = new G6.Net({
+const net = new G6.Net({
   id: 'mountNode',      // 容器ID
   fitView: 'cc',
   height: window.innerHeight,   // 画布高

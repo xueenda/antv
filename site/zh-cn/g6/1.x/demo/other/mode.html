@@ -8,7 +8,13 @@ resource:
 -->
 
 <script type="text/javascript">
-var data = {
+// 第二步：设置按钮
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').prepend('<button id="addClickActive">添加点击激活行为</button>');
+$('#toolBar').prepend('<button id="removeClickActive">删除点击激活行为</button>');
+$('#toolBar').prepend('<button id="changeModeToDefault">切换到默认模式</button>');
+$('#toolBar').prepend('<button id="changeModeToEidt">切换到编辑模式</button>');
+const data = {
   "nodes": [
     {
       "x": 140,
@@ -29,7 +35,7 @@ var data = {
     }
   ]
 };
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'mountNode',              // 容器ID
     modes: {               // 模式集
       // 默认模式
@@ -49,31 +55,26 @@ var net = new G6.Net({
 net.source(data.nodes, data.edges);
 net.render();
 
-// 第二步：设置按钮
-$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
-$('#toolBar').prepend('<button id="addClickActive">添加点击激活行为</button>');
-$('#toolBar').prepend('<button id="removeClickActive">删除点击激活行为</button>');
-$('#toolBar').prepend('<button id="changeModeToDefault">切换到默认模式</button>');
-$('#toolBar').prepend('<button id="changeModeToEidt">切换到编辑模式</button>');
 
-var addClickActive = $('#addClickActive');
-var removeClickActive = $('#removeClickActive');
-var changeModeToDefault = $('#changeModeToDefault');
-var changeModeToEidt = $('#changeModeToEidt');
 
-addClickActive.on('click', function(){
+const addClickActive = $('#addClickActive');
+const removeClickActive = $('#removeClickActive');
+const changeModeToDefault = $('#changeModeToDefault');
+const changeModeToEidt = $('#changeModeToEidt');
+
+addClickActive.on('click', () => {
   net.addBehaviour(['clickActive']);
 });
 
-removeClickActive.on('click', function(){
+removeClickActive.on('click', () => {
   net.removeBehaviour(['clickActive']);
 });
 
-changeModeToDefault.on('click', function(){
+changeModeToDefault.on('click', () => {
   net.changeMode('default');
 });
 
-changeModeToEidt.on('click', function(){
+changeModeToEidt.on('click', () => {
   net.changeMode('edit');
 });
 

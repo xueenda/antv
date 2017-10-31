@@ -9,8 +9,8 @@
 
 ## 属性
 
-### [nodeStyle](#_nodeStyle) {Object}
-默认节点样式
+### [nodeStyle](#_nodeStyle)
+[Object] 默认节点样式
 
 ![image](https://zos.alipayobjects.com/rmsportal/qOjXehgcDzabdJNRJKxh.png)
 
@@ -26,8 +26,8 @@ G6.Global.nodeStyle = {
 };
 ```
 
-### [nodeLabelStyle](#_nodeLabelStyle) {Object}
-节点文本样式
+### [nodeLabelStyle](#_nodeLabelStyle)
+[Object] 节点文本样式
 
 ```js
 G6.Global.nodeLabelStyle = {
@@ -38,8 +38,8 @@ G6.Global.nodeLabelStyle = {
 };
 ```
 
-### [nodeDelegationStyle](#_nodeDelegationStyle) {Object}
-节点委托图形样式
+### [nodeDelegationStyle](#_nodeDelegationStyle)
+[Object] 节点委托图形样式
 
 ![image](https://zos.alipayobjects.com/rmsportal/zaCRlbahFPMkSFCcWktt.png)
 
@@ -52,8 +52,8 @@ G6.Global.nodeDelegationStyle = {
 };
 ```
 
-### [edgeDelegationStyle](#_edgeDelegationStyle) {Object}
-边委托图形样式
+### [edgeDelegationStyle](#_edgeDelegationStyle)
+[Object] 边委托图形样式
 
 默认：
 
@@ -64,8 +64,8 @@ G6.Global.edgeDelegationStyle = {
 };
 ```
 
-### [edgeStyle](#_edgeStyle) {Object}
-边样式
+### [edgeStyle](#_edgeStyle)
+[Object] 边样式
 
 默认：
 
@@ -75,8 +75,8 @@ G6.Global.edgeStyle = {
   stroke: '#999'
 };
 ```
-### [edgeLabelStyle](#_edgeLabelStyle) {Object}
-边文本样式
+### [edgeLabelStyle](#_edgeLabelStyle)
+[Object] 边文本样式
 
 ![image](https://zos.alipayobjects.com/rmsportal/lMTjkhRwkElHqzypxGIm.png)
 
@@ -89,8 +89,8 @@ G6.Global.edgeLabelStyle = {
   textBaseline: 'middle'
 };
 ```
-### [edgeLabelRectStyle](#_edgeLabelRectStyle) {Object}
-边底部背景矩形样式
+### [edgeLabelRectStyle](#_edgeLabelRectStyle)
+[Object] 边底部背景矩形样式
 
 默认：
 
@@ -99,8 +99,8 @@ G6.Global.edgeLabelRectStyle = {
     fill: 'white'
 };
 ```
-### [anchorPointStyle](#_anchorPointStyle) {Object}
-锚点样式
+### [anchorPointStyle](#_anchorPointStyle)
+[Object] 锚点样式
 
 ![image](https://zos.alipayobjects.com/rmsportal/PBnGSmcBgdSRnmyFdHrD.png)
 
@@ -113,8 +113,8 @@ G6.Global.anchorPointStyle = {
   r: 4
 };
 ```
-### [anchorPointHoverStyle](#_anchorPointHoverStyle) {Object}
-锚点悬浮样式
+### [anchorPointHoverStyle](#_anchorPointHoverStyle)
+[Object] 锚点悬浮样式
 
 默认：
 
@@ -126,8 +126,8 @@ G6.Global.anchorPointHoverStyle = {
 };
 ```
 
-### [frameRectStyle](#_frameRectStyle) {Object}
-多选框样式
+### [frameRectStyle](#_frameRectStyle)
+[Object] 多选框样式
 
 ![image](https://zos.alipayobjects.com/rmsportal/PWBjFvvXsYufYIKjraAa.png)
 
@@ -140,8 +140,8 @@ G6.Global.frameRectStyle = {
 };
 ```
 
-### [nodeControlPointStyle](#_nodeControlPointStyle) {Object}
-节点控制点样式
+### [nodeControlPointStyle](#_nodeControlPointStyle)
+[Object] 节点控制点样式
 
 ![image](https://zos.alipayobjects.com/rmsportal/srFjwWsHLDeqSTronFWL.png)
 
@@ -156,8 +156,8 @@ G6.Global.nodeControlPointStyle = {
 };
 ```
 
-### [edgeControlPointStyle](#_edgeControlPointStyle) {Object}
-边控制点样式
+### [edgeControlPointStyle](#_edgeControlPointStyle)
+[Object] 边控制点样式
 
 默认：
 
@@ -170,8 +170,9 @@ G6.Global.edgeControlPointStyle = {
 };
 ```
 
-### [nodeAcitveBoxStyle](#_nodeAcitveBoxStyle) {Object}
-节点激活框样式
+### [nodeAcitveBoxStyle](#_nodeAcitveBoxStyle)
+
+[Object] 节点激活框样式
 
 默认：
 
@@ -182,8 +183,9 @@ G6.Global.nodeAcitveBoxStyle = {
 };
 ```
 
-### [treeButtonStyle](#_treeButtonStyle) {Object}
-树图展开折叠 icon 样式
+### [treeButtonStyle](#_treeButtonStyle)
+
+[Object] 树图展开折叠 icon 样式
 
 默认：
 
@@ -194,33 +196,25 @@ G6.Global.treeButtonStyle = {
 };
 ```
 
-### [autoZoomPadding](#_autoZoomPadding) {Number}
+### [autoZoomPadding](#_autoZoomPadding)
 
-自动缩放边距
+[Number] 自动缩放边距
 
 ```js
 G6.Global.autoZoomPadding = 10;
 ```
 
-### [preciseAnchor](#_preciseAnchor) {Number}
+### [fontFamily](#_fontFamily)
 
-是否采用精准相交策略
-
-```js
-G6.Global.preciseAnchor = false;
-```
-
-### [fontFamily](#_fontFamily) {String}
-
-字体家族
+[String] 字体家族
 
 ```js
 G6.Global.fontFamily = '"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", SimSun, "sans-serif"';
 ```
 
-### [treeButtonStyle](#_treeButtonStyle) {Object}
+### [treeButtonStyle](#_treeButtonStyle)
 
-树图展开折叠 icon 的样式
+[Object] 树图展开折叠 icon 的样式
 
 ```js
 G6.Global.treeButtonStyle = {
@@ -229,17 +223,17 @@ G6.Global.treeButtonStyle = {
 }
 ```
 
-### [treeButtonRadius](#_treeButtonRadius) {Number}
+### [treeButtonRadius](#_treeButtonRadius)
 
-树图按钮半径
+[Number] 树图按钮半径
 
 ```js
 G6.Global.treeButtonRadius = 6;
 ```
 
-### [treeButtonPadding](#_treeButtonPadding) {Number}
+### [treeButtonPadding](#_treeButtonPadding)
 
-树图按钮内边距
+[Number] 树图按钮内边距
 
 ```js
 G6.Global.treeButtonPadding = 3;

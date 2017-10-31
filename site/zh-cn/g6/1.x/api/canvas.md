@@ -33,7 +33,7 @@
 <div id="c1"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c1',
     width: 600,
     height: 600
@@ -172,7 +172,7 @@
 <div id="c2"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c2',
     width: 600,
     height: 600
@@ -280,7 +280,7 @@
 <div id="c3"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c3',
     width: 600,
     height: 600
@@ -397,7 +397,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c4"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c4',
     width: 600,
     height: 600
@@ -488,7 +488,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c5"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c5',
     width: 600,
     height: 600
@@ -534,7 +534,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c6"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c6',
     width: 600,
     height: 600
@@ -603,7 +603,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c7"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c7',
     width: 600,
     height: 600
@@ -664,7 +664,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c8"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c8',
     width: 600,
     height: 600
@@ -731,7 +731,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c9"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c9',
     width: 600,
     height: 600
@@ -813,7 +813,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c9.1"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c9.1',
     width: 600,
     height: 600
@@ -853,7 +853,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c10"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c10',
     width: 600,
     height: 600
@@ -927,7 +927,7 @@ cubic的终点，曲线总是结束于这个点
 <div id="c11"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c11',
     width: 600,
     height: 600
@@ -1018,12 +1018,12 @@ cubic的终点，曲线总是结束于这个点
 <div id="c12"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c12',
     width: 600,
     height: 600
   });
-  var path = canvas.addShape('path', {
+  const path = canvas.addShape('path', {
     attrs: {
       path: 'M100,600' +
             'l 50,-25' +
@@ -1131,12 +1131,12 @@ shape.animate(cfg, duration, easing, callback);
 <div id="c_animate"></div>
 
 ```js+
-  var canvas = new G6.Canvas({
+  const canvas = new G6.Canvas({
     containerId: 'c_animate',
     width: 600,
     height: 300
   });
-  var circle = canvas.addShape('circle', {
+  const circle = canvas.addShape('circle', {
     attrs: {
       x: 0,
       y: 150,

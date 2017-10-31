@@ -7,15 +7,15 @@ resource:
     - ${url.jquery}
 -->
 <script type="text/javascript">
-    G6.registNode('custom', {
-        getAnchorPoints: function(cfg){
-            var model = cfg.model;
+    G6.registerNode('custom', {
+        getAnchorPoints(cfg) {
+            const model = cfg.model;
             // 将锚点与数据源关联
             return model.anchorPoints;
         }
     });
 
-    var data = {
+    const data = {
         nodes: [
             {
                 x: 240,
@@ -46,15 +46,15 @@ resource:
             },
         ],
     };
-    var net = new G6.Net({
+    const net = new G6.Net({
         id: 'mountNode',      // 容器ID
         fitView:'cc',    // 画布宽
         height: window.innerHeight,   // 画布高
         mode: 'edit'
     });
-    net.on('itemclick', function(ev){
-        var item = ev.item;
-        var anchorPoints = [
+    net.on('itemclick', ev => {
+        const item = ev.item;
+        const anchorPoints = [
             [0,   0.5, {
                 style: {
                     fill: 'red',
@@ -74,8 +74,8 @@ resource:
         });
         net.showAnchor();
     });
-    net.on('mouseenter', function(ev){
-        var shape = ev.shape;
+    net.on('mouseenter', ev => {
+        const shape = ev.shape;
         if(shape && shape.hasClass('anchor-point')){
             // 锚点索引（可以凭此在原数据模型中查询对应的锚点）
             console.log(shape.get('index')); // eslint-disable-line no-console

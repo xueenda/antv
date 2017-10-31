@@ -82,7 +82,7 @@ const data = {
   }]
 };
 
-G6.registNode('customNode1', {
+G6.registerNode('customNode1', {
   draw(cfg, group) {
     const shape = group.addShape('rect', {
       attrs: {
@@ -114,7 +114,7 @@ G6.registNode('customNode1', {
   }
 }, 'rect');
 
-G6.registNode('customNode2', {
+G6.registerNode('customNode2', {
   draw(cfg, group) {
     const shape = group.addShape('rect', {
       attrs: {
@@ -172,21 +172,14 @@ save.on('click', () => {
   console.log(saveData, json); // eslint-disable-line no-console
 });
 
-const dragging = false;
+let dragging = false;
+
 net.on('dragstart', ()=>{
   dragging = true;
 });
+
 net.on('dragend', ()=>{
   dragging = false;
-});
-
-net.on('mouseenter', ev => {
-  const shape = ev.shape;
-  if(shape && shape.hasClass('anchor-point') && !dragging) {
-    net.beginAdd('edge', {
-      shape: 'polyLineFlow'
-    });
-  }
 });
 
 net.on('mouseleave', ev => {
