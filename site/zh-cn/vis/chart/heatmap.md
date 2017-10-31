@@ -99,23 +99,38 @@ tags: distribute
  * `维度`映射到`x`轴，`经度`映射到`y`轴，以确定位置
  * 租房的热度数值，股指映射到`颜色`
 
-例子2: **数据的统计预测。**下图表示的是克拉数和价格的关系。我们想通过已有的钻石数据，对未知区域的钻石数据进行预测。
+例子2: **数据的统计预测**。下图表示的是克拉数和价格的关系。我们想通过已有的钻石数据，对未知区域的钻石数据进行预测。
 
-<div id='c2'></div>
-<div class="code hide">
-$.getJSON('./data/diamond.json',function (data) {
-    var Stat = G2.Stat;
+<div id='c1'></div>
+
+```js-
+$.getJSON('/assets/data/diamond.json',function (data) {
     var chart = new G2.Chart({
-        id: 'c2',
-        forceFit: true,
-        height: 500
+      container: 'c1',
+      forceFit: true,
+      height: 300
     });
+
+    var dv = new DataSet.View().source(data);
+    dv.transform({
+      type: 'kernel-smooth.density',
+      fields: [ 'carat', 'price' ],
+      as: [ 'carat', 'price', 'density' ]
+    });
+
     chart.source(data);
-    chart.legend(false);
-    chart.heatmap().position(Stat.density.kernel.gaussian('carat*price')).color('..density');
+    chart.point()
+      .position('carat*price');
+
+    var view = chart.view();
+    view.source(dv);
+    view.heatmap()
+      .position('carat*price')
+      .color('density', 'blue-cyan-lime-yellow-red');
+
     chart.render();
 });
-</div>
+```
 
 说明：
  * `carat`（克拉数）字段映射到`x`轴，`price`（价格）字段映射到`y`轴，以确定位置

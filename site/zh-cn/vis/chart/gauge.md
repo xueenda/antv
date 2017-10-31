@@ -49,40 +49,164 @@ tags:
   </tr>
 </table>
 
-<div id="c1" style="float: right"></div>
-<div class="code hide">
+<div id="c1"></div>
 
-  var data = [
-    {name: '指针',value: 30, length: 10},
-  ];
-  var chart = new G2.Chart({
-    id : 'c1',
-    width: 400,
-    height : 284,
-    plotCfg: {
-      margin: [50]
+```js-
+  const Shape = G2.Shape;
+  // 自定义Shape 部分
+  Shape.registerShape('point', 'pointer', {
+    drawShape(cfg, group) {
+      let point = cfg.points[0]; // 获取第一个标记点
+      point = this.parsePoint(point);
+      const center = this.parsePoint({ // 获取极坐标系下画布中心点
+        x: 0,
+        y: 0
+      });
+      // 绘制指针
+      group.addShape('line', {
+        attrs:  {
+          x1: center.x,
+          y1: center.y,
+          x2: point.x,
+          y2: point.y - 20,
+          stroke: cfg.color,
+          lineWidth: 5,
+          lineCap: 'round'
+        }
+      });
+      return group.addShape('circle', {
+        attrs: {
+          x: center.x,
+          y: center.y,
+          r: 12,
+          stroke: cfg.color,
+          lineWidth: 4.5,
+          fill: '#fff'
+        }
+      });
     }
   });
-  chart.coord('gauge',{
-    startAngle: -1 * Math.PI,
-    endAngle: 0
+
+  const data = [
+    { value: 6 }
+  ];
+  const chart = new G2.Chart({
+    container: 'c1',
+    forceFit: true,
+    height: window.innerHeight,
+    padding: 0
   });
   chart.source(data);
-  chart.legend('length',false);
-  chart.axis('value',{subTick: 5, grid: false});
-  chart.col('value',{type: 'linear',min: 0,max: 100, tickCount:8});
-  chart.col('length',{type: 'linear',min: 0,max: 10});
-  chart.point().position('value').shape('pointerArrow').size('length').color('#999');
 
-  chart.guide().arc([0,1],[100,1],{
-      stroke: '#22B07B',
-      'stroke-width':12,
-      'stroke-opacity': 0.7
-    });
+  chart.coord('polar', {
+    startAngle: -9 / 8 * Math.PI,
+    endAngle: 1 / 8 * Math.PI,
+    radius: 0.75
+  });
+  chart.scale('value', {
+    min: 0,
+    max: 9,
+    nice: false,
+    ticks: [ 2.25, 3.75, 5.25, 6.75 ]
+  });
+
+  chart.axis('1', false);
+  chart.axis('value', {
+    zIndex: 2,
+    line: null,
+    label: {
+      offset: -20,
+      formatter: val => {
+        if (val === '2.25') {
+          return '差';
+        } else if (val === '3.75') {
+          return '中';
+        } else if (val === '5.25') {
+          return '良';
+        }
+
+        return '优';
+      },
+      textStyle: {
+        fontSize: 24,
+        fill: 'rgba(0, 0, 0, 0.65)',
+        textAlign: 'center'
+      }
+    },
+    tickLine: null,
+    grid: null
+  });
+  chart.legend(false);
+  chart.point({
+    generatePoints: true
+  }).position('value*1')
+    .shape('pointer')
+    .color('#1890FF')
+    .active(false);
+
+  // 绘制仪表盘刻度线
+  chart.guide().line({
+    start: [ 3, 0.92 ],
+    end: [ 3.0035, 0.85 ],
+    lineStyle: {
+      stroke: '#19AFFA', // 线的颜色
+      lineDash: null, // 虚线的设置
+      lineWidth: 3
+    }
+  });
+  chart.guide().line({
+    start: [ 4.5, 0.92 ],
+    end: [ 4.5, 0.85 ],
+    lineStyle: {
+      stroke: '#19AFFA', // 线的颜色
+      lineDash: null, // 虚线的设置
+      lineWidth: 3
+    }
+  });
+
+  chart.guide().line({
+    start: [ 6, 0.92 ],
+    end: [ 6.0035, 0.85 ],
+    lineStyle: {
+      stroke: '#19AFFA', // 线的颜色
+      lineDash: null, // 虚线的设置
+      lineWidth: 3
+    }
+  });
+
+  // 绘制仪表盘背景
+  chart.guide().arc({
+    zIndex: 0,
+    top: false,
+    start: [ 0, 0.965 ],
+    end: [ 9, 0.965 ],
+    style: { // 底灰色
+      stroke: '#000',
+      lineWidth: 18,
+      opacity: 0.09
+    }
+  });
+  // 绘制指标
+  chart.guide().arc({
+    zIndex: 1,
+    start: [ 0, 0.965 ],
+    end: [ data[0].value, 0.965 ],
+    style: {
+      stroke: '#1890FF',
+      lineWidth: 20,
+    }
+  });
+  // 绘制指标数字
+  chart.guide().html({
+    position: [ '50%', '95%' ],
+    html: '<div style="width: 300px;text-align: center;font-size: 12px!important;">'
+     + '<p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p>'
+     + '<p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">' + data[0].value * 10  + '%</p>'
+     + '</div>'
+  });
 
   chart.render();
-
-</div>
+```
 
 <div class="clearfix"></div>
 
@@ -99,317 +223,8 @@ tags:
 ----|------|----
 0～24|0～60|0～60
 
-<div id="c2"></div>
-
-<div class="code unvisiable-hide">
-$(function(){
-      var Shape = G2.Shape;
-      var Vector = G2.Canvas.Matrix.Vector2;
-      // 自定义Shape 部分
-      Shape.registShape('point', 'clock', {
-        drawShape: function(cfg, group){
-          var point; // 针尖点
-          var point1; // 针尾点1
-          var point2; // 针尾点2
-          var center;
-          var shape;
-          var r; // 中心点半径
-          var v1; // 指针向量
-          var v2; // 与指针垂直向量
-          var vstash;
-          point = cfg.points[0];
-          point.y = cfg.size;
-          point = this.parsePoint(point);
-          center = this.parsePoint({
-            x: 0,
-            y: 0
-          });
-          r = 20 * (1-cfg.size);
-          v1 = Vector.sub(point, center);
-          v2 = v1.vertical();
-          shape = group.addShape('circle', {
-            attrs: {
-              x: center.x,
-              y: center.y,
-              r: r/1.3,
-              fill: cfg.color
-            }
-          });
-          // v2.negate();
-          v2.setLength(r/2);
-          point1 = Vector.add(v2, center);
-          point2 = Vector.add({
-            x: -v2.x,
-            y: -v2.y
-          }, center);
-          shape = group.addShape('polygon', {
-            attrs: {
-              points: [
-                [point1.x, point1.y],
-                [point2.x, point2.y],
-                [point.x, point.y]
-              ],
-              lineWidth: 2,
-              arrow: true,
-              fill: cfg.color
-            }
-          });
-          return shape;
-        }
-      });
-      // G2 语法部分
-      var color = ['#18B7D6', '#EFCF6E', '#E47668'];
-      var chart = new G2.Chart({
-        id : 'c2',
-        forceFit: true,
-        height: 500,
-        plotCfg: {
-          margin: 50
-        }
-      });
-      chart.legend(false);
-      chart.tooltip(false);
-      chart.source(getData(),{
-        'value': {type: 'linear',min: 0,max: 12, tickCount:12}
-      });
-      chart.coord('clock');
-      chart.axis('value', {
-        labels: {
-          label: {
-            fontSize: 14
-          },
-          autoRotate: false
-        },
-        line: {
-          stroke: "#ccc"
-        },
-        tickLine: {
-          stroke: "#333",
-          value: -10
-        },
-        labelOffset: -12
-      });
-      chart.point()
-        .position('value')
-        .size('length',0.8, 0.4)
-        .color('name', ['#333333', '#333333', '#CC0000'])
-        .shape('clock');
-      chart.render();
-      function getData(){
-        var date = new Date();
-        var data = [
-          {name: 'hour', value: date.getHours(), length: 5},
-          {name: 'minute', value: date.getMinutes()*12/60, length: 9},
-          {name: 'second', value: date.getSeconds()*12/60, length: 10}
-        ];
-        return data;
-      }
-      setInterval(function(){
-        chart.changeData(getData());
-      }, 1000);
-});
-</div>
 
 #### 投资收益率
 * 场景说明：下图是蚂蚁金服某金融产品的投资收益率
 * 数据说明：有1维度，收益率数值数据映射指针角度
 
-<div id="c3"></div>
-
-<div class="code unvisiable-hide">
-      var Shape = G2.Shape;
-      // 自定义Shape 部分
-      Shape.registShape('point', 'dashBoard', {
-        drawShape: function(cfg, group){
-          var origin = cfg.origin; // 原始数据
-          var value = origin.value;
-          var point = cfg.points[0]; // 获取第一个标记点
-          point = this.parsePoint({ // 将标记点转换到画布坐标
-            x: point.x,
-            y: 0.95
-          });
-          var center = this.parsePoint({ // 获取极坐标系下画布中心点
-            x: 0,
-            y: 0
-          });
-          var r = 20;
-          var ra = 0.8 * r;
-          var X1 = center.x;
-          var Y1 = center.y;
-          var X2 = point.x;
-          var Y2 = point.y;
-          var B = 150/180;
-          var Xa,Xb,Xc,Ya,Yb,Yc; // 绘制小箭头需要的三个点
-          var shape;
-          if (Y1==Y2) {
-            if(X1>X2){
-              Xa = X2 + Math.cos(B)* ra;
-              Ya = Y2 - Math.sin(B)* ra;
-              Xb = X2 + Math.cos(B)* ra;
-              Yb = Y2 + Math.sin(B)* ra;
-              Xc = X2 + 2 * ra;
-              Yc = Y2;
-            }else{
-              Xa = X2 - Math.cos(B)* ra;
-              Ya = Y2 - Math.sin(B)* ra;
-              Xb = X2 - Math.cos(B)* ra;
-              Yb = Y2 + Math.sin(B)* ra;
-              Xc = X2 - 2 * ra;
-              Yc = Y2;
-            }
-          }else if(Y1>Y2){
-            var A = Math.atan((X1 - X2) / (Y1 - Y2));
-            Xa = X2 + ra * Math.sin(A + B);
-            Ya = Y2 + ra * Math.cos(A + B);
-            Xb = X2 + ra * Math.sin(A - B);
-            Yb = Y2 + ra * Math.cos(A - B);
-            Xc = X2 + 2 * ra * Math.sin(A);
-            Yc = Y2 + 2 * ra * Math.cos(A);
-          }else{
-            if(X1>X2){
-              var A = Math.atan((Y2 - Y1) / (X1 - X2));
-              Xa = X2 + ra * Math.cos(A + B);
-              Ya = Y2 - ra * Math.sin(A + B);
-              Xb = X2 + ra * Math.cos(A - B);
-              Yb = Y2 - ra * Math.sin(A - B);
-              Xc = X2 + 2 * ra * Math.cos(A);
-              Yc = Y2 - 2 * ra * Math.sin(A);
-            }else{
-              var A = Math.atan((Y2 - Y1) / (X2 - X1));
-              Xa = X2 - ra * Math.cos(A - B);
-              Ya = Y2 - ra * Math.sin(A - B);
-              Xb = X2 - ra * Math.cos(A + B);
-              Yb = Y2 - ra * Math.sin(A + B);
-              Xc = X2 - 2 * ra * Math.cos(A);
-              Yc = Y2 - 2 * ra * Math.sin(A);
-            }
-          }
-          shape = group.addShape('circle', {
-            attrs:{
-              x: X2,
-              y: Y2,
-              r: r,
-              fill: cfg.color
-            }
-          });
-          group.addShape('circle', {
-            attrs:{
-              x: X2,
-              y: Y2,
-              r: r/2,
-              fill: 'white'
-            }
-          });
-          // 添加文本1
-          group.addShape('text', {
-            attrs: {
-              x: X1,
-              y: Y1-25,
-              text: '当前收益率',
-              fontSize: 32,
-              fill: '#CCCCCC',
-              textAlign: 'center'
-            }
-          });
-          // 添加文本2
-          group.addShape('text', {
-            attrs: {
-              x: X1,
-              y: Y1+25,
-              text: value,
-              fontSize: 32,
-              fill: '#F75B5B',
-              textAlign: 'center'
-            }
-          });
-          group.addShape('polygon', {
-            attrs: {
-              points: [
-                [Xa, Ya],
-                [Xc, Yc],
-                [Xb, Yb],
-                [Xa, Ya]
-              ],
-              fill: cfg.color
-            }
-          });
-          return shape;
-        }
-      });
-      // G2 语法部分
-      var color = ['#18B7D6', '#EFCF6E', '#E47668'];
-      var chart = new G2.Chart({
-        id : 'c3',
-        forceFit: true,
-        height: 500,
-        plotCfg: {
-          margin: 100
-        }
-      });
-      chart.source(creatData());
-      chart.coord('gauge', {
-        startAngle: -9/8 * Math.PI,
-        endAngle: 1/8 * Math.PI
-      });
-      chart.col('value', {
-        min: 0,
-        max: 0.15,
-        tickInterval: 0.075
-      });
-      chart.axis('value', {
-        tickLine: {
-          stroke: '#EEEEEE'
-        },
-        labelOffset: -26
-      });
-      chart.point().position('value').shape('dashBoard').color('value', function(v){ // 根据值的大小确定标记的颜色
-        var rst;
-        if ( v < 0.05 ) {
-          rst = color[0];
-        } else if ( v < 0.1 ){
-          rst = color[1];
-        } else {
-          rst = color[2];
-        }
-        return rst;
-      });
-      chart.legend(false);
-      draw(creatData());
-      function draw(data) {
-        var val = data[0].value;
-        var lineWidth = 30;
-        chart.guide().clear();
-        chart.guide().arc([0, 0.95],[0.15, 0.95],{ // 底灰色
-          stroke: '#CCCCCC',
-          lineWidth: lineWidth
-        });
-        val > 0.05 && chart.guide().arc([0, 0.95],[0.05, 0.95],{ // 低收益率
-          stroke: color[0],
-          lineWidth: lineWidth
-        });
-        val > 0.1 && chart.guide().arc([0.05, 0.95],[0.1, 0.95],{ // 中收益率
-          stroke: color[1],
-          lineWidth: lineWidth
-        });
-        val > 0 && val <= 0.05 && chart.guide().arc([0, 0.95],[val, 0.95],{ // 低收益率
-          stroke: color[0],
-          lineWidth: lineWidth
-        });
-        val > 0.05 && val <= 0.1 && chart.guide().arc([0.05, 0.95],[val, 0.95],{ // 中收益率
-          stroke: color[1],
-          lineWidth: lineWidth
-        });
-        val > 0.1 && val <= 0.15 && chart.guide().arc([0.1, 0.95],[val, 0.95],{ // 中收益率
-          stroke: color[2],
-          lineWidth: lineWidth
-        });
-        chart.changeData(data);
-      }
-      function creatData(){
-        var data = [];
-        var val = 0.13;
-        val = val.toFixed(3);
-        data.push({value: Number(val)});
-        return data;
-      }
-</div>

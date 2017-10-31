@@ -61,7 +61,7 @@ tags:
 
 <div id="c3"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {step: '浏览网站', value: 1.0},
     {step: '放入购物车', value: 0.5},
@@ -69,8 +69,6 @@ tags:
     {step: '支付订单', value: 0.2},
     {step: '完成交易', value: 0.1}
   ];
-
-  var Stat = G2.Stat;
 
   var chart = new G2.Chart({
     id: 'c3',
@@ -83,15 +81,15 @@ tags:
 
   chart.source(data);
   chart.axis(false);
-  chart.col('value',{alias: '转换率',formatter: function (value) {
+  chart.scale('value',{alias: '转换率',formatter: function (value) {
     return value * 100 + '%';
   }});
-  chart.col('step',{alias: '交易环节'});
+  chart.scale('step',{alias: '交易环节'});
   chart.coord('rect').transpose().scale(1,-1);
 
   chart.intervalSymmetric().position('step*value').color('step').shape('funnel').label('step',{label: {'text-anchor': 'start'},offset: 5});
   chart.render();
-</div>
+```
 
 从上图中我们发现，浏览环节中的业务量呈现了明显的缩减的趋势，转化率较低。所以决策者应该将更多的资源与精力投入到浏览这个环节的工作中，进而提高整个流程的效率。
 
@@ -114,8 +112,7 @@ tags:
   <div class="right tip">正确</div>
 </div>
 
-<div class="code hide">
-  
+```js-
   var data = [
     {genre:'Sports',sold:27500},
     {genre:'Strategy',sold:11500},
@@ -123,8 +120,6 @@ tags:
     {genre:'Shooter',sold:3500},
     {genre:'Other',sold:1500},
   ];
-
-  var Stat = G2.Stat;
 
   var chart = new G2.Chart({
     id : 'c4',
@@ -147,7 +142,7 @@ tags:
   chart.source(data);
   chart.interval().position('genre*sold').color('genre');
   chart.render();
-</div>
+```
 
 ## 漏斗图的扩展
 
@@ -157,7 +152,7 @@ tags:
 
 <div id="c5"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {step: '浏览网站',value: 1.0},
     {step: '放入购物车', value: 0.5},
@@ -169,22 +164,22 @@ tags:
   var Stat = G2.Stat;
 
   var chart = new G2.Chart({
-    id: 'c5',
-    width : 400,
+    container: 'c5',
+    forceFit: true,
     height : 400
   });
 
   chart.source(data);
   chart.axis(false);
-  chart.col('value',{alias: '转换率',formatter: function (value) {
+  chart.scale('value',{alias: '转换率',formatter: function (value) {
     return value * 100 + '%';
   }});
-  chart.col('step',{alias: '交易环节'});
-  chart.coord().rotate(90)//.scale(1,1);
+  chart.scale('step',{alias: '交易环节'});
+  chart.coord('rect').transpose().scale(1,-1);
 
-  chart.intervalSymmetric().position('step*value').color('step').shape('pyramid')//.label('step',{label: {rotate: -90,'text-anchor': 'start'},offset: 5});
+  chart.intervalSymmetric().position('step*value').color('step').shape('pyramid');
   chart.render();
-</div>
+```
 
 ### 扩展图表二：对比漏斗图
 
@@ -192,7 +187,7 @@ tags:
 
 <div id="c6"></div>
 
-<div class="code hide">
+```js-
  var expectData = [
     {value: 100, name: '展现'},
     {value: 80, name: '点击'},
@@ -209,14 +204,12 @@ tags:
   ];
   var Stat = G2.Stat;
   var chart = new G2.Chart({
-    id : 'c6',
+    container: 'c6',
     forceFit: true,
     height : 400
   });
   
-  var actualView = chart.createView({
-      index:1
-    });
+  var actualView = chart.view();
   actualView.source(actualData, {
     name: {
       formatter: function(val) {
@@ -235,7 +228,7 @@ tags:
     stroke: '#fff'
   });
 
-  var expectView = chart.createView();
+  var expectView = chart.view();
   expectView.source(expectData, {
     name: {
       formatter: function(val) {
@@ -256,7 +249,7 @@ tags:
     .opacity(0.65);
   chart.legend(false);
   chart.render();
-</div>
+```
 
 ### 扩展图表三：对称漏斗图
 
@@ -264,7 +257,7 @@ tags:
 
 <div id="c7"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {action:'访问',visitor:500,site: '站点1'},
     {action:'浏览',visitor:400,site: '站点1'},
@@ -282,33 +275,30 @@ tags:
     var point = item.point;
     return point.action + text;
   }
-  var Stat = G2.Stat;
   var chart = new G2.Chart({
-    id: 'c7',
+    container: 'c7',
     forceFit: true,
     height: 500,
-    plotCfg: {
-      margin: [50, 80, 80]
-    }
-  });
-  chart.source(data);
-  chart.facet(['site'], {
-    type: 'mirror',
-    transpose: true,
-    margin: 0
   });
   chart.axis(false);
-  chart.interval()
-    .position('action*visitor')
-    .color('action')
-    .label('visitor', {
-    offset: -2,
-    renderer: formatter
-  })
-    .shape('funnel')
-    .style({
-    lineWidth: 1,
-    stroke: '#fff'
+  chart.source(data);
+  chart.facet('mirror', {
+    fields: [ 'site' ],
+    transpose: true,
+    padding: 0,
+    eachView: function(view) {
+      view.interval()
+        .position('action*visitor')
+        .color('action')
+        .label('visitor', {
+          renderer: formatter
+        })
+        .shape('funnel')
+        .style({
+          lineWidth: 1,
+          stroke: '#fff'
+        });
+    }
   });
   chart.render();
-</div>
+```
