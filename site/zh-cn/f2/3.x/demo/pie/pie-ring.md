@@ -1,0 +1,35 @@
+<!--
+index: 1
+title: 环图
+resource:
+  jsFiles:
+-->
+
+<script>
+
+F2.Global.pixelRatio = window.devicePixelRatio;
+const  data = [
+  {a: '1', b: 0.3, c: '1'},
+  {a: '1', b: 0.3, c: '2'},
+  {a: '1', b: 0.4, c: '3'}
+];
+
+const chart = new F2.Chart({
+  id: 'mountNode'
+});
+
+chart.source(data);
+
+chart.coord('polar', {
+  transposed: true,
+  inner: 0.6
+});
+
+chart.axis(false);
+chart.interval().position('a*b').color('c').adjust('stack');
+chart.animate({
+  type: 'wavec'
+});
+chart.render();
+
+</script>
