@@ -149,9 +149,7 @@ $.getJSON('/assets/data/tape.json',function(data){
     container: 'c2',
     forceFit: true,
     height: 500,
-    plotCfg: {
-      margin: [20, 120]
-    }
+    padding: [20, 120]
   });
   // 获取当前月的第几周,从 0 开始
   function getMonthWeek(date) {
@@ -173,32 +171,37 @@ $.getJSON('/assets/data/tape.json',function(data){
     obj.week = getMonthWeek(date).toString();
   });
   // 对数据进行排序
-  var Frame = G2.Frame;
-  var frame = new Frame(data);
-  frame = Frame.sort(frame, 'day');
+  data.sort(function(a, b) {
+    return a.day - b.day;
+  });
   var defs = {
     month: {
+      sync: true,
       type: 'cat',
       values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", 'December']
     },
     day: {
+      sync: true,
       type: 'cat'
     },
     week: {
+      sync: true,
       type: 'cat',
       values: ['5', '4', '3', '2', '1', '0']
     },
     '涨跌幅': {
+      sync: true,
       type: 'linear',
       min: -10,
       max: 10
     },
     time: {
+      sync: true,
       type: 'time'
     }
   };
   chart.axis(false);
-  chart.col('日期', {
+  chart.scale('日期', {
     type: 'time'
   });
   chart.tooltip({
@@ -209,28 +212,22 @@ $.getJSON('/assets/data/tape.json',function(data){
   chart.legend('涨跌幅', {
     position: 'left'
   });
-  chart.source(frame, defs);
-  chart.facet(['month'], {
-    type: 'list',
+  chart.source(data, defs);
+  chart.facet('list', {
+    fields: ['month'],
     cols: 3,
-    margin: 30,
-    facetTitle: {
-      titleOffset: 3,
-      colTitle: {
-        title: {
-          fontSize: 14,
-          textAlign: 'center',
-          fill: '#000'
-        }
-      }
+    padding: 30,
+    eachView(view) {
+      view.polygon()
+        .position('day*week*日期')
+        .color('涨跌幅', '#006837-#ffffbf-#d73027')
+        .style({
+          lineWidth: 1,
+          stroke: '#999'
+        });
     }
   });
-  chart.polygon().position('day*week*日期')
-    .color('涨跌幅', '#006837-#ffffbf-#d73027')
-    .style({
-    lineWidth: 1,
-    stroke: '#999'
-  });
+
   chart.render();
 });
 ```

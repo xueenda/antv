@@ -57,7 +57,7 @@ variations:
 
 ### 适合的场景
 
-例子1：** 展示分类的占比情况 **这种用法与饼图类似，下图是一个游戏公司的销售情况：
+例子1：**展示分类的占比情况**这种用法与饼图类似，下图是一个游戏公司的销售情况：
 
 |genre（游戏类型） |sold（销售量）|
 |------|----|
@@ -69,8 +69,7 @@ variations:
 
 <div id="c5"></div>
 
-<div class="code hide">
-
+```js-
   var data = [
     {genre:'Sports',sold:27500},
     {genre:'Strategy',sold:11500},
@@ -78,38 +77,47 @@ variations:
     {genre:'Shooter',sold:3500},
     {genre:'Other',sold:1500},
   ];
-
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'sold',
+    dimension: 'genre',
+    as: 'percent'
+  });
   function formatter(text,item){
       var point = item.point; // 每个弧度对应的点
-      var percent = point['..percent']; // ..proportion 字段由Stat.summary.proportion统计函数生成
+      var percent = point.percent;
       percent = (percent * 100).toFixed(2) + '%';
       return percent;
   }
-  var Stat = G2.Stat;
-
   var chart = new G2.Chart({
-    id: 'c5',
+    container: 'c5',
     forceFit: true,
     height : 400
   });
 
-  chart.source(data);
+  chart.source(dv);
   chart.legend('bottom');
 
-  chart.coord('theta',{radius: 0.8,inner: 0.65});
+  chart.coord('theta',{
+    radius: 0.8,
+    innerRadius: 0.65
+  });
 
-  chart.intervalStack().position(Stat.summary.percent('sold')).color('genre').label('genre',{renderer: formatter});
+  chart.intervalStack()
+    .position('percent')
+    .color('genre')
+    .label('genre',{renderer: formatter});
   chart.render();
-</div>
+```
 
 ### 不适合的场景
 
-例子1: ** 分类过多的场景 **下图是各个省的人口的占比情况，因为这张图上包含的分类过多，很难清晰对比各个省份的人口数据占比情况，所以这种情况下，我们推荐使用[横向柱状图](bar.html)。
+例子1: **分类过多的场景**下图是各个省的人口的占比情况，因为这张图上包含的分类过多，很难清晰对比各个省份的人口数据占比情况，所以这种情况下，我们推荐使用[横向柱状图](bar.html)。
 
 <div id="c3"></div>
 
-<div class="code hide">
-
+```js-
   var data = [
     {province:'北京市',population:19612368},
     {province:'天津市',population:12938693},
@@ -131,31 +139,36 @@ variations:
     {"province":"陕西省","population":37327379},{"province":"甘肃省","population":25575263},
     {"province":"青海省","population":5626723}
   ];
-
-  var Stat = G2.Stat;
-
-  var chart = new G2.Chart({
-    id : 'c3',
-    forceFit: true,
-    height : 350,
-    plotCfg: {
-      margin: [50, 100]
-    }
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'population',
+    dimension: 'province',
+    as: 'percent'
   });
 
-  chart.source(data);
-  chart.coord('theta', {radius: 0.8,inner: 0.65});
-  chart.intervalStack().position(Stat.summary.percent('population')).color('province').label('province');
+  var chart = new G2.Chart({
+    container : 'c3',
+    forceFit: true,
+    height : 350,
+  });
+
+  chart.source(dv);
+  chart.coord('theta', {radius: 0.8,innerRadius: 0.65});
+  chart.intervalStack()
+    .position('percent')
+    .color('province')
+    .label('province');
 
   chart.render();
-</div>
+```
 
-例子2: ** 分类占比差别不明显的场景  **
+例子2: **分类占比差别不明显的场景**
 下图中游戏公司的不同种类的游戏的销售量相近，所以不太适合使用环图，此时可以使用[柱状图](bar.html)。
 
 <div id="c4"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {genre:'Sports',sold:15000},
     {genre:'Strategy',sold:14900},
@@ -163,28 +176,37 @@ variations:
     {genre:'Shooter',sold:13000},
     {genre:'Other',sold:13900}
   ];
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'sold',
+    dimension: 'genre',
+    as: 'percent'
+  });
 
   function formatter(text,item){
       var point = item.point; // 每个弧度对应的点
-      var percent = point['..percent']; // ..proportion 字段由Stat.summary.proportion统计函数生成
-      percent = (percent * 100).toFixed(2) + '%';
-      return percent;
+      return (item.percent * 100).toFixed(2) + '%';
   }
-  var Stat = G2.Stat;
 
   var chart = new G2.Chart({
-    id: 'c4',
+    container: 'c4',
     forceFit: true,
     height : 350
   });
 
-  chart.source(data);
-  chart.coord('theta',{radius: 0.8,inner: 0.65});
+  chart.source(dv);
+  chart.coord('theta',{
+    radius: 0.8,
+    innerRadius: 0.65
+  });
   chart.legend('bottom');
 
-  chart.intervalStack().position(Stat.summary.percent('sold')).color('genre');
+  chart.intervalStack()
+    .position('percent')
+    .color('genre');
   chart.render();
-</div>
+```
 
 ## 环图的扩展
 
@@ -203,26 +225,9 @@ variations:
 |2011|拉丁美洲|495.3
 |……|……|……
 
-<div id="c6" style="position:relative">
-  <div style="
-    width: 100px;
-    position: absolute;
-    top: 165px;
-    left: 220px;">
-    <p>2007年总额（亿美元）</p>
-    <p style="font-size:22px;font-weight:bold;text-indent:10px;">7860</p>
-  </div>
-  <div style="
-    width: 100px;
-    position: absolute;
-    top: 165px;
-    left: 610px;">
-    <p>2011年总额（亿美元）</p>
-    <p style="font-size:22px;font-weight:bold;text-indent:10px;">7620</p>
-  </div>
-</div>
+<div id="c6"></div>
 
-<div class="code hide">
+```js-
   var profit2007 = 7860;
   var profit2011 = 7620;
   var data = [
@@ -239,23 +244,42 @@ variations:
     {year:2011, area:'西欧', profit: 7620*0.063},
     {year:2011, area:'北美', profit: 7620*0.234}
   ];
-
-  var Stat = G2.Stat;
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'profit',
+    dimension: 'area',
+    groupBy: 'year',
+    as: 'percent'
+  });
 
   var chart = new G2.Chart({
     id: 'c6',
     forceFit: true,
     height: 500,
-    plotCfg: {
-      margin: [20, 90, 80]
+    padding: 0
+  });
+  chart.source(dv);
+  chart.legend('bottom');
+  chart.facet('list', {
+    fields: [ 'year' ],
+    cols: 2,
+    padding: 30,
+    eachView: function (view, facet) {
+      view.coord('theta',{radius: 0.8,innerRadius: 0.65});
+      view.intervalStack().position('percent').color('area');
+      var sum = 0;
+      facet.data.forEach(function(row) {
+        sum += row.profit;
+      });
+      view.guide().text({
+        position: [0, 0],
+        offsetX: -30,
+        offsetY: 70,
+        content: sum.toFixed(0) + '（亿美元）',
+      });
     }
   });
-  chart.facet(['year']);  
-  chart.source(data);
-  chart.legend('bottom');
-  chart.coord('theta',{radius: 0.8,inner: 0.65});
 
-  chart.intervalStack().position(Stat.summary.percent('profit')).color('area')
-  ;
   chart.render();
-</div>
+```

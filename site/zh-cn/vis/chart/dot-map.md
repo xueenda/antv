@@ -67,34 +67,98 @@ variations:
 <div id="c1"></div>
 
 
-<script src="https://as.alipayobjects.com/g/datavis/g-plugin-map/1.1.0/index.js"></script>
-<div class="code hide"> 
-  $.getJSON('./data/USA.geo.json?nowrap', function(mapData) {
-    $.getJSON('./data/airport.json?nowrap', function(data) {
-      var Stat = G2.Stat;
-      var chart = new G2.Chart({
-        id: 'c1',
-        width: 800,
-        height: 450,
-        plotCfg: {
-          margin: [0,0,20,0]
+```js-
+  $.getJSON('/assets/data/USA.geo.json?nowrap', function(mapData) {
+    $.getJSON('/assets/data/airport.json?nowrap', function(data) {
+      var ds = new DataSet();
+      var mapDv = ds.createView().source(mapData, {
+        type: 'GeoJSON'
+      });
+      var maxLong = -Infinity;
+      var minLong = Infinity;
+      var maxLat = -Infinity;
+      var minLat = Infinity;
+      mapDv.transform({
+        type: 'map',
+        callback: function(row) {
+          row.longitude.forEach(function(long) {
+            if (long > maxLong) {
+              maxLong = long;
+            }
+            if (long < minLong) {
+              minLong = long;
+            }
+          });
+          row.latitude.forEach(function(lat) {
+            if (lat > maxLat) {
+              maxLat = lat;
+            }
+            if (lat < minLat) {
+              minLat = lat;
+            }
+          });
+          return row;
         }
       });
-      chart.source(data);
-      chart.tooltip(false);
-      var gmap = new G2.Plugin.GMap({
-        chart: chart,
-        mapData: mapData,
-        style: {
-          stroke: '#fff',
-          fill: '#ddd'
-        }
-      }).draw();
-      chart.point().position(Stat.map.location('long*lant')).shape('circle').size(2).color('#31a354');
+      var userDv = ds.createView().source(data);
+      userDv
+        .transform({
+          type: 'rename',
+          map: {
+            long: 'longitude',
+            lant: 'latitude',
+          }
+        })
+        .transform({
+          type: 'filter',
+          callback: function(row) {
+            return row.longitude <= maxLong && row.longitude >= minLong &&
+              row.latitude <= maxLat && row.latitude >= minLat;
+          }
+        });
+
+      var chart = new G2.Chart({
+        container: 'c1',
+        forceFit: true,
+        height: 450,
+        padding: 0
+      });
+      chart.scale({
+        longitude: {
+          sync: true
+        },
+        latitude: {
+          sync: true
+        },
+      });
+
+      var view = chart.view();
+      view.source(mapDv);
+      view.tooltip(false);
+      view.polygon()
+        .position('longitude*latitude')
+        .shape('stroke')
+        .style({
+          fill: '#fff',
+          stroke: '#E6E6E6',
+          lineWidth: 1
+        });
+
+      var userView = chart.view();
+      userView.source(userDv);
+      userView.point()
+        .position('longitude*latitude')
+        .color('#31a354')
+        .shape('circle')
+        .opacity(0.5)
+        .style({
+          blur: 10
+        });
+
       chart.render();
     });
   });
-</div>
+```
 
 例子2： **2010 年芝加哥人口种族分布。** 用不同颜色的点在地图上标识不同的种族，粉红色表示白人，蓝色表示黑人，绿色表示亚洲人，黄色表示拉丁美洲人，这一种族分布地图清晰地表现了黑人和白人的聚居区，中部偏右还有一小块绿色的亚裔聚居区，在聚居区交接的区域通常存在不同种族混居的现象。
 
@@ -107,52 +171,51 @@ variations:
 
 <div id="c2"></div>
 
-<div class="code hide">
-  $.getJSON('./data/china.json', function(mapData) {
-    var Stat = G2.Stat;
+```js-
+  $.getJSON('/assets/data/china.json', function(mapData) {
+    var ds = new DataSet();
+    var mapDv = ds.createView().source(mapData, {
+      type: 'GeoJSON'
+    });
     var userData = [];
     var features = mapData.features;
-    for(let feature of features) {
+    for(var feature of features) {
       var name = feature.properties.name;
       userData.push({
-        "name": name       
+        name: name
       });
     }
-    var defs = {
-      '..lant': {
-          min: 18.16933828300006,
-          max: 53.56779083300003
-        },
-        '..long': {
-          min: 73.60225630700012,
-          max: 134.77257938700012
-        }
-    }
     var chart = new G2.Chart({
-      id: 'c2',
-      width: 600,
+      container: 'c2',
+      forceFit: true,
       height: 450,
-      plotCfg: {
-        margin: [0,0,20,0]
-      }
     });
-    
-    var mapView = chart.createView();
-    mapView.source(userData, defs);
+    chart.scale({
+      longitude: {
+        sync: true
+      },
+      latitude: {
+        sync: true
+      },
+    });
+
+    var mapView = chart.view();
+    mapView.source(mapDv);
     mapView.axis(false);
     mapView.tooltip(false);
-    mapView.polygon().position(Stat.map.region('name', mapData))
+    mapView.polygon()
+      .position('longitude*latitude')
       .style({
-      fill:'white',
-      stroke: '#333',
-      lineWidth: 1
-    });
+        fill:'white',
+        stroke: '#333',
+        lineWidth: 1
+      });
           
     var randomData = function(){
-    return Math.round(Math.random()*1000);
-  }
+      return Math.round(Math.random()*1000);
+    }
   
-  var data = [
+    var data = [
       {name: '北京',value: randomData() },
       {name: '天津',value: randomData() },
       {name: '上海',value: randomData() },
@@ -186,20 +249,24 @@ variations:
       {name: '台湾',value: randomData() },
       {name: '香港',value: randomData() },
       {name: '澳门',value: randomData() }			    
-        
-  ]
-  
-  var dotView = chart.createView({
-    index:1
-  });
-    
-    dotView.source(data, defs); 
+    ];
+    var userDv = ds.createView().source(data);
+    userDv.transform({
+      type: 'geo.centroid',
+      geoDataView: mapDv,
+      field: 'name',
+      as: [ 'longitude', 'latitude' ]
+    });
+    var dotView = chart.view();
+    dotView.source(userDv);
     dotView.axis(false);
-    dotView.point().position(Stat.map.center('name',mapData))
+    dotView.point()
+      .position('longitude*latitude')
       .color('#6A006F')
       .shape('circle')
-      .tooltip('value')  
+      .tooltip('value');
+
     chart.legend(false);
     chart.render();
   });
-</div>
+```
