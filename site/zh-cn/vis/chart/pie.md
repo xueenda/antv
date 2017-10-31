@@ -59,31 +59,28 @@ variations:
 
 ### 适合的场景
 
-例子1: **展示 2 个分类的占比情况。**下图是一个班级的男女生的占比情况：
+例子1: **展示 2 个分类的占比情况**。下图是一个班级的男女生的占比情况：
 
-<div class="hide">
 gender（性别）|count（人数）
 ----|---
-男|40
-女|30
-</div>
+男|30
+女|20
+
 <div id="c1"></div>
 
-<div class="code hide">
+```js-
   var data = [
-    {gender:'男',count:40},{gender:'女',count:30}
+    {gender:'男',count:30, percent: 0.6},
+    {gender:'女',count:20, percent: 0.4}
   ];
 
   function formatter(text,item){
       var point = item.point; // 每个弧度对应的点
-      var percent = point['..percent']; // ..proportion 字段由Stat.summary.proportion统计函数生成
-      percent = (percent * 100).toFixed(2) + '%';
+      percent = (point.percent * 100).toFixed(2) + '%';
       return text + ':' + percent;
   }
-  var Stat = G2.Stat;
-
   var chart = new G2.Chart({
-    id: 'c1',
+    container: 'c1',
     forceFit: true,
     height : 350
   });
@@ -93,12 +90,12 @@ gender（性别）|count（人数）
   chart.tooltip({
     title: null // 不显示title
   });
-  chart.intervalStack().position(Stat.summary.percent('count')).color('gender').label('gender',{renderer: formatter});
+  chart.intervalStack().position('percent').color('gender').label('gender',{renderer: formatter});
 
   chart.render();
-</div>
+```
 
-例子2：**多个但不超过 9 个分类的占比情况。**下图是一个游戏公司的销售情况：
+例子2：**多个但不超过 9 个分类的占比情况**。下图是一个游戏公司的销售情况：
 
 |genre（游戏类型） |sold（销售量）|
 |------|----|
@@ -110,7 +107,7 @@ gender（性别）|count（人数）
 
 <div id="c2"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {genre:'Sports',sold:27500},
     {genre:'Strategy',sold:11500},
@@ -125,22 +122,28 @@ gender（性别）|count（人数）
       percent = (percent * 100).toFixed(2) + '%';
       return text + ': ' + percent;
   }
-  var Stat = G2.Stat;
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'sold',
+    dimension: 'genre',
+    as: 'percent'
+  });
 
   var chart = new G2.Chart({
-    id: 'c2',
+    container: 'c2',
     forceFit: true,
     height : 350
   });
 
-  chart.source(data);
+  chart.source(dv);
   chart.legend('bottom');
   chart.coord('theta',{radius: 0.8});
 
-  chart.intervalStack().position(Stat.summary.percent('sold')).color('genre').label('genre',{renderer: formatter});
+  chart.intervalStack().position('percent').color('genre').label('genre',{renderer: formatter});
   
   chart.render();
-</div>
+```
 
 ### 不适合的场景
 
@@ -148,8 +151,7 @@ gender（性别）|count（人数）
 
 <div id="c3"></div>
 
-<div class="code hide">
-
+```js-
   var data = [
     {province:'北京市',population:19612368},
     {province:'天津市',population:12938693},
@@ -171,31 +173,32 @@ gender（性别）|count（人数）
     {"province":"陕西省","population":37327379},{"province":"甘肃省","population":25575263},
     {"province":"青海省","population":5626723}
   ];
-
-  var Stat = G2.Stat;
-
-  var chart = new G2.Chart({
-    id : 'c3',
-    forceFit: true,
-    height : 350,
-    plotCfg: {
-      margin: 50
-    }
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'population',
+    dimension: 'province',
+    as: 'percent'
   });
 
-  chart.source(data);
+  var chart = new G2.Chart({
+    container: 'c3',
+    forceFit: true,
+    height : 350,
+  });
+
+  chart.source(dv);
   chart.coord('theta');
- // chart.legendVisible('province',false);
-  chart.intervalStack().position(Stat.summary.percent('population')).color('province').label('province');
+  chart.intervalStack().position('percent').color('province').label('province');
 
   chart.render();
-</div>
+```
 
 例子2: ** 分类占比差别不明显的场景 **下图中游戏公司的不同种类的游戏的销售量相近，所以不太适合使用饼图，此时可以使用[柱状图](bar.html)来呈现。
 
 <div id="c4"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {genre:'Sports',sold:15000},
     {genre:'Strategy',sold:14900},
@@ -203,6 +206,13 @@ gender（性别）|count（人数）
     {genre:'Shooter',sold:13000},
     {genre:'Other',sold:13900}
   ];
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'sold',
+    dimension: 'genre',
+    as: 'percent'
+  });
 
   function formatter(text,item){
       var point = item.point; // 每个弧度对应的点
@@ -210,21 +220,19 @@ gender（性别）|count（人数）
       percent = (percent * 100).toFixed(2) + '%';
       return percent;
   }
-  var Stat = G2.Stat;
-
   var chart = new G2.Chart({
-    id: 'c4',
+    container: 'c4',
     forceFit: true,
     height : 350
   });
 
-  chart.source(data);
+  chart.source(dv);
   chart.coord('theta',{radius: 0.8});
   chart.legend('bottom');
 
-  chart.intervalStack().position(Stat.summary.percent('sold')).color('genre');
+  chart.intervalStack().position('percent').color('genre');
   chart.render();
-</div>
+```
 
 
 ## 饼图与其他图表的对比

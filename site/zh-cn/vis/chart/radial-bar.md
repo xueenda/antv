@@ -51,8 +51,7 @@ variations:
 
 <div id="c1"></div>
 
-<div class="code hide">
-
+```js-
     var data = [
       {question: '台海关系',percent: 0.21, odd: 0},
       {question: '中国持续增长的军事力量',percent: 0.47, odd: 1},
@@ -64,35 +63,30 @@ variations:
       {question: '中国持有美国巨额国债',percent: 0.67, odd: 1}
     ];
  
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-    var frame = new Frame(data); // 加工数据
- 
     var chart = new G2.Chart({
       id: 'c1',
       forceFit: true,
       height: 500
     });
-    chart.source(frame);
-    chart.col('odd',{
+    chart.source(data);
+    chart.scale('odd',{
       type: 'cat',
       values: ['奇数','偶数']
     });
     chart.coord('polar',{inner: 0.1}).transpose();
-    chart.col('percent',{min: 0,max: 1});
+    chart.scale('percent',{min: 0,max: 1});
     chart.interval().position('question*percent')
           .color('odd',['rgb(211,0,57)','rgb(224,74,116)'])
           .label('percent',{offset: -1, label: {fontWeight: 'bold'}});
  
-    frame.each(function(obj){
+    data.forEach(function(obj){
       chart.guide().text([obj.question,0],obj.question + ' ',{
         'text-anchor' : 'end'
       });
     });
 
     chart.render();
-
-</div>
+```
 
 例子2: 下图反应了各国人民认为气候变化是严重问题的比例。
 
@@ -108,7 +102,7 @@ variations:
 
 <div style="clear: both;"></div>
 
-<div class="code hide">
+```js-
     var data = [
       {country:'巴西', percent:0.86},
       {country:'印度', percent:0.76,},
@@ -131,16 +125,13 @@ variations:
     data.sort(function(o1,o2){
       return o1.percent - o2.percent;
     });
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-    var frame = new Frame(data); // 加工数据
-    frame.addCol('condition', function(obj){
+    data.forEach(function(obj) {
       if (obj.country === '中国'){
-        return 1;
+        obj.condition = 1;
       } else if(obj.country === '平均'){
-        return 2;
+        obj.condition = 2;
       } else {
-        return 0;
+        obj.condition = 0;
       }
     });
 
@@ -148,16 +139,15 @@ variations:
       id: 'c1.1',
       forceFit: true,
       height: 500,
-      plotCfg: {margin: [0,0,40,0]}
     });
-    chart.source(frame);
+    chart.source(data);
 
     chart.coord('polar',{
       inner: 0.1,
       startAngle: -1 * Math.PI,
       endAngle: -0.25 * Math.PI
     }).transpose();
-    chart.col('condition',{
+    chart.scale('condition',{
       type: 'cat',
       values: ['一般','特殊','平均']
     });
@@ -166,7 +156,7 @@ variations:
       .color('condition',['#2370AE','#A34265','#505051'])
       .label('percent').size(20);
 
-    frame.each(function(obj){
+    data.forEach(function(obj){
       chart.guide().text([obj.country,0],obj.country + ' ',{
         'text-anchor' : 'start',
         'rotate': 90
@@ -174,22 +164,21 @@ variations:
     });
 
     chart.render();
-</div>
+```
 
 ### 玉玦图的误用场景
 
 简介中提到玉玦图具有半径反馈效应。视觉上半径越大的玦环会看起来更大，半径小的则小。造成玉玦图的误用（见左图）。所以，我们认为玉玦图使用时必须进行**排序**（见右图）。
 
 
-<div id="c2" style="position: relative;float:left;">
+<div id="c2">
   <div class="wrong tip">错误</div>
 </div>
-<div id="c3" style="position: relative;float:left;">
+<div id="c3">
   <div class="right tip">正确</div>
 </div>
-<div style="clear: both;"></div>
 
-<div class="code hide">
+```js-
     var data = [
       {country:'巴西', percent:0.86},
       {country:'印度', percent:0.76,},
@@ -209,23 +198,20 @@ variations:
       {country:'中国', percent:0.18,},
       {country:'平均', percent:0.54,}
     ];
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-    var frame = new Frame(data); // 加工数据
-    frame.addCol('condition', function(obj){
+    data.forEach(function(obj) {
       if (obj.country === '中国'){
-        return 1;
+        obj.condition = 1;
       } else if(obj.country === '平均'){
-        return 2;
+        obj.condition = 2;
       } else {
-        return 0;
+        obj.condition = 0;
       }
     });
+
     var chart = new G2.Chart({
-      id: 'c2',
-      width:400,
+      container: 'c2',
+      forceFit: true,
       height: 420,
-      plotCfg: {margin: [0]}
     });
 
     chart.coord('polar',{
@@ -234,19 +220,19 @@ variations:
       endAngle: -0.25 * Math.PI
     }).transpose();
 
-    chart.col('condition',{
+    chart.scale('condition',{
       type: 'cat',
       values: ['一般','特殊','平均']
     });
 
-    chart.source(frame);
+    chart.source(data);
 
     chart.intervalStack()
       .position("country*percent")
       .color('condition',['#2370AE','#A34265','#505051'])
       .label('percent').size(8);
 
-    frame.each(function(obj){
+    data.forEach(function(obj){
       chart.guide().text([obj.country,0],obj.country + ' ',{
         'text-anchor' : 'start',
         'rotate': 90
@@ -254,9 +240,9 @@ variations:
     });
 
     chart.render();
-</div>
+```
 
-<div class="code hide">
+```js-
     var data = [
       {country:'巴西', percent:0.86},
       {country:'印度', percent:0.76,},
@@ -279,23 +265,20 @@ variations:
     data.sort(function(o1,o2){
       return o1.percent - o2.percent;
     });
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-    var frame = new Frame(data); // 加工数据
-    frame.addCol('condition', function(obj){
+    data.forEach(function(obj) {
       if (obj.country === '中国'){
-        return 1;
+        obj.condition = 1;
       } else if(obj.country === '平均'){
-        return 2;
+        obj.condition = 2;
       } else {
-        return 0;
+        obj.condition = 0;
       }
     });
+
     var chart = new G2.Chart({
-      id: 'c3',
-      width:400,
+      container: 'c3',
+      forceFit: true,
       height: 420,
-      plotCfg: {margin: 0}
     });
 
     chart.coord('polar',{
@@ -304,19 +287,19 @@ variations:
       endAngle: -0.25 * Math.PI
     }).transpose();
 
-    chart.col('condition',{
+    chart.scale('condition',{
       type: 'cat',
       values: ['一般','特殊','平均']
     });
 
-    chart.source(frame);
+    chart.source(data);
 
     chart.intervalStack()
       .position("country*percent")
       .color('condition',['#2370AE','#A34265','#505051'])
       .label('percent').size(8);
 
-    frame.each(function(obj){
+    data.forEach(function(obj){
       chart.guide().text([obj.country,0],obj.country + ' ',{
         'text-anchor' : 'start',
         'rotate': 90
@@ -324,5 +307,5 @@ variations:
     });
 
     chart.render();
-</div>
+```
 

@@ -100,7 +100,7 @@ tags:
 
 <div id="c3"></div>
 
-<div class="code unvisiable-hide">
+```js-
   var data = [
     {item: "创新", value: 3.9, level: 3},
     {item: "商业成熟度", value: 4.4, level: 3},
@@ -120,7 +120,7 @@ tags:
   ];
 
   var chart = new G2.Chart({
-    id: 'c3',
+    container: 'c3',
     forceFit: true,
     height: 600
   });
@@ -135,7 +135,7 @@ tags:
       type: 'polygon' //圆形栅格，可以改成
     }
   });
-  chart.col('value', {
+  chart.scale('value', {
     min: 0,
     max: 10,
     tickCount: 10
@@ -147,7 +147,7 @@ tags:
   chart.line().position('item*value').color('#F15A24').label('value');
   chart.point().position('item*value').color('level',['#FCDC21', '#FF931E', '#ED1C24']).shape('circle');
   chart.render();
-</div>
+```
 
 
 ### 多组多维对比－多雷达链
@@ -159,8 +159,8 @@ tags:
 
 <div id="c4"></div>
 
-<div class="code unvisiable-hide">
-    var data = [
+```js-
+  var data = [
     {item: "易用性", value: 80, obj: "华为Mate"},
     {item: "功能", value: 90, obj: "华为Mate"},
     {item: "拍照", value: 80, obj: "华为Mate"},
@@ -174,12 +174,9 @@ tags:
   ];
 
   var chart = new G2.Chart({
-    id: 'c4',
+    container: 'c4',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 140, 60, 0]
-    }
   });
 
   chart.source(data);
@@ -192,7 +189,7 @@ tags:
       type: 'polygon' //圆形栅格，可以改成
     }
   });
-  chart.col('value', {
+  chart.scale('value', {
     min: 0,
     max: 100,
     tickCount: 5
@@ -206,9 +203,9 @@ tags:
   chart.line().position('item*value').color('obj');
   chart.point().position('item*value').color('obj');
   chart.render();
-</div>
+```
 
-<div class="hide">
+```js
 // 画构成的代码
   var data = [
     {item: "类别一", value: 8, obj: "分组一"},
@@ -219,7 +216,7 @@ tags:
   ];
 
   var chart = new G2.Chart({
-    id: 'c4',
+    container: 'c4',
     forceFit: true,
     height: 350,
     plotCfg: {
@@ -237,7 +234,7 @@ tags:
       type: 'polygon' //圆形栅格，可以改成
     }
   });
-  chart.col('value', {
+  chart.scale('value', {
     min: 0,
     max: 10,
     tickCount: 5
@@ -252,4 +249,4 @@ tags:
   chart.area().position('item*value').color('obj').opacity(0.5);
   chart.point().position('item*value').color('obj');
   chart.render();
-</div>
+```
