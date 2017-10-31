@@ -22,7 +22,7 @@ variations:
 
 卡吉图独立于时间。
 
-** 注意：卡吉图绘制的折线是经过卡吉图算法计算之后的，与原数据曲线有区别 **
+**注意：卡吉图绘制的折线是经过卡吉图算法计算之后的，与原数据曲线有区别**
 
 英文名：Kagi Graph
 
@@ -62,9 +62,149 @@ variations:
 
 例子1：**展示价格或股票变化走势。** 例如在股票市场上，将股票(或指数)的逐日收市价使用卡吉图来表示，用来展示股市大致上的趋势。下图展示了 ACME 这只股票在 2015 年 9 月份的每日的价格走势。[数据来源：AnyChart](http://www.anychart.com/)
 
+```js-
+    /**
+     * 获取卡吉图数据点
+     * @param  {Array} points 原始数据点
+     * @param  {String} x x维度字段名
+     * @param  {String} y y维度字段名
+     * @return {Array} data 卡吉图数据点
+     **/
+    function getKagiData(points, x, y) {
+      // 初始最小值
+      var min = points[0][y];
+      // 初始最大值
+      var max = points[0][y];
+      // 初始绘制起点
+      var start = points[0];
+      // 阳线和阴线判断标志
+      var isPos = points[1][y] >= points[0][y] ? true : false;
+      // 初始绘制方向，1为向上，－1为向下
+      var direction = isPos ? 1 : -1;
+      // 阈值，默认为最大值的4%
+      var maxValue = getMax(points, y);
+      var threshold = maxValue * 0.04;
+      // 阴线数组
+      var negPath = [];
+      // 阳线数组
+      var posPath = [];
+      var tmp1 = {};
+      tmp1[x] = start[x];
+      tmp1[y] = start[y];
+      pushPoint(tmp1, isPos, posPath, negPath, x, y);
+      if (points.length > 1) {
+        for (var i = 0; i <= points.length - 1; i++) {
+          // 浮动超过阈值时执行算法
+          if (Math.abs(start[y] - points[i][y]) > threshold) {
+            if (direction > 0) {
+              if (points[i][y] >= start[y]) {
+                isPos = getVerticalPoints(start, points[i], max, direction, negPath, posPath, isPos, x, y);
+                start[y] = points[i][y];
+              } else {
+                var tmp2 = {};
+                tmp2[x] = points[i][x];
+                tmp2[y] = start[y];
+                pushPoint(tmp2, isPos, posPath, negPath, x, y);
+                start[x] = points[i][x];
+                direction = -1; // 转向
+                isPos = getVerticalPoints(start, points[i], min, direction, negPath, posPath, isPos, x, y);
+                max = start[y]; // 更新当前最高点
+                start = points[i]; // 更新当前绘制起点
+              }
+            } else {
+              if (points[i][y] < start[y]) {
+                isPos = getVerticalPoints(start, points[i], min, direction, negPath, posPath, isPos, x, y);
+                start[y] = points[i][y];
+              } else {
+                var tmp3 = {};
+                tmp3[x] = points[i][x];
+                tmp3[y] = start[y];
+                pushPoint(tmp3, isPos, posPath, negPath, x, y);
+                start[x] = points[i][x];
+                direction = 1;
+                isPos = getVerticalPoints(start, points[i], max, direction, negPath, posPath, isPos, x, y);
+                min = start[y]; // 更新当前最低点
+                start = points[i];
+              }
+            }
+          }
+        }
+      }
+      return posPath.concat(negPath);
+    }
+    window.getKagiData = getKagiData;
+    /**
+     * 获取卡吉图垂直线数据点
+     * @param  {Array} start 起点坐标
+     * @param  {Array} end 终点坐标
+     * @param  {Number} changePoint 转折点y坐标
+     * @param  {Number} direction 绘制方向
+     * @param  {Array} negPath 阴线数组
+     * @param  {Array} posPath 阳线数组
+     * @param  {Boolean} isPos 是否阳线标志位
+     * @param  {String} x x维度字段名
+     * @param  {String} y y维度字段名
+     * @return  {Boolean} isPos 是否阳线标志位
+     **/
+    function getVerticalPoints(start, end, changePoint, direction, negPath, posPath, isPos, x, y) {
+      // 阳线和阴线相互转换的判断条件
+      var condition = direction > 0 ? (end[y] > changePoint) && (start[y] < changePoint) && !isPos : (end[y] < changePoint) && (start[y] > changePoint) && isPos;
+      var tmp1 = {};
+      tmp1[x] = start[x];
+      tmp1[y] = changePoint;
+      var tmp2 = {};
+      tmp2[x] = start[x];
+      tmp2[y] = end[y];
+      if (condition) {
+        pushPoint(tmp1, isPos, posPath, negPath, x, y, true);
+        isPos = isPos ? false : true;
+        pushPoint(tmp2, isPos, posPath, negPath, x, y);
+      } else {
+        pushPoint(tmp2, isPos, posPath, negPath, x, y);
+      }
+      return isPos;
+    }
+    /**
+     * 将卡吉图数据分别放入阳线数组和阴线数组
+     * @param  {Object} point 当前数据点
+     * @param  {Boolean} isPos 是否阳线标志位
+     * @param  {Array} negPath 阴线数组
+     * @param  {Array} posPath 阳线数组
+     * @param  {String} x x维度字段名
+     * @param  {String} y y维度字段名
+     * @param  {Boolean} isChangePoint 是否转折点
+     **/
+    function pushPoint(point, isPos, posPath, negPath, x, y, isChangePoint = false) {
+      var tmpPoint = {};
+      tmpPoint[x] = point[x];
+      tmpPoint[y] = isChangePoint ? point[y] : null; // 转折点阳线和阴线都有数据，非转折点阳线或阴线的数据点为空
+      if (isPos) {
+        point.type = 'pos';
+        posPath.push(point);
+        tmpPoint.type = 'neg';
+        negPath.push(tmpPoint);
+      } else {
+        point.type = 'neg';
+        negPath.push(point);
+        tmpPoint.type = 'pos';
+        posPath.push(tmpPoint);
+      }
+    }
+
+    function getMax(points, y) {
+      var max = points[points.length - 1][y];
+      if (points.length > 0) {
+        for (var i = points.length - 1; i >= 0; i--) {
+          max = points[i][y] > max ? points[i][y] : max;
+        }
+      }
+      return max;
+    }
+```
+
 <div id="c1"></div>
 
-<div class="code hide">
+```js-
   var data= [
     {"day": '2015/9/1',  "share": 10},
     {"day": '2015/9/2',  "share": 12},
@@ -107,13 +247,13 @@ variations:
     }
   });
   chart.source(getKagiData(data,'day','share'));
-  chart.col('day', {
+  chart.scale('day', {
     type: 'cat',
     nice: false,
-    mask: 'yyyy/m/d',
+    mask: 'YYYY/M/D',
     alias: 'Year/Month/Day'
   });
-  chart.col('share', {
+  chart.scale('share', {
     alias: 'The Share Price',
     formatter: function(val) {
       return '$' + val;
@@ -124,17 +264,17 @@ variations:
   });
   chart.path().position('day*share').color('type').size('type',2,4);
   chart.render();
-</div>
+```
 
 ### 不适合的场景
 
-例子1:** 对时间敏感的数据 ** 卡吉图与时间无关，只表示数据上升下降的走势，无法体现数据再时间上的一些特性，例如周期等。特别时当数据对时间敏感时不推荐用卡吉图
+例子1:**对时间敏感的数据** 卡吉图与时间无关，只表示数据上升下降的走势，无法体现数据再时间上的一些特性，例如周期等。特别时当数据对时间敏感时不推荐用卡吉图
 下图使用卡吉图绘制了 G2 官网（ https://g2.alipay. ）2016 年 5 月 13 日至 2016 年 10 月 28 日的日浏览次数，从图中可以看出两次访问量较高的转折线，但无法确定其具体时间点，也无法看出数据的周期性，周期性数据推荐使用[螺旋图](spiral.html)
 
 <div id="c2"></div>
 
-<div class="code hide">
-$.getJSON('./data/g2.json',function(data){
+```js-
+$.getJSON('/assets/data/g2.json',function(data){
   data.pop();
   data.reverse();
   var chart = new G2.Chart({
@@ -148,7 +288,7 @@ $.getJSON('./data/g2.json',function(data){
   chart.source(getKagiData(data,'时段','浏览次数'),{
     '时段':{
       type:'cat',
-      mask: 'yyyy.mm.dd',
+      mask: 'YYYY.MM.DD',
       tickCount: 8
     }
   });
@@ -156,9 +296,9 @@ $.getJSON('./data/g2.json',function(data){
   chart.path().position('时段*浏览次数').color('type').size('type',2,4);
   chart.render();
 });
-</div>
+```
 
-** 多组数据 **
+**多组数据**
 
 卡吉图的横坐标具有特殊性，无法在同一个横轴上绘制多组卡吉图
 
@@ -173,139 +313,41 @@ $.getJSON('./data/g2.json',function(data){
  * 卡吉图的颜色和粗细代表了特定的含义
  * 折线图严格按照原数据的横坐标和纵坐标绘制，可以绘制多组数据
 
-<script type="text/javascript">
-/**
- * 获取卡吉图数据点
- * @param  {Array} points 原始数据点
- * @return {Array} data 卡吉图数据点
- **/
-function getKagiData(points,x,y){
-  // 初始最小值
-  var min = points[0][y];
-  // 初始最大值
-  var max = points[0][y];
-  // 初始绘制起点
-  var start = points[0];
-  // 阳线和阴线判断标志
-  var isPos = points[1][y] >= points[0][y] ? true : false;
-  // 初始绘制方向，1为向上，－1为向下
-  var direction = isPos ? 1 : -1;
-  // 阈值，默认为最大值的6%
-  var maxValue = getMax(points,y);
-  var threshold= maxValue * 0.06;
-  // 阴线数组
-  var negPath = [];
-  // 阳线数组
-  var posPath = [];
+<div id="c3"></div>
 
-  var tmp1 = {};
-  tmp1[x] = start[x];
-  tmp1[y] = start[y];
-  pushPoint(tmp1,isPos,posPath,negPath,x,y);
-
-  if(points.length>1){
-    for (var i = 0; i <= points.length - 1; i++) {
-      // 浮动超过阈值时执行算法
-      if(Math.abs(start[y]-points[i][y])>threshold){
-        if(direction>0){
-          if(points[i][y] >= start[y]){
-            isPos = getVerticalPoints(start,points[i],max,direction,negPath,posPath,isPos,x,y);
-            start[y] = points[i][y];
-          }else{
-            var tmp2 = {};
-            tmp2[x] = points[i][x];
-            tmp2[y] = start[y];
-            pushPoint(tmp2,isPos,posPath,negPath,x,y)
-            start[x] = points[i][x];
-            direction = -1; // 转向
-            isPos = getVerticalPoints(start,points[i],min,direction,negPath,posPath,isPos,x,y);
-            max = start[y] // 更新当前最高点
-            start = points[i]; // 更新当前绘制起点
-          }
-        }else{
-          if(points[i][y] < start[y]){
-            isPos = getVerticalPoints(start,points[i],min,direction,negPath,posPath,isPos,x,y);
-            start[y] = points[i][y];
-          }else{
-            var tmp3 = {};
-            tmp3[x] = points[i][x];
-            tmp3[y] = start[y];
-            pushPoint(tmp3,isPos,posPath,negPath,x,y)
-            start[x] = points[i][x];
-            direction = 1;
-            isPos = getVerticalPoints(start,points[i],max,direction,negPath,posPath,isPos,x,y);
-            min = start[y] // 更新当前最低点
-            start = points[i]
-          }
+```js-
+    $.getJSON('/assets/data/kagi.json', function(data) {
+      // 获取卡吉图数据点
+      const kagiData = getKagiData(data, 'date', 'value');
+      const chart = new G2.Chart({
+        container: 'c3',
+        forceFit: true,
+        height: 400
+      });
+      chart.source(kagiData, {
+        date: {
+          type: 'cat',
+          tickCount: 10,
+          range: [0, 1]
         }
-      }
-    }
-  }
-  return posPath.concat(negPath);
-}
-/**
- * 获取卡吉图垂直线数据点
- * @param  {Array} start 起点坐标
- * @param  {Array} end 终点坐标
- * @param  {Number} changePoint 转折点y坐标
- * @param  {Number} direction 绘制方向
- * @param  {Array} negPath 阴线数组
- * @param  {Array} posPath 阳线数组
- * @param  {Boolean} isPos 是否阳线标志位
- * @return  {Boolean} isPos 是否阳线标志位
- **/
-function getVerticalPoints(start,end,changePoint,direction,negPath,posPath,isPos,x,y){
-  // 阳线和阴线相互转换的判断条件
-  var condition = direction > 0 ? (end[y] > changePoint) && (start[y] < changePoint) && !isPos: (end[y] < changePoint) && (start[y] > changePoint) && isPos;
+      });
+      chart.tooltip({
+        crosshairs: {
+          type: 'line'
+        }
+      });
+      chart.path({
+          generatePoints: true
+        })
+        .position('date*value')
+        .color('type')
+        .size('type', val => {
+          if (val === 'pos') {
+            return 3;
+          }
+          return 2;
+        });
+      chart.render();
+    });
 
-  var tmp1 = {};
-  tmp1[x] = start[x];
-  tmp1[y] = changePoint;
-  var tmp2 = {};
-  tmp2[x] = start[x];
-  tmp2[y] = end[y];
-
-  if(condition){
-    pushPoint(tmp1,isPos,posPath,negPath,x,y,true);
-    isPos = isPos?false:true;
-    pushPoint(tmp2,isPos,posPath,negPath,x,y)
-  }else{
-    pushPoint(tmp2,isPos,posPath,negPath,x,y)
-  }
-  return isPos;
-}
-/**
- * 将卡吉图数据分别放入阳线数组和阴线数组
- * @param  {Object} point 当前数据点
- * @param  {Boolean} isPos 是否阳线标志位
- * @param  {Array} negPath 阴线数组
- * @param  {Array} posPath 阳线数组
- * @return  {Boolean} isChangePoint 是否转折点
- **/
-function pushPoint(point,isPos,posPath,negPath,x,y,isChangePoint=false){
-  var tmpPoint  = {};
-  tmpPoint[x] = point[x];
-  tmpPoint[y] = isChangePoint?point[y]:null; // 转折点阳线和阴线都有数据，非转折点阳线或阴线的数据点为空
-  if(isPos){
-    point.type = 'pos';
-    posPath.push(point);
-    tmpPoint.type = 'neg';
-    negPath.push(tmpPoint);
-  }else{
-    point.type = 'neg';
-    negPath.push(point);
-    tmpPoint.type = 'pos';
-    posPath.push(tmpPoint);
-  }
-}
-
-function getMax(points,y){
-  var max = points[points.length-1][y];
-  if(points.length > 0){
-    for(var i = points.length - 1;i >= 0;i--){
-      max = points[i][y]>max?points[i][y]:max;
-    }
-  }
-  return max;
-}
-</script>
+```

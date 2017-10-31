@@ -34,8 +34,6 @@ variations:
 
 ## 直方图的构成
 
-
-
 ### 频数分布直方图
 
 <img src="https://os.alipayobjects.com/rmsportal/rDGZziKoqcGqXaj.png" width="386px;" class="constitute-img">
@@ -113,72 +111,42 @@ variations:
 |5.8|2.7|5.1|1.9|virginica|
 |...|...|...|...|...|
 
-<div id="c1.1">
-  <div id="c1.1.1" style="display:inline-block"></div>
-  <div id="c1.1.2" style="display:inline-block"></div>
-  <div id="c1.1.3" style="display:inline-block"></div>
-  <div id="c1.1.4" style="display:inline-block"></div>
-</div>
+<div id="c1-0"></div>
+<div id="c1-1"></div>
+<div id="c1-2"></div>
+<div id="c1-3"></div>
 
 <div style="clear: both;"></div>
 
-<div class="code hide">
-
-$.getJSON('./data/Iris-flower.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data;
-  var chart = new G2.Chart({
-    id: 'c1.1.1',
-    width: 400,
-    height: 350
+```js-
+$.getJSON('/assets/data/iris.json?nowrap',function (data) {
+  var fields = [
+    'SepalLength','SepalWidth','PetalLength','PetalWidth'
+  ];
+  fields.forEach(function(field, i) {
+    var dv = new DataSet.View().source(data);
+    dv.transform({
+      type: 'bin.histogram',
+      field: field,
+      bins: 10,
+      groupBy: 'Species',
+      as: [ field, 'count' ]
+    });
+    const chart = new G2.Chart({
+      container: 'c1-' + i,
+      forceFit: true,
+      height: 300
+    });
+    chart.source(dv);
+    chart.intervalStack()
+      .position(field + '*count')
+      .color('Species');
+    chart.render();
   });
-  chart.source(data);
-  chart.intervalStack().position(Stat.summary.count(Stat.bin.rect('SepalLength'))).color('Species');
-  chart.render();
 });
+```
 
-$.getJSON('./data/Iris-flower.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data;
-  var chart = new G2.Chart({
-    id: 'c1.1.2',
-    width: 400,
-    height: 350
-  });
-  chart.source(data);
-  chart.intervalStack().position(Stat.summary.count(Stat.bin.rect('SepalWidth'))).color('Species');
-  chart.render();
-});
-
-$.getJSON('./data/Iris-flower.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data;
-  var chart = new G2.Chart({
-    id: 'c1.1.3',
-    width: 400,
-    height: 350
-  });
-  chart.source(data);
-  chart.intervalStack().position(Stat.summary.count(Stat.bin.rect('PetalLength'))).color('Species');
-  chart.render();
-});
-
-$.getJSON('./data/Iris-flower.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data;
-  var chart = new G2.Chart({
-    id: 'c1.1.4',
-    width: 400,
-    height: 350
-  });
-  chart.source(data);
-  chart.intervalStack().position(Stat.summary.count(Stat.bin.rect('PetalWidth'))).color('Species');
-  chart.render();
-});
-
-</div>
-
-例子2: ** 用于观察异常或孤立数据 **
+例子2: **用于观察异常或孤立数据**
 
 下图绘制了钻石的全深比数据的统计直方图，从图中可以看出在 66 附近有两个孤立值
 
@@ -189,24 +157,28 @@ $.getJSON('./data/Iris-flower.json?nowrap',function (data) {
 | 50368 | 59.2 |
 |...|...|
 
-<div id="c3"></div>
+<div id="c2"></div>
 
-<div class="code hide">
-
-$.getJSON('./data/diamond.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data.slice(1300,1400);
-  var chart = new G2.Chart({
-    id: 'c3',
-    forceFit: true,
-    height: 500
+```js-
+$.getJSON('/assets/data/diamond.json?nowrap',function (data) {
+  data = data.slice(1300,1400);
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'bin.histogram',
+    field: 'depth',
+    bins: 30,
+    as: [ 'depth', 'count' ]
   });
-  chart.source(data);
-  chart.interval().position(Stat.summary.count(Stat.bin.rect('depth')));
+  const chart = new G2.Chart({
+    container: 'c2',
+    forceFit: true,
+    height: 300
+  });
+  chart.source(dv);
+  chart.interval().position('depth*count');
   chart.render();
 });
-
-</div>
+```
 
 ### 不适合的场景
 
@@ -215,65 +187,55 @@ $.getJSON('./data/diamond.json?nowrap',function (data) {
 ## 直方图的扩展
 通过变换坐标系，我们能获得极坐标下的直方图、圆环上的直方图、以及翻转的直方图。
 
-<div id="c4">
-  <div id="c4.1" style="display:inline-block"></div>
-  <div id="c4.2" style="display:inline-block"></div>
-  <div id="c4.3" style="display:inline-block"></div>
-</div>
+<div id="c3-0"></div>
+<div id="c3-1"></div>
+<div id="c3-2"></div>
 
-<div class="code hide">
-
-$.getJSON('./data/diamond.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data.slice(1300,1400);
-  var chart = new G2.Chart({
-    id: 'c4.1',
-    width: 400,
-    height: 330
+```js-
+$.getJSON('/assets/data/diamond.json?nowrap',function (data) {
+  data = data.slice(1300,1400);
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'bin.histogram',
+    field: 'depth',
+    bins: 30,
+    as: [ 'depth', 'count' ]
   });
-  chart.source(data);
-  chart.coord('polar');
-  chart.interval().position(Stat.summary.count(Stat.bin.rect('depth'))).color("#E47668");
-  chart.render();
-});
-
-</div>
-
-<div class="code hide">
-
-$.getJSON('./data/diamond.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data.slice(1300,1400);
-  var chart = new G2.Chart({
-    id: 'c4.2',
-    width: 400,
-    height: 330
+  const chart0 = new G2.Chart({
+    container: 'c3-0',
+    forceFit: true,
+    height: 300
   });
-  chart.source(data);
-  chart.coord('plus');
-  chart.interval().position(Stat.summary.count(Stat.bin.rect('depth'))).color("#E47668");
-  chart.render();
-});
+  chart0.source(dv);
+  chart0.interval().position('depth*count');
+  chart0.coord('polar');
+  chart0.interval().position('depth*count').color("#E47668");
+  chart0.render();
 
-</div>
-
-<div class="code hide">
-
-$.getJSON('./data/diamond.json?nowrap',function (data) {
-  var Stat = G2.Stat;
-  var data = data.slice(1300,1400);
-  var chart = new G2.Chart({
-    id: 'c4.3',
-    width: 400,
-    height: 330
+  const chart1 = new G2.Chart({
+    container: 'c3-1',
+    forceFit: true,
+    height: 300
   });
-  chart.source(data);
-  chart.coord('polar').reflect();;
-  chart.interval().position(Stat.summary.count(Stat.bin.rect('depth'))).color("#E47668");
-  chart.render();
-});
+  chart1.source(dv);
+  chart1.interval().position('depth*count');
+  chart1.coord('polar', {
+    innerRadius: 0.5
+  });
+  chart1.interval().position('depth*count').color("#E47668");
+  chart1.render();
 
-</div>
+  const chart2 = new G2.Chart({
+    container: 'c3-2',
+    forceFit: true,
+    height: 300
+  });
+  chart2.source(dv);
+  chart2.coord('polar').reflect();
+  chart2.interval().position('depth*count').color("#E47668");
+  chart2.render();
+});
+```
 
 ## 直方图与其他图表的对比
 

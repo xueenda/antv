@@ -82,9 +82,8 @@ time（时间）| requestCount（请求次数）|avgRt（响应时间）
 
 <div id="c2"></div>
 
-<div class="code hide">
-
-$.getJSON('./data/system.json?nowrap',function (data) {
+```js-
+$.getJSON('/assets/data/system.json?nowrap',function (data) {
   var Stat = G2.Stat;
   var chart = new G2.Chart({
     id: 'c2',
@@ -93,14 +92,14 @@ $.getJSON('./data/system.json?nowrap',function (data) {
   });
   chart.source(data);
   chart.legend({position: 'top'});
-	chart.col('timeStamp', {alias: '时间',type: 'time', mask: 'HH:MM', nice: false, tickCount:8});
-  chart.col('requestCount', {
+  chart.scale('timeStamp', {alias: '时间',type: 'time', mask: 'HH:MM', nice: false, tickCount:8});
+  chart.scale('requestCount', {
     alias: '执行次数',
     formatter: function(val) {
       return val/1000 + 'k';
     }
   });
-  chart.col('avgRt', {
+  chart.scale('avgRt', {
     alias: '响应时间',
     formatter: function(val) {
       return val/1000 + 's';
@@ -109,12 +108,11 @@ $.getJSON('./data/system.json?nowrap',function (data) {
   chart.axis('avgRt', {
     titleOffset: 135
   });
-  chart.line().position(Stat.summary.mean('timeStamp*requestCount')).size(3);
-  chart.line().position(Stat.summary.mean('timeStamp*avgRt')).color('#E47668').size(3);
+  chart.line().position('timeStamp*requestCount').size(3);
+  chart.line().position('timeStamp*avgRt').color('#E47668').size(3);
   chart.render();
 });
-
-</div>
+```
 
 例子2：不同月份的温度
 
@@ -128,7 +126,7 @@ Mar|9.5
 
 <div id="c2.1"></div>
 
-<div class="code hide">
+```js-
 var data = [
     {month: 'Jan', temperature: 7.0},
     {month: 'Feb', temperature: 6.9},
@@ -159,7 +157,7 @@ var data = [
   });
   chart.line().position('month*temperature').size(2);
   chart.render();
-</div>
+```
 
 注意：
 * month：月份是有序的分类，映射到`位置`来区分不同的月份
@@ -173,13 +171,13 @@ var data = [
 我们以一个不同游戏类型的销量对比的场景为例，对于表示分类对比的数据时，我们更应该使用[柱状图](./bar.html)，而不是折线图。
 
 
-<div id="c3" style="float: left;position:relative;">
+<div id="c3">
   <div class="wrong tip">错误</div>
 </div>
 
-<div id="c4" style="float: left;position:relative;"><div class="right tip">正确</div></div>
+<div id="c4"><div class="right tip">正确</div></div>
 
-<div class="code hide">
+```js-
   var data = [
     {genre:'Sports',sold:27500},
     {genre:'Strategy',sold:11500},
@@ -190,67 +188,58 @@ var data = [
 
   var Stat = G2.Stat;
   var chart = new G2.Chart({
-    id: 'c3',
+    container: 'c3',
     forceFit: true,
     height : 250,
-    plotCfg: {
-      margin: [15, 80, 60, 80]
-    }
   });
   chart.source(data);
-  chart.col('sold', {
+  chart.scale('sold', {
     alias: '销售量',
     formatter: function(val) {
       return (val / 1000) + 'k';
     }
   });
-  chart.col('genre', {
+  chart.scale('genre', {
     alias: '游戏类型'
   });
   chart.line().position('genre*sold').size(3);
   chart.render();
 
   var chart1 = new G2.Chart({
-    id: 'c4',
+    container: 'c4',
     forceFit: true,
     height : 250,
-    plotCfg: {
-      margin: [15, 80, 60, 80]
-    }
   });
   chart1.source(data);
-  chart1.col('sold', {
+  chart1.scale('sold', {
     alias: '销售量',
     formatter: function(val) {
       return (val / 1000) + 'k';
     }
   });
-  chart1.col('genre', {
+  chart1.scale('genre', {
     alias: '游戏类型'
   });
   chart1.interval().position('genre*sold').color('genre');
   chart1.render();
-</div>
+```
 
 <div style="clear: both"></div>
 
 当折线的条数过多时不建议将多条线绘制在一张图上,下图展示了多台机器（实例）的资源占用情况
 
-<div id="c5" style="float: left;position:relative;">
+<div id="c5">
 </div>
 
-<div class="code hide">
-$.getJSON('./data/monitor.json?nowrap', function(data) {
+```js-
+$.getJSON('/assets/data/monitor.json?nowrap', function(data) {
 
   var Stat = G2.Stat;
   var chart = new G2.Chart({
-    id: 'c5',
+    container: 'c5',
     forceFit: true,
     height : 400,
     animate: false,
-    plotCfg: {
-      margin: [15, 110, 60, 80]
-    }
   });
   chart.source(data, {
     time: {
@@ -266,28 +255,22 @@ $.getJSON('./data/monitor.json?nowrap', function(data) {
   chart.line().position('time*value').color('type');
   chart.render();
 });
-</div>
+```
 
 注意：
 
 * 如果业务目的是查看某台机器（实例）异常（区别于其他机器的资源占用）时，这个图可以满足需求
 * 如果业务目的是查看具体的某台机器的资源占用时，这个图很难看清楚，不建议同时显示多条折线，可以控制仅显示一条线来解决这个问题
 
-<div id="c6" style="position:relative;">
-</div>
+<div id="c6"></div>
 
-<div class="code hide">
-$.getJSON('./data/monitor.json?nowrap', function(data) {
-
-  var Stat = G2.Stat;
+```js-
+$.getJSON('/assets/data/monitor.json?nowrap', function(data) {
   var chart = new G2.Chart({
     id: 'c6',
     forceFit: true,
     height : 400,
     animate: false,
-    plotCfg: {
-      margin: [15, 110, 60, 80]
-    }
   });
   chart.source(data, {
     time: {
@@ -316,7 +299,7 @@ $.getJSON('./data/monitor.json?nowrap', function(data) {
 
 <div id="c7"></div>
 
-<div class="code hide">
+```js-
 var data = [
     {month: 'Jan', temperature: 7.0},
     {month: 'Feb', temperature: 6.9},
@@ -347,7 +330,7 @@ var data = [
   });
   chart.line().position('month*temperature').size(2).shape('smooth');
   chart.render();
-</div>
+```
 
 ## 折线图与其他图表的对比
 

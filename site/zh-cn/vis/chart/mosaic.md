@@ -72,48 +72,68 @@ Height(身高 cm)|Weight(体重 kg)|BodyFatSiriBEqu(BMI 指数)
 ...|...|...
 
 <div id="c1"></div>
-<div class="code hide">
 
-$.getJSON('./data/BMI.json',function (data) {
-    var Stat = G2.Stat;
-    var Frame = G2.Frame; 
-
-    var frame = new Frame(data);
-    frame = Frame.filter(frame,function (obj) {
-      if (obj.Height < 160) {
-        return false;
+```js-
+$.getJSON('/assets/data/BMI.json',function (data) {
+  var dv = new DataSet.View().source(data);
+  dv
+    .transform({
+      type: 'filter',
+      callback: function(obj) {
+        if (obj.Height < 160) {
+          return false;
+        }
+        if (obj['Weight(kg)'] > 140) {
+          return false;
+        }
+        return true;
       }
-      if (obj['Weight(kg)'] > 140) {
-        return false;
+    })
+    .transform({
+      type: 'bin.rectangle',
+      fields: ['Weight(kg)', 'Height'],
+      bins: [20, 20],
+    })
+    .transform({
+      type: 'map',
+      callback: function(obj) {
+        var w = (obj.x[0] + obj.x[1]) / 2;
+        var h = (obj.y[0] + obj.y[3]) / 2;
+        var bmi = w / ((h / 100) * (h / 100));
+        obj.bmi = bmi;
+        if (bmi >= 40) {
+          obj.bodyFatSiriBEqu = '严重肥胖';
+        } else if (bmi >= 30) {
+          obj.bodyFatSiriBEqu = '轻度肥胖';
+        } else if (bmi >= 25) {
+          obj.bodyFatSiriBEqu = '肥胖';
+        } else if (bmi >= 19) {
+          obj.bodyFatSiriBEqu = '健康';
+        } else {
+          obj.bodyFatSiriBEqu = '偏瘦';
+        }
+        return obj;
       }
-      return true;
+    })
+    .transform({
+      type: 'sort-by',
+      field: 'bmi'
     });
-    var chart = new G2.Chart({
-      id: 'c1',
-      forceFit: true,
-      height: 400
-    });
-    frame.addCol('肥胖指数', function(obj){
-      var BodyFatSiriBEqu = obj.BodyFatSiriBEqu;
-      if ( BodyFatSiriBEqu >= 40 ) {
-        return "严重肥胖";
-      }else if ( BodyFatSiriBEqu >= 30 ) {
-        return "轻度肥胖";
-      }else if ( BodyFatSiriBEqu >= 25 ) {
-        return "肥胖";
-      }else if ( BodyFatSiriBEqu >= 19 ) {
-        return "健康";
-      }else if ( BodyFatSiriBEqu >= 0 ) {
-        return "偏瘦";
-      };
-    });
-    chart.col('BodyFatSiriBEqu',{alias: "肥胖指数"});
-    chart.source(frame);
-    chart.polygon().position(Stat.bin.rect('Weight(kg)*Height',0.05)).color('肥胖指数',['#61A5E8','#EECB5F','#7ECF51','#E4925D','#E16757']);
-    chart.render();
-}); 
 
-</div>
+    console.log(dv);
+
+  var chart = new G2.Chart({
+    container: 'c1',
+    forceFit: true,
+    height: 400
+  });
+
+  chart.scale('BodyFatSiriBEqu',{alias: "肥胖指数"});
+  chart.source(dv);
+  chart.polygon().position('x*y').color('bodyFatSiriBEqu',['#61A5E8','#7ECF51','#EECB5F','#E4925D','#E16757']);
+  chart.render();
+});
+```
 
 ## 马赛克图与其他图表的对比
 

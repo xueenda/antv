@@ -75,41 +75,37 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
 <div id="c1"></div>
 
-<div class="code hide">
-
+```js-
 var data = [
-  {year:2001,genre:'Sports',sold:27500},
-  {year:2001,genre:'Strategy',sold:11500},
-  {year:2001,genre:'Action',sold:6000},
-  {year:2001,genre:'Shooter',sold:3500},
-  {year:2001,genre:'Other',sold:1500},
-  {year:2002,genre:'Sports',sold:29500},
-  {year:2002,genre:'Strategy',sold:10500},
-  {year:2002,genre:'Action',sold:8000},
-  {year:2002,genre:'Shooter',sold:4500},
-  {year:2002,genre:'Other',sold:1800},
-  {year:2003,genre:'Sports',sold:30500},
-  {year:2003,genre:'Strategy',sold:12500},
-  {year:2003,genre:'Action',sold:4000},
-  {year:2003,genre:'Shooter',sold:6500},
-  {year:2003,genre:'Other',sold:2000},
+  {year:'2001',genre:'Sports',sold:27500},
+  {year:'2001',genre:'Strategy',sold:11500},
+  {year:'2001',genre:'Action',sold:6000},
+  {year:'2001',genre:'Shooter',sold:3500},
+  {year:'2001',genre:'Other',sold:1500},
+  {year:'2002',genre:'Sports',sold:29500},
+  {year:'2002',genre:'Strategy',sold:10500},
+  {year:'2002',genre:'Action',sold:8000},
+  {year:'2002',genre:'Shooter',sold:4500},
+  {year:'2002',genre:'Other',sold:1800},
+  {year:'2003',genre:'Sports',sold:30500},
+  {year:'2003',genre:'Strategy',sold:12500},
+  {year:'2003',genre:'Action',sold:4000},
+  {year:'2003',genre:'Shooter',sold:6500},
+  {year:'2003',genre:'Other',sold:2000},
 ];
 
-var Stat = G2.Stat;
-
 var chart = new G2.Chart({
-  id: 'c1',
+  container: 'c1',
   forceFit: true,
   height : 400
 });
 
 chart.source(data);
-chart.col('year',{type:'cat'});
-chart.col('sold',{alias: '游戏销售量'});
-chart.col('genre',{alias: '游戏类型'});
+chart.scale('sold',{alias: '游戏销售量'});
+chart.scale('genre',{alias: '游戏类型'});
 chart.intervalDodge().position('genre*sold').color('year')
 chart.render();
-</div>
+```
 
 说明：
   * genre，使用横轴的`位置`来区分不同的游戏类型
@@ -125,27 +121,27 @@ chart.render();
 
 <div id="c3"></div>
 
-<div class="code hide">
-$.getJSON('./data/populationsByage.json?nowrap', function(data) {
+```js-
+$.getJSON('/assets/data/populationsByage.json?nowrap', function(data) {
   var newData = data.slice(0,20);
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
-  var frame = new Frame(newData);
-  frame = Frame.combinColumns(frame,["小于5岁","5至13岁","14至17岁","18至24岁","25至44岁","45至64岁","65岁及以上"],'人口数量','年龄段','State');
+  var dv = new DataSet.View().source(newData);
+  dv.transform({
+    type: 'fold',
+    fields: ["小于5岁","5至13岁","14至17岁","18至24岁","25至44岁","45至64岁","65岁及以上"],
+    key: '年龄段',
+    value: '人口数量',
+  });
   var chart = new G2.Chart({
     id: 'c3',
     forceFit: true,
     height : 400,
-    plotCfg: {
-      margin: [20,90,60,80]
-    }
   });
 
-  chart.source(frame);
+  chart.source(dv);
   chart.intervalDodge().position('State*人口数量').color('年龄段');
   chart.render();
 });
-</div>
+```
 
 上图由于分组和分类过多导致柱子过多过密，可读性不佳。推荐使用层叠柱状图，当数据更多时，可将纵向柱状图改为横向柱状图，详见[层叠柱状图的的扩展](stacked-bar.html)
 
