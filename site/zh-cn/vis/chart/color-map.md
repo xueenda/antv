@@ -61,14 +61,12 @@ variations:
 
 <div id='c1'></div>
 
-<div class="code hide">
+```js-
     var sites =
     ["湘湖", "滨康路", "西兴", "滨和路", "江陵路", "近江", "婺江路", "城站", "定安路", "龙翔桥", "凤起路", "武林广场", "西湖文化广场", "打铁关", "火车东站", "闸弄口", "彭埠", "七堡", "九和路", "九堡", "客运中心", "下沙西", "金沙湖", "高沙路", "文泽路"];
-
     var data = [];
-
     for(var i = 0; i < sites.length; i ++){
-      for(j = sites.length - 1; j >=i; j--){
+      for(var j = sites.length - 1; j >=i; j--){
         var price = 0;
         var step = Math.abs(j - i);
         if (step <= 2) {
@@ -91,48 +89,48 @@ variations:
       }
     }
 
-
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-
     var chart = new G2.Chart({
-      id: 'c1',
+      container: 'c1',
       forceFit: true,
       height: 500,
-      plotCfg: {
-        margin: [10,50,70,100]
-      }
+      padding: [10, 50, 0, 100]
     });
+    chart.legend(false);
 
     var defs = {
-      'from': {
+      from: {
         values: sites
       },
-      'to': {
+      to: {
         values: sites.slice(0).reverse()
       }
     };
-    //chart.coord().transpose();
     chart.axis('to',{
       title: null,
       grid: null,
       tickLine: null
     });
     chart.axis('from',false);
-    chart.source(data,defs);
-    chart.polygon().position('from*to')
-          .shape('stroke')
-          .color('price')
-          .label('price');//.label('count',{offset: -1});
+    chart.source(data, defs);
+    chart.polygon()
+      .position('from*to')
+      .shape('stroke')
+      .color('price')
+      .label('price', {
+        offset: 0
+      });
 
     // 在上面添加文本
     for (var i = 0; i < sites.length - 2; i ++) {
       var site = sites[i];
       var nextSite = sites[i + 1];
-      chart.guide().text([nextSite,site],nextSite);
+      chart.guide().text({
+        position: [nextSite,site],
+        content: site,
+      });
     }
     chart.render();
-</div>
+```
 
 说明：
  * 站名映射到了`x`、`y`轴，以确定`位置`
@@ -143,99 +141,99 @@ variations:
 
 <div id='c2'></div>
 
-<div class="code hide">
-$.getJSON('./data/tape.json',function(data){
+```js-
+$.getJSON('/assets/data/tape.json',function(data){
   var Stat = G2.Stat;
-        var Frame = G2.Frame;
-        var chart = new G2.Chart({
-          id: 'c2',
-          forceFit: true,
-          height: 500,
-          plotCfg: {
-            margin: [20, 120]
-          }
-        });
-        // 获取当前月的第几周,从 0 开始
-        function getMonthWeek(date) {
-          var year = date.getFullYear();
-          var month = date.getMonth();
-          var monthFirst = new Date(year, month, 0);
-          var intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
-          var index = Math.round((intervalDays + monthFirst.getDay()) / 7);
-          return index;
+  var Frame = G2.Frame;
+  var chart = new G2.Chart({
+    container: 'c2',
+    forceFit: true,
+    height: 500,
+    plotCfg: {
+      margin: [20, 120]
+    }
+  });
+  // 获取当前月的第几周,从 0 开始
+  function getMonthWeek(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var monthFirst = new Date(year, month, 0);
+    var intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
+    var index = Math.round((intervalDays + monthFirst.getDay()) / 7);
+    return index;
+  }
+  // 加工数据
+  // 增加涨幅、跌幅
+  // 添加所属月、周几、每个月的第几周
+  data.forEach(function(obj) {
+    var date = new Date(obj['日期']);
+    var month = date.getMonth();
+    obj.month = month;
+    obj.day = date.getDay();
+    obj.week = getMonthWeek(date).toString();
+  });
+  // 对数据进行排序
+  var Frame = G2.Frame;
+  var frame = new Frame(data);
+  frame = Frame.sort(frame, 'day');
+  var defs = {
+    month: {
+      type: 'cat',
+      values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", 'December']
+    },
+    day: {
+      type: 'cat'
+    },
+    week: {
+      type: 'cat',
+      values: ['5', '4', '3', '2', '1', '0']
+    },
+    '涨跌幅': {
+      type: 'linear',
+      min: -10,
+      max: 10
+    },
+    time: {
+      type: 'time'
+    }
+  };
+  chart.axis(false);
+  chart.col('日期', {
+    type: 'time'
+  });
+  chart.tooltip({
+    map: {
+      title: '日期'
+    }
+  });
+  chart.legend('涨跌幅', {
+    position: 'left'
+  });
+  chart.source(frame, defs);
+  chart.facet(['month'], {
+    type: 'list',
+    cols: 3,
+    margin: 30,
+    facetTitle: {
+      titleOffset: 3,
+      colTitle: {
+        title: {
+          fontSize: 14,
+          textAlign: 'center',
+          fill: '#000'
         }
-        // 加工数据
-        // 增加涨幅、跌幅
-        // 添加所属月、周几、每个月的第几周
-        data.forEach(function(obj) {
-          var date = new Date(obj['日期']);
-          var month = date.getMonth();
-          obj.month = month;
-          obj.day = date.getDay();
-          obj.week = getMonthWeek(date).toString();
-        });
-        // 对数据进行排序
-        var Frame = G2.Frame;
-        var frame = new Frame(data);
-        frame = Frame.sort(frame, 'day');
-        var defs = {
-          month: {
-            type: 'cat',
-            values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", 'December']
-          },
-          day: {
-            type: 'cat'
-          },
-          week: {
-            type: 'cat',
-            values: ['5', '4', '3', '2', '1', '0']
-          },
-          '涨跌幅': {
-            type: 'linear',
-            min: -10,
-            max: 10
-          },
-          time: {
-            type: 'time'
-          }
-        };
-        chart.axis(false);
-        chart.col('日期', {
-          type: 'time'
-        });
-        chart.tooltip({
-          map: {
-            title: '日期'
-          }
-        });
-        chart.legend('涨跌幅', {
-          position: 'left'
-        });
-        chart.source(frame, defs);
-        chart.facet(['month'], {
-          type: 'list',
-          cols: 3,
-          margin: 30,
-          facetTitle: {
-            titleOffset: 3,
-            colTitle: {
-              title: {
-                fontSize: 14,
-                textAlign: 'center',
-                fill: '#000'
-              }
-            }
-          }
-        });
-        chart.polygon().position('day*week*日期')
-          .color('涨跌幅', '#006837-#ffffbf-#d73027')
-          .style({
-          lineWidth: 1,
-          stroke: '#999'
-        });
-        chart.render();
+      }
+    }
+  });
+  chart.polygon().position('day*week*日期')
+    .color('涨跌幅', '#006837-#ffffbf-#d73027')
+    .style({
+    lineWidth: 1,
+    stroke: '#999'
+  });
+  chart.render();
 });
-</div>
+```
 
 说明：
  * 将某月`星期几`映射到`x`轴，`第几个星期`映射到`y`轴
