@@ -3,8 +3,6 @@ index: 1
 title: 气泡图
 resource:
   jsFiles:
-plotDescription: 气泡图
-plotUsage: blablablalalalala
 -->
 
 <script>
@@ -27,19 +25,32 @@ plotUsage: blablablalalalala
     ];
     var chart = new F2.Chart({
         id: 'mountNode',
-        width: 500,
-        height: 450,
-        padding: [20, 80, 90, 60]
+        padding: [20, 20, 50, 60]
     });
-    chart.source(data);
+    chart.source(data, {
+        y: {
+            min: 0
+        },
+        x: {
+            max: 100
+        }
+    });
 
     chart.point().position('x*y')
-        .size('z', 40, 10)
+        .size('z', [10, 40])
         .color('#3182bd')
-        .opacity(0.5)
-        .shape('circle');
+        .shape('circle')
+        .style({
+            opacity: 0.7
+        });
 
-    chart.guide().tag([65, 'min'], [65, 'max'], 'Safe fat intake 65g/day');
-    chart.guide().tag(['min', 50], ['max', 50], 'Safe sugar intake 50g/day');
+    // F2 没有提供 riddle 所以需要用户使用guide 来生成文本
+    data.forEach(function (obj) {
+        chart.guide().text([obj.x, obj.y], obj.name, {
+            textAlign: 'center',
+            fontSize: 14,
+            textBaseline: 'middle'
+        });
+    });
     chart.render();
 </script>
