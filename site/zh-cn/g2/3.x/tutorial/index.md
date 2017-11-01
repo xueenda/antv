@@ -135,7 +135,7 @@ chart.render();
     <meta charset="utf-8">
     <title>柱状图</title>
     <!-- 引入 G2 文件 -->
-    <script src="http://unpkg.alipay.com/@antv/g2@3.0.0-rc5.4/build/g2.js"></script>
+    <script src="http://unpkg.alipay.com/@antv/g2@3.0.0-rc5.5/build/g2.js"></script>
   </head>
   <body>
     <!-- 创建图表容器 -->
