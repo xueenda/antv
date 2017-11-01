@@ -61,7 +61,7 @@ variations:
 
 ### 适合场景
 
-例子1：**百分比层叠面积图。**下图显示的是近几个月安卓手机各个版本在市场的占比情况。
+例子1：**百分比层叠面积图**。下图显示的是近几个月安卓手机各个版本在市场的占比情况。
 
 date（日期）| value （占比）| name (版本号)
 ------|-------|------
@@ -73,38 +73,43 @@ date（日期）| value （占比）| name (版本号)
 
 <div id="c1"></div>
 
-<div class="code hide">
-
-$.getJSON('./data/android.json',function (data) {
-    var Stat = G2.Stat;
+```js-
+$.getJSON('/assets/data/android.json',function (data) {
+    var dv = new DataSet.View().source(data);
+    dv.transform({
+      type: 'percent',
+      field: 'value',
+      dimension: 'name',
+      groupBy: 'date',
+      as: 'percent'
+    });
     var chart = new G2.Chart({
-      id: 'c1',
+      container: 'c1',
       forceFit: true,
       height: 600
     });
-    chart.col('name', {
+    chart.scale('name', {
       alias: '版本号'
     });
-    chart.col('date',{
+    chart.scale('date',{
       type: 'time',
       nice: false,
-      mask: 'yyyy/m',
+      mask: 'YYYY/M',
       alias: '月份'
     });
 
-    chart.source(data);
-    chart.col('..percent',{
+    chart.source(dv);
+    chart.scale('percent',{
       alias: '市场占比',
       max:1,
       formatter: function(val) {
         return parseInt(val * 100) + '%';
       }
     });
-    chart.areaStack().position(Stat.summary.percent('date*value')).color('name');
+    chart.areaStack().position('date*percent').color('name');
     chart.render();
 });
-
-</div>
+```
 
 <div style="clear: both"></div>
 
@@ -125,7 +130,7 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
 <div id="c2"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {year:2001,genre:'Strategy',sold:11500},
     {year:2001,genre:'Sports',sold:27500},
@@ -155,24 +160,20 @@ year（年份）|genre（游戏类型） |sold（销售量）|
   var Stat = G2.Stat;
 
   var chart1 = new G2.Chart({
-    id: 'c2',
+    container: 'c2',
     forceFit: true,
     height : 400,
-    plotCfg: {
-      margin: [20,60,80,80]
-    }
   });
 
   chart1.source(data);
-  chart1.col('year',{alias: "年份", tickInterval: 1, nice: false});
-  chart1.col('sold',{alias: "销售量",formatter: function(val) {
+  chart1.scale('year',{alias: "年份", tickInterval: 1, nice: false});
+  chart1.scale('sold',{alias: "销售量",formatter: function(val) {
     return val/1000 + 'k';
   }});
-  chart1.col('genre',{alias: "游戏类型"});
+  chart1.scale('genre',{alias: "游戏类型"});
   chart1.areaStack().position('year*sold').color('genre');
   chart1.render();
-
-</div>
+```
 
 ### 不适合的场景
 
@@ -180,11 +181,11 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
 前面的示例中的游戏销售情况，比较的是4年的游戏销售情况，如果用于比较各个游戏类型的销售情况时，使用面积图不太合适，此时应该使用层叠柱状图。
 
-<div id="c4" style="float: left;width:400px;position:relative;"><div class="wrong tip">错误</div></div>
-<div id="c5" style="float: left;width:400px;position:relative;"><div class="right tip">正确</div></div>
+<div id="c4"><div class="wrong tip">错误</div></div>
+<div id="c5"><div class="right tip">正确</div></div>
 <div style="clear: both;"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {year:2001,genre:'Strategy',sold:11500},
     {year:2001,genre:'Sports',sold:27500},
@@ -215,38 +216,32 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
   var chart1 = new G2.Chart({
     id: 'c4',
-    width : 400,
-    height : 300,
-    plotCfg: {
-      margin: [20,60,80,80]
-    }
+    forceFit: true,
+    height: 300,
   });
 
   chart1.source(data);
-  chart1.col('year',{type:'cat', alias: "年份"});
-  chart1.col('sold',{alias: "销售量",formatter: function(val) {
+  chart1.scale('year',{type:'cat', alias: "年份"});
+  chart1.scale('sold',{alias: "销售量",formatter: function(val) {
     return val/1000 + 'k';
   }});
-  chart1.col('genre',{alias: "游戏类型"});
+  chart1.scale('genre',{alias: "游戏类型"});
   chart1.areaStack().position('genre*sold').color('year');
   chart1.render();
 
   var chart2 = new G2.Chart({
     id: 'c5',
-    width : 400,
+    forceFit: true,
     height : 300,
-    plotCfg: {
-      margin: [20,60,80,80]
-    }
   });
 
   chart2.source(data);
-  chart2.col('year',{type:'cat', alias: "年份"});
-  chart2.col('sold',{alias: "销售量"});
-  chart2.col('genre',{alias: "游戏类型"});
+  chart2.scale('year',{type:'cat', alias: "年份"});
+  chart2.scale('sold',{alias: "销售量"});
+  chart2.scale('genre',{alias: "游戏类型"});
   chart2.intervalStack().position('genre*sold').color('year');
   chart2.render();
-</div>
+```
 
 ## 与其他图表的对比
 
@@ -260,8 +255,4 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
 * 层叠柱状图和层叠面积图都可以呈现不同分类的累加值
 * 层叠柱状图和层叠面积图的差别在于，层叠面积图的x轴上只能表示连续数据（时间或者数值），层叠柱状图的x轴上只能表示分类数据
-
-
-
-
 

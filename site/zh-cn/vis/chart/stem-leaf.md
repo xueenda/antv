@@ -63,23 +63,20 @@ tags:
 
 <div id="c1"></div>
 
-<div class="code unvisiable-hide">
-
+```js-
       function statStemLeafData(data, num) {
         data.sort(function(a, b){
           return a.v-b.v;
         });
         Util.each(data, function(object){
-          str = object.v.toString();
-          stem = str.substr(0, str.length - num);
+          var str = object.v.toString();
+          var stem = str.substr(0, str.length - num);
           object.stem = stem ? stem : '0';
           object.leaf = str.substr(str.length - num, str.length);
         });
         return data;
       }
-      var Frame = G2.Frame;
       var Util = G2.Util;
-      var Stat = G2.Stat;
       var data = [
         {v: 2},
         {v: 8},
@@ -142,9 +139,10 @@ tags:
         titleOffset: 50,
         grid: null
       });
-      chart.pointStack()
-        .position('stem')
-        .size(8)
+      console.log(data);
+      chart.point()
+        .adjust('stack')
+        .position('stem*leaf')
         .label('leaf', {
           offset: 0
         })
@@ -154,33 +152,30 @@ tags:
           fill: null
         });
       chart.render();
-</div>
+```
 
 ### 不适合的场景
 
-例子1: ** 数据量太少 **
+例子1: **数据量太少**
 
 数据：2,8,12,13,17,22,24,29,31,41,49,53,63,71,77
 
 <div id="c2"></div>
 
-<div class="code unvisiable-hide">
-
+```js-
       function statStemLeafData(data, num) {
         data.sort(function(a, b){
           return a.v-b.v;
         });
         Util.each(data, function(object){
-          str = object.v.toString();
-          stem = str.substr(0, str.length - num);
+          var str = object.v.toString();
+          var stem = str.substr(0, str.length - num);
           object.stem = stem ? stem : '0';
           object.leaf = str.substr(str.length - num, str.length);
         });
         return data;
       }
-      var Frame = G2.Frame;
       var Util = G2.Util;
-      var Stat = G2.Stat;
       var data = [
         {v: 2},
         {v: 8},
@@ -210,9 +205,9 @@ tags:
         titleOffset: 50,
         grid: null
       });
-      chart.pointStack()
-        .position('stem')
-        .size(8)
+      chart.point()
+        .adjust('stack')
+        .position('stem*leaf')
         .label('leaf', {
           offset: 0
         })
@@ -222,21 +217,20 @@ tags:
           fill: null
         });
       chart.render();
-</div>
+```
 
-例子2: ** 数据量太大 **
+例子2: **数据量太大**
 
 <div id="c3"></div>
 
-<div class="code unvisiable-hide">
-
+```js-
       function statStemLeafData(data, num) {
         data.sort(function(a, b){
           return a.v-b.v;
         });
         Util.each(data, function(object){
-          str = object.v.toString();
-          stem = str.substr(0, str.length - num);
+          var str = object.v.toString();
+          var stem = str.substr(0, str.length - num);
           object.stem = stem ? stem : '0';
           object.leaf = str.substr(str.length - num, str.length);
         });
@@ -264,9 +258,9 @@ tags:
         titleOffset: 50,
         grid: null
       });
-      chart.pointStack()
-        .position('stem')
-        .size(8)
+      chart.point()
+        .adjust('stack')
+        .position('stem*leaf')
         .label('leaf', {
           offset: 0
         })
@@ -276,4 +270,4 @@ tags:
           fill: null
         });
       chart.render();
-</div>
+```

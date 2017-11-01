@@ -89,7 +89,7 @@ variations:
 
 ### 一般层叠柱状图适合的场景
 
-例子1：**对比不同分组的总量大小，同时对比同一分组内不同分类的大小。**如下图显示的是每种化妆品在各个城市的销售情况，通过层叠柱状图，我们可以很清晰对比同一种化妆品到底在哪个城市销售更好。
+例子1：**对比不同分组的总量大小，同时对比同一分组内不同分类的大小**。如下图显示的是每种化妆品在各个城市的销售情况，通过层叠柱状图，我们可以很清晰对比同一种化妆品到底在哪个城市销售更好。
 
 name（化妆品名称）|city|revenue(销售收入)
 ----|----|-------
@@ -101,46 +101,40 @@ Rouge|Texas|9054
 
 <div id="c3"></div>
 
-<div class="code hide">
+```js-
   var data = [
-  {"name": "Nailpolish", "Florida": 12814, "Texas": 3054, "Arizona": 4376, "Nevada": 4229},
-  {"name": "Eyebrowpencil", "Florida": 13012, "Texas": 5067, "Arizona": 3987, "Nevada": 3932},
-  {"name": "Rouge", "Florida": 11624, "Texas": 7004, "Arizona": 3574, "Nevada": 5221},
-  {"name": "Pomade", "Florida": 8814,  "Texas":9054, "Arizona": 4376, "Nevada": 9256},
-  {"name": "Eyeshadows", "Florida": 12998, "Texas": 12043, "Arizona": 4572, "Nevada": 3308},
-  {"name": "Eyeliner", "Florida": 12321, "Texas": 15067, "Arizona": 3417, "Nevada": 5432},
-  {"name": "Foundation", "Florida": 10342, "Texas": 10119, "Arizona": 5231, "Nevada": 13701},
-  {"name": "Lipgloss", "Florida": 22998, "Texas": 12043, "Arizona": 4572, "Nevada": 4008},
-  {"name": "Mascara", "Florida": 11261, "Texas": 10419, "Arizona": 6134, "Nevada": 18712},
-  {"name": "Powder", "Florida": 10261, "Texas": 14419, "Arizona": 5134, "Nevada": 25712}
+    {"name": "Nailpolish", "Florida": 12814, "Texas": 3054, "Arizona": 4376, "Nevada": 4229},
+    {"name": "Eyebrowpencil", "Florida": 13012, "Texas": 5067, "Arizona": 3987, "Nevada": 3932},
+    {"name": "Rouge", "Florida": 11624, "Texas": 7004, "Arizona": 3574, "Nevada": 5221},
+    {"name": "Pomade", "Florida": 8814,  "Texas":9054, "Arizona": 4376, "Nevada": 9256},
+    {"name": "Eyeshadows", "Florida": 12998, "Texas": 12043, "Arizona": 4572, "Nevada": 3308},
+    {"name": "Eyeliner", "Florida": 12321, "Texas": 15067, "Arizona": 3417, "Nevada": 5432},
+    {"name": "Foundation", "Florida": 10342, "Texas": 10119, "Arizona": 5231, "Nevada": 13701},
+    {"name": "Lipgloss", "Florida": 22998, "Texas": 12043, "Arizona": 4572, "Nevada": 4008},
+    {"name": "Mascara", "Florida": 11261, "Texas": 10419, "Arizona": 6134, "Nevada": 18712},
+    {"name": "Powder", "Florida": 10261, "Texas": 14419, "Arizona": 5134, "Nevada": 25712}
   ];
-
   data = data.reverse();
-  var Frame = G2.Frame;
-  var Stat = G2.Stat;
-  var frame = new Frame(data);
-  frame = Frame.combinColumns(frame,['Florida','Texas','Arizona','Nevada'],'Revenue','City','name');
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: ['Florida','Texas','Arizona','Nevada'],
+    key: 'City',
+    value: 'Revenue',
+  });
 
   var chart = new G2.Chart({
-      id: 'c3',
-      forceFit: true,
-      height: 400,
-      plotCfg:{
-        margin: [20,73,80,120]
-      }
-    });
-    chart.source(frame);
-    chart.axis('name', {title: null});
-    chart.axis('Revenue', {title: null});
-    chart.col('..percent',{
-      formatter: function(val) {
-        return parseInt(val*100) + '%';
-      }
-    });
-    chart.coord('rect')//.transpose();//Stat.summary.percent()
-    chart.intervalStack().position('name*Revenue').color('City');
-    chart.render();
-</div>
+    container: 'c3',
+    forceFit: true,
+    height: 400,
+  });
+  chart.source(dv);
+  chart.axis('name', {title: null});
+  chart.axis('Revenue', {title: null});
+  chart.coord('rect')//.transpose();//Stat.summary.percent()
+  chart.intervalStack().position('name*Revenue').color('City');
+  chart.render();
+```
 
 说明：
   * name （化妆品名称）使用 `位置`区分不同的化妆品
@@ -153,7 +147,7 @@ Rouge|Texas|9054
 
 ### 百分比层叠柱状图适合的场景
 
-例子1：** 观察分类占比情况 **
+例子1：**观察分类占比情况**
 
 下图表是一个游戏公司在不同年份的各类游戏的销量情况：
 
@@ -174,46 +168,51 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
 <div id="c2"></div>
 
-<div class="code hide">
+```js-
   var data = [
-    {year:2001,genre:'Sports',sold:27500},
-    {year:2001,genre:'Strategy',sold:11500},
-    {year:2001,genre:'Action',sold:6000},
-    {year:2001,genre:'Shooter',sold:3500},
-    {year:2001,genre:'Other',sold:1500},
-
-    {year:2002,genre:'Sports',sold:29500},
-    {year:2002,genre:'Strategy',sold:10500},
-    {year:2002,genre:'Action',sold:8000},
-    {year:2002,genre:'Shooter',sold:4500},
-    {year:2002,genre:'Other',sold:1800},
-
-    {year:2003,genre:'Sports',sold:30500},
-    {year:2003,genre:'Strategy',sold:12500},
-    {year:2003,genre:'Action',sold:4000},
-    {year:2003,genre:'Shooter',sold:6500},
-    {year:2003,genre:'Other',sold:2000},
+    {year:'2001',genre:'Sports',sold:27500},
+    {year:'2001',genre:'Strategy',sold:11500},
+    {year:'2001',genre:'Action',sold:6000},
+    {year:'2001',genre:'Shooter',sold:3500},
+    {year:'2001',genre:'Other',sold:1500},
+    {year:'2002',genre:'Sports',sold:29500},
+    {year:'2002',genre:'Strategy',sold:10500},
+    {year:'2002',genre:'Action',sold:8000},
+    {year:'2002',genre:'Shooter',sold:4500},
+    {year:'2002',genre:'Other',sold:1800},
+    {year:'2003',genre:'Sports',sold:30500},
+    {year:'2003',genre:'Strategy',sold:12500},
+    {year:'2003',genre:'Action',sold:4000},
+    {year:'2003',genre:'Shooter',sold:6500},
+    {year:'2003',genre:'Other',sold:2000},
   ];
 
-  var Stat = G2.Stat;
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'percent',
+    field: 'sold',
+    dimension: 'genre',
+    groupBy: 'year',
+    as: 'percent',
+  });
+
+  console.log(dv);
 
   var chart = new G2.Chart({
-    id: 'c2',
+    container: 'c2',
     forceFit: true,
     height: 400
   });
-
-  chart.source(data);
-  chart.col('year',{type:'cat'});
-  chart.col('..percent',{
+  chart.source(dv);
+  chart.scale('year',{type:'cat'});
+  chart.scale('percent',{
     formatter: function(val) {
       return parseInt(val*100) + '%';
     }
   });
-  chart.intervalStack().position(Stat.summary.percent('genre*sold')).color('year');
+  chart.intervalStack().position('year*percent').color('genre');
   chart.render();
-
-</div>
+```
 
 说明：
   * genre 使用横轴`位置`区分不同的游戏类型
@@ -238,23 +237,23 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 
 <div id="c1"></div>
 
-<div class="code hide">
-  $.getJSON('./data/populationsByage.json?nowrap', function(data) {
+```js-
+  $.getJSON('/assets/data/populationsByage.json?nowrap', function(data) {
     var newData = data.slice(0,30);
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-    var frame = new Frame(newData);
-    frame = Frame.combinColumns(frame,["小于5岁","5至13岁","14至17岁","18至24岁","25至44岁","45至64岁","65岁及以上"],'人口数量','年龄段','State');
+    var dv = new DataSet.View().source(newData);
+    dv.transform({
+      type: 'fold',
+      fields: ["小于5岁","5至13岁","14至17岁","18至24岁","25至44岁","45至64岁","65岁及以上"],
+      key: '年龄段',
+      value: '人口数量',
+    });
 
     var chart = new G2.Chart({
       id: 'c1',
       forceFit: true,
       height: 500,
-      plotCfg: {
-        margin: [10, 95, 60, 40]
-      }
     });
-    chart.source(frame);
+    chart.source(dv);
     chart.coord('rect').transpose();
     chart.axis('State', {
       title: null
@@ -265,7 +264,7 @@ year（年份）|genre（游戏类型） |sold（销售量）|
     chart.intervalStack().position('State*人口数量').color('年龄段', ['#98ABC5', '#8A89A6', '#7B6888', '#6B486B', '#A05D56', '#D0743C', '#FF8C00']).size(12);
     chart.render();
   });
-</div>
+```
 
 说明：
   * 州名称，用纵轴方向的`位置`区分各个州
@@ -291,6 +290,4 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 * 层叠柱状图和分组柱状图都可以对比同一个分组内部不同分类的数据大小，
 * 分组柱状图，可以对比不同分组内相同分类的数据大小，但无法对比不同分组的总体数据大小
 * 层叠柱状图，可以对比不同分组的总体数据大小，但不适合对比不同分组内相同分类的数据大小，因为不同分组内的相同分类处于不同的基准线上
-
-
 

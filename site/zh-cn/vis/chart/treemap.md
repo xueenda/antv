@@ -62,96 +62,96 @@ tags:
 例子1：下图是2015年手机品牌及其下属手机型号的销量信息。
 
 <div id="c1"></div>
-<div class="code hide">
-$.getJSON('./data/mobile.json',function (data) {
-        var Stat = G2.Stat;
-        var chart = new G2.Chart({
-          id: 'c1',
-          width: 1000,
-          height: 500,
-          animate: false // 阻止动画
-        });
-        chart.source(data);
-        chart.tooltip({
-          map: {
-            title: 'name',
-            value: 'value'
+
+```js-
+$.getJSON('/assets/data/mobile.json',function (data) {
+  var chart = new G2.Chart({
+    id: 'c1',
+    forceFit: true,
+    height: 500,
+    animate: false // 阻止动画
+  });
+  chart.source(data);
+  chart.tooltip({
+    map: {
+      title: 'name',
+      value: 'value'
+    }
+  });
+  chart.axis(false);
+  chart.legend(false);
+  chart.polygon().position(Stat.treemap('1*value'))
+    .color('name')
+    .label('name')
+    .style({
+    stroke: '#fff',
+    lineWidth: 1
+  });;
+  chart.render();
+  function findNode (name,nodes) {
+    var rst = null;
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      if (node.name === name) {
+        rst = node;
+      }
+      if (!rst && node.children) {
+        rst = findNode(name,node.children);
+      }
+      if (rst) {
+        break;
+      }
+    }
+    return rst;
+  }
+  var expanded = false;
+  chart.on('plotclick',function(ev){
+    var point = ev.data;
+    if (point) {
+      var name = point._origin.name;
+      var node = findNode(name,data);
+      var nodes;
+      if (!expanded) { // 未展开
+        if (node.children) {
+          nodes = node.children;
+        } else {
+          nodes = [node];
+        }
+        chart.clear();
+        chart.source(nodes);
+        chart.polygon().position(Stat.treemap('1*value')).color(point.color)
+          .label('name', {
+          offset: -2,
+          label:{
+            fontSize: 10
           }
-        });
-        chart.axis(false);
-        chart.legend(false);
-        chart.polygon().position(Stat.treemap('1*value'))
-          .color('name')
-          .label('name')
+        })
           .style({
           stroke: '#fff',
           lineWidth: 1
-        });;
-        chart.render();
-        function findNode (name,nodes) {
-          var rst = null;
-          for (var i = 0; i < nodes.length; i++) {
-            var node = nodes[i];
-            if (node.name === name) {
-              rst = node;
-            }
-            if (!rst && node.children) {
-              rst = findNode(name,node.children);
-            }
-            if (rst) {
-              break;
-            }
-          }
-          return rst;
-        }
-        var expanded = false;
-        chart.on('plotclick',function(ev){
-          var point = ev.data;
-          if (point) {
-            var name = point._origin.name;
-            var node = findNode(name,data);
-            var nodes;
-            if (!expanded) { // 未展开
-              if (node.children) {
-                nodes = node.children;
-              } else {
-                nodes = [node];
-              }
-              chart.clear();
-              chart.source(nodes);
-              chart.polygon().position(Stat.treemap('1*value')).color(point.color)
-                .label('name', {
-                offset: -2,
-                label:{
-                  fontSize: 10
-                }
-              })
-                .style({
-                stroke: '#fff',
-                lineWidth: 1
-              });
-              chart.render();
-              expanded = true;
-            } else { //已经展开
-              chart.clear();
-              chart.source(data);
-              chart.polygon().position(Stat.treemap('1*value')).color('name')
-                .label('name', {
-                label: {
-                  fontSize: 12
-                }
-              })
-                .style({
-                stroke: '#fff',
-                lineWidth: 1
-              });
-              chart.render();
-              expanded = false;
-            }
-          }
         });
-      });
-</div>
+        chart.render();
+        expanded = true;
+      } else { //已经展开
+        chart.clear();
+        chart.source(data);
+        chart.polygon().position(Stat.treemap('1*value')).color('name')
+          .label('name', {
+          label: {
+            fontSize: 12
+          }
+        })
+          .style({
+          stroke: '#fff',
+          lineWidth: 1
+        });
+        chart.render();
+        expanded = false;
+      }
+    }
+  });
+});
+```
 
 说明：
  * 同一级别的树通过算法，按各自权重大小（手机销量占比）将坐标系分割成若干个矩形块，设置颜色增强分类的区分度。
@@ -164,7 +164,8 @@ $.getJSON('./data/mobile.json',function (data) {
 例子2：某公司组织部门图。第一个图是用矩形树图绘制，没有权重，层次不清。第二个图用分叉树图绘制，部门组织层级清晰明了。
 
 <div id="c2"></div>
-<div class="code hide">
+
+```js-
 var data = 		
     [{
     "name": "总经理",
@@ -252,11 +253,12 @@ var data =
         lineWidth: 1
     });;
     chart.render();
-</div>
+```
 
 
 <div id="c3"></div>
-<div class="code hide">
+
+```js-
     var data = [{
     "name": "总经理",
     "children": [{
@@ -368,7 +370,7 @@ var data =
     })
     .tooltip('name');
     chart.render();
-</div>
+```
 
 ## 矩形树图与其他图表的对比
 
