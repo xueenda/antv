@@ -76,12 +76,11 @@ variations:
 
 <div id="c2"></div>
 
-<div class="code hide">
-$.getJSON('./data/scatter.json',function (data) {
-  var Stat = G2.Stat;
-  var frame = new G2.Frame(data);
-  var hAvg = G2.Frame.mean(frame,'height'); // 计算体重的均值
-  var wAvg = G2.Frame.mean(frame,'weight'); // 计算身高均值
+```js-
+$.getJSON('/assets/data/scatter.json',function (data) {
+  var dv = new DataSet.View().source(data);
+  var hAvg = dv.mean('height'); // 计算体重的均值
+  var wAvg = dv.mean('weight'); // 计算身高均值
   var lineCfg = { // 线的配置信息
     stroke: '#f96a52'
   };
@@ -93,28 +92,27 @@ $.getJSON('./data/scatter.json',function (data) {
   });
 
   chart1.source(data);
-  chart1.col('weight',{
+  chart1.scale('weight',{
     alias: '体重（kg）'
   });
-  chart1.col('height',{
+  chart1.scale('height',{
     alias: '身高（cm）'
   });
 
   chart1.point().position('height*weight').color('#00a3d7').opacity(0.5).shape('circle');
   chart1.render();
 });
-</div>
+```
 
 (2) 通过添加平均身高和平均体重的辅助线，将散点图的平面坐标分为四个象限，可以更好得看出数据的分布情况。
 
 <div id="c3"></div>
 
-<div class="code hide">
-$.getJSON('./data/scatter.json',function (data) {
-  var Stat = G2.Stat;
-  var frame = new G2.Frame(data);
-  var hAvg = G2.Frame.mean(frame,'height'); // 计算体重的均值
-  var wAvg = G2.Frame.mean(frame,'weight'); // 计算身高均值
+```js-
+$.getJSON('/assets/data/scatter.json',function (data) {
+  var dv = new DataSet.View().source(data);
+  var hAvg = dv.mean('height'); // 计算体重的均值
+  var wAvg = dv.mean('weight'); // 计算身高均值
   var lineCfg = { // 线的配置信息
     stroke: '#f96a52'
   };
@@ -126,30 +124,52 @@ $.getJSON('./data/scatter.json',function (data) {
   });
 
   chart2.source(data);
-  chart2.col('weight',{
+  chart2.scale('weight',{
     alias: '体重（kg）'
   });
-  chart2.col('height',{
+  chart2.scale('height',{
     alias: '身高（cm）'
   });
 
   chart2.point().position('height*weight').color('#fdb667').opacity(0.5).shape('circle');
-  chart2.guide().tag([hAvg, 40], [hAvg, 120], '身高平均值: ' + hAvg.toFixed(2), {line:lineCfg});
-  chart2.guide().tag([140, wAvg], [200, wAvg], '体重平均值' + wAvg.toFixed(2), {line:lineCfg});
+  chart2.guide().line({
+    start: [hAvg, 40],
+    end: [hAvg, 120],
+    lineStyle: lineCfg,
+    text: {
+      autoRotate: false,
+      position: 'end',
+      style: {
+        textAlign: 'left'
+      },
+      content: '身高平均值: ' + hAvg.toFixed(2)
+    }
+  });
+  chart2.guide().line({
+    start: [140, wAvg],
+    end: [200, wAvg],
+    lineStyle: lineCfg,
+    text: {
+      position: 'start',
+      style: {
+        textAlign: 'left'
+      },
+      content: '体重平均值: ' + wAvg.toFixed(2)
+    }
+  });   
   chart2.render();
 });
-</div>
+```
 
 (3) 新增一个维度：我们根据性别为每个点加上不同颜色，以展示男女不同性别身高和体重数据的分布。
 
 <div id="c4"></div>
 
-<div class="code hide">
-$.getJSON('./data/scatter.json',function (data) {
-  var Stat = G2.Stat;
-  var frame = new G2.Frame(data);
-  var hAvg = G2.Frame.mean(frame,'height'); // 计算体重的均值
-  var wAvg = G2.Frame.mean(frame,'weight'); // 计算身高均值
+```js-
+$.getJSON('/assets/data/scatter.json',function (data) {
+  var dv = new DataSet.View().source(data);
+  var hAvg = dv.mean('height'); // 计算体重的均值
+  var wAvg = dv.mean('weight'); // 计算身高均值
   var lineCfg = { // 线的配置信息
     stroke: '#f96a52'
   };
@@ -161,16 +181,39 @@ $.getJSON('./data/scatter.json',function (data) {
   });
 
   chart3.source(data);
-  chart3.col('weight',{
+  chart3.scale('weight',{
     alias: '体重（kg）'
   });
-  chart3.col('height',{
+  chart3.scale('height',{
     alias: '身高（cm）'
   });
 
   chart3.point().position('height*weight').color('gender', ['#f96a52', '#00a3d7']).opacity(0.5).shape('circle');
-  chart3.guide().tag([hAvg, 40], [hAvg, 120], '身高平均值: ' + hAvg.toFixed(2), {line:lineCfg});
-  chart3.guide().tag([140, wAvg], [200, wAvg], '体重平均值: ' + wAvg.toFixed(2), {line:lineCfg});
+  chart3.guide().line({
+    start: [hAvg, 40],
+    end: [hAvg, 120],
+    lineStyle: lineCfg,
+    text: {
+      autoRotate: false,
+      position: 'end',
+      style: {
+        textAlign: 'left'
+      },
+      content: '身高平均值: ' + hAvg.toFixed(2)
+    }
+  });
+  chart3.guide().line({
+    start: [140, wAvg],
+    end: [200, wAvg],
+    lineStyle: lineCfg,
+    text: {
+      position: 'start',
+      style: {
+        textAlign: 'left'
+      },
+      content: '体重平均值: ' + wAvg.toFixed(2)
+    }
+  });
   chart3.render();
 
   chart3.on('tooltipchange',function(ev){
@@ -185,21 +228,28 @@ $.getJSON('./data/scatter.json',function (data) {
     });
   });
 });
-</div>
+```
 
 (4) 同时我们也可以根据样本数据特征计算出回归方程，并为散点图添加回归线。
 
 <div id="c5"></div>
 
-<div class="code hide">
-$.getJSON('./data/scatter.json',function (data) {
-  var Stat = G2.Stat;
-  var frame = new G2.Frame(data);
-  var hAvg = G2.Frame.mean(frame,'height'); // 计算体重的均值
-  var wAvg = G2.Frame.mean(frame,'weight'); // 计算身高均值
+```js-
+$.getJSON('/assets/data/scatter.json',function (data) {
+  var dv = new DataSet.View().source(data);
+  var hAvg = dv.mean('height'); // 计算体重的均值
+  var wAvg = dv.mean('weight'); // 计算身高均值
   var lineCfg = { // 线的配置信息
     stroke: '#f96a52'
   };
+  dv.transform({
+    type: 'regression',
+    method: 'linear',
+    fields: [ 'height', 'weight' ],
+    bandwidth: 1,
+    extent: [ 140, 200 ],
+    as: [ 'height', 'weight' ],
+  });
 
   var chart4 = new G2.Chart({
     id: 'c5',
@@ -208,15 +258,19 @@ $.getJSON('./data/scatter.json',function (data) {
   });
 
   chart4.source(data);
-  chart4.col('weight',{
-    alias: '体重（kg）'
+  chart4.scale('weight',{
+    alias: '体重（kg）',
+    sync: true,
   });
-  chart4.col('height',{
-    alias: '身高（cm）'
+  chart4.scale('height',{
+    alias: '身高（cm）',
+    sync: true,
   });
 
   chart4.point().position('height*weight').color('gender', ['#f96a52', '#00a3d7']).opacity(0.5).shape('circle');
-  chart4.line().position(Stat.smooth.quadratic('height*weight'));
+  var view = chart4.view();
+  view.source(dv);
+  view.line().position('height*weight');
   chart4.render();
 
   chart4.on('tooltipchange',function(ev){
@@ -231,8 +285,7 @@ $.getJSON('./data/scatter.json',function (data) {
     });
   });
 });
-
-</div>
+```
 
 ## 散点图的扩展
 
@@ -240,42 +293,34 @@ $.getJSON('./data/scatter.json',function (data) {
 
 <div id="c6"></div>
 
-<div class="code hide">
-$.getJSON('./data/diamond.json',function (data) {
+```js-
+$.getJSON('/assets/data/diamond.json',function (data) {
   var chart = new G2.Chart({
     id: 'c6',
     forceFit: true,
     height : 400,
-    plotCfg: {
-      margin: [20, 90, 60, 80]
-    }
   });
   chart.source(data);
   chart.point().position('carat*price').shape('cut').color('cut');
   chart.render();
 });
-
-</div>
+```
 
 <div id="c7"></div>
 
-<div class="code hide">
-$.getJSON('./data/diamond.json',function (data) {
+```js-
+$.getJSON('/assets/data/diamond.json',function (data) {
   var chart1 = new G2.Chart({
     id: 'c7',
     forceFit: true,
     height : 400,
-    plotCfg: {
-      margin: [20, 90, 60, 80]
-    }
   });
   var shapes = ['cross','tick','plus','hyphen','line']; // 更换图形类型
   chart1.source(data);
   chart1.point().position('carat*price').shape('cut',shapes).color('cut');
   chart1.render();
 });
-
-</div>
+```
 
 ## 散点图的扩展
 
@@ -295,9 +340,8 @@ $.getJSON('./data/diamond.json',function (data) {
 
 <div id="c8"></div>
 
-<div class="code hide">
-  $.getJSON('./data/Iris-flower.json',function(data){
-    var Stat = G2.Stat;
+```js-
+  $.getJSON('/assets/data/iris.json',function(data){
     var chart = new G2.Chart({
       id: 'c8',
       forceFit: true,
@@ -311,7 +355,7 @@ $.getJSON('./data/diamond.json',function (data) {
     var y = 0;
     for (var v = 0; v < items.length; v++) {
       for (var h = 0; h < items.length; h++) {
-        var view = chart.createView({
+        var view = chart.view({
           index: h + v,
           start: {
             x: x,
@@ -363,7 +407,7 @@ $.getJSON('./data/diamond.json',function (data) {
     }
     chart.render();
   });
-</div>
+```
 
 
 ## 散点图与其他图表的对比

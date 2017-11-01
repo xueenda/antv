@@ -53,7 +53,7 @@ tags: relation,flow
 
 ### 适合的场景
 
-** 数据的流向 ** 桑基图即桑基能量分流图，也叫桑基能量平衡图。
+**数据的流向** 桑基图即桑基能量分流图，也叫桑基能量平衡图。
 
 例子1:下图为 2009 年美国能源产出的分布以及能源的用途和损耗图。从图中可以明显看出主要的能源浪费发生于发电和交通
 
@@ -64,65 +64,85 @@ tags: relation,flow
 
 <div id="c1"></div>
 
-<div class="code hide">
-$.getJSON('./data/sankey.json', function(data) {
-var Stat = G2.Stat;
-var Layout = G2.Layout;
-var edges = data;
-var chart = new G2.Chart({
-  id: 'c1',
-  forceFit: true,
-  height: 500,
-  animate: false,
-  plotCfg: {
-    margin: [20,200,20,20]
+```js-
+$.getJSON('/assets/data/sankey.json', function(data) {
+  var graph = {
+    nodes: [],
+    edges: data,
   }
-});
+  var nodeById = {};
+  function addNode(id) {
+    if (!nodeById[id]) {
+      var node = {
+        id: id,
+        name: id
+      };
+      nodeById[id] = node;
+      graph.nodes.push(node);
+    }
+  }
+  data.forEach(function(edge) {
+    addNode(edge.source);
+    addNode(edge.target);
+  });
+  var dv = new DataSet.View().source(graph, {
+    type: 'graph',
+  });
+  dv.transform({
+    type: 'diagram.sankey',
+    nodeId: node => node.id,
+  });
+  var chart = new G2.Chart({
+    container: 'c1',
+    forceFit: true,
+    height: 500,
+    animate: false,
+    padding: [0, 160, 0, 0],
+  });
 
-chart.tooltip({
-  title: null
-});
+  chart.tooltip({
+    showTitle: false
+  });
+  chart.legend(false);
+  chart.scale({
+    x: { sync: true },
+    y: { sync: true }
+  });
 
-var layout = new Layout.Sankey({
-  edges: edges,
-  thickness: 0.02,
-  calculationTimes: 2
-});
-var nodes = layout.getNodes();
-edges = layout.getEdges();
-chart.legend(false);
+  // 首先绘制 edges，点要在边的上面
+  // 创建单独的视图
+  var edgeView = chart.view();
+  edgeView.source(dv.edges);
+  edgeView.axis(false);
+  edgeView.edge()
+    .position('x*y')
+    .shape('arc')
+    .color('#999')
+    .opacity(0.6)
+    .tooltip('value');
 
-// 首先绘制 edges，点要在边的上面
-// 创建单独的视图
-var edgeView = chart.createView();
-edgeView.source(edges);
-edgeView.coord().transpose();
-edgeView.axis(false);
-// Stat.link 方法会生成 ..x, ..y的字段类型，数值范围是 0-1
-edgeView.edge()
-  .position(Stat.link.sankey('source*target*value',nodes))
-  .shape('arc')
-  .color('#999')
-  .opacity(0.6)
-  .tooltip('value');
-
-// 创建节点视图
-var nodeView = chart.createView();
-nodeView.axis(false);
-// 节点的x,y范围是 0，1
-// 因为边的范围也是 0,1所以正好统一起来
-nodeView.source(nodes);
-nodeView.coord().transpose();
-nodeView.point().position('x*y').color('id').size('width*height',function(width,height){
-  return [width,height];
-}).shape('rect').label('id',{
-  offset:12
-}).style({
-  stroke: '#ccc'
+  // 创建节点视图
+  var nodeView = chart.view();
+  nodeView.axis(false);
+  // 节点的x,y范围是 0，1
+  // 因为边的范围也是 0,1所以正好统一起来
+  nodeView.source(dv.nodes);
+  nodeView.polygon()
+    .position('x*y')
+    .color('id')
+    .label('name', {
+      offset: 0,
+      textStyle: {
+        fill: 'grey',
+        textAlign: 'left'
+      }
+    })
+    .style({
+      stroke: '#ccc'
+    });
+  chart.render();
 });
-chart.render();
-});
-</div>
+```
 
 ### 不适合的场景
 

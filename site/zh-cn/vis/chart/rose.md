@@ -56,7 +56,8 @@ variations:
 
 ### 适合的场景
 
-例子1：** 对比不同分类的大小 **
+例子1：**对比不同分类的大小**
+
 下图是各国制造指数的对比，以美国为基准（100），中国的制造成本指数是 96 ，也就是说，同样一件产品，在美国制造成本是 1 美元，那么在中国则需要 0.96 美元，从下图可以看出中国的制造优势已经不明显。
 
 |country（国家) |cost（制造指数）|
@@ -75,29 +76,27 @@ variations:
 
 例子1：**分类过少的场景。** 下图展示一个班级男女同学的个数，这种场景建议使用[饼图](pie.html)。
 
-<div>
-  <div id="c5" style="display:inline-block"></div>
-  <div id="c55" style="display:inline-block"></div>
-</div>
+<div id="c5"></div>
 
-<div class="code hide">
+<div id="c55"></div>
+
+```js-
 var data = [{gender:'男',count:40},{gender:'女',count:30}];
-var Stat = G2.Stat;
 var chart2222 = new G2.Chart({
   id : 'c5',
-  width : 400,
+  forceFit: true,
   height : 300
 });
 
 chart2222.source(data);
 chart2222.coord('polar');
-chart2222.col('count',{min: 0});
+chart2222.scale('count',{min: 0});
 chart2222.interval().position('gender*count').color('gender');
 chart2222.render();
 
 var chart = new G2.Chart({
   id : 'c55',
-  width : 400,
+  forceFit: true,
   height : 300
 });
 
@@ -105,52 +104,46 @@ chart.source(data);
 chart.coord('theta');
 chart.intervalStack().position('count').color('gender');
 chart.render();
+```
 
-</div>
-
-例子2：** 部分分类数值过小的场景 **
+例子2：**部分分类数值过小的场景**
 
 下面使用南丁格尔玫瑰图展示各个省份的人口数据，这种场景下使用玫瑰图不合适，原因是在玫瑰图中数值过小的分类会非常难以观察。推荐使用[横向柱状图](bar.html)
 
 <div id="c6"></div>
 <div id="c7"></div>
 
-<div class="code hide">
-  
-  var data = [
+```js-
+var data = [
   {province:'北京市',population:19612368},
   {province:'天津市',population:12938693},
   {province:'河北省',population:71854210},
   {province:'山西省',population:27500000},
-  {"province":"内蒙古自治区","population":24706291},
-  {"province":"辽宁省","population":43746323},
-  {"province":"吉林省","population":27452815},
-  {"province":"黑龙江省","population":38313991},
-  {"province":"上海市","population":23019196},{"province":"江苏省","population":78660941},
-  {"province":"浙江省","population":54426891},{"province":"安徽省","population":59500468},
-  {"province":"福建省","population":36894217},{"province":"江西省","population":44567797},
-  {"province":"山东省","population":95792719},{"province":"河南省","population":94029939},
-  {"province":"湖北省","population":57237727},{"province":"湖南省","population":65700762},
-  {"province":"广东省","population":104320459},{"province":"广西壮族自治区","population":46023761},
-  {"province":"海南省","population":8671485},{"province":"重庆市","population":28846170},
-  {"province":"四川省","population":80417528},{"province":"贵州省","population":34748556},
-  {"province":"云南省","population":45966766},{"province":"西藏自治区","population":3002165},
-  {"province":"陕西省","population":37327379},{"province":"甘肃省","population":25575263},
-  {"province":"青海省","population":5626723}
+  {province:"内蒙古自治区","population":24706291},
+  {province:"辽宁省","population":43746323},
+  {province:"吉林省","population":27452815},
+  {province:"黑龙江省","population":38313991},
+  {province:"上海市","population":23019196},{"province":"江苏省","population":78660941},
+  {province:"浙江省","population":54426891},{"province":"安徽省","population":59500468},
+  {province:"福建省","population":36894217},{"province":"江西省","population":44567797},
+  {province:"山东省","population":95792719},{"province":"河南省","population":94029939},
+  {province:"湖北省","population":57237727},{"province":"湖南省","population":65700762},
+  {province:"广东省","population":104320459},{"province":"广西壮族自治区","population":46023761},
+  {province:"海南省","population":8671485},{"province":"重庆市","population":28846170},
+  {province:"四川省","population":80417528},{"province":"贵州省","population":34748556},
+  {province:"云南省","population":45966766},{"province":"西藏自治区","population":3002165},
+  {province:"陕西省","population":37327379},{"province":"甘肃省","population":25575263},
+  {province:"青海省","population":5626723}
 ];
-var Frame = G2.Frame;
-var frame = new Frame(data);
-var Stat = G2.Stat;
+data.sort(function (a, b) {
+  return a.population - b.population;
+});
 var chart222 = new G2.Chart({
   id : 'c6',
   forceFit: true,
   height : 600,
-  plotCfg: {
-    margin: [80,60,60,60]
-  }
 });
-frame = Frame.sort(frame, 'population');
-chart222.source(frame);
+chart222.source(data);
 chart222.axis('province',{gridAlign: 'middle'});
 chart222.coord('polar');
 chart222.interval().position('province*population').shape('stroke');
@@ -160,32 +153,27 @@ var chart333 = new G2.Chart333({
   id : 'c7',
   forceFit: true,
   height : 600,
-  plotCfg:{
-    margin: [20,40,90,110]
-  }
 });
-frame = Frame.sort(frame, 'population');
-chart333.source(frame);
-chart333.col('population',{
+chart333.source(data);
+chart333.scale('population',{
   alias: '人口'
 })
 chart333.axis('province',{title:null,titleOffset: 300});
 chart333.coord('rect').transpose(); // 旋转，缩放坐标轴
 chart333.interval().position('province*population');
 chart333.render();
-
-</div>
+```
 
 
 ## 南丁格尔玫瑰图的扩展
 
-例子1: ** 扇形玫瑰图 ** 
+例子1: **扇形玫瑰图**
 
 通过设置极坐标的起始角度可以实现扇形南丁格尔玫瑰图，如下图：
 
 <div id="c8"></div>
 
-<div class="code hide">
+```js-
   var data = [
     {country:'中国',cost:96},
     {country:'德国',cost:121},
@@ -215,18 +203,12 @@ chart333.render();
     {country:'瑞典',cost:116},
     {country:'奥地利',cost:111},
     {country:'捷克',cost:107},
-
   ];
-
-  var Stat = G2.Stat;
 
   var chart = new G2.Chart({
     id: 'c3',
-    width : 600,
+    forceFit: true,
     height : 500,
-    plotCfg: {
-      margin: 50
-    }
   });
 
   var defs = {
@@ -252,11 +234,8 @@ chart333.render();
 
 var chart111 = new G2.Chart({
         id: 'c8',
-        width : 1000,
+        forceFit: true,
         height : 500,
-        plotCfg: {
-          margin: [50, 80, 100]
-        }
       });
       chart111.source(data, {
         'cost': {
@@ -290,9 +269,9 @@ var chart111 = new G2.Chart({
         stroke: '#fff'
       });
       chart111.render();
-</div>
+```
 
-例子2：** 层叠的玫瑰图 **
+例子2：**层叠的玫瑰图**
 
 南丁格尔玫瑰图的实现原理是将柱状图在极坐标下绘制，如果将柱状图扩展为层叠柱状图，同样可以实现层叠的玫瑰图
 
@@ -306,8 +285,7 @@ year（年份）|internally（境内流离失所者)|refugees（跨越国境的�
 
 <div id="c4"></div>
 
-<div class="code hide">
-
+```js-
     /**
      * year 年份
      * internally 国内流离失所人数
@@ -331,27 +309,25 @@ year（年份）|internally（境内流离失所者)|refugees（跨越国境的�
       {year: '2013',internally:33.3 ,refugees:16.7 ,seekers: 1.2},
       {year: '2014',internally:38.2 ,refugees:19.5 ,seekers: 1.8}
     ];
-    
-    var Stat = G2.Stat;
-    var Frame = G2.Frame;
-    var frame = new Frame(data); // 加工数据
-
-    frame = Frame.combinColumns(frame,['internally','refugees','seekers'],'count','难民类型','year');
+    var dv = new DataSet.View().source(data);
+    dv.transform({
+      type: 'fold',
+      fields: ['internally','refugees','seekers'],
+      key: '难民类型',
+      value: 'count'
+    });
     var chart = new G2.Chart({
       id: 'c4',
       forceFit: true,
       height: 400,
-      plotCfg: {margin: [30,150,15,0]}
     });
-    chart.source(frame);
+    chart.source(dv);
     chart.coord('polar',{inner: 0.1});
     chart.intervalStack().position('year*count')
           .shape('stroke')
           .color('难民类型',['rgb(136,186,174)','rgb(184,189,61)','rgb(107,136,138)']);//.label('count',{offset: -1});
     chart.render();
-
-
-</div>
+```
 
 <div style="clear:both;"></div>
 
