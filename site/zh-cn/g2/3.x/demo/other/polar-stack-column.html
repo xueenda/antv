@@ -1,0 +1,61 @@
+<!--
+index: 10
+title: 极坐标下的层叠柱状图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 极坐标下的层叠柱状图，也是南丁格尔玫瑰图。
+plotUsage: 由于半径和面积的关系是平方的关系，南丁格尔玫瑰图会将数据的比例大小夸大，尤其适合对比大小相近的数值；由于圆形有周期的特性，所以玫瑰图也适用于表示一个周期内的时间概念，比如星期、月份。
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.bar}
+-->
+<script>
+const data = [
+  {year: '2000',internally:21.0 ,refugees:16 ,seekers: 0.8},
+  {year: '2001',internally:25.0 ,refugees:16 ,seekers: 0.8},
+  {year: '2002',internally:25.0 ,refugees:15 ,seekers: 0.8},
+  {year: '2003',internally:25.0 ,refugees:14 ,seekers: 0.7},
+  {year: '2004',internally:25.0 ,refugees:14 ,seekers: 0.7},
+  {year: '2005',internally:24.0 ,refugees:13 ,seekers: 0.8},
+  {year: '2006',internally:24.0 ,refugees:14 ,seekers: 0.7},
+  {year: '2007',internally:26.0 ,refugees:16 ,seekers: 0.7},
+  {year: '2008',internally:26.0 ,refugees:15.2 ,seekers: 0.8},
+  {year: '2009',internally:27.1 ,refugees:15.2 ,seekers: 1.0},
+  {year: '2010',internally:27.5 ,refugees:15.4 ,seekers: 0.8},
+  {year: '2011',internally:26.4 ,refugees:15.2 ,seekers: 0.9},
+  {year: '2012',internally:28.8 ,refugees:15.4 ,seekers: 0.9},
+  {year: '2013',internally:33.3 ,refugees:16.7 ,seekers: 1.2},
+  {year: '2014',internally:38.2 ,refugees:19.5 ,seekers: 1.8}
+];
+const { DataView } = DataSet;
+const dv = new DataView();
+dv.source(data)
+  .transform({
+    type: 'fold',
+    fields: ['internally', 'refugees', 'seekers'],
+    key: '难民类型',
+    value: 'count',
+    remains: 'year'
+  });
+
+const chart = new G2.Chart({
+  container: 'mountNode',
+  forceFit: true,
+  height: window.innerHeight
+});
+chart.source(dv);
+chart.coord('polar', {inner: 0.1});
+chart.legend('难民类型', {
+  position: 'bottom'
+});
+chart.intervalStack()
+  .position('year*count')
+  .color('难民类型',['rgb(136,186,174)','rgb(184,189,61)','rgb(107,136,138)'])
+  .style({
+    lineWidth: 1,
+    stroke: '#fff'
+  });
+chart.render();
+</script>

@@ -1,0 +1,86 @@
+<!--
+index: 9
+title: 双环图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 使用分面绘制双环图，用于对比两年的各项指标
+plotUsage: 饼图的整体性太强，我们会将注意力集中在比较饼图内各个扇形之间占整体比重的关系。但如果我们将两个饼图放在一起，饼图很难同时对比两个图。环图在解决上述问题时，采用了让我们更关注长度而不是面积的做法。这样我们就能相对简单的对比不同的环图。同时环图相对于饼图空间的利用率更高，比如我们可以使用它的空心区域显示文本信息，比如标题等。
+relativePlots:
+  - ${plotByName.pie}
+-->
+<script>
+const data = [
+  {year:2007, area:'亚太地区', profit: 7860*0.189},
+  {year:2007, area:'非洲及中东', profit: 7860*0.042},
+  {year:2007, area:'拉丁美洲', profit: 7860*0.025},
+  {year:2007, area:'中欧和东欧', profit: 7860*0.018},
+  {year:2007, area:'西欧', profit: 7860*0.462},
+  {year:2007, area:'北美', profit: 7860*0.265},
+  {year:2011, area:'亚太地区', profit: 7620*0.539},
+  {year:2011, area:'非洲及中东', profit: 7620*0.065},
+  {year:2011, area:'拉丁美洲', profit: 7620*0.065},
+  {year:2011, area:'中欧和东欧', profit: 7620*0.034},
+  {year:2011, area:'西欧', profit: 7620*0.063},
+  {year:2011, area:'北美', profit: 7620*0.234}
+];
+const { DataView } = DataSet;
+
+const chart = new G2.Chart({
+  container: 'mountNode',
+  forceFit: true,
+  height: window.innerHeight,
+  padding: 80
+});
+
+chart.source(data);
+chart.tooltip({
+  showTitle: false
+});
+// 以 year 为维度划分分面
+chart.facet('rect', {
+  fields: ['year'],
+  padding: 50,
+  rowTitle: null,
+  colTitle: {
+    offsetY: -30,
+    style: {
+      fontSize: 18,
+      textAlign: 'center',
+      fill: '#999'
+    }
+  },
+  eachView(view, facet) {
+    const data = facet.data;
+    const dv = new DataView();
+    dv.source(data)
+      .transform({
+        type: 'percent',
+        field: 'profit',
+        dimension: 'area',
+        as: 'percent'
+      });
+    view.source(dv, {
+      percent: {
+        formatter: val => {
+          return (val * 100).toFixed(2) + '%';
+        }
+      }
+    });
+    view.coord('theta', {
+      innerRadius: 0.35
+    });
+    view.intervalStack()
+      .position('percent')
+      .color('area')
+      .label('percent', {
+        offset: -2
+      })
+      .style({
+        lineWidth: 1
+      });
+  }
+});
+chart.render();
+</script>

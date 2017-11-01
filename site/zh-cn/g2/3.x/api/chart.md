@@ -783,7 +783,7 @@ chart.legend('gender', {
   ```js
   containerTpl: '<div class="g2-legend" style="position:absolute;top:20px;right:60px;width:auto;">'
     + '<h4 class="g2-legend-title"></h4>' 
-    + '<ul class="g2-legend-itemlist" style="list-style-type:none;margin:0;padding:0;"></ul>'
+    + '<ul class="g2-legend-list" style="list-style-type:none;margin:0;padding:0;"></ul>'
     + '</div>';
   ```
 
@@ -794,7 +794,7 @@ chart.legend('gender', {
   **当 `useHtml` 为 true 时生效**，用于指定生成图例的图例项 html 模板，默认值如下：
   
   ```js
-  itemTpl: '<li class="g2-legend-item item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 14px;">'
+  itemTpl: '<li class="g2-legend-list-itemm item-{index} {checked}" data-color="{originColor}" data-value="{originValue}" style="cursor: pointer;font-size: 14px;">'
     + '<i class="g2-legend-marker" style="width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:10px;background-color: {color};"></i>'
     + '<span class="g2-legend-text">{value}</span>'
     + '</li>';
@@ -802,23 +802,19 @@ chart.legend('gender', {
 
   !注意：自定义模板时必须包含各个 dom 节点的 class，样式可以自定义。
 
-  24. `scroll`: boolean
-
-  **当 `useHtml` 为 true 时生效**，当用户使用 html 的时候，用于设置超出高度或者宽度是否出现滚动条，默认为 true。
-
-  25. `slidable`: boolean
+  24. `slidable`: boolean
 
   **针对连续图例**，用于设置连续图例是否允许滑动，默认为 true，即开启滑动操作。
 
-  26. `width`: number
+  25. `width`: number
 
   **针对连续图例**，用于设置图例的宽度。
 
-  27. `height`: number
+  26. `height`: number
 
   **针对连续图例**，用于设置图例的高度。
 
-  28. `custom`: boolean
+  27. `custom`: boolean
 
   默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义图例，包括具体的图例项以及 click、hover 交互。
 
