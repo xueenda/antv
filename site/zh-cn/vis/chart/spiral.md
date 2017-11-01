@@ -53,19 +53,16 @@ tags:
 
 ### 适合的场景
 
-例子1：**展示大量数据的变化趋势。** 例如在股票市场上，将股票的逐日收市价使用螺旋图来表示，用来展示股市大致上的趋势。下图展示了“湖南天雁”股票 2015 年 1 月 1 日至 2015 年 11 月 20 日的螺旋图。为了让变化趋势更加明显，可以采用不同的颜色来加深辨识度。
+例子1：**展示大量数据的变化趋势**。 例如在股票市场上，将股票的逐日收市价使用螺旋图来表示，用来展示股市大致上的趋势。下图展示了“湖南天雁”股票 2015 年 1 月 1 日至 2015 年 11 月 20 日的螺旋图。为了让变化趋势更加明显，可以采用不同的颜色来加深辨识度。
 
 <div id="c1"></div>
 
-<div class="code hide">
-$.getJSON('./data/candleSticks.json',function(data){
+```js-
+$.getJSON('/assets/data/candle-sticks.json',function(data){
   var chart = new G2.Chart({
-    id: 'c1',
+    container: 'c1',
     forceFit: true,
     height: 400,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
   });
   chart.source(data,{
     'time':{
@@ -80,21 +77,18 @@ $.getJSON('./data/candleSticks.json',function(data){
   chart.interval().position('time*end').color('end').size(0.65);
   chart.render();
 });
-</div>
+```
 
 例子2：**展示数据的周期。** 例如将网站的访问量使用螺旋图来表示，用来展示大量访问该网站的周期。下图展示了G2官网（ https://g2.alipay. ）2016 年 5 月 13 日至 2016 年 10 月 28 日的日浏览次数。G2从5月18发布至今，持续运行了24周，图中以28天为一圈，共画了6圈，每圈含四周数据。从图中可以看出，一圈内有明显的四个周期，经分析发现，访问G2网址的流量主要来自工作日的5天，可见，G2浏览次数的周期为一周。另外，在5月18号之后的两周内流量较多，即G2发布时的推广效果。
 
 <div id="c2"></div>
 
-<div class="code unvisiable-hide">
-$.getJSON('./data/g2.json',function(data){
+```js-
+$.getJSON('/assets/data/g2.json',function(data){
   var chart = new G2.Chart({
-    id: 'c2',
+    container: 'c2',
     forceFit: true,
     height: 400,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
   });
   chart.source(data,{
     '时段':{
@@ -113,7 +107,7 @@ $.getJSON('./data/g2.json',function(data){
   chart.interval().position('时段*浏览次数').color('浏览次数','#ffffff-#36B3C3').size(0.8);
   chart.render();
 });
-</div>
+```
 
 ## 螺旋图的扩展
 
@@ -122,11 +116,34 @@ $.getJSON('./data/g2.json',function(data){
 
 <div id="c3"></div>
 
-<div class="code unvisiable-hide">
-$.getJSON('./data/g2.json',function(data){
+```js-
+$.getJSON('/assets/data/g2.json',function(data){
 	var Shape = G2.Shape;
-	Shape.registShape('interval', 'max', {
-	  getShapePoints: function(cfg){
+	function getRectPath(points) {
+      const path = [];
+      for (let i = 0; i < points.length; i++) {
+        const point = points[i];
+        if (point) {
+          const action = i === 0 ? 'M' : 'L';
+          path.push([ action, point.x, point.y ]);
+        }
+      }
+      const first = points[0];
+      path.push([ 'L', first.x, first.y ]);
+      path.push([ 'z' ]);
+      return path;
+    }
+	function getFillAttrs(cfg) {
+      const defaultAttrs = G2.Global.shape.interval;
+      const attrs = G2.Util.mix({}, defaultAttrs, {
+        fill: cfg.color,
+        stroke: cfg.color,
+        fillOpacity: cfg.opacity
+      }, cfg.style);
+      return attrs;
+    }
+	Shape.registerShape('interval', 'max', {
+	  getPoints: function(cfg){
 	    var x = cfg.x;
 	    var y = cfg.y;
 	    var y0 = cfg.y0;
@@ -137,15 +154,22 @@ $.getJSON('./data/g2.json',function(data){
 	      {x: x+width/2, y: 1},
 	      {x: x+width/2, y: y0}
 	    ]
-	  }
+	  },
+	  draw(cfg, container) {
+        var attrs = getFillAttrs(cfg);
+        var path = getRectPath(cfg.points);
+        path = this.parsePath(path);
+        return container.addShape('path', {
+          attrs: G2.Util.mix(attrs, {
+            path
+          })
+        });
+      },
 	});
   var chart = new G2.Chart({
-    id: 'c3',
+    container: 'c3',
     forceFit: true,
     height: 400,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
   });
   chart.source(data,{
     '时段':{
@@ -165,5 +189,5 @@ $.getJSON('./data/g2.json',function(data){
   chart.interval().position('时段*浏览次数').color('浏览次数').size(0.88).shape('max');
   chart.render();
 });
-</div>
+```
 
