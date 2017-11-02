@@ -17,7 +17,10 @@
                 <ul class="list-group">
                     {% for doc in docList %}
                     {% set isCurrentPage = (doc.href === __href) %}
+                    {% if doc.hideFromNav %}
+                    {% else %}
                     <li class="list-group-item{% if isCurrentPage %} active{% endif %}"><a href="{{ doc.href }}">{{ doc.title }}</a></li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </div>
@@ -34,7 +37,9 @@
             <ul>
             {% for variation in variations %}
                 {% set variationDoc = docByName[variation] %}
+                {% if variationDoc %}
                 <li><a href="{{ variationDoc.href }}">{{ variationDoc.title }}</a></li>
+                {% endif %}
             {% endfor %}
             </ul>
             {% endif %}
@@ -45,7 +50,9 @@
             <ul>
             {% for tag in tags %}
                 {% set tagDoc = tagDocByName[tag] %}
+                {% if tagDoc %}
                 <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+                {% endif %}
             {% endfor %}
             </ul>
             {% endif %}

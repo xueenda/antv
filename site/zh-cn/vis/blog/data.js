@@ -45,11 +45,11 @@ docFiles.forEach(function(file) {
 
     var name = basename(file, '.md');
     var doc = {
-        href: base + 'zh-cn/vis/chart/' + name + '.html',
+        href: base + 'zh-cn/vis/blog/' + name + '.html',
         index: index,
         name: name,
         title: title,
-        hideFromNav: true,
+        // hideFromNav: true,
     };
     if (/^tag-/.test(name)) {
         var tag = name.replace(/^tag-/, '');
@@ -74,7 +74,7 @@ docList.forEach(function (doc, index) {
 
 module.exports = {
     docIcon: '',
-    navName: 'chart',
+    navName: 'blog',
     docList: docList,
     docIndexByHref: indexByHref,
     docNamesByTag,
@@ -82,7 +82,7 @@ module.exports = {
     tagDocByName,
     docsCount: docList.length,
     template: 'doc',
-    docMenuHeader: '${resource.translate.visChart}',
+    docMenuHeader: '${resource.translate.visBlog}',
     showFooter: false,
     docFilteringSupport: true,
     resource: {
