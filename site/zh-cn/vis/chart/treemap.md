@@ -65,13 +65,30 @@ tags:
 
 ```js-
 $.getJSON('/assets/data/mobile.json',function (data) {
+  var tree = {
+    name: 'root',
+    children: data
+  };
+  var dv = new DataSet.View().source(tree, {
+    type: 'hierarchy'
+  });
+  dv.transform({
+    type: 'hierarchy.treemap',
+    as: [ 'x', 'y' ]
+  });
+  var nodes = dv.getAllNodes().map(function(node) {
+    node.name = node.data.name;
+    node.value = node.data.value;
+    return node;
+  });
   var chart = new G2.Chart({
-    id: 'c1',
+    container: 'c1',
     forceFit: true,
     height: 500,
     animate: false // 阻止动画
   });
-  chart.source(data);
+  chart.source(nodes);
+  chart.scale({value: {nice: false}});
   chart.tooltip({
     map: {
       title: 'name',
@@ -80,76 +97,14 @@ $.getJSON('/assets/data/mobile.json',function (data) {
   });
   chart.axis(false);
   chart.legend(false);
-  chart.polygon().position(Stat.treemap('1*value'))
+  chart.polygon().position('x*y')
     .color('name')
-    .label('name')
     .style({
     stroke: '#fff',
     lineWidth: 1
   });;
   chart.render();
-  function findNode (name,nodes) {
-    var rst = null;
-    for (var i = 0; i < nodes.length; i++) {
-      var node = nodes[i];
-      if (node.name === name) {
-        rst = node;
-      }
-      if (!rst && node.children) {
-        rst = findNode(name,node.children);
-      }
-      if (rst) {
-        break;
-      }
-    }
-    return rst;
-  }
-  var expanded = false;
-  chart.on('plotclick',function(ev){
-    var point = ev.data;
-    if (point) {
-      var name = point._origin.name;
-      var node = findNode(name,data);
-      var nodes;
-      if (!expanded) { // 未展开
-        if (node.children) {
-          nodes = node.children;
-        } else {
-          nodes = [node];
-        }
-        chart.clear();
-        chart.source(nodes);
-        chart.polygon().position(Stat.treemap('1*value')).color(point.color)
-          .label('name', {
-          offset: -2,
-          label:{
-            fontSize: 10
-          }
-        })
-          .style({
-          stroke: '#fff',
-          lineWidth: 1
-        });
-        chart.render();
-        expanded = true;
-      } else { //已经展开
-        chart.clear();
-        chart.source(data);
-        chart.polygon().position(Stat.treemap('1*value')).color('name')
-          .label('name', {
-          label: {
-            fontSize: 12
-          }
-        })
-          .style({
-          stroke: '#fff',
-          lineWidth: 1
-        });
-        chart.render();
-        expanded = false;
-      }
-    }
-  });
+
 });
 ```
 
@@ -166,9 +121,11 @@ $.getJSON('/assets/data/mobile.json',function (data) {
 <div id="c2"></div>
 
 ```js-
-var data = 		
-    [{
-    "name": "总经理",
+var data = 	{
+  name: 'root',
+  children: [
+    {
+        "name": "总经理",
         "value":1
     },
     {
@@ -227,149 +184,42 @@ var data =
         "name": "公关部",
         "value":1
     }
-                        
-    ];
-    var Stat = G2.Stat;
-    var chart = new G2.Chart({
-        id: 'c2',
-        width: 1000,
-        height: 500,
-        animate: false // 阻止动画
-    });
-    chart.source(data);
-    chart.tooltip({
-        map: {
-        title: 'name',
-        value: 'value'
-        }
-    });
-    chart.axis(false);
-    chart.legend(false);
-    chart.polygon().position(Stat.treemap('1*value'))
-        .color('name')
-        .label('name')
-        .style({
-        stroke: '#fff',
-        lineWidth: 1
-    });;
-    chart.render();
-```
-
-
-<div id="c3"></div>
-
-```js-
-    var data = [{
-    "name": "总经理",
-    "children": [{
-        "name": "运营总监",
-        "children": [{
-        "name": "职能总监",
-        "children": [{
-            "name": "人事部"
-        },{
-            "name": "行政部"
-        },{
-            "name": "财务部"
-        }]
-        },{
-        "name": "服务总监",
-        "children": [{
-            "name": "技术部"
-        },{
-            "name": "客服部"
-        },{
-            "name": "售后部"
-        }]
-        },{
-        "name": "市场总监",
-        "children": [{
-            "name": "企划部"
-        },{
-            "name": "推广部"
-        },{
-            "name": "广告部"
-        },{
-            "name": "公关部"
-        }]
-        }]
-    }]
-    }];
-    var Layout = G2.Layout;
-    var Stat = G2.Stat;
-    var chart = new G2.Chart({
-    id: 'c3',
-    width: 1000,
+  ]
+};
+var dv = new DataSet.View().source(data, {
+  type: 'hierarchy'
+});
+dv.transform({
+  type: 'hierarchy.treemap',
+  as: ['x', 'y']
+});
+var chart = new G2.Chart({
+    id: 'c2',
+    forceFit: true,
     height: 500,
-    animate: false,
-    plotCfg: {
-        margin: [20,50]
-    }
-    });
-    // 不显示title
-    chart.tooltip({
-    title: null
-    }); 
-    // 不显示图例
-    chart.legend(false);
-    // 使用layout，用户可以自己编写自己的layout
-    // 仅约定输出的节点 存在 id,x，y字段即可
-    var layout = new Layout.Tree({
-    nodes: data,
-    dx: 80 / 1000 // 单位宽度，由于按照宽高 1来计算的，所以需要传入比例值
-    });
-    var nodes = layout.getNodes();
-    var edges = layout.getEdges();
-    // 首先绘制 edges，点要在边的上面
-    // 创建单独的视图
-    var edgeView = chart.createView();
-    edgeView.source(edges);
-    edgeView.coord().reflect(); // 
-    edgeView.axis(false);
-    edgeView.tooltip(false);
-    // Stat.link 方法会生成 ..x, ..y的字段类型，数值范围是 0-1
-    edgeView.edge()
-    .position(Stat.link('source*target',nodes))
-    .shape('vhv')
-    .color('#ccc');
-    // 自定义部门的图形
-    G2.Shape.registShape('point', 'depart', {
-    drawShape: function(cfg, group) {
-        var x = cfg.x;
-        var y = cfg.y;
-        var width = 60;
-        var height = 30;
-        var shape = group.addShape('rect', {
-        attrs: {
-            x: x - width / 2,
-            y: y - height / 2,
-            width: width,
-            height: height,
-            fill: '#fff',
-            stroke: 'black'
-        }
-        });
-        return shape;
-    }
-    });
-    // 创建节点视图
-    var nodeView = chart.createView();
-    nodeView.coord().reflect(); //'polar'
-    nodeView.axis(false);
-    // 节点的x,y范围是 0，1
-    // 因为边的范围也是 0,1所以正好统一起来
-    nodeView.source(nodes, {
-    x: {min: 0,max:1},
-    y: {min: 0, max:1},
-    value: {min: 0}
-    });
-    nodeView.point().position('x*y').color('steelblue')
-    .shape('depart')
-    .label('name', {
-    offset: 0
-    })
-    .tooltip('name');
-    chart.render();
+    animate: false // 阻止动画
+});
+var nodes = dv.getAllNodes().map(function(node) {
+  node.name = node.data.name;
+  node.value = node.data.value;
+  return node;
+});
+chart.source(nodes);
+chart.tooltip({
+  map: {
+    title: 'name',
+    value: 'value'
+  }
+});
+chart.axis(false);
+chart.legend(false);
+chart.polygon().position('x*y')
+    .color('name')
+    .style({
+    stroke: '#fff',
+    lineWidth: 1
+});;
+chart.render();
 ```
 
 ## 矩形树图与其他图表的对比
