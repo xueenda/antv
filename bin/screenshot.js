@@ -150,15 +150,15 @@ getPort().then(function (port) {
                         })
                         .end()
                         .catch(function (e) {
-                            debug(t.fileBasename + ' failed to take a screenshot');
-                            callback(e);
+                            debug(t.fileBasename + ' failed to take a screenshot: ' + e);
+                            // callback(e);
                         });
                 });
             });
             q.awaitAll(function (error) {
                 if (error) {
                     debug(error);
-                    process.exit(1);
+                    // process.exit(1);
                 } else {
                     index ++;
                     screenshotTasks(tasks, index);
