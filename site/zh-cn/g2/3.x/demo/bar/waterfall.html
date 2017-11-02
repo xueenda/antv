@@ -99,6 +99,15 @@ relativePlots:
     height: window.innerHeight
   });
   chart.source(data);
+  // 自定义图例
+  chart.legend({
+    custom: true,
+    clickable: false,
+    items: [
+      { value: '各项花销', fill: '#1890FF', marker: 'square' },
+      { value: '总费用', fill: 'rgba(0, 0, 0, 0.65)', marker: 'square' }
+    ]
+  });
   chart.interval().position('type*money').color('type', type => {
     if (type === '总费用') {
       return 'rgba(0, 0, 0, 0.65)';

@@ -51,9 +51,9 @@ relativePlots:
   ];
   const chart = new G2.Chart({
     container: 'mountNode',
-    forceFit: true,
-    height: window.innerHeight,
-    padding: [ 0, 0, 200, 0 ]
+    width: 730,
+    height: 300,
+    padding: [ 0, 0, 20, 0 ]
   });
   chart.source(data);
 
@@ -105,7 +105,7 @@ relativePlots:
 
   // 绘制仪表盘刻度线
   chart.guide().line({
-    start: [ 3, 0.92 ],
+    start: [ 3, 0.905 ],
     end: [ 3.0035, 0.85 ],
     lineStyle: {
       stroke: '#19AFFA', // 线的颜色
@@ -114,7 +114,7 @@ relativePlots:
     }
   });
   chart.guide().line({
-    start: [ 4.5, 0.92 ],
+    start: [ 4.5, 0.905 ],
     end: [ 4.5, 0.85 ],
     lineStyle: {
       stroke: '#19AFFA', // 线的颜色
@@ -124,7 +124,7 @@ relativePlots:
   });
 
   chart.guide().line({
-    start: [ 6, 0.92 ],
+    start: [ 6, 0.905 ],
     end: [ 6.0035, 0.85 ],
     lineStyle: {
       stroke: '#19AFFA', // 线的颜色

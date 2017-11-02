@@ -36,11 +36,11 @@ relativePlots:
   chart.legend({
     position: 'right',
     offsetY: -window.innerHeight / 2 + 180,
-    offsetX: -160
+    offsetX: -140
   });
   chart.axis(false);
   chart.interval().position('year*population')
-    .color('year')
+    .color('year', G2.Global.colors_pie_16)
     .style({
       lineWidth: 1,
       stroke: '#fff'

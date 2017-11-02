@@ -57,9 +57,9 @@ relativePlots:
   const color = ['#0086FA', '#FFBF00', '#F5222D'];
   const chart = new G2.Chart({
     container: 'mountNode',
-    forceFit: true,
-    height: window.innerHeight,
-    padding: [ 0, 0, 200, 0 ],
+    width: 730,
+    height: 300,
+    padding: [ 0, 0, 20, 0 ],
     animate: false
   });
   chart.source(creatData());
@@ -117,8 +117,8 @@ relativePlots:
     chart.guide().arc({
       zIndex: 0,
       top: false,
-      start: [ 0, 0.965 ],
-      end: [ 6, 0.965 ],
+      start: [ 0, 0.92 ],
+      end: [ 6, 0.92 ],
       style: { // 底灰色
         stroke: 'rgba(0, 0, 0, 0.09)',
         lineWidth
@@ -127,8 +127,8 @@ relativePlots:
 
     val >= 2 && chart.guide().arc({
       zIndex: 1,
-      start: [ 0, 0.965 ],
-      end: [ val, 0.965 ],
+      start: [ 0, 0.92 ],
+      end: [ val, 0.92 ],
       style: {
         stroke: color[0],
         lineWidth
@@ -137,8 +137,8 @@ relativePlots:
 
     val >= 4 && chart.guide().arc({
       zIndex: 1,
-      start: [ 2, 0.965 ],
-      end: [ 4, 0.965 ],
+      start: [ 2, 0.92 ],
+      end: [ 4, 0.92 ],
       style: {
         stroke: color[1],
         lineWidth
@@ -147,8 +147,8 @@ relativePlots:
 
     val > 4 && val <=6 && chart.guide().arc({
       zIndex: 1,
-      start: [ 4, 0.965 ],
-      end: [ val, 0.965 ],
+      start: [ 4, 0.92 ],
+      end: [ val, 0.92 ],
       style: {
         stroke: color[2],
         lineWidth
@@ -157,8 +157,8 @@ relativePlots:
 
     val > 2 && val <= 4 && chart.guide().arc({
       zIndex: 1,
-      start: [ 2, 0.965 ],
-      end: [ val, 0.965 ],
+      start: [ 2, 0.92 ],
+      end: [ val, 0.92 ],
       style: {
         stroke: color[1],
         lineWidth
@@ -167,8 +167,8 @@ relativePlots:
 
     val < 2 && chart.guide().arc({
       zIndex: 1,
-      start: [ 0, 0.965 ],
-      end: [ val, 0.965 ],
+      start: [ 0, 0.92 ],
+      end: [ val, 0.92 ],
       style: {
         stroke: color[0],
         lineWidth
