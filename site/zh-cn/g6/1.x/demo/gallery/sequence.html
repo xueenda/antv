@@ -1,6 +1,6 @@
 <!--
 title: 时序图
-description: 该图展示如何使用 G6 绘制一个时序图，主要向大家展示了<a href="/g6/doc/tutorial/start/custom-shape.html">自定义图形</a>的用法
+plotDescription:  该图展示如何使用 G6 绘制一个时序图，主要向大家展示了<a href="/g6/doc/tutorial/start/custom-shape.html">自定义图形</a>的用法
 index: 1
 resource:
   jsFiles:
@@ -8,9 +8,9 @@ resource:
 -->
 
 <script type="text/javascript">
-var Util = G6.Util;
-var G = G6.Canvas.G;
-var data = {
+const Util = G6.Util;
+const G = G6.Canvas.G;
+const data = {
   "nodes": [
     {
       "id": "imbilegw",
@@ -101,26 +101,26 @@ function compareIndex(id1, id2, items) {
   return index1 > index2;
 }
 
-G6.registNode('sequence-node', {
-  draw: function(cfg, group) {
-    var model = cfg.model;
-    var x = cfg.x;
-    var y = cfg.y;
-    var color = cfg.color;
-    var label = cfg.label;
-    var labelStyle = cfg.labelStyle ? cfg.labelStyle : {
+G6.registerNode('sequence-node', {
+  draw(cfg, group) {
+    const model = cfg.model;
+    const x = cfg.x;
+    const y = cfg.y;
+    const color = cfg.color;
+    const label = cfg.label;
+    const labelStyle = cfg.labelStyle ? cfg.labelStyle : {
       fontSize: 12,
       textAlign: 'center',
       textBaseline: 'middle',
       fill: '#333'
     };
-    var size = cfg.size;
-    var width = size[0];
-    var height = size[1];
-    var barWidth = model.barWidth ? model.barWidth : 10;
-    var labelHeight = model.labelHeight ? model.labelHeight : 26; // 标签高度
-    var slideMargin = model.slideMargin ? model.slideMargin : 20;
-    var keyShape; // 用作锚点连接的关键shape
+    const size = cfg.size;
+    const width = size[0];
+    const height = size[1];
+    const barWidth = model.barWidth ? model.barWidth : 10;
+    const labelHeight = model.labelHeight ? model.labelHeight : 26; // 标签高度
+    const slideMargin = model.slideMargin ? model.slideMargin : 20;
+    let keyShape; // 用作锚点连接的关键shape
 
     // 上标签背景
     group.addShape('rect', {
@@ -193,12 +193,12 @@ G6.registNode('sequence-node', {
 
     return keyShape;
   },
-  getAnchorPoints: function(cfg) {
-    var model = cfg.model;
-    var anchorNumber = model.anchorNumber;
-    var cellRatio = 1 / anchorNumber;
-    var rst = [];
-    var i;
+  getAnchorPoints: cfg => {
+    const model = cfg.model;
+    const anchorNumber = model.anchorNumber;
+    const cellRatio = 1 / anchorNumber;
+    const rst = [];
+    let i;
     for (i = 0; i < anchorNumber; i++) {
       rst.push([1, cellRatio * i + 1 / 2 * cellRatio]);
     }
@@ -209,21 +209,21 @@ G6.registNode('sequence-node', {
   }
 });
 
-G6.registEdge('sequence-edge', {
-  draw: function(cfg, group) {
-    var model = cfg.model;
-    var color = cfg.color;
-    var points = cfg.points;
-    var slideWidth = model.slideWidth;
-    var slideHeight = model.slideHeight;
-    var sourcePoint = points[0];
-    var targetPoint = points[points.length - 1];
-    var pointsArr = []; // points 数组
-    var keyShape; // 关键图形
-    var sourceX;
-    var targetX;
+G6.registerEdge('sequence-edge', {
+  draw(cfg, group) {
+    const model = cfg.model;
+    const color = cfg.color;
+    const points = cfg.points;
+    const slideWidth = model.slideWidth;
+    const slideHeight = model.slideHeight;
+    const sourcePoint = points[0];
+    const targetPoint = points[points.length - 1];
+    const pointsArr = []; // points 数组
+    let keyShape; // 关键图形
+    let sourceX;
+    let targetX;
 
-    Util.each(points, function(p1) {
+    Util.each(points, p1 => {
       pointsArr.push([p1.x, p1.y]);
     });
     sourceX = sourcePoint.x - slideWidth - 1;
@@ -261,7 +261,7 @@ G6.registEdge('sequence-edge', {
   }
 }, 'arrow');
 
-var net = new G6.Net({
+const net = new G6.Net({
   id: 'mountNode', // 容器ID
   forceFit: true,      // 宽度自适应
   height: window.innerHeight,         // 画布高
@@ -276,8 +276,8 @@ var net = new G6.Net({
 });
 
 // 映射规则
-net.node().color("active", function(val){
-  var rst;
+net.node().color("active", val => {
+  let rst;
   if(val) {
     rst = '#FFC3CE';
   } else {
@@ -286,8 +286,8 @@ net.node().color("active", function(val){
   return rst;
 })
 .label('id');
-net.edge().color("source*target", function(val0, val1){
-  var rst = [];
+net.edge().color("source*target", (val0, val1) => {
+  let rst = [];
   if(val0 === 'imbilegw'){
     rst[0] = '#3388B3';
   }
@@ -316,23 +316,23 @@ net.edge().color("source*target", function(val0, val1){
 });
 
 // 布局
-var nodes = data.nodes;
-var edges = data.edges;
-var nodeMapper = net.get('nodeMapper');
-var height = net.get('height');
-var marginLeft = 20;
-var padding = 6;
-var cellHeight = 500;
-var barWidth = 10;
-var labelHeight = 20;
-var barHeight = cellHeight - labelHeight * 2;
-var maxOrder = 0;
-var currentX = 1;
-var labelShape = new G.Text(); // 用于测量label宽度
-var slideMargin = 10;
-var cellWidth;
-var cfg;
-var bbox;
+const nodes = data.nodes;
+const edges = data.edges;
+const nodeMapper = net.get('nodeMapper');
+const height = net.get('height');
+const marginLeft = 20;
+const padding = 6;
+const cellHeight = 500;
+const barWidth = 10;
+const labelHeight = 20;
+const barHeight = cellHeight - labelHeight * 2;
+const labelShape = new G.Text(); // 用于测量label宽度
+const slideMargin = 10;
+let maxOrder = 0;
+let currentX = 1;
+let cellWidth;
+let cfg;
+let bbox;
 
 Util.each(edges, function(edge) {
   if (edge.order > maxOrder) {

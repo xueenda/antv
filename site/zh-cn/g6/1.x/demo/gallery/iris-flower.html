@@ -1,11 +1,12 @@
 <!--
 title: 鸢尾花-关联图
-description: 该图展示了对鸢尾花数据集进行关联分析的过程中，如何可视化关联分析的结果。该示例用颜色映射的花的种类，连接线映射了关联度在
+plotDescription:  该图展示了对鸢尾花数据集进行关联分析的过程中，如何可视化关联分析的结果。该示例用颜色映射的花的种类，连接线映射了关联度在
 index: 1
 resource:
   jsFiles:
     - ${url.jquery}
     - ${url.g2}
+    - ${url.dataSet}
 -->
 
 <style>
@@ -19,248 +20,270 @@ resource:
 }
 </style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-
 <script type="text/javascript">
-//$.getJSON('/assets/data/Iris-flower.json',function(data){
-//  var Util = G6.Util;
-//  var Stat = G2.Stat;
-//  var colorMap = {
-//    all: '#333',
-//    setosa: '#64A051',
-//    versicolor: '#F065B4',
-//    virginica: '#732096',
-//    background: '#F9F9F9'
-//  };
-//  var height = 450;
-//  var edgeMarkerRadius = 4;
-//  var pack = d3.pack()
-//               .padding(0.1);
-//  var createChart = function  (dim) {
-//    var container =  Util.createDOM('<div></div>');
-//    var chart = new G2.Chart({
-//      container: container,
-//      width: 10,
-//      height: 10,
-//      animate: false,
-//      plotCfg: {
-//        margin: [2, 2, 2, 2]
-//      }
-//    });
-//    chart.legend(false);
-//    chart.axis(false);
-//    chart.coord('polar').transpose();
-//    chart.source(data);
-//    chart.intervalStack().position(Stat.summary.proportion(Stat.bin.rect(dim, 0.2)))
-//        .color('Species', function(val){
-//          var rst = 'red';
-//          Util.each(colorMap, function(v, k){
-//            if(val.toLowerCase().indexOf(k) !== -1){
-//              rst = v;
-//              return false;
-//            }
-//          });
-//          return rst;
-//        })
-//        .style({
-//          lineWidth: 1,
-//          fillOpacity: 1
-//        });
-//    return chart;
-//  };
-////  var honeycombLayout = function (center, nodes, gap){
-////    var cgap = [];
-////    var i;
-////
-////    nodes[0].x = center.x;
-////    nodes[0].y = center.y;
-////    for (i = 0; i < nodes.length; i++) {
-////      nodes[i].radius;
-////    }
-////  };
-//  var traverseTree = function(root, callback) {
-//    var children = root.children;
-//    Util.each(children, function(child) {
-//      callback(child, root);
-//      if (child.children) {
-//        TreeUtil.traverseTree(child, callback);
-//      }
-//    });
-//  };
-//  var sepalLengthChart = createChart('SepalLength'); // SepalLength SepalWidth PetalLength PetalWidth
-//  var sepalWidthChart = createChart('SepalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
-//  var petalLengthChart = createChart('PetalLength'); // SepalLength SepalWidth PetalLength PetalWidth
-//  var petalWidthChart = createChart('PetalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
-//  var data = {
-//    nodes: [{
-//      id: 'sepalLength',
-//      name: '花萼长度',
-//      x: 670,
-//      y: 230,
-//      chart: sepalLengthChart
-//    },{
-//      id: 'sepalWidth',
-//      name: '花萼宽度',
-//      x: 840,
-//      y: 140,
-//      chart: sepalWidthChart
-//    },{
-//      id: 'petalLength',
-//      name: '花瓣长度',
-//      x: 480,
-//      y: 280,
-//      chart: petalLengthChart
-//    },{
-//      id: 'petalWidth',
-//      name: '花瓣宽度',
-//      x: 570,
-//      y: 420,
-//      chart: petalWidthChart
-//    }],
-//    edges: [{
-//      source: 'sepalLength',
-//      target: 'sepalWidth',
-//      children: [
-//        {
-//          species: 'setosa',
-//          correlation: 0.74
-//        }
-//      ]
-//    },{
-//      source: 'sepalLength',
-//      target: 'petalWidth',
-//      children: [
-//        {
-//          species: 'all',
-//          correlation: 0.82
-//        }
-//      ]
-//    },{
-//      source: 'sepalLength',
-//      target: 'petalLength',
-//      children: [
-//        {
-//          species: 'all',
-//          correlation: 0.87
-//        },
-//        {
-//          species: 'versicolor',
-//          correlation: 0.75
-//        },
-//        {
-//          species: 'virginica',
-//          correlation: 0.86
-//        }
-//      ]
-//    },{
-//      source: 'petalWidth',
-//      target: 'petalLength',
-//      children: [
-//        {
-//          species: 'all',
-//          correlation: 0.96
-//        },
-//        {
-//          species: 'versicolor',
-//          correlation: 0.79
-//        }
-//      ]
-//    }]
-//  };
-//  var net = new G6.Net({
-//    id: 'mountNode',        // dom 容器 id
-//    fitView: 'lc',   // 自适应视口左中
-//    grid: null,
-//    height: height
-//  });
-//
-//  G6.registNode('customNode', {
-//    getHtml: function(cfg){
-//      var model = cfg.model;
-//      var chart = model.chart;
-//      var dom = chart.get('container');
-//      var size = cfg.size;
-//      chart.changeSize(size[0], size[1]);
-//      return dom;
-//    },
-//    afterDraw: function(cfg, group){
-//      var model = cfg.model;
-//      var padding = [6, 4];
-//      group.addShape('text', {
-//        attrs: {
-//          x: cfg.x + cfg.size[0]/2 + padding[0],
-//          y: cfg.y + padding[1],
-//          textAlign: 'left',
-//          textBaseline: 'middle',
-//          fill: '#666',
-//          text: model.name
-//        }
-//      });
-//    }
-//  }, 'html');
-//
-//  G6.registEdge('customEdge', {
-//    afterDraw: function(cfg, group, keyShape){
-//      var model = cfg.model;
-//      var children = model.children;
-//      var center = keyShape.getPoint(0.5);
-//      var markerGroup = group.addGroup();
-//      var maxcorrelationChild;
-//      var edgeColor;
-//      var root;
-//      root = d3.hierarchy(model)
-//               .sum(function(d) { return Math.pow(d.correlation, 4); })
-//               .sort(function(a, b) { return b.correlation - a.correlation; });
-//      maxcorrelationChild = root.children[0];
-//      pack(root);
-//      markerGroup.translate(- maxcorrelationChild.x, - maxcorrelationChild.y);
-//      markerGroup.scale(edgeMarkerRadius/maxcorrelationChild.r, edgeMarkerRadius/maxcorrelationChild.r);
-//      markerGroup.translate(maxcorrelationChild.x, maxcorrelationChild.y);
-//      markerGroup.translate(center.x - maxcorrelationChild.x, center.y - maxcorrelationChild.y);
-//      keyShape.attr('stroke', colorMap[maxcorrelationChild.data.species]);
-//      // 画背景圆
-//      markerGroup.addShape('circle', {
-//        attrs: {
-//          x: maxcorrelationChild.x,
-//          y: maxcorrelationChild.y,
-//          r: 1,
-//          fill: colorMap['background']
-//        }
-//      });
-//      // 画标记 Marker
-//      traverseTree(root, function(child){
-//        markerGroup.addShape('circle', {
-//          attrs: {
-//            x: child.x,
-//            y: child.y,
-//            r: child.r,
-//            fill: colorMap[child.data.species]
-//          }
-//        });
-//      });
-//    }
-//  }, 'line');
-//
-//  net.node()
-//     .size([50, 50])
-//     .style({
-//       stroke: null,
-//       fill: null
-//     })
-//     .shape('customNode');
-//  net.edge()
-//     .size(2)
-//     .shape('customEdge');
-//  net.removeBehaviour(['wheelZoom']);
-//  net.source(data.nodes, data.edges);
-//  net.render();
-//
-//  // 绘制图例
-//  var containerDom = $('#mountNode');
-//  containerDom.css('background', colorMap.background);
-//  // containerDom.css('width', width + 'px');
-//  containerDom.css('height', height + 'px');
-//  containerDom.css('position', 'relative');
-//  containerDom.append('<ul id="legend"><li style="color:'+colorMap.all+'">All</li><li style="color:'+colorMap.setosa+'">Setosa</li><li style="color:'+colorMap.versicolor+'">Versicolor</li><li style="color:'+colorMap.virginica+'">Virginica</li></ul>');
-//});
+  $.getJSON('/assets/data/iris.json', irisData=>{
+    const Util = G6.Util;
+    const colorMap = {
+      all: '#333',
+      setosa: '#64A051',
+      versicolor: '#F065B4',
+      virginica: '#732096',
+      background: '#F9F9F9'
+    };
+    const width = 500;
+    const height = 450;
+    const edgeMarkerRadius = 4;
+    const pack = d3.pack()
+                 .padding(0.1);
+    const createChart = dim => {
+      const container =  Util.createDOM('<div></div>');
+      const dv = new DataSet.View().source(irisData)
+      .transform({
+          type: 'bin.histogram',
+          field: dim, 
+          bins: 4, // binWidth的配置优先
+          groupBy: 'Species',
+          as: [ 'x', 'count' ]
+      })
+      .transform({ // 处理数据（生成一个分组的key）
+          type: 'map',
+          callback(row) {
+              row.x = row.x.map(num => num.toFixed(1)).join(',');
+              return row;
+          }
+      })
+      .transform({
+          type: 'percent',
+          field: 'count',
+          dimension: 'Species',
+          groupBy: 'x',
+          as: 'proportion'
+      });
+      const chart = new G2.Chart({
+        container,
+        width: 10,
+        height: 10,
+        animate: false,
+        padding: [2, 2, 2, 2]
+      });
+      chart.legend(false);
+      chart.axis(false);
+      chart.coord('polar').transpose();
+      chart.source(dv);
+          chart.intervalStack()
+          .position('x*proportion')
+          .color('Species', val=>{
+            let rst = 'red';
+            Util.each(colorMap, (v, k)=>{
+              if(val.toLowerCase().indexOf(k) !== -1){
+                rst = v;
+                return false;
+              }
+            });
+            return rst;
+          })
+          .style({
+              lineWidth: 1,
+              fillOpacity: 1
+          });
+  
+      chart.render();
+      return chart;
+    };
+    const honeycombLayout = (center, nodes, gap) => {
+      const cgap = [];
+      let i;
+  
+      nodes[0].x = center.x;
+      nodes[0].y = center.y;
+      for (i = 0; i < nodes.length; i++) {
+        nodes[i].radius
+      }
+    };
+    const traverseTree = (root, callback) => {
+      const children = root.children;
+      Util.each(children, child=> {
+        callback(child, root);
+        if (child.children) {
+          TreeUtil.traverseTree(child, callback);
+        }
+      });
+    };
+    const sepalLengthChart = createChart('SepalLength'); // SepalLength SepalWidth PetalLength PetalWidth
+    const sepalWidthChart = createChart('SepalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
+    const petalLengthChart = createChart('PetalLength'); // SepalLength SepalWidth PetalLength PetalWidth
+    const petalWidthChart = createChart('PetalWidth'); // SepalLength SepalWidth PetalLength PetalWidth
+    const data = {
+      nodes: [{
+        id: 'sepalLength',
+        name: '花萼长度',
+        x: 670,
+        y: 230,
+        chart: sepalLengthChart
+      },{
+        id: 'sepalWidth',
+        name: '花萼宽度',
+        x: 840,
+        y: 140,
+        chart: sepalWidthChart
+      },{
+        id: 'petalLength',
+        name: '花瓣长度',
+        x: 480,
+        y: 280,
+        chart: petalLengthChart
+      },{
+        id: 'petalWidth',
+        name: '花瓣宽度',
+        x: 570,
+        y: 420,
+        chart: petalWidthChart
+      }],
+      edges: [{
+        source: 'sepalLength',
+        target: 'sepalWidth',
+        children: [
+          {
+            species: 'setosa',
+            correlation: 0.74
+          }
+        ]
+      },{
+        source: 'sepalLength',
+        target: 'petalWidth',
+        children: [
+          {
+            species: 'all',
+            correlation: 0.82
+          }
+        ]
+      },{
+        source: 'sepalLength',
+        target: 'petalLength',
+        children: [
+          {
+            species: 'all',
+            correlation: 0.87
+          },
+          {
+            species: 'versicolor',
+            correlation: 0.75
+          },
+          {
+            species: 'virginica',
+            correlation: 0.86
+          }
+        ]
+      },{
+        source: 'petalWidth',
+        target: 'petalLength',
+        children: [
+          {
+            species: 'all',
+            correlation: 0.96
+          },
+          {
+            species: 'versicolor',
+            correlation: 0.79
+          }
+        ]
+      }]
+    };
+    const net = new G6.Net({
+      id: 'mountNode',        // dom 容器 id
+      fitView: 'tc',   // 自适应视口左中
+      grid: null,
+      height: height
+    });
+  
+    G6.registerNode('customNode', {
+      getHtml: cfg => {
+        const model = cfg.model;
+        const chart = model.chart;
+        const dom = chart.get('container');
+        const size = cfg.size;
+        chart.changeSize(size[0], size[1]);
+        return dom;
+      },
+      afterDraw: (cfg, group) => {
+        const model = cfg.model;
+        const padding = [6, 4];
+        group.addShape('text', {
+          attrs: {
+            x: cfg.x + cfg.size[0]/2 + padding[0],
+            y: cfg.y + padding[1],
+            textAlign: 'left',
+            textBaseline: 'middle',
+            fill: '#666',
+            text: model.name
+          }
+        });
+      }
+    }, 'html');
+  
+    G6.registerEdge('customEdge', {
+      afterDraw: (cfg, group, keyShape) => {
+        const model = cfg.model;
+        const children = model.children;
+        const center = keyShape.getPoint(0.5);
+        const markerGroup = group.addGroup();
+        let maxcorrelationChild;
+        let edgeColor;
+        let root;
+        root = d3.hierarchy(model)
+                 .sum(d => { return Math.pow(d.correlation, 4); })
+                 .sort((a, b) => { return b.correlation - a.correlation; });
+        maxcorrelationChild = root.children[0];
+        pack(root);
+        markerGroup.translate(- maxcorrelationChild.x, - maxcorrelationChild.y);
+        markerGroup.scale(edgeMarkerRadius/maxcorrelationChild.r, edgeMarkerRadius/maxcorrelationChild.r);
+        markerGroup.translate(maxcorrelationChild.x, maxcorrelationChild.y);
+        markerGroup.translate(center.x - maxcorrelationChild.x, center.y - maxcorrelationChild.y);
+        keyShape.attr('stroke', colorMap[maxcorrelationChild.data.species]);
+        // 画背景圆
+        markerGroup.addShape('circle', {
+          attrs: {
+            x: maxcorrelationChild.x,
+            y: maxcorrelationChild.y,
+            r: 1,
+            fill: colorMap['background']
+          }
+        });
+        // 画标记 Marker
+        traverseTree(root, child => {
+          markerGroup.addShape('circle', {
+            attrs: {
+              x: child.x,
+              y: child.y,
+              r: child.r,
+              fill: colorMap[child.data.species]
+            }
+          });
+        });
+      }
+    }, 'line');
+  
+    net.node()
+       .size([50, 50])
+       .style({
+         stroke: null,
+         fill: null
+       })
+       .shape('customNode');
+    net.edge()
+       .size(2)
+       .shape('customEdge');
+    net.removeBehaviour(['wheelZoom']);
+    net.source(data.nodes, data.edges);
+    net.render();
+  
+    // 绘制图例
+    const containerDom = $('#mountNode');
+    containerDom.css('background', colorMap.background);
+    // containerDom.css('width', width + 'px');
+    containerDom.css('height', height + 'px');
+    containerDom.css('position', 'relative');
+    containerDom.append('<ul id="legend"><li style="color:'+colorMap.all+'">All</li><li style="color:'+colorMap.setosa+'">Setosa</li><li style="color:'+colorMap.versicolor+'">Versicolor</li><li style="color:'+colorMap.virginica+'">Virginica</li></ul>');
+  });
 
 </script>

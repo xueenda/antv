@@ -1,6 +1,6 @@
 <!--
 title: 自定义箭头
-description: 
+plotDescription:  
 index: 1
 resource:
   jsFiles:
@@ -8,18 +8,18 @@ resource:
 -->
 
 <script type="text/javascript">
-var Util = G6.Util;
-G6.registEdge('bezierQuadratic', {
-  afterDraw: function(cfg, group, keyShape) {
-    var points = cfg.points;
-    var end = points[points.length - 1];
-    var center = keyShape.getPoint(0.5);
-    var lineWidth = keyShape.attr('lineWidth');
+const Util = G6.Util;
+G6.registerEdge('bezierQuadratic', {
+  afterDraw(cfg, group, keyShape) {
+    const points = cfg.points;
+    const end = points[points.length - 1];
+    const center = keyShape.getPoint(0.5);
+    let lineWidth = keyShape.attr('lineWidth');
     if(lineWidth < 5){
       lineWidth = 5;
     }
     // 关于自身坐标系构造一个形，作为箭头
-    var arrow = group.addShape('polyline', {
+    const arrow = group.addShape('polyline', {
       attrs:{
         points: [
           [-lineWidth/4, lineWidth/2],
@@ -33,7 +33,7 @@ G6.registEdge('bezierQuadratic', {
     Util.arrowTo(arrow, center.x, center.y, center.x, center.y, end.x, end.y);
   }
 });
-var data = {
+const data = {
   "source": {
     "nodes": [
       {
@@ -81,7 +81,7 @@ var data = {
     ]
   }
 };
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'mountNode',           // 容器ID
     height: window.innerHeight,        // 画布高
     fitView: 'cc',      // 图居中自适应

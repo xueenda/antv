@@ -1,6 +1,6 @@
 <!--
 title: HTML 节点
-description: 
+plotDescription:  
 index: 1
 resource:
   jsFiles:
@@ -24,31 +24,31 @@ resource:
   }
 </style>
 <script type="text/javascript">
-  var Util = G6.Util;
-  G6.registNode('customHtml1', {
-    getHtml: function(cfg){
-      var model = cfg.model;
-      var dom = Util.createDOM('<ul class="customNode1"><li>html节点</li><li>'+model.id+'</li><li>x:'+model.x+'</li><li>y:'+model.y+'</li></ul>');
+  const Util = G6.Util;
+  G6.registerNode('customHtml1', {
+    getHtml(cfg){
+      const model = cfg.model;
+      const dom = Util.createDOM('<ul class="customNode1"><li>html节点</li><li>'+model.id+'</li><li>x:'+model.x+'</li><li>y:'+model.y+'</li></ul>');
       return dom;
     }
   }, 'html');
-  G6.registNode('customHtml2', {
+  G6.registerNode('customHtml2', {
     cssSize: true, // 该配置项设置为 true 时，则节点不受 node size 控制
-    getHtml: function(cfg){
-      var model = cfg.model;
-      var dom = Util.createDOM('<ul class="customNode2"><li>html节点</li><li>'+model.id+'</li><li>x:'+model.x+'</li><li>y:'+model.y+'</li></ul>');
+    getHtml(cfg){
+      const model = cfg.model;
+      const dom = Util.createDOM('<ul class="customNode2"><li>html节点</li><li>'+model.id+'</li><li>x:'+model.x+'</li><li>y:'+model.y+'</li></ul>');
       return dom;
     }
   }, 'html');
-  G6.registNode('customHtml3', {
+  G6.registerNode('customHtml3', {
     cssSize: true,
-    getHtml: function(cfg){
-      var model = cfg.model;
+    getHtml(cfg){
+      const model = cfg.model;
       // 除了返回 dom 元素还能返回html字符串
       return '<ul class="customNode2"><li>html节点</li><li>'+model.id+'</li><li>x:'+model.x+'</li><li>y:'+model.y+'</li></ul>';
     }
   }, 'html');
-  var data = {
+  const data = {
     "nodes": [
       {
         "id": "node1",
@@ -77,7 +77,7 @@ resource:
       }
     ]
   };
-  var net = new G6.Net({
+  const net = new G6.Net({
     id: 'mountNode',      // 容器ID
     fitView:'cc',    // 画布宽
     height: window.innerHeight    // 画布高
@@ -86,10 +86,10 @@ resource:
   net.edge().style({
     arrow: true
   });
-  net.on('click', function(ev){
-    var shape = ev.shape;
+  net.on('click', ev => {
+    const shape = ev.shape;
     if(shape){
-      var dom = shape.get('dom');
+      const dom = shape.get('dom');
       console.log(dom); // eslint-disable-line no-console
     }
   });

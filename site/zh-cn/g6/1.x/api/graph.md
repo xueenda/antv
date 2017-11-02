@@ -11,12 +11,14 @@
 
 所有上层图的抽象类，都继承于该类
 
+`注意：不可以直接示例化该类`
+
 ## 属性
 
 下面是创建关系图的语法，生成的 Graph 提供了关系图配置的各种方法，下面会介绍到。
 
 ```js
-var graph = new G6.Graph({
+const graph = new G6.Graph({
   id: 'c1',
   width: 500,
   height: 500
@@ -31,25 +33,25 @@ graph.get('属性名');
 
 下面对所有的属性依次作说明介绍：
 
-### [id](#_id) {String}
+### [id](#_id)
 
-创建关系图的 DOM 容器 id。
+[String] 创建关系图的 DOM 容器 id。
 
-### [container](#_container) {DOMobject}
+### [container](#_container)
 
-除了传递 id 值来指定关系图容器，也支持直接传入容器的 html 节点对象。
+[DOM] 除了传递 id 值来指定关系图容器，也支持直接传入容器的 html 节点对象。
 
-### [width](#_width) {Number}
+### [width](#_width)
 
-设置关系图的宽度，单位像素。若不设置，则会根据父节点自适应宽度。
+[Number] 设置关系图的宽度，单位像素。若不设置，则会根据父节点自适应宽度。
 
-### [height](#_height) {Number}
+### [height](#_height)
 
-设置关系图的高度，单位像素。
+[Number] 设置关系图的高度，单位像素。
 
-### [fitView](#_fitView) {String|Object}
+### [fitView](#_fitView)
 
-`初次绘制`适应视口，接收如下参数：
+[String|Object] `初次绘制`适应视口，接收如下参数：
 
 * 'autoSize'       渲染完毕后，图形不变，自动缩放画布
 * 'autoZoom'       渲染完毕后，画布不变，自动缩放图形
@@ -183,35 +185,24 @@ function createNet(fitView){
 }
 ```
 
-### [fitViewPadding](#_fitViewPadding) {Number}
+### [fitViewPadding](#_fitViewPadding)
 
-自适应视口内边距，默认 10
+[Number] 自适应视口内边距，默认 10
 
-### [behaviourSignal](#_behaviourSignal) {Object}
+### [grid](#_grid)
 
-只读字段，存储一些行为的信号量。如：
-
-{
-  draggingNode,   // 是否正在拖拽节点
-  frameSelecting, // 是否正在进行框选
-  draggingEdge,   // 是否正在进行拖拽边端点
-  resizingNode,   // 是否正在节点变形操作
-}
-
-### [grid](#_grid) {Object}
-
-网格配置项
+[Object] 网格配置项
 
 ![image](https://zos.alipayobjects.com/rmsportal/MsLODKhnZZmnUSlzNIIo.png)
 
 G6 内置了一套网格系统，`cell` 可以配置单个网格的大小，`line` 配置网格线的样式。
 
 ```js
-var data = {
+const data = {
   nodes: [],
   edges: []
 };
-var graph = new G6.Graph({
+const graph = new G6.Graph({
   id: 'c1',           // 容器ID
   width: 500,         // 画布宽
   height: 500,        // 画布高
@@ -237,17 +228,17 @@ grid: null
 
 ![image](https://zos.alipayobjects.com/rmsportal/dYZffesDrgEHgqMYbout.gif)
 
-### [useAnchor](#_useAnchor) {Boolean}
+### [useAnchor](#_useAnchor)
 
-是否使用锚点
+[Boolean] 是否使用锚点
 
-### [el](#_el) {DOMobject}
+### [el](#_el)
 
-最上层的canvas DOM，原生DOM事件由它捕获，可用于设置鼠标样式。
+[DOM] 最上层的canvas DOM，原生DOM事件由它捕获，可用于设置鼠标样式。
 
-### [modes](#_modes) {Object|String}
+### [modes](#_modes)
 
-模式列表
+[Object|String] 模式列表
 
 示例：
 
@@ -258,17 +249,17 @@ grid: null
 }
 ```
 
-### [mode](#_mode) {String}
+### [mode](#_mode)
 
-当前选择的模式，默认 `default`
+[String] 当前选择的模式，默认 `default`
 
-### [animate](#_animate) {Boolean}
+### [animate](#_animate)
 
-是否开启动画
+[Boolean] 是否开启动画
 
 ## 实例方法
 
-### [render](#_render) {Function}
+### [render](#_render)
 
 渲染数据
 
@@ -280,7 +271,7 @@ graph.render();
 ```
 
 
-### [node](#_node) {Function}
+### [node](#_node)
 
 param 可是是值，也可是回调函数
 
@@ -321,7 +312,7 @@ graph.node().tooltip(param)
 
 [示例](../demo/other/mapping.html)
 
-### [edge](#_node) {Function}
+### [edge](#_node)
 
 param 可是是值，也可是回调函数
 
@@ -360,7 +351,7 @@ graph.edge().tooltip(param)
 
 [示例](../demo/other/mapping.html)
 
-### [tooltip](#_tooltip) {Function}
+### [tooltip](#_tooltip)
 
 G6 中提示信息功能默认关闭，若要开启，需要调用该方法。需要注意以下几点：
 
@@ -414,7 +405,7 @@ var data = {
   ],
 };
 
-var graph = new G6.Graph({
+var net = new G6.Net({
   id: 'tooltip_true',      // 容器ID
   width: 500,    // 画布宽
   height: 500,   // 画布高
@@ -423,10 +414,10 @@ var graph = new G6.Graph({
     cell: 10,          // 网格大小
   },
 });
-graph.tooltip(true);
-graph.source(data.nodes, data.edges);
-graph.node().tooltip('id');
-graph.render();
+net.tooltip(true);
+net.source(data.nodes, data.edges);
+net.node().tooltip('id');
+net.render();
 ```
 
 [示例源码](../demo/other/tooltip-true.html)
@@ -467,25 +458,25 @@ var data = {
   ],
 };
 
-var graph = new G6.Graph({
+var net = new G6.Net({
   id: 'tooltip_cfg',      // 容器ID
   width: 500,
   height: 500             // 画布高
 });
-graph.tooltip({
+net.tooltip({
   title: '标题', // @type {String} 标题
   split: '=>',  // @type {String} 分割符号
   dx: 10,       // @type {Number} 水平偏移
   dy: 10        // @type {Number} 竖直偏移
 });
-graph.source(data.nodes, data.edges);
-graph.node().tooltip('id');
-graph.render();
+net.source(data.nodes, data.edges);
+net.node().tooltip('id');
+net.render();
 ```
 
 [示例源码](../demo/other/tooltip-cfg.html)
 
-### [on](#_on) {Function}
+### [on](#_on)
 
 事件绑定。`ev` 是事件对象，含下列字段：
 
@@ -516,6 +507,9 @@ graph.on('dblclick', function(ev){});        // 鼠标左键双击事件
 graph.on('mousedown', function(ev){});       // 鼠标左键按下事件
 graph.on('mouseup', function(ev){});         // 鼠标左键抬起事件
 graph.on('mousemove', function(ev){});       // 鼠标移动事件
+graph.on('dragstart', function(ev){});       // 开始拖拽事件
+graph.on('dragmove', function(ev){});        // 拖拽中事件
+graph.on('dragend', function(ev){});         // 拖拽结束后事件
 graph.on('contextmenu', function(ev){});     // 鼠标右键点击事件
 graph.on('mouseenter', function(ev){});      // 鼠标进入元素事件
 graph.on('mouseleave', function(ev){});      // 鼠标离开元素事件
@@ -531,11 +525,15 @@ graph.on('itemadd', function(ev){});         // 添加子项结束后
 graph.on('itemmouseenter', function(ev){});  // 子项鼠标进入事件
 graph.on('itemmouseleave', function(ev){});  // 子项鼠标离开事件
 graph.on('afteritemrender', function(ev){}); // 子项渲染结束后事件
+graph.on('beforeinit', function(ev){});      // 初始化前事件
+graph.on('afterinit', function(ev){});       // 初始化后事件
+graph.on('beforerender', function(ev){});    // 绘制前事件
+graph.on('afterrender', function(ev){});     // 绘制后事件
 ```
 
 [示例](../demo/other/event.html)
 
-### [off](#_off) {Function}
+### [off](#_off)
 
 事件解除。`callBack` 用于指定要删除的回调方法，如果没有设置，则解除所有该事件类型下的方法。
 
@@ -548,7 +546,7 @@ graph.on('afteritemrender', function(ev){}); // 子项渲染结束后事件
 graph.off(eventType,fn);
 ```
 
-### [remove](#_remove) {Function}
+### [remove](#_remove)
 
 删除子项，`param` 是子项或是子项id
 
@@ -560,7 +558,7 @@ graph.off(eventType,fn);
 graph.remove(item)
 ```
 
-### [update](#_update) {Function}
+### [update](#_update)
 
 更新子项，`param` 是子项或是子项id，`model` 是数据模型。
 
@@ -573,7 +571,7 @@ graph.remove(item)
 graph.update(param, model)
 ```
 
-### [find](#_find) {Function}
+### [find](#_find)
 
 查找子项
 
@@ -585,7 +583,7 @@ graph.update(param, model)
 graph.find(id)
 ```
 
-### [converPoint](#_converPoint) {Function}
+### [converPoint](#_converPoint)
 
 将图坐标转为 DOM 坐标
 
@@ -598,7 +596,7 @@ graph.find(id)
 graph.converPoint(point)
 ```
 
-### [invertPoint](#_invertPoint) {Function}
+### [invertPoint](#_invertPoint)
 
 将 DOM 坐标转为图坐标
 
@@ -622,7 +620,7 @@ graph.invertPoint(point)
 graph.refresh();
 ```
 
-### [changeData](#_changeData) {Function}
+### [changeData](#_changeData)
 
 重新加载数据，并刷新。(接收的数据 和 source 方法一致)
 
@@ -633,7 +631,7 @@ graph.refresh();
 graph.changeData(param1, param2, ……);
 ```
 
-### [changeMode](#_changeMode) {Function}
+### [changeMode](#_changeMode)
 
 改变模式
 
@@ -645,7 +643,7 @@ graph.changeData(param1, param2, ……);
 graph.changeMode(modeName);
 ```
 
-### [addBehaviour](#_addBehaviour) {Function}
+### [addBehaviour](#_addBehaviour)
 
 在某个模式下添加行为
 
@@ -668,7 +666,7 @@ graph.addBehaviour(modeName, behaviours);
 graph.addBehaviour(behaviours);
 ```
 
-### [removeBehaviour](#_removeBehaviour) {Function}
+### [removeBehaviour](#_removeBehaviour)
 
 移除行为（与`addBehaviour` 对应）
 
@@ -691,7 +689,7 @@ graph.removeBehaviour(modeName, behaviours);
 graph.removeBehaviour(behaviours);
 ```
 
-### [setItemActived](#_setItemActived) {Function}
+### [setItemActived](#_setItemActived)
 
 设置子项激活，`item` 是子项。
 
@@ -728,7 +726,7 @@ graph.autoSize();
 graph.resetZoom();
 ``` -->
 
-### [read](#_read) {Function}
+### [read](#_read)
 
 读数据，与 `save` 对应。
 
@@ -740,7 +738,7 @@ graph.resetZoom();
 graph.read(data);
 ```
 
-### [save](#_save) {Function}
+### [save](#_save)
 
 存数据，与 `read` 对应。
 
@@ -752,7 +750,7 @@ graph.read(data);
 graph.save();
 ```
 
-### [focusPoint](#_focusPoint) {Function}
+### [focusPoint](#_focusPoint)
 以某点为中心显示画布
 
 ```js
@@ -763,7 +761,7 @@ graph.save();
 graph.focusPoint(point);
 ```
 
-### [updateMatrix](#_updateMatrix) {Function}
+### [updateMatrix](#_updateMatrix)
 更新画布根节点矩阵
 
 ```js
@@ -774,7 +772,7 @@ graph.focusPoint(point);
 graph.updateMatrix(point);
 ```
 
-### [changeSize](#_changeSize) {Function}
+### [changeSize](#_changeSize)
 更改画布的尺寸
 
 ```js
@@ -786,7 +784,7 @@ graph.updateMatrix(point);
 graph.changeSize(width, height);
 ```
 
-### [updateNodesPositon](#_updateNodesPositon) {Function}
+### [updateNodesPositon](#_updateNodesPositon)
 
 更新节点位置信息（一般与动态布局联用）
 

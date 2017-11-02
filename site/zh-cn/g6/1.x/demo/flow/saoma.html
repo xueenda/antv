@@ -1,6 +1,6 @@
 <!--
 title: 扫码业务流程
-description: 重点展示 HTML 节点的使用
+plotDescription:  重点展示 HTML 节点的使用
 index: 2
 
 -->
@@ -38,20 +38,20 @@ index: 2
   }
 </style>
 <script type="text/javascript">
-var Util = G6.Util;
+const Util = G6.Util;
 G6.registerNode('customNode', {
   cssSize: true, // 不使用内部 size 作为节点尺寸
   getHtml: function(cfg){
-    var model = cfg.model;
-    var container = Util.createDOM('<div class="node-conatiner"></div>');
-    var title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
+    const model = cfg.model;
+    const container = Util.createDOM('<div class="node-conatiner"></div>');
+    const title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
       ${model.name}
     </div>`);
-    var list = Util.createDOM(`<div class="node-conatiner-list">
+    const list = Util.createDOM(`<div class="node-conatiner-list">
       <span>数量：</span>
       <span>${model.count}</span>
     </div>`);
-    var botton = Util.createDOM(`<button class="node-delete">X</button>`);
+    const botton = Util.createDOM(`<button class="node-delete">X</button>`);
     botton.addEventListener('click', function(){
       net.remove(net.find(model.id));
     });
@@ -61,7 +61,7 @@ G6.registerNode('customNode', {
     return container;
   }
 }, 'html');
-var data = {
+const data = {
   "nodes": [
     {
       "id": "c952611b",
@@ -103,7 +103,7 @@ var data = {
     }
   ]
 };
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'mountNode',
     height: window.innerHeight,
     fitView: 'tc'

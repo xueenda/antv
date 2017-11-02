@@ -8,6 +8,18 @@
 
 # 更新日志
 
+## v1.2.0
+
+* fix:     修复 右键后再移动鼠标触发dragstart
+* feat:    新增 统一布局机制到 Graph
+* feat:    新增 插件机制
+* feat:    新增 数据过滤机制
+* feat:    新增 激活态接口
+* feat:    新增 行为 wheelZoomAutoLabel
+* feat:    新增 graph 配置项 preciseAnchor
+* remove:  移除 Global.preciseAnchor
+* remove:  移除 Layout.Flow、Layout.Force
+
 ## v1.1.6
 
 * fix:     修复 布局算法包中的打包问题
@@ -51,6 +63,7 @@
 
 `2017-07-05`
 
+* feat:    新增 HTML 节点
 * feat:    新增 映射支持直接传入 callback
 * feat:    新增 Graph 接口 updateMatrix、changeSize、showAnchor、hideAnchor、updataNodesPosition
 * feat:    新增 工具方法 Util.isNode()、Util.isEdge()
@@ -106,7 +119,6 @@
 * fix:     修复 Object.values => Util.getObjectValues
 * fix:     修复 anchorPoints 为 auto 时，edge上就算传了anchorpoint，也返回截取点
 * fix:     修复 tree 更新接口 Bug
-* feat:    新增 HTML 节点
 * improve: 改进 位置信息用 group.transfrom() 来表示
 
 ## v1.0.1

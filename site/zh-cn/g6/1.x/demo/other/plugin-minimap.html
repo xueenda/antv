@@ -1,0 +1,45 @@
+<!--
+title: 插件：缩略图
+plotDescription:  
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+    - ${url['g6-plugins']}
+-->
+
+<script type="text/javascript">
+$.getJSON('/assets/data/influenceNetwork.json', data => {
+  const plugin = new G6.Plugins['tool.minimap']();
+  const net = new G6.Net({
+    id: 'mountNode',                      // dom id
+    height: window.innerHeight,    // 画布高
+    fitView: 'autoZoom',
+    grid: null,
+    useAnchor: false,
+    plugins: [ plugin ],
+    mode: 'analysis'
+  });
+  net.tooltip(true);
+  net.node()
+    .tooltip( obj => {
+      return [
+        ['语言', obj.language],
+        ['影响力', obj.size],
+        ['模块数', obj.modularityClass]
+      ];
+    })
+    .size( obj => {
+      const rst = obj.size <= 10 ? 10 :obj.size;
+      return rst;
+    })
+    .shape('circle')
+    .label('language')
+    .style({
+      fillOpacity: 1
+    });
+  net.source(data.nodes, data.edges);
+  net.render();
+});
+</script>
+    

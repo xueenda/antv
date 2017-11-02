@@ -1,6 +1,6 @@
 <!--
 title: 数据库设计
-description: 该图展示了数据库表之间的关联关系，主要向大家展示了动态锚点的使用方法。
+plotDescription:  该图展示了数据库表之间的关联关系，主要向大家展示了动态锚点的使用方法。
 index: 1
 resource:
   jsFiles:
@@ -8,37 +8,37 @@ resource:
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/dataBase.json', function(data){
-  var Util = G6.Util;
-  G6.registNode('table', {
-    draw: function(cfg, group){
-      var x = cfg.x;
-      var y = cfg.y;
-      var model = cfg.model;
-      var fields = model.fields;
-      var backRect = group.addShape('rect', {
+$.getJSON('/assets/data/dataBase.json', data => {
+  const Util = G6.Util;
+  G6.registerNode('table', {
+    draw(cfg, group){
+      const x = cfg.x;
+      const y = cfg.y;
+      const model = cfg.model;
+      const fields = model.fields;
+      const backRect = group.addShape('rect', {
         attrs: {
           stroke: 'blue',
           fill: cfg.color
         }
       });
-      var nameGroup = group.addGroup();
-      var typeGroup = group.addGroup();
-      var keyGroup = group.addGroup();
-      var lineHeight = 20;
-      var marginRight = 10;
-      var padding = 6;
-      var l = fields.length;
-      var fontHeight;
-      var anchorPoints = [];
-      var title;
-      var titleBox;
-      var nameBox;
-      var typeBox;
-      var keyBox;
-      var width;
-      var height;
-      var splitLine;
+      const nameGroup = group.addGroup();
+      const typeGroup = group.addGroup();
+      const keyGroup = group.addGroup();
+      const lineHeight = 20;
+      const marginRight = 10;
+      const padding = 6;
+      const l = fields.length;
+      let fontHeight;
+      let anchorPoints = [];
+      let title;
+      let titleBox;
+      let nameBox;
+      let typeBox;
+      let keyBox;
+      let width;
+      let height;
+      let splitLine;
 
       title = group.addShape('text', {
         attrs: {
@@ -57,7 +57,7 @@ $.getJSON('/assets/data/dataBase.json', function(data){
         }
       });
 
-      Util.each(fields, function(field, i){
+      Util.each(fields, (field, i)=>{
         nameGroup.addShape('text', {
           attrs:{
             x: x,
@@ -112,22 +112,22 @@ $.getJSON('/assets/data/dataBase.json', function(data){
         stroke: 'blue',
         fill: cfg.color
       });
-      Util.each(fields, function(field, i){
-        var r = ( titleBox.height + i*(nameBox.height + lineHeight - fontHeight)/l + fontHeight/2 + 3 * padding)/height;
+      Util.each(fields, (field, i)=>{
+        const r = ( titleBox.height + i*(nameBox.height + lineHeight - fontHeight)/l + fontHeight/2 + 3 * padding)/height;
         anchorPoints.push([0, r]);
         anchorPoints.push([1, r]);
       });
       group.set('anchorPoints', anchorPoints);
       return backRect;
     },
-    getAnchorPoints: function(cfg, group){
-      var anchorPoints = group.get('anchorPoints');
+    getAnchorPoints(cfg, group){
+      const anchorPoints = group.get('anchorPoints');
       anchorPoints.unshift([0.5, 0]);   // 上中
       anchorPoints.push([0.5, 1]);      // 下中
       return anchorPoints;
     }
   });
-  var net = new G6.Net({
+  const net = new G6.Net({
     id: 'mountNode',            // 容器ID
     height: window.innerHeight,         // 画布高
     fitView: 'autoZoom', // 自动缩放
@@ -136,7 +136,7 @@ $.getJSON('/assets/data/dataBase.json', function(data){
     }
   });
   net.source(data.nodes, data.edges);
-  net.node().color('type', function(val){
+  net.node().color('type', val=>{
     if(val === "B"){
       return G6.Global.colors[0];
     }
