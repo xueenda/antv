@@ -13,7 +13,7 @@
 
 ### [layout](#_layout)
 
-[Function] 
+[Function] 布局回调函数，回调方法中会传入，节点和边数据。
 
 ### [behaviourSignal](#_behaviourSignal)
 

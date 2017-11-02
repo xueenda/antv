@@ -1,0 +1,46 @@
+<!--
+title: 插件：d3 力导布局
+plotDescription:  
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+    - ${url['g6-plugins']}
+-->
+
+<script type="text/javascript">
+const plugin = new G6.Plugins['layout.d3.force']();
+const data = {
+  nodes: [
+    { id: '3', x: 150, y: 300},
+    { id: '4', x: 50, y: 400},
+    { id: '5', x: 200, y: 400},
+    { id: '6', x: 150, y: 500},
+    { id: '7', x: 150, y: 600},
+  ],
+  edges: [
+    { id: '3-4', source: '3', target: '4' },
+    { id: '3-5', source: '3', target: '5' },
+    { id: '4-5', source: '4', target: '5' },
+    { id: '5-6', source: '5', target: '6' },
+    { id: '6-7', source: '6', target: '7' },
+  ]
+}
+const net = new G6.Net({
+  id: 'mountNode',                      // dom id
+  height: window.innerHeight,    // 画布高
+  grid: null,
+  useAnchor: false,
+  plugins: [ plugin ],
+});
+net.source(data.nodes, data.edges);
+net.node()
+    .shape('circle')
+    .size(20)
+    .style({
+      fill: '#32A1EB',
+      fillOpacity: 1,
+    });;
+net.render();
+  </script>
+    

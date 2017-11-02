@@ -211,12 +211,12 @@ tree.on('mouseleave', function(ev){
 ### 浏览器引入
 
 ```js
-<script src="https://gw.alipayobjects.com/as/g/datavis/g6/1.1.6/index.js"></script>
+<script src="http://unpkg.alipay.com/@ali/g6@1.2.0-beta.42/dist/g6.min.js"></script>
 ```
 
 ### 通过 npm 安装
 
-外部暂不提供 npm 引入，阿里内部同学请安装 "@ali/g6"
+`外部用户暂不提供 npm 引入`，阿里内部同学可使用 tnpm 安装 "@ali/g6"。
 
 ## 快速开始
 

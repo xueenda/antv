@@ -31,15 +31,7 @@
 
 ### [layout](#_layout)
 
-[Function] 布局回调函数，回调方法中会传入，树节点对象。（注意：此时会在节点上加上尺寸【width, height】）。
-
-```js
-/**
- * 加载数据
- * @param  callback {Function} 布局回调函数
- */
-tree.layout(callback);
-```
+[Function] 布局回调函数，回调方法中会传入，树节点对象。
 
 ### [layoutFn](#_layoutfn)
 

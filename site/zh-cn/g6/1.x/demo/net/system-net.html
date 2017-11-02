@@ -5,6 +5,7 @@ index: 8
 resource:
   jsFiles:
     - ${url.jquery}
+    - ${url['g6-plugins']}
 -->
 
 <style>
@@ -25,7 +26,6 @@ resource:
   cursor: pointer;
 }
 </style>
-<script type="text/javascript" src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.18/dist/g6-plugins.min.js"></script>
 <script type="text/javascript">
 $.getJSON('/assets/data/system-net.json', data => {
   const Mapper = G6.Plugins['enhance.d3.mapper'];

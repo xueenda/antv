@@ -507,6 +507,9 @@ graph.on('dblclick', function(ev){});        // 鼠标左键双击事件
 graph.on('mousedown', function(ev){});       // 鼠标左键按下事件
 graph.on('mouseup', function(ev){});         // 鼠标左键抬起事件
 graph.on('mousemove', function(ev){});       // 鼠标移动事件
+graph.on('dragstart', function(ev){});       // 开始拖拽事件
+graph.on('dragmove', function(ev){});        // 拖拽中事件
+graph.on('dragend', function(ev){});         // 拖拽结束后事件
 graph.on('contextmenu', function(ev){});     // 鼠标右键点击事件
 graph.on('mouseenter', function(ev){});      // 鼠标进入元素事件
 graph.on('mouseleave', function(ev){});      // 鼠标离开元素事件
@@ -522,6 +525,10 @@ graph.on('itemadd', function(ev){});         // 添加子项结束后
 graph.on('itemmouseenter', function(ev){});  // 子项鼠标进入事件
 graph.on('itemmouseleave', function(ev){});  // 子项鼠标离开事件
 graph.on('afteritemrender', function(ev){}); // 子项渲染结束后事件
+graph.on('beforeinit', function(ev){});      // 初始化前事件
+graph.on('afterinit', function(ev){});       // 初始化后事件
+graph.on('beforerender', function(ev){});    // 绘制前事件
+graph.on('afterrender', function(ev){});     // 绘制后事件
 ```
 
 [示例](../demo/other/event.html)

@@ -1,0 +1,63 @@
+<!--
+title: 插件：d3 映射器
+plotDescription:  
+index: 1
+resource:
+  jsFiles:
+    - ${url.jquery}
+    - ${url['g6-plugins']}
+-->
+
+<script type="text/javascript">
+const Mapper = G6.Plugins['enhance.d3.mapper'];
+const nodeColorMapper = new Mapper('node', 'type', 'color', [ 'red', 'green', 'pink', 'blue' ]);
+const nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 5, 20 ], {
+  legendCfg: {
+    position: 'br',
+    marginRight: 100,
+    callback: legend => {
+      // 可以在此处自定义 legend 文档参考：https://github.com/susielu/d3-legend
+      legend.shapePadding(10);
+      legend.title('标题');
+    },
+  },
+});
+const edgeColorMapper = new Mapper('edge', 'type', 'color', [ 'red', 'green', 'yellow' ], {
+  scaleCfg: {
+    type: 'ordinal',
+  },
+  legendCfg: {
+    position: 'bl',
+  },
+});
+const edgeSizeMapper = new Mapper('edge', 'weight', 'size', [ 3, 20 ], {
+  legendCfg: {
+    position: 'bl',
+    marginLeft: 100,
+  },
+});
+const data = {
+  nodes: [
+    { id: '0', weight: 10, type: 'n0', x:5.5, y:20.5},
+    { id: '1', weight: 20, type: 'n1', x:70.25, y:20.5},
+    { id: '2', weight: 30, type: 'n2', x:142.5, y:20.5},
+    { id: '3', weight: 50, type: 'n3', x:226, y:20.5},
+  ],
+  edges: [
+    { id: '0-1', source: '0', target: '1', weight: 10, type: 'e1'},
+    { id: '1-2', source: '1', target: '2', weight: 20, type: 'e2'},
+    { id: '2-3', source: '2', target: '3', weight: 30, type: 'e3'},
+  ]
+}
+const net = new G6.Net({
+  id: 'mountNode',             // dom id
+  height: window.innerHeight,    // 画布高
+  grid: null,
+  fitView: 'cc',
+  plugins: [ nodeColorMapper, edgeColorMapper, nodeSizeMapper, edgeSizeMapper  ],
+});
+net.source(data.nodes, data.edges);
+net.node().shape('circle');
+net.render();
+</script>
+      
