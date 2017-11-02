@@ -7,14 +7,16 @@ resource:
 
 <script>
 
-var Shape = F2.Shape;
-var G = F2.Graphic;
-var data = [{pointer: '当前收益',value: 5, length:2,y:1.05}];
+F2.Global.pixelRatio = window.devicePixelRatio;
+
+const Shape = F2.Shape;
+const G = F2.Graphic;
+const data = [{pointer: '当前收益',value: 5, length:2,y:1.05}];
 //自定义绘制数据的的形状      
 Shape.registerShape('point', 'dashBoard', {
   getPoints:function(cfg){
-    var x = cfg.x;
-    var y = cfg.y;
+    const x = cfg.x;
+    const y = cfg.y;
 
     return [
       {x: x, y: y},
@@ -22,8 +24,8 @@ Shape.registerShape('point', 'dashBoard', {
     ];
   },
   draw: function(cfg, canvas){
-    var point1 = cfg.points[0];
-    var point2 = cfg.points[1];
+    let point1 = cfg.points[0];
+    let point2 = cfg.points[1];
     point1 = this.parsePoint(point1);
     point2 = this.parsePoint(point2);
    
@@ -32,7 +34,7 @@ Shape.registerShape('point', 'dashBoard', {
       lineWidth: 2
     });
 
-    var text = cfg.origin._origin.value.toString();
+    const text = cfg.origin._origin.value.toString();
 		G.drawText(text+'%', cfg.center, canvas, {
 			fillStyle: '#f75b5b',
 			font:'30px Arial',
@@ -48,7 +50,7 @@ Shape.registerShape('point', 'dashBoard', {
   }
 });
 
-var chart = new F2.Chart({
+const chart = new F2.Chart({
 	id : 'mountNode'
 });
 chart.source(data, {

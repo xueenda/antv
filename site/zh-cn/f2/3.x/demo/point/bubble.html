@@ -6,7 +6,8 @@ resource:
 -->
 
 <script>
-    var data = [
+    F2.Global.pixelRatio = window.devicePixelRatio;
+    const data = [
         { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
         { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
         { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },
@@ -23,7 +24,7 @@ resource:
         { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
         { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
     ];
-    var chart = new F2.Chart({
+    const chart = new F2.Chart({
         id: 'mountNode',
         padding: [20, 20, 50, 60]
     });

@@ -6,9 +6,9 @@ resource:
 -->
 
 <script>
-F2.Global.pixelRatio = 2;
+F2.Global.pixelRatio = window.devicePixelRatio;
 
-var data = [
+const data = [
   {name: '张飞',props: '智力', value: 65},
   {name: '张飞',props: '武力', value: 97},
   {name: '张飞',props: '政治', value: 50},
@@ -22,7 +22,7 @@ var data = [
   {name: '关羽',props: '忠诚', value: 99}
 ];
 
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'mountNode'
 });
 

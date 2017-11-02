@@ -8,7 +8,9 @@ plotUsage: blablablalalalala
 -->
 
 <script>
-    var data = [
+    F2.Global.pixelRatio = window.devicePixelRatio;
+
+    const data = [
         {"time": '2016-08-08 00:00:00',"tem": 10},
         {"time": '2016-08-08 00:10:00',"tem": 22},
         {"time": '2016-08-08 00:30:00',"tem": 20},
@@ -19,10 +21,10 @@ plotUsage: blablablalalalala
         {"time": '2016-08-10 02:00:00',"tem": 20},
         {"time": '2016-08-10 02:20:00',"tem": 28}
     ];
-    var chart = new F2.Chart({
+    const chart = new F2.Chart({
         id: 'mountNode'
     });
-    var defs = {
+    const defs = {
         time: {
             type: 'timeCat',
             tickCount: 3
