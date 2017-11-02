@@ -78,6 +78,7 @@ chart.area().position('month*tem').color('city')
   })
   .adjust('stack');
 chart.render();
+const canvas = document.getElementById('mountNode');
 function getPoint(canvas, x, y) {
   const bbox = canvas.getBoundingClientRect();
   return {
@@ -92,6 +93,6 @@ canvas.onclick = function(e) {
   data.forEach(function(item) {
       html += 'city:' + item._origin.city + ',tem:' + item._origin.tem + ',month:' + item._origin.month + '\b\n';
   });
-  console.log(data);
+  window.alert(html);
 };
 </script>
