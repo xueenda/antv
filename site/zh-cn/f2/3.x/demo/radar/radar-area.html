@@ -52,6 +52,8 @@ chart.area().position('props*value').color('name').style({
         opacity: 0.6
     });
 // x和y轴同时缩放的动画
-chart.animate().scalexy();
+chart.animate({
+  type: 'scalexy'
+});
 chart.render();
 </script>
