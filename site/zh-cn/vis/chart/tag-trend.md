@@ -1,6 +1,7 @@
 <!--
 index: 7
 title: 趋势类
+showDocsByTag: trend
 -->
 
 # 趋势类

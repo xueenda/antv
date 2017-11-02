@@ -25,27 +25,41 @@ var getFiles = function getFiles(source) {
     }).filter(isFile);
 };
 
-// docByTag
+// docsByTag
 // docByName
 
 var docList = [];
 var docFiles = getFiles(__dirname).filter(function (file) {
     return extname(file) === '.md';
 });
-docFiles.forEach(function (file) {
+var docNamesByTag = {};
+var docByName = {};
+var tagDocByName = {};
+docFiles.forEach(function(file) {
     var _renderMd = renderMd(file),
-        meta = _renderMd.meta;
+        meta = _renderMd.meta,
+        tags = meta.tags || [];
 
     var index = _.isNumber(meta.index) ? meta.index : 999,
         title = meta.title;
 
     var name = basename(file, '.md');
-    docList.push({
+    var doc = {
         href: base + 'zh-cn/vis/chart/' + name + '.html',
         index: index,
         name: name,
         title: title
+    };
+    docByName[name] = doc;
+    tags.forEach(function (tag) {
+        docNamesByTag[tag] = docNamesByTag[tag] || [];
+        docNamesByTag[tag].push(name);
     });
+    docList.push(doc);
+    if (/^tag-/.test(name)) {
+        var tag = name.replace(/^tag-/, '');
+        tagDocByName[tag] = doc;
+    }
 });
 docList.sort(function (a, b) {
     return a.index - b.index;
@@ -60,6 +74,9 @@ module.exports = {
     navName: 'chart',
     docList: docList,
     docIndexByHref: indexByHref,
+    docNamesByTag,
+    docByName,
+    tagDocByName,
     docsCount: docList.length,
     template: 'doc',
     docMenuHeader: '${resource.translate.visChart}',

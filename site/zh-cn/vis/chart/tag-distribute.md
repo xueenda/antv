@@ -1,6 +1,7 @@
 <!--
 index: 2
 title: 分布类
+showDocsByTag: distribute
 -->
 
 # 分布类

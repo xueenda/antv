@@ -1,6 +1,7 @@
 <!--
 title: 热力图
-tags: distribute
+tags:
+  - distribute
 -->
 
 # 热力图

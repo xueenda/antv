@@ -23,11 +23,48 @@
             </div>
         </div>
         <div class="toc-container d-none d-xl-block col-xl-2 bd-toc">
-            <div class="toc">
-            </div>
+            <div class="toc"></div>
         </div>
         <div class="detail content col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
             {{ content | safe }}
+            <!-- relative docs and tags -->
+            {% if variations %}
+            {% if variations.length %}
+            <h2>{{ resource.translate.variation }}</h2>
+            <ul>
+            {% for variation in variations %}
+                {% set variationDoc = docByName[variation] %}
+                <li><a href="{{ variationDoc.href }}">{{ variationDoc.title }}</a></li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endif %}
+            {% if tags %}
+            {% if tags.length %}
+            <h2>{{ resource.translate.tag }}</h2>
+            <ul>
+            {% for tag in tags %}
+                {% set tagDoc = tagDocByName[tag] %}
+                <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endif %}
+            {% if showAllTags %}
+            <ul>
+            {% for tagName, tagDoc in tagDocByName %}
+                <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% if showDocsByTag %}
+            {% set docs = docNamesByTag[showDocsByTag] %}
+            <ul>
+                {% for doc in docs %}
+                <li><a href="{{ docByName[doc].href }}">{{ docByName[doc].title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <!-- previous and next pages -->
             {% set docIndex = docIndexByHref[__href] %}
             {% set hasPrev = (docIndex > 0)  %}

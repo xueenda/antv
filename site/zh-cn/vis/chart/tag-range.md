@@ -1,6 +1,7 @@
 <!--
 index: 5
 title: 区间类
+showDocsByTag: range
 -->
 
 # 区间类

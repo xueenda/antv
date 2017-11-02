@@ -1,6 +1,7 @@
 <!--
 index: 1
 title: 比较类
+showDocsByTag: compare
 -->
 
 # 比较类

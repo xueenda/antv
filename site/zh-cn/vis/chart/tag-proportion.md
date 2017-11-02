@@ -1,6 +1,7 @@
 <!--
 index: 4
 title: 占比类
+showDocsByTag: proportion
 -->
 
 # 占比类

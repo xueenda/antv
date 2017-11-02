@@ -1,6 +1,8 @@
 <!--
 title: 桑基图
-tags: relation,flow
+tags:
+  - relation
+  - flow
 -->
 
 # 桑基图

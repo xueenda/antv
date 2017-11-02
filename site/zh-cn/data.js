@@ -72,6 +72,8 @@ module.exports = {
             visChart: '图表用法',
             visDesign: '设计原则',
             visResource: '资源',
+            variation: '变形',
+            tag: '标签',
         },
         cssFiles: [
         ],

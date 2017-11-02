@@ -1,6 +1,7 @@
 <!--
 index: 0
 title: 图表用法
+showAllTags: true
 -->
 
 # 图表用法
