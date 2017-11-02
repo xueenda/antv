@@ -25,6 +25,9 @@ var getFiles = function getFiles(source) {
     }).filter(isFile);
 };
 
+// docByTag
+// docByName
+
 var docList = [];
 var docFiles = getFiles(__dirname).filter(function (file) {
     return extname(file) === '.md';
@@ -53,6 +56,7 @@ docList.forEach(function (doc, index) {
 });
 
 module.exports = {
+    docIcon: '',
     navName: 'chart',
     docList: docList,
     docIndexByHref: indexByHref,
