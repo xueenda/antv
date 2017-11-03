@@ -36,9 +36,9 @@
                 <h4 class="nav-link">{{ title }}</h4>
                 {% if canSwitchThemes %}
                 <form class="form-inline">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="?theme=default" class="btn btn-primary">Default</a>
-                        <a href="?theme=dark" class="btn btn-light">Dark</a>
+                    <div class="btn-group theme-switching" role="group" aria-label="Basic example">
+                        <a href="?theme=default" data-theme="default" class="btn btn-primary">Default</a>
+                        <a href="?theme=dark" data-theme="dark" class="btn btn-light">Dark</a>
                     </div>
                 </form>
                 {% endif %}

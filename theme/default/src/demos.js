@@ -20,5 +20,15 @@ $('.screenshot').each(function () {
         $img.attr('data-src', $img.data('default'));
     }
 });
+$('.theme-switching .btn').each(function () {
+    const $btn = $(this);
+    if (isDark) {
+        if ($btn.data('theme') === 'dark') {
+            $btn.removeClass('btn-light').addClass('btn-primary');
+        } else {
+            $btn.removeClass('btn-primary').addClass('btn-light');
+        }
+    }
+});
 
 $('.lazyload').lazyload();

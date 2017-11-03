@@ -3,6 +3,14 @@ import $ from 'jquery';
 import _ from 'lodash';
 import './common.less';
 
+const $query = $('#query');
+const $searchBtn = $('#btn-search');
+
+$searchBtn.click(() => {
+    $searchBtn.hide();
+    $query.show().focus();
+});
+
 // search
 function buildFlattenIndices(docs, invertedList) {
     const indices = [];
@@ -68,7 +76,7 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     }
 
     const flattenIndices = buildFlattenIndices(docs, invertedList);
-    $('#query').autocomplete({
+    $query.autocomplete({
         lookup: flattenIndices,
         triggerSelectOnValidInput: false,
         onSelect,
