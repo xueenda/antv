@@ -11,12 +11,12 @@ plotUsage: 可视化的方法显示地理区域上的数据。 使用地图作�
 relativePlots:
   - ${plotByName.geo}
 -->
-<div style="position:relative;padding-left:250px;">
-  <div id="china" style="position: absolute;top:5px;left:5px;"></div>
-  <div id="province"></div>
-</div>
 
 <script>
+  $('#mountNode').html('<div style="position:relative;padding-left:250px;">' +
+      '<div id="china" style="position: absolute;top:5px;left:5px;"></div>' +
+      '<div id="province"></div>' +
+  '</div>');
     function processData(mapData) {
         // 构造虚拟数据
         const userData = [];
