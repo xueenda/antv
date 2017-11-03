@@ -78,8 +78,11 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     const $docFilteringQuery = $('#doc-filtering-query');
     const filteringCategories = [
         'api',
+        'blog',
+        'chart',
         'demo',
-        'doc',
+        'design',
+        'resource',
         'tutorial',
     ];
     if ($docFilteringQuery.length) { // filtering feature enabled
