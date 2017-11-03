@@ -25,7 +25,7 @@
                     {% for demo in cat.demos %}
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                         <div class="card">
-                            <a href="./{{ cat.category }}/{{ demo.name }}.html">
+                            <a href="{{ demo.href }}">
                                 <!--data-original="{{ demo.screenshot }}"-->
                                 <img
                                     class="card-img-top screenshot lazyload"
