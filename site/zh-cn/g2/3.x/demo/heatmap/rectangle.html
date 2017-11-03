@@ -32,6 +32,9 @@ relativePlots:
             height: window.innerHeight
         });
         chart.source(dv);
+        chart.legend({
+          offset: 40
+        });
         chart.tooltip(false);
         chart.axis('x', {
             grid: {

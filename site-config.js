@@ -10,7 +10,7 @@ module.exports = {
         // TODO FIXME: use global CDN urls instead
         dataSet: 'http://unpkg.alipay.com/@antv/data-set@0.5.2/build/data-set.js',
         f2: 'https://gw.alipayobjects.com/os/rmsportal/BuMfJavgPGrojaoobOfa.js',
-        g2: 'http://unpkg.alipay.com/@antv/g2@3.0.0-rc5.5/build/g2.js',
+        g2: 'http://unpkg.alipay.com/@antv/g2@3.0.0-rc5.9/build/g2.js',
         g6: 'http://unpkg.alipay.com/@ali/g6@1.2.0-beta.42/dist/g6.min.js',
         'g6-plugins': 'http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.21/dist/g6-plugins.min.js',
         jquery: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js',
