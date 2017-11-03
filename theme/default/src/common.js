@@ -5,10 +5,17 @@ import './common.less';
 
 const $query = $('#query');
 const $searchBtn = $('#btn-search');
+const $subSiteNav = $('#sub-site-nav');
 
 $searchBtn.click(() => {
     $searchBtn.hide();
     $query.show().focus();
+    $subSiteNav.find('.nav-link').hide();
+});
+$query.blur(() => {
+    $query.hide();
+    $subSiteNav.find('.nav-link').show();
+    $searchBtn.show();
 });
 
 // search

@@ -16,6 +16,7 @@
             {% if isHome %}
             {% else %}
             {% set product = products[currentProduct] %}
+            <span class="nav-item" style="line-height: 32px;">|</span>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     {{ product.name }}
@@ -28,7 +29,7 @@
             </li>
             {% endif %}
         </ul>
-        <ul class="form-inline navbar-nav mt-2 mt-lg-0">
+        <ul class="form-inline navbar-nav mt-2 mt-lg-0" id="sub-site-nav">
             {% if isHome %}
             {% for name, item in products %}
             <a class="nav-link" href="{{ item.href }}">{{ item.name }}</a>
@@ -46,7 +47,7 @@
             <input id="query" class="form-control query" type="text" placeholder="Search" aria-label="Search">
             <a id="btn-search" class="nav-link"><img src="{{ assets }}/image/icon/search.svg" alt=""></a>
             <!--<a class="nav-link"><img src="{{ assets }}/image/icon/more-apps.svg" alt=""></a>-->
-            <a class="btn border nav-link">{{ resource.translate.back2oldVersion }}</a>
+            <a class="btn border">{{ resource.translate.back2oldVersion }}</a>
         </ul>
     </div>
     <!--{% if header.isFullSize %}{% else %}</div>{% endif %}-->
