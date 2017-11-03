@@ -524,7 +524,7 @@ net.render();
 
 ![image](https://zos.alipayobjects.com/skylark/e537c24e-1976-41e7-b4f6-b3cc63e924db/attach/2816/68b3988f18d698b9/image.png)
 
-[Demo源码](/g6/demo/05-gallery/dataBase.html)
+[Demo源码](/g6/demo/05-gallery/data-base.html)
 
 ## 详解自定义边
 
