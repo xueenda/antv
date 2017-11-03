@@ -9,3 +9,5 @@ tocbot.init({
     headingSelector: 'h1, h2, h3, h4',
     collapseDepth: 3,
 });
+
+$('.list-group-item.active')[0].scrollIntoView();
