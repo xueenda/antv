@@ -69,4 +69,6 @@ clipboard.on('error', e => {
     $alertCopyFail.fadeOut();
 });
 
+$('.list-group-item.active')[0].scrollIntoView();
+
 $(window).resize(resizePreview);
