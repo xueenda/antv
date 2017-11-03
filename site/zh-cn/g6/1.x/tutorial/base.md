@@ -145,7 +145,7 @@
 $.getJSON('/assets/data/influence-network.json',function(data){
   var Util = G6.Util;
   console.log(data)
-  G6.registNode('circle', {
+  G6.registerNode('circle', {
     afterDraw: function(cfg, group, keyShape){
       var model = cfg.model;
       var size = model.size;
@@ -305,7 +305,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
   };
   // 自定义树节点
   var DEFAULT_NODE_SIZE = 5;
-  G6.registNode('treeNode', {
+  G6.registerNode('treeNode', {
    draw(cfg, group) {
      var model = cfg.model;
      var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;

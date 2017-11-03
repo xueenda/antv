@@ -36,7 +36,7 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 ## 方法
 
-### [execute](#_execute) {Function} 
+### [execute](#_execute) 
 
 执行布局
 
@@ -52,7 +52,7 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 ## 方法
 
-### [execute](#_execute) {Function} 
+### [execute](#_execute) 
 
 执行布局 -->
 
@@ -79,11 +79,11 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 > Layout.IndentedTree只有前三个方向，也就是LR／RL／H
 
-### [getHGap](#_gethgap) {Function}
+### [getHGap](#_gethgap)
 
 每个节点的水平间隙，默认18
 
-### [getVGap](#_getvgap) {Function}
+### [getVGap](#_getvgap)
 
 每个节点的垂直间隙，默认18
 
@@ -97,9 +97,9 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 ## 属性
 
-### [direction](#_direction) {String}
+### [direction](#_direction)
 
-树布局的方向，默认为LR，可选值为
+[String] 树布局的方向，默认为LR，可选值为
 
 * LR（根节点在左，往右布局）
 * RL（根节点在右，往左布局）
@@ -110,27 +110,27 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 > Layout.IndentedTree只有前三个方向，也就是LR／RL／H
 
-### [getHGap](#_gethgap) {Function}
+### [getHGap](#_gethgap)
 
 每个节点的水平间隙，默认18
 
-### [getVGap](#_getvgap) {Function}
+### [getVGap](#_getvgap)
 
 每个节点的垂直间隙，默认18
 
-### [nodeSep](#_nodeSep) {Function}
+### [nodeSep](#_nodeSep)
 
 节点间距
 
-### [nodeSize](#_nodeSize) {Function}
+### [nodeSize](#_nodeSize)
 
 节点大小
 
-### [rankSep](#_rankSep) {Function}
+### [rankSep](#_rankSep)
 
 层级间距
 
-### [subTreeSep](#_subTreeSep) {Function}
+### [subTreeSep](#_subTreeSep)
 
 子树间隔
 
@@ -157,15 +157,15 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 > Layout.IndentedTree只有前三个方向，也就是LR／RL／H
 
-### [getHGap](#_gethgap) {Function}
+### [getHGap](#_gethgap)
 
 每个节点的水平间隙，默认18
 
-### [getVGap](#_getvgap) {Function}
+### [getVGap](#_getvgap)
 
 每个节点的垂直间隙，默认18
 
-### [indent](#_indent) {Function}
+### [indent](#_indent)
 
 缩进量
 
@@ -179,9 +179,9 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 ## 属性
 
-### [direction](#_direction) {String}
+### [direction](#_direction)
 
-树布局的方向，默认为LR，可选值为
+[String] 树布局的方向，默认为LR，可选值为
 
 * LR（根节点在左，往右布局）
 * RL（根节点在右，往左布局）
@@ -192,22 +192,22 @@ G6 内置了4类树布局算法，共21种不同的树布局效果。具体树�
 
 > Layout.IndentedTree只有前三个方向，也就是LR／RL／H
 
-### [getHGap](#_gethgap) {Function}
+### [getHGap](#_gethgap)
 
-每个节点的水平间隙，默认18
+[Function|Number] 每个节点的水平间隙，默认18
 
-### [getVGap](#_getvgap) {Function}
+### [getVGap](#_getvgap)
 
-每个节点的垂直间隙，默认18
+[Function|Number] 每个节点的垂直间隙，默认18
 
-### [nodeSize](#_nodeSize) {Function}
+### [nodeSize](#_nodeSize)
 
-节点大小
+[Function|Number] 节点大小
 
-### [nodeSep](#_nodeSep) {Function}
+### [nodeSep](#_nodeSep)
 
-节点距离
+[Function|Number] 节点距离
 
-### [rankSep](#_rankSep) {Function}
+### [rankSep](#_rankSep)
 
-层次距离
+[Function|Number] 层次距离

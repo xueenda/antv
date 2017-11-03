@@ -50,7 +50,7 @@ G6 既是关系图模板的**合集**，与此同时其自身也是**默认模�
 锚点标识了该节点可供连接点。在[自定义节点]()中，我们可以通过`getAnchorPoints`方法，自定义节点锚点的位置。
 
 ```js
-G6.registNode('circle', {
+G6.registerNode('circle', {
   getAnchorPoints: function() {
     return [
       [0, 0], // 左上

@@ -1,6 +1,6 @@
 <!--
 title: 保存为图片
-description: 
+plotDescription:  
 index: 1
 resource:
   jsFiles:
@@ -12,16 +12,16 @@ resource:
     $('#toolBar').append('<button id="downloadCurrentImage">下载当前视口内图</button');
     $('#toolBar').append('<button id="downloadFullImage">下载全图</button>');
 
-    var downloadFullImage = $('#downloadFullImage');
-    var downloadCurrentImage = $('#downloadCurrentImage');
+    const downloadFullImage = $('#downloadFullImage');
+    const downloadCurrentImage = $('#downloadCurrentImage');
 
-    G6.registNode('list', {
+    G6.registerNode('list', {
         cssSize: true,
-        getHtml: function(cfg){
+        getHtml(cfg){
             return '<ul><li>' + cfg.model.id + '</li><li>' + cfg.model.shape + '</li></ul>';
         }
     }, 'html');
-    var data = {
+    const data = {
         "nodes": [
             {
                 "id": "node1",
@@ -58,33 +58,33 @@ resource:
             }
         ]
     };
-    var net = new G6.Net({
+    const net = new G6.Net({
         id: 'mountNode',      // 容器ID
         fitView:'cc',    // 画布宽
         height: window.innerHeight    // 画布高
     });
-    var graphContainer = net.get('graphContainer');
+    const graphContainer = net.get('graphContainer');
     net.source(data.nodes, data.edges);
     net.render();
-    downloadFullImage.on('click', function(){
+    downloadFullImage.on('click', () => {
         downloadImage(true);
     });
-    downloadCurrentImage.on('click', function(){
+    downloadCurrentImage.on('click', () => {
         downloadImage();
     });
     /**
      * 下载当前图片
      */
     function downloadImage(bool) {
-        var matrixStash = net.getMatrix(); // 缓存当前矩阵
+        const matrixStash = net.getMatrix(); // 缓存当前矩阵
         if (bool) {
             net.autoZoom(); // 图自动缩放以适应画布尺寸
         }
         html2canvas(graphContainer, {
-            onrendered: function(canvas) {
-                var dataURL = canvas.toDataURL('image/png');
-                var link = document.createElement('a');
-                var saveName = 'graph.png';
+            onrendered(canvas) {
+                const dataURL = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                const saveName = 'graph.png';
                 link.download = saveName;
                 link.href = dataURL.replace('image/png', 'image/octet-stream');
                 link.click();

@@ -20,70 +20,70 @@ resource:
     $('#mountNode').append("<button id='autoZoom'>autoZoom</button>");
     $('#mountNode').append("<button id='autoSize'>autoSize</button>");
 
-    var tl = $('#tl');
-    var lc = $('#lc');
-    var bl = $('#bl');
-    var cc = $('#cc');
-    var tc = $('#tc');
-    var tr = $('#tr');
-    var rc = $('#rc');
-    var br = $('#br');
-    var bc = $('#bc');
-    var autoZoom = $('#autoZoom');
-    var autoSize = $('#autoSize');
-    var restore = $('#restore');
-    var net = createNet();
-    autoZoom.on('click', function(){
+    const tl = $('#tl');
+    const lc = $('#lc');
+    const bl = $('#bl');
+    const cc = $('#cc');
+    const tc = $('#tc');
+    const tr = $('#tr');
+    const rc = $('#rc');
+    const br = $('#br');
+    const bc = $('#bc');
+    const autoZoom = $('#autoZoom');
+    const autoSize = $('#autoSize');
+    const restore = $('#restore');
+    let net = createNet();
+    autoZoom.on('click', () => {
         net.destroy();
         net = createNet('autoZoom');
     });
-    autoSize.on('click', function(){
+    autoSize.on('click', () => {
         net.destroy();
         net = createNet('autoSize');
     });
-    tl.on('click', function(){
+    tl.on('click', () => {
         net.destroy();
         net = createNet('tl');
     });
-    lc.on('click', function(){
+    lc.on('click', () => {
         net.destroy();
         net = createNet('lc');
     });
-    bl.on('click', function(){
+    bl.on('click', () => {
         net.destroy();
         net = createNet('bl');
     });
-    cc.on('click', function(){
+    cc.on('click', () => {
         net.destroy();
         net = createNet('cc');
     });
-    tc.on('click', function(){
+    tc.on('click', () => {
         net.destroy();
         net = createNet('tc');
     });
-    tr.on('click', function(){
+    tr.on('click', () => {
         net.destroy();
         net = createNet('tr');
     });
-    rc.on('click', function(){
+    rc.on('click', () => {
         net.destroy();
         net = createNet('rc');
     });
-    br.on('click', function(){
+    br.on('click', () => {
         net.destroy();
         net = createNet('br');
     });
-    bc.on('click', function(){
+    bc.on('click', () => {
         net.destroy();
         net = createNet('bc');
     });
-    restore.on('click', function(){
+    restore.on('click', () => {
         net.destroy();
         net = createNet();
     });
     function createNet(fitView){
         // 第三步：设置数据
-        var data = {
+        const data = {
             "nodes": [
                 {
                     "x": 100,
@@ -105,7 +105,7 @@ resource:
             ]
         };
         // 第四步：配置G6画布
-        var net = new G6.Net({
+        const net = new G6.Net({
             id: 'mountNode', // 容器ID
             fitView: fitView,
             width: 430,    // 画布宽

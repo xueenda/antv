@@ -1,6 +1,6 @@
 <!--
 title: 网图编辑器（默认）
-description: 该图向大家展示了如何利用 G6 快速搭建流程图编辑器
+plotDescription:  该图向大家展示了如何利用 G6 快速搭建流程图编辑器
 index: 1
 resource:
   jsFiles:
@@ -8,9 +8,9 @@ resource:
 -->
 
 <script type="text/javascript">
-G6.registNode('customNode1', {
-  draw: function(cfg, group) {
-    var shape = group.addShape('rect', {
+G6.registerNode('customNode1', {
+  draw(cfg, group) {
+    const shape = group.addShape('rect', {
       attrs: {
         x: cfg.x-40,
         y: cfg.y-40,
@@ -22,7 +22,7 @@ G6.registNode('customNode1', {
     });
     return shape;
   },
-  getAnchorPoints: function(){
+  getAnchorPoints() {
     return [
       [0, 0.25],
       [0, 0.5],
@@ -40,9 +40,9 @@ G6.registNode('customNode1', {
   }
 }, 'rect');
 
-G6.registNode('customNode2', {
-  draw: function(cfg, group) {
-    var shape = group.addShape('rect', {
+G6.registerNode('customNode2', {
+  draw(cfg, group) {
+    const shape = group.addShape('rect', {
       attrs: {
         x: cfg.x-40,
         y: cfg.y-40,
@@ -61,66 +61,58 @@ $('#toolBar').append('<button id="addCustom1">自定义形1</button>');
 $('#toolBar').append('<button id="addCustom2">自定义形2</button>');
 $('#toolBar').append('<button id="addLine">添加直线</button>');
 $('#toolBar').append('<button id="addSmooth">添加曲线</button>');
-$('#toolBar').append('<button id="addPolyLineFlow">添加折线流程线</button>');
 $('#toolBar').append('<button id="drag">拖拽模式</button>');
 $('#toolBar').append('<button id="edit">编辑模式</button>');
 $('#toolBar').append('<button id="save">保存</button>');
 
-var addCustom1 = $('#addCustom1');
-var addCustom2 = $('#addCustom2');
-var drag = $('#drag');
-var edit = $('#edit');
-var addLine = $('#addLine');
-var addSmooth = $('#addSmooth');
-var addPolyLineFlow = $('#addPolyLineFlow');
-var save = $('#save');
-var net = new G6.Net({
+const addCustom1 = $('#addCustom1');
+const addCustom2 = $('#addCustom2');
+const drag = $('#drag');
+const edit = $('#edit');
+const addLine = $('#addLine');
+const addSmooth = $('#addSmooth');
+const save = $('#save');
+const net = new G6.Net({
   id: 'mountNode',      // 容器ID
   mode: 'edit',  // 编辑模式
   fitView: 'cc', // 自适应视口为左上
   height: window.innerHeight    // 画布高
 });
-addCustom1.on('click', function(){
+addCustom1.on('click', () => {
   net.beginAdd('node', {
     shape: 'customNode1'
   });
 });
 
-addCustom2.on('click', function(){
+addCustom2.on('click', () => {
   net.beginAdd('node', {
     shape: 'customNode2'
   });
 });
 
-addLine.on('click', function() {
+addLine.on('click', () => {
   net.beginAdd('edge', {
     shape: 'line'
   });
 });
 
-addSmooth.on('click', function() {
+addSmooth.on('click', () => {
   net.beginAdd('edge', {
     shape: 'smooth'
   });
 });
 
-addPolyLineFlow.on('click', function() {
-  net.beginAdd('edge', {
-    shape: 'polyLineFlow'
-  });
-});
-
-drag.on('click', function() {
+drag.on('click', () => {
   net.changeMode('drag');
 });
 
-edit.on('click', function() {
+edit.on('click', () => {
   net.changeMode('edit');
 });
 
-save.on('click', function() {
-  var saveData = net.save();
-  var json = JSON.stringify(saveData, null, 2);
+save.on('click', () => {
+  const saveData = net.save();
+  const json = JSON.stringify(saveData, null, 2);
   console.log(saveData, json); // eslint-disable-line no-console
 });
 net.render();

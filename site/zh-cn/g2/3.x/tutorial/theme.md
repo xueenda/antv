@@ -42,7 +42,7 @@ G2.Global.colors['default'] = ['red','blue','yellow']; // 更改默认的颜色
 (2) 方式二： 使用 Global.setTheme 方法。推荐使用这种方式，使用方法如下：
 
 ```js
-var theme = G2.Util.defaultsDeep({
+var theme = G2.Util.deepMix({
   animate: false,
   colors: {...},
   shapes: {...}
@@ -63,7 +63,7 @@ G2.Global.setTheme(theme); // 将主题设置为用户自定义的主题
 
 ```js+
 var Util = G2.Util;
-var theme = Util.defaultsDeep({
+var theme = Util.deepMix({
   shape: {
     polygon: {
       stroke: '#213c51', // 地图轮廓线颜色

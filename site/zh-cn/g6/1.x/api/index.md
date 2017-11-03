@@ -22,23 +22,23 @@
 
 ## 静态方法
 
-### [registNode](#_registNode) {Function}
+### [registerNode](#_registerNode)
 
-注册节点，参见文档[自定义图形](../tutorial/custom-shape.html)。
+[Function] 注册节点，参见文档[自定义图形](../tutorial/custom-shape.html)。
 
 ```js
 // 注册节点
-G6.registNode(name, {
+G6.registerNode(name, {
   // 绘制
-  draw: function(cfg, group){
+  draw(cfg, group){
     return keyShape;
   },
   // 绘制后执行
-  afterDraw: function(cfg, group, keyShape){
+  afterDraw(cfg, group, keyShape){
 
   },
   // 获取锚点
-  getAnchorPoints: function(cfg){
+  getAnchorPoints(cfg){
     return anchorPoints;
   }
 });
@@ -58,19 +58,19 @@ G6.registNode(name, {
 
 `注意：如果注册已有的图形，将会直接复写该图形对应的方法。`
 
-### [registEdge](#_registEdge) {Function}
+### [registerEdge](#_registerEdge)
 
-注册边，参见文档[自定义图形](../tutorial/custom-shape.html)。
+[Function] 注册边，参见文档[自定义图形](../tutorial/custom-shape.html)。
 
 ```js
 // 注册边
-G6.registEdge(name, {
+G6.registerEdge(name, {
   // 绘制
-  draw: function(cfg, group){
+  draw(cfg, group){
     return keyShape;
   },
   // 绘制后执行
-  afterDraw: function(cfg, group, keyShape){
+  afterDraw(cfg, group, keyShape){
 
   }
 });

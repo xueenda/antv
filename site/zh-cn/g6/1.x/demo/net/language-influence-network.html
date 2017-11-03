@@ -1,6 +1,6 @@
 <!--
 title: 语言影响力网络
-description: 该图展示 2013 年各个语言的关联关系和影响力。<a href="https://github.com/yaph/programming-languages-influence">数据来源</a>
+plotDescription:  该图展示 2013 年各个语言的关联关系和影响力。<a href="https://github.com/yaph/programming-languages-influence">数据来源</a>
 index: 7
 resource:
   jsFiles:
@@ -16,14 +16,14 @@ $.getJSON('/assets/data/influence-network.json',function(data){
     textBaseline: 'middle',
     fontSize: 40
   };
-  G6.registNode('circle', {
+  G6.registerNode('circle', {
     afterDraw: function(cfg, group, keyShape){
-      var model = cfg.model;
-      var size = model.size;
-      var bbox = keyShape.getBBox();
-      var paddingLeft = 20;
-      var y = (bbox.maxY + bbox.minY)/2;
-      var x = bbox.maxX + paddingLeft;
+      const model = cfg.model;
+      const size = model.size;
+      const bbox = keyShape.getBBox();
+      const paddingLeft = 20;
+      const y = (bbox.maxY + bbox.minY)/2;
+      const x = bbox.maxX + paddingLeft;
 
       if(size > 10){ // 只展示影响力大于 10 的线
         group.addShape('text', {
@@ -41,7 +41,7 @@ $.getJSON('/assets/data/influence-network.json',function(data){
     }
   });
 
-  var net = new G6.Net({
+  const net = new G6.Net({
    id: "mountNode",            // 此处替换容器id
    height: window.innerHeight,         // 此处替换高度
    fitView: 'autoZoom', // 自动缩放
@@ -49,13 +49,13 @@ $.getJSON('/assets/data/influence-network.json',function(data){
    mode: 'complicated',
    grid: null
   });
-  var graphContainer = net.get('graphContainer');
-  var nodeMap = {};
-  var hideItem;
+  const graphContainer = net.get('graphContainer');
+  const nodeMap = {};
+  let hideItem;
   Util.modiCSS(graphContainer, {
     background: '#222222'
   });
-  Util.each(data.nodes, function(node){
+  Util.each(data.nodes, node => {
     nodeMap[node.id] = node;
     Util.mix(node, node.attributes);
     delete node.attributes;
@@ -63,15 +63,15 @@ $.getJSON('/assets/data/influence-network.json',function(data){
   net.tooltip(true);
   net.source(data.nodes, data.edges);
   net.node()
-     .tooltip(function(obj){
+     .tooltip( obj => {
        return [
          ['语言', obj.language],
          ['影响力', obj.size],
          ['模块数', obj.modularityClass]
        ];
      })
-     .size(function(obj){
-       var rst = obj.size <= 10 ? 10 :obj.size;
+     .size( obj => {
+       const rst = obj.size <= 10 ? 10 :obj.size;
        return rst;
      })
      .shape('circle')
@@ -83,19 +83,19 @@ $.getJSON('/assets/data/influence-network.json',function(data){
      .style({
        strokeOpacity: 0.8
      })
-     .color(function(obj){
+     .color(obj => {
        return nodeMap[obj.source].color;
      });
   net.render();
-  net.on('mouseenter', function(ev){
-    var item = ev.item;
-    var keyShape;
-    var edges;
-    var id;
+  net.on('mouseenter', ev => {
+    const item = ev.item;
+    let keyShape;
+    let edges;
+    let id;
     if(item.get('type') === 'node') {
       id = item.get('id');
       edges = item.get('edges');
-      Util.each(edges, function(edge){
+      Util.each(edges, edge => {
         if(edge.get('model').source === id ){
           keyShape = edge.getKeyShape();
           keyShape.attr('lineWidth', 4);
@@ -104,15 +104,15 @@ $.getJSON('/assets/data/influence-network.json',function(data){
       net.refresh();
     }
   });
-  net.on('mouseleave', function(ev) {
-    var item = ev.item;
-    var keyShape;
-    var edges;
-    var id;
+  net.on('mouseleave', ev => {
+    const item = ev.item;
+    let keyShape;
+    let edges;
+    let id;
     if(item.get('type') === 'node') {
       id = item.get('id');
       edges = item.get('edges');
-      Util.each(edges, function(edge){
+      Util.each(edges, edge => {
         if(edge.get('model').source === id ){
           keyShape = edge.getKeyShape();
           keyShape.attr('lineWidth', 1);
@@ -121,28 +121,28 @@ $.getJSON('/assets/data/influence-network.json',function(data){
       net.refresh();
     }
   });
-  net.on('click', function(ev) {
-    var item = ev.item;
-    var unRelativeItems;
+  net.on('click', ev => {
+    const item = ev.item;
+    let unRelativeItems;
 
     if(item && item.get('type') === 'node') {
       if(hideItem){
-        Util.each(hideItem, function(subItem){
+        Util.each(hideItem, subItem => {
           subItem.show();
         });
         hideItem = null;
       }
       unRelativeItems = item.getUnRelativeItems();
-      Util.each(unRelativeItems, function(subItem){
+      Util.each(unRelativeItems,  subItem => {
         subItem.hide();
       });
       net.autoZoom();
       hideItem = unRelativeItems; // 缓存被隐藏的子项
     }
   });
-  net.on('dblclick', function() {
+  net.on('dblclick', () => {
     if(hideItem){
-      Util.each(hideItem, function(subItem){
+      Util.each(hideItem, subItem => {
         subItem.show();
       });
       hideItem = null;

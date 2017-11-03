@@ -1,6 +1,6 @@
 <!--
 title: 分层树 
-description: 该图展示了 G6 里 npm 包的依赖关系。该示例的目的在于向大家展示分层树的布局效果。
+plotDescription:  该图展示了 G6 里 npm 包的依赖关系。该示例的目的在于向大家展示分层树的布局效果。
 resource:
   jsFiles:
     - ${url.jquery}
@@ -8,22 +8,22 @@ index: 1
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
-  var Util = G6.Util;
+$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
+  const Util = G6.Util;
   // 准备布局配置
-  var layoutCfg = {
+  const layoutCfg = {
    "direction": "LR",
    "nodeSep": 20,
    "nodeSize": 20,
    "rankSep": 200
   };
   // 自定义树节点
-  var DEFAULT_NODE_SIZE = 5;
-  G6.registNode('treeNode', {
+  const DEFAULT_NODE_SIZE = 5;
+  G6.registerNode('treeNode', {
    draw(cfg, group) {
-     var model = cfg.model;
-     var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
-     var shapeCfg = {
+    const model = cfg.model;
+    const r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+    const shapeCfg = {
        attrs: {
          x: cfg.x,
          y: cfg.y,
@@ -48,10 +48,10 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
      return group.addShape('circle', shapeCfg);
    },
    afterDraw(cfg, group) {
-     var model = cfg.model;
-     var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
-     var align = model.align;
-     var labelAttrs = {
+     const model = cfg.model;
+     const r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+     const align = model.align;
+     const labelAttrs = {
        text: model.name,
        fill: '#666',
        textBaseline: 'middle',
@@ -81,7 +81,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
          rotate: -Math.PI / 2,
        });
      }
-     var label = group.addShape('text', {
+     const label = group.addShape('text', {
        attrs: labelAttrs,
      });
      return label;
@@ -89,7 +89,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
   });
 
   // 生成树图实例
-  var tree = new G6.Tree({
+  const tree = new G6.Tree({
     id: 'mountNode',                            // 容器ID
     height: window.innerHeight,                         // 画布高
     fitView: 'autoZoom',                 // 自动缩放
@@ -111,17 +111,17 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
   tree.render();
 
   // 添加事件
-  tree.on('mouseenter', function(ev){
-   var shape = ev.shape;
+  tree.on('mouseenter', ev => {
+   const shape = ev.shape;
    if (shape && shape.hasClass('Button')) {
      shape.attr('fillOpacity', 0.2);
      shape.attr('strokeOpacity', 0.8);
      tree.refresh();
    }
   });
-  tree.on('mouseleave', function(ev){
-   var shape = ev.shape;
-   var attrStash;
+  tree.on('mouseleave', ev => {
+   const shape = ev.shape;
+   let attrStash;
    if (shape && shape.hasClass('Button')) {
      attrStash = shape.get('attrStash');
      shape.attr(attrStash);

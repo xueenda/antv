@@ -6,16 +6,7 @@ resource:
     - ${url.f2}
 -->
 
-# 快速上手
-
-## F2
-
-## 特性
-
-- 简单、易用
-- 完备的可视化编码
-- 强大的扩展能力
-
+# F2快速上手
 
 ## 安装
 
@@ -56,43 +47,46 @@ var F2 = require('@antv/f2');
 
 ### 浏览器引入方式
 
-#### 1. 创建 `div` 图表容器
+#### 1. 创建 `canvas` 标签
 
-在页面的 `body` 部分创建一个 div，并制定必须的属性 `id`：
+在页面上创建一个 canvas 并指定 `id`：
 
 ```html
-<canvas id="c1" width="500" height="300"></canvas>
+<canvas id="c1"></canvas>
 ```
 
 #### 2. 编写图表绘制代码
 
-创建 `div` 容器后，我们就可以进行简单的图表绘制:
+创建 `canvas` 标签后，我们就可以进行简单的图表绘制:
 
-1. 创建 Chart 图表对象，指定图表所在的容器 ID、指定图表的宽高、边距等信息；
+1. 创建 Chart 图表对象，指定图表 ID、指定图表的宽高、边距等信息；
 2. 载入图表数据源；
 3. 使用图形语法进行图表的绘制；
 4. 渲染图表。
 
-这部分代码用 `<script></script>`，可以放在页面代码的任意位置（最好的做法是放在 `</body>` 之前）。
-
 ```js
-var data = [
+// G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+var data = [ 
   {genre: 'Sports', sold: 275},
   {genre: 'Strategy', sold: 115},
   {genre: 'Action', sold: 120},
   {genre: 'Shooter', sold: 350},
   {genre: 'Other', sold: 150},
-]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+];
+
 // Step 1: 创建 Chart 对象
 var chart = new F2.Chart({
   id: 'c1', // 指定图表容器 ID
   width : 600, // 指定图表宽度
-  height : 300 // 指定图表高度
+  height : 300 // 指定图表高度    
 });
+
 // Step 2: 载入数据源
 chart.source(data);
+
 // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
-chart.interval().position('genre*sold').color('genre')
+chart.interval().position('genre*sold').color('genre');
+
 // Step 4: 渲染图表
 chart.render();
 ```
@@ -111,8 +105,7 @@ chart.render();
   ];
   var chart = new F2.Chart({
     id: 'c1',
-    forceFit: true,
-    height : 400
+    pixelRatio: window.devicePixelRatio
   });
   chart.source(data);
   chart.interval().position('genre*sold').color('genre')

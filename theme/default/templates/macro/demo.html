@@ -31,7 +31,7 @@
 </html>
 {% endmacro %}
 
-{% macro f6demo(title, content, resource, dist, url) %}
+{% macro f2demo(title, content, resource, dist, url) %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +40,9 @@
     <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
 </head>
 <body>
-<div id="mountNode"></div>
+<div style="width:600px; height:500px; margin: 0 auto;">
+    <canvas id="mountNode" width="600" height="400" ></canvas>
+</div>
 <script type="text/javascript" src="{{ url.f2 }}"></script>{% for js in resource.jsFiles %}
 <script type="text/javascript" src="{{ js }}"></script>{% endfor %}
 {{ content | safe }}</body>

@@ -1,6 +1,6 @@
 <!--
 title: 紧凑树 
-description: 该图展示了 G6 里 npm 包的依赖关系。该示例的目的在于向大家展示紧凑树的布局效果。
+plotDescription:  该图展示了 G6 里 npm 包的依赖关系。该示例的目的在于向大家展示紧凑树的布局效果。
 resource:
   jsFiles:
     - ${url.jquery}
@@ -8,8 +8,8 @@ index: 1
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
-  var tree = new G6.Tree({
+$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
+  const tree = new G6.Tree({
     id: 'mountNode',            // 容器ID
     height: window.innerHeight,         // 画布高
     fitView: 'autoZoom', // 自动缩放

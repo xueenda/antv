@@ -51,9 +51,9 @@ relativePlots:
   ];
   const chart = new G2.Chart({
     container: 'mountNode',
-    forceFit: true,
-    height: window.innerHeight,
-    padding: [ 0, 0, 200, 0 ]
+    width: 730,
+    height: 300,
+    padding: [ 0, 0, 20, 0 ]
   });
   chart.source(data);
 
@@ -89,7 +89,7 @@ relativePlots:
       strokeOpacity: 1
     },
     tickLine: {
-      length: -18,
+      length: -17,
       stroke: '#fff',
       strokeOpacity: 1
     },
@@ -107,8 +107,8 @@ relativePlots:
   chart.guide().arc({
     zIndex: 0,
     top: false,
-    start: [ 0, 0.965 ],
-    end: [ 9, 0.965 ],
+    start: [ 0, 0.945 ],
+    end: [ 9, 0.945 ],
     style: { // 底灰色
       stroke: '#000',
       lineWidth: 18,
@@ -118,8 +118,8 @@ relativePlots:
   // 绘制指标
   chart.guide().arc({
     zIndex: 1,
-    start: [ 0, 0.965 ],
-    end: [ data[0].value, 0.965 ],
+    start: [ 0, 0.945 ],
+    end: [ data[0].value, 0.945 ],
     style: {
       stroke: '#1890FF',
       lineWidth: 18,
