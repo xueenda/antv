@@ -6,7 +6,7 @@
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
 </head>
-<body>
+<body{% if demoTheme == 'dark' %} style="background: #1f1f1f;"{% endif %}>
 <div id="mountNode"></div>
 <script type="text/javascript" src="{{ url.g2 }}"></script>{% for js in resource.jsFiles %}
 <script type="text/javascript" src="{{ js }}"></script>{% endfor %}{% if demoTheme %}
