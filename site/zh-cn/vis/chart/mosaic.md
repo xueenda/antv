@@ -74,7 +74,7 @@ Height(身高 cm)|Weight(体重 kg)|BodyFatSiriBEqu(BMI 指数)
 <div id="c1"></div>
 
 ```js-
-$.getJSON('/assets/data/BMI.json',function (data) {
+$.getJSON('/assets/data/bmi.json',function (data) {
   var dv = new DataSet.View().source(data);
   dv
     .transform({

@@ -120,9 +120,7 @@ variations:
 
 ```js-
 $.getJSON('/assets/data/iris.json?nowrap',function (data) {
-  var fields = [
-    'SepalLength','SepalWidth','PetalLength','PetalWidth'
-  ];
+  var fields = [ 'SepalLength','SepalWidth','PetalLength','PetalWidth' ];
   fields.forEach(function(field, i) {
     var dv = new DataSet.View().source(data);
     dv.transform({

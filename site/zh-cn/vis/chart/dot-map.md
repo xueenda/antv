@@ -68,7 +68,7 @@ variations:
 
 
 ```js-
-  $.getJSON('/assets/data/USA.geo.json?nowrap', function(mapData) {
+  $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
     $.getJSON('/assets/data/airport.json?nowrap', function(data) {
       var ds = new DataSet();
       var mapDv = ds.createView().source(mapData, {

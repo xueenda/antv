@@ -238,7 +238,7 @@ year（年份）|genre（游戏类型） |sold（销售量）|
 <div id="c1"></div>
 
 ```js-
-  $.getJSON('/assets/data/populationsByage.json?nowrap', function(data) {
+  $.getJSON('/assets/data/population-by-age.json?nowrap', function(data) {
     var newData = data.slice(0,30);
     var dv = new DataSet.View().source(newData);
     dv.transform({

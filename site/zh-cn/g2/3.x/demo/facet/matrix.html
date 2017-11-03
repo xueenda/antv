@@ -14,7 +14,7 @@ relativePlots:
 
 <script>
 const { DataView } = DataSet;
-$.getJSON('/assets/data/iris-flower.json', function(data) {
+$.getJSON('/assets/data/iris.json', function(data) {
   const chart = new G2.Chart({
     container: 'mountNode',
     forceFit: true,
@@ -22,32 +22,32 @@ $.getJSON('/assets/data/iris-flower.json', function(data) {
   });
 
   chart.source(data, {
-    品种: {
+    Species: {
       sync: true
     }
   });
   chart.facet('matrix', {
-    fields: [ '萼片长度', '萼片宽度', '花瓣长度', '花瓣宽度' ],
+    fields: [ 'SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth' ],
     eachView(view, facet) {
       if (facet.rowIndex === facet.colIndex) {
         var dv = new DataView();
         dv.source(facet.data)
           .transform({
             type: 'bin.histogram',
-            field: facet.colField,             // 对应数轴上的一个点
+            field: facet.colField,  // 对应数轴上的一个点
             bins: 30,               // 分箱个数
             as: [ facet.colField, 'count' ],
-            groupBy: [ '品种' ]
+            groupBy: [ 'Species' ]
           });
         view.source(dv.rows);
         view.intervalStack()
           .position(facet.colField + '*count')
-          .color('品种', [ '#880000', '#008800', '#000088' ])
+          .color('Species', [ '#880000', '#008800', '#000088' ])
           .opacity(0.85);
       } else {
         view.point()
           .position([ facet.colField, facet.rowField ])
-          .color('品种', [ '#880000', '#008800', '#000088' ])
+          .color('Species', [ '#880000', '#008800', '#000088' ])
           .shape('circle')
           .opacity(0.3)
           .size(3);

@@ -161,7 +161,7 @@ $.getJSON('/assets/data/avg-temp.json',function(data){
 完整代码如下：
 
 ```js+
-$.getJSON('/assets/data/USA.geo.json', function(mapData) {
+$.getJSON('/assets/data/usa.geo.json', function(mapData) {
   var chart = new G2.Chart({
     container: 'c2',
     width: 800,

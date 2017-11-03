@@ -248,7 +248,7 @@ Arkansas|91.1
 <div id="c3"></div>
 
 ```js-
-$.getJSON('/assets/data/USA.geo.json?nowrap', function(mapData) {
+$.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
   $.getJSON('/assets/data/usa-forcible.json?nowrap', function(data) {
     var ds = new DataSet();
     var mapDv = ds.createView('map').source(mapData, {

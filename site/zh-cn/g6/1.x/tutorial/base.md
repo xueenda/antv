@@ -142,7 +142,7 @@
 <div id='net' style="width: 800px;background: #222222"></div>
 
 ```js-
-$.getJSON('/assets/data/influenceNetwork.json',function(data){
+$.getJSON('/assets/data/influence-network.json',function(data){
   var Util = G6.Util;
   console.log(data)
   G6.registNode('circle', {

@@ -91,21 +91,21 @@ variations:
 <div id="c3"></div>
 
 ```js-
-$.getJSON('/assets/data/iris_flower_data.json', function(data) {
+$.getJSON('/assets/data/iris.json', function(data) {
   var dv = new DataSet.View().source(data);
   dv
     .transform({
       type: 'fold',
-      fields: [ '萼片长度','萼片宽度','花瓣长度','花瓣宽度' ],
+      fields: [ 'SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth' ],
       key: 'type',
       value: 'value',
-      groupBy: '品种'
+      groupBy: 'Species'
     })
     .transform({
       type: 'bin.quantile',
       field: 'value',
       as: 'y',
-      groupBy: ['type', '品种']
+      groupBy: ['type', 'Species']
     });
 
   var colorMap = {
@@ -122,13 +122,13 @@ $.getJSON('/assets/data/iris_flower_data.json', function(data) {
   chart.source(dv);
   console.log(dv);
   chart.facet('rect', {
-    fields: [ '品种', null ],
+    fields: [ 'Species', null ],
     eachView: function (view) {
       view.schema()
         .position('type*y')
         .shape('box')
         .size(50)
-        .color('品种', function(key) {
+        .color('Species', function(key) {
           return colorMap[key];
         });
     }
@@ -174,14 +174,14 @@ $.getJSON('/assets/data/iris_flower_data.json', function(data) {
       title: '最小值-下四分位数-中位数-上四分位数-最大值'
     }
   });
-  chart2.schemaDodge().position('type*y').color('品种').shape('box');
+  chart2.schemaDodge().position('type*y').color('Species').shape('box');
   chart2.render();
 
   var dv1 = new DataSet.View().source(data);
   dv1
     .transform({
       type: 'fold',
-      fields: [ '萼片长度','萼片宽度','花瓣长度','花瓣宽度' ],
+      fields: ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'],
       key: 'type',
       value: 'value',
     })
