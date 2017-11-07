@@ -5,15 +5,6 @@ h1, h2, h3, h4 {
   color: rgba(0, 0, 0, .85);
 }
 
-.features {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#544ff9+0,7351f4+26,874bff+100 */
-  background: #544ff9; /* Old browsers */
-  background: -moz-linear-gradient(left,  #544ff9 0%, #7351f4 26%, #874bff 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left,  #544ff9 0%,#7351f4 26%,#874bff 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right,  #544ff9 0%,#7351f4 26%,#874bff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#544ff9', endColorstr='#874bff',GradientType=1 ); /* IE6-9 */
-}
-
 .img-landscape {
   margin: 0 0 0 -20px;
 }
@@ -30,7 +21,18 @@ section {
   background: #F8FAFE;
 }
 .features {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#544ff9+0,7351f4+26,874bff+100 */
+  background: #544ff9; /* Old browsers */
+  background: -moz-linear-gradient(left,  #544ff9 0%, #7351f4 26%, #874bff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #544ff9 0%,#7351f4 26%,#874bff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #544ff9 0%,#7351f4 26%,#874bff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#544ff9', endColorstr='#874bff',GradientType=1 ); /* IE6-9 */
   color: #C3D1FF;
+  padding-bottom: 156px;
+  h5 {
+    color: white;
+    margin-bottom: 16px;
+  }
   img {
     width: 96px;
     margin: 32px;
@@ -89,12 +91,17 @@ section {
 }
 .description {
   padding: 120px 0;
+
+  .info-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+}
+
+.description, .users {
   h2 {
     margin-bottom: 32px;
-  }
-  .info-content {
-    width: 900px;
-    margin: 0 auto;
   }
   .separator {
     margin-bottom: 64px;
@@ -105,6 +112,7 @@ section {
     border-radius: 2.5px;
   }
 }
+
 .comments {
   h4 {
     margin-bottom: 16px;
@@ -117,14 +125,11 @@ section {
   }
   .detail {
     height: 168px;
+    max-width: 756px;
+    margin: 0 auto;
   }
   .leftpad {
     width: 64px;
     display: inline-block;
-  }
-}
-.users {
-  h2 {
-    margin-bottom: 56px;
   }
 }
