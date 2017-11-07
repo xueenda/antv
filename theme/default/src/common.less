@@ -6,6 +6,44 @@
   display: none;
 }
 
+.navbar-brand {
+  margin-right: 50px;
+}
+
+.homepage {
+
+}
+
+#navbarHeader, #sub-site-nav {
+  height: 64px;
+}
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#sub-site-nav {
+  line-height: 64px;
+  .nav-link {
+    padding: 0 20px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    &.active {
+      border-top: 2px solid #1890ff;
+    }
+  }
+}
+
+.back2old-version .btn {
+  border-radius: 32px;
+}
+
+.query-group {
+  border-left: 1px solid #ebedee;
+  padding-left: 18px;
+}
+
 .template-doc, .template-demos, .template-home {
   h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
     display: block;
@@ -17,10 +55,19 @@
 }
 
 #query {
-  display: none;
   margin-right: 20px;
   max-width: 100%;
   min-width: 300px;
+  border-width: 0;
+  background: transparent;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+#sub-site-nav {
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,6 +134,10 @@ table td, table th {
 .navbar-light {
   background: #FDFDFD;
   box-shadow: 0 2px 8px rgba(229, 229, 229, .5);
+  &.homepage {
+    background: #F8FAFE;
+    box-shadow: none;
+  }
 }
 
 .site-map {
