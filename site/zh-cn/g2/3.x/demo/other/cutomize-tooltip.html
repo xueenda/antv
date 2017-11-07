@@ -59,4 +59,7 @@ relativePlots:
   });
   chart.line().position('month*tem');
   chart.render();
+  // 默认展示 七月 的提示信息
+  const point = chart.getXY({"month": '七月', "tem":25.2});
+  chart.showTooltip(point);
 </script>

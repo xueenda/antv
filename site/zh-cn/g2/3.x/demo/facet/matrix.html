@@ -42,12 +42,12 @@ $.getJSON('/assets/data/iris.json', function(data) {
         view.source(dv.rows);
         view.intervalStack()
           .position(facet.colField + '*count')
-          .color('Species', [ '#880000', '#008800', '#000088' ])
+          .color('Species')
           .opacity(0.85);
       } else {
         view.point()
           .position([ facet.colField, facet.rowField ])
-          .color('Species', [ '#880000', '#008800', '#000088' ])
+          .color('Species')
           .shape('circle')
           .opacity(0.3)
           .size(3);

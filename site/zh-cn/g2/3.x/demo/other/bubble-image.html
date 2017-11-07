@@ -47,12 +47,12 @@ relativePlots:
     {name: 'Undetectable', value: 8}
   ];
   const imageMap = {
-    'Internet Explorer': 'https://zos.alipayobjects.com/rmsportal/FDWrsEmamcNvtEf.png',
-    'Chrome': 'https://zos.alipayobjects.com/rmsportal/GHGrgIDTVMCaYZT.png',
-    'Firefox': 'https://zos.alipayobjects.com/rmsportal/vzhXpeDRQURIStk.png',
-    'Safari': 'https://zos.alipayobjects.com/rmsportal/nAVchPnSaAWncPj.png',
-    'Opera': 'https://zos.alipayobjects.com/rmsportal/RdEElDcYVXtHDRD.png',
-    'Undetectable': 'https://zos.alipayobjects.com/rmsportal/YCLAblnKOdToECl.png'
+    'Internet Explorer': 'https://gw.alipayobjects.com/zos/rmsportal/gfeuYWYiThXreSqCKPbd.png',
+    'Chrome': 'https://gw.alipayobjects.com/zos/rmsportal/AHQKLNRGxdfldVJWHYlQ.png',
+    'Firefox': 'https://gw.alipayobjects.com/zos/rmsportal/JifKrdJsixcnAaiuVZOZ.png',
+    'Safari': 'https://gw.alipayobjects.com/zos/rmsportal/VNhxPRHEzjNnhNsRUnqQ.png',
+    'Opera': 'https://gw.alipayobjects.com/zos/rmsportal/OAEZFtCeoZsmTSKkNObZ.png',
+    'Undetectable': 'https://gw.alipayobjects.com/zos/rmsportal/xHbLWsQqwdAyRtigOCTW.png'
   };
   const chart = new G2.Chart({
     container: 'mountNode',
@@ -67,10 +67,7 @@ relativePlots:
       min: 0
     }
   });
-  chart.legend('value', false);
-  chart.legend('name', {
-    marker: 'circle'
-  });
+  chart.legend(false);
   chart.axis('value', false);
   chart.point().position('name*value')
     .size('value')

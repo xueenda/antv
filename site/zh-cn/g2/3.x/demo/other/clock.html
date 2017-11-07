@@ -33,7 +33,7 @@ const chart = new G2.Chart({
   container: 'mountNode',
   forceFit: true,
   height: window.innerHeight,
-  padding: 40
+  padding: 80
 });
 chart.legend(false);
 chart.tooltip({
@@ -59,8 +59,8 @@ bgView.guide().text({
   content: '24 hours',
   style: {
     lineHeight: '240px',
-    fontSize: '48',
-    fill: '#609064',
+    fontSize: '30',
+    fill: '#262626',
     textAlign: 'center'
   }
 });
@@ -101,9 +101,9 @@ const userData = [
   { type: '淡茶 & 烟斗 & 冥想', value: 10 },
   { type: '写作', value: 10 },
   { type: '教课', value: 40 },
-  { type: '酒吧吃肉配红酒', value: 40 },
+  { type: '酒吧吃肉配白酒', value: 40 },
   { type: '散步', value: 10 },
-  { type: '拜访约瑟夫', value: 30 },
+  { type: '拜访马大大', value: 30 },
   { type: '阅读', value: 30 },
 ];
 const userDv = new DataView();
@@ -126,7 +126,7 @@ pieView.coord('theta', {
   innerRadius: 0.75,
 });
 pieView.intervalStack().position('percent')
-  .color('type', ['#bfbfbf', '#F2B971', '#7DAB74', '#94979A', '#F2B971', '#60C2D4', '#7AA471', '#C0DBC7'])
+  .color('type')
   .label('type', {
     offset: 40,
   })

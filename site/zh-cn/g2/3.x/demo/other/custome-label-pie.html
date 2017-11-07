@@ -76,7 +76,7 @@ relativePlots:
       }
     });
 
-    const COLORS = [ '#00D9DF', '#EBA538' ];
+    const COLORS = [ '#1890ff', '#f04864' ];
 
     chart.coord('theta', {
       radius: 0.8
@@ -93,8 +93,8 @@ relativePlots:
         custom: true,
         htmlTemplate: (text, item) => {
           const isFemale = item.point.sex === '女';
-          const src = isFemale ? '//img.alicdn.com/tps/TB1up3oPpXXXXbYXFXXXXXXXXXX-94-204.png'
-            : '//img.alicdn.com/tps/TB1cYZxPpXXXXX7XpXXXXXXXXXX-85-206.png';
+          const src = isFemale ? 'https://gw.alipayobjects.com/zos/rmsportal/UPTDwOTNLXeiLzhyGWXO.png'
+            : 'https://gw.alipayobjects.com/zos/rmsportal/oOjpDusdnoDEbMJBZAvU.png';
           const color = isFemale ? COLORS[1] : COLORS[0];
           const IMG = `<img style="width:40px" src="${src}" /><br/>`;
           return `<div style="text-align:center;color:${color}">${IMG}${(text * 100).toFixed(0)}%</div>`;

@@ -12,6 +12,39 @@ relativePlots:
 -->
 
 <script>
+    const { Shape, Util, Chart } = G2;
+    Shape.registerShape('line', 'lineWidthArrow', {
+      draw(cfg, container) {
+        const points = cfg.points;
+        const attrs = Util.mix({}, {
+          stroke: cfg.color,
+          lineWidth: cfg.size,
+        }, cfg.style);
+        let pathGroup = container.addGroup();
+        for(let i = 0; i < points.length; i++) {
+          const path = [];
+          path.push(
+            [ 'M', points[i].x, points[i].y ]
+          );
+          if (i !== points.length - 1) {
+            path.push(
+              [ 'L', points[i + 1].x, points[i + 1].y ]
+            );
+          }
+
+          pathGroup.addShape('path', {
+            attrs: Util.mix({
+              path,
+              endArrow: true,
+              arrowLength: 10,
+              arrowAngle: 45
+            }, attrs)
+          });
+        }
+
+        return pathGroup;
+      }
+    });
     const data = [
         {consumption: 0.65, price: 1, year: 1965},
         {consumption: 0.66, price: 1.05, year: 1966},
@@ -29,28 +62,49 @@ relativePlots:
         {consumption: 0.28, price: 1, year: 1978},
         {consumption: 0.15, price: 1.1, year: 1979}
     ];
-    const chart = new G2.Chart({
+    const chart = new Chart({
         container: 'mountNode',
         forceFit: true,
         height: window.innerHeight
     });
     chart.source(data);
     chart.tooltip({
-        title: 'year'
+        showTitle: false,
+        itemTpl: '<li data-index={index}>'
+          + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
+          + '<span>{year}</span></br>'
+          + '<span style="padding-left: 16px">consumption: {consumption}</span></br>'
+          + '<span style="padding-left: 16px">price: {price}</span></br>'
     });
     chart.path()
         .position('price*consumption')
-        .label('year', function(val) {
+        .shape('lineWidthArrow')
+        .color('#1890ff')
+        .label('year', {
+          offset: 16,
+          textStyle: {
+            fill: '#8c8c8c'
+          }
+        }, function(val) {
             return val + '年';
         })
-        .size(2);
+        .size(2)
+        .tooltip(false);
     chart.point()
         .position('price*consumption')
-        .shape('triangle')
-        .size(5)
+        .shape('circle')
+        .size(10)
+        .active(false)
+        .tooltip('year*consumption*price', (year, consumption, price) => {
+            return {
+                year,
+                consumption,
+                price
+            };
+        })
         .style({
-            lineWidth: 1,
-            stroke: '#fff'
+            fill: '#fff',
+            fillOpacity: 0
         });
     chart.render();
 </script>

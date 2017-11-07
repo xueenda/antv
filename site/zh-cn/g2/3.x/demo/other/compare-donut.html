@@ -38,10 +38,13 @@ chart.source(data);
 chart.tooltip({
   showTitle: false
 });
+chart.legend('area', {
+  offset: 20
+});
 // 以 year 为维度划分分面
 chart.facet('rect', {
   fields: ['year'],
-  padding: 50,
+  padding: 20,
   rowTitle: null,
   colTitle: {
     offsetY: -30,
@@ -71,14 +74,16 @@ chart.facet('rect', {
     view.coord('theta', {
       innerRadius: 0.35
     });
+    //TODO 文本太小不展示
     view.intervalStack()
       .position('percent')
       .color('area')
       .label('percent', {
-        offset: -2
+        offset: -8
       })
       .style({
-        lineWidth: 1
+        lineWidth: 1,
+        stroke: '#fff'
       });
   }
 });

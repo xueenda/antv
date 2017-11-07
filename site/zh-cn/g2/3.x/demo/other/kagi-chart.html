@@ -36,12 +36,17 @@ relativePlots:
           generatePoints: true
         })
         .position('date*value')
-        .color('type')
+        .color('type', val => {
+          if (val === 'pos') {
+            return '#f04864';
+          }
+          return '#2fc25b';
+        })
         .size('type', val => {
           if (val === 'pos') {
-            return 3;
+            return 2;
           }
-          return 2;
+          return 1;
         });
       chart.render();
     });

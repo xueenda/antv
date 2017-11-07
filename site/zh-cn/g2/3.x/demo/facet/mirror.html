@@ -68,7 +68,7 @@ $.getJSON('/assets/data/population.json', function(data) {
     transpose: true,
     eachView(view) {
       view.interval().position('age*total_percentage')
-        .color('gender', [ 'rgb(113,192,235)', 'rgb(246,170,203)' ]);
+        .color('gender', [ '#1890ff', '#f04864' ]);
     }
   });
   chart.render();

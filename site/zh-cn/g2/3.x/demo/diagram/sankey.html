@@ -25,13 +25,14 @@ relativePlots:
         const chart = new G2.Chart({
             container: 'mountNode',
             forceFit: true,
-            height: window.innerHeight
+            height: window.innerHeight,
+            padding: [ 40, 80 ]
         });
         chart.legend(false);
         chart.tooltip({
             showTitle: false
         });
-
+        chart.axis(false);
         chart.scale({
             x: {
                 sync: true
@@ -44,29 +45,35 @@ relativePlots:
         // edge view
         const edgeView = chart.view();
         edgeView.source(dv.edges);
-        edgeView.axis(false);
         edgeView.edge()
             .position('x*y')
             .shape('arc')
             .color('#bbb')
             .opacity(0.6)
-            .tooltip('value');
+            .tooltip('target*source*value', (target, source, value) => {
+                return {
+                    name: source.name + ' to ' + target.name + '</span>',
+                    value
+                };
+            });
 
         // node view
         const nodeView = chart.view();
-        nodeView.axis(false);
         nodeView.source(dv.nodes);
         nodeView.polygon()
             .position('x*y') // nodes数据的x、y由layout方法计算得出
             .color('name')
-            // .label('name', {
-            //     // labelEmit: true,
-            //     textStyle: {
-            //         fill: 'black',
-            //         textAlign: 'left'
-            //     },
-            //     offset: 0
-            // })
+            .label('name', {
+                textStyle: {
+                    fill: 'black',
+                    textAlign: 'start'
+                },
+                offset: 0,
+                formatter: val => {
+                   return '    ' + val;
+                }
+            })
+            .tooltip(false)
             .style({
                 stroke: '#ccc'
             });

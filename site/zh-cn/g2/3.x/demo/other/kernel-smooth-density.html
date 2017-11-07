@@ -27,6 +27,9 @@ relativePlots:
         });
 
         chart.source(data);
+        chart.legend({
+            offset: 45
+        });
         chart.point()
             .position('carat*price');
 

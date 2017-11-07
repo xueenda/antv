@@ -61,7 +61,7 @@ relativePlots:
     });
     chart.schema()
       .position('time*range')
-      .color('trend', [ '#2AF483', '#F80041' ])
+      .color('trend', ['#f04864', '#2fc25b'])
       .shape('candle')
       .tooltip('time*start*end*max*min*volumn', (time, start, end, max, min, volumn) => {
         return {

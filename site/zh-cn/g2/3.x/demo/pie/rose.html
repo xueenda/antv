@@ -34,7 +34,11 @@ relativePlots:
   chart.source(data);
   chart.coord('polar');
   chart.axis(false);
-  chart.interval().position('year*population')
+  chart.interval()
+    .position('year*population')
+    .label('year', {
+      offset: -15
+    })
     .style({
       lineWidth: 1,
       stroke: '#fff'

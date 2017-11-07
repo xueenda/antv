@@ -80,7 +80,7 @@ Shape.registerShape('interval', 'burstPie', {
 const chart = new G2.Chart({
   container: 'mountNode',
   forceFit: true,
-  height: window.innerHeight,
+  height: window.innerHeight
 });
 chart.source(dv, {
   percent: {
@@ -97,7 +97,6 @@ chart.coord('theta', {
 chart.tooltip({
   showTitle: false
 });
-chart.legend(false);
 chart.axis('percent', {
   title: {
     offset: 40,
@@ -107,15 +106,6 @@ chart.axis('percent', {
 chart.intervalStack()
   .shape('burstPie')
   .position('percent')
-  .label('key', {
-    offset: -8,
-    textStyle: {
-      fontSize: 14,
-      textBaseline: 'bottom',
-      shadowBlur: 10, // 文本阴影模糊
-      shadowColor: '#000' // 阴影颜色
-    }
-  })
-  .color('key', ['#00D9DF', '#EBA538', '#69C7FF']);
+  .color('key', [ '#1890ff', '#f04864', '#bfbfbf']);
 chart.render();
 </script>
