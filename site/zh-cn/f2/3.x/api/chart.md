@@ -116,6 +116,65 @@ var chart = new F2.Chart({
 });
 ```
 
+<div>
+  <canvas id="can1" style="float:left;"></canvas>
+  <canvas id="can2" style="float:left;"></canvas>
+</div>
+<div style="clear:both;"></div>
+
+```js-
+
+var data = [
+  {x: 1, y: 1},
+  {x: 2, y: 0},
+  {x: 3, y: 3}
+]
+var chart = new F2.Chart({
+  id: 'can1',
+  width: 400,
+  height: 200,
+  pixelRatio: 1 // 单独设置
+});
+
+chart.source(data, {
+  y: {
+    tickCount: 4,
+    formatter(val) {
+      return val.toFixed(1);
+    }
+  }
+});
+chart.line().position('x*y');
+chart.guide().text([2, 3.5], 'pxielRatio = 1', {
+  textAlign: 'center',
+  fontSize: 14
+});
+chart.render();
+
+var chart1 = new F2.Chart({
+  id: 'can2',
+  width: 400,
+  height: 200,
+  pixelRatio: 2 // 单独设置
+});
+
+chart1.source(data, {
+  y: {
+    tickCount: 4,
+    formatter(val) {
+      return val.toFixed(1);
+    }
+  }
+});
+chart1.line().position('x*y');
+chart1.guide().text([2, 3.5], 'pxielRatio = 1', {
+  textAlign: 'center',
+  fontSize: 14
+});
+chart1.render();
+
+```
+
 ## 方法
 
 ### source
@@ -133,9 +192,14 @@ chart.source(data, defs) 设置
     });
   ```
 
-#### 列定义
+#### defs 列定义
 
-图表数据的列定义用于数据字段的定义，如数据的类型，显示别名，时间类型的格式等，不同的数字类型的配置项不同，支持的数据类型有：数字类型(linear)、分类类型(cat)、和时间类型(timeCat）详情参考 [G2 Scale](../../../g2/3.x/api/scale.html) API中对数字类型(linear)、分类类型(cat)、和时间类型(timeCat）的介绍。
+图表数据的列定义用于数据字段的定义，如数据的类型，显示别名，时间类型的格式等，不同的数字类型的配置项不同，支持的数据类型有：
+  * linear: 数字类型
+  * cat: 分类类型
+  * timeCat：和时间类型
+
+F2 会自动检测数据类型，但是有时候用户需要更改一些属性或者数据的类型，详情参考 [G2 Scale](../../../g2/3.x/api/scale.html) API中对数字类型(linear)、分类类型(cat)、和时间类型(timeCat）的介绍。
 
 
 ### geom
@@ -154,7 +218,19 @@ type | 说明
 `polygon` | 多边形，可以用于色块图、地图等图表类型。
 `schema` | k线图
 
-F2 的核心语法就是指定`视觉通道`和数据字段的映射关系，更详细的信息参考 [geom](geom.html)
+F2 的核心语法就是指定`视觉通道`和数据字段的映射关系，支持下面几种视觉通道：
+
+* [position](geom.html#_position)：数据字段映射到位置
+* [color](geom.html#_color)：数据字段映射到颜色
+* [shape](geom.html#_shape)：数据字段映射到形状
+* [size](geom.html#_size)：数据字段映射到形状
+
+F2 除了提供了字段映射到图形属性上的方法外还提供了：
+
+* [style](geom.html#_style) 设置图形样式的接口
+* [adjust](geom.html#_adjust) 进行数据调整，可以实现层叠柱状图、分组柱状图、层叠面积图
+
+更详细的信息参考 [geom](geom.html)
 
 <h4>示例</h4>
 
@@ -407,6 +483,76 @@ chart.coord(type, cfg) 设置坐标系
     });
    
   ```
+
+<div>
+  <canvas id="can3" style="float:left;"></canvas>
+  <canvas id="can4" style="float:left;"></canvas>
+</div>
+<div style="clear:both;"></div>
+
+```js-
+
+var data = [
+  {x: '1', y: 1},
+  {x: '2', y: 2},
+  {x: '3', y: 3}
+]
+var chart = new F2.Chart({
+  id: 'can3',
+  width: 400,
+  height: 200,
+  pixelRatio: 2 // 单独设置
+});
+
+chart.source(data, {
+  y: {
+    tickCount: 4,
+    formatter(val) {
+      return val.toFixed(1);
+    }
+  }
+});
+
+chart.coord({
+  transposed: true
+});
+
+chart.interval().position('x*y');
+chart.guide().text([2.5, 1.5], 'transposed', {
+  textAlign: 'center',
+  fontSize: 14
+});
+chart.render();
+
+var chart1 = new F2.Chart({
+  id: 'can4',
+  width: 400,
+  height: 200,
+  pixelRatio: 2 // 单独设置
+});
+
+chart1.coord({
+  type: 'polar',
+  innerRadius: 0.5
+})
+chart1.source(data, {
+  y: {
+    tickCount: 4,
+    formatter(val) {
+      return val.toFixed(1);
+    }
+  }
+});
+chart1.axis(false);
+chart1.interval().position('x*y');
+chart1.guide().text([0, 3.5], 'polar and innerRadius = 0.5', {
+  textAlign: 'center',
+  fontSize: 14
+});
+chart1.render();
+
+```
+
 
 ### animate
 
