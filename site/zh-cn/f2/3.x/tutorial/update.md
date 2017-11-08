@@ -17,7 +17,7 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
 * 命名空间 GM 改成 F2 ==不兼容==
 * animate 接口简化 ==不兼容==
   ```js
-   // 2.0
+   // G2-mobile 2.0
    chart.aniamte().wavec({
     duration: 2000,
     easing: 'elastic',
@@ -26,7 +26,7 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
     } 
    });
    
-   // 3.0
+   // F2 3.0
    chart.animate({
     type: 'wavec',
     duration: 2000,
@@ -41,11 +41,11 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
   + margin 改成 padding
   为了升级方面，margin 还保留支持
   ```js
-  // 2.0
+  // G2-mobile 2.0
   var chart = new Chart({
     margin: 20
   });
-  // 3.0
+  // F2 3.0
   var chart = new Chart({
     padding: 20
   });
@@ -58,9 +58,9 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
 
   F2 3.0 所有的geomety 都支持数据调整
   ```js
-    // 2.0
+    // G2-mobile 2.0
     chart.intervalStack().position('a*b');
-  // 3.0
+  // F2 3.0
   chart.interval().position().adjust('stack')
   ```
   
@@ -70,7 +70,7 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
   + drawShape 改成 draw
 
   ```js
-  // 2.0
+  // G2-mobile 2.0
   G2.Shape.registShape('interval', 'custom', {
     getShapePoints(cfg) {},
   drawShape(cfg, canvas) {}

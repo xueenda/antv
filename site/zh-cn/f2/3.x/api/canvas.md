@@ -28,21 +28,23 @@ F2对图形属性进行了缩写
 
 ## 线条样式
 
-* lineCap 设置线条的结束端点样式
-* lineJoin  设置两条线相交时，所创建的拐角类型
-* lineWidth 设置当前的线条宽度
-* miterLimit  设置最大斜接长度
+* [lineCap](http://www.w3school.com.cn/tags/canvas_linecap.asp) 设置线条的结束端点样式
+* [lineJoin](http://www.w3school.com.cn/tags/canvas_linejoin.asp)  设置两条线相交时，所创建的拐角类型
+* [lineWidth](http://www.w3school.com.cn/tags/canvas_linewidth.asp) 设置当前的线条宽度
+* [miterLimit](http://www.w3school.com.cn/tags/canvas_miterlimit.asp)  设置最大斜接长度
 
 `注意`
 F2 在现有线的样式基础上增加了虚线的支持
 
 * lineDash：设置线的虚线样式，可以指定一个数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。 如果数组元素的数量是奇数， 数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]。
 
+这个属性取决于浏览器是否支持 setLineDash 函数，详情参考[setLineDash](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash)
+
 ## 文本属性
 
-* font  设置文本内容的当前字体属性
-* textAlign 设置文本内容的当前对齐方式
-* textBaseline  设置在绘制文本时使用的当前文本基线
+* [font](http://www.w3school.com.cn/tags/canvas_font.asp)  设置文本内容的当前字体属性
+* [textAlign](http://www.w3school.com.cn/tags/canvas_textalign.asp) 设置文本内容的当前对齐方式, 支持的属性：center|end|left|right|start
+* [textBaseline](http://www.w3school.com.cn/tags/canvas_textbaseline.asp)  设置在绘制文本时使用的当前文本基线, 支持的属性:top|middle|bottom
 
 `注意`
 
