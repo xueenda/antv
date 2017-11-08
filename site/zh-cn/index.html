@@ -57,8 +57,8 @@ isHome: true
         <div class="col-md-4">
             <h1>让数据栩栩如生</h1>
             <p class="main-info">提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视设计规范，蚂蚁数据可视化解决方案。</p>
-            <a class="" target="_blank" href="{{ products.g2.href }}">
-                <button class="btn btn-primary btn-lg">{{ resource.translate.getStarted }}</button>
+            <a target="_blank" href="{{ products.g2.href }}">
+                <button class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.getStarted }}</button>
             </a>
         </div>
         <div class="col-md-1"></div>
@@ -107,7 +107,7 @@ isHome: true
 <section class="comments text-center">
     <div class="container">
         <div id="commentsCarousel" class="carousel">
-            <div class="carousel-inner slick">
+            <div class="carousel-inner slick" data-dots="true">
                 {% for item in commentsCarouselItems %}
                 <div class="carousel-item{% if loop.index0 === 0 %} active{% endif %}">
                     <div class="d-block w-100">

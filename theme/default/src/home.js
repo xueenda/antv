@@ -12,13 +12,16 @@ $('header').headroom({
     }
 });
 
-$('.slick').slick({
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    cssEase: 'linear',
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    fade: true,
+$('.slick').each(function () {
+    const $target = $(this);
+    $target.slick({
+        dots: !!$target.data('dots'),
+        infinite: true,
+        speed: 1000,
+        cssEase: 'linear',
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        fade: true,
+    });
 });

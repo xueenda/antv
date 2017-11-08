@@ -36,9 +36,9 @@ resource:
             <div class="col-md-6 slick">
                 <div id="commentsCarousel" class="carousel">
                     <div class="carousel-inner slick">
-                        <div id="c1" class="carousel-item active"></div>
-                        <div id="c2" class="carousel-item"></div>
-                        <div id="c3" class="carousel-item"></div>
+                        <div id="c1" class="plot-container carousel-item active"></div>
+                        <div id="c2" class="plot-container carousel-item"></div>
+                        <div id="c3" class="plot-container carousel-item"></div>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,8 @@ resource:
     value: 'temperature', // value字段
   });
   var chart = new G2.Chart({
-    container: 'c1',
+    // container: 'c1',
+    container: $('.plot-container')[0],
     forceFit: true,
     height: 400
   });
@@ -147,7 +148,8 @@ resource:
   });
 
   const chart = new G2.Chart({
-    container: 'c2',
+    // container: 'c2',
+    container: $('.plot-container')[1],
     forceFit: true,
     height: 400
   });
@@ -193,7 +195,8 @@ resource:
     {country: 'Oceania', year: '2050', value: 300},
   ];
   const chart = new G2.Chart({
-    container: 'c3',
+    // container: 'c3',
+    container: $('.plot-container')[2],
     forceFit: true,
     height: 400
   });

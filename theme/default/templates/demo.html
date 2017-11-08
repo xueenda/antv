@@ -45,14 +45,20 @@
             </div>
             <div class="demo" id="preview"></div>
             <div class="card-extra container">
+                {% if plotDescription %}
                 <section class="description">
                     <h4>{{ resource.translate.plotDescription }}</h4>
                     <div> {{ plotDescription | safe }} </div>
                 </section>
+                {% endif %}
+                {% if plotUsage %}
                 <section class="usage">
                     <h4>{{ resource.translate.usage }}</h4>
                     <div> {{ plotUsage | safe }} </div>
                 </section>
+                {% endif %}
+                {% if relativePlots %}
+                {% if relativePlots.length %}
                 <section class="relative-plots">
                     <h4>{{ resource.translate.relativePlots }}</h4>
                     <ul>
@@ -66,6 +72,8 @@
                         {% endfor %}
                     </ul>
                 </section>
+                {% endif %}
+                {% endif %}
             </div>
         </div>
         <div class="col code-panel bg-secondary">
