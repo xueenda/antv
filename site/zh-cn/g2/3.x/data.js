@@ -14,15 +14,14 @@ const plotByName = {
     pie:         { index: 2,  icon: '', url: '#', name: '饼图', },
     point:       { index: 3,  icon: '', url: '#', name: '点图', },
     radar:       { index: 11, icon: '', url: '#', name: '雷达图', },
+    treemap:     { index: 14, icon: '', url: '#', name: '矩形树图', },
+    adjacency:   { index: 15, icon: '', url: '#', name: '相邻层次图', },
+    chord:       { index: 16, icon: '', url: '#', name: '和弦图', },
+    sunburst:    { index: 17, icon: '', url: '#', name: '旭日图', },
+    voronoi:     { index: 18, icon: '', url: '#', name: 'voronoi图', },
+    sankey:      { index: 19, icon: '', url: '#', name: '桑基图', },
+    arc:         { index: 20, icon: '', url: '#', name: '弧长链接图', },
 };
 module.exports = {
-    // TODO
     plotByName,
-    keywords: [
-        'G2',
-        'Chart',
-        '图表',
-        '统计图表',
-    ],
-    description: 'G2(The Grammar Of Graphics)是一个由纯 JavaScript 编写、强大的语义化图表生成工具，它提供了一整套图形语法，可以让用户通过简单的语法搭建出无数种图表，并且集成了大量的统计工具，支持多种坐标系绘制，可以让用户自由地定制图表，是为大数据时代而准备的强大的可视化工具。'
 };

@@ -8,6 +8,7 @@ keywords:
   - 移动端
   - Mobile
   - H5
+description: F2 是一个由纯 JavaScript 编写、强大、高性能的的语义化图表生成工具，它提供了一整套图形语法，可以让用户通过简单的语法搭建出无数种图表，是为移动端而准备的强大的可视化工具。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 极小
@@ -71,36 +72,36 @@ resource:
     </ol>
     <h4>引入&lt;script&gt;</h4>
 
-    ```html
-    <script type="{{ url.f2 }}"></script>
-    ```
+```html
+  <script type="{{ url.f2 }}"></script>
+```
 
     <h4>声明 canvas 标签</h4>
 
-    ```html
-      <cavas id="c1" style="width:500px;height:500px"></canvas>
-    ```
+```html
+  <cavas id="c1" style="width:500px;height:500px"></canvas>
+```
 
     <h4>创建图表</h4>
 
-    ```js
-      // 声明数据源
-      var data = [
-        {"tem": 10, "city": "tokyo"},
-        {"tem": 4, "city": "newYork"},
-        {"tem": 3, "city": "berlin"}
-      ];
-      // 创建图表
-      var chart = new F2.Chart({
-        id: 'c1'
-      });
-      // 设置数据源
-      chart.source(data);
-      // 声明语法
-      chart.interval().position('city*tem');
-      // 渲染图表
-      chart.render();
-    ```
+```js
+  // 声明数据源
+  var data = [
+    {"tem": 10, "city": "tokyo"},
+    {"tem": 4, "city": "newYork"},
+    {"tem": 3, "city": "berlin"}
+  ];
+  // 创建图表
+  var chart = new F2.Chart({
+    id: 'c1'
+  });
+  // 设置数据源
+  chart.source(data);
+  // 声明语法
+  chart.interval().position('city*tem');
+  // 渲染图表
+  chart.render();
+```
     
 </section>
 

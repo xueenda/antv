@@ -5,11 +5,10 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 极坐标弧长链接图
-plotUsage: blablablalalalala
+plotDescription: 极坐标下的弧长链接图。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.arc}
+  - ${plotByName.chord}
 -->
 <script>
     $.getJSON('/assets/data/relationship-with-weight.json', data => {

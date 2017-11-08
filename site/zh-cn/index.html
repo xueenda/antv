@@ -7,14 +7,17 @@ keywords:
   - 蚂蚁数据可视化
 introCards:
   - img: ${assets}/image/home/intro-g2.svg
+    href: ${base}zh-cn/g2/3.x/index.html
     title: G2
-    description: （基础性可视化图表类库）
+    description: （基础性可视化图表类库） 是一个由纯 JavaScript 编写、强大的语义化图
   - img: ${assets}/image/home/intro-g6.svg
     title: G6
-    description: （关系图可视化类库）
+    href: ${base}zh-cn/g6/1.x/index.html
+    description: （关系图可视化类库）是一个由纯 JavaScript 编写、强大的语义化图
   - img: ${assets}/image/home/intro-f2.svg
     title: F2
-    description: （移动端可视化类库）
+    href: ${base}zh-cn/f2/3.x/index.html
+    description: （移动端可视化类库） 是一个由纯 JavaScript 编写、强大的语义化图
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 简单方便
@@ -38,10 +41,6 @@ commentsCarouselItems:
     profile: 浙江大学计算机学院 CAD & CG 国家重点实验室教授 可视化专家
     avatar: https://os.alipayobjects.com/rmsportal/CcFeLxXurbQmwrT.jpg
     comment: 在多年可视化设计与开发的积累基础上，蚂蚁金服团队推出了 AntV 产品，这是工业界在基础可视化语法与实践方面发出的最强声音，也是工业界与学术界一道推进可视化研发进展的最佳利器。
-  - name: 阮一峰
-    profile: 前端专家，《ES6 标准入门》作者
-    avatar: https://zos.alipayobjects.com/rmsportal/JBLjWOlbCFiAxQBqiQqD.png
-    comment: G2 是一个非常强大的可视化引擎，只要你想得出的图表，它都能画出来。
   - name: 林峰
     profile: 爱烹饪的数据可视化攻城狮
     avatar: https://zos.alipayobjects.com/rmsportal/wtkIALmYDSmOIiAalkdv.jpg
@@ -51,30 +50,31 @@ footer:
 isHome: true
 -->
 <section class="intro">
-    <div class="container">
-        <div class="header row">
-            <div class="col-md-6">
-                <img width="100%" src="{{ assets }}/image/home/intro-landscape.svg" alt="">
-            </div>
-            <div class="col-md-6">
-                <h1>让数据栩栩如生</h1>
-                <p class="main-info">提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视设计规范，蚂蚁数据可视化解决方案。</p>
-                <button class="btn btn-primary btn-lg">
-                    {{ resource.translate.getStarted }}
-                </button>
-            </div>
+    <div class="header row">
+        <div class="col-md-7">
+            <img class="img-landscape" height="542px" width="790px" src="{{ assets }}/image/home/intro-landscape.svg" alt="">
         </div>
+        <div class="col-md-4">
+            <h1>让数据栩栩如生</h1>
+            <p class="main-info">提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视设计规范，蚂蚁数据可视化解决方案。</p>
+            <a target="_blank" href="{{ products.g2.href }}">
+                <button class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.getStarted }}</button>
+            </a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="container">
         <div class="products row text-center">
             {% for card in introCards %}
             <div class="col-md-4">
-                <div class="card">
+                <a class="card" href="{{ card.href }}">
                     <h3>{{ card.title }}</h3>
                     <img src="{{ card.img }}" alt="" class="card-img-top">
                     <div class="card-body">
                         <span class="title">{{ card.title }}</span>
                         <span class="description text-secondary">{{ card.description }}</span>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
@@ -82,9 +82,12 @@ isHome: true
 </section>
 
 <section class="description container text-center">
-    <h2>AntV数据可视化解决方案</h2>
-    <p class="main-info">已全面全新升级，主要包含G2、G6、F2 以及一套完整的图表使用和设计规范。</p>
-    <p class="main-info">得益于丰富的业务场景和用户需求挑战，AntV经历多年积累与不断打磨，已支撑整个阿里集团内外2000+业务系统，通过了百万级UV产品的严苛考验后方敢与君见。</p>
+    <h2>AntV可视化解决方案</h2>
+    <span class="separator"></span>
+    <div class="info-content">
+        <p class="main-info">已全面全新升级，主要包含G2、G6、F2 以及一套完整的图表使用和设计规范。</p>
+        <p class="main-info">得益于丰富的业务场景和用户需求挑战，AntV经历多年积累与不断打磨，已支撑整个阿里集团内外2000+业务系统，通过了百万级UV产品的严苛考验后方敢与君见。</p>
+    </div>
 </section>
 
 <section class="features text-center">
@@ -104,7 +107,7 @@ isHome: true
 <section class="comments text-center">
     <div class="container">
         <div id="commentsCarousel" class="carousel">
-            <div class="carousel-inner slick">
+            <div class="carousel-inner slick" data-dots="true">
                 {% for item in commentsCarouselItems %}
                 <div class="carousel-item{% if loop.index0 === 0 %} active{% endif %}">
                     <div class="d-block w-100">
@@ -114,7 +117,7 @@ isHome: true
                             <span class="text-center main-info">{{ item.comment }}</span>
                         </div>
                         <h4 class="text-center">{{ item.name }}</h4>
-                        <p class="text-center">{{ item.profile }}</p>
+                        <p class="text-center author-title">{{ item.profile }}</p>
                     </div>
                 </div>
                 {% endfor %}
@@ -125,6 +128,7 @@ isHome: true
 
 <section class="users text-center">
     <h2>2000+用户正在使用</h2>
+    <span class="separator"></span>
     <div class="container">
         <div class="row">
             {% for card in organizationsCards %}

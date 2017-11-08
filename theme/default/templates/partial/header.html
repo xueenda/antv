@@ -1,22 +1,19 @@
 <!--header-->
-<header class="navbar navbar-expand-lg navbar-light fixed-top headroom animated">
+<header class="navbar navbar-expand-lg navbar-light fixed-top headroom animated{% if isHome %} homepage{% endif %}">
     <!--{% if header.isFullSize %}{% else %}<div class="container">{% endif %}-->
-    <image class="lazy logo" width="56" height="56" src="{{ brand.logo }}"></image>
-    <a class="navbar-brand" href="{{ base }}{{ home }}"><!-- TODO when it is home, use # -->
-        {{ brand.name }}
-    </a>
-    {% if subHeader %}
-    {% endif %}
+    <image class="lazy logo" width="48" height="28" src="{{ brand.logo }}"></image>
+    <a class="navbar-brand" href="{% if isHome %}#{% else %}{{ base }}{{ home }}{% endif %}">{{ brand.name }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <!--<a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>-->
     <div class="collapse navbar-collapse" id="navbarHeader">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group">
             {% if isHome %}
             {% else %}
             {% set product = products[currentProduct] %}
-            <li class="nav-item dropdown">
+            <span class="nav-separator"></span>
+            <li class="nav-item dropdown" id="sub-product-navs">
                 <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     {{ product.name }}
                 </a>
@@ -27,8 +24,12 @@
                 </div>
             </li>
             {% endif %}
+            <a id="btn-search" class="nav-link">
+                <svg width="12" height="12" fill="#ced4d9"><use xlink:href="#_si-search"></use></svg>
+            </a>
+            <input id="query" class="query" type="text" placeholder="{{ resource.translate.search }}..." aria-label="Search">
         </ul>
-        <ul class="form-inline navbar-nav mt-2 mt-lg-0">
+        <ul class="navbar-nav mt-2 mt-lg-0" id="sub-site-nav">
             {% if isHome %}
             {% for name, item in products %}
             <a class="nav-link" href="{{ item.href }}">{{ item.name }}</a>
@@ -43,10 +44,12 @@
             {% endif %}
             {% endfor %}
             {% endif %}
-            <input id="query" class="form-control query" type="text" placeholder="Search" aria-label="Search">
-            <a class="nav-link"><img src="{{ assets }}/image/icon/search.svg" alt=""></a>
             <!--<a class="nav-link"><img src="{{ assets }}/image/icon/more-apps.svg" alt=""></a>-->
-            <a class="btn border nav-link">{{ resource.translate.back2oldVersion }}</a>
+            <a class="nav-link back2old-version">
+                <span class="btn border">
+                {{ resource.translate.back2oldVersion }}
+                </span>
+            </a>
         </ul>
     </div>
     <!--{% if header.isFullSize %}{% else %}</div>{% endif %}-->

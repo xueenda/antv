@@ -15,6 +15,16 @@ if (isDark) {
 } else {
     $code.val($codeDefault.val());
 }
+$('.theme-switching .btn').each(function () {
+    const $btn = $(this);
+    if (isDark) {
+        if ($btn.data('theme') === 'dark') {
+            $btn.removeClass('btn-light').addClass('btn-primary');
+        } else {
+            $btn.removeClass('btn-primary').addClass('btn-light');
+        }
+    }
+});
 
 const htmlEditor = CodeMirror.fromTextArea($code[0], {
     mode: "text/html",

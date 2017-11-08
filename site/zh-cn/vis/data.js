@@ -1,3 +1,4 @@
 module.exports = {
-    currentProduct: 'vis'
+    currentProduct: 'vis',
+    tocifyWithAnchor: true,
 };

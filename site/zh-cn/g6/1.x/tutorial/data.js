@@ -57,6 +57,7 @@ module.exports = {
     docsCount: docList.length,
     template: 'doc',
     showFooter: false,
+    tocifyWithAnchor: true,
     docMenuHeader: '${resource.translate.tutorial}',
     docFilteringSupport: true
 };

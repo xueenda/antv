@@ -3,6 +3,8 @@ import $ from 'jquery';
 import _ from 'lodash';
 import './common.less';
 
+const $query = $('#query');
+
 // search
 function buildFlattenIndices(docs, invertedList) {
     const indices = [];
@@ -68,7 +70,7 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     }
 
     const flattenIndices = buildFlattenIndices(docs, invertedList);
-    $('#query').autocomplete({
+    $query.autocomplete({
         lookup: flattenIndices,
         triggerSelectOnValidInput: false,
         onSelect,
@@ -78,8 +80,11 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     const $docFilteringQuery = $('#doc-filtering-query');
     const filteringCategories = [
         'api',
+        'blog',
+        'chart',
         'demo',
-        'doc',
+        'design',
+        'resource',
         'tutorial',
     ];
     if ($docFilteringQuery.length) { // filtering feature enabled

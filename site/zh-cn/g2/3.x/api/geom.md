@@ -732,4 +732,4 @@ geom().animate({
 });
 ```
 
-** 更加详细的配置参见 G2 Animate [API](./animate.html)。 **
+**更加详细的配置参见 [G2 Animate API](./animate.html)**。

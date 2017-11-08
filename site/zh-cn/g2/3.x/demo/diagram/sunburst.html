@@ -5,11 +5,13 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 旭日图
-plotUsage: blablablalalalala
+plotDescription: 旭日图（Sunburst Chart）是一种现代饼图，它超越传统的饼图和环图，能表达清晰的层级和归属关系，以父子层次结构来显示数据构成情况。旭日图中，离远点越近表示级别越高，相邻两层中，是内层包含外层的关系。
+plotUsage: 旭日图可以更细分溯源分析数据，真正了解数据的具体构成。
 relativePlots:
+  - ${plotByName.sunburst}
+  - ${plotByName.treemap}
+  - ${plotByName.adjacency}
   - ${plotByName.pie}
-  - ${plotByName.line}
 -->
 <script>
     $.getJSON('/assets/data/flare.json', data => {
@@ -24,7 +26,8 @@ relativePlots:
         const chart = new G2.Chart({
             container: 'mountNode',
             forceFit: true,
-            height: window.innerHeight
+            height: window.innerHeight,
+            padding: 0
         });
         chart.source(dv.getAllNodes().map(node => ({
             name: node.data.name,

@@ -5,6 +5,7 @@ keywords:
   - G2
   - The Grammar of Graphics
   - 图形语法
+description: G2(The Grammar Of Graphics)是一个由纯 JavaScript 编写、强大的语义化图表生成工具，它提供了一整套图形语法，可以让用户通过简单的语法搭建出无数种图表，并且集成了大量的统计工具，支持多种坐标系绘制，可以让用户自由地定制图表，是为大数据时代而准备的强大的可视化工具。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 简单方便
@@ -35,9 +36,9 @@ resource:
             <div class="col-md-6 slick">
                 <div id="commentsCarousel" class="carousel">
                     <div class="carousel-inner slick">
-                        <div id="c1" class="carousel-item active"></div>
-                        <div id="c2" class="carousel-item"></div>
-                        <div id="c3" class="carousel-item"></div>
+                        <div id="c1" class="plot-container carousel-item active"></div>
+                        <div id="c2" class="plot-container carousel-item"></div>
+                        <div id="c3" class="plot-container carousel-item"></div>
                     </div>
                 </div>
             </div>
@@ -100,7 +101,8 @@ resource:
     value: 'temperature', // value字段
   });
   var chart = new G2.Chart({
-    container: 'c1',
+    // container: 'c1',
+    container: $('.plot-container')[0],
     forceFit: true,
     height: 400
   });
@@ -146,7 +148,8 @@ resource:
   });
 
   const chart = new G2.Chart({
-    container: 'c2',
+    // container: 'c2',
+    container: $('.plot-container')[1],
     forceFit: true,
     height: 400
   });
@@ -192,7 +195,8 @@ resource:
     {country: 'Oceania', year: '2050', value: 300},
   ];
   const chart = new G2.Chart({
-    container: 'c3',
+    // container: 'c3',
+    container: $('.plot-container')[2],
     forceFit: true,
     height: 400
   });
