@@ -9,11 +9,16 @@ const $query = $('#query');
 function buildFlattenIndices(docs, invertedList) {
     const indices = [];
     const uniqueIndices = [];
+    const docById = {};
 
     // docs
     docs.forEach(doc => {
+        docById[doc.id] = doc;
         doc.anchors.forEach(anchor => {
             indices.push({
+                data: {
+                    title: doc.anchors[0].title,
+                },
                 value: anchor.title,
                 // level: anchor.level,
                 id: doc.id,
@@ -27,6 +32,9 @@ function buildFlattenIndices(docs, invertedList) {
         referenceIds.forEach(ids => {
             const [ id, anchorId ] = ids;
             indices.push({
+                data: {
+                    title: docById[id].anchors[0].title,
+                },
                 value: word,
                 id,
                 anchorId,
@@ -69,11 +77,39 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
         window.location = `${doc.href}${doc.anchorById[suggestion.anchorId].href}`;
     }
 
+    function escapeRegExChars(value) {
+        return value.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
+    }
+
+    function wrapResult(suggestion, formattedValue) {
+        return `<div class="keyword">${formattedValue}</div><div class="doc-title">${suggestion.data.title}</div>`;
+    }
+
+    function formatResult(suggestion, currentValue) {
+        // Do not replace anything if the current value is empty
+        if (!currentValue) {
+            return suggestion.value;
+        }
+        const pattern = '(' + escapeRegExChars(currentValue) + ')';
+        const value = suggestion.value
+            .replace(new RegExp(pattern, 'gi'), '<strong>$1</strong>')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/&lt;(\/?strong)&gt;/g, '<$1>');
+        return wrapResult(suggestion, value);
+    }
+
     const flattenIndices = buildFlattenIndices(docs, invertedList);
     $query.autocomplete({
+        lookupLimit: 20,
+        // groupBy: 'title',
+        width: 278,
         lookup: flattenIndices,
         triggerSelectOnValidInput: false,
         onSelect,
+        formatResult,
     });
 
     // for doc filtering
@@ -101,9 +137,13 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
         });
         const docIndices = flattenIndices.filter(index => matchedIds.indexOf(index.id) > -1);
         $docFilteringQuery.autocomplete({
+            lookupLimit: 20,
+            // groupBy: 'title',
+            width: 278,
             lookup: docIndices,
             triggerSelectOnValidInput: false,
             onSelect,
+            formatResult,
         });
     }
 });

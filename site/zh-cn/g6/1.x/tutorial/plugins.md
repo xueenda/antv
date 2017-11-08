@@ -40,7 +40,7 @@ resource:
 
 `外部用户暂不提供 npm 引入`，阿里内部同学可使用 tnpm 安装 "@ali/g6-plugins"。
 
-#### 第二步 —— 实力化插件：
+#### 第二步 —— 实例化插件：
 
 ```js
 const plugin = new G6.Plugins['name'];
