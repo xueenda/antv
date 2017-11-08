@@ -8,11 +8,16 @@
 {% block content %}
 <div class="doc-container container-fluid">
     <div class="row flex-xl-nowrap">
-        <div class="menu col-12 col-md-3 col-xl-2 bd-sidebar">
+        <div class="menu bd-sidebar">
             <div class="inner">
-                <h4>{{ docMenuHeader }}</h4>
+                <!--<h4>{{ docMenuHeader }}</h4>-->
                 {% if docFilteringSupport %}
-                <input type="text" class="form-control" id="doc-filtering-query">
+                <div class="filter-container">
+                    <div class="inner">
+                        <svg width="12" height="12" fill="#ced4d9"><use xlink:href="#_si-search"></use></svg>
+                        <input type="text" id="doc-filtering-query" placeholder="{{ resource.translate.inputKeyWord }}">
+                    </div>
+                </div>
                 {% endif %}
                 <ul class="list-group">
                     {% for doc in docList %}
@@ -25,73 +30,73 @@
                 </ul>
             </div>
         </div>
-        <div class="toc-container d-none d-xl-block col-xl-2 bd-toc">
-            <div class="toc"></div>
-        </div>
-        <div class="detail content col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
-            {{ content | safe }}
-            <!-- relative docs and tags -->
-            {% if variations %}
-            {% if variations.length %}
-            <h2>{{ resource.translate.variation }}</h2>
-            <ul>
-            {% for variation in variations %}
-                {% set variationDoc = docByName[variation] %}
-                {% if variationDoc %}
-                <li><a href="{{ variationDoc.href }}">{{ variationDoc.title }}</a></li>
+        <div class="toc-container"><div class="toc"></div></div>
+        <div class="detail content">
+            <article>
+                {{ content | safe }}
+                <!-- relative docs and tags -->
+                {% if variations %}
+                {% if variations.length %}
+                <h2>{{ resource.translate.variation }}</h2>
+                <ul>
+                    {% for variation in variations %}
+                    {% set variationDoc = docByName[variation] %}
+                    {% if variationDoc %}
+                    <li><a href="{{ variationDoc.href }}">{{ variationDoc.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
                 {% endif %}
-            {% endfor %}
-            </ul>
-            {% endif %}
-            {% endif %}
-            {% if tags %}
-            {% if tags.length %}
-            <h2>{{ resource.translate.tag }}</h2>
-            <ul>
-            {% for tag in tags %}
-                {% set tagDoc = tagDocByName[tag] %}
-                {% if tagDoc %}
-                <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
                 {% endif %}
-            {% endfor %}
-            </ul>
-            {% endif %}
-            {% endif %}
-            {% if showAllTags %}
-            <ul>
-            {% for tagName, tagDoc in tagDocByName %}
-                <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
-            {% endfor %}
-            </ul>
-            {% endif %}
-            {% if showDocsByTag %}
-            {% set docs = docNamesByTag[showDocsByTag] %}
-            <ul>
-                {% for doc in docs %}
-                <li><a href="{{ docByName[doc].href }}">{{ docByName[doc].title }}</a></li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            <!-- previous and next pages -->
-            {% set docIndex = docIndexByHref[__href] %}
-            {% set hasPrev = (docIndex > 0)  %}
-            {% set hasNext = (docIndex < (docsCount - 1))  %}
-            <div class="prev-next">
-                {% if hasPrev %}
-                {% set prevDoc = docList[docIndex - 1] %}
-                <a href="{{ prevDoc.href }}" class="float-left">
-                    <svg width="16" height="18" fill="#007bff"><use xlink:href="#_si-left"></use></svg>
-                    {{ prevDoc.title }}
-                </a>
+                {% if tags %}
+                {% if tags.length %}
+                <h2>{{ resource.translate.tag }}</h2>
+                <ul>
+                    {% for tag in tags %}
+                    {% set tagDoc = tagDocByName[tag] %}
+                    {% if tagDoc %}
+                    <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
                 {% endif %}
-                {% if hasNext %}
-                {% set nextDoc = docList[docIndex + 1] %}
-                <a href="{{ nextDoc.href }}" class="float-right">
-                    {{ nextDoc.title }}
-                    <svg width="16" height="18" fill="#007bff"><use xlink:href="#_si-right"></use></svg>
-                </a>
                 {% endif %}
-            </div>
+                {% if showAllTags %}
+                <ul>
+                    {% for tagName, tagDoc in tagDocByName %}
+                    <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if showDocsByTag %}
+                {% set docs = docNamesByTag[showDocsByTag] %}
+                <ul>
+                    {% for doc in docs %}
+                    <li><a href="{{ docByName[doc].href }}">{{ docByName[doc].title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <!-- previous and next pages -->
+                {% set docIndex = docIndexByHref[__href] %}
+                {% set hasPrev = (docIndex > 0)  %}
+                {% set hasNext = (docIndex < (docsCount - 1))  %}
+                <div class="prev-next">
+                    {% if hasPrev %}
+                    {% set prevDoc = docList[docIndex - 1] %}
+                    <a href="{{ prevDoc.href }}" class="float-left pre">
+                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-left"></use></svg>
+                        {{ prevDoc.title }}
+                    </a>
+                    {% endif %}
+                    {% if hasNext %}
+                    {% set nextDoc = docList[docIndex + 1] %}
+                    <a href="{{ nextDoc.href }}" class="float-right next">
+                        {{ nextDoc.title }}
+                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-right"></use></svg>
+                    </a>
+                    {% endif %}
+                </div>
+            </article>
         </div>
     </div>
 </div>
@@ -101,6 +106,7 @@
 <!--<div class="scroll2top">top</div>-->
 {% endblock %}
 {% block js %}
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery.headroom-0.9.4.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/clipboard-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/tocbot-3.0.2/tocbot.min.js"></script>
 <!--<script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>-->

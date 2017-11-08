@@ -10,4 +10,28 @@ tocbot.init({
     collapseDepth: 3,
 });
 
-$('.list-group-item.active')[0].scrollIntoView();
+const $tocContainer = $('.toc-container');
+$('header').headroom({
+    offset: 205,
+    tolerance: 5,
+    classes: {
+        initial: 'animated',
+        pinned: 'slideDown',
+        unpinned: 'slideUp'
+    },
+    onPin() {
+        $tocContainer.css({
+            top: '104px',
+            height: 'calc(100% - 120px)',
+        });
+    },
+    onUnpin() {
+        $tocContainer.css({
+            top: '32px',
+            height: 'calc(100% - 48px)',
+        });
+    }
+});
+
+// $('.list-group-item.active')[0].scrollIntoView();
+// $('.toc-link.is-active-link')[0].scrollIntoView();

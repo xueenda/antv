@@ -61,6 +61,7 @@ module.exports = {
             execute: '运行',
             getStarted: '开始使用',
             intro: '介绍',
+            inputKeyWord: '输入关键字',
             plotDescription: '图表简介',
             relativePlots: '关联图表',
             search: '搜索',

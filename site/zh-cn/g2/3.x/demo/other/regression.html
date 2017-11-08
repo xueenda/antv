@@ -49,6 +49,7 @@ relativePlots:
                     as: [ 'carat', 'price' ]
                 });
             const view = chart.view();
+            view.axis(false);
             view.source(dv);
             view.line()
                 .position('carat*price')

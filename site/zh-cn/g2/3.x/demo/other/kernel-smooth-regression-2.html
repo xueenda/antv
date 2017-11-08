@@ -55,6 +55,7 @@ relativePlots:
             });
 
             const view = chart.view();
+            view.axis(false);
             view.source(dv);
             view.line()
                 .position('carat*price')

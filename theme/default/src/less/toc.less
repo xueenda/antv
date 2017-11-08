@@ -1,0 +1,44 @@
+.toc-container {
+  background: white;
+  z-index: 999;
+  position: fixed;
+  max-width: 148px;
+  top: 104px;
+  right: 16px;
+  //order: 2;
+  //right: 16px;
+  height: ~"calc(100% - 120px)";
+  overflow-y: auto;
+  .toc {
+    //height: 100%;
+  }
+  .toc-list {
+    padding-left: 16px;
+  }
+  .toc-list-item {
+  }
+  .is-active-link {
+    font-weight: 400;
+    color: #1890ff;
+    &::before {
+      background: #096dd9;
+    }
+  }
+  .toc-link {
+    font-size: 12px;
+    display: inline-block;
+    margin: 8px 0;
+    text-decoration: none;
+    &:hover {
+      color: #1890ff;
+    }
+    &::before {
+      width: 1px;
+      margin-top: -8px;
+    }
+    //padding-left: 16px;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    //white-space: nowrap;
+  }
+}

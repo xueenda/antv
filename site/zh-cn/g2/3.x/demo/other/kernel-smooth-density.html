@@ -33,6 +33,7 @@ relativePlots:
             .position('carat*price');
 
         const view = chart.view();
+        view.axis(false);
         view.source(dv);
         view.heatmap()
             .position('carat*price')

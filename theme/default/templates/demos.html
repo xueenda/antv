@@ -43,14 +43,12 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="toc-container d-none d-xl-block col-xl-1 bd-toc">
-            <div class="toc">
-            </div>
-        </div>
+        <div class="toc-container"><div class="toc"></div></div>
     </div>
 </div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery.headroom-0.9.4.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/tocbot-3.0.2/tocbot.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/routie-0.3.2.min.js"></script>
 <script type="text/javascript" src="{{ dist }}/demos.js"></script>

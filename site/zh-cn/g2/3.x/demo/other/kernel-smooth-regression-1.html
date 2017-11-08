@@ -49,6 +49,7 @@ relativePlots:
             });
 
             const view = chart.view();
+            !!i && view.axis(false);
             view.source(dv);
             view.line()
                 .position('x*y')
