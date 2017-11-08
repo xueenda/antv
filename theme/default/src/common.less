@@ -7,15 +7,55 @@
 }
 
 .navbar-brand {
-  margin-right: 50px;
+  display: inline-block;
+  padding: 0;
+  line-height: 22px;
+  font-size: 20px;
+  margin-right: 18px;
 }
 
-.homepage {
+#sub-product-navs {
+  width: 110px;
+  margin-left: 18px;
+  .nav-link {
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 0;
+    color: rgba(0, 0, 0, 0.85) !important;
+  }
+  .dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .2em solid;
+    border-right: .2em solid transparent;
+    border-left: .2em solid transparent;
+  }
+}
 
+.nav-separator {
+  border-left: 1px solid #ebedee;
+  line-height: 22px;
+  height: 22px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+#btn-search {
+  svg {
+    vertical-align: middle;
+  }
 }
 
 #navbarHeader, #sub-site-nav {
   height: 64px;
+  .navbar-nav .nav-link {
+    color: #314659;
+  }
 }
 
 .container {
@@ -37,11 +77,14 @@
 
 .back2old-version .btn {
   border-radius: 32px;
+  border: 1px solid #d9d9d9 !important;
+  &:hover {
+    border: 1px solid #40a9ff !important;
+  }
 }
 
 .query-group {
-  border-left: 1px solid #ebedee;
-  padding-left: 18px;
+  //padding-left: 18px;
 }
 
 .template-doc, .template-demos, .template-home {
@@ -57,12 +100,15 @@
 #query {
   margin-right: 20px;
   max-width: 100%;
-  min-width: 300px;
+  min-width: 120px;
   border-width: 0;
   background: transparent;
   &:focus {
     border: none;
     outline: none;
+  }
+  &::placeholder {
+    color: #bfbfbf;
   }
 }
 
@@ -125,11 +171,6 @@ table td, table th {
   }
 }
 
-.navbar-brand {
-  font-size: 32px;
-  line-height: 0;
-  padding: 4px 0;
-}
 
 .navbar-light {
   background: #FDFDFD;
@@ -141,14 +182,19 @@ table td, table th {
 }
 
 .site-map {
-  padding: 56px 0;
+  padding: 86px 0 70px;
   //background: #4F545D;
   background: #06080A;
+  .sites {
+    padding: 0 25px;
+  }
   a {
     color: #C5CBD9;
     line-height: 32px;
+    font-size: 12px;
   }
   h5 {
+    font-size: 14px;
     color: white;
     margin-bottom: 24px;
   }

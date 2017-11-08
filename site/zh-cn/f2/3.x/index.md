@@ -72,36 +72,36 @@ resource:
     </ol>
     <h4>引入&lt;script&gt;</h4>
 
-    ```html
-    <script type="{{ url.f2 }}"></script>
-    ```
+```html
+  <script type="{{ url.f2 }}"></script>
+```
 
     <h4>声明 canvas 标签</h4>
 
-    ```html
-      <cavas id="c1" style="width:500px;height:500px"></canvas>
-    ```
+```html
+  <cavas id="c1" style="width:500px;height:500px"></canvas>
+```
 
     <h4>创建图表</h4>
 
-    ```js
-      // 声明数据源
-      var data = [
-        {"tem": 10, "city": "tokyo"},
-        {"tem": 4, "city": "newYork"},
-        {"tem": 3, "city": "berlin"}
-      ];
-      // 创建图表
-      var chart = new F2.Chart({
-        id: 'c1'
-      });
-      // 设置数据源
-      chart.source(data);
-      // 声明语法
-      chart.interval().position('city*tem');
-      // 渲染图表
-      chart.render();
-    ```
+```js
+  // 声明数据源
+  var data = [
+    {"tem": 10, "city": "tokyo"},
+    {"tem": 4, "city": "newYork"},
+    {"tem": 3, "city": "berlin"}
+  ];
+  // 创建图表
+  var chart = new F2.Chart({
+    id: 'c1'
+  });
+  // 设置数据源
+  chart.source(data);
+  // 声明语法
+  chart.interval().position('city*tem');
+  // 渲染图表
+  chart.render();
+```
     
 </section>
 

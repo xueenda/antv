@@ -1,10 +1,8 @@
 <!--header-->
 <header class="navbar navbar-expand-lg navbar-light fixed-top headroom animated{% if isHome %} homepage{% endif %}">
     <!--{% if header.isFullSize %}{% else %}<div class="container">{% endif %}-->
-    <image class="lazy logo" width="56" height="56" src="{{ brand.logo }}"></image>
+    <image class="lazy logo" width="48" height="28" src="{{ brand.logo }}"></image>
     <a class="navbar-brand" href="{% if isHome %}#{% else %}{{ base }}{{ home }}{% endif %}">{{ brand.name }}</a>
-    {% if subHeader %}
-    {% endif %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +12,8 @@
             {% if isHome %}
             {% else %}
             {% set product = products[currentProduct] %}
-            <li class="nav-item dropdown">
+            <span class="nav-separator"></span>
+            <li class="nav-item dropdown" id="sub-product-navs">
                 <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     {{ product.name }}
                 </a>
@@ -25,8 +24,10 @@
                 </div>
             </li>
             {% endif %}
-            <a id="btn-search" class="nav-link"><img width="12" src="{{ assets }}/image/icon/search.svg" alt=""></a>
-            <input id="query" class="query" type="text" placeholder="Search" aria-label="Search">
+            <a id="btn-search" class="nav-link">
+                <svg width="12" height="12" fill="#ced4d9"><use xlink:href="#_si-search"></use></svg>
+            </a>
+            <input id="query" class="query" type="text" placeholder="{{ resource.translate.search }}..." aria-label="Search">
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0" id="sub-site-nav">
             {% if isHome %}

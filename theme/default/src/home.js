@@ -13,8 +13,12 @@ $('header').headroom({
 });
 
 $('.slick').slick({
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    cssEase: 'linear',
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     fade: true,
 });
