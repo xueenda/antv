@@ -115,6 +115,7 @@ draw(cfg, cavas) {
   for(var i = 1; i < points.length; i++) {
     ctx.lineTo(points[i].x, points[i].y);
   }
+  ctx.stroke();
   ctx.restore();
 }
 ```
@@ -123,5 +124,15 @@ draw(cfg, cavas) {
 
 * parsePoint(point) 将单个点转换成画布上的坐标
 * parsePoints(points) 将多个点转换成画布上的坐标
+
+
+### 工具方法
+
+直接使用 canvas 的原生 API 可以绘制出任意图形，但是存在几个不方便的地方：
+
+* 需要手工调用 save, restore() 方法
+* 需要设置各种属性
+
+F2 提供了一系列绘制图形的工具方法，参考[绘制图形](graphic)
 
 

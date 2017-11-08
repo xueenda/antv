@@ -61,15 +61,17 @@ relativePlots:
             .position('longitude*lantitude')
             .label('name', {
                 textStyle: {
-                    fill: '#333',
-                    fontSize: 10
+                    fill: '#fff',
+                    fontSize: 10,
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(0, 0, 0, .45)'
                 },
             })
             .style({
                 stroke: '#fff',
                 lineWidth: 1,
             })
-            .color('value', '#e5f5e0-#31a354');
+            .color('value', '#BAE7FF-#1890FF-#0050B3');
         provinceChart.render();
     }
 
@@ -91,17 +93,17 @@ relativePlots:
         .position('longitude*lantitude')
         .tooltip('name')
         .style({
-            stroke: '#999',
+            stroke: '#fff',
             lineWidth: 1,
-            fill: '#ccc',
-            globalAlpha: 0.9,
+            fill: '#e3e3e3',
+            globalAlpha: 0.85,
             cursor: 'pointer', // 设置鼠标手势
         })
         .select({
             // 设置是否允许选中以及选中样式
             mode: 'single', // 多选还是单选
             style: {
-                fill: '#fe9929', // 选中的样式
+                fill: '#1890ff', // 选中的样式
             },
         });
     chart.render();

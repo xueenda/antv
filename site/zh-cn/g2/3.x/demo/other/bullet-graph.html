@@ -59,7 +59,7 @@ relativePlots:
         });
         view.point()
             .position('title*target')
-            .color('#5b0101')
+            .color('#square')
             .shape('line')
             .size(12)
             .style({
@@ -67,33 +67,71 @@ relativePlots:
             });
         view.interval()
             .position('title*actual')
-            .color('#5b0101').
-        size(15);
+            .color('#223273')
+            .size(15);
+        // 差
         view.guide().region({
             start: [-1, 0],
             end: [1, ranges[0]],
             style: {
-                fill: '#e96e33',
-                fillOpacity: 0.5
+                fill: '#FFA39E',
+                fillOpacity: 0.85
             }
         });
+        // 良
         view.guide().region({
             start: [-1, ranges[0]],
             end: [1, ranges[1]],
             style: {
-                fill: '#f9ca47',
-                fillOpacity: 0.5
+                fill: '#FFD591',
+                fillOpacity: 0.85
             }
         });
+        // 优
         view.guide().region({
             start: [-1, ranges[1]],
             end: [1, ranges[2]],
             style: {
-                fill: '#88bb34',
-                fillOpacity: 0.5
+                fill: '#A7E8B4',
+                fillOpacity: 0.85
             }
         });
         y += yGap + 0.125;
     }
+    chart.legend({
+        custom: 'true',
+        clickable: false,
+        items: [
+            {
+              value: '差',
+              fill: '#FFA39E',
+              marker: 'square'
+            },
+            {
+              value: '良',
+              fill: '#FFD591',
+              marker: 'square'
+            },
+            {
+              value: '优',
+              fill: '#A7E8B4',
+              marker: 'square'
+            },
+            {
+              value: '实际值',
+              fill: '#223273',
+              marker: 'square'
+            },
+            {
+              value: '目标值',
+              fill: '#262626',
+              marker: {
+                symbol: 'line',
+                stroke: '#262626',
+                radius: 5
+              }
+            },
+        ]
+    });
     chart.render();
 </script>

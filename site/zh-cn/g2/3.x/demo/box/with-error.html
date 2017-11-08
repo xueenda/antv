@@ -50,11 +50,7 @@ relativePlots:
   chart.tooltip({
     showTitle: false,
     crosshairs: {
-      type: 'rect',
-      style: {
-        fill: '#E4E8F1',
-        fillOpacity: 0.43
-      }
+      type: 'rect'
     },
     itemTpl: '<li data-index={index} style="margin-bottom:4px;">'
         + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
@@ -79,7 +75,7 @@ relativePlots:
       };
     })
     .style({
-      stroke: 'rgba(0, 0, 0, 0.45)',
+      stroke: '#545454',
       fill: '#1890FF',
       fillOpacity: 0.3
     });

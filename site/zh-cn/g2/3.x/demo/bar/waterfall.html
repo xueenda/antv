@@ -105,12 +105,12 @@ relativePlots:
     clickable: false,
     items: [
       { value: '各项花销', fill: '#1890FF', marker: 'square' },
-      { value: '总费用', fill: 'rgba(0, 0, 0, 0.65)', marker: 'square' }
+      { value: '总费用', fill: '#545454', marker: 'square' }
     ]
   });
   chart.interval().position('type*money').color('type', type => {
     if (type === '总费用') {
-      return 'rgba(0, 0, 0, 0.65)';
+      return '#545454';
     }
     return '#1890FF';
   }).tooltip('type*money', (type, money) => {

@@ -90,21 +90,23 @@ relativePlots:
   chart
     .point()
     .position('x*y')
+    .color('#1890ff')
     .size('z', [ 10, 40 ])
     .label('name*country', {
       offset: 0, // 文本距离图形的距离
       textStyle: {
-        fill: '#000',
-        fontWeight: 'bold', // 文本粗细
-        shadowBlur: 5, // 文本阴影模糊
-        shadowColor: '#fff', // 阴影颜色
+        fill: '#1890FF'
       },
     })
-    .color('#3182bd')
-    .opacity(0.5)
+    .opacity(0.3)
     .shape('circle')
-    .tooltip('x*y*z');
+    .tooltip('x*y*z')
+    .style({
+      lineWidth: 1,
+      stroke: '#1890ff'
+    });
   chart.guide().line({
+    top: true,
     start: [65, 'min'],
     end: [65, 'max'],
     text: {
@@ -117,6 +119,7 @@ relativePlots:
     },
   });
   chart.guide().line({
+    top: true,
     start: ['min', 50],
     end: ['max', 50],
     text: {

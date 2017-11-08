@@ -40,18 +40,11 @@ relativePlots:
         forceFit: true,
         height: window.innerHeight,
         animate: false,
-        padding: [ 0, 140, 60, 50 ],
-        plotBackground: {
-          stroke: '#ccc'
-        }
+        padding: [ 20, 140, 60, 50 ]
       });
       chart.source(dv, {
         year: {
-          tickInterval: 10,
-          nice: false
-        },
-        count: {
-          nice: false
+          tickInterval: 10
         }
       });
       chart.legend({
@@ -75,19 +68,14 @@ relativePlots:
         crosshairs: false,
         inPlot: false
       });
-      chart.axis('year', {
-        line: null
-      });
       chart.axis('count', {
-        line: null,
-        tickLine: {
-          length: 8
+        line: {
+          lineWidth: 1,
+          stroke: '#BFBFBF'
         },
-        subTickCount: 10,
-        subTickLine: {
-          lineWidth: 1, // 子刻度线宽
-          stroke: '#ddd', // 子刻度线颜色
-          length: 5
+        tickLine: {
+          length: 8,
+          stroke: '#ddd'
         },
         grid: null
       });

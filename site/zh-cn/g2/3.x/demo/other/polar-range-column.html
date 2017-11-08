@@ -1,6 +1,6 @@
 <!--
 index: 16
-title: 2015 年波士顿每天的平均温度可视化
+title: 一年的日均温度可视化
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -53,26 +53,13 @@ $.getJSON('/assets/data/daily-temp-in-boston.json', data => {
     },
     slidable: false,
     position: 'bottom',
-    width: 200, // 连续图例宽度
-    height: 15, // 连续图例高度度
-    offsetX: 25,
-    textStyle: {
-      textBaseline: 'top',
-      textAlign: 'center'
-    }
+    offsetX: 25
   });
   chart.axis('date', false);
   chart.axis('range', {
     line: null,
     tickLine: null,
-    label: null,
-    grid: {
-      ineStyle: {
-        lineDash: [ 0, 0 ],
-        stroke: '#E8E8E8',
-        lineWidth: 1
-      }
-    }
+    label: null
   });
   chart.interval().position('date*range')
     .color('mean_temp', 'rgb(44, 123, 182)-rgb(0, 166, 202)-rgb(0, 204, 188)-rgb(144, 235, 157)-rgb(255, 255, 140)-rgb(249, 208, 87)-rgb(242, 158, 46)-rgb(231, 104, 24)-rgb(215, 25, 28)')
@@ -81,12 +68,12 @@ $.getJSON('/assets/data/daily-temp-in-boston.json', data => {
 
   chart.guide().line({
     start: {
-      date: '2015-1-1',
-      range: -25
+      date: 'min',
+      range: 'min'
     },
     end: {
-      date: '2015-1-1',
-      range: 35
+      date: 'min',
+      range: 'max'
     },
     lineStyle: {
       stroke: '#aaa',
@@ -94,16 +81,16 @@ $.getJSON('/assets/data/daily-temp-in-boston.json', data => {
       lineDash: null
     },
     text: {
-      position: 0.95,
+      position: 1,
+      offsetY: -6,
       autoRotate: false,
       style: {
         fontSize: 16,
-        textAlign: 'start',
+        textAlign: 'center',
         fontWeight: 100,
         fill: '#aaa'
       },
-      content: 'January',
-      offsetX: 10
+      content: 'January'
     }
   });
 

@@ -27,27 +27,42 @@ $.getJSON('/assets/data/polar-heatmap.json',function (data) {
   });
   chart.legend(false);
   chart.axis('week', {
-    grid: null
+    grid: null,
+    line: null,
+    tickLine: null,
+    label: null
   });
   chart.axis('time', {
     line: null,
+    tickLine: null,
     grid: null,
     label: {
-      offset: 3,
-      textStyle: {
-        textAlign: 'left'
-      }
+      offset: 3
     }
   });
   chart.polygon()
     .position('time*week')
-    .color('value', '#ff1717-#ffffff')
-    .opacity(0.5)
+    .color('value', '#BAE7FF-#1890FF-#0050B3')
     .tooltip('week*time*value')
     .style({
-      stroke: '#ccc',
+      stroke: '#fff',
       lineWidth: 1
     });
+
+  const values = [ 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
+  values.map((val, idx) => {
+    chart.guide().text({
+      top: true,
+      position: [ 0, idx ],
+      content: val,
+      style: {
+        fill: '#fff',
+        textAlign: 'center',
+        shadowBlur: 2,
+        shadowColor: 'rgba(0, 0, 0, .45)'
+      }
+    });
+  });
   chart.render();
 });
 </script>

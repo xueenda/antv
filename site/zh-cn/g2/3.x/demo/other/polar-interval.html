@@ -49,13 +49,14 @@ relativePlots:
   });
   chart.interval()
     .position('country*cost')
-    .color('country', [ 'rgb(252,143,72)', 'rgb(255,215,135' ])
+    .color('country')
     .label('cost', {
       offset: -15,
       textStyle: {
         textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 11
+        fontSize: 11,
+        shadowBlur: 2,
+        shadowColor: 'rgba(0, 0, 0, .45)'
       }
     })
     .style({

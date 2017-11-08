@@ -68,7 +68,8 @@ relativePlots:
             .position('x*y')
             .style({
                 stroke: '#ddd',
-                lineWidth: 0.5
+                lineWidth: 0.5,
+                fillOpacity: 0.85
             });
 
         // names of regions
@@ -81,8 +82,10 @@ relativePlots:
             .label('name', {
               offset: 0,
               textStyle: {
-                fill: '#545454',
-                fontSize: 10
+                fill: '#fff',
+                fontSize: 10,
+                shadowBlur: 2,
+                shadowColor: 'rgba(0, 0, 0, .45)'
               }
             });
 
