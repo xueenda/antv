@@ -4,11 +4,11 @@ title: 矩形树图
 resource:
   jsFiles:
     - ${url.dataSet}
-plotDescription: 矩形树图
-plotUsage: blablablalalalala
+plotDescription: 矩形树图采用矩形表示层次结构里的节点，父子节点之间的层次关系用矩形之间的相互嵌套隐喻来表达。从根节点开始，屏幕空间根据相应的子节点数目被分为多个矩形，矩形的面积大小通常对应节点的属性。每个矩形又按照相应节点的子节点递归的进行分割，知道叶子节点为止。
+plotUsage: 矩形树图的好处在于，相比起传统的树形结构图，矩形树图能更有效得利用空间，并且拥有展示占比的功能。矩形树图的缺点在于，当分类占比太小的时候文本会变得很难排布。相比起分叉树图，矩形树图的树形数据结构表达的不够直观、明确。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.treemap}
+  - ${plotByName.adjacency}
 -->
 <script>
   const { DataView } = DataSet;

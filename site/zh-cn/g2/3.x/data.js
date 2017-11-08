@@ -14,6 +14,13 @@ const plotByName = {
     pie:         { index: 2,  icon: '', url: '#', name: '饼图', },
     point:       { index: 3,  icon: '', url: '#', name: '点图', },
     radar:       { index: 11, icon: '', url: '#', name: '雷达图', },
+    treemap:     { index: 14, icon: '', url: '#', name: '矩形树图', },
+    adjacency:   { index: 15, icon: '', url: '#', name: '相邻层次图', },
+    chord:       { index: 16, icon: '', url: '#', name: '和弦图', },
+    sunburst:    { index: 17, icon: '', url: '#', name: '旭日图', },
+    voronoi:     { index: 18, icon: '', url: '#', name: 'voronoi图', },
+    sankey:      { index: 19, icon: '', url: '#', name: '桑基图', },
+    arc:         { index: 20, icon: '', url: '#', name: '弧长链接图', },
 };
 module.exports = {
     plotByName,

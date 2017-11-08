@@ -5,11 +5,11 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 相邻层次图
-plotUsage: blablablalalalala
+plotDescription: 用于展示树形层次数据。
+plotUsage:
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.treemap}
+  - ${plotByName.sunburst}
 -->
 <script>
     $.getJSON('/assets/data/flare.json', data => {

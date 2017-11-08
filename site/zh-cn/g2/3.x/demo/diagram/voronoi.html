@@ -5,11 +5,10 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: voronoi图
-plotUsage: blablablalalalala
+plotDescription: voronoi图得名于Georgy Voronoi，是由一组由连接两邻点直线的垂直平分线组成的连续多边形组成。
+plotUsage: 由于voronoi图在空间剖分上的等分性特征，因此可用于解决最近点、最小封闭圆等问题，以及许多空间分析问题，如邻接、接近度和可达性分析等。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.voronoi}
 -->
 <script>
     $.getJSON('/assets/data/voronoi.json', data => {

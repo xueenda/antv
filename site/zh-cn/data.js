@@ -104,9 +104,9 @@ module.exports = {
         {
             name: '体验云产品',
             links: {
-                antd: { text: 'AntD', href: '' },
-                antg: { text: 'AntG', href: '' },
-                antv: { text: 'AntV', href: '' },
+                antd: { text: 'AntD', href: '', description: '蚂蚁 UI 设计体系' },
+                antv: { text: 'AntV', href: '', description: '蚂蚁数据可视化方案' },
+                egg:  { text: 'Egg', href: '', description: '企业级 Node Web 开发框架' },
                 // chair: { text: 'Chair/Egg', href: '' },
                 // deer: { text: '九色鹿', href: '' },
                 // basement: { text: 'Basement', href: '' },

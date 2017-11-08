@@ -5,11 +5,10 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-plotDescription: 核函数概率密度分布
-plotUsage: blablablalalalala
+plotDescription: 用热力图展示两个字段的核函数概率密度分布。
 relativePlots:
-  - ${plotByName.pie}
-  - ${plotByName.line}
+  - ${plotByName.heatmap}
+  - ${plotByName.point}
 -->
 <script>
     $.getJSON('/assets/data/diamond.json', data => {
