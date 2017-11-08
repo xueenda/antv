@@ -6,6 +6,8 @@ resource:
 -->
 
 <script>
+  F2.Global.pixelRatio = window.devicePixelRatio;
+
   const data = [
       { time: '2016-08-08 00:00:00', tem: 10, city: 'beijing' },
       { time: '2016-08-08 00:10:00', tem: 22, city: 'beijing' },
@@ -80,7 +82,7 @@ resource:
   chart.guide().html(changePoint, tooltipHtml, { align: 'br', offset: [ -17, 0 ] });
   chart.guide().html(changePoint, changePointHtml, { align: 'cc' });
   var canvas = document.getElementById('mountNode');
-  const linear_gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 200);
+  const linear_gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 500);
   linear_gradient.addColorStop(0.5, '#fff');
   linear_gradient.addColorStop(0, 'rgb(15, 141, 232)');
   // 绘制渐变色区域图
@@ -90,7 +92,6 @@ resource:
         return linear_gradient;
       }
       return 'rgba(1, 1, 1, 0)';
-
     })
     .style({
       opacity: 0.6
