@@ -128,4 +128,12 @@ $collapseExpand.click(() => {
     }
     resizePreview();
 });
+$menu.find('.menu-inner').click((e) => {
+    if ($menu.hasClass('collapsed')) {
+        e.preventDefault();
+        e.stopPropagation();
+        $menu.removeClass('collapsed');
+        $collapseExpand.find('svg').html('<use xlink:href="#_si-left"></use>');
+    }
+});
 
