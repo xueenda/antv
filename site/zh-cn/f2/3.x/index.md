@@ -64,45 +64,13 @@ resource:
 
 <section class="get-started text-center">
     <h2>快速接入</h2>
-    <p>用过简单的几步就可以绘制出图表：</p>
-    <ol>
-      <li>引入 f2 的 &lt;script&gt;</li>
-      <li>声明 &lt;canvas&gt; 标签</li>
-      <li>创建图表</li>
-    </ol>
-    <h4>引入&lt;script&gt;</h4>
+    <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>
 
-```html
+```js
+<!-- 引入在线资源 -->
   <script type="{{ url.f2 }}"></script>
 ```
 
-    <h4>声明 canvas 标签</h4>
-
-```html
-  <cavas id="c1" style="width:500px;height:500px"></canvas>
-```
-
-    <h4>创建图表</h4>
-
-```js
-  // 声明数据源
-  var data = [
-    {"tem": 10, "city": "tokyo"},
-    {"tem": 4, "city": "newYork"},
-    {"tem": 3, "city": "berlin"}
-  ];
-  // 创建图表
-  var chart = new F2.Chart({
-    id: 'c1'
-  });
-  // 设置数据源
-  chart.source(data);
-  // 声明语法
-  chart.interval().position('city*tem');
-  // 渲染图表
-  chart.render();
-```
-    
 </section>
 
 <section class="more text-center">

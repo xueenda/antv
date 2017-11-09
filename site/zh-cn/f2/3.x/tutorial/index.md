@@ -111,3 +111,7 @@ chart.render();
   chart.interval().position('genre*sold').color('genre')
   chart.render();
 ```
+
+### 更多示例
+
+更多的示例直接查看 [Demo](../demo/index.html)
