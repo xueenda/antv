@@ -85,3 +85,47 @@ if (!$activeListGroupItem.is(':visible')) {
 }
 
 $(window).resize(resizePreview);
+
+// resizable
+// hacking... TODO FIXME
+const $detail = $('.detail');
+const $codePanel = $('.code-panel');
+const $menu = $('.menu');
+// $codePanel.resizable({
+$detail.resizable({
+    handleSelector: '#resize-handler',
+    resizeWidthFrom: 'right',
+    resizeHeight: false,
+    onDragStart() {
+        $detail.css('pointer-events', 'none');
+        $detail.css('cursor', 'col-resize');
+        $codePanel.find('.CodeMirror-gutter-elt').css('cursor', 'col-resize');
+    },
+    onDrag(e, $el, newWidth) {
+        const winWidth = $(window).width();
+        if (newWidth < 486) {
+            newWidth = 486;
+        }
+        const codePanelWidth = winWidth - $menu.width() - newWidth;
+        $codePanel.css('flex', `0 0 ${codePanelWidth < 300 ? 300 : codePanelWidth}px`);
+    },
+    onDragEnd() {
+        $detail.css('pointer-events', 'auto');
+        $detail.css('cursor', 'default');
+        $codePanel.find('.CodeMirror-gutter-elt').css('cursor', 'default');
+        resizePreview();
+    },
+});
+
+const $collapseExpand = $('.collapse-expand');
+$collapseExpand.click(() => {
+    if ($menu.hasClass('collapsed')) {
+        $menu.removeClass('collapsed');
+        $collapseExpand.find('svg').html('<use xlink:href="#_si-left"></use>');
+    } else {
+        $menu.addClass('collapsed');
+        $collapseExpand.find('svg').html('<use xlink:href="#_si-right"></use>');
+    }
+    resizePreview();
+});
+

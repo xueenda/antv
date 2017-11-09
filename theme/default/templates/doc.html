@@ -84,7 +84,7 @@
                     {% if hasPrev %}
                     {% set prevDoc = docList[docIndex - 1] %}
                     <a href="{{ prevDoc.href }}" class="float-left pre">
-                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-left"></use></svg>
+                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-arrow-left"></use></svg>
                         {{ prevDoc.title }}
                     </a>
                     {% endif %}
@@ -92,7 +92,7 @@
                     {% set nextDoc = docList[docIndex + 1] %}
                     <a href="{{ nextDoc.href }}" class="float-right next">
                         {{ nextDoc.title }}
-                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-right"></use></svg>
+                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-arrow-right"></use></svg>
                     </a>
                     {% endif %}
                 </div>

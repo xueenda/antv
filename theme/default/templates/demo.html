@@ -7,29 +7,34 @@
 {% block content %}
 <div class="container-fluid demo-container">
     <div class="d-flex flex-row border-secondary">
-        <div class="col menu">
-            <div id="accordion" role="tablist" data-children=".item">
-                {% for cat in demos %}
-                {% set isCurrentCat = (categoryByHref[__href] === cat.category) %}
-                <div class="item card">
-                    <div class="card-header" role="tab">
-                        <h6>
-                            <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">{{ cat.title }}</a>
-                        </h6>
-                    </div>
-                    <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}" role="tabpanel" data-parent="#accordion">
-                        <div class="card-body">
-                            <ul class="list-group">
-                                {% for demo in cat.demos %}
-                                {% set isCurrentPage = (__href === demo.href) %}
-                                <li class="list-group-item{% if isCurrentPage %} active{% endif %}"><a href="{{ demo.href }}">{{ demo.title }}</a></li>
-                                {% endfor %}
-                            </ul>
+        <div class="col menu expanded">
+            <div class="menu-inner">
+                <div id="accordion" role="tablist" data-children=".item">
+                    {% for cat in demos %}
+                    {% set isCurrentCat = (categoryByHref[__href] === cat.category) %}
+                    <div class="item card">
+                        <div class="card-header" role="tab">
+                            <h6>
+                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">{{ cat.title }}</a>
+                            </h6>
+                        </div>
+                        <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}" role="tabpanel" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {% for demo in cat.demos %}
+                                    {% set isCurrentPage = (__href === demo.href) %}
+                                    <li class="list-group-item{% if isCurrentPage %} active{% endif %}"><a href="{{ demo.href }}">{{ demo.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
+            <button type="button" class="btn btn-light btn-lg btn-block collapse-expand">
+                <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-left"></use></svg>
+            </button>
         </div>
         <div class="col detail container">
             <div class="navbar justify-content-between">
@@ -76,7 +81,7 @@
                 {% endif %}
             </div>
         </div>
-        <div id="resize-handler" class="col resizable"></div>
+        <div id="resize-handler" class="col"></div>
         <div class="col code-panel bg-secondary">
             <div class="d-flex flex-column">
                 <div class="row toolbox navbar bg-light justify-content-between">
@@ -106,5 +111,6 @@
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/clipboard-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/routie-0.3.2.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/codemirror-5.29.0/codemirror-merged.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.resizable-0.20.0.min.js"></script>
 <script type="text/javascript" src="{{ dist }}/demo.js"></script>
 {% endblock %}

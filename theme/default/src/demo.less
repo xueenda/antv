@@ -9,25 +9,47 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
   #accordion {
     padding: 32px 0;
   }
+  #resize-handler {
+    flex: 0 0 5px;
+    //background: #DEDEEB;
+    border-right: 2px solid #DEDEEB;
+    cursor: col-resize;
+  }
   .col {
     margin: 0;
     padding: 0;
-    &.resizable {
-      flex: 0 0 5px;
-      //background: #DEDEEB;
-      border-right: 2px solid #DEDEEB;
-      cursor: col-resize;
-    }
+
     &.menu {
+      display: flex;
+      flex-direction: column;
       border-right: 1px solid #e9e9e9;
       overflow-y: scroll;
       flex: 0 0 216px;
       background: white;
       color: rgba(0, 0, 0, .65);
       //box-shadow: 2px 0 4px rgba(63, 62, 67, .1);
+      &.collapsed {
+        flex: 0 0 64px;
+        .collapse.show {
+          display: none;
+        }
+        .card-header {
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
       .card-header {
         background: white;
         border: none;
+      }
+      .menu-inner {
+        flex: 1;
+        overflow-y: scroll;
+      }
+      .btn {
+        flex: 0 0 40px;
+        border-radius: 0;
+        cursor: pointer;
       }
       .list-group {
         //margin-right: -15px;
@@ -106,6 +128,9 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
   }
   h4 {
     margin-bottom: 16px;
+  }
+  p, div {
+    line-height: 24px;
   }
 }
 
