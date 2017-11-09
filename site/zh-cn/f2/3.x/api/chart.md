@@ -116,6 +116,10 @@ var chart = new F2.Chart({
 });
 ```
 
+#### 不同精度的对比
+
+下图是 pixelRatio = 1 和 pixelRatio = 2的对比，在单精度屏幕下没有区别，但是在高精屏幕下会有明显的差别
+
 <div>
   <canvas id="can1" style="float:left;"></canvas>
   <canvas id="can2" style="float:left;"></canvas>
@@ -167,7 +171,7 @@ chart1.source(data, {
   }
 });
 chart1.line().position('x*y');
-chart1.guide().text([2, 3.5], 'pxielRatio = 1', {
+chart1.guide().text([2, 3.5], 'pxielRatio = 2', {
   textAlign: 'center',
   fontSize: 14
 });
