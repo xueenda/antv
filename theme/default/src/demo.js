@@ -79,6 +79,9 @@ clipboard.on('error', e => {
     $alertCopyFail.fadeOut();
 });
 
-$('.list-group-item.active')[0].scrollIntoView();
+const $activeListGroupItem = $('.list-group-item.active');
+if (!$activeListGroupItem.is(':visible')) {
+    $activeListGroupItem[0].scrollIntoView();
+}
 
 $(window).resize(resizePreview);
