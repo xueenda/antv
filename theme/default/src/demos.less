@@ -4,22 +4,40 @@
 .demos {
   padding-top: 64px;
   padding-bottom:32px;
+  background: #F8FAFE;
   h5 {
-    margin-bottom: 16px;
+    color: rgba(0, 0, 0, .85);
+    margin-bottom: 32px;
+    margin-top: 16px;
+  }
+  .card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(84, 48, 132, .10);
+    &:hover {
+      -webkit-transform: translateY(-8px);
+      -ms-transform: translateY(-8px);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(84, 48, 132, .06);
+    }
   }
   .card-body {
-    background: #F3F4F8;
-    border: 1px solid #EDEEF1;
+    //background: #F3F4F8;
+    border-top: 1px solid #EDEEF1;
     padding: 8px;
     a {
-      color: #444;
+      text-decoration: none;
+      color: rgba(0, 0, 0, .65);
+      &:hover {
+        color: #096DD9;
+      }
     }
   }
-  .row {
-    margin-top: 16px;
+  .flex-xl-nowrap {
+    margin-top: 32px;
     .col-md-4 {
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
+
   }
   .header {
     height: 32px;
