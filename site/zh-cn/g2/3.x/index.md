@@ -66,7 +66,7 @@ resource:
 
 ```html
 <!-- 引入在线资源 -->
-<script src="https://a.alipayobjects.com/g/datavis/g2/2.3.12/index.js"></script>
+<script src="{{ url.g2 }}"></script>
 ```
 
 </div></section>
@@ -205,7 +205,7 @@ resource:
       type: 'linear',
       tickInterval: 50
     }
-  });
+  })
   chart.tooltip({
     crosshairs: {
       type: 'line'

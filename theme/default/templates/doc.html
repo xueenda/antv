@@ -38,7 +38,7 @@
                 {% if variations %}
                 {% if variations.length %}
                 <h2>{{ resource.translate.variation }}</h2>
-                <ul>
+                <ul class="variations">
                     {% for variation in variations %}
                     {% set variationDoc = docByName[variation] %}
                     {% if variationDoc %}
@@ -51,7 +51,7 @@
                 {% if tags %}
                 {% if tags.length %}
                 <h2>{{ resource.translate.tag }}</h2>
-                <ul>
+                <ul class="tags">
                     {% for tag in tags %}
                     {% set tagDoc = tagDocByName[tag] %}
                     {% if tagDoc %}
@@ -62,7 +62,7 @@
                 {% endif %}
                 {% endif %}
                 {% if showAllTags %}
-                <ul>
+                <ul class="tags">
                     {% for tagName, tagDoc in tagDocByName %}
                     <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
                     {% endfor %}
@@ -70,7 +70,7 @@
                 {% endif %}
                 {% if showDocsByTag %}
                 {% set docs = docNamesByTag[showDocsByTag] %}
-                <ul>
+                <ul class="docs">
                     {% for doc in docs %}
                     <li><a href="{{ docByName[doc].href }}">{{ docByName[doc].title }}</a></li>
                     {% endfor %}

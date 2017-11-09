@@ -124,16 +124,18 @@ $collapseExpand.click(() => {
         $collapseExpand.find('svg').html('<use xlink:href="#_si-left"></use>');
     } else {
         $menu.addClass('collapsed');
+        $menu.find('.collapse.show').removeClass('show');
         $collapseExpand.find('svg').html('<use xlink:href="#_si-right"></use>');
     }
     resizePreview();
 });
-$menu.find('.menu-inner').click((e) => {
+$menu.find('.menu-inner').click(() => {
     if ($menu.hasClass('collapsed')) {
-        e.preventDefault();
-        e.stopPropagation();
+        // e.preventDefault();
+        // e.stopPropagation();
         $menu.removeClass('collapsed');
         $collapseExpand.find('svg').html('<use xlink:href="#_si-left"></use>');
+        resizePreview();
     }
 });
 
