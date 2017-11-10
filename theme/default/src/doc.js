@@ -6,7 +6,7 @@ import './doc.less';
 tocbot.init({
     tocSelector: '.toc',
     contentSelector: '.doc-container .content',
-    headingSelector: 'h1, h2',
+    headingSelector: 'h1, h2, h3, h4',
     collapseDepth: 3,
 });
 
