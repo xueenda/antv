@@ -278,9 +278,6 @@ chart2.render();
       return '$' + val;
     }
   });
-  chart.tooltip({
-    crosshairs: true
-  });
   chart.interval().position('day*share');
   chart.render();
 

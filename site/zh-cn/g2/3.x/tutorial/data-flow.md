@@ -1,5 +1,5 @@
 <!--
-index: 25
+index: 26
 title: G2 的数据处理流程
 resource:
   jsFiles:

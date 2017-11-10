@@ -9,6 +9,9 @@ $('header').headroom({
         initial: 'animated',
         pinned: 'slideDown',
         unpinned: 'slideUp'
+    },
+    onTop() {
+        // $('header')
     }
 });
 

@@ -1,5 +1,5 @@
 <!--
-index: 24
+index: 25
 title: 图形语法简介
 resource:
   jsFiles:

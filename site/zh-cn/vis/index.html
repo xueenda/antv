@@ -1,10 +1,10 @@
 <!--
 template: home
-title: 墨子学院
+title: 墨者学院
 keywords:
   - Vis
-  - 墨子学院
-description: TODO 墨子学院的描述
+  - 墨者学院
+description: TODO 墨者学院的描述
 featuresCards:
   - img: ${assets}/image/vis/features-chart.svg
     title: 图表用法
@@ -16,21 +16,64 @@ featuresCards:
     title: 资源
     description: 在进行模式、组件和语言的整理过程中发现的优秀书籍和资源。
 blogCards:
-  - img: ${assets}/image/vis/features-resource.svg
+  - img: ${assets}/image/vis/blog-placeholder.png
     title: 资源
+    author: xxx
     description: 在进行模式、组件和语言的整理过程中发现的优秀书籍和资源。
-  - img: ${assets}/image/vis/features-resource.svg
+    date: '2017-11-22'
+  - img: ${assets}/image/vis/blog-placeholder.png
     title: 资源
+    author: xxx
     description: 在进行模式、组件和语言的整理过程中发现的优秀书籍和资源。
-  - img: ${assets}/image/vis/features-resource.svg
+    date: '2017-11-22'
+  - img: ${assets}/image/vis/blog-placeholder.png
     title: 资源
+    author: xxx
     description: 在进行模式、组件和语言的整理过程中发现的优秀书籍和资源。
+    date: '2017-11-22'
 footer:
   isDark: true
 resource:
   jsFiles:
     - ${url.g2}
     - ${url.dataSet}
+memberCards:
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
+  - name: xxx
+    jobTitle: xxx
+    weibo: https://weibo.com/omosirovincent
+    avatar: ${assets}/image/vis/member-avatar-placeholder.png
 tocifyWithAnchor: false
 -->
 
@@ -38,8 +81,8 @@ tocifyWithAnchor: false
     <div class="container">
         <div class="header row">
             <div class="col-md-6">
-                <h1>墨子学院</h1>
-                <p class="main-info">墨子学院的描述</p>
+                <h1>墨者学院</h1>
+                <p class="main-info">墨者学院的描述</p>
                 <a href="{{ products.vis.links.blog.href }}" class="btn btn-primary btn-lg">{{ resource.translate.viewDetail }}</a>
             </div>
             <div class="col-md-6">
@@ -50,7 +93,7 @@ tocifyWithAnchor: false
 </section>
 
 <section class="description container text-center">
-    <h2>关于墨子学院</h2>
+    <h2>关于墨者学院</h2>
     <span class="separator"></span>
     <div class="info-content">
         <p class="main-info">AntV可视化工作坊，力求基于蚂蚁及阿里巴巴集团的强大数据、技术、设计的力量，每天都在努力开发核心数据可视化能力、行业解决方案和其他先进技术，如g2\g6\f2。</p>
@@ -89,12 +132,18 @@ tocifyWithAnchor: false
         <div class="row">
             {% for card in blogCards %}
             <div class="col-md-4">
-                <a class="card" href="{{ card.href }}">
+                <a class="card full-size" href="{{ card.href }}">
                     <img src="{{ card.img }}" alt="" class="card-img-top">
-                    <h3>{{ card.title }}</h3>
+                    <div class="card-over">
+                        <h5 class="title">{{ card.title }}</h5>
+                        <span class="author text-secondary">{{ card.author }}</span>
+                        <span class="float-right">{{ card.date }}</span>
+                        <p>{{ card.description }}</p>
+                    </div>
                     <div class="card-body">
-                        <span class="title">{{ card.title }}</span>
-                        <span class="description text-secondary">{{ card.description }}</span>
+                        <h5 class="title">{{ card.title }}</h5>
+                        <span class="author text-secondary">{{ card.author }}</span>
+                        <span class="float-right">{{ card.date }}</span>
                     </div>
                 </a>
             </div>
@@ -103,11 +152,30 @@ tocifyWithAnchor: false
     </div>
 </section>
 
-<section class="members text-center">
+<section class="members">
     <div class="container">
         <h2>团队成员</h2>
         <span class="separator"></span>
-        <div class="info-content">
+        <div class="row">
+            {% for card in memberCards %}
+            <div class="col-md-2">
+                <div class="card member-card">
+                    <img src="{{ card.avatar }}" alt="" class="card-img-top" width="100px" height="100px">
+                    <div class="card-body text-center">
+                        <h5>{{ card.name }}</h5>
+                        <p>{{ card.jobTitle }}</p>
+                        <p class="contact">
+                            {% if card.weibo %}
+                            <a href="{{ card.weibo }}"><i class="iconfont icon-github"></i></a>
+                            {% endif %}
+                            {% if card.github %}
+                            <a href="{{ card.github }}"><i class="iconfont icon-github"></i></a>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

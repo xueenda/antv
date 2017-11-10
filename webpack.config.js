@@ -18,6 +18,7 @@ function resolveTheme(src) {
 module.exports = {
     entry: {
         // 'demo-detail': resolveTheme('demo-detail.js'),
+        blogs: resolveTheme('blogs.js'),
         common: resolveTheme('common.js'),
         demo: resolveTheme('demo.js'),
         demos: resolveTheme('demos.js'),
