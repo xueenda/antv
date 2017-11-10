@@ -10,6 +10,7 @@ plotUsage:
 relativePlots:
   - ${plotByName.treemap}
   - ${plotByName.sunburst}
+chartDetail: ${base}/zh-cn/vis/chart/treemap.html
 -->
 <script>
     $.getJSON('/assets/data/flare.json', data => {
@@ -40,7 +41,7 @@ relativePlots:
         chart.polygon()
             .position('x*y')
             .color('name');
-        
+
         chart.render();
     });
 </script>
