@@ -18,7 +18,6 @@ $.getJSON('/assets/data/diamond.json', data => {
         type: 'bin.histogram',
         field: 'depth',
         binWidth: 1,
-        // offset: -0.3,
         groupBy: [ 'cut' ],
         as: [ 'depth', 'count' ]
     });
@@ -30,20 +29,11 @@ $.getJSON('/assets/data/diamond.json', data => {
     chart.source(dv);
     chart.axis('depth', {
         grid: {
-            lineStyle: {
-                stroke: '#d9d9d9',
-                lineWidth: 1,
-                lineDash: [ 2, 2 ]
-            }
         }
     });
     chart.intervalStack()
         .position('depth*count')
         .color('cut');
-//        .style({
-//            stroke: 'green',
-//            lineWidth: 1
-//        });
     chart.render();
 });
 </script>

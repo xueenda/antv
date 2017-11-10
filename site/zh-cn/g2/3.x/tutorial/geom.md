@@ -97,4 +97,4 @@ area| 'area','smooth','line','dotLine',<br>'smoothLine','dotSmoothLine'| [area]�
 interval| 'rect','hollowRect','line',<br>'tick','stroke','funnel', 'pyramid'| [hollowRect]是空心的矩形， [line]和 [tick] 都是线段,stroke：带边框的矩形, 'funnel' 漏斗图；'pyramid' 金字塔图
 polygon|'polygon','hollow','stroke'| polygon：多边形、hollow：空心多边形和 stroke：带边框的多边形
 schema| 'box','candle'| 目前仅支持箱须图、K线图
-edge| 'line','vhv','smooth','arc'|vhv：直角折线，arc：弧线，分为笛卡尔坐标系、极坐标系、带权重和不带权重四种情况，详见[弧长链接图]() [xxx]() 教程。
+edge| 'line','vhv','smooth','arc'|vhv：直角折线，arc：弧线，分为笛卡尔坐标系、极坐标系、带权重和不带权重四种情况。

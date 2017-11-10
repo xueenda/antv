@@ -9,9 +9,9 @@ resource:
 
 # Chart
 
-获取方式： `G2.Chart`
+获取方式： `G2.Chart`。
 
-## new G2.Chart()
+创建 Chart 的方式如下：
 
 ```js
 new G2.Chart({
@@ -30,9 +30,9 @@ new G2.Chart({
 
 创建一个 chart 实例，返回一个 Chart 对象，建议在单个容器上只初始化一个 Chart 实例。
 
-### 参数
+## 属性
 
-- `container`
+### `container`
 
 对应图表的 DOM 容器，可以传入该 dom 的 id 或者直接传入容器的 html 节点对象。
 
@@ -50,15 +50,15 @@ var chart = new G2.Chart({
 
 > !注意：可以使用 `id` 代替 `container`。
 
-- `width`
+### `width`
 
 指定图表的宽度，默认单位为 'px'，当 `forceFit: true` 是宽度不生效。
 
-- `height`
+### `height`
 
 指定图表的高度，默认单位为 'px'。
 
-- `padding`
+### `padding`
 
 设置图表的内边距，支持如下几种设置方式：
 
@@ -70,7 +70,7 @@ var chart = new G2.Chart({
 
 padding 为数字以及数组类型时使用方法同 CSS 盒模型
 
-- `background`
+### `background`
 
 设置图表整体的边框和背景样式，是一个对象，包含如下属性：
 
@@ -86,7 +86,7 @@ background: {
 }
 ```
 
-- `plotBackground`
+### `plotBackground`
 
 图表绘图区域的边框和背景样式，是一个对象，包含如下属性：
 
@@ -102,43 +102,45 @@ plotBackground: {
 }
 ```
 
-- `forceFit`
+### `forceFit`
 
 图表的宽度自适应开关，默认为 false，设置为 true 时表示自动取 dom（实例容器）的宽度。
 
-- `animate`
+### `animate`
 
 图表动画开关，默认为 true，即开启动画。
 
-- `pixelRatio`
+### `pixelRatio`
 
 设置设备像素比，默认取浏览器的值 `window.devicePixelRatio`。
 
-- `data`
+### `data`
 
 设置图表的数据源，`data` 是一个包含 JSON 对象的数组或者 DataSet.View 对象。
 
 建议使用 `chart.source(data)` 设置数据源。
 
-## chart.source()
+## 方法
 
-### chart.source(data)
+### source
+
+#### chart.source(data)
 
 (data: Array|DataSet.View)
 
 为 chart 装载数据，返回 chart 对象。
 
-#### 参数
+##### 参数
 
 - `data`
 
 数据源数据，标准的 JSON 数组或者 DataSet.View 对象。
 
-### chart.source(data, scaleConfig)
+#### chart.source(data, scaleConfig)
 
 (data: Array|DataSet.View, scaleConfig?: object)
 
-#### 参数
+##### 参数
 
 - `data`
 
@@ -146,9 +148,9 @@ plotBackground: {
 
 - `scaleConfig`
 
-可选，用于数据字段的列定义，如设置数据的类型，显示别名，时间类型的展示格式等，不同的数字类型的配置项不同，[详情可配置属性参考 Scale](./scale.html)。
+可选，用于数据字段的列定义，如设置数据的类型，显示别名，时间类型的展示格式等，不同的数字类型的配置项不同，详情可配置属性参考 [Scale](./scale.html)。
 
-#### 示例
+##### 示例
 
 ```js
 var data = [
@@ -167,9 +169,9 @@ chart.source(data, {
 });
 ```
 
-## chart.scale()
+### scale
 
-### chart.scale('field', scaleConfig)
+#### chart.scale('field', scaleConfig)
 
 (field: string, scaleConfig: object)
 
@@ -177,7 +179,7 @@ chart.source(data, {
 
 !注意: 如数据属性 field 在 `chart.source()` 和 `chart.scale()` 中均有定义，那么 `chart.scale()` 中的配置会覆盖 `chart.source()` 中的配置。 
 
-#### 参数
+##### 参数
 
 - `field`
 
@@ -201,7 +203,7 @@ chart.source(data, {
 
 !注意：除了以上属性外，不同的 type 还对应有各自的可配置属性，详见 [Scale 度量 API](./scale.html); 
 
-#### 示例
+##### 示例
 
 ```js
 var data = [
@@ -218,13 +220,13 @@ chart.scale('x', {
 });
 ```
 
-### chart.scale(scaleConfig)
+#### chart.scale(scaleConfig)
 
 (scaleConfig: object)
 
 为一个或者多个数据字段进行列定义配置。
 
-#### 参数
+##### 参数
 
 - `scaleConfig`
 
@@ -242,7 +244,7 @@ chart.scale('x', {
 }
 ```
 
-#### 示例
+##### 示例
 
 ```js
 var data = [
@@ -265,7 +267,7 @@ chart.scale({
 ```
 
 
-## chart.coord()
+### coord
 
 (type: string, coordConfig ?: object)
 
@@ -273,18 +275,18 @@ chart.scale({
 
 > !注意：该方法不返回 `chart` 实例，而是同 Coord 坐标系对应的一个控制类对象，用于进行坐标系的各种变换。
 
-### 参数
+#### 参数
 
 - `type`: string
 
   坐标系的类型，具体包括：
 
-type | 说明 | 示例
----- | ---- | ----
- `rect` | 默认类型，直角坐标系，由 x, y 两个垂直的维度构成。 | <a href="/zh-cn/g2/3.x/demo/point/scatter.html"><img src="" style="width: 300px;">TODO</a>
- `polar` | 极坐标系，由角度和半径 2 个维度构成。 | <a href="/zh-cn/g2/3.x/demo/pie/rose.html"><img src="" style="width: 300px;">TODO</a>
-`theta` | 一种半径固定的极坐标系，常用于饼图。 | <a href="/zh-cn/g2/3.x/demo/pie/labelline.html"><img src="" style="width: 300px;">TODO</a>
-`helix` | 螺旋坐标系，常用于周期性数据 | <a href="/zh-cn/g2/3.x/demo/other/helix-coordinate.html"><img src="" style="width: 300px;">TODO</a>
+type | 说明 |
+---- | ---- |
+ `rect` | 默认类型，直角坐标系，由 x, y 两个垂直的维度构成。 |
+ `polar` | 极坐标系，由角度和半径 2 个维度构成。 |
+`theta` | 一种半径固定的极坐标系，常用于饼图。 |
+`helix` | 螺旋坐标系，常用于周期性数据 |
 
 - coordConfig: object
 
@@ -301,7 +303,7 @@ type | 说明 | 示例
   });
   ```
 
-### 坐标系变换
+#### 坐标系变换
 
 `chart.coord().<action>()`
 
@@ -321,27 +323,27 @@ type | 说明 | 示例
 chart.coord().rotate(70).scale(1.5, 1.5).reflect('xy').transpose();
 ```
 
-## chart.axis()
+### axis
 
 坐标轴配置，该方法返回 chart 对象。
 
-### chart.axis(false)
+#### chart.axis(false)
 
 不展示所有坐标轴：
 
 `chart.axis(false)`；
 
-### chart.axis('field', false)
+#### chart.axis('field', false)
 
 不展示 `field` 字段对应的坐标轴
 
-#### 参数
+##### 参数
 
 - `field`
 
 数据源中的数据属性名称。
 
-### chart.axis('field', axisConfig)
+#### chart.axis('field', axisConfig)
 
 (field: string, axisConfig: object)
 
@@ -356,7 +358,7 @@ chart.axis('x', {
 });
 ```
 
-#### 参数
+##### 参数
 
 - `field`
 
@@ -499,19 +501,19 @@ chart.axis('x', {
   }
   ```
 
-## chart.legend()
+### legend
 
 配置图表图例。
 
-### chart.legend(false)
+#### chart.legend(false)
 
 不显示所有的图例。
 
-### chart.legend(field, false)
+#### chart.legend(field, false)
 
 不显示 `field` 字段对应的图例。
 
-### chart.legend(field, legendConfig)
+#### chart.legend(field, legendConfig)
 
 (field: string|true, legendConfig: object)
 
@@ -523,7 +525,7 @@ chart.legend('gender', {
 });
 ```
 
-#### 参数
+##### 参数
 
 - `field`: string | true
 
@@ -581,19 +583,21 @@ chart.legend('gender', {
   <div id="c1"></div>
 
   ```js-
-  const data = [{country:'中国',cost:96},{country:'德国',cost:121},{country:'美国',cost:100},{country:'日本',cost:111},{country:'韩国',cost:102},{country:'法国',cost:124},{country:'意大利',cost:123},{country:'荷兰',cost:111},{country:'比利时',cost:123},{country:'英国',cost:109},{country:'加拿大',cost:115},{country:'俄罗斯',cost:99},{country:'墨西哥',cost:91},{country:'印度',cost:87},{country:'瑞士',cost:125},{country:'澳大利亚',cost:130},{country:'西班牙',cost:109},{country:'巴西',cost:123},{country:'泰国',cost:91},{country:'印尼',cost:83},{country:'波兰',cost:101},{country:'瑞典',cost:116},{country:'奥地利',cost:111},{country:'捷克',cost:107}];
+   const data = [{country:'中国',cost:96},{country:'德国',cost:121},{country:'美国',cost:100},{country:'日本',cost:111},{country:'韩国',cost:102},{country:'法国',cost:124},{country:'意大利',cost:123},{country:'荷兰',cost:111},{country:'比利时',cost:123},{country:'英国',cost:109},{country:'加拿大',cost:115},{country:'俄罗斯',cost:99},{country:'墨西哥',cost:91},{country:'印度',cost:87},{country:'瑞士',cost:125},{country:'澳大利亚',cost:130},{country:'西班牙',cost:109},{country:'巴西',cost:123},{country:'泰国',cost:91},{country:'印尼',cost:83},{country:'波兰',cost:101},{country:'瑞典',cost:116},{country:'奥地利',cost:111},{country:'捷克',cost:107}];
   const chart = new G2.Chart({
     container: 'c1',
     forceFit: true,
     height: 500,
-    padding: [ 40, 40, 130, 40 ]
+    padding: [ 10, 40, 130, 40 ]
   });
   chart.source(data, {
     'cost': {
       min: 0
     }
   });
-  chart.coord('polar');
+  chart.coord('polar', {
+    radius: 0.6
+  });
   chart.axis('cost', {
     label: null,
     tickLine: null,
@@ -619,13 +623,14 @@ chart.legend('gender', {
   });
   chart.interval()
     .position('country*cost')
-    .color('country', [ 'rgb(252,143,72)', 'rgb(255,215,135' ])
+    .color('country')
     .label('cost', {
       offset: -15,
       textStyle: {
         textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 11
+        fontSize: 11,
+        shadowBlur: 2,
+        shadowColor: 'rgba(0, 0, 0, .45)'
       }
     })
     .style({
@@ -674,25 +679,25 @@ chart.legend('gender', {
 
   type | 样式
   ---- | ----
-  circle | <img src="/assets/image/g2/tutorial/circle.png" width="50%">
-  square | <img src="/assets/image/g2/tutorial/square.png" width="50%">
-  bowtie | <img src="/assets/image/g2/tutorial/bowtie.png" width="50%">
-  diamond | <img src="/assets/image/g2/tutorial/diamond.png" width="50%">
-  hexagon | <img src="/assets/image/g2/tutorial/hexagon.png" width="50%">
-  triangle | <img src="/assets/image/g2/tutorial/triangle.png" width="50%">
-  triangle-down | <img src="/assets/image/g2/tutorial/triangle-down.png" width="50%">
-  cross | <img src="/assets/image/g2/tutorial/cross.png" width="50%">
-  tick | <img src="/assets/image/g2/tutorial/tick.png" width="50%">
-  plus | <img src="/assets/image/g2/tutorial/plus.png" width="50%">
-  hyphen | <img src="/assets/image/g2/tutorial/hyphen.png" width="50%">
-  line | <img src="/assets/image/g2/tutorial/line.png" width="50%">
-  hollowCircle | <img src="/assets/image/g2/tutorial/hollowCircle.png" width="50%">
-  hollowSquare | <img src="/assets/image/g2/tutorial/hollowSquare.png" width="50%">
-  hollowBowtie | <img src="/assets/image/g2/tutorial/hollowBowtie.png" width="50%">
-  hollowDiamond | <img src="/assets/image/g2/tutorial/hollowDiamond.png" width="50%">
-  hollowHexagon | <img src="/assets/image/g2/tutorial/hollowHexagon.png" width="50%">
-  hollowTriangle | <img src="/assets/image/g2/tutorial/hollowTriangle.png" width="50%">
-  hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.png" width="50%">
+  circle | <img src="/assets/image/g2/tutorial/circle.png" style="width:50%">
+  square | <img src="/assets/image/g2/tutorial/square.png" style="width:50%">
+  bowtie | <img src="/assets/image/g2/tutorial/bowtie.png" style="width:50%">
+  diamond | <img src="/assets/image/g2/tutorial/diamond.png" style="width:50%">
+  hexagon | <img src="/assets/image/g2/tutorial/hexagon.png" style="width:50%">
+  triangle | <img src="/assets/image/g2/tutorial/triangle.png" style="width:50%">
+  triangle-down | <img src="/assets/image/g2/tutorial/triangle-down.png" style="width:50%">
+  cross | <img src="/assets/image/g2/tutorial/cross.png" style="width:50%">
+  tick | <img src="/assets/image/g2/tutorial/tick.png" style="width:50%">
+  plus | <img src="/assets/image/g2/tutorial/plus.png" style="width:50%">
+  hyphen | <img src="/assets/image/g2/tutorial/hyphen.png" style="width:50%">
+  line | <img src="/assets/image/g2/tutorial/line.png" style="width:50%">
+  hollowCircle | <img src="/assets/image/g2/tutorial/hollowCircle.png" style="width:50%">
+  hollowSquare | <img src="/assets/image/g2/tutorial/hollowSquare.png" style="width:50%">
+  hollowBowtie | <img src="/assets/image/g2/tutorial/hollowBowtie.png" style="width:50%">
+  hollowDiamond | <img src="/assets/image/g2/tutorial/hollowDiamond.png" style="width:50%">
+  hollowHexagon | <img src="/assets/image/g2/tutorial/hollowHexagon.png" style="width:50%">
+  hollowTriangle | <img src="/assets/image/g2/tutorial/hollowTriangle.png" style="width:50%">
+  hollowTriangle-down | <img src="/assets/image/g2/tutorial/hollowTriangle-down.png" style="width:50%">
 
   * marker 也支持自定义 shape，使用方式如下，
 
@@ -705,7 +710,7 @@ chart.legend('gender', {
   }
   ```
 
-  以下代码绘制了如图所示的 marker：<img src="https://gw.alipayobjects.com/zos/rmsportal/WOOfsuIGEAPWdtgsdciZ.png" width="20px">
+  以下代码绘制了如图所示的 marker：<img src="https://gw.alipayobjects.com/zos/rmsportal/WOOfsuIGEAPWdtgsdciZ.png" style="width:20px">
 
   ```js
   marker: (x, y, r, ctx) => {
@@ -936,15 +941,15 @@ chart.legend('gender', {
   chart.render();
   ```
 
-## chart.tooltip()
+### tooltip
 
 图表的 tooltip 配置，G2 图表的 tooltip 使用 html 渲染。
 
-### chart.tootip(false)
+#### chart.tootip(false)
 
 关闭 tooltip 功能。
 
-### chart.tooltip(tooltipConfig)
+#### chart.tooltip(tooltipConfig)
 
 (tooltipConfig: object)
 
@@ -957,7 +962,7 @@ chart.tooltip(true, {
 });
 ```
 
-#### 参数
+##### 参数
 
 - tooltipConfig: object
 
@@ -1134,11 +1139,11 @@ chart.tooltip(true, {
   ```
   
 
-## chart.guide()
+### guide
 
 用于绘制图表的辅助元素，该方法的返回值不为 chart 对象，而是一个 guide 对应的控制类。
 
-### chart.guide().line(cfg)
+#### chart.guide().line(cfg)
 
 绘制辅助线。
 
@@ -1165,7 +1170,7 @@ chart.guide().line({
 });
 ```
 
-#### 参数
+##### 参数
 
 - `top`: boolean
 
@@ -1219,7 +1224,7 @@ text: {
 }
 ```
 
-### chart.guide().text(cfg)
+#### chart.guide().text(cfg)
 
 绘制辅助文本。
 
@@ -1239,7 +1244,7 @@ chart.guide().text({
 });
 ```
 
-#### 参数
+##### 参数
 
 - `top`: boolean
 
@@ -1281,7 +1286,7 @@ chart.guide().text({
 
 设置辅助文本 y 方向的偏移量。
 
-### chart.guide().image(cfg)
+#### chart.guide().image(cfg)
 
 辅助图片。
 
@@ -1307,7 +1312,7 @@ chart.guide().image({
 });
 ```
 
-#### 参数
+##### 参数
 
 - `top`: boolean
 
@@ -1357,7 +1362,7 @@ chart.guide().image({
 
 设置图片 y 方向的偏移量。
 
-### chart.guide.region(cfg)
+#### chart.guide.region(cfg)
 
 辅助背景框。
 
@@ -1375,7 +1380,7 @@ chart.guide().region({
 });
 ```
 
-#### 参数
+##### 参数
 
 - `top`: boolean
 
@@ -1409,7 +1414,7 @@ chart.guide().region({
 
 用于设置辅助背景框的样式。
 
-### chart.guide().html(cfg)
+#### chart.guide().html(cfg)
 
 辅助 html。
 
@@ -1425,7 +1430,7 @@ chart.guide().html({
 });
 ```
 
-#### 参数
+##### 参数
 
 - `position`: object | function | array
 
@@ -1471,7 +1476,7 @@ html 层级。
 
 设置 html 在 y 方向的偏移量。
 
-### chart.guide().arc(cfg)
+#### chart.guide().arc(cfg)
 
 辅助圆弧。
 
@@ -1486,7 +1491,7 @@ chart.arc({
 });
 ```
 
-#### 参数
+##### 参数
 
 - `top`: boolean
 
@@ -1520,7 +1525,7 @@ chart.arc({
 
 设置圆弧的显示样式。
 
-## chart.facet()
+### facet
 
 (type:string, config:object)
 
@@ -1559,7 +1564,7 @@ chart.facet(type, {
 })
 ```
 
-### 参数
+#### 参数
 
 - `type`: string
 
@@ -1624,7 +1629,7 @@ rowTitle: {
 
 !注意：`showTitle` 和 `autoSetAxis` 用于控制分面的默认行为；`colTitle` 和 `rowTitle` 是通过 `chart.guild().text()` 来实现的，所以所有 `chart.guild().text()` 的参数都生效。
 
-#### 示例
+##### 示例
 
 <div id="c4"></div>
 
@@ -1683,13 +1688,13 @@ chart.facet('tree', {
 chart.render();
 ```
 
-## chart.filter()
+### filter
 
 (field:string, callback:function)
 
 过滤数据，如果存在对应的图例，则过滤掉的字段置灰。
 
-### 参数
+#### 参数
 
 - `field`: string 
 
@@ -1706,7 +1711,7 @@ chart.render();
   });
   ```
 
-## chart.view()
+### view
 
 创建视图，返回 view 对象（详见 [View](./view.html)）。
 
@@ -1719,7 +1724,7 @@ chart.view({
 });
 ```
 
-### 参数
+#### 参数
 
 - `start`: Object
 
@@ -1759,81 +1764,81 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 
 是否视图默认带动画，默认为 true，即带动画。
 
-## chart.animate()
+### animate
 
 (enable: boolean)
 
 用于动画的开启关闭。
 
-## chart.forceFit()
+### forceFit
 
 当父元素宽度变化时，通过调用此方法达到宽度自适应。当然也可以在创建 chart 实例时设置 `forceFit` 属性。
 
-## chart.line()
+### line
 
 创建线图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.point()
+### point
 
 创建点图图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.path()
+### path
 
 创建路径图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.area()
+### area
 
 创建区域图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.interval()
+### interval
 
 创建柱图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.polygon()
+### polygon
 
 创建多边形，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.schema()
+### schema
 
 创建 K 线、箱型图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.edge()
+### edge
 
 创建树图、流程图、关系图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.heatmap()
+### heatmap
 
 创建热力图，返回一个 geom 对象，详见 [Geom](./geom.html)。
 
-## chart.render()
+### render
 
 图表绘制的最后一步，用于将图表渲染至画布。
 
-## chart.clear()
+### clear
 
 清空图表上所有的绘制内容，但是不销毁图表。
 
-## chart.repaint()
+### repaint
 
 图表重绘。
 
-## chart.destroy()
+### destroy
 
 销毁图表，删除生成的图表对象。
 
-## chart.changeData()
+### changeData
 
 (data: array | DataSet.View)
 
 用于修改图表的数据源，注意这里 data 的数据结构需要同原始的数据结构保持一致。
 
-## chart.changeSize()
+### changeSize
 
 (width: number, height: number)
 
 更改图表的大小。
 
-### 参数
+#### 参数
 
 - `width`: number
  
@@ -1843,19 +1848,19 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 
   图表高度。
 
-## chart.changeWidth()
+### changeWidth
 
 (width: number)
 
 更改图表的宽度。
 
-### 参数
+#### 参数
 
 - `width`: number
  
   图表宽度。
 
-## chart.changeHeight()
+### changeHeight
 
 (height: number)
 
@@ -1867,15 +1872,15 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
  
   图表高度。
 
-## chart.getXScale()
+### getXScale
 
 返回图表 x 轴对应的度量[Scale](./scale.html)。
 
-## chart.getYScales()
+### getYScales
 
 获取图表所有 y 轴的度量[Scale](./scale.html)，以数组的形式返回。
 
-## chart.getXY()
+### getXY
 
 (item: object)
 
@@ -1890,7 +1895,7 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 
 如果传入的数据不在画布空间内，则返回 null。
 
-### 参数
+#### 参数
 
 参数是一个 Object 类型，结构如下：
 
@@ -1901,7 +1906,7 @@ padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 }
 ```
 
-#### 代码实例
+##### 代码实例
 
 ```js
 var data = {
@@ -1917,13 +1922,13 @@ chart.getXY({
 });
 ```
 
-## chart.getSnapRecords()
+### getSnapRecords
 
 (point: object)
 
 获取逼近的点 point 的原始数据集合。
 
-### 参数
+#### 参数
 
 point 的格式如下，表示的是画布坐标：
 
@@ -1936,37 +1941,37 @@ var point= {
 
 返回结果为一个数组。
 
-## chart.getAllGeoms()
+### getAllGeoms
 
 获取图表中所有的几何标记对象 [geom](./geom.html)，返回的结果是一个数组： [geom, geom, ...]。
 
-## chart.changeVisible()
+### changeVisible
 
 (visible: boolean)
 
 显示或者隐藏。
 
-## chart.toDataURL()
+### toDataURL
 
 返回图表的 dataUrl 用于生成图片，返回 dataUrl 路径。
 
-## chart.downloadImage()
+### downloadImage
 
 (name: string)
 
 图表导出功能，通过传入 name 来指定下载图片的文件名。
 
-### 参数
+#### 参数
 
 - `name`: string
 
 图片的名称，如不指定，则默认为 chart.png。
 
-## chart.showTooltip()
+### showTooltip
 
 (point: object)
 
-根据传入的坐标点显示对应的 tooltip 信息，这个方法通常同 `chart.getXY()`](/zh-cn/g2/3.x/api/Chart.html#_chart.getXY-) 配合使用。
+根据传入的坐标点显示对应的 tooltip 信息，这个方法通常同 [`chart.getXY()`](/zh-cn/g2/3.x/api/chart.html#_getXY) 配合使用。
 
 point 是一个对象，代表画布上的坐标点，参数格式如下：
 
@@ -1977,11 +1982,11 @@ point 是一个对象，代表画布上的坐标点，参数格式如下：
   }
   ```
 
-## chart.hideTooltip()
+### hideTooltip
 
 隐藏 tooltip，返回 chart 对象。
 
-## chart.getTooltipItems() 
+### getTooltipItems 
 
 (point: object)
 
@@ -2038,7 +2043,7 @@ chart.on('point:click', ev => {});
 chart.on('axis-label:click', ev => {});
 ```
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/IPADBHMAzjLQKQzPkxOO.png" width="60%">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/eFRpBGmvDRAhYnCcrnnh.png" style="width: 50%;">
 
 下图展示了图表各个组件的名称：
 

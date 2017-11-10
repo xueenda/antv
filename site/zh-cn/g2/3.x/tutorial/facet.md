@@ -68,7 +68,7 @@ chart.facet('list', {
 });
 ```
 
-更多配置信息，请查阅 [Facet API](/zh-cn/g2/3.x/api/chart.html#_chart.facet-)。
+更多配置信息，请查阅 [Facet API](/zh-cn/g2/3.x/api/chart.html#_facet)。
 
 ## 分面的类型
 

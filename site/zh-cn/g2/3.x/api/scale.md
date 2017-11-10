@@ -47,37 +47,37 @@ chart.source(data, defs);
 
 下面列出的是通用的属性：
 
-### [type](#type)
+### type
 
 类型：String
 
 指定不同的度量类型，支持的 type 在上面已经列出。
 
-### [formatter](#formatter)
+### formatter
 
 类型：Function
 
 回调函数，用于格式化坐标轴刻度点的文本显示，会影响数据在坐标轴 axis、图例 legend、tooltip 上的显示。
 
-### [range](#range)
+### range
 
 类型：Array
 
 输出数据的范围，默认[0, 1]，格式为 [min, max]，min 和 max 均为 0 至 1 范围的数据。
 
-### [alias](#alias)
+### alias
 
 类型：String
 
 该数据字段的显示别名，一般用于将字段的英文名称转换成中文名。
 
-### [tickCount](#tickCount)
+### tickCount
 
 类型：Number
 
 坐标轴上刻度点的个数，不同的度量类型对应不同的默认值。
 
-### [ticks](#ticks)
+### ticks
 
 类型：Array
 
@@ -100,25 +100,25 @@ chart.scale('aqi',  {
 
 下面列出的是度量的通用方法，但是由于 G2 中用户不需要直接操作度量，所以这些方法不需要用户调用。
 
-### [scale](#scale)
+### scale
 
 方法名：`scale(value)`
 
 说明：将数据转换到 [0, 1] 之间。
 
-### [invert](#invert)
+### invert
 
 方法名：`invert(value)`
 
 说明：将 [0, 1] 之间的数据转换至原始数据。
 
-### [getTicks](#getTicks)
+### getTicks
 
 方法名：`getTicks()`
 
 说明：获取坐标轴需要的 ticks。
 
-### [getText](#getText)
+### getText
 
 方法名：`getText(value)`
 
@@ -126,7 +126,7 @@ chart.scale('aqi',  {
 
 ## Scale 类型
 
-### [linear](#linear)
+### linear
 
 属性名| 说明 
 ----|----
@@ -140,7 +140,7 @@ ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ti
 tickCount| 定义坐标轴刻度线的条数，默认为 5
 tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，**tickCount 和 tickInterval 不可以同时声明。**
 
-### [cat](#cat)
+### cat
 
 属性名| 说明
 ----|----
@@ -195,7 +195,7 @@ chart.render();
 
 ![image](https://zos.alipayobjects.com/skylark/97e5078a-45b9-4db6-8d51-db506eaa2444/attach/3378/1aea882afb2ef64d/image.png)
 
-### [log](#log)
+### log
 
 属性名|说明
 ----|----
@@ -212,7 +212,7 @@ tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据�
 
 注：最小值和最大值悬殊非常大时可以用 log 平滑一下数据。
 
-### [pow](#pow)
+### pow
 
 属性名|说明
 ----|----
@@ -229,7 +229,7 @@ tickInterval | 用于指定坐标轴各个标度点的间距，是原始数据�
 
 注：最小值和最大值悬殊非常大时可以用 pow 平滑一下数据。
 
-### [time](#time)
+### time
 
 是 linear 度量的一种，连续的时间度量类型，**默认会对数据做排序**。
 
@@ -253,7 +253,7 @@ ticks | 用于指定坐标轴上刻度点的文本信息，当用户设置了 ti
 1. 时间戳，如 1436237115500；
 2. 时间字符串： '2015-03-01'，'2015-03-01 12:01:40'，'2015/01/05'，'2015-03-01T16:00:00.000Z'。
 
-### [timeCat](#timeCat)
+### timeCat
 
 时间分类类型，是一种分类类型的时间度量类型，**默认会对数据做排序**。timeCat 不同于 time，是一种有序的分类数据。
 

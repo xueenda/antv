@@ -9,13 +9,23 @@ resource:
 
 # Geom
 
-## 语法示例
+语法示例：
  
 ```js
-chart.<geomType>().position().size().color().shape().opacity().adjust().tooltip().label().style().selected();
+chart.<geomType>()
+  .position()
+  .size()
+  .color()
+  .shape()
+  .opacity()
+  .adjust()
+  .tooltip()
+  .label()
+  .style()
+  .selected();
 ```
 
-几何标记对象，决定创建图表的类型，具体的概念介绍请参见[Geom](/zh-cn/g2/3.x/tutorial/geom.html)。
+几何标记对象，决定创建图表的类型，具体的概念介绍请参见 [Geom](/zh-cn/g2/3.x/tutorial/geom.html)。
 
 下面是一条简单的绘制柱状图的语法，声明完使用的 geom 类型之后，就可以进行图形上的各种图形属性映射，下面我们会进行详述。
 
@@ -66,7 +76,9 @@ Geom 支持的接口可以分为三大类：
 2. 显示辅助信息的函数:  `style`, `label`, `tooltip`；
 3. 额外的控制函数: `adjust`, `select`, `active`，`show`, `hide`。
 
-## position
+## 方法
+
+### position
 
 将数据值映射到图形的位置上的方法。
 
@@ -75,7 +87,7 @@ line().position('x*y');
 line().position(['x', 'y']);
 ```
 
-### chart.geom().position('fieldA*fieldB')
+#### position('fieldA*fieldB')
 
 使用 `*` 连接，position 属性会对多个字段进行数据的映射，如：cut*price，x*y 等，用于二维坐标系图表的绘制。
 
@@ -87,7 +99,7 @@ line().position(['x', 'y']);
 
 另外，也可以以数组格式传入：`chart.geom().position([ 'fieldA', 'fieldB' ])`
 
-## color
+### color
 
 将数据值映射到图形的颜色上的方法。
 
@@ -109,9 +121,9 @@ line().color('type*value', function(type, value) { //多个参数，通过回调
 });
 ```
 
-### chart.geom().color(value);
+#### color(value)
 
-#### 参数
+##### 参数
 
 - `value`: string
 
@@ -120,16 +132,16 @@ line().color('type*value', function(type, value) { //多个参数，通过回调
   - 映射至颜色属性的数据源字段名，如果数据源中不存在这个字段名的话，则按照常量进行解析，这个时候会使用 G2 默认提供的颜色。
   - 也可以直接指定某一个具体的颜色值 color，如 '#fff', 'white' 等。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').color('x'); // 对 x 字段进行映射，使用内置的颜色
 chart.point().position('x*y').color('red'); // 所有点用红色渲染
 ```
 
-### chart.geom().color(field, colors);
+#### color(field, colors)
 
-#### 参数
+##### 参数
 
 - `field`: string
 
@@ -163,7 +175,7 @@ chart.point().position('x*y').color('red'); // 所有点用红色渲染
   ```
 
 
-## shape
+### shape
 
 将数据值映射到图形的形状上的方法。
 
@@ -180,9 +192,9 @@ point.shape('type', function(type) { // 回调函数
 });
 ```
 
-### chart.geom().shape(shape);
+#### shape(shape)
 
-#### 参数
+##### 参数
 
 - `shape`: string
 
@@ -197,17 +209,17 @@ interval| 'rect','hollowRect','line','tick'| hollowRect 是空心的矩形，lin
 polygon | 'polygon','hollow'| polygon 多边形、hollow 空心多边形。
 schema | 'box','candle' | 目前仅支持箱型图、K线图
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').shape('square'); // 指定所有点的图形是正方形
 ```
 
-### chart.geom().shape(field, shapes);
+#### shape(field, shapes)
 
 指定多个图形，图形的顺序跟字段的值对应。
 
-#### 参数
+##### 参数
 
 - `field`: string
 
@@ -227,7 +239,7 @@ chart.point().position('x*y').shape('square'); // 指定所有点的图形是正
   };
   ```
 
-#### 代码示例
+##### 代码示例
 
 ```js
 var defs = {
@@ -240,11 +252,11 @@ chart.point().position('carat*price').shape('cut'); // 使用默认的 shapes
 chart.point().position('carat*price').shape('cut', ['cross', 'tick', 'plus', 'hyphen', 'line']); // 使用自定义的 shapes
 ```
 
-### chart.geom().shape(field, callback);
+#### shape(field, callback);#
 
 通过回调函数设置图形类型.
 
-#### 参数
+##### 参数
 
 - `field`: string
 
@@ -254,7 +266,7 @@ chart.point().position('carat*price').shape('cut', ['cross', 'tick', 'plus', 'hy
 
   [Function] 回调函数
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').shape('z', function(value) {
@@ -266,7 +278,7 @@ chart.point().position('x*y').shape('z', function(value) {
 });
 ```
 
-## size
+### size
 
 将数据值映射到图形的大小上的方法。
 
@@ -283,7 +295,7 @@ point.size('type', function(type) { // 回调函数
 });
 ```
 
-### chart.geom().size(value）
+#### size(value）
 
 传入数字常量，如 `chart.point().size(20)`。
 
@@ -293,37 +305,37 @@ point.size('type', function(type) { // 回调函数
 - line, area, path 中的 size 影响线的粗细；
 - interval 的 size 影响柱状图的宽度。
 
-### chart.geom().size(field)
+#### size(field)
 
 根据 field 字段的值映射大小，使用默认的`最大值 max:10` 和`最小值 min: 1`。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').size('z'); // 使用 z 字段的值来映射大小
 ```
 
-### chart.geom().size(field, [min, max])
+#### size(field, [min, max])
 
 根据 field 字段的值映射大小，使用声明的最大值 max 和最小值 min。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').size('z', [ 10, 100 ]); // 使用 z 字段的值来映射大小，最大值为 100，最小值 10
 ```
 
-### chart.geom().size(field, callback)
+#### size(field, callback)
 
 使用回调函数控制图形大小。
 
-#### 参数
+##### 参数
 
 - `callback`: function
 
 回调函数。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').size('z', function(value) {
@@ -334,7 +346,7 @@ chart.point().position('x*y').size('z', function(value) {
 });
 ```
 
-## opacity
+### opacity
 
 将数据值映射到图形的透明度上的方法。
 
@@ -350,31 +362,31 @@ point.opacity('type', function(type) { // 回调函数
 });
 ```
 
-### chart.geom().opacity(value)
+#### opacity(value)
 
 直接指定所有图形的透明度，value 为 0 至 1 范围的小数。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.interval().position('x*y').opacity(0.8); // 图形颜色为 0.8 透明度
 ```
 
-### chart.geom().opacity(field)
+#### opacity(field)
 
 根据 field 字段的值计算透明度。
 
-#### 代码示例
+##### 代码示例
 
 ```javascript
 chart.interval().position('x*y').opacity('z');
 ```
 
-### chart.geom().opacity(field, callback)
+#### opacity(field, callback)
 
 通过回调函数设置透明度。
 
-#### 代码示例
+##### 代码示例
 
 ```javascript
 chart.point().position('x*y').opacity('z', function(value) {
@@ -385,7 +397,7 @@ chart.point().position('x*y').opacity('z', function(value) {
 });
 ```
 
-## adjust
+### adjust
 
 声明几何标记对象的数据调整方式，可用于绘制层叠图、扰动图、分组图等。支持单一的数据调整方式也支持各种数据调整方式的组合。
 
@@ -407,7 +419,7 @@ interval().adjust([{
 chart.interval().position('x*y').color('z').adjust('stack');
 ```
 
-## label
+### label
 
 将数据值映射到图形的文本上的方法。
 
@@ -425,23 +437,23 @@ line.label('x', {
 });
 ```
 
-### chart.geom().label(field)
+#### label(field)
 
 显示 field 字段对应的文本。
 
-#### 参数
+##### 参数
 
 -  `field`: String
 
 代表数据源中的数据字段名。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.point().position('x*y').label('x');
 ```
 
-### chart.geom().label(field, cfg)
+#### label(field, cfg)
 
 设置显示文本的配置信息。field 代表数据源中的数据字段名。
 
@@ -483,11 +495,11 @@ chart.line().label('x', {
 })
 ```
 
-### chart.geom().label(field, callback, cfg)
+#### label(field, callback, cfg)
 
 使用回调函数控制文本显示。
 
-#### 参数
+##### 参数
 
 - `field`: string
 
@@ -501,7 +513,7 @@ chart.line().label('x', {
 
 该配置用法同 `chart.geom().label(field, cfg)` 中的 cfg 属性。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 chart.polygon().position('children*value').color('type').shape('stroke')
@@ -516,7 +528,7 @@ chart.polygon().position('children*value').color('type').shape('stroke')
   });
 ```
 
-## tooltip
+### tooltip
 
 将数据值映射到 Tooltip 上。
 
@@ -529,11 +541,11 @@ tooltip('x*y', (x, y) => {
 })
 ```
 
-### chart.geom().tooltip(false)
+#### tooltip(false)
 
 关闭该 geom 上的 tooltip。
 
-### chart.geom().tooltip(field)
+#### tooltip(field)
 
 (field: string)
 
@@ -547,7 +559,7 @@ chart.<geom>.tooltip('dim1*dim2...*dimN');
 
 ![image](https://zos.alipayobjects.com/skylark/a92d121a-5879-42ad-b12c-1b4cc3c79f69/attach/2378/b8013e9dd10fd634/image.png)
 
-#### 代码示例
+##### 代码示例
 
 <div id="c2" class="chart-container"></div>
 
@@ -584,7 +596,7 @@ chart.point().position('height*weight')
 chart.render();
 ```
 
-### chart.geom().tooltip(field, callback)
+#### tooltip(field, callback)
 
 (field: string, callback: function)
 
@@ -643,11 +655,6 @@ chart.line().position('x*y').tooltip('x*y', (x, y) => {
     showTitle: false,
     itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
   });
-  chart.legend({
-    position: 'right',
-    offsetY: -window.innerHeight / 2 + 120,
-    offsetX: -100
-  });
   chart.intervalStack()
     .position('percent')
     .color('item')
@@ -660,7 +667,7 @@ chart.line().position('x*y').tooltip('x*y', (x, y) => {
       percent = percent * 100 + '%';
       return {
         name: item,
-        value: percent
+        value: '<span style="color: #1890ff;">' + percent + '</span>'
       };
     })
     .style({
@@ -670,7 +677,7 @@ chart.line().position('x*y').tooltip('x*y', (x, y) => {
   chart.render();
 ```
 
-## style
+### style
 
 用于配置几何标记显示的图形属性。
 
@@ -687,7 +694,7 @@ line().style('a*b', { // 使用回调函数设置属性
 });
 ```
 
-## select
+### select
 
 开启、关闭以及设置 shape 对于鼠标 click 事件的响应效果， G2 默认仅为饼图开启了选中效果。
 
@@ -702,7 +709,7 @@ geom.select([true,] {
 });
 ```
 
-## active
+### active
 
 开启以及关闭 shape 对于鼠标 hover 时的响应效果，G2 默认为各个 shaoe 内置了 active 效果 。
 
@@ -711,7 +718,7 @@ geom.active(false); // 关闭默认响应
 geom.active(true); // 开启默认响应
 ```
 
-## animate
+### animate
 
 动画配置。
 
