@@ -125,6 +125,7 @@
         input {
           border: none;
           background: #F2F4F5;
+          width: ~"calc(100% - 30px)";
           &:focus {
             border: none;
             outline: none;
@@ -175,7 +176,8 @@
     }
   }
 
-  .docs {
+  // links
+  .docs, .tags, .variations {
     display: block;
     margin: 0;
     padding: 0;
@@ -183,8 +185,24 @@
     li {
       display: inline-block;
       list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+  .docs, .variations {
+    li {
       width: 240px;
       padding: 12px 32px 12px 0;
+    }
+  }
+  .tags {
+    li {
+      border: 1px solid #E9E9E9;
+      box-shadow: 0 1px 2px 0 rgba(191, 200, 209, 0.3);
+      width: auto;
+      padding: 12px 32px;
+      margin-bottom: 12px;
     }
   }
 
