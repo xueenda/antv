@@ -1,6 +1,6 @@
 <!--
 template: home
-title: G2
+title: G2 基础图表类库
 keywords:
   - G2
   - The Grammar of Graphics
