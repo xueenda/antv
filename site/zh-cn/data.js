@@ -76,7 +76,7 @@ module.exports = {
             viewDetail: '查看详情',
             viewMore: '查看更多',
             joinUs: '立即加入',
-            vis: '墨子学院',
+            vis: '墨者学院',
             visBlog: '博客',
             visChart: '图表用法',
             visDesign: '设计原则',

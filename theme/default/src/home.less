@@ -101,6 +101,58 @@ section {
   padding: 32px;
   box-shadow: 0 2px 2px rgba(84, 48, 132, .06);
   margin: 0 auto;
+  &.member-card {
+    img {
+      height: 100px;
+      width: 100px;
+      margin: 0;
+    }
+    border: none;
+    box-shadow: none;
+    //max-width: 164px;
+    height: 245px;
+    //margin-bottom: ;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    }
+  }
+  &.full-size {
+    padding: 0;
+    height: 244px;
+    .card-over {
+      opacity: 0;
+      height: 244px;
+      position: absolute;
+      top: 0;
+      bottom: 30px;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      padding: 20px;
+      font-size: 13px;
+      line-height: 2;
+      text-decoration: none;
+      color: #888;
+      background: #fff;
+      background: rgba(255,255,255,0.96);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    &:hover {
+      .card-over {
+        opacity: 1;
+        -webkit-transition: opacity 250ms ease;
+        -moz-transition: opacity 250ms ease;
+        -ms-transition: opacity 250ms ease;
+        -o-transition: opacity 250ms ease;
+        transition: opacity 250ms ease;
+      }
+    }
+    img {
+      margin: 0;
+      height: auto;
+    }
+  }
   .description {
     line-height: 26px;
   }

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block css %}
+<!--<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/tocbot-3.0.2/tocbot.css" />-->
+<link rel="stylesheet" type="text/css" href="{{ dist }}/blogs.css" />
+{% endblock %}
+{% block content %}
+<div class="demos container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-xl-1"></div>
+        <div class="col-12 col-md-12 col-xl-10">
+            {% if canSwitchThemes %}
+            <div class="container header">
+                <form class="float-right">
+                    <div class="btn-group theme-switching" role="group" aria-label="Basic example">
+                        <a class="btn btn-primary" data-theme="default" href="?theme=default">Default</a>
+                        <a class="btn btn-light" data-theme="dark" href="?theme=dark">Dark</a>
+                    </div>
+                </form>
+            </div>
+            {%  endif %}
+            <div class="container content">
+                {% for cat in demos %}
+                <h5>{{ cat.title }}</h5>
+                <div class="row">
+                    {% for demo in cat.demos %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                        <div class="card">
+                            <a href="{{ demo.href }}">
+                                <!--data-original="{{ demo.screenshot }}"-->
+                                <img
+                                    class="card-img-top screenshot lazyload"
+                                    data-default="{{ demo.screenshot }}"
+                                    data-dark="{{ demo.screenshotDark }}"
+                                    alt="{{ demo.title }}">
+                            </a>
+                            <div class="card-body">
+                                <a href="{{ demo.href }}"> {{ demo.title }} </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="toc-container"><div class="toc"></div></div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.headroom-0.9.4.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/tocbot-3.0.2/tocbot.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/routie-0.3.2.min.js"></script>
+<script type="text/javascript" src="{{ dist }}/demos.js"></script>
+{% endblock %}
