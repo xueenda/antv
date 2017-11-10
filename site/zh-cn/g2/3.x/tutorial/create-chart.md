@@ -63,7 +63,7 @@ var chart = new G2.Chart({
 - `plotBackground`：用于设置 chart 绘图区域的背景样式，包括边框，背景色，透明度，圆角等；
 - `padding`：用于设置边距，用法同 CSS 中的 padding 属性相同, [上，右，下，左]；
 
-用法如下，具体详见 [api]():
+用法如下，具体详见 [api](/zh-cn/g2/3.x/api/chart.html#_属性):
 
 ```js
 var chart = new G2.Chart({

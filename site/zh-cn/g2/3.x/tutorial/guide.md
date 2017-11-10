@@ -26,7 +26,7 @@ G2 目前支持 **6** 种辅助标记类型：
 
 ## 如何使用
 
-下面列出了各个 guide 辅助标记类型的使用，更详细的配置项参见 [Guide API](/zh-cn/g2/3.x/api/chart.html#_chart.guide-)。
+下面列出了各个 guide 辅助标记类型的使用，更详细的配置项参见 [Guide API](/zh-cn/g2/3.x/api/chart.html#_guide)。
 
 ### line 辅助线
 

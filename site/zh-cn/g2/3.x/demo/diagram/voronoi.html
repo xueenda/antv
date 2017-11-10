@@ -37,7 +37,16 @@ relativePlots:
         chart.polygon()
             .position('_x*_y')
             .color('value')
-            .label('value');
+            .label('value', {
+              offset: 0,
+              textStyle: {
+                fill: '#fff',
+                fontSize: '12',
+                textAlign: 'center',
+                shadowBlur: 2,
+                shadowColor: 'rgba(0, 0, 0, .45)'
+              }
+            });
 
         chart.render();
     });

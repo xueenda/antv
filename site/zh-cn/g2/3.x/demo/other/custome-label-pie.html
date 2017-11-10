@@ -93,8 +93,8 @@ relativePlots:
         custom: true,
         htmlTemplate: (text, item) => {
           const isFemale = item.point.sex === '女';
-          const src = isFemale ? 'https://gw.alipayobjects.com/zos/rmsportal/UPTDwOTNLXeiLzhyGWXO.png'
-            : 'https://gw.alipayobjects.com/zos/rmsportal/oOjpDusdnoDEbMJBZAvU.png';
+          const src = isFemale ? 'https://gw.alipayobjects.com/zos/rmsportal/mweUsJpBWucJRixSfWVP.png'
+            : 'https://gw.alipayobjects.com/zos/rmsportal/oeCxrAewtedMBYOETCln.png';
           const color = isFemale ? COLORS[1] : COLORS[0];
           const IMG = `<img style="width:40px" src="${src}" /><br/>`;
           return `<div style="text-align:center;color:${color}">${IMG}${(text * 100).toFixed(0)}%</div>`;

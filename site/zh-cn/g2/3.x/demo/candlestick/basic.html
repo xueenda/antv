@@ -5,6 +5,7 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
+    - http://unpkg.alipay.com/@antv/g2-plugin-slider
 plotDescription: K 线图，原名蜡烛图，又称阴阳图、棒线、红黑线或蜡烛线，常用于展示股票交易数据。
 plotUsage: K 线图主要用于金融领域里展示股票，期货等交易数据，按照时间维度分为日 K 线、周 K 线、月 K 线。展示的数据需要满足 K 线构成的四要素：即开盘价、收盘价、最高价、最低价。
 relativePlots:
@@ -12,15 +13,24 @@ relativePlots:
 -->
 
 <script>
-  const { DataView } = DataSet;
+  $('<div id="slider"></div>').insertAfter('#mountNode');
   $.getJSON('/assets/data/candle-sticks.json',function(data) {
-    const chart = new G2.Chart({
-      container: 'mountNode',
-      forceFit: true,
-      height: window.innerHeight
+    // 设置状态量，时间格式建议转换为时间戳
+    const ds = new DataSet({
+      state: {
+        start: new Date('2015-04-07').getTime(),
+        end: new Date('2015-08-01').getTime()
+      }
     });
-    const dv = new DataView();
+    const dv = ds.createView();
     dv.source(data)
+      .transform({
+        type: 'filter',
+        callback: obj => {
+          const date = new Date(obj.time).getTime();
+          return date <= ds.state.end && date >= ds.state.start;
+        }
+      })
       .transform({
         type: 'map',
         callback: obj => {
@@ -29,16 +39,23 @@ relativePlots:
           return obj;
         }
       });
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: 400,
+      animate: false,
+      padding: [ 20, 80, 40 ]
+    });
     chart.source(dv, {
-      'trend': {
-        alias: '趋势'
-      },
       'time': {
         type: 'timeCat',
         nice: false,
         mask: 'MM-DD',
-        alias: '时间',
-        tickCount: 10
+        tickCount: 10,
+        range: [ 0, 1]
+      },
+      trend: {
+        values: [ '上涨', '下跌' ]
       },
       'volumn': {alias: '成交量'},
       'start': {alias: '开盘价'},
@@ -47,32 +64,103 @@ relativePlots:
       'min': {alias: '最低价'},
       'range': {alias: '股票价格'}
       });
+    chart.legend({
+      offset: 30
+    });
     chart.tooltip({
       showTitle: false,
-      itemTpl: '<li data-index={index} style="margin-bottom:4px;">'
+      itemTpl: '<li data-index={index}>'
         + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
-        + '{name}<br/>'
-        + '<span style="padding-left: 16px">开盘价：{start}</span><br/>'
-        + '<span style="padding-left: 16px">收盘价：{end}</span><br/>'
-        + '<span style="padding-left: 16px">最高价：{max}</span><br/>'
-        + '<span style="padding-left: 16px">最低价：{min}</span><br/>'
-        + '<span style="padding-left: 16px">成交量：{volumn}</span><br/>'
-        + '</li>'
+        + '{name}{value}</li>',
     });
-    chart.schema()
+
+    const kView = chart.view({
+      end: {
+        x: 1,
+        y: 0.65
+      }
+    });
+    kView.source(dv);
+    kView.schema()
       .position('time*range')
-      .color('trend', ['#f04864', '#2fc25b'])
+      .color('trend', val => {
+        if (val === '上涨') {
+          return '#f04864';
+        }
+
+        if (val === '下跌') {
+          return '#2fc25b';
+        }
+      })
       .shape('candle')
-      .tooltip('time*start*end*max*min*volumn', (time, start, end, max, min, volumn) => {
+      .tooltip('time*start*end*max*min', (time, start, end, max, min) => {
         return {
           name: time,
-          start,
-          end,
-          max,
-          min,
-          volumn
+          value: '<br><span style="padding-left: 16px">开盘价：' + start + '</span><br/>'
+            + '<span style="padding-left: 16px">收盘价：' + end + '</span><br/>'
+            + '<span style="padding-left: 16px">最高价：' + max + '</span><br/>'
+            + '<span style="padding-left: 16px">最低价：' + min + '</span>'
         };
       });
+
+    const barView = chart.view({
+      start: {
+        x: 0,
+        y: 0.8
+      }
+    });
+    barView.source(dv, {
+      volumn: {
+        tickCount: 2
+      }
+    });
+    barView.axis('time', {
+      tickLine: null,
+      label: null
+    });
+    barView.axis('volumn', {
+      label: {
+        formatter: function(val) {
+          return parseInt(val / 1000, 10) + 'k';
+        }
+      }
+    });
+    barView.interval()
+      .position('time*volumn')
+      .color('trend',  val => {
+        if (val === '上涨') {
+          return '#f04864';
+        }
+
+        if (val === '下跌') {
+          return '#2fc25b';
+        }
+      })
+      .tooltip('time*volumn', (time, volumn) => {
+        return {
+          name: time,
+          value: '<br/><span style="padding-left: 16px">成交量：' + volumn + '</span><br/>'
+        };
+      });
+
     chart.render();
+
+    //  生成 slider
+    const slider = new Slider({
+      container: 'slider', // DOM id
+      width: 'auto',
+      height: 26,
+      padding: [ 20, 80, 90 ],
+      start: ds.state.start, // 和状态量对应
+      end: ds.state.end,
+      data, // 源数据
+      xAxis: 'time', // 背景图的横轴对应字段，同时为数据筛选的字段
+      yAxis: 'volumn', // 背景图的纵轴对应字段，同时为数据筛选的字段
+      onChange: (min, max) => {
+        ds.setState('start', new Date(min).getTime());
+        ds.setState('end', new Date(max).getTime());
+      }
+    });
+    slider.render();
   });
 </script>

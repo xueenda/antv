@@ -35,7 +35,7 @@ relativePlots:
           x1: center.x,
           y1: center.y,
           x2: point.x,
-          y2: point.y - 20,
+          y2: point.y + 15,
           stroke: '#8c8c8c',
           lineWidth: 5,
           lineCap: 'round'
@@ -45,7 +45,7 @@ relativePlots:
         attrs: {
           x: center.x,
           y: center.y,
-          r: 12,
+          r: 9.75,
           stroke: '#8c8c8c',
           lineWidth: 4.5,
           fill: '#fff'
@@ -120,7 +120,7 @@ relativePlots:
       start: [ 0, 0.92 ],
       end: [ 6, 0.92 ],
       style: { // 底灰色
-        stroke: 'rgba(0, 0, 0, 0.09)',
+        stroke: '#CBCBCB',
         lineWidth
       }
     });
@@ -178,9 +178,9 @@ relativePlots:
     // 绘制指标数字
     chart.guide().html({
       position: [ '50%', '95%' ],
-      html: '<div style="width: 300px;text-align: center;font-size: 12px!important;">'
-       + '<p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">完成率</p>'
-       + '<p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">' + val * 10  + '%</p>'
+      html: '<div style="width: 300px;text-align: center;">'
+       + '<p style="font-size: 20px; color: #545454;margin: 0;">完成率</p>'
+       + '<p style="font-size: 36px;color: #545454;margin: 0;">' + val * 10  + '%</p>'
        + '</div>'
     });
     chart.changeData(data);

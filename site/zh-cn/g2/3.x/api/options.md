@@ -427,7 +427,7 @@ var options = {
 }
 ```
 
-### [scales](#_scales)
+### scales
 
 类型： `Object`
 
@@ -471,7 +471,7 @@ scales: {
 }
 ```
 
-### [coord](#_coord)
+### coord
 
 类型： `Object`
 
@@ -519,7 +519,7 @@ coord: {
 }
 ```
 
-### [axes](#_axes)
+### axes
 
 类型：`Object`
 
@@ -591,7 +591,7 @@ axes: {
 }
 ```
 
-### [legends](#_legends)
+### legends
 
 类型： `Object`
 
@@ -637,7 +637,7 @@ legends: {
 }
 ```
 
-### [guides](#_guides)
+### guides
 
 类型：`Array`
 
@@ -685,7 +685,7 @@ guides: [
 ]
 ```
 
-### [filters](#_filters)
+### filters
 
 类型：`Object`
 
@@ -713,7 +713,7 @@ filters: {
 }
 ```
 
-### [tooltip](#_tooltip)
+### tooltip
 
 类型：`Object`
 
@@ -733,7 +733,7 @@ tooltip: {
 }
 ```
 
-### [geoms](#_geoms)
+### geoms
 
 类型：`Array`
 
@@ -762,7 +762,7 @@ geoms: [
 ]
 ```
 
-#### [positon](#_position)
+#### positon
 
 用于声明映射至位置 position 属性的数据字段，使用方式很简单：
 
@@ -778,7 +778,7 @@ position: {
 }
 ```
 
-#### [color](#_color)
+#### color
 
 1. `chart.geom().color(value)` 对应：
 
@@ -812,7 +812,7 @@ color: {
 }
 ```
 
-#### [shape](#_shape)
+#### shape
 
 1. `chart.geom().shape(value)` 对应：
 
@@ -846,7 +846,7 @@ shape: {
 }
 ```
 
-#### [size](#_size)
+#### size
 
 1. `chart.geom().size(value）` 对应
 
@@ -881,7 +881,7 @@ size: {
 ```
 
 
-#### [opacity](#_opacity)
+#### opacity
 
 1. `chart.geom().opacity(field)` 对应：
 
@@ -906,7 +906,7 @@ opacity: {
 }
 ```
 
-#### [label](#_label)
+#### label
 
 1. `chart.geom().label(field)` 对应
 
@@ -933,7 +933,7 @@ label: {
 }
 ```
 
-#### [tooltip](#_tooltip)
+#### tooltip
 
 ```js
 // 对应 geom.tooltip('x')
@@ -945,7 +945,7 @@ tooltip: {
 }
 ```
 
-#### [style](#_style)
+#### style
 
 ```js
 // 使用方式一
@@ -959,7 +959,7 @@ style: {
 }
 ```
 
-#### [select](#_select)
+#### select
 
 ```js
 select: {Boolean} // 开启关闭选中功能
@@ -975,13 +975,13 @@ select: {
 }
 ```
 
-#### [active](#_active)
+#### active
 
 ```js
 active: false | true
 ``` 
 
-#### [animate](#_animate)
+#### animate
 
 ```js
 animate: {
