@@ -143,7 +143,7 @@ getPort().then(function (port) {
                         .goto(t.targetUrl)
                         // .wait('#mountNode canvas')
                         .wait(DELAY)
-                        .click('canvas')
+                        // .click('canvas')
                         .screenshot(t.outputFilename, function () {
                             debug(t.fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
                             callback(null);
