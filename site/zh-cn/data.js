@@ -5,6 +5,7 @@ module.exports = {
             version: '3.0.0',
             name: 'G2',
             href: '${base}zh-cn/g2/3.x/index.html',
+            icon: '${assets}/image/icon/g2.svg',
             links: {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/g2/3.x/api/index.html' },
@@ -16,6 +17,7 @@ module.exports = {
             version: '1.0.0',
             name: 'G6',
             href: '${base}zh-cn/g6/1.x/index.html',
+            icon: '${assets}/image/icon/g6.svg',
             links: {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/1.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/1.x/api/index.html' },
@@ -28,6 +30,7 @@ module.exports = {
             version: '1.0.0',
             name: 'F2',
             href: '${base}zh-cn/f2/3.x/index.html',
+            icon: '${assets}/image/icon/f2.svg',
             links: {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
@@ -38,6 +41,7 @@ module.exports = {
         vis: {
             name: '${resource.translate.vis}',
             href: '${base}zh-cn/vis/index.html',
+            icon: '${assets}/image/icon/vis.svg',
             links: {
                 blog: { text: '${resource.translate.visBlog}', href: '${base}zh-cn/vis/blog/index.html' },
                 design: { text: '${resource.translate.visDesign}', href: '${base}zh-cn/vis/design/index.html'  },

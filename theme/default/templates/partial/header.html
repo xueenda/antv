@@ -23,7 +23,12 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="">
                     {% for name, item in products %}
-                    <a href="{{ item.href }}" class="dropdown-item">{{ item.name }}</a>
+                    <a href="{{ item.href }}" class="dropdown-item">
+                        <span class="icon-container">
+                            <img src="{{ item.icon }}" alt="">
+                        </span>
+                        {{ item.name }}
+                    </a>
                     {% endfor %}
                 </div>
             </li>
