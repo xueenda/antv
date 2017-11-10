@@ -10,6 +10,36 @@
   border-radius: 4px;
 }
 
+.btn {
+  font-size: 14px;
+}
+
+.btn-round-link {
+  border-radius: 32px;
+  background: #1890ff;
+  border-color: #1890ff;
+  font-size: 16px;
+  padding: 12px 28px;
+  line-height: 1.15;
+  &:focus {
+    box-shadow: none;
+  }
+  &:hover {
+    -webkit-transform: translateY(-4px);
+    -ms-transform: translateY(-4px);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(24,144,255,.4);
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+  }
+}
+
+.btn-light{
+  background: none;
+  color: #1890FF;
+  border: 1px solid #1890FF !important;
+}
+
 .navbar-brand {
   display: inline-block;
   padding: 0;

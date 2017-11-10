@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
 
 .main-info {
   font-size: 20px;
-  line-height: 48px;
+  line-height: 36px;
   font-weight: 300;
   margin: 0;
 }
@@ -21,6 +21,37 @@ section {
 }
 .intro,.comments {
   background: #F8FAFE;
+  min-height: 775px;
+}
+.get-started{
+  h2{
+    margin-bottom: 100px;
+    margin-top: 16px;
+    font-size: 30px;
+  }
+  .highlight{
+    position: relative;
+    background-color: #F7F7F7;
+    padding: 16px;
+    padding-bottom: 0px;
+    padding-left: 24px;
+    border-radius: 4px;
+    overflow: auto;
+    width: 895px;
+    margin: 0 auto; 
+    margin-top: 24px;
+    text-align: left;
+    line-height: 2;
+  }
+  .more-tutorial {
+    margin-top: 32px;
+  }
+  .rect-dec{
+    width: 35px;
+    height: 5px;
+    border-radius: 5px;
+    background: #1890FF;
+  }
 }
 .features {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#544ff9+0,7351f4+26,874bff+100 */
@@ -47,28 +78,25 @@ section {
 }
 
 .intro {
+  .slick {
+    user-select: none;
+    outline:none;
+    padding-left: 20px;
+  }
+  .slick-list{
+    padding: 8px;
+  }
+  .plot-container{
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px #ccc;
+  }
   .header {
+    padding-top: 110px;
+    padding-left: 80px;
+    padding-right: 30px;
     .col-md-4 {
       padding: 92px 0 32px 32px;
-    }
-    button.btn-round-link {
-      border-radius: 32px;
-      background: #1890ff;
-      border-color: #1890ff;
-      font-size: 16px;
-      padding: 10px 28px;
-      line-height: 1.15;
-      &:focus {
-        box-shadow: none;
-      }
-      &:hover {
-        -webkit-transform: translateY(-4px);
-        -ms-transform: translateY(-4px);
-        transform: translateY(-4px);
-        box-shadow: 0 4px 12px rgba(24,144,255,.4);
-        background-color: #40a9ff;
-        border-color: #40a9ff;
-      }
     }
   }
   h1 {
@@ -77,9 +105,11 @@ section {
   }
   p {
     margin-bottom: 0;
+    font-size: 16px;
   }
   .btn {
     margin-top: 48px;
+    margin-left: 12px;
   }
 }
 

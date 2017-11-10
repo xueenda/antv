@@ -27,13 +27,13 @@ resource:
 <section class="intro">
     <div class="container">
         <div class="header row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h1>G2基础图表类库</h1>
                 <p class="main-info">是一个由纯 JavaScript 编写、强大的语义化图表生成工具，它提供了一整套图形语法，支持多种坐标系绘制，可以让用户自由地定制图表。</p>
-                <a href="{{ products.g2.links.demo.href }}" class="btn btn-primary btn-lg">{{ resource.translate.getStarted }}</a>
-                <a href="{{base}}zh-cn/g2/3.x/tutorial/download.html" class="btn btn-light border btn-lg">{{ resource.translate.downloadAndUse }}</a>
+                <a href="{{ products.g2.links.demo.href }}" class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.getStarted }}</a>
+                <a href="{{base}}zh-cn/g2/3.x/tutorial/download.html" class="btn-round-link btn btn-light btn-lg">{{ resource.translate.downloadAndUse }}</a>
             </div>
-            <div class="col-md-6 slick">
+            <div class="col-md-7 slick" data-dots="true">
                 <div id="commentsCarousel" class="carousel">
                     <div class="carousel-inner slick">
                         <div id="c1" class="plot-container carousel-item active"></div>
@@ -62,6 +62,7 @@ resource:
 
 <section class="get-started text-center"><div class="container">
     <h2>快速接入</h2>
+    <span class="rect-dec"></span>
     <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>
 
 ```html
@@ -69,15 +70,14 @@ resource:
 <script src="{{ url.g2 }}"></script>
 ```
 
-</div></section>
-
-<section class="more text-center">
-    <a href="{{ products.g2.links.tutorial.href }}" class="btn btn-primary btn-lg">更多教程</a>
+</div>
+<a href="{{ products.g2.links.tutorial.href }}" class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
 
 <!-- chart1 -->
 
 ```js-
+var padding = [40, 40, 90, 60];
   var data = [
     { month: 'Jan', Tokyo: 7.0, London: 3.9 },
     { month: 'Feb', Tokyo: 6.9, London: 4.2 },
@@ -104,7 +104,8 @@ resource:
     // container: 'c1',
     container: $('.plot-container')[0],
     forceFit: true,
-    height: 400
+    height: 390,
+    padding: padding
   });
   chart.source(dv, {
     month: {
@@ -134,6 +135,7 @@ resource:
 <!-- chart2 -->
 
 ```js-
+  var padding = [40, 40, 90, 60];
   const data = [
     { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },
     { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}
@@ -151,7 +153,8 @@ resource:
     // container: 'c2',
     container: $('.plot-container')[1],
     forceFit: true,
-    height: 400
+    height: 390,
+    padding: padding
   });
   chart.source(dv);
   chart.interval().position('月份*月均降雨量').color('name').adjust([{
@@ -164,6 +167,7 @@ resource:
 <!-- chart3 -->
 
 ```js-
+  var padding = [40, 40, 90, 60];
   var data = [
     {country: 'Asia', year: '1750', value: 502},
     {country: 'Asia', year: '1800', value: 635},
@@ -198,7 +202,8 @@ resource:
     // container: 'c3',
     container: $('.plot-container')[2],
     forceFit: true,
-    height: 400
+    height: 390,
+    padding: padding
   });
   chart.source(data, {
     year: {
