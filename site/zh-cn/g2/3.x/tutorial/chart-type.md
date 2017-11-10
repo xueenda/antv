@@ -1,5 +1,5 @@
 <!--
-index: 28
+index: 29
 title: 图表类型
 resource:
   jsFiles:
