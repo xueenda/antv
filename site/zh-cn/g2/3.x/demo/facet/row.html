@@ -16,7 +16,7 @@ $.getJSON('/assets/data/diamond.json', function(data) {
   const chart = new G2.Chart({
     container: 'mountNode',
     forceFit: true,
-    height: 450,
+    height: window.innerHeight,
     padding: [40, 80, 80, 80]
   });
   chart.source(data, {

@@ -45,7 +45,7 @@ $.getJSON('/assets/data/population.json', function(data) {
   const chart = new G2.Chart({
     container: 'mountNode',
     forceFit: true,
-    height: 600
+    height: window.innerHeight,
   });
 
   chart.source(dv, {
