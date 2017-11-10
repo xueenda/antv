@@ -6,7 +6,7 @@ import './doc.less';
 tocbot.init({
     tocSelector: '.toc',
     contentSelector: '.doc-container .content',
-    headingSelector: 'h1, h2, h3, h4',
+    headingSelector: 'h1, h2, h3',
     collapseDepth: 3,
 });
 
@@ -32,6 +32,3 @@ $('header').headroom({
         });
     }
 });
-
-// $('.list-group-item.active')[0].scrollIntoView();
-// $('.toc-link.is-active-link')[0].scrollIntoView();

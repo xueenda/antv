@@ -13,6 +13,7 @@
     "F2": true,
     "G2": true,
     "G6": true,
+    "Slider": true,
     "_": true,
     "d3": true,
     "html2canvas": true
