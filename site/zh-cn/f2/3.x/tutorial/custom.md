@@ -11,12 +11,6 @@ resource:
 
 F2 提供了自定义 Shape 的功能，可以给每种 Geometry 添加对应的 shape
 
-#### 示例
-
-```js
-
-```
-
 ## 方法
 
 ### registerShape

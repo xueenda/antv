@@ -1,0 +1,140 @@
+<!--
+index: 3
+title: 自定义图例
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+
+<style>
+  .legend-list{
+    list-style: none;
+    float: right;
+  }
+
+  .legend-list li {
+    float: left;
+    width: 100px;
+    cursor: pointer;
+  }
+
+  .legend-list li  span{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+  }
+
+  .legend-list .unchecked{
+    color: #ccc;
+  }
+
+  .legend-list li span{
+    background-color: #ccc;
+  }
+
+  .legend-list .unchecked-icon {
+    display: none;
+  }
+
+  .legend-list .unchecked .unchecked-icon{
+    display: inline-block;
+  }
+
+  .legend-list .unchecked .color-icon {
+    display: none;
+  }
+</style>
+
+<script>
+  F2.Global.pixelRatio = window.devicePixelRatio;
+
+  // 添加图例的容器
+  const legendUl = $('<ul class="legend-list"></ul>');
+  legendUl.appendTo($('#mountNode').parent());
+
+  const data = [
+    { time: '2016-08-08 00:00:00', tem: 10, city: 'beijing' },
+    { time: '2016-08-08 00:10:00', tem: 22, city: 'beijing' },
+    { time: '2016-08-08 00:30:00', tem: 16, city: 'beijing' },
+    { time: '2016-08-09 00:35:00', tem: 26, city: 'beijing' },
+    { time: '2016-08-09 01:00:00', tem: 12, city: 'beijing' },
+    { time: '2016-08-09 01:20:00', tem: 26, city: 'beijing' },
+    { time: '2016-08-10 01:40:00', tem: 18, city: 'beijing' },
+    { time: '2016-08-10 02:00:00', tem: 26, city: 'beijing' },
+    { time: '2016-08-10 02:20:00', tem: 12, city: 'beijing' },
+    { time: '2016-08-08 00:00:00', tem: 4, city: 'hangzhou' },
+    { time: '2016-08-08 00:10:00', tem: 3, city: 'hangzhou' },
+    { time: '2016-08-08 00:30:00', tem: 6, city: 'hangzhou' },
+    { time: '2016-08-09 00:35:00', tem: -12, city: 'hangzhou' },
+    { time: '2016-08-09 01:00:00', tem: 1, city: 'hangzhou' },
+    { time: '2016-08-09 01:20:00', tem: 9, city: 'hangzhou' },
+    { time: '2016-08-10 01:40:00', tem: 13, city: 'hangzhou' },
+    { time: '2016-08-10 02:00:00', tem: -3, city: 'hangzhou' },
+    { time: '2016-08-10 02:20:00', tem: 11, city: 'hangzhou' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    height: 200,
+    padding: [20, 30, 40, 80]
+  });
+  chart.source(data, {
+    time: {
+      type: 'timeCat',
+      tickCount: 3,
+      mask: 'hh:mm',
+      range: [ 0, 1 ]
+    },
+    tem: {
+      tickCount: 3,
+      formatter(item) {
+        return item + '%';
+      }
+    }
+  });
+
+  const colors = {
+    beijing: '#8E77ED',
+    hangzhou: '#1890FF'
+  };
+  
+  chart.line().position('time*tem')
+    .color('city', function(city) {
+      return colors[city];
+    })
+    .size(3);
+    
+
+  chart.render();
+
+  $.each(colors, function(k, v) {
+    var str = '<li class="legend-item"><span class="unchecked-icon"></span><span class="color-icon" style="background:' + v +'"></span>' + k +'</li>';
+    $(str).appendTo(legendUl);
+  });
+
+  var uncheckItems = [];
+
+  function remove(arr, item) {
+    var index = arr.indexOf(item);
+    if (index >= 0) {
+      arr.splice(index, 1);
+    }
+  }
+
+  $('.legend-item').on('click', function(ev) {
+    var item = $(ev.target);
+    var city = item.text();
+    if (item.hasClass('unchecked')) {
+      item.removeClass('unchecked');
+      remove(uncheckItems, city);
+    } else {
+      item.addClass('unchecked');
+      uncheckItems.push(city);
+    }
+    var tmp = data.filter(function(obj) {
+      return uncheckItems.indexOf(obj.city) === -1;
+    });
+    chart.changeData(tmp);
+  });
+
+</script>

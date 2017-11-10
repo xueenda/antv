@@ -9,7 +9,9 @@ title: Shape
 F2 主要应用于移动端的场景，在移动端存在各种定制图表的场景，所以提供了自定义图表的功能,可以通过 geometry 的.shape 方法指定图形
 
 ```js
+
 chart.line().position('x*y').shape('smooth');
+
 ```
 
 F2 默认提供了以下种类的图形
