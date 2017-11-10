@@ -23,7 +23,7 @@ footer:
   isDark: true
 resource:
   jsFiles:
-    - ${url.g6}
+    - ${url.f2}
 -->
 
 <section class="intro">
@@ -38,9 +38,15 @@ resource:
             <div class="col-md-6 slick">
                 <div id="commentsCarousel" class="carousel">
                     <div class="carousel-inner slick">
-                        <div id="c1" class="carousel-item active"></div>
-                        <div id="c2" class="carousel-item"></div>
-                        <div id="c3" class="carousel-item"></div>
+                        <div class="carousel-item active">
+                          <canvas id="c1" style="width:500px;height:300px;"></canvas>
+                        </div>
+                        <div class="carousel-item">
+                          <canvas id="c2" style="width:500px;height:300px;"></canvas>
+                        </div>
+                        <div class="carousel-item">
+                          <canvas id="c3" style="width:500px;height:300px;"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,15 +86,161 @@ resource:
 <!-- chart1 -->
 
 ```js-
+
+F2.Global.pixelRatio = window.devicePixelRatio;
+
+  const data = [
+      { time: '周一', tem: 10, city: 'beijing' },
+      { time: '周二', tem: 22, city: 'beijing' },
+      { time: '周三', tem: 20, city: 'beijing' },
+      { time: '周四', tem: 26, city: 'beijing' },
+      { time: '周五', tem: 20, city: 'beijing' },
+      { time: '周六', tem: 26, city: 'beijing' },
+      { time: '周日', tem: 28, city: 'beijing' },
+      { time: '周一', tem: 5, city: 'newYork' },
+      { time: '周二', tem: 12, city: 'newYork' },
+      { time: '周三', tem: 26, city: 'newYork' },
+      { time: '周四', tem: 20, city: 'newYork' },
+      { time: '周五', tem: 28, city: 'newYork' },
+      { time: '周六', tem: 26, city: 'newYork' },
+      { time: '周日', tem: 20, city: 'newYork' }
+  ];
+  const chart = new F2.Chart({
+    id: 'c1'
+  });
+  const defs = {
+    time: {
+      tickCount: 7,
+      range: [ 0, 1 ]
+    },
+    tem: {
+      tickCount: 5,
+      min: 0
+    }
+  };
+    // 配置time刻度文字样式
+  const label = {
+    fill: '#979797',
+    font: '14px san-serif',
+    offset: 6
+  };
+  chart.axis('time', {
+    label(text, index, total) {
+      const cfg = label;
+        // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
+      if (index === 0) {
+        cfg.textAlign = 'start';
+      }
+      if (index > 0 && index === total - 1) {
+        cfg.textAlign = 'end';
+      }
+      return cfg;
+    }
+  });
+    // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
+  chart.axis('tem', {
+    label: {
+      fontSize: 14
+    }
+  });
+  chart.source(data, defs);
+  chart.line().position('time*tem')
+    .color('city')
+    .shape('smooth');
+  chart.render();
+
 ```
 
 <!-- chart2 -->
 
 ```js-
+
+const data = [
+    { tem: 500, month: '3月' },
+    { tem: -50, month: '4月' },
+    { tem: 450, month: '5月' },
+    { tem: -40, month: '6月' },
+    { tem: 690, month: '7月' },
+    { tem: 346, month: '8月' }
+  ];
+  const chart = new F2.Chart({
+    id: 'c2'
+  });
+  chart.source(data, {
+    tem: {
+      tickCount: 5
+    }
+  });
+  chart.axis('month', {
+    label: {
+      font: 'sans-serif '
+    },
+    line: null,
+    grid: null
+  });
+  chart.axis('tem', {
+    label: null,
+    grid: {
+      stroke: '#f8f8f8'
+    }
+  });
+  chart.interval().position('month*tem').color('tem*month', function(tem, month) {
+    if (month === '8月') {
+      return '#f5623a';
+    }
+    if (tem >= 0) {
+      return '#f8bdad';
+    }
+    if (tem < 0) {
+      return '#99d6c0';
+    }
+  });
+  // y轴方向的缩放动画
+  chart.animate({
+    type: 'scaley'
+  });
+  // 辅助元素
+  data.forEach(function(obj, index) {
+    // 文字部分
+    const offsetY = obj.tem > 0 ? -16 : 14;
+    chart.guide().html([ obj.month, obj.tem ], `<div style='color: #999999;'><span>${obj.tem}</span></div>`, {
+      align: 'cc',
+      offset: [ 0, offsetY ]
+    });
+    // 背景部分
+    const offset = 0.25;
+    chart.guide().rect([ index - offset, 'max' ], [ index + offset, 'min' ], { fill: '#f8f8f8' });
+  });
+  chart.render();
 ```
 
 <!-- chart3 -->
 
 ```js-
+
+const  data = [
+  {a: '1', b: 0.3, c: '1'},
+  {a: '1', b: 0.3, c: '2'},
+  {a: '1', b: 0.4, c: '3'}
+];
+
+const chart = new F2.Chart({
+  id: 'c3'
+});
+
+chart.source(data);
+
+chart.coord('polar', {
+  transposed: true,
+  inner: 0.6
+});
+
+chart.axis(false);
+chart.interval().position('a*b').color('c').adjust('stack');
+chart.animate({
+  type: 'wavec'
+});
+chart.render();
+
 ```
 
