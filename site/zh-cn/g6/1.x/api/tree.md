@@ -35,7 +35,7 @@
 
 ### [layoutFn](#_layoutfn)
 
-树布局构造函数。可选值为`G6.Layout.CompactBoxTree`，`G6.Layout.IndentedTree`，`G6.Layout.Dendrogram`和`G6.Layout.LayeredTidyTree`，默认值为`G6.Layout.CompactBoxTree`。详细信息见[布局API文档](../api/layout.html)。
+树布局构造函数。可选值为`G6.Layouts.CompactBoxTree`，`G6.Layouts.IndentedTree`，`G6.Layouts.Dendrogram`和`G6.Layouts.LayeredTidyTree`，默认值为`G6.Layouts.CompactBoxTree`。详细信息见[布局API文档](../api/layout.html)。
 
 ### [layoutCfg](#_layoutcfg)
 

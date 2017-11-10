@@ -163,7 +163,7 @@ var tree = new G6.Tree({
   width: 600,
   height: 400,                         // 画布高
   fitView: 'autoZoom',                 // 自动缩放
-  layoutFn: G6.Layout.LayeredTidyTree, // 布局类型
+  layoutFn: G6.Layouts.LayeredTidyTree, // 布局类型
   layoutCfg: layoutCfg,                // 布局配置
   behaviourFilter: ['wheelZoom'],
   showButton: false,

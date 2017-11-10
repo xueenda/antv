@@ -1,5 +1,5 @@
 <!--
-title: 网图编辑器（变型1）
+title: 网图编辑器（变型）
 plotDescription:  该图向大家展示了如何在 G6 默认的交互上，稍加修改，快速搭建流程图编辑器变型
 index: 2
 resource:
@@ -149,45 +149,60 @@ const net = new G6.Net({
   height: window.innerHeight    // 画布高
 });
 net.source(data.nodes, data.edges);
-
-addCustom1.on('click', () => {
+net.removeBehaviour(['hoverNodeShowAnchor', 'dragEdgeEndHideAnchor', 'dragNodeEndHideAnchor']);
+// 第四步：配置绑定事件
+addCustom1.on('click', function(ev){
   net.beginAdd('node', {
     shape: 'customNode1'
   });
 });
-addCustom2.on('click', () => {
+addCustom2.on('click', function(ev){
   net.beginAdd('node', {
     shape: 'customNode2'
   });
 });
-drag.on('click', () => {
+drag.on('click', function(ev) {
   net.changeMode('drag');
 });
-edit.on('click', () => {
+edit.on('click', function(ev) {
   net.changeMode('edit');
 });
-save.on('click', () => {
-  const saveData = net.save();
-  const json = JSON.stringify(saveData, null, 2);
-  console.log(saveData, json); // eslint-disable-line no-console
+save.on('click', function(ev) {
+  var saveData = net.save();
+  var json = JSON.stringify(saveData, null, 2)
+  console.log(saveData, json);
 });
-
-let dragging = false;
-
-net.on('dragstart', ()=>{
+// 第五️步：编辑交互变形
+var dragging = false;
+net.on('dragstart', function(ev){
   dragging = true;
 });
-
-net.on('dragend', ()=>{
+net.on('dragend', function(ev){
   dragging = false;
 });
-
-net.on('mouseleave', ev => {
-  const shape = ev.shape;
+// 进入锚点切换到曲线添加模式
+net.on('mouseenter', function(ev) {
+  var shape = ev.shape;
+  if(shape && shape.hasClass('anchor-point') && !dragging) {
+    net.beginAdd('edge', {
+      shape: 'polyLineFlow'
+    });
+  }
+});
+// 离开锚点切换回编辑模式
+net.on('mouseleave', function(ev) {
+  var shape = ev.shape;
   if(shape && shape.hasClass('anchor-point') && !dragging) {
     net.changeMode('edit');
   }
 });
-
+// 绘制后显示锚点
+net.on('afteritemrender', function(ev){
+  var item = ev.item;
+  if(item.get('type') === 'node'){
+    net.showAnchor(item);
+  }
+});
+// 第六步：渲染关系图
 net.render();
 </script>

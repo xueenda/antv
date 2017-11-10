@@ -17,7 +17,7 @@
 * 绘图类：[G6.Canvas](./canvas.html)
 * 矩阵类：[G6.Matrix](./matrix.html)
 * 工具类：[G6.Util](./util.html)
-* 布局包：[G6.Layout](./layout.html)
+* 布局包：[G6.Layouts](./layout.html)
 * 全局配置项：[G6.Global](./global.html)
 
 ## 静态方法

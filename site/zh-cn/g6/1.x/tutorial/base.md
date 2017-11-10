@@ -382,7 +382,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
    height: 450,     // 画布高
    fitView: 'autoZoom',
    behaviourFilter: ['wheelZoom'],
-   layoutFn: G6.Layout.LayeredTidyTree, // 布局类型
+   layoutFn: G6.Layouts.LayeredTidyTree, // 布局类型
   });
 
   // 加载数据

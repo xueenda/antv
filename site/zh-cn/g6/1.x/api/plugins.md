@@ -1,6 +1,6 @@
 <!--
-index: 6
-title: 插件指南
+index: 20
+title: Plugins
 resource:
   jsFiles:
     - ${url.g6}
@@ -308,46 +308,7 @@ edge:
 }
 ```
 
-- `nodeHoverActived`: boolean
-
-悬浮激活，默认值为：`true`
-
-- `dx`: number
-
-水平位移，默认值为：`0`
-
-- `dy`: number
-
-竖直位移，默认值为：`0`
-
-- `nodeToolCfg`: object
-
-节点工具栏配置，默认值为：
-
-```js
-  nodeToolCfg: {
-    class: 'node-tool',
-    lists: [
-      {
-        html: '显示所有来源',
-        event: 'click',
-        callback: 'showSource',
-      },
-      {
-        html: '显示所有去向',
-        event: 'click',
-        callback: 'showTargets',
-      },
-      {
-        html: '显示来源与去向',
-        event: 'click',
-        callback: 'showAll',
-      },
-    ],
-  }
-```
-
-### enhance.d3.mapper--d3映射增强器--enhance.d3.mapper--d3映射增强器
+### enhance.d3.mapper--d3映射增强器
 
 基于 d3 技术栈拓展的 G6 映射增强插件。该插件能接受简单的参数，自动创建度量和图例。
 
