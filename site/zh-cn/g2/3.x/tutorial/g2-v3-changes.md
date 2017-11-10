@@ -1,5 +1,5 @@
 <!--
-index: 31
+index: 32
 title: G2 3.0 升级指引
 -->
 

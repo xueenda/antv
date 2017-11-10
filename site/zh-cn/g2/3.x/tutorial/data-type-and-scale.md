@@ -1,5 +1,5 @@
 <!--
-index: 26
+index: 27
 title: 数据类型与度量
 resource:
   jsFiles:

@@ -5,20 +5,22 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider
+    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc
 plotDescription: 在折线图的基础上，使用镜像分面，对某城市某时间段雨量流量关系进行可视化。
 plotUsage: 用于对比。
 relativePlots:
   - ${plotByName.line}
 chartDetail: ${base}/zh-cn/vis/chart/line.html
 -->
+
 <script>
+  // TODO g2-slider-plugin 的链接地址
   $('<div id="slider"></div>').insertAfter('#mountNode');
 
   $.getJSON('/assets/data/rain-flow.json', data => {
     const ds = new DataSet({
       state: {
-        start: new Date('2009/7/20 0:00').getTime(), // !注意：时间格式，建议转换为时间戳进行比较
+        start: new Date('2009/7/20 0:00').getTime(),
         end: new Date('2009/9/9 0:00').getTime()
       }
     });
@@ -33,8 +35,8 @@ chartDetail: ${base}/zh-cn/vis/chart/line.html
         retains: [ 'rain', 'flow', 'time' ]
       });
 
-    const dv = ds.createView();
-    dv.source(data)
+    const chartDv = ds.createView();
+    chartDv.source(originDv)
       .transform({
         type: 'fold',
         fields: [ 'rain', 'flow' ],
@@ -53,9 +55,11 @@ chartDetail: ${base}/zh-cn/vis/chart/line.html
     const chart = new G2.Chart({
       container: 'mountNode',
       forceFit: true,
-      height: window.innerHeight
+      height: window.innerHeight - 60,
+      padding: [ 20, 20, 20, 80],
+      animate: false
     });
-    chart.source(dv, {
+    chart.source(chartDv, {
       time: {
         type: 'time',
         tickCount: 10,
@@ -64,15 +68,32 @@ chartDetail: ${base}/zh-cn/vis/chart/line.html
     });
     chart.facet('mirror', {
       fields: [ 'type' ],
+      showTitle: false, // 显示标题
+      padding: [ 0, 0, 40, 0],
       eachView(view, facet) {
         const { colValue, data } = facet;
         let color;
+        let alias;
         if (colValue === 'rain') {
           color = '#1890ff';
+          alias = '降雨量(mm)';
+
         } else if (colValue === 'flow') {
           color = '#2FC25B';
+          alias = '流量(m^3/s)';
         }
-        view.source(data);
+        view.source(data, {
+          [`${colValue}`]: {
+            alias
+          }
+        });
+        view.axis(colValue, {
+          title: {
+            autoRotate: false,
+            offset: -10,
+            position: 'end'
+          }
+        });
         view.line().position('time*' + colValue).color(color);
       }
     });
@@ -83,17 +104,24 @@ chartDetail: ${base}/zh-cn/vis/chart/line.html
       container: 'slider',
       width: 'auto',
       height: 26,
-      // start: '2004-01-01', // 和状态量对应
-      // end: '2007-09-24',
+      start: ds.state.start, // 和状态量对应
+      end: ds.state.end,
       xAxis: 'time',
       yAxis: 'value',
-      data,
+      scales: {
+        time: {
+          type: 'time',
+          tickCount: 10,
+          mask: 'M/DD H:mm'
+        }
+      },
+      data: originDv,
       backgroundChart: {
         type: 'line'
       },
-      onChange(min, max) {
-        ds.setState('min', new Date(min).getTime());
-        ds.setState('max', new Date(max).getTime());
+      onChange({startValue, endValue}) {
+        ds.setState('start', startValue);
+        ds.setState('end', endValue);
       }
     });
     slider.render();
