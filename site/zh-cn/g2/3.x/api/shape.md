@@ -9,11 +9,11 @@ resource:
 
 # Shape
 
-获取方式：`G2.Shape` 
+- 获取方式：`G2.Shape` 
 
 通过在 Shape 上注册图形，实现自定义 Shape 的功能。
 
-# 语法
+- 创建方式
 
 自定义 Shape 的入口如下：
 
@@ -33,7 +33,7 @@ var shapeObj = Shape.registerShape('geomType', 'shapeName', {
 
 ## 方法
 
-### [getPoints](#_getPoints)
+### getPoints
 
 `getPoints` 方法用于计算绘制每种 shape 的关键点，在 G2 中每种几何形状都是由特定的几个关键点通过线连接而成。
 
@@ -60,7 +60,7 @@ polygon | polygon 多边形其实也是由多个点连接而成，在 pointInfo 
 schema | schema 作为一种自定义的几何图形，在 G2 中默认提供了 box 和 candle 两种 shape，分别用于绘制箱型图和股票图，注意这两种形状的矩形部分四个点的连接顺序都是顺时针，并且起始点均为左下角，这样就可以无缝转换至极坐标。<br>![image](https://zos.alipayobjects.com/skylark/340c229d-be30-4f98-8a2a-8d55c8422645/attach/3378/1bfed6f3f5f90e13/image.png)![image](https://zos.alipayobjects.com/skylark/8afa13da-95d1-4282-a08b-f1c421b0d972/attach/3378/d82c45d3a526bd80/image.png)
 edge | edge 边同 line 线一致，区别就是 edge 是一个线段，连接边的两个端点即可。
 
-### [draw](#_draw)
+### draw
 
 `getPoints` 用于计算绘制 shape 的关键点，那么 `draw` 方法就是用来定义如何连接这些关键点的。
 
@@ -93,7 +93,7 @@ Shape.registerShape('interval', 'rect', {
 });
 ```
 
-### [parsePoint](#parsePoint)
+### parsePoint
 
 方法名： `shapeObj.parsePoint(point)`
 
@@ -112,7 +112,7 @@ Shape.registerShape('interval', 'rect', {
 }
 ```
 
-### [parsePoints](#parsePoints)
+### parsePoints
 
 方法名：`shapeObj.parsePoints(points)`
 
@@ -131,7 +131,7 @@ Shape.registerShape('interval', 'rect', {
 ]
 ```
 
-### [parsePath](#parsePath)
+### parsePath
 
 方法名：`shapeObj.parsePath(path, isCircle)`
 

@@ -1,0 +1,102 @@
+<!--
+index: 29
+title: 雨量流量对比
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+    - http://unpkg.alipay.com/@antv/g2-plugin-slider
+plotDescription: 在折线图的基础上，使用镜像分面，对某城市某时间段雨量流量关系进行可视化。
+plotUsage: 用于对比。
+relativePlots:
+  - ${plotByName.line}
+chartDetail: ${base}/zh-cn/vis/chart/line.html
+-->
+<script>
+  $('<div id="slider"></div>').insertAfter('#mountNode');
+
+  $.getJSON('/assets/data/rain-flow.json', data => {
+    const ds = new DataSet({
+      state: {
+        start: new Date('2009/7/20 0:00').getTime(), // !注意：时间格式，建议转换为时间戳进行比较
+        end: new Date('2009/9/9 0:00').getTime()
+      }
+    });
+
+    const originDv = ds.createView('origin');
+    originDv.source(data)
+      .transform({
+        type: 'fold',
+        fields: [ 'rain', 'flow' ],
+        key: 'type',
+        value: 'value',
+        retains: [ 'rain', 'flow', 'time' ]
+      });
+
+    const dv = ds.createView();
+    dv.source(data)
+      .transform({
+        type: 'fold',
+        fields: [ 'rain', 'flow' ],
+        key: 'type',
+        value: 'value',
+        retains: [ 'rain', 'flow', 'time' ]
+      })
+      .transform({
+        type: 'filter',
+        callback(obj) {
+          const time = new Date(obj.time).getTime(); // !注意：时间格式，建议转换为时间戳进行比较
+          return time >= ds.state.start && time <= ds.state.end;
+        }
+      });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.source(dv, {
+      time: {
+        type: 'time',
+        tickCount: 10,
+        mask: 'M/DD H:mm'
+      }
+    });
+    chart.facet('mirror', {
+      fields: [ 'type' ],
+      eachView(view, facet) {
+        const { colValue, data } = facet;
+        let color;
+        if (colValue === 'rain') {
+          color = '#1890ff';
+        } else if (colValue === 'flow') {
+          color = '#2FC25B';
+        }
+        view.source(data);
+        view.line().position('time*' + colValue).color(color);
+      }
+    });
+    chart.render();
+
+    // 创建 Slider
+    const slider = new Slider({
+      container: 'slider',
+      width: 'auto',
+      height: 26,
+      // start: '2004-01-01', // 和状态量对应
+      // end: '2007-09-24',
+      xAxis: 'time',
+      yAxis: 'value',
+      data,
+      backgroundChart: {
+        type: 'line'
+      },
+      onChange(min, max) {
+        ds.setState('min', new Date(min).getTime());
+        ds.setState('max', new Date(max).getTime());
+      }
+    });
+    slider.render();
+
+  });
+</script>

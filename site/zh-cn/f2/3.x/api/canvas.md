@@ -1,6 +1,6 @@
 <!--
 index: 5
-title: 图形属性
+title: 绘图属性
 -->
 
 # canvas 属性

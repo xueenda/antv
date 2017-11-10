@@ -61,7 +61,7 @@ relativePlots:
         container.addShape('path', {
           attrs:  {
             path: linkPath,
-            stroke: 'rgba(0, 0, 0, 0.45)',
+            stroke: '#8c8c8c',
             lineDash: [ 4, 2 ]
           }
         });
@@ -105,12 +105,12 @@ relativePlots:
     clickable: false,
     items: [
       { value: '各项花销', fill: '#1890FF', marker: 'square' },
-      { value: '总费用', fill: '#545454', marker: 'square' }
+      { value: '总费用', fill: '#8c8c8c', marker: 'square' }
     ]
   });
   chart.interval().position('type*money').color('type', type => {
     if (type === '总费用') {
-      return '#545454';
+      return '#8c8c8c';
     }
     return '#1890FF';
   }).tooltip('type*money', (type, money) => {

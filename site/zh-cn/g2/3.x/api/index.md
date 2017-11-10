@@ -18,38 +18,38 @@ G2.version; // 返回 G2 当前的版本
 
 ## 类 Classes
 
-### G2.Chart
+### Chart
 
 主体图表类，用于控制图表的创建、绘制和销毁。
 
 详细文档见 [Chart API](./chart.html)。
 
-### G2.Shape
+### Shape
 
 构成图表具体的形状类。
 
 详细文档见 [Shape API](./shape.html)。
 
-### G2.Scale
+### Scale
 
 度量 Scale 类，是将原始数据转换为图形坐标的关键桥梁。
 
 详细文档见 [Scale API](./scale.html)。
 
-### G2.Animate
+### Animate
 
 负责 G2 图表的动画生成，以及提供自定义动画的机制。
 
 详细文档见 [Animate API](./animate.html)。
 
-### G2.Global
+### Global
 
 包含 G2 内部所有常量的定义以及皮肤。比如你可以：
 
 1. 通过 `G2.Global.fontFamily` 获取 G2 图表默认的字体；
 2. 通过 `G2.Global.setTheme('dark')` 来切换或者设置皮肤，详细信息见 [图表样式设置教程](/zh-cn/g2/3.x/tutorial/theme.html#_图表样式设置)。
 
-### G2.Util
+### Util
 
 G2 默认提供的常见的工具类，大部分基于 [lodash](https://lodash.com/) 封装。
 
@@ -67,7 +67,7 @@ const Util = {
 };
 ```
 
-### G2.DomUtil 
+### DomUtil 
 
 用于操作 dom 相关的工具类。具体该工具类包含的方法如下：
 
@@ -85,7 +85,7 @@ const Util = {
 | `addEventListener(target, eventType, callback)` | `target`:HTMLElement，DOM对象；`eventType`:String，事件名；`callback`:Function，回调函数 | 添加事件监听器 |
 | `requestAnimationFrame(fn)` | `fn`:Function，回调函数  | 用于定时循环操作。
 
-### G2.MatrixUtil
+### MatrixUtil
 
 用于操作矩阵、向量的工具类。该工具类提供了操作三阶矩阵、二维向量和三维向量的方法，这些方法直接使用了 [glMatrix](http://glmatrix.net/) 库，并且在其基础上添加了一些额外的遍历方法，具体如下代码：
 
@@ -102,7 +102,7 @@ G2.MatrixUtil.transform([1, 0, 0, 0, 1, 0, 0, 0, 1], [
 ]);
 ```
 
-### G2.PathUtil
+### PathUtil
 
 用于操作图形路径的工具类。具体提供的方法如下：
 
@@ -115,7 +115,7 @@ G2.MatrixUtil.transform([1, 0, 0, 0, 1, 0, 0, 0, 1], [
 | `catmullRomToBezier(pointsArray)` | `pointsArray`:Array，点的数组，如 [ [10, 12], [22, 1], ... ] | 将传入的点转曲。 |
 | `intersection(path1, path2)` | `path1`:Array，数组格式的路径；`path2`:Array，数组格式的路径 | 两条路径差值计算。 |
 
-### G2.G
+### G
 
 G2 图表的底层渲染引擎。
 
