@@ -3,6 +3,8 @@ index: 0
 title: 可视化概览
 -->
 
+# 可视化概览
+
 ## 一、什么是数据可视化
 
 > **科学可视化（Scientific Visualization）**、 **信息可视化（Information Visualization）** 和 **可视分析学（Visual Analytics）** 三个学科方向通常被看成可视化的三个主要分支。而**将这三个分支整合在一起形成的新学科“数据可视化”**，这是可视化研究领域的新起点。  
