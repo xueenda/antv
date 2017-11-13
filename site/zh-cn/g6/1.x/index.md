@@ -48,7 +48,7 @@ resource:
 }
 .outter-graph-container{
     position: absolute;
-    top: 50px;
+    top: 20px;
     left: 500px;
     white-space:nowrap;
     width: 730px;
@@ -104,7 +104,7 @@ resource:
 ```js-
 G6.Global.modalRectStyle = {
     fill: '#F8FAFE',
-    fillOpacity: 0.6
+    fillOpacity: 0.7
 }
 $.getJSON('/assets/data/g6-index.json', data => {
     data.nodes.forEach(node=>{
@@ -161,7 +161,7 @@ $.getJSON('/assets/data/g6-index.json', data => {
     });
     const net = new G6.Net({
         id: 'c1',
-        height: 550,
+        height: 580,
         useAnchor: null,
         layout: force,
         plugins: [ template, nodeSizeMapper, edgeSizeMapper, nodeColorMapper ],
@@ -197,8 +197,10 @@ setInterval(()=>{
     layouts = Util.filter(layouts, layout=>{
       return layout !== net.get('layout');
     });
+    const layout = layouts[parseInt(layouts.length * Math.random())];
+    const nodes = net.getNodes();
     net.clearAllActived();
-    net.changeLayout(layouts[parseInt(layouts.length * Math.random())]);
+    net.changeLayout(layout);
   }
   
 }, 2000);
