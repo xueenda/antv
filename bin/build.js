@@ -3,23 +3,17 @@
 
 var debug = require('debug')('app:build');
 var program = require('commander');
-
-var _require = require('walk'),
-    walk = _require.walk;
-
-var _require2 = require('shelljs'),
-    cp = _require2.cp,
-    mkdir = _require2.mkdir;
-
-var _require3 = require('fs'),
-    writeFile = _require3.writeFile;
-
-var _require4 = require('path'),
-    extname = _require4.extname,
-    join = _require4.join,
-    relative = _require4.relative,
-    resolve = _require4.resolve;
-
+var walk = require('walk').walk;
+var shelljs = require('shelljs');
+var cp = shelljs.cp;
+var mkdir = shelljs.mkdir;
+var fs = require('fs');
+var writeFile = fs.writeFile;
+var path = require('path');
+var extname = path.extname;
+var join = path.join;
+var relative = path.relative;
+var resolve = path.resolve;
 var loadConfig = require('../lib/load-config');
 var loadTemplates = require('../lib/load-templates');
 var md2html = require('../lib/md2html');
@@ -47,7 +41,7 @@ function renderFile(filename) {
     filename = resolve(src, filename);
     var templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
     var config = program.dev ? loadConfig(program.config) : CONFIG;
-    return md2html(filename, src, config, templateMap, null, program.dev);
+    return md2html(filename, src, config, templateMap, null, program.dev).content;
 }
 
 // indexing

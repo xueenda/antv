@@ -49,7 +49,7 @@ module.exports = {
             src: 'zh-cn/f2/3.x/demo',
             dest: '${assets}/dist/${pkg.version}/f2/3.x',
             template: 'f2-demo-standalone'
-        }
+        },
     ],
     indices: [{
         src: 'zh-cn',

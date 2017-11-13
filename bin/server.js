@@ -44,7 +44,7 @@ function renderFile(filename) {
     filename = resolve(src, filename);
     const templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
     const config = program.dev ? loadConfig(program.config) : CONFIG;
-    return md2html(filename, src, config, templateMap, null, program.dev);
+    return md2html(filename, src, config, templateMap, null, program.dev).content;
 }
 
 const app = connect();

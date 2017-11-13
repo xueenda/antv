@@ -3,6 +3,20 @@ import tocbot from 'tocbot';
 import getQueryVariable from './utils/get-query-variable';
 import './demos.less';
 
+const theme = getQueryVariable('theme');
+const isDark = theme === 'dark';
+
+$('.theme-switching .btn').each(function () {
+    const $btn = $(this);
+    if (isDark) {
+        if ($btn.data('theme') === 'dark') {
+            $btn.removeClass('btn-light').addClass('btn-primary');
+        } else {
+            $btn.removeClass('btn-primary').addClass('btn-light');
+        }
+    }
+});
+
 tocbot.init({
     tocSelector: '.toc',
     contentSelector: '.demos .content',
@@ -33,25 +47,12 @@ $('header').headroom({
     }
 });
 
-
-const theme = getQueryVariable('theme');
-const isDark = theme === 'dark';
 $('.screenshot').each(function () {
     const $img = $(this);
     if (isDark) {
         $img.attr('data-src', $img.data('dark'));
     } else {
         $img.attr('data-src', $img.data('default'));
-    }
-});
-$('.theme-switching .btn').each(function () {
-    const $btn = $(this);
-    if (isDark) {
-        if ($btn.data('theme') === 'dark') {
-            $btn.removeClass('btn-light').addClass('btn-primary');
-        } else {
-            $btn.removeClass('btn-primary').addClass('btn-light');
-        }
     }
 });
 
