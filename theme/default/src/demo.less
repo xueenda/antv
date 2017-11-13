@@ -1,3 +1,5 @@
+@import "./less/theme-switching.less";
+
 html, body, .demo-container, .demo-container .flex-column, .demo-container .flex-row {
   width: 100%;
   height: 100%;
@@ -91,9 +93,23 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
     }
     &.detail {
       overflow-y: scroll;
-      padding: 32px 0;
+      padding: 0;
       min-width: 480px;
       flex: 1;
+      .demo-preview {
+        padding-top: 32px;
+        &.dark {
+          background-color: #1f1f1f;
+          .navbar {
+            h4 {
+              color: white;
+            }
+            label {
+              color: rgba(255, 255, 255, .45);
+            }
+          }
+        }
+      }
     }
     &.code-panel {
       flex: 0 0 432px;

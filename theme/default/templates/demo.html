@@ -36,19 +36,26 @@
                 <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-left"></use></svg>
             </button>
         </div>
-        <div class="col detail container">
-            <div class="navbar justify-content-between">
-                <h4 class="nav-link">{{ title }}</h4>
-                {% if canSwitchThemes %}
-                <form class="form-inline">
-                    <div class="btn-group theme-switching" role="group" aria-label="Basic example">
-                        <a href="?theme=default" data-theme="default" class="btn btn-primary">Default</a>
-                        <a href="?theme=dark" data-theme="dark" class="btn btn-light">Dark</a>
-                    </div>
-                </form>
-                {% endif %}
+        <div class="col detail container" id="detail-container">
+            <div class="demo-preview" id="demo-preview">
+                <div class="navbar justify-content-between">
+                    <h4 class="nav-link">{{ title }}</h4>
+                    {% if canSwitchThemes %}
+                    <form class="form-inline">
+                        <label for="theme-switching">{{ resource.translate.themeSwitching }}: </label>
+                        <div class="btn-group theme-switching" id="theme-switching" role="group" aria-label="Basic example">
+                            <a href="?theme=default" data-theme="default" class="btn btn-primary">
+                                <img src="{{ assets }}/image/icon/default-theme.svg" alt="">
+                            </a>
+                            <a href="?theme=dark" data-theme="dark" class="btn btn-light">
+                                <img src="{{ assets }}/image/icon/dark-theme.svg" alt="">
+                            </a>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+                <div class="demo" id="preview"></div>
             </div>
-            <div class="demo" id="preview"></div>
             <div class="card-extra container">
                 {% if plotDescription %}
                 <section class="description">

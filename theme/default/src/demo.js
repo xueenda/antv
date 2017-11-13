@@ -6,6 +6,7 @@ import './demo.less';
 const $code = $('#code');
 const $codeDefault = $('#code-default');
 const $codeDark = $('#code-dark');
+const $demoPreview = $('#demo-preview');
 
 const theme = getQueryVariable('theme');
 const isDark = theme === 'dark';
@@ -20,8 +21,10 @@ $('.theme-switching .btn').each(function () {
     if (isDark) {
         if ($btn.data('theme') === 'dark') {
             $btn.removeClass('btn-light').addClass('btn-primary');
+            $demoPreview.addClass('dark');
         } else {
             $btn.removeClass('btn-primary').addClass('btn-light');
+            $demoPreview.removeClass('dark');
         }
     }
 });

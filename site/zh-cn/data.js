@@ -83,6 +83,7 @@ module.exports = {
             visResource: '资源',
             variation: '变形',
             tag: '标签',
+            themeSwitching: '主题切换',
         },
         cssFiles: [
         ],

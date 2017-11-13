@@ -11,9 +11,14 @@
             {% if canSwitchThemes %}
             <div class="container header">
                 <form class="float-right">
-                    <div class="btn-group theme-switching" role="group" aria-label="Basic example">
-                        <a class="btn btn-primary" data-theme="default" href="?theme=default">Default</a>
-                        <a class="btn btn-light" data-theme="dark" href="?theme=dark">Dark</a>
+                    <label for="theme-switching">{{ resource.translate.themeSwitching }}: </label>
+                    <div class="btn-group theme-switching" id="theme-switching" role="group" aria-label="Basic example">
+                        <a href="?theme=default" data-theme="default" class="btn btn-primary">
+                            <img src="{{ assets }}/image/icon/default-theme.svg" alt="">
+                        </a>
+                        <a href="?theme=dark" data-theme="dark" class="btn btn-light">
+                            <img src="{{ assets }}/image/icon/dark-theme.svg" alt="">
+                        </a>
                     </div>
                 </form>
             </div>
