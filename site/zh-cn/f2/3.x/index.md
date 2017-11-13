@@ -32,8 +32,8 @@ resource:
             <div class="col-md-6">
                 <h1>F2 移动端图表库</h1>
                 <p class="main-info">F2 是一个由纯 JavaScript 编写的针对移动端的高性能图表库。</p>
-                <a href="{{ products.g2.links.demo.href }}" class="btn btn-primary btn-lg">{{ resource.translate.getStarted }}</a>
-                <a href="{{base}}zh-cn/g2/3.x/tutorial/download.html" class="btn btn-light border btn-lg">{{ resource.translate.downloadAndUse }}</a>
+                <a href="{{ products.g2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
+                <a href="{{base}}zh-cn/g2/3.x/tutorial/download.html" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
             <div class="col-md-6 slick">
                 <div id="commentsCarousel" class="carousel">
@@ -80,7 +80,7 @@ resource:
 </section>
 
 <section class="more text-center">
-    <a href="{{ products.f2.links.tutorial.href }}" class="btn btn-primary btn-lg">更多教程</a>
+    <a href="{{ products.f2.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link">更多教程</a>
 </section>
 
 <!-- chart1 -->

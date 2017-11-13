@@ -1,6 +1,6 @@
 <!--
  index: 7
- title: Layout
+ title: Layouts
  resource:
    jsFiles:
      - ${url.g6}
