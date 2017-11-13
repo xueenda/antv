@@ -10,22 +10,21 @@ resource:
 
 用于创建图表的类，用于为创建的图表设置属性以及提供各种配置项方法。
 
-绘制图表前需要创建 canvas 元素
+绘制图表前需要创建 canvas 元素：
 
 ```html
 <canvas id="c1"></canvas>
 ```
 
-创建图表
+创建图表：
 
 ```js
 var chart = new F2.Chart({
   id: 'c1',
   width: 500,
   height: 500,
-  padding: [20,10, 50, 40]
+  padding: [20, 10, 50, 40]
 });
-
 ```
 
 ## 参数
@@ -33,7 +32,7 @@ var chart = new F2.Chart({
 ### id
 
 * 参数类型 `String`
-* 描述：指定对应 canvas 的id
+* 描述：指定对应 canvas 的 id
 * 默认值：null
 
 ### el
@@ -93,14 +92,14 @@ var chart = new F2.Chart({
 
 ```
 
-* padding: `Number|Array` 绘图区域（坐标轴包围的区域）跟画布边缘的边距，可以是数字或者数组[top, right, bottom, left]
-* pixelRatio：`Number` 画布的像素比，默认读取 Global 上的pixelRatio
+* padding: `Number|Array` 绘图区域（坐标轴包围的区域）跟画布边缘的边距，可以是数字或者数组 [top, right, bottom, left]
+* pixelRatio：`Number` 画布的像素比，默认读取 Global 上的 pixelRatio
 
 
 ### pixelRatio
 
 * 参数类型：`Number`
-* 描述：屏幕画布的像素比，
+* 描述：屏幕画布的像素比
 * 默认值：1
 
 屏幕画布的像素比，由于 canvas 在高清屏上显示时会模糊，所以需要设置 `pixelRatio`，一般情况下这个值可以设置成 `window.devicePixelRatio`
@@ -118,7 +117,7 @@ var chart = new F2.Chart({
 
 #### 不同精度的对比
 
-下图是 pixelRatio = 1 和 pixelRatio = 2的对比，在单精度屏幕下没有区别，但是在高精屏幕下会有明显的差别
+下图是 pixelRatio = 1 和 pixelRatio = 2 的对比，在单精度屏幕下没有区别，但是在高精屏幕下会有明显的差别
 
 <div>
   <canvas id="can1" style="float:left;"></canvas>
@@ -127,7 +126,6 @@ var chart = new F2.Chart({
 <div style="clear:both;"></div>
 
 ```js-
-
 var data = [
   {x: 1, y: 1},
   {x: 2, y: 0},
@@ -183,7 +181,7 @@ chart1.render();
 
 ### source
 
-chart.source(data, defs) 设置
+`chart.source(data, defs)` 设置
   + data `Array` 图表显示的数据
   + defs `Object` 【可选】 图表数据的列定义
 
@@ -201,16 +199,16 @@ chart.source(data, defs) 设置
 图表数据的列定义用于数据字段的定义，如数据的类型，显示别名，时间类型的格式等，不同的数字类型的配置项不同，支持的数据类型有：
   * linear: 数字类型
   * cat: 分类类型
-  * timeCat：和时间类型
+  * timeCat：时间类型
 
-F2 会自动检测数据类型，但是有时候用户需要更改一些属性或者数据的类型，详情参考 [G2 Scale](../../../g2/3.x/api/scale.html) API中对数字类型(linear)、分类类型(cat)、和时间类型(timeCat）的介绍。
+F2 会自动检测数据类型，但是有时候用户需要更改一些属性或者数据的类型，详情参考 [G2 Scale](/zh-cn/g2/3.x/api/scale.html)  API  中对数字类型(linear)、分类类型(cat)、和时间类型(timeCat）的介绍。
 
 
 ### geom
 
 chart.&lt;geom&gt;().position('x*y').color('type');
 
-geom 是 geometry 的简写，用于显示特定的图表，F2 提供了下面几种geometry
+geom 是 geometry 的简写，用于显示特定的图表，F2 提供了下面几种 geometry：
 
 type | 说明
 --- | ---
@@ -220,28 +218,27 @@ type | 说明
 `area` | 填充线图跟坐标系之间构成区域图，也可以指定上下范围。
 `interval` | 使用矩形或者弧形，用面积来表示大小关系的图形，一般构成柱状图、饼图等图表。
 `polygon` | 多边形，可以用于色块图、地图等图表类型。
-`schema` | k线图
+`schema` | k 线图
 
 F2 的核心语法就是指定`视觉通道`和数据字段的映射关系，支持下面几种视觉通道：
 
 * [position](geom.html#_position)：数据字段映射到位置
 * [color](geom.html#_color)：数据字段映射到颜色
 * [shape](geom.html#_shape)：数据字段映射到形状
-* [size](geom.html#_size)：数据字段映射到形状
+* [size](geom.html#_size)：数据字段映射到大小
 
 F2 除了提供了字段映射到图形属性上的方法外还提供了：
 
 * [style](geom.html#_style) 设置图形样式的接口
 * [adjust](geom.html#_adjust) 进行数据调整，可以实现层叠柱状图、分组柱状图、层叠面积图
 
-更详细的信息参考 [geom](geom.html)
+更详细的信息参考 [geom](geom.html)。
 
 <h4>示例</h4>
 
-绘制一个点图，将 a,b 分为作为x轴、y轴, 点的大小设置成10
+绘制一个点图，将 a,b 分为作为 x 轴、y 轴, 点的大小设置成 10
 
 ```js
-
 var data = [
   {a: 1, b: 1},
   {a: 2, b: 2}
@@ -250,56 +247,50 @@ var data = [
 chart.source(data);
 chart.point().position('a*b').size(10);
 chart.render();
-
 ```
 
 ### render
 
-chart.render() 渲染图表
+`chart.render()` 渲染图表。
 
-  ```js
-    chart.render();
-  ```
+```js
+chart.render();
+```
 
 ### clear
 
-chart.clear() 清除图表内容
+`chart.clear()` 清除图表内容。
 
-F2 重新绘制时不需要 destroy, 而仅需要 chart.clear() 然后重新声明语法
-
-  ```js
-   chart.clear(); // 清除
-   chart.source(data);
-   chart.line().position('a*b');
-   chart.render();
-  ```
-### repaint
-
-chart.repaint() 重新绘制图表
-
-当修改了 guide、geometry 的配置项时可以重新绘制图表
+F2 重新绘制时不需要 destroy，而仅需要 `chart.clear()` 然后重新声明语法。
 
 ```js
+chart.clear(); // 清除
+chart.source(data);
+chart.line().position('a*b');
+chart.render();
+```
 
+### repaint
+
+`chart.repaint()` 重新绘制图表。
+
+当修改了 guide、geometry 的配置项时可以重新绘制图表。
+
+```js
 chart.repaint();
-
 ``` 
 
 ### changeData
 
-chart.changeData(data);
-
-改变数据，同时图表刷新
+`chart.changeData(data)` 改变数据，同时图表刷新。
 
 ```js
-
 chart.changeData(data);
-
 ```
 
 ### destroy
 
-chart.destroy () 销毁图表，canvas 元素不会销毁
+`chart.destroy()` 销毁图表，canvas 元素不会销毁。
 
 ```js
 chart.destroy();
@@ -307,33 +298,34 @@ chart.destroy();
 
 ### axis
 
-chart.axis(field, cfg|enable) 
+`chart.axis(field, cfg|enable) `
 
-  + field ：坐标轴对应的字段
-  + cfg 坐标轴的配置信息, 也可以设置成 false
-    - line: `Object` 线的配置信息，设置 null 不显示，支持所有的 canvas 属性，参考[canvas 属性](canvas.html)
-    - labelOffset：`Number` 标轴文本距离轴线的距离
-    - grid: `Object|Function` 栅格线的配置项，支持所有的 canvas 属性，参考[canvas 属性](canvas.html)，支持回调函数
-    - tickLine: `Object` 坐标点对应的线的样式， 设置null 不显示，支持所有的 canvas 属性，参考[canvas 属性](canvas.html)，支持回调函数
-    - label: `Object|Function` 坐标轴上的文本，设置null 不显示, 支持所有的 canvas 属性，参考[canvas 属性](canvas.html)，支持回调函数
+  + field: 坐标轴对应的字段
+  + cfg 坐标轴的配置信息，也可以设置成 false
+    - line: `Object` 线的配置信息，设置 null 不显示，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)
+    - labelOffset: `Number` 坐标轴文本距离轴线的距离
+    - grid: `Object|Function` 栅格线的配置项，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
+    - tickLine: `Object` 坐标点对应刻度线的样式，设置 null 不显示，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
+    - label: `Object|Function` 坐标轴上的文本，设置 null 不显示, 支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
+
   ```js
   chart.axis('field', false); // 不显示该字段对应的坐标轴
   chart.axis('field', {
-    // 设置坐标轴线的样式，如果值为 null，则不显示坐标轴线 图形属性
+    // 设置坐标轴线的样式，如果值为 null，则不显示坐标轴线，图形属性
     line: {
       lineWidth: 1, 
       stroke: '#ccc' 
     }, 
-    // 标轴文本距离轴线的距离
+    // 坐标轴文本距离轴线的距离
     labelOffset: 20, 
-    // 坐标点对应的线，null 不显示 图形属性
+    // 坐标点对应的线，null 不显示，图形属性
     tickLine: {
       lineWidth: 1,
       stroke: '#ccc',
       value: 5,// 刻度线长度
     },
-    // 0％处的栅格线着重显示
-    grid: function(text,index){
+    // 0％ 处的栅格线着重显示
+    grid: function(text,index) {
       if(text === '0%'){
         return {
           stroke: '#efefef'
@@ -357,16 +349,17 @@ chart.axis(field, cfg|enable)
       if (index > 0 && index === total - 1) {
         cfg.textAlign = 'right';
       }
-      cfg.text = text + '%';   cfg.text 支持文本格式化处理
+      cfg.text = text + '%';  // cfg.text 支持文本格式化处理
       return cfg;
     },
   });
   ```
+
 ### guide
 
-chart.guide() 设置辅助元素
+`chart.guide()` 设置辅助元素。
 
-为图表添加自定义的辅助元素，如辅助线、辅助文本等.目前支持的辅助类型有：折线（line）、弧线（arc）、长方形（rect）、文字（text）和自定义 html，其中 line、arc、rect 是提前绘制在背景上，text 和 html 是在动画完成后绘制在图形上。
+为图表添加自定义的辅助元素，如辅助线、辅助文本等。目前支持的辅助类型有：折线（line）、弧线（arc）、长方形（rect）、文字（text）和自定义 html，其中 line、arc、rect 是提前绘制在背景上，text 和 html 是在动画完成后绘制在图形上。
 
 #### chart.guide().html(point, html, [cfg])
 
@@ -423,9 +416,9 @@ chart.guide() 设置辅助元素
 
 + `cfg`: Object
 
-辅助框的显示样式配置，可选, 详细配置参考 [图形属性](canvas.html)。
+辅助框的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
 
-```javascript
+```js
 // 添加辅助框
 chart.guide().rect([startXValue, startYValue], [endXValue, startYValue], {
   lineWidth: 0, // 辅助框的边框宽度
@@ -451,7 +444,7 @@ chart.guide().rect([startXValue, startYValue], [endXValue, startYValue], {
 
 + `cfg`: Object
 
-辅助线的显示样式配置，可选, 详细配置参考 [图形属性](canvas.html)。
+辅助线的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
 
 ```js
 chart.guide().line(['min', 0], ['min', 'max'], {
@@ -463,13 +456,13 @@ chart.guide().line(['min', 0], ['min', 'max'], {
 
 ### coord
 
-chart.coord(type, cfg) 设置坐标系
-  + type 坐标系类型，目前支持 rect,polar 两种
+`chart.coord(type, cfg)` 设置坐标系
+  + type 坐标系类型，目前支持 rect, polar 两种
   + cfg 坐标系的配置项，rect（直角坐标系） 和 polar(极坐标）的配置项不完全一样
-    - transposed 坐标系翻转
-    - startAngle polar （极坐标）的起始角度
-    - endAngle polar （极坐标）的结束角度
-    - innerRadius polar (极坐标）的内环半径
+    - transposed: 坐标系翻转
+    - startAngle: polar（极坐标）的起始角度
+    - endAngle: polar（极坐标）的结束角度
+    - innerRadius: polar（极坐标）的内环半径
 
   ```js
     chart.coord('rect') // 直角坐标系
@@ -480,12 +473,11 @@ chart.coord(type, cfg) 设置坐标系
     chart.coord('polar'); // 极坐标
     chart.coord('polar', {
       startAngle: -Math.PI,
-    endAngle: 0
+      endAngle: 0
     });
     chart.coord('polar', {
       transposed: true // 饼图一般使用这个坐标系
     });
-   
   ```
 
 <div>
@@ -495,7 +487,6 @@ chart.coord(type, cfg) 设置坐标系
 <div style="clear:both;"></div>
 
 ```js-
-
 var data = [
   {x: '1', y: 1},
   {x: '2', y: 2},
@@ -554,7 +545,6 @@ chart1.guide().text([0, 3.5], 'polar and innerRadius = 0.5', {
   fontSize: 14
 });
 chart1.render();
-
 ```
 
 
@@ -562,44 +552,49 @@ chart1.render();
 
 chart.animate(cfg|false) 执行动画
   * cfg|false 指定动画的配置项或者禁用动画
-    + type: 动画的类型：
+    + type: 动画的类型
     + duration: 动画时间（毫秒），默认1000。
-    + easing: Function/String 缓动函数或缓动函数名称，默认easeInOut。支持linear、easeIn、easeOut、easeInOut、backIn、backOut、elastic、bounce
+    + easing: Function/String 缓动函数或缓动函数名称，默认 easeInOut。支持 linear、easeIn、easeOut、easeInOut、backIn、backOut、elastic、bounce
     + success: Function 动画结束后执行的回调函数。
 
   ```js
   chart.animate(false);// 禁用动画
   chart.animate({
-      duration: 2000,
-      easing: 'elastic',
-      success: function() {
+    duration: 2000,
+    easing: 'elastic',
+    success: function() {
       alert('ok');
     }
   });
   ```
+
 ### getPosition
 
-chart.getPosition(record) 获取数据对应在画布上的坐标。
+`chart.getPosition(record)` 获取数据对应在画布上的坐标。
+
   * record：`Object` 原始的数据对象
 
   ```js
-     var point = chart.getPosition({time: '2010-02-02', value: 20});
+  var point = chart.getPosition({time: '2010-02-02', value: 20});
   ```
+
 ### getRecord
 
-chart.getRecord(point) 根据画布上的坐标获取对应的数据
+`chart.getRecord(point)` 根据画布上的坐标获取对应的数据。
+
   * point：`Object`  画布上的点
 
   ```js
-     var obj = chart.getRecord({x: 100, y: 100});
+  var obj = chart.getRecord({x: 100, y: 100});
   ```
+
 ### getSnapRecords
 
-chart.getSnapRecords(point, [field]) 根据画布上的坐标获取附近的数据
+`chart.getSnapRecords(point, [field])` 根据画布上的坐标获取附近的数据。
 
   * point 画布上的点
-  * field 用于逼近数据的字段，默认都是x 轴对应的字段，但是饼图情况下需要自己指定对应 y 轴的字段
+  * field 用于逼近数据的字段，默认都是 x 轴对应的字段，但是饼图情况下需要自己指定对应 y 轴的字段
   ```js
-    var records = chart.getSnapRecords({x: 100, y: 100});
+  var records = chart.getSnapRecords({x: 100, y: 100});
   ```
   
