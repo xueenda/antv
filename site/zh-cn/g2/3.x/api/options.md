@@ -1,13 +1,13 @@
 <!--
 index: 8
-title: 图表配置项
+title: 配置项声明方式
 resource:
   jsFiles:
     - ${url.g2}
     - ${url.dataSet}
 -->
 
-# 图表配置项
+# 配置项声明方式
 
 G2除了支持函数调用方式外，也支持图形语法的配置项式声明方式。
 

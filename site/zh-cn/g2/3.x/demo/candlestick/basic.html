@@ -15,11 +15,11 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
 <script>
   $('<div id="slider"></div>').insertAfter('#mountNode');
   $.getJSON('/assets/data/candle-sticks.json',function(data) {
-    // 设置状态量，时间格式建议转换为时间戳
+    // 设置状态量，时间格式建议转换为时间戳，转换为时间戳时请注意区间
     const ds = new DataSet({
       state: {
-        start: new Date('2015-04-07').getTime(),
-        end: new Date('2015-07-20').getTime()
+        start: '2015-04-07',
+        end: '2015-07-28'
       }
     });
     const dv = ds.createView();
@@ -27,7 +27,7 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
       .transform({
         type: 'filter',
         callback: obj => {
-          const date = new Date(obj.time).getTime();
+          const date = obj.time;
           return date <= ds.state.end && date >= ds.state.start;
         }
       })
@@ -50,9 +50,7 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
       'time': {
         type: 'timeCat',
         nice: false,
-        mask: 'MM-DD',
-        tickCount: 10,
-        range: [ 0, 1]
+        range: [ 0, 1 ]
       },
       trend: {
         values: [ '上涨', '下跌' ]
@@ -145,7 +143,7 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
 
     chart.render();
 
-    //  生成 slider
+    // 生成 slider
     const slider = new Slider({
       container: 'slider', // DOM id
       width: 'auto',
@@ -156,9 +154,15 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
       data, // 源数据
       xAxis: 'time', // 背景图的横轴对应字段，同时为数据筛选的字段
       yAxis: 'volumn', // 背景图的纵轴对应字段，同时为数据筛选的字段
-      onChange: ({startValue, endValue}) => {
-        ds.setState('start', startValue);
-        ds.setState('end', endValue);
+      scales: {
+        time: {
+          type: 'timeCat',
+          nice: false,
+        }
+      },
+      onChange: ({startText, endText}) => {
+        ds.setState('start', startText);
+        ds.setState('end', endText);
       }
     });
     slider.render();
