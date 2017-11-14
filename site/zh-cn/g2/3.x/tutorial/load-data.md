@@ -26,7 +26,18 @@ var chart = new G2.Chart({
   ]
 });
 ```
-- 方式 2：调用 `chart.source(data)` 方法
+- 方式 2：调用 `chart.source(data)` 方法，每个字段的[列定义](scale.html)也可以在这里传入
+
+```js
+chart.source(data, {
+  x: {
+    type: 'cat'
+  },
+  y: {
+    min: 0
+  }
+})
+```
 
 ## 支持的数据格式
 
@@ -46,6 +57,8 @@ var data = [
   {"gender":"男","count":40},
   {"gender":"女","count":30}
 ];
+
+chart.source(data);
 ```
 
 ### DataView 对象

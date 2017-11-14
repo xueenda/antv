@@ -15,9 +15,11 @@ resource:
 
 ## tooltip 配置语法
 
-在 G2 中提供了两种配置 tooltip 的方法，一种是设置在 chart 对象上的全局配置，另一种是设置在每个几何标记对象上的 tooltip 配置，具体如下：
+在 G2 中提供了个层次的配置 tooltip 的方法，
+ 1. 设置在 chart 对象上的tooltip 样式、功能相关的配置，
+ 2. 设置在每个几何标记对象上的 tooltip 配置，具体如下：
 
-（1） chart 对象上的全局配置
+（1） chart 上的 tooltip 方法
 
 ```js
 chart.tooltip(true, cfg); // 开启 tooltip，并设置 tooltip 配置信息
@@ -59,22 +61,37 @@ chart.tooltip({
 
 ```js
 chart.<geom>.tooltip('field1*field2...*fieldN');
-chart.<geom>.tooltip('field1*field2...*fieldN', function(field1Value, field2Value, ..., fieldNValue) {
-
-});
 ```
 
 这个时候 tooltip 的显示内容如下：
 
 ![image](https://zos.alipayobjects.com/skylark/a92d121a-5879-42ad-b12c-1b4cc3c79f69/attach/2378/b8013e9dd10fd634/image.png)
 
-2. 除了调用 `chart.tooltip(false)` 关闭 tooltip 外，还可以在 geom 上关闭 tooltip。配置方法如下：
+2. 使用回调函数自定义 tooltip 信息, 默认情况下tooltip 的每一项包含以下信息：
+  * title 标题，默认tooltip 的标题取第一项的 title
+  * name 标题
+  * value 值
+  * color 图例项对应的颜色
+  * index 索引值
+所以在回调函数中可以通过修改这几个值，达到自定义tooltip 的目的
+
+```js
+chart.<geom>.tooltip('a*b', function(a, b) {
+  return {
+    name: a,
+    value: b
+  };
+});
+```
+
+
+3. 除了调用 `chart.tooltip(false)` 关闭 tooltip 外，还可以在 geom 上关闭 tooltip。配置方法如下：
 
 ```js
 chart.point().tooltip(false);
 ``` 
 
-## 配置 tooltip
+## 配置示例
 
 tooltip 的目的是为了展示数据点相关的数据，具体展示的内容完全可以通过多种灵活的方式来实现。
 
@@ -143,6 +160,13 @@ chart.render();
   items: 数组对象，当前 tooltip 显示的每条内容
 }
 ```
+
+每一项的内容
+  * title 标题，默认tooltip 的标题取第一项的 title
+  * name 标题
+  * value 值
+  * color 图例项对应的颜色
+  * index 索引值
 
 通过修改 items 的内容就可以修改 tooltip 的展示内容了。
 
@@ -348,7 +372,7 @@ crosshairs: {
 - y: 垂直辅助线
 - cross: 十字辅助线
 
-‘line’, ‘area’, ‘path’, ‘areaStack’ 默认会展示垂直辅助线；‘interval’ 默认会展示矩形背景框。
+‘line’, ‘area’, ‘path’ 默认会展示垂直辅助线；‘interval’， 默认会展示矩形背景框。
 
 
 ### 改变 tooltip 触发方式

@@ -35,15 +35,15 @@ var chart = new G2.Chart({
   height: 200
 });
 chart.source(data);
-chart.point().position('month*temperature').color('city');
+chart.point().position('month*temperature').color('city', ['#1890FF', '#2FC25B']);
 chart.render();
 ```
 
-`chart.point().position('month*temperature').color('city');` 含义如下：
+`chart.point().position('month*temperature').color('city', ['#1890FF', '#2FC25B']);` 含义如下：
 
 1. 将 `month` 映射到 `position` 位置图形属性的 x 轴方向；
 2. 将 `temperature` 映射到 `position` 位置图形属性的 y 轴方向；
-3. 将 `city` 映射到 `color` 颜色图形属性。
+3. 将 `city` 映射到 `color` 颜色图形属性。使用的颜色是 ['#1890FF', '#2FC25B']
 
 ## 加载数据
 
@@ -144,14 +144,17 @@ month|temperature|city|_origin
 
 x|y|color|_origin
 -----|----|----|-----
-[100]|[150]|'red'|{month: '一月',temperature: 5,city: '北京'}
-[300]|[100]|'red'|{"month":"二月","temperature":10,"city":"北京"}
+[100]|[150]|<span style="color:#1890FF">'#1890FF'</span>|{month: '一月',temperature: 5,city: '北京'}
+[300]|[100]|<span style="color:#1890FF">'#1890FF'</span>|{"month":"二月","temperature":10,"city":"北京"}
 
 x|y|color|_origin
 -----|----|----|-----
-[100]|[120]|'blue'|{"month":"一月","temperature":8,"city":"南京"}
-[300]|[60]|'blue'|{"month":"二月","temperature":14,"city":"南京"}
+[100]|[120]|<span style="color:#2FC25B">'#2FC25B'</span>|{"month":"一月","temperature":8,"city":"南京"}
+[300]|[60]|<span style="color:#2FC25B">'#2FC25B'</span>|{"month":"二月","temperature":14,"city":"南京"}
 
 ## 渲染绘制
 
 将最后处理的数据交由绘图库进行绘制渲染。
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/oJubdhOQyIDUWXERNQhI.png" style="width: 100%;max-width: 450px;">
+

@@ -28,6 +28,14 @@ G2 目前支持 **6** 种辅助标记类型：
 
 下面列出了各个 guide 辅助标记类型的使用，更详细的配置项参见 [Guide API](/zh-cn/g2/3.x/api/chart.html#_guide)。
 
+guide 辅助标记用于标示位置的方式主要有两种
+* 原始数据的值 如： {time: '2010-01-01', value: 100} 或者 ['2010-01-01', 100]
+* 图表绘图区域的相对位置，从左上角计算 如：['50%', '50%']
+
+`注意`：
+* 原始数据和百分比的方式不能混用，不支持['2010-01-01', '50%']
+* 不同 guide 中标示位置的参数不完全相同，主要是 start, end, position
+
 ### line 辅助线
 
 ```js
@@ -350,6 +358,9 @@ chart.arc({
 });
 ```
 
+`注意`：
+* arc 辅助弧线，仅在 polar [坐标系（Coord）](coord.html)下生效
+
 ### 动态辅助标记
 
 辅助标记接受的位置信息的参数都是原始数据值，辅助标记一旦生成后就是固定了位置，如果数据发生改变，辅助标记就需要删除掉重新创建
@@ -427,8 +438,8 @@ chart.guide().text({
 
 chart.render();
 
-setTimeout(function() {
-  data.pop();
+setInterval(function() {
+  data.shift();
   data.push({
     time: new Date().getTime(),
     value: Math.random() + .25
