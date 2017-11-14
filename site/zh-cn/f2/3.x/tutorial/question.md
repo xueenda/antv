@@ -16,12 +16,11 @@ resource:
 
 <canvas id="can1"></canvas>
 
-
 #### 原因分析
 
-由于目前的手持设备大多数都是高清屏，也就说浏览器的一像素会对应手机屏幕上的多个像素点，以 iphone plus 为例，屏幕的3个像素会对应浏览器上的 1 个像素，所以就会出现模糊的现象。
+由于目前的手持设备大多数都是高清屏，也就说浏览器的一像素会对应手机屏幕上的多个像素点，以 iphone plus 为例，屏幕的 3 个像素会对应浏览器上的 1 个像素，所以就会出现模糊的现象。
 
-浏览器上有个属性 'window.devicePixelRatio' 就是标明了屏幕像素的比例。
+浏览器上有个属性 `window.devicePixelRatio` 就是标明了屏幕像素的比例。
 
 #### 解决方案  
 
@@ -45,7 +44,6 @@ var chart1 = new F2.Chart({
 <canvas id="can2"></canvas>
 
 ```js-
-
 var data = [
   {x: 1, y: 1},
   {x: 2, y: 0},
@@ -99,11 +97,10 @@ chart1.render();
 
 #### 更多说明
 
-F2 没有默认设置 window.devicePixelRatio 的原因：
+F2 没有默认设置 `window.devicePixelRatio` 的原因：
 
-* 由于F2 除了应用在 Web 端的 H5 应用外，还嵌入了一些native 的应用中，而这些环境中不能使用这个属性
+* 由于 F2 除了应用在 Web 端的 H5 应用外，还嵌入了一些 native 的应用中，而这些环境中不能使用这个属性
 * 不同的团队的高清方案不同，有些团队会使用整体缩放页面的方案，此时不应该设置这个属性
-
 
 ## 2. 怎么显示时间类型
 
@@ -126,7 +123,7 @@ var data = [
 
 #### 问题分析
 
-F2 没有支持时间类型的[度量](../../../g2/3.x/api/scale.html) 会自动将时间字符串识别成分类类型，不能自动计算时间坐标轴
+F2 没有支持时间类型的[度量](/zh-cn/g2/3.x/tutorial/scale.html)，所以会自动将时间字符串识别成分类类型，不能自动计算时间坐标轴。
 
 #### 解决方案
 
@@ -152,7 +149,7 @@ chart.source(data, {
 })
 ```
 
-如果是显示折线图时，由于分类数据的 x 轴会在两边留下空白，所以需要设置 range: [0, 1]
+如果是显示折线图时，由于分类数据的 x 轴会在两边留下空白，所以需要设置 `range: [0, 1]`
 
 ```js
 chart.source(data, {
@@ -182,30 +179,28 @@ chart.source(data, {
 
 #### 问题描述：
 
-经常有场景需要手（鼠标）在图表上滑动显示滑动位置的相信信息，没有看到 F2 的demo或者 API
+经常有场景需要手（鼠标）在图表上滑动显示滑动位置的相关信息，没有看到 F2 的 demo 或者 API！
 
 #### 问题分析：
 
-由于 F2 主要是解决绘制图表和定制个性化图表的能力，由于各种手机环境下交互的方式和样式都差别很大，所以 F2 对交互没有进行封装，需要用户自己监听 canvas 的事件，F2 提供了一些接口来完成交互。
+由于 F2 主要是提供绘制图表和定制个性化图表的能力，由于各种手机环境下交互的方式和样式差别很大，所以 F2 对交互没有进行封装，需要用户自己监听 canvas 的事件，但是 F2 提供了一些接口来完成交互。
 
 #### 解决方案
 
 F2 提供了三个方法用于跟获取图表的信息：
 
-* getPosition(record) 根据数据值获取画布上的位置
-* getRecord(point) 根据画布上的像素位置获取记录信息
-* getSnapRecords(point) 根据画布上的位置获取临近的数据
+* `getPosition(record)` 根据数据值获取画布上的位置
+* `getRecord(point)` 根据画布上的像素位置获取记录信息
+* `getSnapRecords(point)` 根据画布上的位置获取临近的数据
 
-
-getRecord 和 getSnapRecords 差别在于 前者将画布的坐标转换成数据对应的值，无论用户数据中是否存在对应的数据，而后者会在原始的数据中进行查找并返回。
+`getRecord()` 和 `getSnapRecords()` 差别在于 前者将画布的坐标转换成数据对应的值，无论用户数据中是否存在对应的数据，而后者会在原始的数据中进行查找并返回。
 
 常见的点击画布获取信息的步骤如下：
 
 1. 获取点击的画布的坐标
-2. 通过 getSnapRecords 方法获取临近的数据
+2. 通过 `getSnapRecords()` 方法获取临近的数据
 
 ```js
-
 function getPoint(canvas, clientX, clientY) {  
   var bbox = canvas.getBoundingClientRect();  
   return {  
@@ -215,28 +210,26 @@ function getPoint(canvas, clientX, clientY) {
 } 
 
 canvas.onclick=function(event){  
-  var point = getPoint(canvas,event.clientX,event.clientY)  
+  var point = getPoint(canvas, event.clientX, event.clientY);
   var x = parseInt(point.x);  
   var y = parseInt(point.y);  
-  console.log("x:"+x+";"+"y:"+y);
+  console.log("x:" + x + ";" + "y:" + y);
   // 根据画布坐标获取对应数据集
   var data = chart.getSnapRecords(point);
   console.log(data);
 } 
-
 ```
 
-用户获取到数据后可以进行任何自己想进行的交互
+用户获取到数据后可以进行任何自己想进行的交互。
 
 ## 4. 如何显示 tooltip
 
-F2 没有内置tooltip ，如果想在图表上显示，需要先获取手滑动位置的信息，参考 [问题 3](#_3.-怎么跟图表进行交互) 
+F2 没有内置 tooltip，如果想在图表上显示，需要先获取手滑动位置的信息，参考 [问题 3](/zh-cn/f2/3.x/tutorial/question.html#_3.-怎么跟图表交互) 
 
 * 绑定事件，获取到图表上对应的数据信息
 * 自己生成 dom 显示数据
 
 ```js
-
 function getPoint(canvas, clientX, clientY) {  
   var bbox = canvas.getBoundingClientRect();  
   return {  
@@ -247,9 +240,9 @@ function getPoint(canvas, clientX, clientY) {
 
 // 绑定事件，可以用原生的写法
 $(canvas).on('touchmove', function(ev) {
-  var touche = ev.touches[0];
-  if (touche) {
-    var point = getPoint(canvas,touche.clientX,touche.clientY);
+  var touch = ev.touches[0];
+  if (touch) {
+    var point = getPoint(canvas, touch.clientX, touch.clientY);
     var records = chart.getSnapRecords(point);
     // 生成 dom
     // 移动 dom
@@ -258,13 +251,13 @@ $(canvas).on('touchmove', function(ev) {
 })
 ```
 
-touchstart 和 touchend 也需要进行处理
+`touchstart` 和 `touchend` 也需要进行处理。
 
 ## 5. 如何设置渐变色
 
 #### 问题描述：
 
-面积图需要显示渐变色
+面积图需要显示渐变色。
 
 #### 解决方案
 
@@ -290,7 +283,7 @@ F2 的图表定义时有多种方式可以设置渐变色
   });
 
   // 如果有多种颜色
-  chart.area().position('x*y').color('type', function(type){
+  chart.area().position('x*y').color('type', function(type) {
     if (type === '1') {
       return grd;
     }
@@ -305,7 +298,7 @@ F2 的图表定义时有多种方式可以设置渐变色
 
 #### 问题描述
 
-如何在 F2 生成的图表上生成图例
+如何在 F2 生成的图表上生成图例？
 
 #### 问题分析
 
@@ -313,18 +306,16 @@ F2 的图表定义时有多种方式可以设置渐变色
 
 #### 方案
 
-自定义图例有一下步骤：
+自定义图例有以下步骤：
 
 1. 定义每种分类的颜色
 2. 生成图表时指定分类的颜色
-3. 生成DOM
+3. 生成 DOM
 
 ```js
-
 var data = [
   {time: '2011-01-01', value: 10, type: '类型1'},
   {time: '2011-01-02', value: 20, type: '类型1'},
-
   {time: '2011-01-01', value: 10, type: '类型2'},
   {time: '2011-01-02', value: 20, type: '类型2'}
 ];
@@ -365,7 +356,7 @@ $('#legend-list .legend-item').on('click', function(ev) {
 });
 ```
 
-[查看示例](../demo/other/legend)
+[查看示例](../demo/other/legend.html)
 
 ## 7. 坐标轴上数字混乱
 
@@ -377,7 +368,7 @@ $('#legend-list .legend-item').on('click', function(ev) {
 
 #### 问题分析
 
-这种情况都是讲数字类型的数据表示成了字符串，如下所示：
+这种情况都是将数字类型的数据表示成了字符串，如下所示：
 
 ```js
 var data = [
@@ -413,19 +404,16 @@ var data = [
 
 ```js
 // g2 代码
-
 chart.line().position('time*value').label('value');
 ```
 
 #### 问题分析
 
-由于图表的文本显示非常复杂，不同的图表，在不同的坐标系下显示都不一样，所以 F2 为了精简代码方面的考虑并没有像 G2 一样提供 .label 方法，但是F2 提供了非常强大的 guide 功能，可以通过 guide 来绘制文本
+由于图表的文本显示非常复杂，不同的图表，在不同的坐标系下显示都不一样，所以 F2 为了精简代码方面的考虑并没有像 G2 一样提供 .label 方法，但是 F2 提供了非常强大的 guide 功能，可以通过 guide 来绘制文本。
 
 #### 解决方案
 
-使用 F2 的guide，参考 [guide 接口](../api/chart.html#_guide)
+使用 F2 的 guide，参考 [guide 接口](../api/chart.html#_guide)。
 
-[查看示例](../demo/interval/column-rect.html)
-
-
+[查看示例](/zh-cn/f2/3.x/demo/column/diy.html)。
 

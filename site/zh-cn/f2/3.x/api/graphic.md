@@ -8,7 +8,7 @@ resource:
 
 # Graphic
 
-F2 由于是直接使用[ canvas 的API](http://www.w3school.com.cn/tags/html_ref_canvas.asp)，所以在自定义 shape 时使用canvas 的接口
+F2 由于是直接使用[ canvas 的 API](http://www.w3school.com.cn/tags/html_ref_canvas.asp)，所以在自定义 shape 时使用 canvas 的接口。
 
 
 ```js
@@ -22,7 +22,7 @@ F2.Shape.registerShape('point', 'custom', {
 
     ctx.restore(); //恢复当前上下文
   }
-})
+});
 ```
 
 `注意`
@@ -32,17 +32,17 @@ F2.Shape.registerShape('point', 'custom', {
 
 ## 方法
 
-为了方便用户自定义Shape，F2 提供了下面的方法
+为了方便用户自定义 Shape，F2 提供了下面的方法：
 
 ### drawLine
 
 绘制单个线段
 
-F2.Graphic.drawLine(start, end, canvas, cfg)
+`F2.Graphic.drawLine(start, end, canvas, cfg)`
 * start: `Object` 起始点
 * end: `Object` 结束点
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
 var canvas = document.getElementById('c1');
@@ -55,15 +55,14 @@ F2.Graphic.drawLine({x: 0, y: 0}, {x: 100, y: 100}, canvas, {
 
 <canvas id="c1" width="100" height="100"></canvas>
 
-
 ### drawLines
 
 绘制多个线段
 
-F2.Graphic.drawLines(points, canvas, cfg)
+`F2.Graphic.drawLines(points, canvas, cfg)`
 * points 绘制线的点集合
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
 var canvas = document.getElementById('c2');
@@ -76,16 +75,15 @@ F2.Graphic.drawLines([{x: 0, y: 0}, {x: 100, y: 100}, {x: 200, y: 40}], canvas, 
 
 <canvas id="c2" width="200" height="100"></canvas>
 
-
 ### drawSmooth
 
 绘制曲线
 
+`F2.Graphic.drawSmooth(points, canvas, cfg)`
 
-F2.Graphic.drawSmooth(points, canvas, cfg)
 * points：`Array` 绘制线的点集合,注意点必须大于 3 否则无法形成曲线
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
 var canvas = document.getElementById('c3');
@@ -103,11 +101,12 @@ F2.Graphic.drawSmooth([{x: 0, y: 0}, {x: 50, y: 50}, {x: 100, y: 20}, {x: 150, y
 
 绘制文本
 
-F2.Graphic.drawText(text, pos, canvas, cfg)
+`F2.Graphic.drawText(text, pos, canvas, cfg)`
+
 * text: `String` 文本内容
 * pos: `Object` 位置
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
 var canvas = document.getElementById('c4');
@@ -125,14 +124,13 @@ F2.Graphic.drawText('test text', {x: 50, y: 50}, canvas, {
 
 绘制包含多个点的包围盒
 
-F2.Graphic.drawRect(points, canvas, cfg)
+`F2.Graphic.drawRect(points, canvas, cfg)`
 
 * points：`Array` 矩形框包围的点集合,注意点必须大于 2 否则无法绘制矩形框
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-
 var canvas = document.getElementById('c5');
 
 F2.Graphic.drawRect([{x: 50, y: 50}, {x: 100, y: 100}], canvas, {
@@ -141,6 +139,7 @@ F2.Graphic.drawRect([{x: 50, y: 50}, {x: 100, y: 100}], canvas, {
 });
 
 ```
+
 <canvas id="c5" width="200" height="120"></canvas>
 
 
@@ -148,17 +147,16 @@ F2.Graphic.drawRect([{x: 50, y: 50}, {x: 100, y: 100}], canvas, {
 
 绘制圆
 
-F2.Graphic.drawCircle(center, radius, canvas, cfg)
+`F2.Graphic.drawCircle(center, radius, canvas, cfg)`
 
 * center: `Object` 圆心位置
 * radius: `Number` 半径
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
 
 var canvas = document.getElementById('c6');
-
 
 F2.Graphic.drawCircle({x: 100, y: 100}, 50, canvas, {
   stroke: 'red',
@@ -174,14 +172,14 @@ F2.Graphic.drawCircle({x: 100, y: 100}, 50, canvas, {
 
 绘制圆弧
 
-F2.Graphic.drawArc(center, radius, startAngle, endAngle, canvas, cfg)
+`F2.Graphic.drawArc(center, radius, startAngle, endAngle, canvas, cfg)`
 
 * center: `Object` 圆心位置
 * radius: `Number` 半径
 * startAngle: `Number` 起始弧度
 * endAngle: `Number` 结束弧度
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
 var canvas = document.getElementById('c7');
@@ -194,17 +192,14 @@ F2.Graphic.drawArc({x: 100, y: 100}, 50, 0, Math.PI, canvas, {
 
 <canvas id="c7" width="200" height="200"></canvas>
 
-
-
 ### drawShape
 
 自定义绘制图形
 
 F2.Graphic.drawShape(canvas, cfg, callback)
 * canvas: `HTMLElement` 画布对象
-* cfg: `Object` 配置项，见[图形属性](canvas.html)
+* cfg: `Object` 配置项，见[绘图属性](canvas.html)
 * callback: `Function` 回调函数, 函数原型 function(ctx) {}
-
 
 ```js+
 var canvas = document.getElementById('c8');
@@ -216,7 +211,6 @@ F2.Graphic.drawShape(canvas, {
   ctx.moveTo(20,20);
   ctx.lineTo(200, 200);
 });
-
 ```
 
 <canvas id="c8" width="200" height="200"></canvas>
@@ -224,7 +218,5 @@ F2.Graphic.drawShape(canvas, {
 
 注意：
 
-* 不需要调用 save,store 方法，保存和恢复上下文
+* 不需要调用 save(), store() 方法，保存和恢复上下文
 * 不需要调用 stroke(), fill() 方法绘制或者填充属性
-
-
