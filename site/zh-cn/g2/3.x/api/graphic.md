@@ -18,7 +18,7 @@ title: 绘图属性
 * `opacity` 设置绘图的当前 alpha 或透明值；
 * `globalCompositeOperation` 设置新图像如何绘制到已有的图像上。
 
-**！注意：**
+> **！注意：**
 
 G2 对图形属性进行了缩写
 
@@ -33,7 +33,7 @@ G2 对图形属性进行了缩写
 * [`lineWidth`](http://www.w3school.com.cn/tags/canvas_linewidth.asp) 设置当前的线条宽度；
 * [`miterLimit`](http://www.w3school.com.cn/tags/canvas_miterlimit.asp)  设置最大斜接长度。
 
-**！注意：**
+> **！注意：**
 
 1. G2 在现有线的样式基础上增加了虚线的支持：
 

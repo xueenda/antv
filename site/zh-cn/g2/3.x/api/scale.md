@@ -23,7 +23,7 @@ resource:
 + **log**，连续非线性的 Log 数据 将 [1,10,100,1000] 转换成[0,1,2,3]；
 + **pow**，连续非线性的 pow 数据 将 [2,4,8,16,32] 转换成 [1,2,3,4,5]。
 
-可以在[Scale 度量
+可以在 [Scale 度量
 ](/zh-cn/g2/3.x/tutorial/scale.html)和[数据类型与度量](/zh-cn/g2/3.x/tutorial/data-type-and-scale.html)中阅读我们对于数据类型和度量的详细介绍。
 
 在 G2 的使用中，我们主要通过列定义操作了接触度量：
