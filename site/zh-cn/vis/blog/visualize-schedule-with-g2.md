@@ -1,6 +1,11 @@
 <!--
 index: 7
 title: 玩玩 G2 系列之作息表
+authors:
+  - name: 再飞
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+date: "2017-11-22"
+landscape: ${assets}/image/vis/blog/landscape-placeholder.png
 -->
 
 # 玩玩 G2 系列之作息表
