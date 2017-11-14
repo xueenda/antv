@@ -28,7 +28,7 @@ Shape.registerShape(/* geomName */, /* shapeName */, { // 向Shape工厂注册�
 * getPoints 自定义
 * draw 执行图形绘制逻辑、调用绘图引擎
 
-上述方法更详细的使用说明详见： [Shape API TODO](/zh-cn/g2/3.x/api/shape.html)。
+上述方法更详细的使用说明详见： [Shape API](/zh-cn/g2/3.x/api/shape.html)。
 
 ## 1分钟上手自定义Shape
 
