@@ -750,8 +750,8 @@ chart.legend('gender', {
 
   针对分类类型图例，当 clickable 为 true 时该配置项生效，用于设置图例的选中交互模式，可配置的属性:
 
-    * `selectedMode: 'single'`：表示开启单选模式；
-    * `selectedMode: 'multiple'`：表示开启多选模式，默认为 `multiple`。
+  * `selectedMode: 'single'`：表示开启单选模式；
+  * `selectedMode: 'multiple'`：表示开启多选模式，默认为 `multiple`。
 
   18. `onHover`: function
 
@@ -972,9 +972,9 @@ chart.tooltip(true, {
 
   tooltip 的触发方式，可配置的值为：'mousemove'、'click'、'none'，默认为 `mousemove`。 
 
-    * 'mousemove': 鼠标移动触发；
-    * 'click': 鼠标点击出发；
-    * 'none': 不触发 tooltip，用户通过 `chart.showTooltip()` 和 `chart.hideTooltip()` 来控制 tooltip 的显示和隐藏。
+  * 'mousemove': 鼠标移动触发；
+  * 'click': 鼠标点击出发；
+  * 'none': 不触发 tooltip，用户通过 `chart.showTooltip()` 和 `chart.hideTooltip()` 来控制 tooltip 的显示和隐藏。
 
   2. `showTitle`: boolean
 

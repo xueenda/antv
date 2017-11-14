@@ -12,7 +12,7 @@ description: F2 是一个由纯 JavaScript 编写、强大、高性能的的语�
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 极小
-    description: 压缩后不到100k的代码，提供了几十种图表。
+    description: 压缩后不到 100k 的代码，提供了几十种图表。
   - img: ${assets}/image/home/features-professional.svg
     title: 高性能
     description: 为移动端做了大量的性能优化，性能做到极致。

@@ -65,7 +65,7 @@ var F2 = require('@antv/f2');
 4. 渲染图表。
 
 ```js
-// G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+// F2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
 var data = [ 
   {genre: 'Sports', sold: 275},
   {genre: 'Strategy', sold: 115},
@@ -77,8 +77,8 @@ var data = [
 // Step 1: 创建 Chart 对象
 var chart = new F2.Chart({
   id: 'c1', // 指定图表容器 ID
-  width : 600, // 指定图表宽度
-  height : 300 // 指定图表高度    
+  width: 500, // 指定图表宽度
+  height: 300 // 指定图表高度    
 });
 
 // Step 2: 载入数据源
