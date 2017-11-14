@@ -22,7 +22,7 @@
 
 ## 静态方法
 
-### [registerNode](#_registerNode)
+### registerNode
 
 [Function] 注册节点，参见文档[自定义图形](../tutorial/custom-shape.html)。
 
@@ -58,7 +58,7 @@ G6.registerNode(name, {
 
 `注意：如果注册已有的图形，将会直接复写该图形对应的方法。`
 
-### [registerEdge](#_registerEdge)
+### registerEdge
 
 [Function] 注册边，参见文档[自定义图形](../tutorial/custom-shape.html)。
 

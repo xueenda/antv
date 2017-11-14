@@ -33,23 +33,23 @@ graph.get('属性名');
 
 下面对所有的属性依次作说明介绍：
 
-### [id](#_id)
+### id
 
 [String] 创建关系图的 DOM 容器 id。
 
-### [container](#_container)
+### container
 
 [DOM] 除了传递 id 值来指定关系图容器，也支持直接传入容器的 html 节点对象。
 
-### [width](#_width)
+### width
 
 [Number] 设置关系图的宽度，单位像素。若不设置，则会根据父节点自适应宽度。
 
-### [height](#_height)
+### height
 
 [Number] 设置关系图的高度，单位像素。
 
-### [fitView](#_fitView)
+### fitView
 
 [String|Object] `初次绘制`适应视口，接收如下参数：
 
@@ -185,11 +185,11 @@ function createNet(fitView){
 }
 ```
 
-### [fitViewPadding](#_fitViewPadding)
+### fitViewPadding
 
 [Number] 自适应视口内边距，默认 10
 
-### [grid](#_grid)
+### grid
 
 [Object] 网格配置项
 
@@ -228,15 +228,15 @@ grid: null
 
 ![image](https://zos.alipayobjects.com/rmsportal/dYZffesDrgEHgqMYbout.gif)
 
-### [useAnchor](#_useAnchor)
+### useAnchor
 
 [Boolean] 是否使用锚点
 
-### [el](#_el)
+### el
 
 [DOM] 最上层的canvas DOM，原生DOM事件由它捕获，可用于设置鼠标样式。
 
-### [modes](#_modes)
+### modes
 
 [Object|String] 模式列表
 
@@ -249,17 +249,17 @@ grid: null
 }
 ```
 
-### [mode](#_mode)
+### mode
 
 [String] 当前选择的模式，默认 `default`
 
-### [animate](#_animate)
+### animate
 
 [Boolean] 是否开启动画
 
 ## 实例方法
 
-### [render](#_render)
+### render
 
 渲染数据
 
@@ -271,7 +271,7 @@ graph.render();
 ```
 
 
-### [node](#_node)
+### node
 
 param 可是是值，也可是回调函数
 
@@ -312,7 +312,7 @@ graph.node().tooltip(param)
 
 [示例](../demo/other/mapping.html)
 
-### [edge](#_node)
+### edge
 
 param 可是是值，也可是回调函数
 
@@ -351,7 +351,7 @@ graph.edge().tooltip(param)
 
 [示例](../demo/other/mapping.html)
 
-### [tooltip](#_tooltip)
+### tooltip
 
 G6 中提示信息功能默认关闭，若要开启，需要调用该方法。需要注意以下几点：
 
@@ -476,7 +476,7 @@ net.render();
 
 [示例源码](../demo/other/tooltip-cfg.html)
 
-### [on](#_on)
+### on
 
 事件绑定。`ev` 是事件对象，含下列字段：
 
@@ -533,7 +533,7 @@ graph.on('afterrender', function(ev){});     // 绘制后事件
 
 [示例](../demo/other/event.html)
 
-### [off](#_off)
+### off
 
 事件解除。`callBack` 用于指定要删除的回调方法，如果没有设置，则解除所有该事件类型下的方法。
 
@@ -546,7 +546,7 @@ graph.on('afterrender', function(ev){});     // 绘制后事件
 graph.off(eventType,fn);
 ```
 
-### [remove](#_remove)
+### remove
 
 删除子项，`param` 是子项或是子项id
 
@@ -558,7 +558,7 @@ graph.off(eventType,fn);
 graph.remove(item)
 ```
 
-### [update](#_update)
+### update
 
 更新子项，`param` 是子项或是子项id，`model` 是数据模型。
 
@@ -571,7 +571,7 @@ graph.remove(item)
 graph.update(param, model)
 ```
 
-### [find](#_find)
+### find
 
 查找子项
 
@@ -583,7 +583,7 @@ graph.update(param, model)
 graph.find(id)
 ```
 
-### [converPoint](#_converPoint)
+### converPoint
 
 将图坐标转为 DOM 坐标
 
@@ -596,7 +596,7 @@ graph.find(id)
 graph.converPoint(point)
 ```
 
-### [invertPoint](#_invertPoint)
+### invertPoint
 
 将 DOM 坐标转为图坐标
 
@@ -609,7 +609,7 @@ graph.converPoint(point)
 graph.invertPoint(point)
 ```
 
-### [refresh](#_refresh) {Function}
+### refresh
 
 调用了一些直接操作图形的接口，要刷新画布才能显示效果。
 
@@ -620,7 +620,7 @@ graph.invertPoint(point)
 graph.refresh();
 ```
 
-### [changeData](#_changeData)
+### changeData
 
 重新加载数据，并刷新。(接收的数据 和 source 方法一致)
 
@@ -643,7 +643,7 @@ graph.changeData(param1, param2, ……);
 graph.changeMode(modeName);
 ```
 
-### [addBehaviour](#_addBehaviour)
+### addBehaviour
 
 在某个模式下添加行为
 
@@ -666,7 +666,7 @@ graph.addBehaviour(modeName, behaviours);
 graph.addBehaviour(behaviours);
 ```
 
-### [removeBehaviour](#_removeBehaviour)
+### removeBehaviour
 
 移除行为（与`addBehaviour` 对应）
 
@@ -689,7 +689,7 @@ graph.removeBehaviour(modeName, behaviours);
 graph.removeBehaviour(behaviours);
 ```
 
-### [setItemActived](#_setItemActived)
+### setItemActived
 
 设置子项激活，`item` 是子项。
 
@@ -726,7 +726,7 @@ graph.autoSize();
 graph.resetZoom();
 ``` -->
 
-### [read](#_read)
+### read
 
 读数据，与 `save` 对应。
 
@@ -738,7 +738,7 @@ graph.resetZoom();
 graph.read(data);
 ```
 
-### [save](#_save)
+### save
 
 存数据，与 `read` 对应。
 
@@ -750,7 +750,7 @@ graph.read(data);
 graph.save();
 ```
 
-### [focusPoint](#_focusPoint)
+### focusPoint
 以某点为中心显示画布
 
 ```js
@@ -761,7 +761,7 @@ graph.save();
 graph.focusPoint(point);
 ```
 
-### [updateMatrix](#_updateMatrix)
+### updateMatrix
 更新画布根节点矩阵
 
 ```js
@@ -772,7 +772,7 @@ graph.focusPoint(point);
 graph.updateMatrix(point);
 ```
 
-### [changeSize](#_changeSize)
+### changeSize
 更改画布的尺寸
 
 ```js
@@ -784,7 +784,7 @@ graph.updateMatrix(point);
 graph.changeSize(width, height);
 ```
 
-### [updateNodesPositon](#_updateNodesPositon)
+### updateNodesPositon
 
 更新节点位置信息（一般与动态布局联用）
 

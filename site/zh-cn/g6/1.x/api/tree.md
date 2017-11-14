@@ -12,7 +12,7 @@
 
 ## 属性
 
-### [modes](#_modes)
+### modes
 
 [String] 默认模式集
 
@@ -25,25 +25,25 @@
 }
 ```
 
-### [showButton](#_showButton)
+### showButton
 
 [Boolean] 是否显示按钮（如：展开、折叠按钮）
 
-### [layout](#_layout)
+### layout
 
 [Function] 布局回调函数，回调方法中会传入，树节点对象。
 
-### [layoutFn](#_layoutfn)
+### layoutFn
 
 树布局构造函数。可选值为`G6.Layouts.CompactBoxTree`，`G6.Layouts.IndentedTree`，`G6.Layouts.Dendrogram`和`G6.Layouts.LayeredTidyTree`，默认值为`G6.Layouts.CompactBoxTree`。详细信息见[布局API文档](../api/layout.html)。
 
-### [layoutCfg](#_layoutcfg)
+### layoutCfg
 
 [Object] 树布局属性。[布局API文档](../api/layout.html)。具体树布局属性参数配置可以通过[G6树图布局工具](../demo/tree/tree-layout.html)调试和预览。
 
 ## 实例方法
 
-### [source](#_source)
+### source
 
 数据输入是一个树型结构的对象。
 
@@ -73,7 +73,7 @@ tree.source(data);
 
 [示例](../demo/other/tree-source.html)
 
-### [add](#_add)
+### add
 
 ```js
 /**

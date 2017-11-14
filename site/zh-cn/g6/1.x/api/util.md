@@ -12,7 +12,7 @@ G6.Util 是一个工具类，里面提供了大量工具方法给开发者使用
 
 ## 方法
 
-### [isNode](#_isNode) {Function}
+### isNode 
 
 判断子项是否是节点
 
@@ -25,7 +25,7 @@ G6.Util 是一个工具类，里面提供了大量工具方法给开发者使用
 G6.Util.isNode(item);
 ```
 
-### [isEdge](#_isEdge) {Function}
+### isEdge
 
 判断子项是否是边
 
@@ -38,7 +38,7 @@ G6.Util.isNode(item);
 G6.Util.isEdge(item);
 ```
 
-### [substitute](#_substitute) {Function}
+### substitute
 
 替换字符串中的字段，返回匹配字符串的正则表达式。
 
@@ -52,7 +52,7 @@ G6.Util.isEdge(item);
 G6.Util.substitute(str, o);
 ```
 
-### [ucfirst](#_ucfirst) {Function}
+### ucfirst
 
 将字符串的第一个字母变成大写。
 
@@ -65,7 +65,7 @@ G6.Util.substitute(str, o);
 G6.Util.ucfirst(s);
 ```
 
-### [isObject](#_isObject) {Function}
+### isObject
 
 判断参数是否为对象。
 
@@ -78,7 +78,7 @@ G6.Util.ucfirst(s);
 G6.Util.isObject(value);
 ```
 
-### [isNumber](#_isNumber) {Function}
+### isNumber
 
 判断参数是否为数字。
 
@@ -91,7 +91,7 @@ G6.Util.isObject(value);
 G6.Util.isNumber(value);
 ```
 
-### [isNumeric](#_isNumeric) {Function}
+### isNumeric
 
 是否是数字或者数字字符串（类似 '124'）。
 
@@ -104,7 +104,7 @@ G6.Util.isNumber(value);
 G6.Util.isNumeric(value);
 ```
 
-### [isBoolean](#_isBoolean) {Function}
+### isBoolean
 
 判断参数是否为布尔值。
 
@@ -117,7 +117,7 @@ G6.Util.isNumeric(value);
 G6.Util.isBoolean(value);
 ```
 
-### [isFunction](#_isFunction) {Function}
+### isFunction
 
 判断参数是否为函数。
 
@@ -130,7 +130,7 @@ G6.Util.isBoolean(value);
 G6.Util.isFunction(value);
 ```
 
-### [isArray](#_isArray) {Function}
+### isArray
 
 判断参数是否为数组。
 
@@ -143,7 +143,7 @@ G6.Util.isFunction(value);
 G6.Util.isArray(value);
 ```
 
-### [isDate](#_isDate) {Function}
+### isDate
 
 判断参数是否为日期。
 
@@ -156,7 +156,7 @@ G6.Util.isArray(value);
 G6.Util.isDate(value);
 ```
 
-### [isNull](#_isNull) {Function}
+### isNull
 
 判断一个对象是否是 null 或者 undefined。
 
@@ -169,7 +169,7 @@ G6.Util.isDate(value);
 G6.Util.isNull(value);
 ```
 
-### [mix](#_mix) {Function}
+### mix
 
 合并各个对象。
 
@@ -191,7 +191,7 @@ G6.Util.mix(target, source1, source2....source);
 G6.Util.mix(true, target, source1, source2....source);
 ```
 
-### [map](#_map) {Function}
+### map
 
 转换数值的值。
 
@@ -203,7 +203,7 @@ G6.Util.mix(true, target, source1, source2....source);
 G6.Util.map(arr);
 ```
 
-### [filter](#_filter) {Function}
+### filter
 
 过滤数组。
 
@@ -217,7 +217,7 @@ G6.Util.map(arr);
 G6.Util.filter(arr, func);
 ```
 
-### [each](#_each) {Function}
+### each
 
 遍历数组或者对象。
 
@@ -230,7 +230,7 @@ G6.Util.filter(arr, func);
 G6.Util.each(elements, func);
 ```
 
-### [indexOf](#_indexOf) {Function}
+### indexOf
 
 返回 value 在数组中的索引。
 
@@ -244,7 +244,7 @@ G6.Util.each(elements, func);
 G6.Util.indexOf(arr, obj);
 ```
 
-### [empty](#_empty) {Function}
+### empty
 
 清空。
 
@@ -256,7 +256,7 @@ G6.Util.indexOf(arr, obj);
 G6.Util.empty(array);
 ```
 
-### [guid](#_guid) {Function}
+### guid
 
 产生唯一码。
 
@@ -268,7 +268,7 @@ G6.Util.empty(array);
 G6.Util.guid();
 ```
 
-### [getEllipsePath](#_getEllipsePath) {Function}
+### getEllipsePath
 
 获取椭圆路径
 
@@ -284,7 +284,7 @@ G6.Util.guid();
 G6.Util.getEllipsePath(x, y, rx, ry);
 ```
 
-### [pointsToPolygon](#_pointsToPolygon) {Function}
+### pointsToPolygon
 
 点集转化为Path多边形
 
@@ -298,7 +298,7 @@ G6.Util.getEllipsePath(x, y, rx, ry);
 G6.Util.pointsToPolygon(points, z);
 ```
 
-### [pointsToCurve](#_pointsToCurve) {Function}
+### pointsToCurve
 
 点集到曲线
 
@@ -311,7 +311,7 @@ G6.Util.pointsToPolygon(points, z);
 G6.Util.pointsToCurve(points);
 ```
 
-### [arrowTo](#_arrowTo) {Function}
+### arrowTo
 
 将图形指向指定方向
 
@@ -330,7 +330,7 @@ G6.Util.pointsToCurve(points);
 G6.Util.arrowTo(element, x, y, x0, y0, x1, y1);
 ```
 
-### [pathIntersection](#_pathIntersection) {Function}
+### pathIntersection
 
 算两条path的交点
 
@@ -344,7 +344,7 @@ G6.Util.arrowTo(element, x, y, x0, y0, x1, y1);
 G6.Util.pathIntersection(path1, path2);
 ```
 
-### [getSnapAnchor](#_getSnapAnchor) {Function}
+### getSnapAnchor
 
 获取节点逼近的锚点
 

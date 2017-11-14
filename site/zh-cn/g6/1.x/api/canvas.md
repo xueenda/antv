@@ -112,37 +112,36 @@
 ```
 
 ## 属性
-
-### [x1](#_x1)
+### x1
 [Number]，默认值: 0 第一个点的 x 值。
 
-### [y1](#_y1)
+### y1
 [Number]，默认值: 0 第一个点的 y 值。
 
-### [x2](#_x2)
+### x2
 [Number]，默认值: 0 第二个点的 x 值。
 
-### [y2](#_y2)
+### y2
 [Number]默认值: 0 第二点的 y 值。
 
-### [arrow](#_arrow)
+### arrow
 [Boolean]，箭头有第一个点指向第二个点
 
-### [lineWidth](#_lineWidth)
+### lineWidth
 [Number]，线宽。
 
-### [lineDash](#_lineDash)
+### lineDash
 [String || Array]，虚线。
 
-### [stroke](#_stroke)
+### stroke
 [String]，边框颜色。
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 [Number]，边框透明度。
 
 ## 方法
 
-### [getPoint](#_getPoint)
+### getPoint
 
 #### 参数
 - t 百分比
@@ -219,45 +218,40 @@
 ```
 
 ## 属性
-
-### [p1](#_p1)
-
+### p1
 二阶贝赛尔曲线的第一个点，曲线总是开始于这个点。
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p1', [200, 300]) 这样做是正确的。
 </span>
 
-### [p2](#_p2)
-
+### p2
 二阶贝赛尔曲线控制点，曲线总是不经过这个点，不过这个点会影响曲线的形状
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p2', [200, 300]) 这样做是正确的。
 </span>
 
-### [p3](#_p3)
+### p3
 二阶贝赛尔曲线的终点，曲线总是结束于这个点
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p3', [200, 300]) 这样做是正确的。
 </span>
 
-### [arrow](#_arrow)
+### arrow
 箭头只会出现在p3这个点
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 方法
 
-### [getPoint](#_getPoint)
-
-#### 参数
-
+### getPoint
+##### 参数
 - t 百分比
 
 #### 返回
@@ -335,51 +329,46 @@
 ```
 
 ## 属性
-
-### [p1](#_p1)
-
+### p1
 cubic的第一个点，曲线总是开始于这个点。
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p1', [200, 300]) 这样做是正确的。
 </span>
 
-### [p2](#_p2)
-
+### p2
 cubic第一个控制点，曲线总是不经过这个点，不过这个点会影响曲线的形状
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p2', [200, 300]) 这样做是正确的。
 </span>
 
-### [p3](#_p3)
-
+### p3
 cubic第二个控制点，曲线总是不经过这个点，不过这个点会影响曲线的形状
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p3', [200, 300]) 这样做是正确的。
 </span>
 
-### [p4](#_p4)
-
+### p4
 cubic的终点，曲线总是结束于这个点
 
 <span style="font-style:italic;color:#F93D26">
 警告：不要仅仅设置一点的某一个分量，要设置就把整个点进行替换。quadratic.attr('p4', [200, 300]) 这样做是正确的。
 </span>
 
-### [arrow](#_arrow)
+### arrow
 箭头只会出现在p3这个点
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 方法
 
-### [getPoint](#_getPoint)
+### getPoint
 ##### 参数
 - t 百分比
 
@@ -433,45 +422,45 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-
-### [x](#_x)
+### x
 默认值: 0 圆心的x值
 
-### [y](#_y)
+### y
 默认值: 0 圆心的y值
 
-### [r](#_r)
+### r
 默认值: 0 圆弧的半径
 
-### [startAngle](#_startAngle)
+### startAngle
 默认值: 0 开始角度 角度制
 
-### [endAngle](#_endAngle)
+### endAngle
 默认值: 0 结束角度 角度制
 
-### [clockwise](#_clockwise)
+### clockwise
 默认值: false
 
 表示画轴的方向
 
 值的范围: true表示逆时针，false顺时针
 
-### [arrow](#_arrow)
+### arrow
 默认值: false
 
 圆弧是否带有箭头，false不带，true带
 
 箭头总是出现在endAngle这个位置
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 方法
 
-### [getPoint](#_getPoint)
+### getPoint
+
 ##### 参数
 - t 百分比
 
@@ -499,26 +488,25 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-
-### [points](#_points)
+### points
 多个点组成的数组, 数组的每一项是一个数组[x, y], 这个样个数组代表一个点，x是这个点的x坐标，y是这个点的y坐标
 
-### [arrow](#_arrow)
+### arrow
 默认值: false
 
 是否显示箭头, true显示, false不显示
 
 箭头只会出现在points中最后一个点
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 方法
 
-### [getPoint](#_getPoint)
+### getPoint
 ##### 参数
 - t 百分比
 
@@ -567,32 +555,31 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-
-### [x](#_x)
+### x
 矩形的左上角x的坐标
 
-### [y](#_y)
+### y
 矩形的左上角y的坐标
 
-### [width](#_width)
+### width
 矩形的宽度
 
-### [height](#_height)
+### height
 矩形的高度
 
-### [radius](#_radius)
+### radius
 矩形的圆角半径
 
-### [fill](#_fill)
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 圆—circle
@@ -635,26 +622,25 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-
-### [x](#_x)
+### x
 圆心坐标的x坐标
 
-### [y](#_y)
+### y
 圆心坐标的y坐标
 
-### [r](#_r)
+### r
 圆的半径
 
-### [fill](#_fill)
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 椭圆形—ellipse
@@ -700,28 +686,28 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-### [x](#_x)
+### x
 椭圆圆心坐标，x坐标的值
 
-### [y](#_y)
+### y
 椭圆圆心坐标，y坐标的值
 
-### [rx](#_rx)
+### rx
 椭圆横半轴的大小
 
-### [ry](#_ry)
+### ry
 椭圆纵半轴的大小
 
-### [fill](#_fill)
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 # 扇形——fan
@@ -773,37 +759,37 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-### [x](#_x)
+### x
 扇形圆心的坐标的x坐标
 
-### [y](#_y)
+### y
 扇形圆心的坐标的y坐标
 
-### [rs](#_rs)
+### rs
 扇形半径的内半径
 
-### [re](#_re)
+### re
 扇形半径的外半径
 
-### [startAngle](#_startAngle)
+### startAngle
 扇形的起始角度
 
-### [endAngle](#_endAngle)
+### endAngle
 扇形的结束角度
 
-### [clockwise](#_clockwise)
+### clockwise
 开始角度到结束角度的旋转方向
 
-### [fill](#_fill)
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 多边形—polygon
@@ -831,19 +817,19 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-### [points](#_points)
+### points
 多边形的各个顶点
 
-### [fill](#_fill)
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 图像—image
@@ -881,43 +867,43 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-### [x](#_x)
+### x
 图片左上角坐标的x值
 
-### [y](#_y)
+### y
 图片左上角坐标的y值
 
-### [img](#_img)
+### img
 图片，可以是图片的地址，或者是一个image对象
 
-### [width](#_width)
+### width
 图片的宽度，如果不设，则按照源图像的宽度进行设置
 
-### [height](#_height)
+### height
 图片的高度，如果不设，则按照源图形的高度进行设置
 
-### [sx](#_sx)
+### sx
 可以在源图形中截取一个矩形区域的源图形，这是截取的区域左上角坐标的x值
 
-### [sy](#_sy)
+### sy
 可以在源图形中截取一个矩形区域的源图形，这是截取的区域左上角坐标的y值
 
-### [swidth](#_swidth)
+### swidth
 可以在源图形中截取一个矩形区域的源图形，这是截取的区域左上角坐标的swidth值
 
-### [sheight](#_sheight)
+### sheight
 可以在源图形中截取一个矩形区域的源图形，这是截取的区域左上角坐标的sheight值
 
-### [fill](#_fill)
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
+### storkeOpacity
 边框透明度
 
 ## 文本—text
@@ -968,58 +954,47 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-
-### [x](#_x)
+### x
 文字的左上角的x值
 
-### [y](#_y)
+### y
 文字的左上角的y值
 
-### [text](#_text)
+### text
 文字内容
 
-### [fontFamily](#_fontFamily)
-
+### fontFamily
 字体 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
-### [fontSize](#_fontSize)
-
+### fontSize
 字体大小 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
-### [fontWeight](#_fontWeight)
-
+### fontWeight
 字体粗细 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
-### [fontStyle](#_fontStyle)
-
+### fontStyle
 字体样式 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
-### [textAlign](#_textAlign)
-
+### textAlign
 左右对齐方式
 
 ![image](https://zos.alipayobjects.com/rmsportal/oMVFeaVCYNkDCeN.png)
 
-### [textBaseline](#_textBaseline)
-
+### textBaseline
 上下对齐方式
 
 ![image](https://zos.alipayobjects.com/rmsportal/VejEpbzakKrESzH.png)
 
-### [fill](#_fill)
-
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
-
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
-
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
-
+### storkeOpacity
 边框透明度
 
 ## svg的path—path
@@ -1056,28 +1031,21 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
-
-### [path](#_path)
-
 path规范的命令 [参见](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths)
 
-### [fill](#_fill)
-
+### fill
 填充颜色
 
-### [fillOpacity](#_fillOpacity)
-
+### fillOpacity
 填充透明度
 
-### [stroke](#_stroke)
-
+### stroke
 边框颜色
 
-### [storkeOpacity](#_storkeOpacity)
-
+### storkeOpacity
 边框透明度
 
-### [getPoint](#_getPoint)
+### getPoint
 
 #### 参数
 
@@ -1092,7 +1060,7 @@ path规范的命令 [参见](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tu
 
 ## 方法
 
-### [animate](#_animate)
+### animate
 `cfg` 配置项{Object}含：
 
 * attrs     图形属性

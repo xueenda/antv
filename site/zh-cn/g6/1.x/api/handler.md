@@ -11,119 +11,119 @@
 
 ## 方法
 
-### [wheelZoomAutoLabel](#_wheelZoomAutoLabel) 
+### wheelZoomAutoLabel 
 
 根据尺寸自动缩放文本标签
 
-### [dragHideTexts](#_dragHideTexts)
+### dragHideTexts
 
 拖拽隐藏文本
 
-### [wheelZoomHideTexts](#_wheelZoomHideTexts)
+### wheelZoomHideTexts
 
 缩放隐藏文本
 
-### [dragEdgeEndHideAnchor](#_dragEdgeEndHideAnchor)
+### dragEdgeEndHideAnchor
 
 多拽边结束后隐藏目标节点的锚点
 
-### [dragNodeEndHideAnchor](#_dragEdgeEndHideAnchor)
+### dragNodeEndHideAnchor
 
 多拽节点结束后隐藏目标节点的锚点
 
-### [hoverAnchorSetActived](#_dragEdgeEndHideAnchor)
+### hoverAnchorSetActived
 
 鼠标悬锚点激活锚点
 
-### [hoverNodeShowAnchor](#_dragEdgeEndHideAnchor)
+### hoverNodeShowAnchor
 
 鼠标悬浮节点显示锚点
 
-### [buttonPointer](#_buttonPointer)
+### buttonPointer
 
 当鼠标移到 `element.get('class')` 含 `button`  的图形元素上，指针变成小手的行为。
 
-### [clickActive](#_clickActive)
+### clickActive
 
 鼠标左键点击激活子项 `item`（激活行为互斥）的行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/qeKFxhoyNQlDvcsNcMko.gif)
 
-### [clickAddNode](#_clickAddNode)
+### clickAddNode
 
 点击增加节点的行为，适用于网图编辑器。
 
 ![image](https://zos.alipayobjects.com/rmsportal/GHEAPfFaFokQNWuRvsmQ.gif)
 
-### [clickBlankClearActive](#_clickBlankClearActive)
+### clickBlankClearActive
 
 点击画布空白区域，清除激活子项的行为，适用于网图编辑器。
 
-### [dragCanvas](#_dragCanvas)
+### dragCanvas
 
 拖动画布的行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/ORxbdvErvjwPIOgHfSXF.gif)
 
-### [dragBlank](#_dragBlank)
+### dragBlank
 
 拖动画布空白区域的行为。
 
-### [dragAddEdge](#_dragAddEdge)
+### dragAddEdge
 
 拖动添加边的行为，适用于网图编辑器。
 
-### [dragEdge](#_dragEdge)
+### dragEdge
 
 拖动边切换边连接的节点的行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/OWLYIqFtCWTWzJoQuBZr.gif)
 
-### [dragNode](#_dragNode)
+### dragNode
 
 拖动节点行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/uItgKmflYJiMFfYaulSb.gif)
 
-### [multiSelect](#_multiSelect)
+### multiSelect
 
 多选行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/ZgqXtYqGqedNeiFMOMgY.gif)
 
-### [resizeEdge](#_resizeEdge)
+### resizeEdge
 
 边变形行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/wDwNAOjeEEbhILZGVEYT.gif)
 
-### [resizeNode](#_resizeNode)
+### resizeNode
 
 节点变形行为。
 
 ![image](https://zos.alipayobjects.com/rmsportal/QiajcEBVGVECIlnYHGUs.gif)
 
-### [wheelZoom](#_wheelZoom)
+### wheelZoom
 
 滚轮缩放行为。
 
-### [dragHideEdges](#dragHideEdges)
+### dragHideEdges
 
 拖动边隐藏行为
 
-### [wheelZoomHideEdges](#_wheelZoomHideEdges)
+### wheelZoomHideEdges
 
 滚轮缩放边隐藏行为
 
-### [shortcut](#_dragNode)
+### shortcut
 
 快捷键行为。`网图（Net）专有`
 
-### [collapse](#_collapse)
+### collapse
 
 树图的折叠行为。`树图（Tree）专有`
 
-### [spreadout](#_spreadout)
+### spreadout
 
 树图的展开行为。`树图（Tree）专有`
 
