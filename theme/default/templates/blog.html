@@ -9,6 +9,11 @@
 <div class="blog-container">
     <div class="container">
         <article>
+            <h1>{{ title }}</h1>
+            <p><img class="avatar" width="24" height="24" src="{{ authors[0].avatar }}" alt=""> <span>{{ authors[0].name }}</span></p>
+
+            <img src="{{ landscape }}" alt="">
+
             {{ content | safe }}
         </article>
         <div class="toc-container"><div class="toc"></div></div>
