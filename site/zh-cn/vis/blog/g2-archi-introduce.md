@@ -1,9 +1,12 @@
 <!--
 index: 1
 title: 可视化框架设计
+authors:
+  - name: 萧庆
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+date: "2017-11-22"
+landscape: ${assets}/image/vis/blog/landscape-placeholder.png
 -->
-
-# 可视化框架设计
 
 ## 目录
 

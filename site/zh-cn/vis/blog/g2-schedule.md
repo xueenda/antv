@@ -1,9 +1,12 @@
 <!--
 index: 7
 title: 玩玩 G2 系列之作息表
+authors:
+  - name: 再飞
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+date: "2017-11-22"
+landscape: ${assets}/image/vis/blog/landscape-placeholder.png
 -->
-
-# 玩玩 G2 系列之作息表
 
 [《创作者的日常生活》](https://book.douban.com/subject/25844039/) 的作者 Mason Currey 研究了过去 400 年来 161 位伟大创作者每天如何分配时间，运用自己最大的能力，如何安排他们的作息，发挥创意和生产力。从内容来说，虽然每位创作者的个人生活习惯不同，有人习惯夜晚深耕，有人习惯白日劳作，但是几乎每个人都会提到的就是 -- 维持稳定规律的生活作息。
 

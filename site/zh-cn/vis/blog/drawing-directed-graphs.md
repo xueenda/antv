@@ -1,11 +1,14 @@
 <!--
 index: 2
 title: 一种画有向图的技术（译文）
+authors:
+  - name: 绝云
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+  - name: 青湳
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+date: "2017-11-22"
+landscape: ${assets}/image/vis/blog/landscape-placeholder.png
 -->
-
-# 一种画有向图的技术（译文）
-
-译者：绝云、青湳
 
 ## 原文信息
 
