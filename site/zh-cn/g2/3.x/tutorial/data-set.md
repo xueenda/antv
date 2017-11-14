@@ -163,7 +163,7 @@ var ds = new DataSet({
         currentState: 'WY'
     }
 });
-$.get('/assets/data/population-by-age.csv', function(data) {
+$.get('http://p.tb.cn/rmsportal_2981_population-by-age.csv', function(data) {
     var dvForAll = ds
         .createView('populationByAge', {
             watchingStates: [], // 用空数组，使得这个实例不监听 state 变化

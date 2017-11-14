@@ -1,26 +1,20 @@
 'use strict';
-
-var _require = require('lodash'),
-    forIn = _require.forIn;
-
-var _require2 = require('fs'),
-    lstatSync = _require2.lstatSync,
-    readdirSync = _require2.readdirSync;
-
-var _require3 = require('path'),
-    basename = _require3.basename,
-    extname = _require3.extname,
-    join = _require3.join;
-
-var _require4 = require('../data'),
-    plotByName = _require4.plotByName;
-
+var _ = require('lodash');
+var forIn = _.forIn;
+var fs = require('fs');
+var lstatSync = fs.lstatSync;
+var readdirSync = fs.readdirSync;
+var path = require('path');
+var basename = path.basename;
+var extname = path.extname;
+var join = path.join;
+var data = require('../data');
+var plotByName = data.plotByName;
 var renderMd = require('../../../../../lib/render-md');
-
-var _require5 = require('../../../../../site-config'),
-    base = _require5.base,
-    assets = _require5.assets,
-    pkg = _require5.pkg;
+var siteConfig = require('../../../../../site-config');
+var base = siteConfig.base;
+var assets = siteConfig.assets;
+var pkg = siteConfig.pkg;
 
 var isDirectory = function isDirectory(source) {
     return lstatSync(source).isDirectory();
