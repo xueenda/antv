@@ -87,6 +87,14 @@ chart.scale({
 }
 ```
 
+默认生成度量的机制如下：
+* 查看用户是否制定了对应字段的数据类型，查看[列定义](how-to-scale.html)
+* 如果没有，判断字段的第一条数据的字段类型
+  + 如果数据中不存在对应的字段，则为 'identity' 
+  + 如果是数字则为 'linear'；
+  + 如果是字符串，判定是否是时间格式，如果是时间格式则为时间类型 'time',
+  + 否则是分类类型 'cat'
+
 下面就让我们来详细了解下各个度量的类型：
 
 ### linear
@@ -98,10 +106,93 @@ chart.scale({
   nice: boolean, // 默认为 true，用于优化数值范围，使绘制的坐标轴刻度线均匀分布。例如原始数据的范围为 [3, 97]，如果 nice 为 true，那么就会将数值范围调整为 [0, 100]
   min: number, // 定义数值范围的最小值
   max: number, // 定义数值范围的最大值
+  minLimit: number, // 对数据的最小值的限制，无论数据中是否存在比这个值小的数据，生成的坐标点不会小于这个值
+  maxLimit: number, // 对数据的最大值的限制，无论数据中是否存在比这个值大的数据，生成的坐标点不会大于这个值
   tickCount: number, // 定义坐标轴刻度线的条数，默认为 5
   tickInterval: number, // 用于指定坐标轴各个刻度点的间距，为原始数据值的差值，tickCount 和 tickInterval 不可以同时声明
 }
 ```
+
+`说明`：
+* min,max,minLimt 和 maxLimit 都会影响坐标轴上坐标点的生成
+* min 和 minLimt 的差别主要体现在 如果数据中的数据的范围是 10-20 对于 min: 0 来说，会生成从 0 - 20 范围的坐标点，但是对于 minLimit 来说只要保证生成的坐标点不小于 0 即可，生成的坐标点的范围可能依然在 10 - 20 之间。
+* max 和 maxLimit 的差别同 min 和 minLimit 类似， max 体现在坐标轴上肯定会出现 max 或者比 max 大的值，但是绝对不会出现比 maxLimit 大的值。
+
+通过下面学生成绩的示例来说明：
+
+```js
+
+var data = [
+  {name: '张三', score: 53},
+  {name: '王五', score: 92}
+];
+
+chart.source(data);
+
+chart.point().position('name*score').color('name');
+
+```
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/EQrGfZfaDSKteKExdPqS.png" style="width:500px">
+
+`说明`
+* 默认生成的 score 分数的度量的范围是 50 - 95 ，这是 nice: true 的效果（让人看起来更清晰）
+
+我们知道学生分数的范围是 0 - 100 ,所以 50 - 90 并不满足我们的需求，我们可以限定 min,max 的范围
+
+```js
+
+var data = [
+  {name: '张三', score: 53},
+  {name: '王五', score: 92}
+];
+
+chart.source(data, {
+  score: {
+    min: 0,
+    max: 100
+  }
+});
+
+chart.point().position('name*score').color('name');
+
+``` 
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/SazSTcmlxdGnNGGsjRAb.png" alt="数据范围">
+
+`说明`
+* 此时设置 minLimt 和 maxLimit 并不会改变生成数据度量的范围
+
+minLimit 和 maxLimit 主要应用的场景是生成的度量范围超出了用户定义的范围如：
+
+```js
+chart.source(data, {
+  score: {
+    min: 0,
+    max: 100,
+    tickCount: 4
+  }
+});
+
+```
+
+`说明`：
+* 由于此时用户设置了 tickCount: 4 为了满足用户对坐标点个数的需求，有时候会扩大数据的范围
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/mQQTWvuKCvbuRyRRNOMa.png" alt="超出范围">
+
+设置了 maxLimit 后
+
+```js
+chart.source(data, {
+  score: {
+    min: 0,
+    max: 100,
+    tickCount: 4
+  }
+});
+```
+<img src="https://gw.alipayobjects.com/zos/rmsportal/VmjHloxSPGkaZJgThogv.png" alt="限制范围">
 
 ### log
 
@@ -115,12 +206,38 @@ log 度量是 linear 的子类，支持所有通用的属性和 linear 度量的
 }
 ```
 
+
 #### log 度量的使用场景
 
 对于以下场景，建议将数据的度量类型指定为 log 类型：
 
 1. 散点图中数据的分布非常广，同时数据分散在几个区间内是，例如分布在 0 - 100， 10000 - 100000，1千万 - 1亿内，这时候适合使用 log 度量；
 2. 热力图中数据分布不均匀时也会出现只有非常高的数据点附近才有颜色，此时需要使用 log 度量，对数据进行 log 处理。
+
+对比使用未使用 log 和使用了log 后的效果
+
+```js
+
+// 数据
+var data = [
+  {site: '站点1', pv: 10},
+  {site: '站点2', pv: 99},
+  {site: '站点3', pv: 10000}
+];
+
+chart.source(data, {
+  pv: {
+    type: 'log',
+    base: 10
+  }
+});
+```
+
+<div>
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/roMcstmrYembFWUHYelR.png" alt="未使用log" style="width:400px;float:left;">
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/SETQeXddlxsqFNNPhiCR.png" alt="未使用log" style="width:400px;float:left;">
+</div>
+<div style="clear:both;"></div>
 
 ### pow
 
@@ -144,7 +261,7 @@ pow 类型的度量也是 linear 类型的一个子类，除了支持所有通�
 }
 ```
 
-> 说明：mask 的占位符标准同 [moment](https://momentjs.com/docs/#/displaying/format/);
+> 说明：mask 的占位符标准同 [moment](https://momentjs.com/docs/#/displaying/format/)、[fecha](https://github.com/taylorhakes/fecha);
 
 目前 G2 会自动识别如下形式的时间格式，当用户需要生成 time 类型的度量时，建议将原始时间数据转换为如下形式：
 
@@ -208,4 +325,10 @@ timeCat 是 cat 度量的子类，除了支持所有通用的属性和 cat 度�
   mask: string, // 指定时间的显示格式，默认：'YYYY-MM-DD'
 }
 ```
+
+timeCat 和 time 类型度量的差别和应用场景
+
+* timeCat 是分类类型的度量，所以适合于显示 `柱状图` 或者固定时间内没有数据的场景（股票图）
+* time 是连续类型的度量，更适合显示折线图、面积图，表现数据的趋势
+
 

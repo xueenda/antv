@@ -103,9 +103,7 @@ chart.render();
 
 属性名 | 解释 | 默认值
 ----|----|----
-allowAllCanceled | (分类图例)是否保留一项不能取消勾选，默认为 false，即不能取消勾选| false
-offsetX | 用于调整各个图例项之间的水平间距 | 0
-offsetY | 用于调整各个图例项之间的垂直间距 | 0
+allowAllCanceled | (分类图例)是否保留一项不能取消勾选，默认为 false，即最后一项不能取消勾选| false
 unCheckColor | 未选中时marker的颜色 | '#bfbfbf'
 textStyle | 图例项文本的样式配置 | {fill: '#3c3c3c'}
 itemWidth | 图例项的宽度，当图例有很多图例项，并且用户想要这些图例项在同一平面内垂直对齐，此时这个属性可帮用户实现此效果 | --

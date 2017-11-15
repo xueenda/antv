@@ -38,11 +38,15 @@ G2 生成的坐标轴由如下五部分组成：
 
 ### 坐标轴标题 title
 
-默认情况下，我们会为每条坐标轴生成标题，标题名默认为该轴对应数据字段的属性名。通过如下代码，用户可以配置标题的显示样式或者关闭标题显示。
+默认情况下，我们会为每条坐标轴生成标题，标题名默认为该轴对应数据字段的属性名。通过如下代码，用户可以配置标题的显示样式或者关闭标题显示。在G2 3.0 中由于大多数场景下用户不显示 title 所以我们默认关闭了 title 的显示。
 
 ```js
 chart.axis('xField', {
   title: null // 不展示 xField 对应坐标轴的标题
+});
+
+chart.axis('xField', {
+  title: {} // 展示 xField 对应坐标轴的标题
 });
 
 chart.axis('xField', {
@@ -216,7 +220,7 @@ chart.axis('x', {
 });
 chart.axis('y', {
   title: {
-    offset: 80,
+    offset: 70,
   },
   label: {
     formatter: function(val) {
@@ -324,7 +328,7 @@ chart.legend(false);
 chart.axis('name', {
   label: {
     htmlTemplate: function(value){
-      return '<img src="' +imageMap[value] + '" style="width:30px;"/>';
+      return '<img src="' +imageMap[value] + '" style="width:30px;max-width:none;"/>';
     }
   },
   tickLine: null
@@ -475,6 +479,6 @@ chart.source(data, {
 
 不同的坐标系下坐标轴的显示不一样，默认的配置项也不同
 
-* 极坐标下的坐标轴上默认不显示title，栅格线有圆形和多边形两种；
+* 极坐标下的坐标轴上栅格线有圆形和多边形两种；
 * theta、helix 坐标系默认不显示坐标轴；
 * polar 坐标系发生 transpose 时也不显示坐标轴。

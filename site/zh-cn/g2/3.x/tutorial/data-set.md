@@ -31,6 +31,8 @@ resource:
 
 ![data-set structure](/assets/image/g2/tutorial/data-set-structure.svg)
 
+DataSet 支持状态量 （State）可以实现多个图表之间的联动
+
 ## 安装
 
 ### 浏览器引入
@@ -73,7 +75,64 @@ import { View } from '@antv/data-set';
 const dv = new View();
 ```
 
-## 使用实例
+## 功能介绍
+
+DataSet 主要完成了以下功能：
+
+* 源数据的解析，将csv, dsv,geojson 转成标准的JSON，查看[Connector](../api/connector.html)
+* 加工数据，包括 filter,map,fold(补数据) 等操作，查看 [Transform](../api/transform.html)
+* 统计函数，汇总统计、百分比、封箱 等统计函数，查看 [Transform](../api/transform.html#_数据统计相关)
+* 特殊数据处理，包括 地理数据、矩形树图、桑基图、文字云 的数据处理，查看 [Transform](../api/transform.html#_树相关)
+
+## 使用示例
+
+### 单独使用 DataView
+
+如果仅仅是对数据进行加工，不需要图表联动
+
+### 状态量
+
+在G2 3.0 中使用 DataSet 的状态量(State) 可以很容易的实现图表的联动，步骤如下：
+1. 创建 DataSet 对象，指定状态量
+1. 创建 DataView 对象，在 transform 中使用状态量
+1. 创建图表，引用前面创建 DataView
+1. 改变状态量，所有 DataView 更新
+
+```js
+
+// step1 创建 dataset 指定状态量
+const ds = new DataSet({
+    state: {
+       year: '2010'
+    }
+});
+
+// step2 创建 DataView
+const dv = ds.createView()
+             .source(data);
+
+dv.transform({
+    type: 'filter',
+    callback(row) {
+        return row.year === ds.state.year;
+    }
+});
+
+
+// step3 引用 DataView
+
+chart.source(dv);
+
+// step4 更新状态量
+
+ds.setState('year', '2012');
+```
+
+`注意`：
+* 在 DataSet 创建了状态量后，默认会影响其管理的所有的 DataView， 可以通过 `watchingStates` 明确的指定受那些状态量影响，设置为空数组时不受状态量的影响。
+* 所有引用了 DataSet 管理的 DataView 的图表都会受自动刷新，不需要手工刷新。
+
+### 图表联动示例
 
 假设我们有一个 CSV 文件 `population-by-age.csv`，里面的数据是美国各个州不同年龄段的人口数量，文件内容如下：
 

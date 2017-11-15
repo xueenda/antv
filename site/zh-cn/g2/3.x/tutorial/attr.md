@@ -21,7 +21,7 @@ resource:
 
 在 G2 中，我们这样定义图形属性的映射语法。
 
-首先需要明确一点：**图形属性是属于每一个几何标记 geom 的**，所以我们先要声明几何标记，然后再在该几何标记对象上进行图形属性的映射，代码如下：
+首先需要明确一点：**图形属性是属于每一个几何标记 geom（Geometry) 的**，所以我们先要声明几何标记，然后再在该几何标记对象上进行图形属性的映射，代码如下：
 
 ```js
 chart.<geomType>().<attrType>(fields[, callback]);
@@ -396,7 +396,7 @@ chart.point().position('name*value')
 
 ```
 
-查看[自定义气泡的示例](/zh-cn/g2/3.x/demo/other/image-bubble.html)
+查看[自定义气泡的示例](/zh-cn/g2/3.x/demo/other/bubble-image.html)
 
 ## size
 
@@ -501,6 +501,10 @@ size 函数可以返回一个数组，特别对应[自定义shape](./customize-s
 - `opacity('field')`，指定透明度映射的字段，透明度默认的范围为 [0, 1]；
 - `opacity(0.5)`，直接指定透明度常量；
 - `opacity('field', callback)`，使用回调函数获取透明度。
+
+## 更多图形属性的映射
+
+除了上面指定的视觉通道外，G2 3.0 还在 [geom.style()](../api/geom.html#_style) 方法中允许用户使用回调函数，可以对任何图形属性进行映射，但是不会自动生成图例
 
 ## Geom 支持的图形属性
 

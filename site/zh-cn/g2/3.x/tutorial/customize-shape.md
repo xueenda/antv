@@ -13,19 +13,19 @@ resource:
 
 ```js
 var Shape = G2.Shape;
-Shape.registerShape(/* geomName */, /* shapeName */, { // 向Shape工厂注册某个geom的一个shape
-  getPoints: function( /* cfg */ ) { // 自定义具体标记点
+Shape.registerShape(geomName, shapeName, { // 向Shape工厂注册某个geom的一个shape
+  getPoints: function(cfg) { // 自定义具体标记点
   },
-  draw: function( /* cfg, container*/ ) { // 自定义最终绘制
+  draw: function(cfg, container) { // 自定义最终绘制
   }
 });
 ```
 
 上述 7 行的代码片段即使自定义Shape的所有接口。
 
-* geomName 几何标记名称
-* shapeName 注册的具体图形形状名称
-* getPoints 自定义
+* geomName [几何标记](geom.html)名, 如 point, line 等
+* shapeName 注册的具体图形名，自定义的图形的名称
+* getPoints 自定义形状绘制时需要的节点，比如柱状图需要 4 个节点
 * draw 执行图形绘制逻辑、调用绘图引擎
 
 上述方法更详细的使用说明详见： [Shape API](/zh-cn/g2/3.x/api/shape.html)。
