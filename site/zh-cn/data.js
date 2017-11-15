@@ -22,7 +22,7 @@ module.exports = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/g6/1.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/g6/1.x/api/index.html' },
                 tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/g6/1.x/tutorial/index.html' },
-                toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
+                // toolbox: { text: '${resource.translate.toolbox}', href: '${base}zh-cn/g6/1.x/toolbox.html' },
                 changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/g6/1.x/tutorial/changelog.html' },
             }
         },

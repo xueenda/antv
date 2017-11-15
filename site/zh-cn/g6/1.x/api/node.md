@@ -1,52 +1,47 @@
 <!--
  index: 3
- title: Item
+ title: Node
  resource:
    jsFiles:
      - ${url.g6}
 -->
 
-# Item
+# 节点-Node
 
-Item 子项，是 G6 内部`节点 (node) `和边`边 (edge) `的抽象概念。本文档将向大家说明，节点和边已开放的 API 。
-
-* [节点——Node](#_节点——Node)
-* [边——Edge](#_边——Edge)
-
-# 节点——Node
+G6 内部的`节点(node)`。本文档将向大家说明，节点已开放的 API。
 
 ## 方法
 
-### [show](#_show)
+### show
 
 显示
 
-### [hide](#_hide)
+### hide
 
 隐藏
 
-### [getKeyShape](#_getKeyShape)
+### getKeyShape
 
 获取关键形
 
-### [getBBox](#_getBBox)
+### getBBox
 
 获取包围盒
 
 
-### [getModel](#_getModel)
+### getModel
 
 获取数据模型
 
-### [getGroup](#_getGroup)
+### getGroup
 
 获取图形图组
 
-### [getShapeCfg](#_getShapeCfg)
+### getShapeCfg
 
 获取绘制配置项
 
-### [getAnchor](#_getAnchor)
+### getAnchor
 
 获取锚点
 
@@ -59,28 +54,27 @@ Item 子项，是 G6 内部`节点 (node) `和边`边 (edge) `的抽象概念。
 node.getAnchor(param);
 ```
 
-### [getEdges](#_getEdges)
+### getEdges
 
 获取该节点所有边
 
-### [getLinkNodes](#_getLinkNodes)
+### getLinkNodes
 
 获取有连接的子项
 
-### [getUnLinkNodes](#_getUnLinkNodes)
+### getUnLinkNodes
 
 获取无连接的子项
 
-### [getRelativeItems](#_getRelativeItems)
+### getRelativeItems
 
 获取有关联的子项
 
-### [getUnRelativeItems](#_getUnRelativeItems)
+### getUnRelativeItems
 
 获取无关联的子项
 
 <button id="getEdges">getEdges</button> &nbsp;&nbsp;<button id="getLinkNodes">getLinkNodes</button> &nbsp;&nbsp;<button id="getUnLinkNodes">getUnLinkNodes</button> &nbsp;&nbsp;<button id="getRelativeItems">getRelativeItems</button> &nbsp;&nbsp;<button id="getUnRelativeItems">getUnRelativeItems</button> &nbsp;&nbsp;
-
 
 <div id="c0"></div>
 
@@ -270,35 +264,3 @@ function reRender(){
   net.render();
 }
 ```
-
-# 边——Edge
-
-## 方法
-
-### [show](#_show)
-
-显示
-
-### [hide](#_hide)
-
-隐藏
-
-### [getKeyShape](#_getKeyShape)
-
-获取关键形
-
-### [getGroup](#_getGroup)
-
-获取图形图组
-
-### [getBBox](#_getBBox)
-
-获取包围盒
-
-### [getModel](#_getModel)
-
-获取数据模型
-
-### [getShapeCfg](#_getShapeCfg)
-
-获取绘制配置项
