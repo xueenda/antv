@@ -73,9 +73,10 @@ heatmap| 热力图 | --
 
   + label(dims, [callback], cfg)几何标记上[显示文本](label.html)
   + tooltip(dims) 映射到[tooltip](tooltip.html)的字段
-  + style(cfg) 配置图形的样式 [详情](/g2/api/geom.html#style)
+  + style(cfg) 配置图形的样式 [详情](/g2/api/geom.html#_style)
   + select(cfg) 图形选中操作
   + active(boolean) 图形激活交互开关
+  + animate(cfg) 图形的动画 [详情](../api/geom.html#_animate)
 
 ## 几何标记和图形形状
 
@@ -98,3 +99,7 @@ interval| 'rect','hollowRect','line',<br>'tick','stroke','funnel', 'pyramid'| [h
 polygon|'polygon','hollow','stroke'| polygon：多边形、hollow：空心多边形和 stroke：带边框的多边形
 schema| 'box','candle'| 目前仅支持箱须图、K线图
 edge| 'line','vhv','smooth','arc'|vhv：直角折线，arc：弧线，分为笛卡尔坐标系、极坐标系、带权重和不带权重四种情况。
+
+
+如果上面各种几何标记的图形形状没法满足你需求的话，可以进行 [自定义shape](customize-shape.html)
+

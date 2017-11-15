@@ -9,11 +9,16 @@ resource:
 
 # 创建 View
 
-G2 的图表可以由多个视图 view 构成，同时各个视图可以拥有各自的数据源，即支持异构数据。在结构上，视图和 chart 相同，拥有自己独立的数据源、坐标系和图层。
+G2 的图表可以由多个视图 View 构成，同时各个视图可以拥有各自的数据源，即支持异构数据。在结构上，视图和 chart 相同，拥有自己独立的数据源、坐标系和图层。
+
+Chart 是一种特殊的View，两者之间也有一定的差异：
+* View 的功能 Chart 都具有
+* Tooltip（提示信息）和 Legend（图例）仅在 Chart 上支持
+* Chart 上可以创建 View ，但是 View 不再支持创建子 View
 
 ## 如何创建视图
 
-直接通过调用 `chart.view(cfg)` 即可创建 view 对象，此时会默认创建一个绘图区域于 chart 相同的视图，当然你可以为 view 手动设置 `start` 和 `end` 属性手动指定绘制范围，如下所示：
+直接通过调用 `chart.view(cfg)` 即可创建 View 对象，此时会默认创建一个绘图区域于 Chart 相同的视图，当然你可以为 view 手动设置 `start` 和 `end` 属性手动指定绘制范围，如下所示：
 
 ```javascript
 // step 1: 需要创建 chart 对象
