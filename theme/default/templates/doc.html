@@ -14,7 +14,7 @@
                 {% if docFilteringSupport %}
                 <div class="filter-container">
                     <div class="inner">
-                        <svg width="12" height="12" fill="#ced4d9"><use xlink:href="#_si-search"></use></svg>
+                        <span class="iconfont icon-search"></span>
                         <input type="text" id="doc-filtering-query" placeholder="{{ resource.translate.inputKeyWord }}">
                     </div>
                 </div>
@@ -42,7 +42,12 @@
                     {% for variation in variations %}
                     {% set variationDoc = docByName[variation] %}
                     {% if variationDoc %}
-                    <li><a href="{{ variationDoc.href }}">{{ variationDoc.title }}</a></li>
+                    <li>
+                        <a href="{{ variationDoc.href }}">
+                            <span class="iconfont icon-{{ variationDoc.name }}"></span>
+                            {{ variationDoc.title }}
+                        </a>
+                    </li>
                     {% endif %}
                     {% endfor %}
                 </ul>
@@ -55,7 +60,12 @@
                     {% for tag in tags %}
                     {% set tagDoc = tagDocByName[tag] %}
                     {% if tagDoc %}
-                    <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+                    <li>
+                        <a href="{{ tagDoc.href }}">
+                            <span class="iconfont icon-tag-{{ tag }}"></span>
+                            {{ tagDoc.title }}
+                        </a>
+                    </li>
                     {% endif %}
                     {% endfor %}
                 </ul>
@@ -64,7 +74,12 @@
                 {% if showAllTags %}
                 <ul class="tags">
                     {% for tagName, tagDoc in tagDocByName %}
-                    <li><a href="{{ tagDoc.href }}">{{ tagDoc.title }}</a></li>
+                    <li>
+                        <a href="{{ tagDoc.href }}">
+                            <span class="iconfont icon-tag-{{ tagName }}"></span>
+                            {{ tagDoc.title }}
+                        </a>
+                    </li>
                     {% endfor %}
                 </ul>
                 {% endif %}
@@ -72,7 +87,12 @@
                 {% set docs = docNamesByTag[showDocsByTag] %}
                 <ul class="docs">
                     {% for doc in docs %}
-                    <li><a href="{{ docByName[doc].href }}">{{ docByName[doc].title }}</a></li>
+                    <li>
+                        <a href="{{ docByName[doc].href }}">
+                            <span class="iconfont icon-{{ doc }}"></span>
+                            {{ docByName[doc].title }}
+                        </a>
+                    </li>
                     {% endfor %}
                 </ul>
                 {% endif %}
@@ -84,7 +104,6 @@
                     {% if hasPrev %}
                     {% set prevDoc = docList[docIndex - 1] %}
                     <a href="{{ prevDoc.href }}" class="float-left pre">
-                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-arrow-left"></use></svg>
                         {{ prevDoc.title }}
                     </a>
                     {% endif %}
@@ -92,7 +111,6 @@
                     {% set nextDoc = docList[docIndex + 1] %}
                     <a href="{{ nextDoc.href }}" class="float-right next">
                         {{ nextDoc.title }}
-                        <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-arrow-right"></use></svg>
                     </a>
                     {% endif %}
                 </div>

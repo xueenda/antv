@@ -125,11 +125,11 @@ const $collapseExpand = $('.collapse-expand');
 $collapseExpand.click(() => {
     if ($menu.hasClass('collapsed')) {
         $menu.removeClass('collapsed');
-        $collapseExpand.find('svg').html('<use xlink:href="#_si-left"></use>');
+        $collapseExpand.find('.iconfont').removeClass('icon-right').addClass('icon-left');
     } else {
         $menu.addClass('collapsed');
         $menu.find('.collapse.show').removeClass('show');
-        $collapseExpand.find('svg').html('<use xlink:href="#_si-right"></use>');
+        $collapseExpand.find('.iconfont').removeClass('icon-left').addClass('icon-right');
     }
     resizePreview();
 });

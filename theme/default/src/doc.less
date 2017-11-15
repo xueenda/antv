@@ -34,6 +34,9 @@
         background: #F2F4F5;
         padding: 5px 8px;
         border-radius: 4px;
+        .iconfont {
+          font-size: 12px;
+        }
         input {
           border: none;
           background: #F2F4F5;
@@ -107,14 +110,45 @@
       width: 240px;
       padding: 12px 32px 12px 0;
     }
+    a {
+      font-size: 16px;
+      color: #666;
+      &:hover {
+        color: #6556E2;
+        .iconfont {
+          color: #6556E2;
+        }
+      }
+    }
+    .iconfont {
+      font-size: 40px;
+      line-height: 40px;
+      color: #75828F;
+      margin-right: 24px;
+      vertical-align: middle;
+    }
   }
   .tags {
-    li {
+    margin-top: 32px;
+    a {
+      color: #666;
+      display: block;
       border: 1px solid #E9E9E9;
       box-shadow: 0 1px 2px 0 rgba(191, 200, 209, 0.3);
       width: auto;
-      padding: 12px 32px;
-      margin-bottom: 12px;
+      padding: 12px 32px 12px 24px;
+      margin-bottom: 32px;
+      margin-right: 24px;
+      &:hover {
+        box-shadow: 0 12px 24px rgba(84, 48, 132, .06);
+      }
+    }
+    .iconfont {
+      font-size: 32px;
+      line-height: 32px;
+      color: #ADB4BC;
+      margin-right: 32px;
+      vertical-align: middle;
     }
   }
 
@@ -128,29 +162,53 @@
       line-height: 16px;
       text-decoration: none;
       font-size: 14px;
+      .iconfont {
+        color: #697b8c;
+      }
       &:hover {
         color: #007bff;
-        svg {
-          fill: #1890ff;
+        .iconfont {
+          color: #007bff;
         }
       }
     }
     .pre {
+      &:before {
+        font-family: iconfont;
+        content: "\e6e6";
+        font-size: 12px;
+        margin-right: 1em;
+        color: #697b8c;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        position: relative;
+        left: 0;
+      }
       &:hover {
-        svg {
-          transform: translate(-10px, 0px);
+        &:before {
+          left: -10px;
+          color: #007bff;
         }
       }
     }
     .next {
+      &:after {
+        font-family: iconfont;
+        content: "\e6e3";
+        font-size: 12px;
+        margin-left: 1em;
+        color: #697b8c;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        position: relative;
+        right: 0;
+      }
       &:hover {
-        svg {
-          transform: translate(10px, 0px);
+        &:after {
+          right: -10px;
+          color: #007bff;
         }
       }
-    }
-    svg {
-      vertical-align: middle;
     }
   }
 

@@ -56,6 +56,9 @@ docFiles.forEach(function(file) {
         tagDocByName[tag] = doc;
         doc.hideFromNav = false;
     }
+    if (name === 'index') {
+        doc.hideFromNav = false;
+    }
     docByName[name] = doc;
     tags.forEach(function (tag) {
         docNamesByTag[tag] = docNamesByTag[tag] || [];

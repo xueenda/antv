@@ -2,16 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <!--keywords-->
     <meta name="keywords" content="{{ keywords | join(',') }}">
-    <!--description-->
     <meta name="description" content="{{ description }}">
     {% block meta %}{% endblock %}
-    <!--title-->
     <title>{{ title }}</title>
-    <!--css-->
     <link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/bootstrap-4.0.0-beta/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/bootstrap-4.0.0-beta/bootstrap-grid.min.css" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_470089_ze3qsaw8y5sif6r.css" />
     <link rel="stylesheet" type="text/css" href="{{ dist }}/common.css" />
     {% block css %}{% endblock %}
     {% for css in resource.cssFiles %}
@@ -19,7 +16,6 @@
     {% endfor %}
 </head>
 <body class="template-{{ template }}">
-{% include "partial/svg-sprite.html" %}
 <!--header-->
 {% include "partial/header.html" %}
 <!--content-->
@@ -42,7 +38,6 @@
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/bootstrap-4.0.0-beta/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/lazyload-2.0.0-beta.2.min.js"></script>
 {% if externalJsNotAllow %}
-<!-- external js not allow ! -->
 {% else %}
 {% for js in resource.jsFiles %}
 <script type="text/javascript" src="{{ js }}"></script>
