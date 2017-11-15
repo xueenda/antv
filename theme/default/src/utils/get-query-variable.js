@@ -1,3 +1,4 @@
+
 export default variable => {
     const query = window.location.search.substring(1);
     const vars = query.split('&');

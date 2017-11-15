@@ -52,9 +52,9 @@ chartDetail: ${base}/zh-cn/vis/chart/gauge.html
   ];
   const chart = new G2.Chart({
     container: 'mountNode',
-    width: 730,
-    height: 300,
-    padding: [ 0, 0, 20, 0 ]
+      forceFit: true,
+    height: window.innerHeight,
+    padding: [ 0, 0, 30, 0 ]
   });
   chart.source(data);
 

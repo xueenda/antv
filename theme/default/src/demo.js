@@ -1,6 +1,7 @@
 import CodeMirror from 'codemirror';
 import Clipboard from 'clipboard';
 import getQueryVariable from './utils/get-query-variable';
+import inView from './utils/in-view';
 import './demo.less';
 
 const $code = $('#code');
@@ -141,4 +142,8 @@ $menu.find('.menu-inner').click(() => {
         resizePreview();
     }
 });
+const $currentMenuItem = $('.list-group-item.active');
+if (!inView($currentMenuItem)) {
+    $currentMenuItem[0].scrollIntoView();
+}
 
