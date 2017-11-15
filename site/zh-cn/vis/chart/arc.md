@@ -14,7 +14,7 @@ variations:
 
 弧长链接图是节点－链接法的一个变种，节点－链接法是指用节点表示对象，用线（或边）表示关系的节点－链接布局(node-link)的一种可视化布局表示。弧长链接图在此概念的基础上，采用一维布局方式，即节点沿某个线性轴或环状排列，用圆弧表达节点之间的链接关系。这种方法不能像二维布局那样表达图的全局结构，但在节点良好排序后可清晰的呈现环和桥的结构。
 
-英文名：arc diagram
+英文名：Arc Diagram
 
 ## 弧长链接图的构成
 
@@ -125,8 +125,9 @@ $.getJSON('/assets/data/miserables.json', function(data) {
   var chart = new G2.Chart({
     id: 'c1',
     forceFit: true,
-    height: 400,
+    height: 450,
     animate: false,
+    padding: [ 40, 20, 150, 80 ]
   });
 
   chart.tooltip({
@@ -161,13 +162,11 @@ $.getJSON('/assets/data/miserables.json', function(data) {
     .size('value')
     .shape('circle')
     .label('nodeName',{
-      offset: -18,
+      offset: -10,
       textStyle: {
-        rotate: 90, // 文本旋转的角度，一般自动计算
         textAlign: 'left',
-        fontSize: '12'
-      },
-      autoRotate: false
+        rotate: 90
+      }
     });
   chart.render();
 });
@@ -211,8 +210,9 @@ $.getJSON('/assets/data/relationship.json', function(data) {
   var chart = new G2.Chart({
     id: 'c2',
     forceFit: true,
-    height: 500,
+    height: 600,
     animate: false,
+    padding: 100
   });
 
   dv.transform({

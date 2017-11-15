@@ -345,10 +345,11 @@ $.getJSON('/assets/data/diamond.json',function (data) {
     var chart = new G2.Chart({
       id: 'c8',
       forceFit: true,
-      height : 500,
-      plotCfg: {
-        margin: [20, 200, 20, 50]
-      }
+      height: 500,
+      padding: [20, 200, 20, 50]
+    });
+    chart.legend({
+      position: 'right'
     });
     var items = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'];
     var x = 0;
@@ -356,7 +357,6 @@ $.getJSON('/assets/data/diamond.json',function (data) {
     for (var v = 0; v < items.length; v++) {
       for (var h = 0; h < items.length; h++) {
         var view = chart.view({
-          index: h + v,
           start: {
             x: x,
             y: y
@@ -367,43 +367,16 @@ $.getJSON('/assets/data/diamond.json',function (data) {
           }
         });
         view.source(data);
-        view.axis(items[h], {
-          title: null,
-          labels: null,
-          line: {
-            stroke: '#000'
-          },
-          tickLine: {
-            stroke: '#000'
-          }
-        });
-        view.axis(items[v], {
-          title: null,
-          labels: null,
-          line: {
-            stroke: '#000'
-          },
-          tickLine: {
-            stroke: '#000'
-          }
-        });
         view.point().position(items[h] + "*" + items[v])
           .color('Species', ['#880000', '#008800', '#000088'])
           .opacity(0.5)
           .shape('circle')
           .size(3);
-        if (v === 3) {
-          // 横向维度显示
-          chart.guide().text([x + 0.02, 0.95 - (y + 0.2)], items[h]);
-        }
+        
         x += 0.25;
       }
       x = 0;
       y += 0.25;
-      // 纵向维度显示
-      chart.guide().text([x-0.015, 1.07 - y], items[v], {
-        rotate: -90
-      });
     }
     chart.render();
   });
@@ -424,7 +397,7 @@ $.getJSON('/assets/data/diamond.json',function (data) {
 1. 在折线图中，类别数据沿水平轴均匀分布，所有值数据沿垂直轴均匀分布，即折线图只有一个数据轴（即垂直轴）。
 2. 散点图有两个数值轴，沿水平轴（x 轴）方向显示一组数值数据，沿垂直轴（y 轴）方向显示另一组数值数据。散点图将这些数值合并到单一数据点并以不均匀间隔或簇显示它们。散点图通常用于显示和比较数值，例如科学数据、统计数据和工程数据。
 
-### 散点图和[气泡图](bubble-chart)
+### 散点图和[气泡图](bubble.html)
 
 * 散点图和气泡图都是将两个字段映射到x,y轴的`位置`上。散点图侧重于展示点之间的分布规律，而气泡图将数值映射到气泡的大小上，增加了一个维度的数据展示。
 * 散点图可以展示成千上万个点的数据，而气泡图为了防止气泡的互相遮挡，需要根据画布的大小控制数据的规模。

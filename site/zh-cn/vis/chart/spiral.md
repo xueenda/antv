@@ -53,7 +53,9 @@ tags:
 
 ### 适合的场景
 
-例子1：**展示大量数据的变化趋势**。 例如在股票市场上，将股票的逐日收市价使用螺旋图来表示，用来展示股市大致上的趋势。下图展示了“湖南天雁”股票 2015 年 1 月 1 日至 2015 年 11 月 20 日的螺旋图。为了让变化趋势更加明显，可以采用不同的颜色来加深辨识度。
+例子1：**展示大量数据的变化趋势**
+
+例如在股票市场上，将股票的逐日收市价使用螺旋图来表示，用来展示股市大致上的趋势。下图展示了“湖南天雁”股票 2015 年 1 月 1 日至 2015 年 11 月 20 日的螺旋图。为了让变化趋势更加明显，可以采用不同的颜色来加深辨识度。
 
 <div id="c1"></div>
 
@@ -63,17 +65,20 @@ $.getJSON('/assets/data/candle-sticks.json',function(data){
     container: 'c1',
     forceFit: true,
     height: 400,
+    padding: [ 20, 120, 20, 20]
   });
   chart.source(data,{
     'time':{
       type:'timeCat',
-      mask: 'yyyy.mm.dd'
+      mask: 'YYYY.MM.DD'
     }
   });
   chart.coord('helix',{
     startAngle: 1*Math.PI,
     endAngle: 13*Math.PI
   });
+  chart.legend({position:'right'});
+  chart.axis(false);
   chart.interval().position('time*end').color('end').size(0.65);
   chart.render();
 });
@@ -89,11 +94,12 @@ $.getJSON('/assets/data/g2.json',function(data){
     container: 'c2',
     forceFit: true,
     height: 400,
+    padding: [ 20, 120, 20, 20]
   });
   chart.source(data,{
     '时段':{
       type:'time',
-      mask: 'yyyy.mm.dd'
+      mask: 'YYYY.MM.DD'
     },
     '浏览次数':{
     	type: 'log',
@@ -104,6 +110,8 @@ $.getJSON('/assets/data/g2.json',function(data){
     startAngle: 1*Math.PI,
     endAngle: 13*Math.PI
   });
+  chart.legend({position:'right'});
+  chart.axis(false);
   chart.interval().position('时段*浏览次数').color('浏览次数','#ffffff-#36B3C3').size(0.8);
   chart.render();
 });
@@ -170,11 +178,12 @@ $.getJSON('/assets/data/g2.json',function(data){
     container: 'c3',
     forceFit: true,
     height: 400,
+    padding: [ 20, 120, 20, 20]
   });
   chart.source(data,{
     '时段':{
       type:'time',
-      mask: 'yyyy.mm.dd'
+      mask: 'YYYY.MM.DD'
     },
     '浏览次数':{
     	type: 'log',
@@ -186,6 +195,8 @@ $.getJSON('/assets/data/g2.json',function(data){
     startAngle: 1*Math.PI,
     endAngle: 13*Math.PI
   });
+  chart.legend({position:'right'});
+  chart.axis(false);
   chart.interval().position('时段*浏览次数').color('浏览次数').size(0.88).shape('max');
   chart.render();
 });

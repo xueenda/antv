@@ -12,15 +12,15 @@ variations:
 
 ## 色块图的简介
 
-色块图，由小色块`有序`且`紧凑`的组成的图表。色块图的最大好处是，2维画布上的空间利用率`非常`高。理论上小色块的大小是可以等于硬件像素的大小。想象一下，如果用每个像素直接编码数值，一块200px*200px的小屏幕，也可以最多编码40000子项！
+色块图，由小色块`有序`且`紧凑`的组成的图表。色块图的最大好处是，2 维画布上的空间利用率`非常`高。理论上小色块的大小是可以等于硬件像素的大小。想象一下，如果用每个像素直接编码数值，一块200px*200px的小屏幕，也可以最多编码40000子项！
 
 所以色块图特别适合用于直接对数据量较大的、相对原始的数据进行分析。比如：生物基因科学领域，色块图常被用于微阵列数据分析。
 
 另外，关于颜色的用法有两点需要强调一下：
 1. 如果是应对展示用的场景，数据量不大、颜色分类数量小于或等于`7`个，可以采用分类的颜色映射。
-2. 如果应对，分析相关的需求，为了更有效率的使用色块图，我们建议使用连续（渐变）的颜色映射数值。由于人眼对颜色的分辨力有限，所以用于编码的颜色不宜过多，我们推荐的颜色的数量在`3～11`个之间。
+2. 如果应对分析相关的需求，为了更有效率的使用色块图，我们建议使用连续（渐变）的颜色映射数值。由于人眼对颜色的分辨力有限，所以用于编码的颜色不宜过多，我们推荐的颜色的数量在 3～11 个之间。
 
-英文：color map
+英文：Heatmap
 
 ## 色块图的构成
 
@@ -57,7 +57,9 @@ variations:
 
 ### 适合的场景
 
-例子1: **适合应用到数据展示。**下图是模拟的杭州地铁票价图。
+例子1: **适合应用到数据展示**
+
+下图是模拟的杭州地铁票价图。
 
 <div id='c1'></div>
 
@@ -137,99 +139,105 @@ variations:
  * 票价映射到`颜色`
  * 票价数据是模拟的，仅表示大概情况
 
-例子2: **适合应用到简单的数据分析。**2015年，全年股指的波动情况。
+例子2: **适合应用到简单的数据分析**
+
+2015年，全年股指的波动情况。
 
 <div id='c2'></div>
 
 ```js-
-$.getJSON('/assets/data/tape.json',function(data){
-  var Stat = G2.Stat;
-  var Frame = G2.Frame;
-  var chart = new G2.Chart({
-    container: 'c2',
-    forceFit: true,
-    height: 500,
-    padding: [20, 120]
-  });
-  // 获取当前月的第几周,从 0 开始
-  function getMonthWeek(date) {
-    var year = date.getFullYear();
-    var month = date.getMonth();
-    var monthFirst = new Date(year, month, 0);
-    var intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
-    var index = Math.round((intervalDays + monthFirst.getDay()) / 7);
-    return index;
-  }
-  // 加工数据
-  // 增加涨幅、跌幅
-  // 添加所属月、周几、每个月的第几周
-  data.forEach(function(obj) {
-    var date = new Date(obj['日期']);
-    var month = date.getMonth();
-    obj.month = month;
-    obj.day = date.getDay();
-    obj.week = getMonthWeek(date).toString();
-  });
-  // 对数据进行排序
-  data.sort(function(a, b) {
-    return a.day - b.day;
-  });
-  var defs = {
-    month: {
-      sync: true,
-      type: 'cat',
-      values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", 'December']
-    },
-    day: {
-      sync: true,
-      type: 'cat'
-    },
-    week: {
-      sync: true,
-      type: 'cat',
-      values: ['5', '4', '3', '2', '1', '0']
-    },
-    '涨跌幅': {
-      sync: true,
-      type: 'linear',
-      min: -10,
-      max: 10
-    },
-    time: {
-      sync: true,
-      type: 'time'
-    }
-  };
-  chart.axis(false);
-  chart.scale('日期', {
-    type: 'time'
-  });
-  chart.tooltip({
-    map: {
-      title: '日期'
-    }
-  });
-  chart.legend('涨跌幅', {
-    position: 'left'
-  });
-  chart.source(data, defs);
-  chart.facet('list', {
-    fields: ['month'],
-    cols: 3,
-    padding: 30,
-    eachView(view) {
-      view.polygon()
-        .position('day*week*日期')
-        .color('涨跌幅', '#006837-#ffffbf-#d73027')
-        .style({
-          lineWidth: 1,
-          stroke: '#999'
-        });
-    }
-  });
+ $.getJSON('/assets/data/stock-calendar.json', function(data) {
+    const { DataView } = DataSet;
 
-  chart.render();
-});
+    // 获取当前月的第几周,从 0 开始
+    function getMonthWeek(date) {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const monthFirst = new Date(year, month, 0);
+      const intervalDays = Math.round((date.getTime() - monthFirst.getTime()) / 86400000);
+      const index = Math.floor((intervalDays + monthFirst.getDay()) / 7);
+      return index;
+    }
+    // 加工数据
+    // 增加涨幅、跌幅
+    // 添加所属月、周几、每个月的第几周
+    data.forEach(function(obj) {
+      const date = new Date(obj['日期']);
+      const month = date.getMonth();
+      obj.month = month;
+      obj.day = date.getDay();
+      obj.week = getMonthWeek(date).toString();
+    });
+    // 对数据进行排序
+    const dv = new DataView();
+    dv.source(data)
+      .transform({
+        type: 'sort-by',
+        fields: [ 'day' ],
+        order: 'DESC'
+      });
+    const chart = new G2.Chart({
+      container: 'c2',
+      forceFit: true,
+      height: 500,
+      padding: [ 20, 120, 50, 120 ]
+    });
+    chart.source(dv, {
+      month: {
+        type: 'cat',
+        values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", 'December']
+      },
+      day: {
+        type: 'cat'
+      },
+      week: {
+        type: 'cat',
+        values: ['5', '4', '3', '2', '1', '0']
+      },
+      '涨跌幅': {
+        type: 'linear',
+        min: -10,
+        max: 10,
+        sync: true
+      },
+      time: {
+        type: 'time'
+      },
+      '日期': {
+        type: 'time'
+      }
+    });
+
+    chart.axis(false);
+    chart.legend('涨跌幅', {
+      offset: 0
+    });
+    chart.tooltip({
+      title: '日期'
+    });
+    chart.facet('list', {
+      fields: [ 'month' ],
+      cols: 3,
+      padding:  [0, 15, 30, 15],
+      colTitle: {
+        offsetY: -10,
+        style: {
+          fontSize: 12,
+          textAlign: 'center',
+          fill: '#666'
+        }
+      },
+      eachView: (view) => {
+        view.polygon().position('day*week*日期')
+          .color('涨跌幅', '#F51D27-#FA541C-#FFBE15-#FFF2D1-#E3F6FF-#85C6FF-#0086FA-#0A61D7')
+          .style({
+            lineWidth: 1,
+            stroke: '#fff'
+          });
+      }
+    });
+    chart.render();
+  });
 ```
 
 说明：
@@ -237,7 +245,9 @@ $.getJSON('/assets/data/tape.json',function(data){
  * 股指映射到`颜色`，从绿到黄到红，表示股指从低到高
  * 对`月份`进行分面
 
-例子3: **适合应用到聚类分析**。下图是用于基因芯片的聚类分析的`分群色块图`
+例子3: **适合应用到聚类分析**
+
+下图是用于基因芯片的聚类分析的`分群色块图`
 
 <img src="https://os.alipayobjects.com/rmsportal/KuYPevLQPaKCwUQ.png" width="600px">
 

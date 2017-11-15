@@ -62,7 +62,9 @@ variations:
 
 #### 适合的场景
 
-例子1: **美国机场分布图。** 通过各个机场的经纬度坐标，在地图上标记代表各机场地理位置的点，可以看出东部相对较多，西部沿海地区的机场集中。
+例子1: **美国机场分布图**
+
+通过各个机场的经纬度坐标，在地图上标记代表各机场地理位置的点，可以看出东部相对较多，西部沿海地区的机场集中。
 
 <div id="c1"></div>
 
@@ -123,6 +125,8 @@ variations:
         height: 450,
         padding: 0
       });
+      chart.axis(false);
+      chart.tooltip(false);
       chart.scale({
         longitude: {
           sync: true
@@ -137,7 +141,6 @@ variations:
       view.tooltip(false);
       view.polygon()
         .position('longitude*latitude')
-        .shape('stroke')
         .style({
           fill: '#fff',
           stroke: '#E6E6E6',
@@ -150,29 +153,32 @@ variations:
         .position('longitude*latitude')
         .color('#31a354')
         .shape('circle')
-        .opacity(0.5)
-        .style({
-          blur: 10
-        });
+        .size(3)
+        .opacity(0.5);
 
       chart.render();
     });
   });
 ```
 
-例子2： **2010 年芝加哥人口种族分布。** 用不同颜色的点在地图上标识不同的种族，粉红色表示白人，蓝色表示黑人，绿色表示亚洲人，黄色表示拉丁美洲人，这一种族分布地图清晰地表现了黑人和白人的聚居区，中部偏右还有一小块绿色的亚裔聚居区，在聚居区交接的区域通常存在不同种族混居的现象。
+例子2： **2010 年芝加哥人口种族分布**
+
+用不同颜色的点在地图上标识不同的种族，粉红色表示白人，蓝色表示黑人，绿色表示亚洲人，黄色表示拉丁美洲人，这一种族分布地图清晰地表现了黑人和白人的聚居区，中部偏右还有一小块绿色的亚裔聚居区，在聚居区交接的区域通常存在不同种族混居的现象。
 
 注意，这张图中由于数据点很多，正常情况下当数据中有海量的点数据需要在地图上标识时，点之间会产生大量重叠的情况，而这张图采用了类似于 PixelMap 的算法，将重叠的点再一个目标位置周围的小范围内随机移动，从而解决重叠的问题，让可视化展示更多的细节。
+
 <img src="https://t.alipayobjects.com/images/T1C9BjXXJiXXXXXXXX.png" />
 
 #### 不适合的场景
 
-例子1： ** iphone5 全国销量 ** 汇总值在地图上的分布和对比，用点描法地图不太合适，最好采用气泡图结合地图来展示，气泡的大小作为一个维度可以显示出汇总值的分布和对比情况。<code>数据来源丢失，数据不可靠！</code>
+例子1： **iphone5 全国销量** 
+
+汇总值在地图上的分布和对比，用点描法地图不太合适，最好采用气泡图结合地图来展示，气泡的大小作为一个维度可以显示出汇总值的分布和对比情况。<code>数据来源丢失，数据不可靠！</code>
 
 <div id="c2"></div>
 
 ```js-
-  $.getJSON('/assets/data/china.json', function(mapData) {
+  $.getJSON('/assets/data/china-geo.json', function(mapData) {
     var ds = new DataSet();
     var mapDv = ds.createView().source(mapData, {
       type: 'GeoJSON'
@@ -189,6 +195,7 @@ variations:
       container: 'c2',
       forceFit: true,
       height: 450,
+      padding: [0, 50]
     });
     chart.scale({
       longitude: {
@@ -197,6 +204,9 @@ variations:
       latitude: {
         sync: true
       },
+    });
+    chart.tooltip({
+      showTitle: false
     });
 
     var mapView = chart.view();
@@ -264,7 +274,12 @@ variations:
       .position('longitude*latitude')
       .color('#6A006F')
       .shape('circle')
-      .tooltip('value');
+      .tooltip('name*value', (name, value) => {
+        return {
+            name,
+            value
+        }
+      });
 
     chart.legend(false);
     chart.render();

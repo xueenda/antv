@@ -24,7 +24,7 @@ variations:
 
 尽管如此，在一张饼图上比较一个数据系列上各个分类的大小占比还是很方便高效的。
 
-英文名：Pie chart
+英文名：Pie Chart
 
 ## 饼图的构成
 
@@ -59,7 +59,9 @@ variations:
 
 ### 适合的场景
 
-例子1: **展示 2 个分类的占比情况**。下图是一个班级的男女生的占比情况：
+例子1: **展示 2 个分类的占比情况**。
+
+下图是一个班级的男女生的占比情况：
 
 gender（性别）|count（人数）
 ----|---
@@ -76,7 +78,7 @@ gender（性别）|count（人数）
 
   function formatter(text,item){
       var point = item.point; // 每个弧度对应的点
-      percent = (point.percent * 100).toFixed(2) + '%';
+      var percent = (point.percent * 100).toFixed(2) + '%';
       return text + ':' + percent;
   }
   var chart = new G2.Chart({
@@ -85,17 +87,28 @@ gender（性别）|count（人数）
     height : 350
   });
 
-  chart.source(data);
+  chart.source(data, {
+    percent: {
+      formatter(val) {
+        return val * 100 + '%';
+      }
+    }
+  });
   chart.coord('theta');
   chart.tooltip({
-    title: null // 不显示title
+    showTitle: false // 不显示title
   });
-  chart.intervalStack().position('percent').color('gender').label('gender',{renderer: formatter});
+  chart.intervalStack()
+    .position('percent')
+    .color('gender')
+    .label('gender', {formatter: formatter});
 
   chart.render();
 ```
 
-例子2：**多个但不超过 9 个分类的占比情况**。下图是一个游戏公司的销售情况：
+例子2：**多个但不超过 9 个分类的占比情况**。
+
+下图是一个游戏公司的销售情况：
 
 |genre（游戏类型） |sold（销售量）|
 |------|----|
@@ -118,7 +131,7 @@ gender（性别）|count（人数）
 
   function formatter(text,item){
       var point = item.point; // 每个弧度对应的点
-      var percent = point['..percent']; // ..proportion 字段由Stat.summary.proportion统计函数生成
+      var percent = point['percent'];
       percent = (percent * 100).toFixed(2) + '%';
       return text + ': ' + percent;
   }
@@ -136,18 +149,28 @@ gender（性别）|count（人数）
     height : 350
   });
 
-  chart.source(dv);
+  chart.source(dv, {
+    percent: {
+      formatter(val) {
+        return (val * 100).toFixed(2) + '%';
+      }
+    }
+  });
   chart.legend('bottom');
   chart.coord('theta',{radius: 0.8});
-
-  chart.intervalStack().position('percent').color('genre').label('genre',{renderer: formatter});
+  chart.tooltip({
+    showTitle: false
+  });
+  chart.intervalStack().position('percent').color('genre').label('genre',{formatter: formatter});
   
   chart.render();
 ```
 
 ### 不适合的场景
 
-例子1：**分类过多的场景。**下图是各个省的人口的占比情况，因为这张图上包含的分类过多，就出现了简介中提到的问题，很难清晰对比各个省份的人口数据占比情况，所以这种情况下，我们推荐使用[横向柱状图](bar.html)。
+例子1：**分类过多的场景**
+
+下图是各个省的人口的占比情况，因为这张图上包含的分类过多，就出现了简介中提到的问题，很难清晰对比各个省份的人口数据占比情况，所以这种情况下，我们推荐使用[横向柱状图](bar.html)。
 
 <div id="c3"></div>
 
@@ -185,16 +208,25 @@ gender（性别）|count（人数）
     container: 'c3',
     forceFit: true,
     height : 350,
+    padding: [ 40, 80, 150]
   });
 
-  chart.source(dv);
+  chart.source(dv, {
+    percent: {
+      formatter(val) {
+        return (val * 100).toFixed(2) + '%';
+      }
+    }
+  });
   chart.coord('theta');
   chart.intervalStack().position('percent').color('province').label('province');
 
   chart.render();
 ```
 
-例子2: ** 分类占比差别不明显的场景 **下图中游戏公司的不同种类的游戏的销售量相近，所以不太适合使用饼图，此时可以使用[柱状图](bar.html)来呈现。
+例子2: **分类占比差别不明显的场景**
+
+下图中游戏公司的不同种类的游戏的销售量相近，所以不太适合使用饼图，此时可以使用[柱状图](bar.html)来呈现。
 
 <div id="c4"></div>
 
@@ -214,19 +246,19 @@ gender（性别）|count（人数）
     as: 'percent'
   });
 
-  function formatter(text,item){
-      var point = item.point; // 每个弧度对应的点
-      var percent = point['..percent']; // ..proportion 字段由Stat.summary.proportion统计函数生成
-      percent = (percent * 100).toFixed(2) + '%';
-      return percent;
-  }
   var chart = new G2.Chart({
     container: 'c4',
     forceFit: true,
     height : 350
   });
 
-  chart.source(dv);
+  chart.source(dv, {
+    percent: {
+      formatter(val) {
+        return (val * 100).toFixed(2) + '%';
+      }
+    }
+  });
   chart.coord('theta',{radius: 0.8});
   chart.legend('bottom');
 

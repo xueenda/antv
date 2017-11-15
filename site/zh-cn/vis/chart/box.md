@@ -30,7 +30,7 @@ variations:
 - 这组数据的分布是否密集、集中。
 - 数据是否扭曲，即是否有偏向性。
 
-英文名：Box plot
+英文名：Box Chart
 
 ## 箱形图的构成
 
@@ -69,7 +69,9 @@ variations:
 
 ## 箱形图的应用场景
 
-例子 1：**关注于一组数据的分布情况。** 这里我们以经典的鸢尾花数据为例。
+例子 1：**关注于一组数据的分布情况**
+
+这里我们以经典的鸢尾花数据为例。
 
 | 品种 | 萼片长度| 萼片宽度 | 花瓣长度 | 花瓣宽度 |
 |------|----|------|----|------|
@@ -82,11 +84,15 @@ variations:
 
 <div id="c1"></div>
 
-例子 2：**分组箱形图。** 为了更清晰得比较不同品种间相同属性数值的区别，可以将上图变化为如下二维多个箱形图形式。
+例子 2：**分组箱形图** 
+
+为了更清晰得比较不同品种间相同属性数值的区别，可以将上图变化为如下二维多个箱形图形式。
 
 <div id="c2"></div>
 
-例子 3： **一维箱形图。** 箱形图有多种变换，这里介绍下一维箱形图，下图还以鸢尾花数据为例，展示的是所有品种的花萼和花瓣长度、宽度的情况，虽然是在一维坐标系中，但是通过添加颜色属性，可以为该一维箱形图再增加一个展示维度，即分类。
+例子 3： **一维箱形图** 
+
+箱形图有多种变换，这里介绍下一维箱形图，下图还以鸢尾花数据为例，展示的是所有品种的花萼和花瓣长度、宽度的情况，虽然是在一维坐标系中，但是通过添加颜色属性，可以为该一维箱形图再增加一个展示维度，即分类。
 
 <div id="c3"></div>
 
@@ -120,7 +126,6 @@ $.getJSON('/assets/data/iris.json', function(data) {
     height : 400,
   });
   chart.source(dv);
-  console.log(dv);
   chart.facet('rect', {
     fields: [ 'Species', null ],
     eachView: function (view) {
@@ -134,34 +139,6 @@ $.getJSON('/assets/data/iris.json', function(data) {
     }
   });
   chart.render();
-  chart.on('tooltipchange', function(ev){
-    var items = ev.items;
-    var origin = items[0];
-    var values = origin.point._origin.value;
-    items.splice(0); // 清空
-    items.push(Util.mix({}, origin, {
-      name: '最小值',
-      value: values[0].toFixed(2)
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '下四分位数',
-      value: values[1].toFixed(2),
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '中位数',
-      value: values[2].toFixed(2),
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '上四分位数',
-      value: values[3].toFixed(2),
-      marker: 'circle'
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '最大值',
-      value: values[4].toFixed(2),
-      marker: 'circle'
-    }));
-  });
 
   var chart2 = new G2.Chart({
     id: 'c2',
@@ -169,11 +146,6 @@ $.getJSON('/assets/data/iris.json', function(data) {
     height : 350,
   });
   chart2.source(dv);
-  chart2.tooltip({
-    map: {
-      title: '最小值-下四分位数-中位数-上四分位数-最大值'
-    }
-  });
   chart2.schemaDodge().position('type*y').color('Species').shape('box');
   chart2.render();
 
@@ -199,56 +171,7 @@ $.getJSON('/assets/data/iris.json', function(data) {
   });
   chart3.source(dv1);
   chart3.coord().transpose();
-  chart3.tooltip({
-    map:{
-      title: "type"
-    }
-  });
   chart3.schemaDodge().position('1*y').color('type').shape('box').size(30);
   chart3.render();
-  chart3.on('tooltipchange', function(ev){
-    var items = ev.items;
-    var origin = items[0];
-    var values = origin.point._origin.value;
-    items.splice(0); // 清空
-
-    items.push(Util.mix({}, origin, {
-      name: '最小值',
-      value: values[0].toFixed(2)
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '下四分位数',
-      value: values[1].toFixed(2),
-      marker: 'circle'
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '中位数',
-      value: values[2].toFixed(2),
-      marker: 'circle'
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '上四分位数',
-      value: values[3].toFixed(2),
-      marker: 'circle'
-    }));
-    items.push(Util.mix({}, origin, {
-      name: '最大值',
-      value: values[4].toFixed(2),
-      marker: 'circle'
-    }));
-  });
 });
 ```
-
-<!-- ## 箱形图的扩展
-
-### 箱形图的交互任务
-
-#### 数值显示
-
-需要在箱形图上显示最大值，最小值，中值，上四分位，下四分位
-
-
-#### 单个箱形图的选择
-
-可以选择一个单独的箱形图 -->

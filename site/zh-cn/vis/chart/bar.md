@@ -15,12 +15,12 @@ variations:
 
 ## 柱状图的简介
 
-典型的柱状图（又名条形图），使用垂直或水平的柱子显示类别之间的数值比较。其中一个轴表示需要对比的分类维度，另一个轴代表相应的数值。
+基础柱状图，使用垂直或水平的柱子显示类别之间的数值比较。其中一个轴表示需要对比的分类维度，另一个轴代表相应的数值。
 
-柱状图有别于[直方图](./histogram.html)，柱状图无法显示数据在一个区间内的连续变化趋势。柱状图描述的是分类数据，回答的是每一个分类中“有多少？”这个问题。
+柱状图有别于[直方图](./histogram.html)，柱状图无法显示数据在一个区间内的连续变化趋势。柱状图描述的是分类数据，回答的是每一个分类中『有多少？』这个问题。
 需要注意的是，当柱状图显示的分类很多时会导致分类名层叠等显示问题，下面我们会举例说明。
 
-英文名：Column chart, Bar chart
+英文名：Basic Column Chart, Basic Bar Chart
 
 ## 柱状图的构成
 
@@ -89,7 +89,9 @@ variations:
 
 ### 适合的场景
 
-例子1: **适合应用到分类数据对比。**下图是一个游戏销量的图表，展示不同游戏类型的销量对比。
+例子1: **适合应用到分类数据对比** 
+
+下图是一个游戏销量的图表，展示不同游戏类型的销量对比。
 
 |genre（游戏类型） |sold（销售量）|
 |------|----|
@@ -113,7 +115,7 @@ variations:
   var chart = new G2.Chart({
     id: 'c3',
     forceFit: true,
-    height : 400
+    height: 400
   });
 
   chart.source(data);
@@ -128,8 +130,9 @@ variations:
 
 ### 不适合的场景
 
-例子1：**分类太多不适合使用纵向柱状图。**如对比不同省份的人口数量。分类情况过多时，柱状图的文本为了排布合理，需要进行旋转，不利于阅读，相比于纵向柱状图，横向柱状图更适用于此类分类较多的场景。
+例子1：**分类太多不适合使用纵向柱状图** 
 
+如对比不同省份的人口数量。分类情况过多时，柱状图的文本为了排布合理，需要进行旋转，不利于阅读，相比于纵向柱状图，横向柱状图更适用于此类分类较多的场景。
 
 |province（省份） |population（人口数量）
 |------|----
@@ -174,31 +177,19 @@ data.sort(function(a, b) {
 var chart = new G2.Chart({
   id : 'c5',
   forceFit: true,
-  height : 400,
-  plotCfg: {
-    margin: [20,20,100,100]
-  }
-});
-
-chart.axis('province',{
-  title: null
-});
-chart.axis('population',{
-  titleOffset: 150
+  height: 400,
+  padding: [20,20,100,100]
 });
 chart.source(data);
 chart.interval().position('province*population');
-
 chart.render();
 
+// 条形图
 var chart2 = new G2.Chart({
-  id : 'c6',
+  id: 'c6',
   forceFit: true,
-  height : 800,
-  plotCfg: {
-    margin: [10,30,50,120]
-  }
-
+  height: 800,
+  padding: [10,30,50,140]
 });
 
 chart2.source(data);
@@ -206,18 +197,17 @@ chart2.axis('province',{
   title: null
 });
 chart2.coord('rect').transpose();
-
 chart2.interval().position('province*population');
-
 chart2.render();
 ```
 
 例子2：**不适合表示趋势**
+
 柱状图使用矩形的长度（宽度）来对比分类数据的大小，非常方便临近的数据进行大小的对比，不适合展示连续数据的趋势。下图本想展示 ACME 这只股票在 2015 年 9 月份整个月的每日的价格走势，但是效果不尽人意。
 
 <div id="c7"></div>
 
-随着有序的时间变化的数值趋势，更适合使用[折线图](line.html)或者[区域图](area.html)
+随着有序的时间变化的数值趋势，更适合使用[折线图](line.html)或者[面积图](area.html)。
 
 <div id="c71"></div>
 
@@ -255,14 +245,11 @@ chart2.render();
     {"day": '2015/9/30', "share": 40}
   ];
 
-  var Stat = G2.Stat;
   var chart = new G2.Chart({
     id: 'c7',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
+    padding: [20, 85,80,80]
   });
   chart.source(data);
   chart.scale('day', {
@@ -285,9 +272,7 @@ chart2.render();
     id: 'c71',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
+    padding: [20, 85,80,80]
   });
   chart.source(data);
   chart.scale('day', {
@@ -325,5 +310,3 @@ chart2.render();
 
 * 南丁格尔图（玫瑰图）通过半径的大小来对比数据
 * 柱状图根据矩形的长度来对比数据
-
-

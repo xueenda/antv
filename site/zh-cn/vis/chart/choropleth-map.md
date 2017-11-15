@@ -62,7 +62,7 @@ State（州名）| Population（人口）| Code（缩写）
 California|38802500|CA
 Texas|26956958|TX
 Florida|19893297|FL
-。。。|。。。|。。。
+... |... |... 
 
 <div id="c1"></div>
 
@@ -105,7 +105,9 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
 
     chart.legend(false);
     chart.axis(false);
-
+    chart.tooltip({
+      showTitle: false
+    });
     var regionView = chart.view();
     regionView.source(regionDv);
     regionView.polygon()
@@ -135,7 +137,9 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
 * State：州的名称决定了在其所在的地理`位置`绘制州
 * Code：由于有些州的名字比较长，所以使用缩写显示在所在的州上
 
-例子2：**2015 年全球人口性别比例分布。** 下图显示了 2015 年全球男女比例的总体情况，其中数值表示的是每 100位女性对应的男性数量。可以看出在欧美国家，普遍是女性略多于男性，在前苏联地区，这种现象却尤为突出，而中东地区却是男多女少。
+例子2：**2015 年全球人口性别比例分布** 
+
+下图显示了 2015 年全球男女比例的总体情况，其中数值表示的是每 100位女性对应的男性数量。可以看出在欧美国家，普遍是女性略多于男性，在前苏联地区，这种现象却尤为突出，而中东地区却是男多女少。
 
 <table>
 <thead>
@@ -163,8 +167,47 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
 <div id="c2"></div>
 
 ```js-
-$.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
-  var userData = [
+$.getJSON('/assets/data/world.geo.json', function(mapData) {
+  const chart = new G2.Chart({
+    container: 'c2',
+    forceFit: true,
+    height: 500,
+    padding: [55, 20]
+  });
+  chart.tooltip({
+    showTitle: false
+  });
+  // 同步度量
+  chart.scale({
+    longitude: {
+      sync: true
+    },
+    latitude: {
+      sync: true
+    },
+  });
+  chart.axis(false);
+  chart.legend('trend', {
+    position: 'left'
+  });
+
+  // 绘制世界地图背景
+  const ds = new DataSet();
+  const worldMap = ds.createView('back')
+    .source(mapData, {
+      type: 'GeoJSON'
+    });
+  const worldMapView = chart.view();
+  worldMapView.source(worldMap);
+  worldMapView.tooltip(false);
+  worldMapView.polygon().position('longitude*latitude').style({
+    fill: '#fff',
+    stroke: '#ccc',
+    lineWidth: 1
+  });
+
+  // 可视化用户数据
+  const userData = [
     {name: 'Russia',value: 86.8},
     {name: 'China',value: 106.3},
     {name: 'Japan',value: 94.7},
@@ -187,84 +230,46 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
     {name: 'Kazakhstan',value:93.4},
     {name: 'Indonesia',value: 101.4}
   ];
-
-  var ds = new DataSet();
-  var mapDv = ds.createView().source(mapData, {
-    type: 'GeoJSON',
-  });
-  var userDv = ds.createView().source(userData);
-  userDv
+  const userDv = ds.createView()
+    .source(userData)
     .transform({
-      type: 'map',
-      callback: function(row) {
-        row.trend = row.value > 100 ? 1 : 0;
-        return row;
-      }
+      geoDataView: worldMap,
+      field: 'name',
+      type: 'geo.region',
+      as: [ 'longitude', 'latitude' ]
     })
     .transform({
-      type: 'geo.region',
-      geoDataView: mapDv,
-      field: 'name',
-      as: [ 'longitude', 'latitude' ]
+      type: 'map',
+      callback: function(obj) {
+        obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
+        return obj;
+      }
     });
-
-
-  var chart = new G2.Chart({
-    id: 'c2',
-    forceFit: true,
-    height: 400,
-    padding: 0
-  });
-  chart.legend('left');
-  chart.scale({
-    longitude: {
-      sync: true
-    },
-    latitude: {
-      sync: true
-    }
-  });
-  chart.tooltip({
-    title: null,
-    map:{
-      name: 'trend',
-      value: 'value'
-    }
-  });
-
-  // 绘制世界地图背景
-  var view = chart.view();
-  view.source(mapDv);
-  view.tooltip(false);
-  view.polygon()
-    .position('longitude*latitude')
-    .shape('stroke')
-    .style({
-      fill: '#fff',
-      stroke: '#ccc',
-      lineWidth: 1
-    });
-
-  var userView = chart.view();
+  const userView = chart.view();
   userView.source(userDv, {
     'trend': {
-      type: 'cat',
-      alias: '每100位女性对应的男性数量',
-      values: ['女性更多', '男性更多']
-    },
+      alias: '每100位女性对应的男性数量'
+    }
   });
   userView.polygon()
     .position('longitude*latitude')
-    .color('trend',['#C45A5A','#14647D'])
+    .color('trend', [ '#F51D27', '#0A61D7' ])
     .opacity('value')
-    .tooltip('name*value');
+    .tooltip('name*trend')
+    .animate({
+      leave: {
+        animation: 'fadeOut'
+      }
+    });
   chart.render();
 });
 ```
 
 ### 不适合的场景
 
-例子1： **2008 年美国总统大选结果。** 民主党候选人奥巴马和共和党候选人麦凯恩胜出的州分别用蓝色和红色表示。这个例子的选举可视化很容易给用户造成简介中提到的错觉：数据分布和地理区域大小的不对称。共和党比民主党获得了更多的投票，因为红色的区域所占的面积更大。但是在美国总统大选中，最后的结果是看候选人获得的选举人票数，每个州拥有的选举人票数是不一样的，在一个州获胜的选举人将得到该州所有的选举人票数。纽约州虽然面积很小，却拥有33张选举人票，而蒙大拿州虽然面积很大，却只有3票。
+例子1： **2008 年美国总统大选结果** 
+
+民主党候选人奥巴马和共和党候选人麦凯恩胜出的州分别用蓝色和红色表示。这个例子的选举可视化很容易给用户造成简介中提到的错觉：数据分布和地理区域大小的不对称。共和党比民主党获得了更多的投票，因为红色的区域所占的面积更大。但是在美国总统大选中，最后的结果是看候选人获得的选举人票数，每个州拥有的选举人票数是不一样的，在一个州获胜的选举人将得到该州所有的选举人票数。纽约州虽然面积很小，却拥有33张选举人票，而蒙大拿州虽然面积很大，却只有3票。
 
 这个时候推荐使用[点描法地图](dot-map.html)。
 
@@ -273,7 +278,7 @@ State (州名) | Num（选举票数）| Obama (奥巴马得票数) | McCain (McC
 Alabama|9|813479|1266546
 Arizona|10|1034707|638017
 Arkansas|6|422310|638017
-。。。|。。。|。。。|。。。
+... |... |... |... 
 
 <div id="c3"></div>
 
@@ -313,8 +318,8 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
     var chart = new G2.Chart({
       container: 'c3',
       forceFit: true,
-      height: 450,
-      padding: 0
+      height: 500,
+      padding: [0, 90, 0, 0]
     });
 
     chart.scale({
@@ -325,6 +330,13 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
         sync: true
       }
     });
+    chart.axis(false);
+    chart.tooltip({
+      showTitle: null
+    });
+    chart.legend({
+    position: 'right'
+  });
 
     var regionView = chart.view();
     regionView.source(regionDv);
@@ -332,7 +344,7 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
       .position('longitude*latitude')
       .color('候选人',['#F07763', '#698DC5'])
       .label('Num', {offset: 0, label: {'fill': '#fff', 'font-size': '16'}})
-      .tooltip('候选人*Num');
+      .tooltip('State*候选人*Num');
 
     chart.render();
   });

@@ -14,7 +14,7 @@ variations:
 
 ## 气泡图的简介
 
-气泡图是一种多变量图表，是[散点图](/vis/doc/chart/details/scatter-plot.html)的变体，也可以认为是散点图和百分比区域图的组合。
+气泡图是一种多变量图表，是[散点图](scatter.html)的变体，也可以认为是散点图和百分比区域图的组合。
 
 气泡图最基本的用法是使用三个值来确定每个数据序列，和散点图一样，气泡图将两个维度的数据值分别映射为笛卡尔坐标系上的坐标点，其中 X 和 Y 轴分别代表不同的两个维度的数据，但是不同于散点图的是，气泡图的每个气泡都有分类信息（他们显示在点旁边或者作为图例）。每一个气泡的面积代表第三个数值数据。另外还可以使用不同的颜色来区分分类数据或者其他的数值数据，或者使用亮度或者透明度。表示时间维度的数据时，可以将时间维度作为直角坐标系中的一个维度，或者结合动画来表现数据随着时间的变化情况。
 
@@ -24,7 +24,7 @@ variations:
 
 另外，**气泡的大小是映射到面积而不是半径或者直径绘制的**。因为如果是基于半径或者直径的话，圆的大小不仅会呈指数级变化，而且还会导致视觉误差。
 
-英文名：Bubble chart
+英文名：Bubble Chart
 
 ## 气泡图的构成
 
@@ -84,7 +84,8 @@ variations:
   var chart = new G2.Chart({
     container: 'c2',
     forceFit: true,
-    height : 300,
+    height: 300,
+    padding: [ 40, 20, 95, 80 ]
   });
 
   chart.scale('percentage', {
@@ -107,7 +108,8 @@ variations:
   var chart2 = new G2.Chart({
     container: 'c22',
     forceFit: true,
-    height : 300,
+    height: 300,
+    padding: [ 40, 20, 95, 80 ]
   });
 
   chart2.scale('percentage', {
@@ -155,7 +157,8 @@ variations:
   var chart = new G2.Chart({
     container: 'c3',
     forceFit: true,
-    height : 300,
+    height: 300,
+    padding: [ 40, 20, 95, 80 ]
   });
 
   chart.scale('time', {
@@ -202,7 +205,8 @@ $.getJSON('/assets/data/bubble-chart.json', function(data) {
   var chart = new G2.Chart({
     container: 'c4',
     forceFit: true,
-    height : 400,
+    height: 400,
+    padding: [ 40, 20, 95, 80 ]
   });
   chart.scale('LifeExpectancy', {
     alias: '人均寿命（年）'
@@ -212,19 +216,17 @@ $.getJSON('/assets/data/bubble-chart.json', function(data) {
     tickCount: 10
   });
   chart.axis('GDP', {
-    formatter: function (value) {
-      return (value/1000).toFixed(0) + 'k';
+    label: {
+      formatter: function (value) {
+        return (value/1000).toFixed(0) + 'k';
+      }
     }
   });
   chart.scale('Population',{
     type: 'pow'
   });
   chart.tooltip({
-    map: {
-      name: "人口总数",
-      value: "Population",
-      title: "Country"
-    }
+    title: 'Country'
   });
   chart.source(data);
   chart.legend('Population', false);
@@ -234,14 +236,14 @@ $.getJSON('/assets/data/bubble-chart.json', function(data) {
     .size('Population', [5, 35])
     .color('continent')
     .opacity(0.65)
-    .shape('Country');
+    .shape('circle');
   chart.render();
 });
 ```
 
 ### 三、与地图的结合（[Bubble Map](bubble-map.html)）
 
-气泡图的另一个广泛用途，就是气泡图与[地图](./map.html)的结合，即带气泡的地图，来展示具有地域特征的数据。具体详见[Bubble Map](bubble-map.html)，这里只简单展示一个例子。
+气泡图的另一个广泛用途，就是气泡图与地图的结合，即带气泡的地图，来展示具有地域特征的数据。具体详见[Bubble Map](bubble-map.html)，这里只简单展示一个例子。
 
 如图，将各个国家遭受的恐怖袭击次数用气泡图来展示的效果。可以看出伊拉克遭受的恐怖袭击次数最多，并且恐怖袭击主要集中在中东地区。
 
@@ -276,7 +278,7 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
   var chart = new G2.Chart({
     id: 'c5',
     forceFit: true,
-    height: 300,
+    height: 500,
   });
   chart.tooltip({
     showTitle: false
@@ -291,13 +293,7 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
     },
   });
   chart.axis(false);
-  chart.legend('trend', {
-    position: 'left'
-  });
-  chart.tooltip({
-    showTitle: false,
-    crosshairs: false
-  });
+  chart.legend(false);
 
   var worldMapView = chart.view();
   worldMapView.source(worldMapDv);
@@ -305,8 +301,8 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
   worldMapView.polygon()
     .position('longitude*latitude')
     .style({
-      fill: '#fff',
-      stroke: '#ccc',
+      fill: '#ccc',
+      stroke: '#fff',
       lineWidth: 1
     });
 
@@ -317,7 +313,7 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
     .size('value', [ 4, 25 ])
     .opacity(0.85)
     .shape('circle')
-    .color('value');
+    .color('value','#FFFFEE-#EE4B4B');
 
   chart.render();
 });
