@@ -22,7 +22,7 @@ variations:
 
 同时环图相对于饼图空间的利用率更高，比如我们可以使用它的空心区域显示文本信息，比如标题等。
 
-英文名：Donut chart
+英文名：Donut Chart
 
 ## 环图的构成
 
@@ -57,7 +57,9 @@ variations:
 
 ### 适合的场景
 
-例子1：**展示分类的占比情况**这种用法与饼图类似，下图是一个游戏公司的销售情况：
+例子1：**展示分类的占比情况**
+
+这种用法与饼图类似，下图是一个游戏公司的销售情况：
 
 |genre（游戏类型） |sold（销售量）|
 |------|----|
@@ -97,23 +99,33 @@ variations:
   });
 
   chart.source(dv);
-  chart.legend('bottom');
 
   chart.coord('theta',{
     radius: 0.8,
     innerRadius: 0.65
   });
+  chart.tooltip({
+    showTitle: false
+  });
 
   chart.intervalStack()
     .position('percent')
     .color('genre')
-    .label('genre',{renderer: formatter});
+    .tooltip('genre*percent', (genre, percent) => {
+      return {
+        name: genre,
+        value: ( percent * 100 ) + '%'
+      }
+    })
+    .label('genre', {formatter: formatter});
   chart.render();
 ```
 
 ### 不适合的场景
 
-例子1: **分类过多的场景**下图是各个省的人口的占比情况，因为这张图上包含的分类过多，很难清晰对比各个省份的人口数据占比情况，所以这种情况下，我们推荐使用[横向柱状图](bar.html)。
+例子1: **分类过多的场景**
+
+下图是各个省的人口的占比情况，因为这张图上包含的分类过多，很难清晰对比各个省份的人口数据占比情况，所以这种情况下，我们推荐使用[条形图](bar.html)。
 
 <div id="c3"></div>
 
@@ -154,9 +166,18 @@ variations:
   });
 
   chart.source(dv);
+  chart.tooltip({
+    showTitle: false
+  });
   chart.coord('theta', {radius: 0.8,innerRadius: 0.65});
   chart.intervalStack()
     .position('percent')
+    .tooltip('province*percent', (province, percent) => {
+      return {
+        name: province,
+        value: ( percent * 100 ).toFixed(2) + '%'
+      };
+    })
     .color('province')
     .label('province');
 
@@ -164,6 +185,7 @@ variations:
 ```
 
 例子2: **分类占比差别不明显的场景**
+
 下图中游戏公司的不同种类的游戏的销售量相近，所以不太适合使用环图，此时可以使用[柱状图](bar.html)。
 
 <div id="c4"></div>
@@ -210,7 +232,9 @@ variations:
 
 ## 环图的扩展
 
-例子1：** 分面环图 **使用G2的分面功能，可以将分组数据绘制成多个环图
+例子1：**分面环图**
+
+使用G2的分面功能，可以将分组数据绘制成多个环图
 
 下图展示了全球最大1000家银行所在地区在2007年和2011年的利润总额占比情况：
 
@@ -228,58 +252,81 @@ variations:
 <div id="c6"></div>
 
 ```js-
-  var profit2007 = 7860;
-  var profit2011 = 7620;
-  var data = [
-    {year:2007, area:'亚太地区', profit: 7860*0.189},
-    {year:2007, area:'非洲及中东', profit: 7860*0.042},
-    {year:2007, area:'拉丁美洲', profit: 7860*0.025},
-    {year:2007, area:'中欧和东欧', profit: 7860*0.018},
-    {year:2007, area:'西欧', profit: 7860*0.462},
-    {year:2007, area:'北美', profit: 7860*0.265},
-    {year:2011, area:'亚太地区', profit: 7620*0.539},
-    {year:2011, area:'非洲及中东', profit: 7620*0.065},
-    {year:2011, area:'拉丁美洲', profit: 7620*0.065},
-    {year:2011, area:'中欧和东欧', profit: 7620*0.034},
-    {year:2011, area:'西欧', profit: 7620*0.063},
-    {year:2011, area:'北美', profit: 7620*0.234}
-  ];
-  var dv = new DataSet.View().source(data);
-  dv.transform({
-    type: 'percent',
-    field: 'profit',
-    dimension: 'area',
-    groupBy: 'year',
-    as: 'percent'
-  });
+ const data = [
+  {year:2007, area:'亚太地区', profit: 7860*0.189},
+  {year:2007, area:'非洲及中东', profit: 7860*0.042},
+  {year:2007, area:'拉丁美洲', profit: 7860*0.025},
+  {year:2007, area:'中欧和东欧', profit: 7860*0.018},
+  {year:2007, area:'西欧', profit: 7860*0.462},
+  {year:2007, area:'北美', profit: 7860*0.265},
+  {year:2011, area:'亚太地区', profit: 7620*0.539},
+  {year:2011, area:'非洲及中东', profit: 7620*0.065},
+  {year:2011, area:'拉丁美洲', profit: 7620*0.065},
+  {year:2011, area:'中欧和东欧', profit: 7620*0.034},
+  {year:2011, area:'西欧', profit: 7620*0.063},
+  {year:2011, area:'北美', profit: 7620*0.234}
+];
+const { DataView } = DataSet;
 
-  var chart = new G2.Chart({
-    id: 'c6',
-    forceFit: true,
-    height: 500,
-    padding: 0
-  });
-  chart.source(dv);
-  chart.legend('bottom');
-  chart.facet('list', {
-    fields: [ 'year' ],
-    cols: 2,
-    padding: 30,
-    eachView: function (view, facet) {
-      view.coord('theta',{radius: 0.8,innerRadius: 0.65});
-      view.intervalStack().position('percent').color('area');
-      var sum = 0;
-      facet.data.forEach(function(row) {
-        sum += row.profit;
-      });
-      view.guide().text({
-        position: [0, 0],
-        offsetX: -30,
-        offsetY: 70,
-        content: sum.toFixed(0) + '（亿美元）',
-      });
+const chart = new G2.Chart({
+  container: 'c6',
+  forceFit: true,
+  height: 400,
+  padding: 80
+});
+
+chart.source(data);
+chart.tooltip({
+  showTitle: false
+});
+chart.legend('area', {
+  offset: 20
+});
+// 以 year 为维度划分分面
+chart.facet('rect', {
+  fields: ['year'],
+  padding: 20,
+  rowTitle: null,
+  colTitle: {
+    offsetY: -30,
+    style: {
+      fontSize: 18,
+      textAlign: 'center',
+      fill: '#999'
     }
-  });
+  },
+  eachView(view, facet) {
+    const data = facet.data;
+    const dv = new DataView();
+    dv.source(data)
+      .transform({
+        type: 'percent',
+        field: 'profit',
+        dimension: 'area',
+        as: 'percent'
+      });
+    view.source(dv, {
+      percent: {
+        formatter: val => {
+          return (val * 100).toFixed(2) + '%';
+        }
+      }
+    });
+    view.coord('theta', {
+      innerRadius: 0.35
+    });
 
-  chart.render();
+    view.intervalStack()
+      .position('percent')
+      .color('area')
+      .label('percent', {
+        offset: -8
+      })
+      .style({
+        lineWidth: 1,
+        stroke: '#fff'
+      });
+  }
+});
+chart.render();
 ```

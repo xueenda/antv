@@ -15,7 +15,7 @@ variations:
 
 南丁格尔玫瑰图又名鸡冠花图、极坐标区域图，是南丁格尔在克里米亚战争期间提交的一份关于士兵死伤的报告时发明的一种图表。
 
-南丁格尔玫瑰图是在极坐标下绘制的[柱状图](column.html)，使用圆弧的半径长短表示数据的大小（数量的多少）。
+南丁格尔玫瑰图是在极坐标下绘制的[柱状图](bar.html)，使用圆弧的半径长短表示数据的大小（数量的多少）。
 
 * 由于半径和面积的关系是平方的关系，南丁格尔玫瑰图会将数据的比例大小夸大，尤其适合对比大小相近的数值。
 
@@ -74,7 +74,9 @@ variations:
 
 ### 不适合的场景
 
-例子1：**分类过少的场景。** 下图展示一个班级男女同学的个数，这种场景建议使用[饼图](pie.html)。
+例子1：**分类过少的场景** 
+
+下图展示一个班级男女同学的个数，这种场景建议使用[饼图](pie.html)。
 
 <div id="c5"></div>
 
@@ -82,33 +84,35 @@ variations:
 
 ```js-
 var data = [{gender:'男',count:40},{gender:'女',count:30}];
-var chart2222 = new G2.Chart({
+var chart = new G2.Chart({
   id : 'c5',
   forceFit: true,
-  height : 300
-});
-
-chart2222.source(data);
-chart2222.coord('polar');
-chart2222.scale('count',{min: 0});
-chart2222.interval().position('gender*count').color('gender');
-chart2222.render();
-
-var chart = new G2.Chart({
-  id : 'c55',
-  forceFit: true,
-  height : 300
+  height : 300,
+  padding: [ 40, 80, 100]
 });
 
 chart.source(data);
-chart.coord('theta');
-chart.intervalStack().position('count').color('gender');
+chart.coord('polar');
+chart.scale('count',{min: 0});
+chart.interval().position('gender*count').color('gender');
 chart.render();
+
+var chart1 = new G2.Chart({
+  id : 'c55',
+  forceFit: true,
+  height : 300,
+  padding: [ 40, 80, 100]
+});
+
+chart1.source(data);
+chart1.coord('theta');
+chart1.intervalStack().position('count').color('gender');
+chart1.render();
 ```
 
 例子2：**部分分类数值过小的场景**
 
-下面使用南丁格尔玫瑰图展示各个省份的人口数据，这种场景下使用玫瑰图不合适，原因是在玫瑰图中数值过小的分类会非常难以观察。推荐使用[横向柱状图](bar.html)
+下面使用南丁格尔玫瑰图展示各个省份的人口数据，这种场景下使用玫瑰图不合适，原因是在玫瑰图中数值过小的分类会非常难以观察。推荐使用[条形图](bar.html)。
 
 <div id="c6"></div>
 <div id="c7"></div>
@@ -142,23 +146,28 @@ var chart222 = new G2.Chart({
   id : 'c6',
   forceFit: true,
   height : 600,
+  padding: [ 60, 80, 100]
 });
 chart222.source(data);
 chart222.axis('province',{gridAlign: 'middle'});
 chart222.coord('polar');
-chart222.interval().position('province*population').shape('stroke');
+chart222.interval().position('province*population')
+  .style({
+    lineWidth: 1,
+    stroke: '#fff'
+  });
 chart222.render();
 
-var chart333 = new G2.Chart333({
+var chart333 = new G2.Chart({
   id : 'c7',
   forceFit: true,
   height : 600,
+  padding: [ 60, 120, 100]
 });
 chart333.source(data);
 chart333.scale('population',{
   alias: '人口'
 })
-chart333.axis('province',{title:null,titleOffset: 300});
 chart333.coord('rect').transpose(); // 旋转，缩放坐标轴
 chart333.interval().position('province*population');
 chart333.render();
@@ -209,6 +218,7 @@ chart333.render();
     id: 'c3',
     forceFit: true,
     height : 500,
+    padding: [ 60, 80, 100]
   });
 
   var defs = {
@@ -217,25 +227,30 @@ chart333.render();
   chart.source(data,defs);
   chart.coord('polar');
   chart.axis('cost',{
-    labels: null
+    label: null
   });
 
   chart.axis('country',{
-    gridAlign: 'middle'
+    grid: {
+      align: 'center'
+    }
   });
 
   chart.legend('country',false);
-
   chart.interval().position('country*cost')
         .color('country','rgb(252,143,72)-rgb(255,215,135)')
-        .label('cost',{offset: -15,label: {'text-anchor': 'middle',fontStyle:'bold'}})
-        .shape('stroke');
+        .label('cost', {offset: -15,textStyle: {textAlign: 'center', fontWeight:'bold'}})
+        .style({
+          stroke: '#fff',
+          lineWidth: 1
+        });
   chart.render();
 
 var chart111 = new G2.Chart({
         id: 'c8',
         forceFit: true,
         height : 500,
+        padding: [ 60, 80, 100]
       });
       chart111.source(data, {
         'cost': {
@@ -247,27 +262,28 @@ var chart111 = new G2.Chart({
         endAngle: Math.PI * (3 / 2) // 结束角度
       });
       chart111.axis('cost', {
-        labels: null
+        label: null
       });
       chart111.axis('country', {
-        gridAlign: 'middle',
-        labels: {
-          label: {
-            textAlign: 'right' // 设置坐标轴 label 的文本对齐方向
+        grid: {
+          align: 'center'
+        },
+        label: {
+          textStyle: {
+            textAlign: 'end' // 设置坐标轴 label 的文本对齐方向
           }
         }
       });
       chart111.legend('country', {
-        position: 'bottom',
-        itemWrap: true // 图例需要换行
+        position: 'bottom'
       });
       chart111.interval().position('country*cost')
         .color('country','rgb(252,143,72)-rgb(255,215,135)')
-        .label('cost',{offset: -15,label: {textAlign: 'center'}})
+        .label('cost',{offset: -15,textStyle: {textAlign: 'center'}})
         .style({
-        lineWidth: 1,
-        stroke: '#fff'
-      });
+          lineWidth: 1,
+          stroke: '#fff'
+        });
       chart111.render();
 ```
 
@@ -320,12 +336,16 @@ year（年份）|internally（境内流离失所者)|refugees（跨越国境的�
       id: 'c4',
       forceFit: true,
       height: 400,
+    padding: [ 60, 80, 100]
+
     });
     chart.source(dv);
-    chart.coord('polar',{inner: 0.1});
+    chart.coord('polar',{innerRadius: 0.1});
     chart.intervalStack().position('year*count')
-          .shape('stroke')
-          .color('难民类型',['rgb(136,186,174)','rgb(184,189,61)','rgb(107,136,138)']);//.label('count',{offset: -1});
+        .style({
+          lineWidth: 1,
+          stroke: '#fff'
+        }).color('难民类型',['rgb(136,186,174)','rgb(184,189,61)','rgb(107,136,138)']);
     chart.render();
 ```
 

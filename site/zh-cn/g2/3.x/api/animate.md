@@ -106,7 +106,7 @@ Animate.registerAnimation(animationType, animationName, animationFun);
 
 `easing` 动画缓动效果参见 [d3-ease](https://github.com/d3/d3-ease)。
 
-### 例子
+##### 例子
 
 <div id="c1"></div>
 

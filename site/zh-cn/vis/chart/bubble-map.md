@@ -53,13 +53,15 @@ Bubble Map 比[分级统计图](choropleth-map.html)更适用于比较带地理�
 
 ## 带气泡的地图的应用场景
 
-例子1：**各个国家遭受的恐怖袭击次数展示。** 如图，将各个国家遭受的恐怖袭击次数用气泡图来展示的效果。可以看出伊拉克遭受的恐怖袭击次数最多，并且恐怖袭击主要集中在中东地区。
+例子1：**各个国家遭受的恐怖袭击次数展示**
+
+如图，将各个国家遭受的恐怖袭击次数用气泡图来展示的效果。可以看出伊拉克遭受的恐怖袭击次数最多，并且恐怖袭击主要集中在中东地区。
 
 |name(国家/地区) |value（袭击次数）|
 |------|----|
 |Iraq|10701|
 |Pakistan|7725|
-|。。。|。。。|
+|...|...|
 
 <div id="c1"></div>
 
@@ -94,14 +96,16 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
   var chart = new G2.Chart({
     id: 'c1',
     forceFit: true,
-    height: 350,
+    height: 500,
+    padding: [20]
   });
 
   chart.source(userDv);
   chart.tooltip({
-    crosshairs: false
+    showTitle: false
   });
   chart.axis(false);
+  chart.legend(false);
   chart.scale({
     longitude: {
       min: -180,
@@ -121,9 +125,9 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
   view.tooltip(false);
   view.polygon()
     .position('longitude*latitude')
-    .shape('stroke').style({
-      fill: '#fff',
-      stroke: '#ccc',
+    .style({
+      fill: '#ccc',
+      stroke: '#fff',
       lineWidth: 1
     });
 
@@ -133,20 +137,28 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
     .position('longitude*latitude')
     .size('value', [5, 25])
     .opacity(0.85).shape('circle').color('value','#fee0d2-#de2d26')
-    .label('value', {offset: 0, label:{fill:'#222', 'font-weight': 'bold'}});
+    .label('value', {offset: 0, textStyle:{fill:'#222', 'font-weight': 'bold'}})
+    .tooltip('name*value', (name, value) => {
+      return {
+        name,
+        value
+      };
+    });
 
   chart.render();
 });
 ```
 
-例子2：**展示各国癌症五年生存率。** 首先我们通过颜色来区分不同的国家，然后将各国的生存率数据映射为气泡的大小，这样就可以清晰对比不同国家的生存率。从图中可以明显发现中国癌症五年生存率为30.9%，远低于发达国家水平。
+例子2：**展示各国癌症五年生存率** 
+
+首先我们通过颜色来区分不同的国家，然后将各国的生存率数据映射为气泡的大小，这样就可以清晰对比不同国家的生存率。从图中可以明显发现中国癌症五年生存率为30.9%，远低于发达国家水平。
 
 name(国家/地区) |value（生存率）
 ------|----
 Japan|81.6
 South Korea|53.4
 China|30.9
-。。。|。。。
+...|...
 
 <div id="c2"></div>
 
@@ -184,15 +196,13 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
   var chart = new G2.Chart({
     id: 'c2',
     forceFit: true,
-    height: 350,
+    height: 500,
+    padding: [20]
   });
+
   chart.tooltip({
-    title: null,
-    crosshairs: false,
-    map: {
-      name: 'alias'
-    }
-  });
+  showTitle: false
+});
   chart.legend(false);
   chart.axis(false);
   chart.scale({
@@ -210,7 +220,6 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
   view.tooltip(false);
   view.polygon()
     .position('longitude*latitude')
-    .shape('stroke')
     .style({
       stroke: '#fff',
       fill: '#E6E6E6',
@@ -236,14 +245,16 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
 });
 ```
 
-例子3：**美国各州发生的抢劫案件数目。** 用气泡大小代表各州某年发生的抢劫案件数目，很清晰得就看到美国的东部是抢劫案件发生的集中区域，其中 Maryland 最多。
+例子3：**美国各州发生的抢劫案件数目** 
+
+用气泡大小代表各州某年发生的抢劫案件数目，很清晰得就看到美国的东部是抢劫案件发生的集中区域，其中 Maryland 最多。
 
 name(州名) |Robbery（抢劫案件数）
 ------|----
 Alabama|141.4
 Arizona|144.4
 Arkansas|91.1
-。。。|。。。
+...|...
 
 <div id="c3"></div>
 
@@ -272,12 +283,12 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
     var chart = new G2.Chart({
       id: 'c3',
       forceFit: true,
-      height: 400,
-      animate: false,
-      padding: 0,
+      aniamte:false,
+      height: 500,
+      padding: [20]
     });
     chart.tooltip({
-      crosshairs: false
+      showTitle: false
     });
     chart.axis(false);
     chart.legend('Robbery', false);
@@ -296,7 +307,6 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
     view.tooltip(false);
     view.polygon()
       .position('longitude*latitude')
-      .shape('stroke')
       .style({
         fill: '#fff',
         stroke: '#E6E6E6',
@@ -310,6 +320,12 @@ $.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
       .size('Robbery', [5, 25])
       .shape('circle')
       .color('Robbery', '#fee0d2-#de2d26')
+      .tooltip('state*Robbery', (name, value) => {
+        return {
+          name,
+          value
+        };
+      })
       .opacity(0.9);
     
     chart.render();
@@ -328,14 +344,14 @@ longitude(经度) |latitude（维度）|temperature
 115.95|40|23.9
 116.83|40|25.7
 117.93|41|24.4
-。。。|。。。|。。。
+...|...|...
 
 <div id="c4" style="position:relative;">
   <div class="wrong tip">错误</div>
 </div>
 
 ```js-
-  $.getJSON('/assets/data/china.json', function(mapData) {
+  $.getJSON('/assets/data/china-geo.json', function(mapData) {
     $.getJSON('/assets/data/temp.json', function(data) {
       var ds = new DataSet();
       var mapDv = ds.createView('map').source(mapData, {
@@ -343,13 +359,6 @@ longitude(经度) |latitude（维度）|temperature
       });
       var userDv = ds.createView().source(data);
       userDv
-        .transform({
-          type: 'map',
-          callback: function(row) {
-            row.province = row.province.replace('市', '').replace('省', '');
-            return row;
-          }
-        })
         .transform({
           type: 'geo.centroid',
           geoDataView: 'map',
@@ -360,7 +369,9 @@ longitude(经度) |latitude（维度）|temperature
       var chart = new G2.Chart({
         container: 'c4',
         forceFit: true,
-        height: 400,
+        aniamte:false,
+        height: 500,
+        padding: [20, 80]
       });
       chart.scale({
         'out-temperature': {
@@ -374,12 +385,10 @@ longitude(经度) |latitude（维度）|temperature
         },
       });
       chart.axis(false);
+      chart.legend(false);
       chart.tooltip({
-        map: {
-          'title': 'city',
-          value: 'out-temperature'
-        }
-      });
+      showTitle: false
+    });
 
       // 绘制地图背景
       var view = chart.view();
@@ -387,20 +396,19 @@ longitude(经度) |latitude（维度）|temperature
       view.tooltip(false);
       view.polygon()
         .position('longitude*latitude')
-        .shape('stroke')
         .style({
           fill: '#fff',
           stroke: '#E6E6E6',
           lineWidth: 1
         });
-
       var userView = chart.view();
       userView.source(userDv);
       userView.point()
         .position('longitude*latitude')
-        .size('temperature', [2, 10])
+        .size('temperature', [1, 12])
         .color('temperature','#50a3ba-#eac736-#d94e5d')
         .shape('circle')
+        .tooltip('city*temperature')
         .opacity(0.8)
       chart.render();
     });
@@ -421,7 +429,7 @@ longitude(经度) |latitude（维度）|temperature
 </div>
 
 ```js-
-  $.getJSON('/assets/data/china.json', function(mapData) {
+  $.getJSON('/assets/data/china-geo.json', function(mapData) {
     $.getJSON('/assets/data/temp.json', function(data) {
       var ds = new DataSet();
       var mapDv = ds.createView('map').source(mapData, {
@@ -429,13 +437,6 @@ longitude(经度) |latitude（维度）|temperature
       });
       var userDv = ds.createView().source(data);
       userDv
-        .transform({
-          type: 'map',
-          callback: function(row) {
-            row.province = row.province.replace('市', '').replace('省', '');
-            return row;
-          }
-        })
         .transform({
           type: 'geo.centroid',
           geoDataView: 'map',
@@ -446,7 +447,9 @@ longitude(经度) |latitude（维度）|temperature
       var chart = new G2.Chart({
         container: 'c5',
         forceFit: true,
-        height: 400,
+        aniamte:false,
+        height: 500,
+        padding: [20, 80]
       });
       chart.scale({
         'out-temperature': {
@@ -459,6 +462,9 @@ longitude(经度) |latitude（维度）|temperature
           sync: true
         },
       });
+      chart.tooltip({
+      showTitle: false
+    });
       chart.axis(false);
       chart.tooltip({
         map: {
@@ -473,7 +479,6 @@ longitude(经度) |latitude（维度）|temperature
       view.tooltip(false);
       view.polygon()
         .position('longitude*latitude')
-        .shape('stroke')
         .style({
           fill: '#fff',
           stroke: '#E6E6E6',
@@ -488,6 +493,7 @@ longitude(经度) |latitude（维度）|temperature
         .color('temperature','#50a3ba-#eac736-#d94e5d')
         .shape('circle')
         .opacity(0.8)
+        .tooltip('city*temperature')
         .style({
           blur: 10
         });
@@ -500,7 +506,7 @@ longitude(经度) |latitude（维度）|temperature
 
 ## 带气泡的地图同其他图表的对比
 
-### 跟[一般气泡图](bubble-chart.html)的对比
+### 跟[一般气泡图](bubble.html)的对比
 
 * 带气泡的地图是一种特殊的气泡图，都可以表示三个维度的数据关系
 * 一般的气泡图，两个维度映射到x,y轴这两个维度的字段类型和含义没有限制，可以是分类也可以是连续；但是带气泡的地图，映射到两个轴上的坐标只能是经纬度，用于表示地理位置，如果是地址名称需要先转换成经纬度

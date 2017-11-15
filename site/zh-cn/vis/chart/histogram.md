@@ -97,7 +97,9 @@ variations:
 
 ### 适合的场景
 
-例子1: **用于表示分布情况。**以统计学中经典的鸢尾花案例为例，其数据集包含了 50 个样本，都属于鸢尾属下的三个亚属，分别是山鸢尾、变色鸢尾和维吉尼亚鸢尾。四个特征被用作样本的定量分析，它们分别是花萼长度、花萼的宽度、花瓣的长度和花瓣的宽度。基于这四个特征的集合，费雪建立了一种线性判别分析法以确定其属种。
+例子1: **用于表示分布情况**
+
+以统计学中经典的鸢尾花案例为例，其数据集包含了 50 个样本，都属于鸢尾属下的三个亚属，分别是山鸢尾、变色鸢尾和维吉尼亚鸢尾。四个特征被用作样本的定量分析，它们分别是花萼长度、花萼的宽度、花瓣的长度和花瓣的宽度。基于这四个特征的集合，费雪建立了一种线性判别分析法以确定其属种。
 
 |SepalLength（花萼长度） |SepalWidth（花萼宽度）|PetalLength（花瓣长度） |PetalWidth（花瓣宽度）|Species（属种）|
 |------|----|------|----|----|
@@ -136,6 +138,7 @@ $.getJSON('/assets/data/iris.json?nowrap',function (data) {
       height: 300
     });
     chart.source(dv);
+    chart.tooltip({crosshairs: false});
     chart.intervalStack()
       .position(field + '*count')
       .color('Species');
@@ -173,6 +176,7 @@ $.getJSON('/assets/data/diamond.json?nowrap',function (data) {
     height: 300
   });
   chart.source(dv);
+  chart.tooltip({crosshairs: false});
   chart.interval().position('depth*count');
   chart.render();
 });
@@ -183,6 +187,7 @@ $.getJSON('/assets/data/diamond.json?nowrap',function (data) {
 抽取的样本数量过小，将会产生较大误差，可信度低，也就失去了统计的意义。因此，样本数不应少于 50 个。
 
 ## 直方图的扩展
+
 通过变换坐标系，我们能获得极坐标下的直方图、圆环上的直方图、以及翻转的直方图。
 
 <div id="c3-0"></div>
@@ -205,6 +210,7 @@ $.getJSON('/assets/data/diamond.json?nowrap',function (data) {
     height: 300
   });
   chart0.source(dv);
+  chart0.tooltip({crosshairs: false});
   chart0.interval().position('depth*count');
   chart0.coord('polar');
   chart0.interval().position('depth*count').color("#E47668");
@@ -216,6 +222,7 @@ $.getJSON('/assets/data/diamond.json?nowrap',function (data) {
     height: 300
   });
   chart1.source(dv);
+  chart1.tooltip({crosshairs: false});
   chart1.interval().position('depth*count');
   chart1.coord('polar', {
     innerRadius: 0.5
@@ -229,6 +236,7 @@ $.getJSON('/assets/data/diamond.json?nowrap',function (data) {
     height: 300
   });
   chart2.source(dv);
+  chart2.tooltip({crosshairs: false});
   chart2.coord('polar').reflect();
   chart2.interval().position('depth*count').color("#E47668");
   chart2.render();
@@ -237,7 +245,7 @@ $.getJSON('/assets/data/diamond.json?nowrap',function (data) {
 
 ## 直方图与其他图表的对比
 
-### 直方图与[柱状图](./column.html)
+### 直方图与[柱状图](bar.html)
 
 * 柱状图是以矩形的长度表示每一组的频数或数量，其宽度(表示类别)则是固定的，利于较小的数据集分析。
 * 直方图是以矩形的长度表示每一组的频数或数量，宽度则表示各组的组距，因此其高度与宽度均有意义，利于展示大量数据集的统计结果。
