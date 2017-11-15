@@ -1,6 +1,6 @@
 article {
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5 {
     font-weight: normal;
     color: #404040;
     margin-bottom: 32px;
@@ -41,7 +41,8 @@ article {
 
   p+h2,
   p+h3,
-  p+h4
+  p+h4,
+  p+h5
   {
     margin-top: 48px;
   }
@@ -49,15 +50,19 @@ article {
   div+h2,
   div+h3,
   div+h4,
+  div+h5,
   ol+h2,
   ol+h3,
   ol+h4,
+  ol+h5,
   table+h2,
   table+h3,
   table+h4,
+  table+h5,
   ul+h2,
   ul+h3,
-  ul+h4
+  ul+h4,
+  ul+h5
   {
     margin-top: 64px;
   }
@@ -78,6 +83,15 @@ article {
   h4+table
   {
     margin-top: 24px;
+  }
+
+  h5+div,
+  h5+ul,
+  h5+p,
+  h5+ol,
+  h5+table
+  {
+    margin-top: 16px;
   }
 
   img {
