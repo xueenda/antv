@@ -166,7 +166,7 @@ const ds = new DataSet({
  * 直接用 const dv = new DataSet.View();
  * 本例需要用状态量在不同的数据视图实例之间通信，所以需要有一个 DataSet 实例管理状态量
  */
-$.getJSON('/assets/data/population-by-age.csv', data => {
+$.get('/assets/data/population-by-age.csv', data => {
     const dvForAll = ds
         .createView('populationByAge') // 在 DataSet 实例下创建名为 populationByAge 的数据视图
         .source(data, {
@@ -210,26 +210,79 @@ dvForOneState
 
 > Step5：最后使用 G2 绘图、绑定事件
 
+```js
+const c1 = new G2.Chart({
+    id: 'c1',
+    forceFit: true,
+    height: 400,
+});
+c1.source(dvForAll);
+c1.legend({
+    position: 'top',
+});
+c1.axis('population', {
+    label: {
+        formatter: function(val) {
+            return val / 1000000 + 'M';
+        }
+    }
+});
+c1.intervalStack()
+    .position('state*population')
+    .color('age')
+    .select(true, {
+        mode: 'single',
+        style: {
+            stroke: 'red',
+            strokeWidth: 5
+        }
+    });
+c1.on('tooltip:change', function(evt) {
+    var items = evt.items || [];
+    if (items[0]) {
+        ds.setState('currentState', items[0].title);
+    }
+});
+
+const c2 = new G2.Chart({
+    id: 'c2',
+    forceFit: true,
+    height: 300,
+    padding: 0,
+});
+c2.source(dvForOneState);
+c2.coord('theta', {
+    radius: 0.8 // 设置饼图的大小
+});
+c2.legend(false);
+c2.intervalStack()
+    .position('percent')
+    .color('age')
+    .label('age*percent',function(age, percent) {
+        percent = (percent * 100).toFixed(2) + '%';
+        return age + ' ' + percent;
+    });
+
+c1.render();
+c2.render();
+```
+
 > 效果：
 
 <div id="c1"></div><div id="c2"></div>
 
-> 代码：
-
-```js+
+```js-
 var ds = new DataSet({
     state: {
         currentState: 'WY'
     }
 });
-$.get('http://p.tb.cn/rmsportal_2981_population-by-age.csv', function(data) {
+$.getJSON('/assets/data/population-by-age.json', function(data) {
     var dvForAll = ds
         .createView('populationByAge', {
             watchingStates: [], // 用空数组，使得这个实例不监听 state 变化
         }) // 在 DataSet 实例下创建名为 populationByAge 的数据视图
-        .source(data, { // 使用 CSV 类型的 Connector 装载 data
-            type: 'csv',
-        });
+        .source(data);
     dvForAll
         .transform({ // 合并列
             type: 'fold',
@@ -261,7 +314,6 @@ $.get('http://p.tb.cn/rmsportal_2981_population-by-age.csv', function(data) {
             as: 'percent'
         });
         
-    console.log(dvForAll, dvForOneState);
     G2.Global.widthRatio.column = .95;
     
     var c1 = new G2.Chart({
