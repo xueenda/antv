@@ -59,5 +59,6 @@ module.exports = {
     docMenuHeader: '${resource.translate.api}',
     showFooter: false,
     tocifyWithAnchor: true,
+    withInnerPageToc: true,
     docFilteringSupport: true
 };

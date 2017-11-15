@@ -58,6 +58,7 @@ module.exports = {
     template: 'doc',
     showFooter: false,
     tocifyWithAnchor: true,
+    withInnerPageToc: true,
     docMenuHeader: '${resource.translate.api}',
     docFilteringSupport: true
 };
