@@ -1,130 +1,130 @@
 <!--
 index: 5
-title: Scale åº¦é‡
+title: Scale ¶ÈÁ¿
 resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.g2}
 -->
 
-# Scale åº¦é‡
+# Scale ¶ÈÁ¿
 
-## åº¦é‡çš„å®šä¹‰
+## ¶ÈÁ¿µÄ¶¨Òå
 
-åº¦é‡ Scaleï¼Œæ˜¯æ•°æ®ç©ºé—´åˆ°å›¾å½¢ç©ºé—´çš„è½¬æ¢æ¡¥æ¢ï¼Œè´Ÿè´£åŽŸå§‹æ•°æ®åˆ° [0, 1] åŒºé—´æ•°å€¼çš„ç›¸äº’è½¬æ¢å·¥ä½œï¼Œä»ŽåŽŸå§‹æ•°æ®åˆ° [0, 1] åŒºé—´çš„è½¬æ¢æˆ‘ä»¬ç§°ä¹‹ä¸ºå½’ä¸€åŒ–æ“ä½œã€‚
+¶ÈÁ¿ Scale£¬ÊÇÊý¾Ý¿Õ¼äµ½Í¼ÐÎ¿Õ¼äµÄ×ª»»ÇÅÁº£¬¸ºÔðÔ­Ê¼Êý¾Ýµ½ [0, 1] Çø¼äÊýÖµµÄÏà»¥×ª»»¹¤×÷£¬´ÓÔ­Ê¼Êý¾Ýµ½ [0, 1] Çø¼äµÄ×ª»»ÎÒÃÇ³ÆÖ®Îª¹éÒ»»¯²Ù×÷¡£
 
-ä¸åŒçš„æ•°æ®ç±»åž‹å¯¹åº”ä¸åŒçš„åº¦é‡ï¼Œå¦‚
+²»Í¬µÄÊý¾ÝÀàÐÍ¶ÔÓ¦²»Í¬µÄ¶ÈÁ¿£¬Èç
 
-1. è¿žç»­æ•°æ®ç±»åž‹ï¼Œå¦‚ `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10` ä¸€ç»„æ•°æ®ï¼Œåœ¨å…¶åŽŸå§‹æ•°å€¼èŒƒå›´ [0, 10] å†…é€šè¿‡åº¦é‡è½¬æ¢è‡³ [0, 1] èŒƒå›´çš„æ•°æ®ï¼Œå˜æˆ `0, 0.1, 0.2, ..., 0.9, 1`ï¼ŒåŒæ—¶é€šè¿‡ invert åè½¬ï¼Œè¿˜éœ€è¦åº¦é‡åŽçš„æ•°å€¼æ¢å¤è‡³åŽŸå§‹å€¼ï¼›
+1. Á¬ÐøÊý¾ÝÀàÐÍ£¬Èç `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10` Ò»×éÊý¾Ý£¬ÔÚÆäÔ­Ê¼ÊýÖµ·¶Î§ [0, 10] ÄÚÍ¨¹ý¶ÈÁ¿×ª»»ÖÁ [0, 1] ·¶Î§µÄÊý¾Ý£¬±ä³É `0, 0.1, 0.2, ..., 0.9, 1`£¬Í¬Ê±Í¨¹ý invert ·´×ª£¬»¹ÐèÒª¶ÈÁ¿ºóµÄÊýÖµ»Ö¸´ÖÁÔ­Ê¼Öµ£»
 
-2. åˆ†ç±»æ•°æ®ç±»åž‹ï¼Œå¦‚ `['ç”·', 'å¥³']` è¿™ä¸€ç»„æ•°æ®ï¼Œé€šè¿‡åº¦é‡è½¬æ¢åŽå˜æˆ [0, 1]ï¼ŒåŒæ ·æ—¶é€šè¿‡ invert åè½¬å¯æ¢å¤è‡³åŽŸå§‹å€¼ã€‚
+2. ·ÖÀàÊý¾ÝÀàÐÍ£¬Èç `['ÄÐ', 'Å®']` ÕâÒ»×éÊý¾Ý£¬Í¨¹ý¶ÈÁ¿×ª»»ºó±ä³É [0, 1]£¬Í¬ÑùÊ±Í¨¹ý invert ·´×ª¿É»Ö¸´ÖÁÔ­Ê¼Öµ¡£
 
-## åº¦é‡çš„åŠŸèƒ½
+## ¶ÈÁ¿µÄ¹¦ÄÜ
 
-åœ¨ G2 ä¸­åº¦é‡ç”¨äºŽå®Œæˆä»¥ä¸‹åŠŸèƒ½ï¼š
+ÔÚ G2 ÖÐ¶ÈÁ¿ÓÃÓÚÍê³ÉÒÔÏÂ¹¦ÄÜ£º
 
-1. å°†æ•°æ®è½¬æ¢åˆ° [0, 1] èŒƒå›´å†…ï¼Œæ–¹ä¾¿å°†æ•°æ®æ˜ å°„åˆ°ä½ç½®ã€é¢œè‰²ã€å¤§å°ç­‰å›¾å½¢å±žæ€§ï¼›
+1. ½«Êý¾Ý×ª»»µ½ [0, 1] ·¶Î§ÄÚ£¬·½±ã½«Êý¾ÝÓ³Éäµ½Î»ÖÃ¡¢ÑÕÉ«¡¢´óÐ¡µÈÍ¼ÐÎÊôÐÔ£»
 
-2. å°†å½’ä¸€åŒ–åŽçš„æ•°æ®åè½¬å›žåŽŸå§‹å€¼ã€‚ä¾‹å¦‚ `åˆ†ç±»a` è½¬æ¢æˆ 0.2ï¼Œé‚£ä¹ˆå¯¹åº” `0.2` éœ€è¦åè½¬å›ž `åˆ†ç±»a`ï¼›
+2. ½«¹éÒ»»¯ºóµÄÊý¾Ý·´×ª»ØÔ­Ê¼Öµ¡£ÀýÈç `·ÖÀàa` ×ª»»³É 0.2£¬ÄÇÃ´¶ÔÓ¦ `0.2` ÐèÒª·´×ª»Ø `·ÖÀàa`£»
 
-3. åˆ’åˆ†æ•°æ®ï¼Œç”¨äºŽåœ¨åæ ‡è½´ã€å›¾ä¾‹æ˜¾ç¤ºæ•°å€¼çš„èŒƒå›´ã€åˆ†ç±»ç­‰ä¿¡æ¯ã€‚
+3. »®·ÖÊý¾Ý£¬ÓÃÓÚÔÚ×ø±êÖá¡¢Í¼ÀýÏÔÊ¾ÊýÖµµÄ·¶Î§¡¢·ÖÀàµÈÐÅÏ¢¡£
 
-Scale çš„åŠŸèƒ½éžå¸¸ç®€å•æ˜“ç†è§£ï¼Œä½†æ˜¯åœ¨ G2 çš„æ•°æ®å¤„ç†æµç¨‹ä¸­èµ·ç€éžå¸¸é‡è¦çš„æ‰¿æŽ¥ä½œç”¨ï¼Œé€šè¿‡é˜…è¯» [G2 æ•°æ®å¤„ç†æµç¨‹](./data-flow.html)ç« èŠ‚ï¼Œå¯ä»¥æ›´å¥½å¾—ç†è§£åº¦é‡ Scaleã€‚
+Scale µÄ¹¦ÄÜ·Ç³£¼òµ¥Ò×Àí½â£¬µ«ÊÇÔÚ G2 µÄÊý¾Ý´¦ÀíÁ÷³ÌÖÐÆð×Å·Ç³£ÖØÒªµÄ³Ð½Ó×÷ÓÃ£¬Í¨¹ýÔÄ¶Á [G2 Êý¾Ý´¦ÀíÁ÷³Ì](./data-flow.html)ÕÂ½Ú£¬¿ÉÒÔ¸üºÃµÃÀí½â¶ÈÁ¿ Scale¡£
 
-## åº¦é‡çš„ç±»åž‹
+## ¶ÈÁ¿µÄÀàÐÍ
 
-åº¦é‡çš„ç±»åž‹æ˜¯ç”±åŽŸå§‹æ•°æ®çš„å€¼ç±»åž‹æ‰€å†³å®šçš„ï¼Œæ‰€ä»¥åœ¨ä»‹ç»åº¦é‡çš„ç±»åž‹ä¹‹å‰ï¼Œéœ€è¦äº†è§£ä¸‹ G2 å¯¹æ•°æ®çš„åˆ†ç±»æ–¹å¼ã€‚
+¶ÈÁ¿µÄÀàÐÍÊÇÓÉÔ­Ê¼Êý¾ÝµÄÖµÀàÐÍËù¾ö¶¨µÄ£¬ËùÒÔÔÚ½éÉÜ¶ÈÁ¿µÄÀàÐÍÖ®Ç°£¬ÐèÒªÁË½âÏÂ G2 ¶ÔÊý¾ÝµÄ·ÖÀà·½Ê½¡£
 
-åœ¨ G2 ä¸­æˆ‘ä»¬æŒ‰ç…§æ•°å€¼æ˜¯å¦è¿žç»­å¯¹æ•°æ®è¿›è¡Œåˆ†ç±»ï¼š
+ÔÚ G2 ÖÐÎÒÃÇ°´ÕÕÊýÖµÊÇ·ñÁ¬Ðø¶ÔÊý¾Ý½øÐÐ·ÖÀà£º
 
-1. åˆ†ç±»ï¼ˆéžè¿žç»­ï¼‰æ•°æ®ï¼Œåˆåˆ†ä¸ºæœ‰åºåˆ†ç±»å’Œæ— åºåˆ†ç±»ï¼›
+1. ·ÖÀà£¨·ÇÁ¬Ðø£©Êý¾Ý£¬ÓÖ·ÖÎªÓÐÐò·ÖÀàºÍÎÞÐò·ÖÀà£»
 
-2. è¿žç»­æ•°æ®ï¼Œæ—¶é—´ä¹Ÿæ˜¯ä¸€ç§è¿žç»­æ•°æ®ç±»åž‹ã€‚
+2. Á¬ÐøÊý¾Ý£¬Ê±¼äÒ²ÊÇÒ»ÖÖÁ¬ÐøÊý¾ÝÀàÐÍ¡£
 
 Example: 
 
 ```js
 var data = [
-  {"month":"ä¸€æœˆ","temperature":7,"city":"tokyo"},
-  {"month":"äºŒæœˆ","temperature":6.9,"city":"newYork"},
-  {"month":"ä¸‰æœˆ","temperature":9.5,"city":"tokyo"},
-  {"month":"å››æœˆ","temperature":14.5,"city":"tokyo"},
-  {"month":"äº”æœˆ","temperature":18.2,"city":"berlin"}
+  {"month":"Ò»ÔÂ","temperature":7,"city":"tokyo"},
+  {"month":"¶þÔÂ","temperature":6.9,"city":"newYork"},
+  {"month":"ÈýÔÂ","temperature":9.5,"city":"tokyo"},
+  {"month":"ËÄÔÂ","temperature":14.5,"city":"tokyo"},
+  {"month":"ÎåÔÂ","temperature":18.2,"city":"berlin"}
 ]
 
-// æŒ‡å®šåº¦é‡(æˆ–ç§° åˆ—å®šä¹‰ï¼‰
+// Ö¸¶¨¶ÈÁ¿(»ò³Æ ÁÐ¶¨Òå£©
 chart.scale({
   month: {
-    alias: 'æœˆä»½' // ä¸ºå±žæ€§å®šä¹‰åˆ«å
+    alias: 'ÔÂ·Ý' // ÎªÊôÐÔ¶¨Òå±ðÃû
   }, 
   temperature: {
-    alias: 'æ¸©åº¦' // ä¸ºå±žæ€§å®šä¹‰åˆ«å
+    alias: 'ÎÂ¶È' // ÎªÊôÐÔ¶¨Òå±ðÃû
   }
 });
 ```
 
-åœ¨ä¸Šè¿°æ•°æ®ä¸­ï¼Œ`month` ä»£è¡¨æœˆä»½ï¼Œ`temperature` ä»£è¡¨æ¸©åº¦ï¼Œ`city` ä»£è¡¨åŸŽå¸‚ï¼Œå…¶ä¸­ `month` å’Œ `city` éƒ½æ˜¯åˆ†ç±»ç±»åž‹æ•°æ®ï¼Œä½†æ˜¯ä¸åŒçš„æ˜¯ `month` ä½œä¸ºæœˆä»½æ˜¯æœ‰åºçš„åˆ†ç±»ç±»åž‹ï¼Œè€Œ `city` æ˜¯æ— åºçš„åˆ†ç±»ç±»åž‹ï¼Œè€Œ `temperature` æ˜¯è¿žç»­çš„æ•°å€¼ç±»åž‹ã€‚
+ÔÚÉÏÊöÊý¾ÝÖÐ£¬`month` ´ú±íÔÂ·Ý£¬`temperature` ´ú±íÎÂ¶È£¬`city` ´ú±í³ÇÊÐ£¬ÆäÖÐ `month` ºÍ `city` ¶¼ÊÇ·ÖÀàÀàÐÍÊý¾Ý£¬µ«ÊÇ²»Í¬µÄÊÇ `month` ×÷ÎªÔÂ·ÝÊÇÓÐÐòµÄ·ÖÀàÀàÐÍ£¬¶ø `city` ÊÇÎÞÐòµÄ·ÖÀàÀàÐÍ£¬¶ø `temperature` ÊÇÁ¬ÐøµÄÊýÖµÀàÐÍ¡£
 
-æ ¹æ®ä¸Šè¿°çš„æ•°æ®åˆ†ç±»æ–¹å¼ï¼ŒG2 æä¾›äº†ä¸åŒçš„åº¦é‡ç±»åž‹ï¼š
+¸ù¾ÝÉÏÊöµÄÊý¾Ý·ÖÀà·½Ê½£¬G2 Ìá¹©ÁË²»Í¬µÄ¶ÈÁ¿ÀàÐÍ£º
 
-| æ•°æ®ç±»åž‹ | åº¦é‡ç±»åž‹ |
+| Êý¾ÝÀàÐÍ | ¶ÈÁ¿ÀàÐÍ |
 | ------- | ------- |
-| è¿žç»­ | linearã€logã€powã€time |
-| åˆ†ç±»ï¼ˆéžè¿žç»­ï¼‰ | catã€timeCat |
+| Á¬Ðø | linear¡¢log¡¢pow¡¢time |
+| ·ÖÀà£¨·ÇÁ¬Ðø£© | cat¡¢timeCat |
 
-å¦å¤– G2 è¿˜æä¾›äº† `identity` ç±»åž‹çš„åº¦é‡ç”¨äºŽæ•°æ®æºä¸­ **å¸¸é‡** æ•°æ®çš„æ“ä½œã€‚
+ÁíÍâ G2 »¹Ìá¹©ÁË `identity` ÀàÐÍµÄ¶ÈÁ¿ÓÃÓÚÊý¾ÝÔ´ÖÐ **³£Á¿** Êý¾ÝµÄ²Ù×÷¡£
 
-å¯¹äºŽ G2 ç”Ÿæˆçš„æ‰€æœ‰åº¦é‡å¯¹è±¡ï¼Œå‡æ‹¥æœ‰ä»¥ä¸‹å±žæ€§ï¼Œè¿™äº›å±žæ€§å‡å¯ä»¥ç”±ç”¨æˆ·è¿›è¡Œé…ç½®ã€‚
+¶ÔÓÚ G2 Éú³ÉµÄËùÓÐ¶ÈÁ¿¶ÔÏó£¬¾ùÓµÓÐÒÔÏÂÊôÐÔ£¬ÕâÐ©ÊôÐÔ¾ù¿ÉÒÔÓÉÓÃ»§½øÐÐÅäÖÃ¡£
 
 ```js
 {
-  type: string, // åº¦é‡çš„ç±»åž‹
-  range: array, // æ•°å€¼èŒƒå›´åŒºé—´ï¼Œå³åº¦é‡è½¬æ¢çš„èŒƒå›´ï¼Œé»˜è®¤ä¸º [0, 1]
-  alias: string, // ä¸ºæ•°æ®å±žæ€§å®šä¹‰åˆ«åï¼Œç”¨äºŽå›¾ä¾‹ã€åæ ‡è½´ã€tooltip çš„ä¸ªæ€§åŒ–æ˜¾ç¤º
-  ticks: array, // å­˜å‚¨åæ ‡è½´ä¸Šçš„åˆ»åº¦ç‚¹æ–‡æœ¬ä¿¡æ¯
-  tickCount: number, // åæ ‡è½´ä¸Šåˆ»åº¦ç‚¹çš„ä¸ªæ•°ï¼Œä¸åŒçš„åº¦é‡ç±»åž‹å¯¹åº”ä¸åŒçš„é»˜è®¤å€¼
-  formatter: function, // å›žè°ƒå‡½æ•°ï¼Œç”¨äºŽæ ¼å¼åŒ–åæ ‡è½´åˆ»åº¦ç‚¹çš„æ–‡æœ¬æ˜¾ç¤ºï¼Œä¼šå½±å“æ•°æ®åœ¨åæ ‡è½´ã€å›¾ä¾‹ã€tooltip ä¸Šçš„æ˜¾ç¤º
+  type: string, // ¶ÈÁ¿µÄÀàÐÍ
+  range: array, // ÊýÖµ·¶Î§Çø¼ä£¬¼´¶ÈÁ¿×ª»»µÄ·¶Î§£¬Ä¬ÈÏÎª [0, 1]
+  alias: string, // ÎªÊý¾ÝÊôÐÔ¶¨Òå±ðÃû£¬ÓÃÓÚÍ¼Àý¡¢×ø±êÖá¡¢tooltip µÄ¸öÐÔ»¯ÏÔÊ¾
+  ticks: array, // ´æ´¢×ø±êÖáÉÏµÄ¿Ì¶ÈµãÎÄ±¾ÐÅÏ¢
+  tickCount: number, // ×ø±êÖáÉÏ¿Ì¶ÈµãµÄ¸öÊý£¬²»Í¬µÄ¶ÈÁ¿ÀàÐÍ¶ÔÓ¦²»Í¬µÄÄ¬ÈÏÖµ
+  formatter: function, // »Øµ÷º¯Êý£¬ÓÃÓÚ¸ñÊ½»¯×ø±êÖá¿Ì¶ÈµãµÄÎÄ±¾ÏÔÊ¾£¬»áÓ°ÏìÊý¾ÝÔÚ×ø±êÖá¡¢Í¼Àý¡¢tooltip ÉÏµÄÏÔÊ¾
 }
 ```
 
-é»˜è®¤ç”Ÿæˆåº¦é‡çš„æœºåˆ¶å¦‚ä¸‹ï¼š
-* æŸ¥çœ‹ç”¨æˆ·æ˜¯å¦åˆ¶å®šäº†å¯¹åº”å­—æ®µçš„æ•°æ®ç±»åž‹ï¼ŒæŸ¥çœ‹[åˆ—å®šä¹‰](how-to-scale.html)
-* å¦‚æžœæ²¡æœ‰ï¼Œåˆ¤æ–­å­—æ®µçš„ç¬¬ä¸€æ¡æ•°æ®çš„å­—æ®µç±»åž‹
-  + å¦‚æžœæ•°æ®ä¸­ä¸å­˜åœ¨å¯¹åº”çš„å­—æ®µï¼Œåˆ™ä¸º 'identity' 
-  + å¦‚æžœæ˜¯æ•°å­—åˆ™ä¸º 'linear'ï¼›
-  + å¦‚æžœæ˜¯å­—ç¬¦ä¸²ï¼Œåˆ¤å®šæ˜¯å¦æ˜¯æ—¶é—´æ ¼å¼ï¼Œå¦‚æžœæ˜¯æ—¶é—´æ ¼å¼åˆ™ä¸ºæ—¶é—´ç±»åž‹ 'time',
-  + å¦åˆ™æ˜¯åˆ†ç±»ç±»åž‹ 'cat'
+Ä¬ÈÏÉú³É¶ÈÁ¿µÄ»úÖÆÈçÏÂ£º
+* ²é¿´ÓÃ»§ÊÇ·ñÖÆ¶¨ÁË¶ÔÓ¦×Ö¶ÎµÄÊý¾ÝÀàÐÍ£¬²é¿´[ÁÐ¶¨Òå](how-to-scale.html)
+* Èç¹ûÃ»ÓÐ£¬ÅÐ¶Ï×Ö¶ÎµÄµÚÒ»ÌõÊý¾ÝµÄ×Ö¶ÎÀàÐÍ
+  + Èç¹ûÊý¾ÝÖÐ²»´æÔÚ¶ÔÓ¦µÄ×Ö¶Î£¬ÔòÎª 'identity' 
+  + Èç¹ûÊÇÊý×ÖÔòÎª 'linear'£»
+  + Èç¹ûÊÇ×Ö·û´®£¬ÅÐ¶¨ÊÇ·ñÊÇÊ±¼ä¸ñÊ½£¬Èç¹ûÊÇÊ±¼ä¸ñÊ½ÔòÎªÊ±¼äÀàÐÍ 'time',
+  + ·ñÔòÊÇ·ÖÀàÀàÐÍ 'cat'
 
-ä¸‹é¢å°±è®©æˆ‘ä»¬æ¥è¯¦ç»†äº†è§£ä¸‹å„ä¸ªåº¦é‡çš„ç±»åž‹ï¼š
+ÏÂÃæ¾ÍÈÃÎÒÃÇÀ´ÏêÏ¸ÁË½âÏÂ¸÷¸ö¶ÈÁ¿µÄÀàÐÍ£º
 
 ### linear
 
-è¿žç»­çš„æ•°æ®å€¼ï¼Œå¦‚è¿™ä¸€ç»„æ•°æ®ï¼š[1, 2, 3, 4, 5]ï¼Œé™¤äº†é€šç”¨çš„å±žæ€§å¤–ï¼Œè¿˜åŒ…å«ä»¥ä¸‹è‡ªæœ‰å±žæ€§ï¼š
+Á¬ÐøµÄÊý¾ÝÖµ£¬ÈçÕâÒ»×éÊý¾Ý£º[1, 2, 3, 4, 5]£¬³ýÁËÍ¨ÓÃµÄÊôÐÔÍâ£¬»¹°üº¬ÒÔÏÂ×ÔÓÐÊôÐÔ£º
 
 ```js
 {
-  nice: boolean, // é»˜è®¤ä¸º trueï¼Œç”¨äºŽä¼˜åŒ–æ•°å€¼èŒƒå›´ï¼Œä½¿ç»˜åˆ¶çš„åæ ‡è½´åˆ»åº¦çº¿å‡åŒ€åˆ†å¸ƒã€‚ä¾‹å¦‚åŽŸå§‹æ•°æ®çš„èŒƒå›´ä¸º [3, 97]ï¼Œå¦‚æžœ nice ä¸º trueï¼Œé‚£ä¹ˆå°±ä¼šå°†æ•°å€¼èŒƒå›´è°ƒæ•´ä¸º [0, 100]
-  min: number, // å®šä¹‰æ•°å€¼èŒƒå›´çš„æœ€å°å€¼
-  max: number, // å®šä¹‰æ•°å€¼èŒƒå›´çš„æœ€å¤§å€¼
-  minLimit: number, // å¯¹æ•°æ®çš„æœ€å°å€¼çš„é™åˆ¶ï¼Œæ— è®ºæ•°æ®ä¸­æ˜¯å¦å­˜åœ¨æ¯”è¿™ä¸ªå€¼å°çš„æ•°æ®ï¼Œç”Ÿæˆçš„åæ ‡ç‚¹ä¸ä¼šå°äºŽè¿™ä¸ªå€¼
-  maxLimit: number, // å¯¹æ•°æ®çš„æœ€å¤§å€¼çš„é™åˆ¶ï¼Œæ— è®ºæ•°æ®ä¸­æ˜¯å¦å­˜åœ¨æ¯”è¿™ä¸ªå€¼å¤§çš„æ•°æ®ï¼Œç”Ÿæˆçš„åæ ‡ç‚¹ä¸ä¼šå¤§äºŽè¿™ä¸ªå€¼
-  tickCount: number, // å®šä¹‰åæ ‡è½´åˆ»åº¦çº¿çš„æ¡æ•°ï¼Œé»˜è®¤ä¸º 5
-  tickInterval: number, // ç”¨äºŽæŒ‡å®šåæ ‡è½´å„ä¸ªåˆ»åº¦ç‚¹çš„é—´è·ï¼Œä¸ºåŽŸå§‹æ•°æ®å€¼çš„å·®å€¼ï¼ŒtickCount å’Œ tickInterval ä¸å¯ä»¥åŒæ—¶å£°æ˜Ž
+  nice: boolean, // Ä¬ÈÏÎª true£¬ÓÃÓÚÓÅ»¯ÊýÖµ·¶Î§£¬Ê¹»æÖÆµÄ×ø±êÖá¿Ì¶ÈÏß¾ùÔÈ·Ö²¼¡£ÀýÈçÔ­Ê¼Êý¾ÝµÄ·¶Î§Îª [3, 97]£¬Èç¹û nice Îª true£¬ÄÇÃ´¾Í»á½«ÊýÖµ·¶Î§µ÷ÕûÎª [0, 100]
+  min: number, // ¶¨ÒåÊýÖµ·¶Î§µÄ×îÐ¡Öµ
+  max: number, // ¶¨ÒåÊýÖµ·¶Î§µÄ×î´óÖµ
+  minLimit: number, // ¶ÔÊý¾ÝµÄ×îÐ¡ÖµµÄÏÞÖÆ£¬ÎÞÂÛÊý¾ÝÖÐÊÇ·ñ´æÔÚ±ÈÕâ¸öÖµÐ¡µÄÊý¾Ý£¬Éú³ÉµÄ×ø±êµã²»»áÐ¡ÓÚÕâ¸öÖµ
+  maxLimit: number, // ¶ÔÊý¾ÝµÄ×î´óÖµµÄÏÞÖÆ£¬ÎÞÂÛÊý¾ÝÖÐÊÇ·ñ´æÔÚ±ÈÕâ¸öÖµ´óµÄÊý¾Ý£¬Éú³ÉµÄ×ø±êµã²»»á´óÓÚÕâ¸öÖµ
+  tickCount: number, // ¶¨Òå×ø±êÖá¿Ì¶ÈÏßµÄÌõÊý£¬Ä¬ÈÏÎª 5
+  tickInterval: number, // ÓÃÓÚÖ¸¶¨×ø±êÖá¸÷¸ö¿Ì¶ÈµãµÄ¼ä¾à£¬ÎªÔ­Ê¼Êý¾ÝÖµµÄ²îÖµ£¬tickCount ºÍ tickInterval ²»¿ÉÒÔÍ¬Ê±ÉùÃ÷
 }
 ```
 
-`è¯´æ˜Ž`ï¼š
-* min,max,minLimt å’Œ maxLimit éƒ½ä¼šå½±å“åæ ‡è½´ä¸Šåæ ‡ç‚¹çš„ç”Ÿæˆ
-* min å’Œ minLimt çš„å·®åˆ«ä¸»è¦ä½“çŽ°åœ¨ å¦‚æžœæ•°æ®ä¸­çš„æ•°æ®çš„èŒƒå›´æ˜¯ 10-20 å¯¹äºŽ min: 0 æ¥è¯´ï¼Œä¼šç”Ÿæˆä»Ž 0 - 20 èŒƒå›´çš„åæ ‡ç‚¹ï¼Œä½†æ˜¯å¯¹äºŽ minLimit æ¥è¯´åªè¦ä¿è¯ç”Ÿæˆçš„åæ ‡ç‚¹ä¸å°äºŽ 0 å³å¯ï¼Œç”Ÿæˆçš„åæ ‡ç‚¹çš„èŒƒå›´å¯èƒ½ä¾ç„¶åœ¨ 10 - 20 ä¹‹é—´ã€‚
-* max å’Œ maxLimit çš„å·®åˆ«åŒ min å’Œ minLimit ç±»ä¼¼ï¼Œ max ä½“çŽ°åœ¨åæ ‡è½´ä¸Šè‚¯å®šä¼šå‡ºçŽ° max æˆ–è€…æ¯” max å¤§çš„å€¼ï¼Œä½†æ˜¯ç»å¯¹ä¸ä¼šå‡ºçŽ°æ¯” maxLimit å¤§çš„å€¼ã€‚
+`ËµÃ÷`£º
+* min,max,minLimt ºÍ maxLimit ¶¼»áÓ°Ïì×ø±êÖáÉÏ×ø±êµãµÄÉú³É
+* min ºÍ minLimt µÄ²î±ðÖ÷ÒªÌåÏÖÔÚ Èç¹ûÊý¾ÝÖÐµÄÊý¾ÝµÄ·¶Î§ÊÇ 10-20 ¶ÔÓÚ min: 0 À´Ëµ£¬»áÉú³É´Ó 0 - 20 ·¶Î§µÄ×ø±êµã£¬µ«ÊÇ¶ÔÓÚ minLimit À´ËµÖ»Òª±£Ö¤Éú³ÉµÄ×ø±êµã²»Ð¡ÓÚ 0 ¼´¿É£¬Éú³ÉµÄ×ø±êµãµÄ·¶Î§¿ÉÄÜÒÀÈ»ÔÚ 10 - 20 Ö®¼ä¡£
+* max ºÍ maxLimit µÄ²î±ðÍ¬ min ºÍ minLimit ÀàËÆ£¬ max ÌåÏÖÔÚ×ø±êÖáÉÏ¿Ï¶¨»á³öÏÖ max »òÕß±È max ´óµÄÖµ£¬µ«ÊÇ¾ø¶Ô²»»á³öÏÖ±È maxLimit ´óµÄÖµ¡£
 
-é€šè¿‡ä¸‹é¢å­¦ç”Ÿæˆç»©çš„ç¤ºä¾‹æ¥è¯´æ˜Žï¼š
+Í¨¹ýÏÂÃæÑ§Éú³É¼¨µÄÊ¾ÀýÀ´ËµÃ÷£º
 
 ```js
 
 var data = [
-  {name: 'å¼ ä¸‰', score: 53},
-  {name: 'çŽ‹äº”', score: 92}
+  {name: 'ÕÅÈý', score: 53},
+  {name: 'ÍõÎå', score: 92}
 ];
 
 chart.source(data);
@@ -135,16 +135,16 @@ chart.point().position('name*score').color('name');
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/EQrGfZfaDSKteKExdPqS.png" style="width:500px">
 
-`è¯´æ˜Ž`
-* é»˜è®¤ç”Ÿæˆçš„ score åˆ†æ•°çš„åº¦é‡çš„èŒƒå›´æ˜¯ 50 - 95 ï¼Œè¿™æ˜¯ nice: true çš„æ•ˆæžœï¼ˆè®©äººçœ‹èµ·æ¥æ›´æ¸…æ™°ï¼‰
+`ËµÃ÷`
+* Ä¬ÈÏÉú³ÉµÄ score ·ÖÊýµÄ¶ÈÁ¿µÄ·¶Î§ÊÇ 50 - 95 £¬ÕâÊÇ nice: true µÄÐ§¹û£¨ÈÃÈË¿´ÆðÀ´¸üÇåÎú£©
 
-æˆ‘ä»¬çŸ¥é“å­¦ç”Ÿåˆ†æ•°çš„èŒƒå›´æ˜¯ 0 - 100 ,æ‰€ä»¥ 50 - 90 å¹¶ä¸æ»¡è¶³æˆ‘ä»¬çš„éœ€æ±‚ï¼Œæˆ‘ä»¬å¯ä»¥é™å®š min,max çš„èŒƒå›´
+ÎÒÃÇÖªµÀÑ§Éú·ÖÊýµÄ·¶Î§ÊÇ 0 - 100 ,ËùÒÔ 50 - 90 ²¢²»Âú×ãÎÒÃÇµÄÐèÇó£¬ÎÒÃÇ¿ÉÒÔÏÞ¶¨ min,max µÄ·¶Î§
 
 ```js
 
 var data = [
-  {name: 'å¼ ä¸‰', score: 53},
-  {name: 'çŽ‹äº”', score: 92}
+  {name: 'ÕÅÈý', score: 53},
+  {name: 'ÍõÎå', score: 92}
 ];
 
 chart.source(data, {
@@ -158,12 +158,12 @@ chart.point().position('name*score').color('name');
 
 ``` 
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/SazSTcmlxdGnNGGsjRAb.png" alt="æ•°æ®èŒƒå›´">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/SazSTcmlxdGnNGGsjRAb.png" alt="Êý¾Ý·¶Î§">
 
-`è¯´æ˜Ž`
-* æ­¤æ—¶è®¾ç½® minLimt å’Œ maxLimit å¹¶ä¸ä¼šæ”¹å˜ç”Ÿæˆæ•°æ®åº¦é‡çš„èŒƒå›´
+`ËµÃ÷`
+* ´ËÊ±ÉèÖÃ minLimt ºÍ maxLimit ²¢²»»á¸Ä±äÉú³ÉÊý¾Ý¶ÈÁ¿µÄ·¶Î§
 
-minLimit å’Œ maxLimit ä¸»è¦åº”ç”¨çš„åœºæ™¯æ˜¯ç”Ÿæˆçš„åº¦é‡èŒƒå›´è¶…å‡ºäº†ç”¨æˆ·å®šä¹‰çš„èŒƒå›´å¦‚ï¼š
+minLimit ºÍ maxLimit Ö÷ÒªÓ¦ÓÃµÄ³¡¾°ÊÇÉú³ÉµÄ¶ÈÁ¿·¶Î§³¬³öÁËÓÃ»§¶¨ÒåµÄ·¶Î§Èç£º
 
 ```js
 chart.source(data, {
@@ -176,12 +176,12 @@ chart.source(data, {
 
 ```
 
-`è¯´æ˜Ž`ï¼š
-* ç”±äºŽæ­¤æ—¶ç”¨æˆ·è®¾ç½®äº† tickCount: 4 ä¸ºäº†æ»¡è¶³ç”¨æˆ·å¯¹åæ ‡ç‚¹ä¸ªæ•°çš„éœ€æ±‚ï¼Œæœ‰æ—¶å€™ä¼šæ‰©å¤§æ•°æ®çš„èŒƒå›´
+`ËµÃ÷`£º
+* ÓÉÓÚ´ËÊ±ÓÃ»§ÉèÖÃÁË tickCount: 4 ÎªÁËÂú×ãÓÃ»§¶Ô×ø±êµã¸öÊýµÄÐèÇó£¬ÓÐÊ±ºò»áÀ©´óÊý¾ÝµÄ·¶Î§
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/mQQTWvuKCvbuRyRRNOMa.png" alt="è¶…å‡ºèŒƒå›´">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/mQQTWvuKCvbuRyRRNOMa.png" alt="³¬³ö·¶Î§">
 
-è®¾ç½®äº† maxLimit åŽ
+ÉèÖÃÁË maxLimit ºó
 
 ```js
 chart.source(data, {
@@ -192,37 +192,37 @@ chart.source(data, {
   }
 });
 ```
-<img src="https://gw.alipayobjects.com/zos/rmsportal/VmjHloxSPGkaZJgThogv.png" alt="é™åˆ¶èŒƒå›´">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/VmjHloxSPGkaZJgThogv.png" alt="ÏÞÖÆ·¶Î§">
 
 ### log
 
-è¿žç»­éžçº¿æ€§çš„ log ç±»åž‹åº¦é‡ï¼Œè¯¥åº¦é‡ä¼šå°† [1, 10, 100, 1000] å…ˆè½¬æ¢æˆ [0, 1, 2, 3] ç„¶åŽå†è¿›è¡Œå½’ä¸€åŒ–æ“ä½œã€‚log ç±»åž‹çš„æ•°æ®å¯ä»¥å°†éžå¸¸å¤§èŒƒå›´çš„æ•°æ®æ˜ å°„åˆ°ä¸€ä¸ªå‡åŒ€çš„èŒƒå›´å†…ã€‚
+Á¬Ðø·ÇÏßÐÔµÄ log ÀàÐÍ¶ÈÁ¿£¬¸Ã¶ÈÁ¿»á½« [1, 10, 100, 1000] ÏÈ×ª»»³É [0, 1, 2, 3] È»ºóÔÙ½øÐÐ¹éÒ»»¯²Ù×÷¡£log ÀàÐÍµÄÊý¾Ý¿ÉÒÔ½«·Ç³£´ó·¶Î§µÄÊý¾ÝÓ³Éäµ½Ò»¸ö¾ùÔÈµÄ·¶Î§ÄÚ¡£
 
-log åº¦é‡æ˜¯ linear çš„å­ç±»ï¼Œæ”¯æŒæ‰€æœ‰é€šç”¨çš„å±žæ€§å’Œ linear åº¦é‡çš„å±žæ€§ï¼Œç‰¹æœ‰çš„å±žæ€§å¦‚ä¸‹ï¼š
+log ¶ÈÁ¿ÊÇ linear µÄ×ÓÀà£¬Ö§³ÖËùÓÐÍ¨ÓÃµÄÊôÐÔºÍ linear ¶ÈÁ¿µÄÊôÐÔ£¬ÌØÓÐµÄÊôÐÔÈçÏÂ£º
 
 ```js
 {
-  base: number, // log çš„åŸºæ•°ï¼Œé»˜è®¤æ˜¯ 2
+  base: number, // log µÄ»ùÊý£¬Ä¬ÈÏÊÇ 2
 }
 ```
 
 
-#### log åº¦é‡çš„ä½¿ç”¨åœºæ™¯
+#### log ¶ÈÁ¿µÄÊ¹ÓÃ³¡¾°
 
-å¯¹äºŽä»¥ä¸‹åœºæ™¯ï¼Œå»ºè®®å°†æ•°æ®çš„åº¦é‡ç±»åž‹æŒ‡å®šä¸º log ç±»åž‹ï¼š
+¶ÔÓÚÒÔÏÂ³¡¾°£¬½¨Òé½«Êý¾ÝµÄ¶ÈÁ¿ÀàÐÍÖ¸¶¨Îª log ÀàÐÍ£º
 
-1. æ•£ç‚¹å›¾ä¸­æ•°æ®çš„åˆ†å¸ƒéžå¸¸å¹¿ï¼ŒåŒæ—¶æ•°æ®åˆ†æ•£åœ¨å‡ ä¸ªåŒºé—´å†…æ˜¯ï¼Œä¾‹å¦‚åˆ†å¸ƒåœ¨ 0 - 100ï¼Œ 10000 - 100000ï¼Œ1åƒä¸‡ - 1äº¿å†…ï¼Œè¿™æ—¶å€™é€‚åˆä½¿ç”¨ log åº¦é‡ï¼›
-2. çƒ­åŠ›å›¾ä¸­æ•°æ®åˆ†å¸ƒä¸å‡åŒ€æ—¶ä¹Ÿä¼šå‡ºçŽ°åªæœ‰éžå¸¸é«˜çš„æ•°æ®ç‚¹é™„è¿‘æ‰æœ‰é¢œè‰²ï¼Œæ­¤æ—¶éœ€è¦ä½¿ç”¨ log åº¦é‡ï¼Œå¯¹æ•°æ®è¿›è¡Œ log å¤„ç†ã€‚
+1. É¢µãÍ¼ÖÐÊý¾ÝµÄ·Ö²¼·Ç³£¹ã£¬Í¬Ê±Êý¾Ý·ÖÉ¢ÔÚ¼¸¸öÇø¼äÄÚÊÇ£¬ÀýÈç·Ö²¼ÔÚ 0 - 100£¬ 10000 - 100000£¬1Ç§Íò - 1ÒÚÄÚ£¬ÕâÊ±ºòÊÊºÏÊ¹ÓÃ log ¶ÈÁ¿£»
+2. ÈÈÁ¦Í¼ÖÐÊý¾Ý·Ö²¼²»¾ùÔÈÊ±Ò²»á³öÏÖÖ»ÓÐ·Ç³£¸ßµÄÊý¾Ýµã¸½½ü²ÅÓÐÑÕÉ«£¬´ËÊ±ÐèÒªÊ¹ÓÃ log ¶ÈÁ¿£¬¶ÔÊý¾Ý½øÐÐ log ´¦Àí¡£
 
-å¯¹æ¯”ä½¿ç”¨æœªä½¿ç”¨ log å’Œä½¿ç”¨äº†log åŽçš„æ•ˆæžœ
+¶Ô±ÈÊ¹ÓÃÎ´Ê¹ÓÃ log ºÍÊ¹ÓÃÁËlog ºóµÄÐ§¹û
 
 ```js
 
-// æ•°æ®
+// Êý¾Ý
 var data = [
-  {site: 'ç«™ç‚¹1', pv: 10},
-  {site: 'ç«™ç‚¹2', pv: 99},
-  {site: 'ç«™ç‚¹3', pv: 10000}
+  {site: 'Õ¾µã1', pv: 10},
+  {site: 'Õ¾µã2', pv: 99},
+  {site: 'Õ¾µã3', pv: 10000}
 ];
 
 chart.source(data, {
@@ -234,69 +234,69 @@ chart.source(data, {
 ```
 
 <div>
-  <img src="https://gw.alipayobjects.com/zos/rmsportal/roMcstmrYembFWUHYelR.png" alt="æœªä½¿ç”¨log" style="width:400px;float:left;">
-  <img src="https://gw.alipayobjects.com/zos/rmsportal/SETQeXddlxsqFNNPhiCR.png" alt="æœªä½¿ç”¨log" style="width:400px;float:left;">
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/roMcstmrYembFWUHYelR.png" alt="Î´Ê¹ÓÃlog" style="width:400px;float:left;">
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/SETQeXddlxsqFNNPhiCR.png" alt="Î´Ê¹ÓÃlog" style="width:400px;float:left;">
 </div>
 <div style="clear:both;"></div>
 
 ### pow
 
-è¿žç»­éžçº¿æ€§çš„ pow ç±»åž‹åº¦é‡ï¼Œè¯¥åº¦é‡å°† [2, 4, 8, 16, 32] å…ˆè½¬æ¢æˆ [1, 2, 3, 4, 5] ç„¶åŽå†è¿›è¡Œå½’ä¸€åŒ–æ“ä½œã€‚
+Á¬Ðø·ÇÏßÐÔµÄ pow ÀàÐÍ¶ÈÁ¿£¬¸Ã¶ÈÁ¿½« [2, 4, 8, 16, 32] ÏÈ×ª»»³É [1, 2, 3, 4, 5] È»ºóÔÙ½øÐÐ¹éÒ»»¯²Ù×÷¡£
 
-pow ç±»åž‹çš„åº¦é‡ä¹Ÿæ˜¯ linear ç±»åž‹çš„ä¸€ä¸ªå­ç±»ï¼Œé™¤äº†æ”¯æŒæ‰€æœ‰é€šç”¨çš„å±žæ€§å’Œ linear åº¦é‡çš„å±žæ€§å¤–ä¹Ÿæœ‰è‡ªå·±çš„å±žæ€§ï¼š
+pow ÀàÐÍµÄ¶ÈÁ¿Ò²ÊÇ linear ÀàÐÍµÄÒ»¸ö×ÓÀà£¬³ýÁËÖ§³ÖËùÓÐÍ¨ÓÃµÄÊôÐÔºÍ linear ¶ÈÁ¿µÄÊôÐÔÍâÒ²ÓÐ×Ô¼ºµÄÊôÐÔ£º
 
 ```js
 {
-  exponent: number, // æŒ‡æ•°ï¼Œé»˜è®¤æ˜¯ 2
+  exponent: number, // Ö¸Êý£¬Ä¬ÈÏÊÇ 2
 }
 ```
 
 ### time 
 
-è¿žç»­çš„æ—¶é—´ç±»åž‹ï¼Œæ˜¯ä¸€ç§ç‰¹æ®Šçš„è¿žç»­æ€§æ•°æ®ã€‚time ç±»åž‹çš„åº¦é‡ä¹Ÿæ˜¯ linear çš„å­ç±»ï¼Œé™¤äº†æ”¯æŒæ‰€æœ‰é€šç”¨çš„å±žæ€§å’Œ linear åº¦é‡çš„å±žæ€§å¤–ï¼Œè¿˜æœ‰è‡ªå·±ç‰¹æ®Šçš„å±žæ€§ï¼š
+Á¬ÐøµÄÊ±¼äÀàÐÍ£¬ÊÇÒ»ÖÖÌØÊâµÄÁ¬ÐøÐÔÊý¾Ý¡£time ÀàÐÍµÄ¶ÈÁ¿Ò²ÊÇ linear µÄ×ÓÀà£¬³ýÁËÖ§³ÖËùÓÐÍ¨ÓÃµÄÊôÐÔºÍ linear ¶ÈÁ¿µÄÊôÐÔÍâ£¬»¹ÓÐ×Ô¼ºÌØÊâµÄÊôÐÔ£º
 
 ```js
 {
-  mask: string, // æŒ‡å®šæ—¶é—´çš„æ˜¾ç¤ºæ ¼å¼ï¼Œé»˜è®¤ï¼š'YYYY-MM-DD'
+  mask: string, // Ö¸¶¨Ê±¼äµÄÏÔÊ¾¸ñÊ½£¬Ä¬ÈÏ£º'YYYY-MM-DD'
 }
 ```
 
-> è¯´æ˜Žï¼šmask çš„å ä½ç¬¦æ ‡å‡†åŒ [moment](https://momentjs.com/docs/#/displaying/format/)ã€[fecha](https://github.com/taylorhakes/fecha);
+> ËµÃ÷£ºmask µÄÕ¼Î»·û±ê×¼Í¬ [moment](https://momentjs.com/docs/#/displaying/format/)¡¢[fecha](https://github.com/taylorhakes/fecha);
 
-ç›®å‰ G2 ä¼šè‡ªåŠ¨è¯†åˆ«å¦‚ä¸‹å½¢å¼çš„æ—¶é—´æ ¼å¼ï¼Œå½“ç”¨æˆ·éœ€è¦ç”Ÿæˆ time ç±»åž‹çš„åº¦é‡æ—¶ï¼Œå»ºè®®å°†åŽŸå§‹æ—¶é—´æ•°æ®è½¬æ¢ä¸ºå¦‚ä¸‹å½¢å¼ï¼š
+Ä¿Ç° G2 »á×Ô¶¯Ê¶±ðÈçÏÂÐÎÊ½µÄÊ±¼ä¸ñÊ½£¬µ±ÓÃ»§ÐèÒªÉú³É time ÀàÐÍµÄ¶ÈÁ¿Ê±£¬½¨Òé½«Ô­Ê¼Ê±¼äÊý¾Ý×ª»»ÎªÈçÏÂÐÎÊ½£º
 
-1. æ—¶é—´æˆ³ï¼Œå¦‚ 1436237115500ï¼›
-2. æ—¶é—´å­—ç¬¦ä¸²ï¼š '2015-03-01'ï¼Œ'2015-03-01 12:01:40'ï¼Œ'2015/01/05'ï¼Œ'2015-03-01T16:00:00.000Z'ã€‚
+1. Ê±¼ä´Á£¬Èç 1436237115500£»
+2. Ê±¼ä×Ö·û´®£º '2015-03-01'£¬'2015-03-01 12:01:40'£¬'2015/01/05'£¬'2015-03-01T16:00:00.000Z'¡£
 
 ### cat
 
-åˆ†ç±»ç±»åž‹æ•°æ®çš„åº¦é‡ã€‚é™¤äº†æ‹¥æœ‰é€šç”¨çš„åº¦é‡å±žæ€§å¤–ï¼Œç”¨æˆ·è¿˜å¯ä»¥è®¾ç½® `values` å±žæ€§ï¼š
+·ÖÀàÀàÐÍÊý¾ÝµÄ¶ÈÁ¿¡£³ýÁËÓµÓÐÍ¨ÓÃµÄ¶ÈÁ¿ÊôÐÔÍâ£¬ÓÃ»§»¹¿ÉÒÔÉèÖÃ `values` ÊôÐÔ£º
 
 ```js
 {
-  values: array, // æŒ‡å®šå½“å‰å­—æ®µçš„åˆ†ç±»å€¼
+  values: array, // Ö¸¶¨µ±Ç°×Ö¶ÎµÄ·ÖÀàÖµ
 }
 ```
 
-G2 åœ¨ç”Ÿæˆ cat ç±»åž‹çš„åº¦é‡æ—¶ï¼Œ`values` å±žæ€§çš„å€¼ä¸€èˆ¬éƒ½ä¼šä»ŽåŽŸå§‹æ•°æ®æºä¸­ç›´æŽ¥èŽ·å–ï¼Œä½†å¯¹äºŽä¸‹é¢ä¸¤ç§åœºæ™¯ï¼Œéœ€è¦ç”¨æˆ·æ‰‹åŠ¨æŒ‡å®š values å€¼ï¼š
+G2 ÔÚÉú³É cat ÀàÐÍµÄ¶ÈÁ¿Ê±£¬`values` ÊôÐÔµÄÖµÒ»°ã¶¼»á´ÓÔ­Ê¼Êý¾ÝÔ´ÖÐÖ±½Ó»ñÈ¡£¬µ«¶ÔÓÚÏÂÃæÁ½ÖÖ³¡¾°£¬ÐèÒªÓÃ»§ÊÖ¶¯Ö¸¶¨ values Öµ£º
 
-1. éœ€è¦æŒ‡å®šåˆ†ç±»çš„é¡ºåºæ—¶ï¼Œä¾‹å¦‚ï¼štype å­—æ®µåŽŸå§‹å€¼ä¸º ['æœ€å¤§', 'æœ€å°', 'é€‚ä¸­']ï¼Œæˆ‘ä»¬æƒ³æŒ‡å®šè¿™äº›åˆ†ç±»åœ¨åæ ‡è½´æˆ–è€…å›¾ä¾‹ä¸Šçš„é¡ºåºä¸º ['æœ€å°','é€‚ä¸­','æœ€å¤§']ã€‚è¿™æ—¶å€™ cat åº¦é‡çš„é…ç½®å¦‚ä¸‹ï¼š
+1. ÐèÒªÖ¸¶¨·ÖÀàµÄË³ÐòÊ±£¬ÀýÈç£ºtype ×Ö¶ÎÔ­Ê¼ÖµÎª ['×î´ó', '×îÐ¡', 'ÊÊÖÐ']£¬ÎÒÃÇÏëÖ¸¶¨ÕâÐ©·ÖÀàÔÚ×ø±êÖá»òÕßÍ¼ÀýÉÏµÄË³ÐòÎª ['×îÐ¡','ÊÊÖÐ','×î´ó']¡£ÕâÊ±ºò cat ¶ÈÁ¿µÄÅäÖÃÈçÏÂ£º
 
 ```js
 var data  = [
-  {a: 'a1', b:'b1', type: 'æœ€å°'},
-  {a: 'a2', b:'b2', type: 'æœ€å¤§'},
-  {a: 'a3', b:'b3', type: 'é€‚ä¸­'}
+  {a: 'a1', b:'b1', type: '×îÐ¡'},
+  {a: 'a2', b:'b2', type: '×î´ó'},
+  {a: 'a3', b:'b3', type: 'ÊÊÖÐ'}
 ];
 chart.scale('type', {
   type: 'cat',
-  values: ['æœ€å°', 'é€‚ä¸­', 'æœ€å¤§']
+  values: ['×îÐ¡', 'ÊÊÖÐ', '×î´ó']
 });
 ```
 
-å¦‚æžœä¸å£°æ˜Žåº¦é‡çš„valueså­—æ®µï¼Œé‚£ä¹ˆé»˜è®¤çš„é¡ºåºæ˜¯ï¼šâ€˜æœ€å°â€™ï¼Œâ€˜æœ€å¤§â€™ï¼Œâ€˜é€‚ä¸­â€™ã€‚
+Èç¹û²»ÉùÃ÷¶ÈÁ¿µÄvalues×Ö¶Î£¬ÄÇÃ´Ä¬ÈÏµÄË³ÐòÊÇ£º¡®×îÐ¡¡¯£¬¡®×î´ó¡¯£¬¡®ÊÊÖÐ¡¯¡£
 
-2. å¦‚æžœæ•°æ®ä¸­çš„åˆ†ç±»ç±»åž‹ä½¿ç”¨æžšä¸¾çš„æ–¹å¼è¡¨ç¤ºï¼Œé‚£ä¹ˆä¹Ÿéœ€è¦æŒ‡å®š valuesã€‚
+2. Èç¹ûÊý¾ÝÖÐµÄ·ÖÀàÀàÐÍÊ¹ÓÃÃ¶¾ÙµÄ·½Ê½±íÊ¾£¬ÄÇÃ´Ò²ÐèÒªÖ¸¶¨ values¡£
 
 Example:
 
@@ -308,27 +308,27 @@ var data  = [
 ]
 chart.scale('type', {
   type: 'cat',
-  values: ['æœ€å°', 'é€‚ä¸­', 'æœ€å¤§']
+  values: ['×îÐ¡', 'ÊÊÖÐ', '×î´ó']
 });
 ```
 
-** æ­¤å¤„å¿…é¡»æŒ‡å®š 'cat' ç±»åž‹ï¼Œvalues çš„å€¼å¿…é¡»æŒ‰ç…§ç´¢å¼•è·Ÿæžšä¸¾ç±»åž‹ä¸€ä¸€å¯¹åº”ã€‚**
+** ´Ë´¦±ØÐëÖ¸¶¨ 'cat' ÀàÐÍ£¬values µÄÖµ±ØÐë°´ÕÕË÷Òý¸úÃ¶¾ÙÀàÐÍÒ»Ò»¶ÔÓ¦¡£**
 
 ### timeCat
 
-timeCat åº¦é‡å¯¹åº”æ—¶é—´æ•°æ®ï¼Œä½†æ˜¯ä¸æ˜¯è¿žç»­çš„æ—¶é—´ç±»åž‹ï¼Œè€Œæ˜¯æœ‰åºçš„åˆ†ç±»æ•°æ®ã€‚ä¾‹å¦‚è‚¡ç¥¨äº¤æ˜“çš„æ—¥æœŸï¼Œæ­¤æ—¶å¦‚æžœä½¿ç”¨ time ç±»åž‹ï¼Œé‚£ä¹ˆç”±äºŽèŠ‚å‡æ—¥æ²¡æœ‰æ•°æ®ï¼ŒæŠ˜çº¿å›¾ã€k çº¿å›¾å°±ä¼šå‘ç”Ÿæ–­è£‚ï¼Œæ‰€ä»¥æ­¤æ—¶éœ€è¦ä½¿ç”¨ timeCat ç±»åž‹åº¦é‡å°†æ—¥æœŸè½¬æ¢ä¸ºæœ‰åºçš„åˆ†ç±»æ•°æ®ï¼Œè¯¥åº¦é‡é»˜è®¤ä¼šå¯¹æ•°æ®åšæŽ’åºã€‚
+timeCat ¶ÈÁ¿¶ÔÓ¦Ê±¼äÊý¾Ý£¬µ«ÊÇ²»ÊÇÁ¬ÐøµÄÊ±¼äÀàÐÍ£¬¶øÊÇÓÐÐòµÄ·ÖÀàÊý¾Ý¡£ÀýÈç¹ÉÆ±½»Ò×µÄÈÕÆÚ£¬´ËÊ±Èç¹ûÊ¹ÓÃ time ÀàÐÍ£¬ÄÇÃ´ÓÉÓÚ½Ú¼ÙÈÕÃ»ÓÐÊý¾Ý£¬ÕÛÏßÍ¼¡¢k ÏßÍ¼¾Í»á·¢Éú¶ÏÁÑ£¬ËùÒÔ´ËÊ±ÐèÒªÊ¹ÓÃ timeCat ÀàÐÍ¶ÈÁ¿½«ÈÕÆÚ×ª»»ÎªÓÐÐòµÄ·ÖÀàÊý¾Ý£¬¸Ã¶ÈÁ¿Ä¬ÈÏ»á¶ÔÊý¾Ý×öÅÅÐò¡£
 
-timeCat æ˜¯ cat åº¦é‡çš„å­ç±»ï¼Œé™¤äº†æ”¯æŒæ‰€æœ‰é€šç”¨çš„å±žæ€§å’Œ cat åº¦é‡çš„å±žæ€§å¤–ä¹Ÿæœ‰è‡ªå·±çš„å±žæ€§: 
+timeCat ÊÇ cat ¶ÈÁ¿µÄ×ÓÀà£¬³ýÁËÖ§³ÖËùÓÐÍ¨ÓÃµÄÊôÐÔºÍ cat ¶ÈÁ¿µÄÊôÐÔÍâÒ²ÓÐ×Ô¼ºµÄÊôÐÔ: 
 
 ```js
 {
-  mask: string, // æŒ‡å®šæ—¶é—´çš„æ˜¾ç¤ºæ ¼å¼ï¼Œé»˜è®¤ï¼š'YYYY-MM-DD'
+  mask: string, // Ö¸¶¨Ê±¼äµÄÏÔÊ¾¸ñÊ½£¬Ä¬ÈÏ£º'YYYY-MM-DD'
 }
 ```
 
-timeCat å’Œ time ç±»åž‹åº¦é‡çš„å·®åˆ«å’Œåº”ç”¨åœºæ™¯
+timeCat ºÍ time ÀàÐÍ¶ÈÁ¿µÄ²î±ðºÍÓ¦ÓÃ³¡¾°
 
-* timeCat æ˜¯åˆ†ç±»ç±»åž‹çš„åº¦é‡ï¼Œæ‰€ä»¥é€‚åˆäºŽæ˜¾ç¤º `æŸ±çŠ¶å›¾` æˆ–è€…å›ºå®šæ—¶é—´å†…æ²¡æœ‰æ•°æ®çš„åœºæ™¯ï¼ˆè‚¡ç¥¨å›¾ï¼‰
-* time æ˜¯è¿žç»­ç±»åž‹çš„åº¦é‡ï¼Œæ›´é€‚åˆæ˜¾ç¤ºæŠ˜çº¿å›¾ã€é¢ç§¯å›¾ï¼Œè¡¨çŽ°æ•°æ®çš„è¶‹åŠ¿
+* timeCat ÊÇ·ÖÀàÀàÐÍµÄ¶ÈÁ¿£¬ËùÒÔÊÊºÏÓÚÏÔÊ¾ `Öù×´Í¼` »òÕß¹Ì¶¨Ê±¼äÄÚÃ»ÓÐÊý¾ÝµÄ³¡¾°£¨¹ÉÆ±Í¼£©
+* time ÊÇÁ¬ÐøÀàÐÍµÄ¶ÈÁ¿£¬¸üÊÊºÏÏÔÊ¾ÕÛÏßÍ¼¡¢Ãæ»ýÍ¼£¬±íÏÖÊý¾ÝµÄÇ÷ÊÆ
 
 
