@@ -67,7 +67,7 @@ resource:
         <div class="header row">
             <div class="col-md-5 texts">
                 <h1>G6关系图类库</h1>
-                <p class="main-info">G6 是一个由纯 JavaScript 编写的关系图基础技术框架。开发者能基于 G6 进行关系图的查看视图和编辑视图进行快速的二次开发。</p>
+                <p class="main-info">G6 是一套解决流程图和关系分析的图表库，集成了大量的交互，可以轻松的进行动态流程图和关系网络的开发。</p>
                 <a href="{{ products.g6.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
                 <a href="{{base}}zh-cn/g6/1.x/tutorial/download.html" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
