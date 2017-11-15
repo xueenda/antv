@@ -17,7 +17,7 @@ variations:
 
 双向柱状图（又名正负条形图），使用正向和反向的柱子显示类别之间的数值比较。其中分类轴表示需要对比的分类维度，连续轴代表相应的数值，分为两种情况，一种是正向刻度值与反向刻度值完全对称，另一种是正向刻度值与反向刻度值反向对称，即互为相反数。
 
-英文名：Bi-directional bar,Bi-directional column
+英文名：Bi-directional Bar Chart, Bi-directional Column Chart
 
 ## 双向柱状图的构成
 
@@ -52,7 +52,8 @@ variations:
 
 ### 适合的场景
 
-例子1: ** 正反分类数据对比 **
+例子1: **正反分类数据对比**
+
 下图是模拟某个公司各个部门对某项任务的完成情况数据的对比图，完成人数使用正向柱状图表示、未完成人数使用反向柱状图表示。
 
 |部门 |小组| 完成人数 | 未完成人数|
@@ -112,24 +113,31 @@ variations:
   var chart = new G2.Chart({
     id: 'c1',
     forceFit: true,
-    height : 500,
+    height: 500,
   });
   chart.source(dv);
   chart.coord().transpose();
-  chart.legend('完成状态', {
-    position: 'bottom'
-  });
-  chart.axis('小组',{title: null});
   chart.axis('人数',{
-    formatter: function(value){
-      value = parseInt(value);
-      return Math.abs(value); // 将负数格式化成正数
-    },
-    title: null
+    label: {
+      formatter: function(value){
+        value = parseInt(value);
+        return Math.abs(value); // 将负数格式化成正数
+      }
+    }
   });
-  chart.interval().position('小组*人数').color('部门').shape('完成状态',['rect','hollowRect']).style({
-    lineWidth: 2
-  });
+  chart.interval()
+    .position('小组*人数')
+    .color('部门')
+    .shape('完成状态',['rect','hollowRect'])
+    .tooltip('部门*人数', (val1, val2) => {
+      return {
+        name: val1,
+        value: Math.abs(val2)
+      };
+    })
+    .style({
+      lineWidth: 2
+    });
   chart.render();
 ```
 
@@ -144,7 +152,8 @@ variations:
 
 ## 双向柱状图的扩展
 
-例子1: ** 层叠双向柱状图 **
+例子1: **层叠双向柱状图**
+
 下图展示了不同类型的人群对某个问题的同意程度的统计数据，分为非常不同意、不同意、没意见、同意和非常同意五种程度，其中非常不同意和不同意作为反向柱状图，不同程度用不同颜色来表示。
 
 
@@ -159,8 +168,7 @@ variations:
 var data = [{"group":"All Survey Responses","type":"All Survey Responses","total":565,"Strongly Agree":50.1,"Agree":40.7,"No Opinion":4.8,"Disagree":3.7,"Strongly Disagree":0.7},{"group":"Employment sector","type":"Academic(nonstudent)","total":253,"Strongly Agree":64.0,"Agree":30.8,"No Opinion":3.2,"Disagree":2.0,"Strongly Disagree":0.0},{"group":"Employment sector","type":"Business and industry","total":176,"Strongly Agree":40.6,"Agree":50.0,"No Opinion":2.8,"Disagree":6.3,"Strongly Disagree":0.0},{"group":"Employment sector","type":"Federal, state, and local government","total":71,"Strongly Agree":38.0,"Agree":47.9,"No Opinion":7.0,"Disagree":4.2,"Strongly Disagree":2.8},{"group":"Employment sector","type":"Private consultant/self-employed","total":28,"Strongly Agree":39.3,"Agree":53.6,"No Opinion":7.1,"Disagree":0.0,"Strongly Disagree":0.0},{"group":"Employment sector","type":"Other (Including retired, student, not employed, etc.)","total":34,"Strongly Agree":29.4,"Agree":44.1,"No Opinion":14.7,"Disagree":5.9,"Strongly Disagree":5.9},{"group":"Race","type":"White","total":400,"Strongly Agree":50.0,"Agree":41.8,"No Opinion":4.5,"Disagree":2.8,"Strongly Disagree":1.0},{"group":"Race","type":"Asian","total":122,"Strongly Agree":53.3,"Agree":40.2,"No Opinion":3.3,"Disagree":3.3,"Strongly Disagree":0.0},{"group":"Race","type":"Black or African American","total":10,"Strongly Agree":40.0,"Agree":30.0,"No Opinion":20.0,"Disagree":10.0,"Strongly Disagree":0.0},{"group":"Race","type":"Other","total":17,"Strongly Agree":47.1,"Agree":35.3,"No Opinion":5.9,"Disagree":11.8,"Strongly Disagree":0.7},{"group":"Education","type":"Associate's and Bachelor's","total":175,"Strongly Agree":37.1,"Agree":49.1,"No Opinion":5.7,"Disagree":6.9,"Strongly Disagree":1.1},{"group":"Education","type":"Master's and Above","total":388,"Strongly Agree":55.9,"Agree":36.9,"No Opinion":4.4,"Disagree":2.3,"Strongly Disagree":0.5},{"group":"Gender","type":"Male","total":356,"Strongly Agree":50.6,"Agree":41,"No Opinion":4.2,"Disagree":3.4,"Strongly Disagree":0.8},{"group":"Gender","type":"Female","total":200,"Strongly Agree":51.0,"Agree":39.0,"No Opinion":6.0,"Disagree":3.5,"Strongly Disagree":0.5}];
 
 var dv = new DataSet.View().source(data);
-dv
-  .transform({
+dv.transform({
     type: 'map',
     callback: function(row) {
       row['Strongly Disagree'] *= -1;
@@ -184,9 +192,10 @@ var colorMap = {
 }
 
 var chart = new G2.Chart({
-  id : 'c4',
+  id: 'c4',
   forceFit: true,
-  height : 500,
+  height: 500,
+  padding: [ 20, 20, 95, 325 ]
 });
 
 chart.source(dv, {
@@ -194,32 +203,35 @@ chart.source(dv, {
     tickInterval: 10
   }
 });
-chart.axis('type',{
-  title: null
-});
+
 chart.axis('value',{
   position: 'right',
-  title: null,
   tickLine: null,
-  formatter: function(val) {
-    return val + '%';
+  label: {
+    formatter: function(val) {
+      return Math.abs(val) + '%';
+    }
   }
 });
-chart.legend({
-  position: 'bottom'
-});
 chart.coord().transpose();
-chart.intervalStack().position('type*value').color('opinion', function(opinion) {
-  return colorMap[opinion];
-});
+chart.intervalStack()
+  .position('type*value')
+  .color('opinion', function(opinion) {
+    return colorMap[opinion];
+  })
+  .tooltip('type*value', (type, value) => {
+    return {
+      name: type,
+      value: Math.abs(value) + '%'
+    };
+  });
 
 chart.render();
 ```
 
-例子2: ** 分组双向柱状图 **
+例子2: **分组双向柱状**
 
-下图展示了通过收入数据和支出数据绘制出包涵净利润的分组双向柱状图
-
+下图展示了通过收入数据和支出数据绘制出包含净利润的分组双向柱状图。
 
 |time |收入| 支出 | 
 |------|------|------|
@@ -252,24 +264,31 @@ dv.transform({
 var chart = new G2.Chart({
   id: 'c5',
   forceFit: true,
-  height : 500,
+  height: 500,
 });
 chart.source(dv);
 chart.coord().transpose();
-chart.legend('收支状态', {
-  position: 'bottom'
-});
-chart.axis('time',{title: null});
 chart.axis('金额',{
-  formatter: function(value){
-    value = parseInt(value);
-    return Math.abs(value); // 将负数格式化成正数
-  },
-  title: null
+  label: {
+    formatter: function(value){
+      value = parseInt(value);
+      return Math.abs(value); // 将负数格式化成正数
+    }
+  }
 });
-chart.intervalDodge().position('time*金额').color('收支状态').shape('收支状态',['rect','hollowRect']).style({
-  lineWidth: 2
-});
+chart.intervalDodge()
+  .position('time*金额')
+  .color('收支状态')
+  .shape('收支状态',['rect','hollowRect'])
+  .style({
+    lineWidth: 2
+  })
+  .tooltip('time*金额', (type, value) => {
+    return {
+      name: type,
+      value: Math.abs(value)
+    };
+  });
 chart.render();
 ```
 

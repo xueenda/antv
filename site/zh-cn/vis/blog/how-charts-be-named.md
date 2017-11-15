@@ -42,7 +42,7 @@ AntV 所产出的数据图表，有一个很重要的原则
 
 | 英文名 | 中文名 | 图解   |
 | ----- | ----- | ------ |
-| Basic Column Chart | 基础柱图 | <img src="{{assets}}/dist/{{pkg.version}}/g2/3.x/bar/basic-column.png" style="width: 35%;">
+| Basic Column Chart | 基础柱状图 | <img src="{{assets}}/dist/{{pkg.version}}/g2/3.x/bar/basic-column.png" style="width: 35%;">
 | Stacked Column Chart | 堆叠柱状图 | <img src="{{assets}}/dist/{{pkg.version}}/g2/3.x/bar/stacked-column.png" style="width: 35%;">
 | Stacked Percentage Column Chart | 百分比堆叠柱状图 | <img src="{{assets}}/dist/{{pkg.version}}/g2/3.x/bar/stacked-percentage-column.png" style="width: 35%;">
 | Range Column Chart | 区间柱状图 | <img src="{{assets}}/dist/{{pkg.version}}/g2/3.x/bar/column-range.png" style="width: 35%;">

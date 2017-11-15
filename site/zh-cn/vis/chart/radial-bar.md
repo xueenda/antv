@@ -14,13 +14,13 @@ variations:
 
 玦[jué]：半环形有缺口的佩玉，古代常用以赠人表示决绝。
 
-玉玦图（又名，环形柱状图），是柱状图关于笛卡尔坐标系转换到极坐标系的仿射变换。其意义和用法与[柱状图](./bar-chart.html)类似。
+玉玦图（又名，环形柱状图），是柱状图关于笛卡尔坐标系转换到极坐标系的仿射变换。其意义和用法与[柱状图](./bar.html)类似。
 
 玉玦图有**半价反馈效应**。由于玉玦图中是用**角度**表示每个玦环数值的大小，角度是决定性因素。所以，哪怕外侧（半径大的）玦环的数值小于内侧（半径小的）玦环，外侧的每个玦环会相对的比里面的玦环更长。这会造成视觉上的误解。
 
 而且因为我们的视觉系统更善于比较直线，所以笛卡尔坐标系更适合于比较各个分类的数值比较。所以玉玦图从**实用**的角度去看，其更多的是一种**审美**上的需求。
 
-英文名：Radial bar chart
+英文名：Radial Bar Chart
 
 ## 玉玦图的构成
 
@@ -69,19 +69,24 @@ variations:
       height: 500
     });
     chart.source(data);
+    chart.legend(false);
     chart.scale('odd',{
       type: 'cat',
       values: ['奇数','偶数']
     });
-    chart.coord('polar',{inner: 0.1}).transpose();
+    chart.coord('polar',{innerRadius: 0.1}).transpose();
     chart.scale('percent',{min: 0,max: 1});
     chart.interval().position('question*percent')
           .color('odd',['rgb(211,0,57)','rgb(224,74,116)'])
-          .label('percent',{offset: -1, label: {fontWeight: 'bold'}});
+          .label('percent',{offset: -1, textStyle: {fontWeight: 'bold'}});
  
     data.forEach(function(obj){
-      chart.guide().text([obj.question,0],obj.question + ' ',{
-        'text-anchor' : 'end'
+      chart.guide().text({
+        position: [obj.question, 0],
+        content: obj.question + ' ',
+        style:{
+          'textAlign' : 'end'
+        }
       });
     });
 
@@ -143,7 +148,7 @@ variations:
     chart.source(data);
 
     chart.coord('polar',{
-      inner: 0.1,
+      innerRadius: 0.1,
       startAngle: -1 * Math.PI,
       endAngle: -0.25 * Math.PI
     }).transpose();
@@ -154,12 +159,16 @@ variations:
     chart.intervalStack()
       .position("country*percent")
       .color('condition',['#2370AE','#A34265','#505051'])
-      .label('percent').size(20);
+      .label('percent').size(16);
 
     data.forEach(function(obj){
-      chart.guide().text([obj.country,0],obj.country + ' ',{
-        'text-anchor' : 'start',
-        'rotate': 90
+      chart.guide().text({
+        position: [obj.country, 0],
+        content: obj.country + ' ',
+        style: {
+          textAlign : 'start',
+          rotate: 90
+        }
       });
     });
 
@@ -215,7 +224,7 @@ variations:
     });
 
     chart.coord('polar',{
-      inner: 0.1,
+      innerRadius: 0.1,
       startAngle: -1 * Math.PI,
       endAngle: -0.25 * Math.PI
     }).transpose();
@@ -233,9 +242,13 @@ variations:
       .label('percent').size(8);
 
     data.forEach(function(obj){
-      chart.guide().text([obj.country,0],obj.country + ' ',{
-        'text-anchor' : 'start',
-        'rotate': 90
+      chart.guide().text({
+        position: [obj.country,0],
+        content: obj.country + ' ',
+        style: {
+          textAlign : 'start',
+          rotate: 90
+        }
       });
     });
 
@@ -282,7 +295,7 @@ variations:
     });
 
     chart.coord('polar',{
-      inner: 0.1,
+      innerRadius: 0.1,
       startAngle: -1 * Math.PI,
       endAngle: -0.25 * Math.PI
     }).transpose();
@@ -300,9 +313,13 @@ variations:
       .label('percent').size(8);
 
     data.forEach(function(obj){
-      chart.guide().text([obj.country,0],obj.country + ' ',{
-        'text-anchor' : 'start',
-        'rotate': 90
+      chart.guide().text({
+        position: [obj.country,0],
+        content: obj.country + ' ',
+        style: {
+          textAlign : 'start',
+          rotate: 90
+        }
       });
     });
 

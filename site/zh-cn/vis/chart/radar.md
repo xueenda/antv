@@ -24,7 +24,7 @@ tags:
 (2) 如果变量过多，也会造成可读性下降，因为一个变量对应一个坐标轴，这样会使坐标轴过于密集，使图表给人感觉很复杂。所以最佳实践就是尽可能控制变量的数量使雷达图保持简单清晰。
 
 
-英文名：Radar chart, Spider Chart, Web Chart, Polar Chart, Star Plots
+英文名：Radar Chart, Spider Chart, Web Chart, Polar Chart, Star Plots
 
 注意：
 
@@ -122,13 +122,12 @@ tags:
   var chart = new G2.Chart({
     container: 'c3',
     forceFit: true,
-    height: 600
+    height: 600,
+    padding: 40
   });
 
   chart.source(data);
-  chart.legend('obj',{ // 配置具体字段对应的图例属性
-    title: null
-  });
+  chart.legend(false);
   chart.coord('polar');
   chart.axis('value',{ // 设置坐标系栅格样式
     grid: {
@@ -140,7 +139,6 @@ tags:
     max: 10,
     tickCount: 10
   });
-  chart.legend('level', false);
   chart.axis('item',{ // 设置坐标系栅格样式
     line: null
   });
@@ -177,6 +175,7 @@ tags:
     container: 'c4',
     forceFit: true,
     height: 350,
+    padding: [ 40, 80, 100]
   });
 
   chart.source(data);
@@ -201,52 +200,6 @@ tags:
     line: null
   });
   chart.line().position('item*value').color('obj');
-  chart.point().position('item*value').color('obj');
-  chart.render();
-```
-
-```js
-// 画构成的代码
-  var data = [
-    {item: "类别一", value: 8, obj: "分组一"},
-    {item: "类别二", value: 9, obj: "分组一"},
-    {item: "类别三", value: 8, obj: "分组一"},
-    {item: "类别四", value: 7, obj: "分组一"},
-    {item: "类别五", value: 9, obj: "分组一"}
-  ];
-
-  var chart = new G2.Chart({
-    container: 'c4',
-    forceFit: true,
-    height: 350,
-    plotCfg: {
-      margin: [20, 140, 60, 0]
-    }
-  });
-
-  chart.source(data);
-  chart.legend('obj',{ // 配置具体字段对应的图例属性
-    title: null
-  });
-  chart.coord('polar');
-  chart.axis('value',{ // 设置坐标系栅格样式
-    grid: {
-      type: 'polygon' //圆形栅格，可以改成
-    }
-  });
-  chart.scale('value', {
-    min: 0,
-    max: 10,
-    tickCount: 5
-  });
-  chart.legend('right', {
-    title: null
-  });
-  chart.axis('item',{ // 设置坐标系栅格样式
-    line: null
-  });
-  chart.line().position('item*value').color('obj');
-  chart.area().position('item*value').color('obj').opacity(0.5);
   chart.point().position('item*value').color('obj');
   chart.render();
 ```

@@ -242,9 +242,7 @@ variations:
     id: 'c1',
     forceFit: true,
     height: 350,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
+    padding: [20, 85,100,80]
   });
   chart.source(getKagiData(data,'day','share'));
   chart.scale('day', {
@@ -262,14 +260,16 @@ variations:
   chart.tooltip({
     crosshairs: true
   });
-  chart.path().position('day*share').color('type').size('type',2,4);
+  chart.path().position('day*share').color('type').size('type', [2, 4]);
   chart.render();
 ```
 
 ### 不适合的场景
 
-例子1:**对时间敏感的数据** 卡吉图与时间无关，只表示数据上升下降的走势，无法体现数据再时间上的一些特性，例如周期等。特别时当数据对时间敏感时不推荐用卡吉图
-下图使用卡吉图绘制了 G2 官网（ https://g2.alipay. ）2016 年 5 月 13 日至 2016 年 10 月 28 日的日浏览次数，从图中可以看出两次访问量较高的转折线，但无法确定其具体时间点，也无法看出数据的周期性，周期性数据推荐使用[螺旋图](spiral.html)
+例子1:**对时间敏感的数据** 
+
+卡吉图与时间无关，只表示数据上升下降的走势，无法体现数据再时间上的一些特性，例如周期等。特别时当数据对时间敏感时不推荐用卡吉图
+下图使用卡吉图绘制了 G2 官网 2016 年 5 月 13 日至 2016 年 10 月 28 日的日浏览次数，从图中可以看出两次访问量较高的转折线，但无法确定其具体时间点，也无法看出数据的周期性，周期性数据推荐使用[螺旋图](spiral.html)
 
 <div id="c2"></div>
 
@@ -281,9 +281,7 @@ $.getJSON('/assets/data/g2.json',function(data){
     id: 'c2',
     forceFit: true,
     height: 400,
-    plotCfg: {
-      margin: [20, 85,80,80]
-    }
+    padding: [20, 85,100,80]
   });
   chart.source(getKagiData(data,'时段','浏览次数'),{
     '时段':{
@@ -293,7 +291,7 @@ $.getJSON('/assets/data/g2.json',function(data){
     }
   });
 
-  chart.path().position('时段*浏览次数').color('type').size('type',2,4);
+  chart.path().position('时段*浏览次数').color('type').size('type', [2,4]);
   chart.render();
 });
 ```
