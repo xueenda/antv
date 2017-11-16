@@ -10,6 +10,8 @@ date: "2017-11-22"
 landscape: ${assets}/image/vis/blog/drawing-directed-graphs.jpg
 -->
 
+> 译者: 绝云、青湳
+
 ## 原文信息
 
 原文是AT&T贝尔实验室graphviz项目组沉淀的一篇论文，描述了graphviz中的dot布局所用的算法。
