@@ -292,7 +292,7 @@ F2 的图表定义时有多种方式可以设置渐变色
 
 ```
 
-[示例](../demo/area/area-gradient.html)
+[示例](../demo/area/gradient.html)
 
 ## 6. 怎么显示图例
 
