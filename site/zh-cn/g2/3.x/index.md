@@ -60,7 +60,8 @@ resource:
     </div>
 </section>
 
-<section class="get-started text-center"><div class="container">
+<section class="get-started text-center">
+<div class="container">
     <h2>快速接入</h2>
     <span class="separator"></span>
     <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>

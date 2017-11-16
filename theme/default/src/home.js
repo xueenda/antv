@@ -18,13 +18,13 @@ $('header').headroom({
 $('.slick').each(function () {
     const $target = $(this);
     $target.slick({
-        dots: !!$target.data('dots'),
+        // dots: !!$target.data('dots'),
         infinite: true,
-        speed: 1000,
+        speed: 500,
         cssEase: 'linear',
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 1000,
         fade: true,
     });
 });

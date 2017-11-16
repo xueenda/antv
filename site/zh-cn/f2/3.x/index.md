@@ -33,7 +33,7 @@ resource:
                 <h1>F2 移动端图表库</h1>
                 <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求很高的场景。</p>
                 <a href="{{ products.g2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
-                <a href="{{base}}zh-cn/g2/3.x/tutorial/download.html" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
+                <a href="{{base}}zh-cn/f2/3.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
             <div class="col-md-6 slick">
                 <div id="commentsCarousel" class="carousel">
@@ -69,18 +69,17 @@ resource:
 </section>
 
 <section class="get-started text-center">
+<div class="container">
     <h2>快速接入</h2>
     <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>
 
-```js
+```html
 <!-- 引入在线资源 -->
-  <script type="{{ url.f2 }}"></script>
+<script type="{{ url.f2 }}"></script>
 ```
 
-</section>
-
-<section class="more text-center">
-    <a href="{{ products.f2.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link">更多教程</a>
+</div>
+<a href="{{ products.f2.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
 
 <!-- chart1 -->
