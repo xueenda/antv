@@ -67,6 +67,7 @@ module.exports = {
             intro: '介绍',
             inputKeyWord: '输入关键字',
             plotDescription: '图表简介',
+            product: '产品',
             relativePlots: '关联图表',
             search: '搜索',
             sourceCode: '源码',
