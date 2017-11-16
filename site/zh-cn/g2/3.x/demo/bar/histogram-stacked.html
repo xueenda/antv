@@ -13,29 +13,29 @@ chartDetail: ${base}/zh-cn/vis/chart/histogram.html
 
 -->
 <script>
-$.getJSON('/assets/data/diamond.json', data => {
+  $.getJSON('/assets/data/diamond.json', data => {
     const ds = new DataSet();
     const dv = ds.createView().source(data);
     dv.transform({
-        type: 'bin.histogram',
-        field: 'depth',
-        binWidth: 1,
-        groupBy: [ 'cut' ],
-        as: [ 'depth', 'count' ]
+      type: 'bin.histogram',
+      field: 'depth',
+      binWidth: 1,
+      groupBy: [ 'cut' ],
+      as: [ 'depth', 'count' ]
     });
     const chart = new G2.Chart({
-        container: 'mountNode',
-        forceFit: true,
-        height: window.innerHeight
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
     });
     chart.source(dv);
     chart.axis('depth', {
-        grid: {
-        }
+      grid: {
+      }
     });
     chart.intervalStack()
-        .position('depth*count')
-        .color('cut');
+      .position('depth*count')
+      .color('cut');
     chart.render();
-});
+  });
 </script>

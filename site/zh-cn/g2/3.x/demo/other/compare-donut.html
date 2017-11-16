@@ -12,81 +12,81 @@ relativePlots:
 chartDetail: ${base}/zh-cn/vis/chart/donut.html
 -->
 <script>
-const data = [
-  {year:2007, area:'亚太地区', profit: 7860*0.189},
-  {year:2007, area:'非洲及中东', profit: 7860*0.042},
-  {year:2007, area:'拉丁美洲', profit: 7860*0.025},
-  {year:2007, area:'中欧和东欧', profit: 7860*0.018},
-  {year:2007, area:'西欧', profit: 7860*0.462},
-  {year:2007, area:'北美', profit: 7860*0.265},
-  {year:2011, area:'亚太地区', profit: 7620*0.539},
-  {year:2011, area:'非洲及中东', profit: 7620*0.065},
-  {year:2011, area:'拉丁美洲', profit: 7620*0.065},
-  {year:2011, area:'中欧和东欧', profit: 7620*0.034},
-  {year:2011, area:'西欧', profit: 7620*0.063},
-  {year:2011, area:'北美', profit: 7620*0.234}
-];
-const { DataView } = DataSet;
+  const data = [
+    {year:2007, area:'亚太地区', profit: 7860*0.189},
+    {year:2007, area:'非洲及中东', profit: 7860*0.042},
+    {year:2007, area:'拉丁美洲', profit: 7860*0.025},
+    {year:2007, area:'中欧和东欧', profit: 7860*0.018},
+    {year:2007, area:'西欧', profit: 7860*0.462},
+    {year:2007, area:'北美', profit: 7860*0.265},
+    {year:2011, area:'亚太地区', profit: 7620*0.539},
+    {year:2011, area:'非洲及中东', profit: 7620*0.065},
+    {year:2011, area:'拉丁美洲', profit: 7620*0.065},
+    {year:2011, area:'中欧和东欧', profit: 7620*0.034},
+    {year:2011, area:'西欧', profit: 7620*0.063},
+    {year:2011, area:'北美', profit: 7620*0.234}
+  ];
+  const { DataView } = DataSet;
 
-const chart = new G2.Chart({
-  container: 'mountNode',
-  forceFit: true,
-  height: window.innerHeight,
-  padding: 80
-});
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight,
+    padding: 80
+  });
 
-chart.source(data);
-chart.tooltip({
-  showTitle: false
-});
-chart.legend('area', {
-  offset: 20
-});
-// 以 year 为维度划分分面
-chart.facet('rect', {
-  fields: ['year'],
-  padding: 20,
-  rowTitle: null,
-  colTitle: {
-    offsetY: -30,
-    style: {
-      fontSize: 18,
-      textAlign: 'center',
-      fill: '#999'
-    }
-  },
-  eachView(view, facet) {
-    const data = facet.data;
-    const dv = new DataView();
-    dv.source(data)
-      .transform({
-        type: 'percent',
-        field: 'profit',
-        dimension: 'area',
-        as: 'percent'
-      });
-    view.source(dv, {
-      percent: {
-        formatter: val => {
-          return (val * 100).toFixed(2) + '%';
-        }
+  chart.source(data);
+  chart.tooltip({
+    showTitle: false
+  });
+  chart.legend('area', {
+    offset: 20
+  });
+  // 以 year 为维度划分分面
+  chart.facet('rect', {
+    fields: ['year'],
+    padding: 20,
+    rowTitle: null,
+    colTitle: {
+      offsetY: -30,
+      style: {
+        fontSize: 18,
+        textAlign: 'center',
+        fill: '#999'
       }
-    });
-    view.coord('theta', {
-      innerRadius: 0.35
-    });
-
-    view.intervalStack()
-      .position('percent')
-      .color('area')
-      .label('percent', {
-        offset: -8
-      })
-      .style({
-        lineWidth: 1,
-        stroke: '#fff'
+    },
+    eachView(view, facet) {
+      const data = facet.data;
+      const dv = new DataView();
+      dv.source(data)
+        .transform({
+          type: 'percent',
+          field: 'profit',
+          dimension: 'area',
+          as: 'percent'
+        });
+      view.source(dv, {
+        percent: {
+          formatter: val => {
+            return (val * 100).toFixed(2) + '%';
+          }
+        }
       });
-  }
-});
-chart.render();
+      view.coord('theta', {
+        innerRadius: 0.35
+      });
+
+      view.intervalStack()
+        .position('percent')
+        .color('area')
+        .label('percent', {
+          offset: -8
+        })
+        .style({
+          lineWidth: 1,
+          stroke: '#fff'
+        });
+    }
+  });
+  chart.render();
 </script>
