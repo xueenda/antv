@@ -5,7 +5,7 @@ authors:
   - name: 再飞
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"
-landscape: ${assets}/image/vis/blog/landscape-placeholder.png
+landscape: ${assets}/image/vis/blog/visualize-schedule-with-g2.jpg
 -->
 
 # 玩玩 G2 系列之作息表

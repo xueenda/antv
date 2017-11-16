@@ -7,7 +7,7 @@ authors:
   - name: 青湳
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"
-landscape: ${assets}/image/vis/blog/landscape-placeholder.png
+landscape: ${assets}/image/vis/blog/drawing-directed-graphs.jpg
 -->
 
 ## 原文信息

@@ -7,7 +7,7 @@ authors:
   - name: 有田
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"
-landscape: ${assets}/image/vis/blog/landscape-placeholder.png
+landscape: ${assets}/image/vis/blog/how-charts-be-named.jpg
 -->
 
 ## 命名是个大问题

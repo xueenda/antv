@@ -5,7 +5,7 @@ authors:
   - name: 萧庆
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"
-landscape: ${assets}/image/vis/blog/landscape-placeholder.png
+landscape: ${assets}/image/vis/blog/g2-archi-introduce.jpg
 -->
 
 ## 目录
