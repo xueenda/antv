@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
-    <style>::-webkit-scrollbar { display: none; }</style>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
 </head>
 <body{% if demoTheme == 'dark' %} style="background: #1f1f1f;"{% endif %}>
 <div id="mountNode"></div>
@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
-    <style>::-webkit-scrollbar { display: none; }</style>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
 </head>
 <body>
 <div id="mountNode"></div>
@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
-    <style>::-webkit-scrollbar { display: none; }</style>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
 </head>
 <body>
 <div style="width:600px; height:500px; margin: 0 auto;">
