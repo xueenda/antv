@@ -8,7 +8,7 @@ var pkg = require('./package.json');
 module.exports = {
     url: {
         // TODO FIXME: use global CDN urls instead
-        dataSet: 'http://unpkg.alipay.com/@antv/data-set@0.5.4/build/data-set.js',
+        dataSet: 'http://unpkg.alipay.com/@antv/data-set@0.6.1/build/data-set.js',
         f2: 'http://unpkg.alipay.com/@antv/f2@3.0.0-rc1.8/build/f2.js',
         g2: 'http://unpkg.alipay.com/@antv/g2@3.0.0-rc5.12/build/g2.js',
         g6: 'http://unpkg.alipay.com/@ali/g6@1.2.0-beta.54/dist/g6.min.js',
