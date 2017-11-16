@@ -1,7 +1,5 @@
-const webpackConfig = require('./webpack.config');
-const {
-    merge
-} = require('lodash');
+var webpackConfig = require('./webpack.config');
+var merge = require('lodash').merge;
 
 module.exports = merge({
     devtool: 'cheap-source-map',

@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-'use strict';
-
 var debug = require('debug')('app:build');
 var program = require('commander');
 var walk = require('walk').walk;

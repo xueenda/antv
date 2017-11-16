@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-'use strict';
-
 var debug = require('debug')('app:indexing');
 var program = require('commander');
 var _ = require('lodash');

@@ -8,7 +8,6 @@ resource:
   jsFiles:
     - ${url.g2}
     - ${url.dataSet}
-    - ${url.jquery}
     - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
 -->
 

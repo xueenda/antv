@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="{{ keywords | join(',') }}">
     <meta name="description" content="{{ description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     {% block meta %}{% endblock %}
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/bootstrap-4.0.0-beta/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/bootstrap-4.0.0-beta/bootstrap-grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_470089_ze3qsaw8y5sif6r.css" />
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_470089_c7pxh98j6h0hehfr.css" />
     <link rel="stylesheet" type="text/css" href="{{ dist }}/common.css" />
     {% block css %}{% endblock %}
     {% for css in resource.cssFiles %}

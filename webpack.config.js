@@ -1,66 +1,80 @@
-'use strict';
-
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
-
-var _require = require('path'),
-    resolve = _require.resolve;
-
+var path = require('path');
+var resolve = path.resolve;
 var pkg = require('./package.json');
 
 var extractLess = new ExtractTextPlugin({
-    filename: "[name].css"
+  filename: "[name].css"
 });
 function resolveTheme(src) {
-    return resolve(__dirname, './theme/default/src/', src);
+  return resolve(__dirname, './theme/default/src/', src);
 }
 
 module.exports = {
-    entry: {
-        // 'demo-detail': resolveTheme('demo-detail.js'),
-        blog: resolveTheme('blog.js'),
-        common: resolveTheme('common.js'),
-        demo: resolveTheme('demo.js'),
-        demos: resolveTheme('demos.js'),
-        doc: resolveTheme('doc.js'),
-        // headroom: resolveTheme('headroom.js'),
-        home: resolveTheme('home.js'),
-        scroll2top: resolveTheme('scroll2top.js')
+  entry: {
+    // 'demo-detail': resolveTheme('demo-detail.js'),
+    blog: resolveTheme('blog.js'),
+    common: resolveTheme('common.js'),
+    demo: resolveTheme('demo.js'),
+    demos: resolveTheme('demos.js'),
+    doc: resolveTheme('doc.js'),
+    // headroom: resolveTheme('headroom.js'),
+    home: resolveTheme('home.js'),
+    'home-index': resolveTheme('Home/index.jsx'),
+    scroll2top: resolveTheme('scroll2top.js')
+  },
+  output: {
+    filename: '[name].js',
+    path: resolve(__dirname, './theme/default/assets/dist/' + pkg.version + '/'),
+  },
+  module: {
+    rules: [{
+      test: /\.js(?:x|$)$/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          presets: ['es2015', 'react', 'stage-0'],
+          plugins: [
+            'transform-decorators-legacy',
+            ['import', { libraryName: 'antd', style: true }]
+          ]
+        }
+      }
     },
-    output: {
-        filename: '[name].js',
-        path: resolve(__dirname, './theme/default/assets/dist/' + pkg.version + '/')
-    },
-    module: {
-        rules: [{
-            test: /\.js$/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    babelrc: false,
-                    presets: ['es2015', 'stage-0']
-                }
-            }
+    {
+      test: /\.less$/,
+      use: extractLess.extract({
+        use: [{
+          loader: "css-loader" // translates CSS into CommonJS
         }, {
-            test: /\.less$/,
-            use: extractLess.extract({
-                use: [{
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
-            })
+          loader: "less-loader" // compiles Less to CSS
         }]
-    },
-    externals: {
-        'wolfy87-eventemitter': 'EventEmitter',
-        codemirror: 'CodeMirror',
-        jquery: 'jQuery',
-        routie: 'Routie',
-        lodash: '_',
-        tocbot: 'tocbot',
-        clipboard: 'Clipboard',
-        meta: '__meta'
-    },
-    plugins: [extractLess, new webpack.NoEmitOnErrorsPlugin(), new webpack.optimize.AggressiveMergingPlugin()]
+      })
+    }]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.less'],
+  },
+  externals: {
+    'wolfy87-eventemitter': 'EventEmitter',
+    codemirror: 'CodeMirror',
+    jquery: 'jQuery',
+    routie: 'Routie',
+    lodash: '_',
+    tocbot: 'tocbot',
+    clipboard: 'Clipboard',
+    meta: '__meta'
+  },
+  plugins: [
+    extractLess,
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
 };

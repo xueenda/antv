@@ -1,8 +1,7 @@
 'use strict';
 
-var _require = require('path'),
-    resolve = _require.resolve;
-
+var path = require('path');
+var resolve = path.resolve;
 var pkg = require('./package.json');
 
 module.exports = {

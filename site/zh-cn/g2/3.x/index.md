@@ -31,7 +31,7 @@ resource:
                 <h1>G2 可视化图形语法</h1>
                 <p class="main-info">G2 是一套基于可视化编码的图形语法，以数据为驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。</p>
                 <a href="{{ products.g2.links.demo.href }}" class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.getStarted }}</a>
-                <a href="{{base}}zh-cn/g2/3.x/tutorial/download.html" class="btn-round-link btn btn-light btn-lg">{{ resource.translate.downloadAndUse }}</a>
+                <a href="{{base}}zh-cn/g2/3.x/tutorial/index.html#_安装" class="btn-round-link btn btn-light btn-lg">{{ resource.translate.downloadAndUse }}</a>
             </div>
             <div class="col-md-7 slick" data-dots="true">
                 <div id="commentsCarousel" class="carousel">
@@ -60,7 +60,8 @@ resource:
     </div>
 </section>
 
-<section class="get-started text-center"><div class="container">
+<section class="get-started text-center">
+<div class="container">
     <h2>快速接入</h2>
     <span class="separator"></span>
     <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>

@@ -25,7 +25,6 @@ footer:
 resource:
   jsFiles:
     - ${url.g6}
-    - ${url.jquery}
     - ${url['g6-plugins']}
 -->
 
@@ -69,7 +68,7 @@ resource:
                 <h1>G6关系图类库</h1>
                 <p class="main-info">G6 是一套解决流程图和关系分析的图表库，集成了大量的交互，可以轻松的进行动态流程图和关系网络的开发。</p>
                 <a href="{{ products.g6.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
-                <a href="{{base}}zh-cn/g6/1.x/tutorial/download.html" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
+                <a href="{{base}}zh-cn/g6/1.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
             <div id="c1" class="outter-graph-container"></div>
         </div>
@@ -91,12 +90,17 @@ resource:
 </section>
 
 <section class="get-started text-center">
+<div class="container">
     <h2>快速接入</h2>
     <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>
-</section>
+    
+```html
+<!-- 引入在线资源 -->
+<script type="{{ url.g6 }}"></script>
+```
 
-<section class="more text-center">
-    <a href="{{ products.g6.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link">更多教程</a>
+</div>
+<a href="{{ products.g6.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
 
 <!-- chart1 -->

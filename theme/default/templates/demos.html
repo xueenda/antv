@@ -30,13 +30,14 @@
                     {% for demo in cat.demos %}
                     <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                         <div class="card">
-                            <a href="{{ demo.href }}">
+                            <a class="screenshot-container" href="{{ demo.href }}">
                                 <!--data-original="{{ demo.screenshot }}"-->
-                                <img
-                                    class="card-img-top screenshot lazyload"
-                                    data-default="{{ demo.screenshot }}"
-                                    data-dark="{{ demo.screenshotDark }}"
-                                    alt="{{ demo.title }}">
+                                <img width="360px" height="202.5px"
+                                     src="{{ assets }}/image/screenshot-placeholder.png"
+                                     class="card-img-top screenshot lazyload"
+                                     data-default="{{ demo.screenshot }}"
+                                     data-dark="{{ demo.screenshotDark }}"
+                                     alt="{{ demo.title }}">
                             </a>
                             <div class="card-body">
                                 <a href="{{ demo.href }}"> {{ demo.title }} </a>
