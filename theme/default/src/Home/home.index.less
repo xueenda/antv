@@ -1,0 +1,236 @@
+@import "~antd/lib/style/themes/default.less";
+#reat-content {
+  font-family: Helvetica Neue For Number, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.btn {
+  transition: all .3s @ease-out;
+}
+
+.page-wrapper {
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  .page {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+  }
+}
+
+.page {
+  h2,
+  h4,
+  h5,
+  span,
+  p,
+  a,
+  .feature,
+  .card-wrapper,
+  .main-info,
+  .detail {
+    will-change: transform;
+  }
+}
+
+.banner {
+  height: 100%;
+  max-width: 1500px;
+  margin: auto;
+  position: relative;
+  svg {
+    display: block;
+    margin-left: -30px;
+    padding-top: 20px;
+  }
+  &-wrapper {
+    background: #f8fafe;
+    padding-top: 64px;
+    height: 620px;
+    overflow: hidden;
+  }
+  >div {
+    display: inline-block;
+  }
+  &-img-wrapper {
+    width: 60%;
+    height: 100%;
+  }
+  &-text-wrapper {
+    width: 40%;
+    padding-right: 32px;
+    height: 265px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    h1 {
+      font-size: 46px;
+    }
+    p {
+      font-size: 16px;
+      margin: 50px 0 60px;
+    }
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+.page1 {
+  background: #f8fafe;
+  padding-bottom: 100px;
+  overflow: initial;
+  min-height: 412px;
+  .card {
+    transition: transform .3s @ease-out, box-shadow .3s @ease-out;
+    &-wrapper {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.page2 {
+  min-height: 480px;
+}
+
+.page3 {
+  min-height: 548px;
+  .page {
+    padding: 130px 0 156px;
+    .feature {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.page4 {
+  min-height: 715px;
+  padding: 130px 0;
+  background: #F8FAFE;
+  .slick-slide {
+    height: 455px;
+    .user {
+      width: 98px;
+      height: 98px;
+      border-radius: 100%;
+      margin: auto;
+    }
+    .comment {
+      font-size: 20px;
+      width: 100%;
+      max-width: 680px;
+      margin: 41px auto 47px;
+      position: relative;
+      color: #545454;
+      font-weight: 300;
+      >img {
+        position: absolute;
+        left: -40px;
+        top: -15px;
+      }
+    }
+    >h4 {
+      font-size: 30px;
+      line-height: 38px;
+      font-weight: normal;
+    }
+    >p {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #888888;
+      font-weight: 300;
+    }
+  }
+  .slick-dots li {
+    button {
+      transition: opacity .3s;
+      &:hover,
+      &:focus {
+        &::before {
+          color: #1890FF;
+        }
+      }
+      &::before {
+        transition: color .3s;
+      }
+    }
+    &.slick-active {
+      button {
+        background: transparent;
+        &::before {
+          color: #1890FF;
+        }
+      }
+    }
+  }
+}
+
+.page5 {
+  min-height: 590px;
+  h2 {
+    margin: 120px auto 25px;
+  }
+  >span {
+    margin-bottom: 72px;
+  }
+  .ant-row>div {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: @screen-md) {
+  .banner-wrapper {
+    height: 100vh;
+    .banner {
+      overflow: hidden;
+      .banner-img-wrapper,
+      .banner-text-wrapper {
+        width: 90%;
+        margin: auto;
+        display: block;
+        position: relative;
+      }
+      .banner-img-wrapper {
+        height: auto;
+        margin: 40px auto;
+      }
+      .banner-text-wrapper {
+        text-align: center;
+        padding: 0;
+        p {
+          margin: 10% 0;
+        }
+      }
+    }
+  }
+  .main-info {
+    font-size: 16px;
+    line-height: 2em;
+  }
+  .page4 .slick-slide .comment {
+    font-size: 16px;
+  }
+  .page4 .slick-slide>p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: @screen-xs) {
+  .banner-text-wrapper {
+    h1 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.5em;
+    }
+  }
+  .main-info {
+    font-size: 14px;
+  }
+  .page2 {
+    min-height: 513px;
+  }
+}
