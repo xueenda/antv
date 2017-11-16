@@ -11,12 +11,9 @@ export default function Page5() {
       md={6}
       sm={8}
       xs={12}
-      style={
-          {
-              height: 80
-          }
-      }
-    >
+      style={{
+          height: 80
+      }}>
       <img width={160} src={img} alt="" />
     </Col>
   ));
