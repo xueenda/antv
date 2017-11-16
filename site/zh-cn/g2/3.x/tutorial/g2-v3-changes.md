@@ -168,7 +168,7 @@ chart.cols({})</pre>
             <div class="highlight">
 <pre>chart.facet(&apos;list&apos;, {
   fields: [field], 
-  eachView: function(view, facet) {
+  eachView(view, facet) {
      view.point().position(&apos;x*y&apos;);
      // guide
      // to do something else
@@ -351,7 +351,7 @@ positon(Stat.summary.percent(&apos;x*y&apos;))</pre>
         </td>
         <td>
             <div class="highlight">
-                <pre>Animate.registAnimation()</pre>
+                <pre>G2.Animate.registAnimation()</pre>
             </div>
         </td>
     </tr>
@@ -423,7 +423,7 @@ chart.on(&apos;tooltiphide&apos;)</pre>
 
 ```javascript
 chart.scale('x', {
-sync: true
+  sync: true
 })
 ```
 

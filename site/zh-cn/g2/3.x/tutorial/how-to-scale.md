@@ -30,7 +30,7 @@ G2 提供了两种列定义操作方式：
 Example: 
 
 ```js
-var defs = {
+const defs = {
   'a': {
     type: 'time', // 指定 time 类型
     mask: 'YYYY-MM-DD HH:mm:ss' // 指定时间的输出格式
@@ -41,7 +41,7 @@ var defs = {
   },
   'c': {
     type: 'cat', // 指定 cat 分类类型
-    values: ['一月','二月','三月'] // 重新指定 c 属性每一个的值
+    values: [ '一月', '二月', '三月' ] // 重新指定 c 属性每一个的值
   }
 };
 chart.source(data, defs);
@@ -56,14 +56,14 @@ chart.source(data, defs);
 Example:
 
 ```js
-var data = [
-  {type: 0, value: 1},
-  {type: 1, value: 2},
-  {type: 2, value: 3},
+const data = [
+  { type: 0, value: 1 },
+  { type: 1, value: 2 },
+  { type: 2, value: 3 }
 ];
 chart.scale('type', {
   type: 'cat', // 声明 type 字段为分类类型
-  values: ['A', 'B', 'C'] // 重新显示的值
+  values: [ 'A', 'B', 'C' ], // 重新显示的值
   alias: '类型' // 设置属性的别名
 });
 ```
@@ -73,15 +73,15 @@ chart.scale('type', {
 Example: 
 
 ```js
-var data = [
-  {type: 0, value: 1},
-  {type: 1, value: 2},
-  {type: 2, value: 3},
+const data = [
+  { type: 0, value: 1 },
+  { type: 1, value: 2 },
+  { type: 2, value: 3 }
 ];
 chart.scale({
   type: {
     type: 'cat', // 声明 type 字段为分类类型
-    values: ['A', 'B', 'C'] // 重新显示的值
+    values: [ 'A', 'B', 'C' ], // 重新显示的值
     alias: '类型' // 设置属性的别名
   },
   value: {
@@ -98,19 +98,19 @@ chart.scale({
 
 完整代码：
 
-````js+
-var data = [
-  {"value":10,"time":"2015-03-01T16:00:00.000Z"},
-  {"value":15,"time":"2015-03-01T16:10:00.000Z"},
-  {"value":26,"time":"2015-03-01T16:20:00.000Z"},
-  {"value":9,"time":"2015-03-01T16:30:00.000Z"},
-  {"value":12,"time":"2015-03-01T16:40:00.000Z"},
-  {"value":23,"time":"2015-03-01T16:50:00.000Z"},
-  {"value":18,"time":"2015-03-01T17:00:00.000Z"},
-  {"value":21,"time":"2015-03-01T17:10:00.000Z"},
-  {"value":22,"time":"2015-03-01T17:20:00.000Z"}
+```js+
+const data = [
+  { value: 10, time: '2015-03-01T16:00:00.000Z' },
+  { value: 15, time: '2015-03-01T16:10:00.000Z' },
+  { value: 26, time: '2015-03-01T16:20:00.000Z' },
+  { value: 9, time: '2015-03-01T16:30:00.000Z' },
+  { value: 12, time: '2015-03-01T16:40:00.000Z' },
+  { value: 23, time: '2015-03-01T16:50:00.000Z' },
+  { value: 18, time: '2015-03-01T17:00:00.000Z' },
+  { value: 21, time: '2015-03-01T17:10:00.000Z' },
+  { value: 22, time: '2015-03-01T17:20:00.000Z' }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container : 'c1',
   forceFit: true,
   height : 300
@@ -122,12 +122,11 @@ chart.source(data, {
     mask: 'HH:mm'
   },
   'value': {
-    formatter: function(val) {
+    formatter: val => {
       return val + ' k';
     }
   }
 });
 chart.line().position('time*value').size(2);
 chart.render();
-````
-
+```

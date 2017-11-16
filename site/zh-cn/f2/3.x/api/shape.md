@@ -29,12 +29,8 @@ type | shape
 
 ```js
 F2.Shape.registerShape('interval', 'triangle', {
-  getPoints(cfg) {
-
-  },
-  draw(cfg, canvas) {
-
-  }
+  getPoints(cfg) {},
+  draw(cfg, canvas) {}
 });
 
 chart.interval().position('x*y').shape('triangle');
@@ -50,12 +46,8 @@ chart.interval().position('x*y').shape('triangle');
 
 ```js
 F2.Shape.registerShape('interval', 'triangle', {
-  getPoints(cfg) {
-
-  },
-  draw(cfg, canvas) {
-
-  }
+  getPoints(cfg) {},
+  draw(cfg, canvas) {}
 });
 ```
 
@@ -103,14 +95,14 @@ draw(cfg, canvas) {
 
 ```js
 draw(cfg, cavas) {
-  var points = this.parsePoints(cfg.points); // 将点从0-1转换成画布坐标
-  var ctx = canvas.getContext('2d');
+  const points = this.parsePoints(cfg.points); // 将点从0-1转换成画布坐标
+  const ctx = canvas.getContext('2d');
   ctx.save();
   ctx.strokeStyle = cfg.color;
   ctx.lineWidth = cfg.size;
   ctx.moveTo(points[0].x, points[0].y);
 
-  for(var i = 1; i < points.length; i++) {
+  for(let i = 1; i < points.length; i++) {
     ctx.lineTo(points[i].x, points[i].y);
   }
   ctx.stroke();

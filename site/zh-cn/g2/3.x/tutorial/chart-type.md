@@ -123,25 +123,25 @@ schema| 'box','candle'| 目前仅支持箱须图、K线图
 * point(点图）， 点图的数据条数和图形的对应关系，可以是1：1,也可以是1:n。如果对应位置的映射字段x,y都是单个标量，那么就是1：1,如果y是数组，那么就是1:n。
 
   ```js
-    // 1: 1的数据
-    var data = [{month: '一月', temperature: 10} , {month: '二月', temperature: 15}]
-    // 1: 2的数据
-    var data = [{month: '一月', temperature: [0,10]} , {month: '二月', temperature: [5,15]}]
+  // 1: 1的数据
+  const data = [ { month: '一月', temperature: 10 }, { month: '二月', temperature: 15 } ];
+  // 1: 2的数据
+  const data = [ { month: '一月', temperature: [ 0, 10 ] }, { month: '二月', temperature: [ 5, 15 ] } ];
   ```
-   ![image](
-   https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772516552748d17c0/attach/4080/900/image.png)
+
+![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772516552748d17c0/attach/4080/900/image.png)
 
 * line（线图）和path(路径图），如果对应位置的映射字段x,y都是单个标量多条记录对应一条线,对应关系是n:1。如果y是数组，那么会生成多条记录对应关系是 n: n。同上面point的数据：
 
-  ![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772666152763d17c0/attach/4080/900/image.png)
+![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772666152763d17c0/attach/4080/900/image.png)
 
 * interval 一条记录生成一个图形，1:1
 
-  ![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772797452741d17cd/attach/4080/900/image.png)
+![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772797452741d17cd/attach/4080/900/image.png)
 
 * area(区域图）， 多条数据生成一个图形，无论对应位置的对应字段的格式如何
 
-  ![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772949916082d17d9/attach/4080/900/image.png)
+![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791772949916082d17d9/attach/4080/900/image.png)
 
 * polygon，一条数据对应一个图形, 1: 1。
 * heatmap，多条记录生成一张图 n: 1
@@ -154,9 +154,8 @@ schema| 'box','candle'| 目前仅支持箱须图、K线图
 * point，点图绘制时只需要一个点即可
 * line,path，绘制折线图/路径图时需要折线图上的多个点
 * area，绘制区域图时，需要代表数据的点与x轴上点
-  ![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791773113276092d17d9/attach/4080/900/image.png)
+![image](https://zos.alipayobjects.com/basement/skylark/0ad680ae14791773113276092d17d9/attach/4080/900/image.png)
 * interval,绘制柱状图、玫瑰图、饼图时，需要知道四个顶点
- ![image](https://zos.alipayobjects.com/basement/skylark/0ad6383d14791773251113852d7553/attach/4080/900/image.png)
-
+![image](https://zos.alipayobjects.com/basement/skylark/0ad6383d14791773251113852d7553/attach/4080/900/image.png)
 * polygon，绘制多边形时，每个顶点都需要一个点
 * heatmap，绘制热力图时需要多个点

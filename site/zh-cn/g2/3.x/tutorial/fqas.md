@@ -15,7 +15,7 @@ resource:
 (1) 方式一
 
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   forceFit: true,
   height : 400
@@ -32,7 +32,7 @@ var chart = new G2.Chart({
 ```js
 chart.axis('field', {
   label: {
-    formatter: function(val) {
+    formatter: val => {
       return val + 'k';
     }
   }
@@ -82,33 +82,33 @@ chart.scale('y', {
 <div id="chart1"></div>
 
 ```js+
-var data = [
-  {"value":10,"time":"2015-03-01T00:00:00.000Z"},
-  {"value":15,"time":"2015-03-02T00:00:00.000Z"},
-  {"value":26,"time":"2015-03-03T00:00:00.000Z"},
-  {"value":9,"time":"2015-03-04T00:00:00.000Z"},
-  {"value":12,"time":"2015-03-05T00:00:00.000Z"},
-  {"value":23,"time":"2015-03-06T00:00:00.000Z"},
-  {"value":18,"time":"2015-03-07T00:00:00.000Z"},
-  {"value":21,"time":"2015-03-08T00:00:00.000Z"},
-  {"value":52,"time":"2015-03-09T00:00:00.000Z"},
-  {"value":35,"time":"2015-03-10T00:00:00.000Z"},
-  {"value":47,"time":"2015-03-11T00:00:00.000Z"},
-  {"value":30,"time":"2015-03-12T00:00:00.000Z"},
-  {"value":45,"time":"2015-03-13T00:00:00.000Z"},
-  {"value":75,"time":"2015-03-14T00:00:00.000Z"},
-  {"value":34,"time":"2015-03-15T00:00:00.000Z"},
+const data = [
+  { value: 10, time: '2015-03-01T00:00:00.000Z' },
+  { value: 15, time: '2015-03-02T00:00:00.000Z' },
+  { value: 26, time: '2015-03-03T00:00:00.000Z' },
+  { value: 9, time: '2015-03-04T00:00:00.000Z' },
+  { value: 12, time: '2015-03-05T00:00:00.000Z' },
+  { value: 23, time: '2015-03-06T00:00:00.000Z' },
+  { value: 18, time: '2015-03-07T00:00:00.000Z' },
+  { value: 21, time: '2015-03-08T00:00:00.000Z' },
+  { value: 52, time: '2015-03-09T00:00:00.000Z' },
+  { value: 35, time: '2015-03-10T00:00:00.000Z' },
+  { value: 47, time: '2015-03-11T00:00:00.000Z' },
+  { value: 30, time: '2015-03-12T00:00:00.000Z' },
+  { value: 45, time: '2015-03-13T00:00:00.000Z' },
+  { value: 75, time: '2015-03-14T00:00:00.000Z' },
+  { value: 34, time: '2015-03-15T00:00:00.000Z' }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'chart1',
   forceFit: true,
   height: 334
 });
-var defs = {
+const defs = {
   'time': {
     type: 'time',
     nice: false,
-    mask: 'mm-dd',
+    mask: 'MM-DD',
     tickInterval: 2 * 24 * 60 * 60 * 1000 // 对于 linear 类型的数据，可以设置 tickInterval 参数来设定每个刻度之间的间距，time 类型的单位为微秒
   },
   value: {
@@ -148,12 +148,11 @@ chart.scale('y', {
 ```js
 chart.source(data, {
   y: {
-    formatter: function(val) {
+    formatter: val => {
       if (val === 'male') {
         return '男';
-      } else {
-        return '女';
       }
+      return '女';
     }
   }
 });
@@ -162,12 +161,11 @@ chart.source(data, {
 ```js
 // 或者使用 chart.scale()
 chart.scale('y', {
-  formatter: function(val) {
+  formatter: val => {
     if (val === 'male') {
       return '男';
-    } else {
-      return '女';
     }
+    return '女';
   }
 });
 ```
@@ -177,23 +175,23 @@ chart.scale('y', {
 <div id="chart2"></div>
 
 ```js+
-var data = [
-  {genre: 'Sports', sold: 275},
-  {genre: 'Strategy', sold: 115},
-  {genre: 'Action', sold: 120},
-  {genre: 'Shooter', sold: 350},
-  {genre: 'Other', sold: 150},
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
 ];
 
-var map = {
-  'Sports': '运动',
-  'Strategy': '策略',
-  'Action': '动作类',
-  'Shooter': '射击类',
-  'Other': '其他'
+const map = {
+  Sports: '运动',
+  Strategy: '策略',
+  Action: '动作类',
+  Shooter: '射击类',
+  Other: '其他'
 };
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'chart2',  // 指定图表容器 ID
   height : 300,     // 指定图表高度
   forceFit: true,
@@ -201,7 +199,7 @@ var chart = new G2.Chart({
 
 chart.source(data, {
   genre: {
-    formatter: function(val) {
+    formatter: val => {
       return map[val];
     }, // **关键代码**：在列定义中调用 formatter 回调函数，
     alias: '游戏种类' // 列定义，定义该属性显示的别名
@@ -223,60 +221,60 @@ chart.render();
 <div id="c1"></div>
 
 ```js+
-var data = [
-  {"month":0,"tem":7,"city":"tokyo"},
-  {"month":1,"tem":6.9,"city":"tokyo"},
-  {"month":2,"tem":9.5,"city":"tokyo"},
-  {"month":3,"tem":14.5,"city":"tokyo"},
-  {"month":4,"tem":18.2,"city":"tokyo"},
-  {"month":5,"tem":21.5,"city":"tokyo"},
-  {"month":6,"tem":25.2,"city":"tokyo"},
-  {"month":7,"tem":26.5,"city":"tokyo"},
-  {"month":8,"tem":23.3,"city":"tokyo"},
-  {"month":9,"tem":18.3,"city":"tokyo"},
-  {"month":10,"tem":13.9,"city":"tokyo"},
-  {"month":11,"tem":9.6,"city":"tokyo"},
-  {"month":0,"tem":-0.2,"city":"newYork"},
-  {"month":1,"tem":0.8,"city":"newYork"},
-  {"month":2,"tem":5.7,"city":"newYork"},
-  {"month":3,"tem":11.3,"city":"newYork"},
-  {"month":4,"tem":17,"city":"newYork"},
-  {"month":5,"tem":22,"city":"newYork"},
-  {"month":6,"tem":24.8,"city":"newYork"},
-  {"month":7,"tem":24.1,"city":"newYork"},
-  {"month":8,"tem":20.1,"city":"newYork"},
-  {"month":9,"tem":14.1,"city":"newYork"},
-  {"month":10,"tem":8.6,"city":"newYork"},
-  {"month":11,"tem":2.5,"city":"newYork"},
-  {"month":0,"tem":-0.9,"city":"berlin"},
-  {"month":1,"tem":0.6,"city":"berlin"},
-  {"month":2,"tem":3.5,"city":"berlin"},
-  {"month":3,"tem":8.4,"city":"berlin"},
-  {"month":4,"tem":13.5,"city":"berlin"},
-  {"month":5,"tem":17,"city":"berlin"},
-  {"month":6,"tem":18.6,"city":"berlin"},
-  {"month":7,"tem":17.9,"city":"berlin"},
-  {"month":8,"tem":14.3,"city":"berlin"},
-  {"month":9,"tem":9,"city":"berlin"},
-  {"month":10,"tem":3.9,"city":"berlin"},
-  {"month":11,"tem":1,"city":"berlin"}
+const data = [
+  { month: 0, tem: 7, city: 'tokyo' },
+  { month: 1, tem: 6.9, city: 'tokyo' },
+  { month: 2, tem: 9.5, city: 'tokyo' },
+  { month: 3, tem: 14.5, city: 'tokyo' },
+  { month: 4, tem: 18.2, city: 'tokyo' },
+  { month: 5, tem: 21.5, city: 'tokyo' },
+  { month: 6, tem: 25.2, city: 'tokyo' },
+  { month: 7, tem: 26.5, city: 'tokyo' },
+  { month: 8, tem: 23.3, city: 'tokyo' },
+  { month: 9, tem: 18.3, city: 'tokyo' },
+  { month: 10, tem: 13.9, city: 'tokyo' },
+  { month: 11, tem: 9.6, city: 'tokyo' },
+  { month: 0, tem: -0.2, city: 'newYork' },
+  { month: 1, tem: 0.8, city: 'newYork' },
+  { month: 2, tem: 5.7, city: 'newYork' },
+  { month: 3, tem: 11.3, city: 'newYork' },
+  { month: 4, tem: 17, city: 'newYork' },
+  { month: 5, tem: 22, city: 'newYork' },
+  { month: 6, tem: 24.8, city: 'newYork' },
+  { month: 7, tem: 24.1, city: 'newYork' },
+  { month: 8, tem: 20.1, city: 'newYork' },
+  { month: 9, tem: 14.1, city: 'newYork' },
+  { month: 10, tem: 8.6, city: 'newYork' },
+  { month: 11, tem: 2.5, city: 'newYork' },
+  { month: 0, tem: -0.9, city: 'berlin' },
+  { month: 1, tem: 0.6, city: 'berlin' },
+  { month: 2, tem: 3.5, city: 'berlin' },
+  { month: 3, tem: 8.4, city: 'berlin' },
+  { month: 4, tem: 13.5, city: 'berlin' },
+  { month: 5, tem: 17, city: 'berlin' },
+  { month: 6, tem: 18.6, city: 'berlin' },
+  { month: 7, tem: 17.9, city: 'berlin' },
+  { month: 8, tem: 14.3, city: 'berlin' },
+  { month: 9, tem: 9, city: 'berlin' },
+  { month: 10, tem: 3.9, city: 'berlin' },
+  { month: 11, tem: 1, city: 'berlin' }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   width: 800,
   height: 350
 });
 
-var defs = {'month':{
-  type: 'cat',
-  values: [
-    '一月','二月','三月','四月','五月','六月',
-    '七月','八月','九月','十月','十一月','十二月']
-}};
+const defs = {
+  month: {
+    type: 'cat',
+    values: [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ]
+  }
+};
 
 chart.source(data,defs);
-chart.filter('city', function(val) {
+chart.filter('city', val => {
   return val === 'berlin';
 }); // 只展示 berlin 的数据
 chart.line().position('month*tem').color('city');
@@ -299,26 +297,26 @@ chart.line().position('month*temperature').color('#90ed7d').size(2).shape('smoot
 <div id="chart3"></div>
 
 ```js+
-var data = [
-  {"month":"Jan","rainfall":49.9,"seaLevelPressure":1016,"temperature":7},
-  {"month":"Feb","rainfall":71.5,"seaLevelPressure":1016,"temperature":6.9},
-  {"month":"Mar","rainfall":106.4,"seaLevelPressure":1015.9,"temperature":9.5},
-  {"month":"Apr","rainfall":129.2,"seaLevelPressure":1015.5,"temperature":14.5},
-  {"month":"May","rainfall":144,"seaLevelPressure":1012.3,"temperature":18.2},
-  {"month":"Jun","rainfall":176,"seaLevelPressure":1009.5,"temperature":21.5},
-  {"month":"Jul","rainfall":135.6,"seaLevelPressure":1009.6,"temperature":25.2},
-  {"month":"Aug","rainfall":148.5,"seaLevelPressure":1010.2,"temperature":26.5},
-  {"month":"Sep","rainfall":216.4,"seaLevelPressure":1013.1,"temperature":23.3},
-  {"month":"Oct","rainfall":194.1,"seaLevelPressure":1016.9,"temperature":18.3},
-  {"month":"Nov","rainfall":95.6,"seaLevelPressure":1018.2,"temperature":13.9},
-  {"month":"Dec","rainfall":54.4,"seaLevelPressure":1016.7,"temperature":9.6}
+const data = [
+  { month: 'Jan', rainfall: 49.9, seaLevelPressure: 1016, temperature: 7 },
+  { month: 'Feb', rainfall: 71.5, seaLevelPressure: 1016, temperature: 6.9 },
+  { month: 'Mar', rainfall: 106.4, seaLevelPressure: 1015.9, temperature: 9.5 },
+  { month: 'Apr', rainfall: 129.2, seaLevelPressure: 1015.5, temperature: 14.5 },
+  { month: 'May', rainfall: 144, seaLevelPressure: 1012.3, temperature: 18.2 },
+  { month: 'Jun', rainfall: 176, seaLevelPressure: 1009.5, temperature: 21.5 },
+  { month: 'Jul', rainfall: 135.6, seaLevelPressure: 1009.6, temperature: 25.2 },
+  { month: 'Aug', rainfall: 148.5, seaLevelPressure: 1010.2, temperature: 26.5 },
+  { month: 'Sep', rainfall: 216.4, seaLevelPressure: 1013.1, temperature: 23.3 },
+  { month: 'Oct', rainfall: 194.1, seaLevelPressure: 1016.9, temperature: 18.3 },
+  { month: 'Nov', rainfall: 95.6, seaLevelPressure: 1018.2, temperature: 13.9 },
+  { month: 'Dec', rainfall: 54.4, seaLevelPressure: 1016.7, temperature: 9.6 }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'chart3',
   forceFit: true, // 宽度自适应
   height: 300,
-  padding: [60, 160, 60, 90]
+  padding: [ 60, 160, 60, 90 ]
 });
 
 chart.source(data, {
@@ -342,7 +340,7 @@ chart.source(data, {
 // 左侧 Y 轴，即降雨量轴
 chart.axis('rainfall', {
   label: {
-    formatter: function(val) {
+    formatter: val => {
       return val + ' mm'; // 格式化坐标轴显示
     },
     textStyle: {
@@ -357,7 +355,7 @@ chart.axis('temperature', {
   line: null,
   tickLine: null,
   label: {
-    formatter: function(val) {
+    formatter: val => {
       return val + ' °C'; // 格式化坐标轴显示
     },
     textStyle: {
@@ -371,7 +369,7 @@ chart.axis('seaLevelPressure', {
   tickLine: null,
   label: {
     offset: 80,
-    formatter: function(val) {
+    formatter: val => {
       return val + ' mb'; // 格式化坐标轴显示
     },
     textStyle: {
@@ -380,7 +378,9 @@ chart.axis('seaLevelPressure', {
   }
 });
 
-chart.legend({position: 'top'});
+chart.legend({
+  position: 'top'
+});
 chart.tooltip({
   crosshairs: {
     type: 'line'
@@ -396,7 +396,7 @@ chart.line()
   .size(2)
   .color('#333')
   .style({
-    lineDash: [ 3, 3]
+    lineDash: [ 3, 3 ]
   }); // 海平面气压
 chart.render();
 ```

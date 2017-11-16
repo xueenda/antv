@@ -45,9 +45,9 @@ type | 说明
 `area` | 填充线图跟坐标系之间构成区域图，也可以指定上下范围。
 `interval` | 使用矩形或者弧形，用面积来表示大小关系的图形，一般构成柱状图、饼图等图表。
 `polygon` | 多边形，可以用于构建热力图、地图等图表类型。
-`schema` | k线图，箱型图
-`edge` | 树图、流程图、关系图
-`heatmap` | 热力图
+`schema` | k线图，箱型图。
+`edge` | 树图、流程图、关系图。
+`heatmap` | 热力图。
 
 另外结合对数据的调整方式，G2 还默认提供了如下的类型：
 
@@ -84,7 +84,7 @@ Geom 支持的接口可以分为三大类：
 
 ```js
 line().position('x*y');
-line().position(['x', 'y']);
+line().position([ 'x', 'y' ]);
 ```
 
 #### position('fieldA*fieldB')
@@ -106,14 +106,14 @@ line().position(['x', 'y']);
 ```js
 line().color('red'); // 常量颜色
 line().color('type'); // 对 type 字段进行映射，使用内置的颜色
-line().color('type', ['red', 'blue']) // 指定颜色
-line().color('type', function(type) { // 通过回调函数
+line().color('type', [ 'red', 'blue' ]) // 指定颜色
+line().color('type', (type) => { // 通过回调函数
   if (type === 'a') {
     return 'red';
   }
   return 'blue';
 });
-line().color('type*value', function(type, value) { //多个参数，通过回调函数
+line().color('type*value', (type, value) => { //多个参数，通过回调函数
   if (type === 'a' && value > 100) {
     return 'red';
   }
@@ -157,20 +157,20 @@ chart.point().position('x*y').color('red'); // 所有点用红色渲染
 
   ```js
   chart.point().position('x*y').color('z'); // 使用默认的颜色
-  chart.point().position('x*y').color('z', ['red', 'blue']); // 使用传入的指定颜色
+  chart.point().position('x*y').color('z', [ 'red', 'blue' ]); // 使用传入的指定颜色
   chart.point().position('x*y').color('z', 'red-blue'); // 使用渐变色
-  chart.point().position('x*y').color('z','l(270) 0:#173162 1:#3663a1'); // 使用渐变色，l 后面传入角度，0 代表起始颜色，1 代表结束颜色
+  chart.point().position('x*y').color('z', 'l(270) 0:#173162 1:#3663a1'); // 使用渐变色，l 后面传入角度，0 代表起始颜色，1 代表结束颜色
   ```
 
   + colors 如果是回调函数，则该回调函数的参数为对应字段的数值，具体使用如下，当 color 映射为多个字段时，参数按照字段声明的顺序传入：
 
   ```js
-  chart.point().position('x*y').color('z', function(value) {
+  chart.point().position('x*y').color('z', (value) => {
     if(value === 1) {
       return 'red'
-    }else {
-      return 'blue';
     }
+  
+    return 'blue';
   });
   ```
 
@@ -182,13 +182,12 @@ chart.point().position('x*y').color('red'); // 所有点用红色渲染
 ```js
 point.shape('circle'); // 常量
 point.shape('type'); // 使用字段映射到形状，使用内置的形状
-point.shape('type', ['circle', 'diamond', 'square']); // 指定形状
-point.shape('type', function(type) { // 回调函数
+point.shape('type', [ 'circle', 'diamond', 'square' ]); // 指定形状
+point.shape('type', (type) => { // 回调函数
   if(type === 'a') {
     return 'circle';
-  } else {
-    return 'square';
   }
+  return 'square';
 });
 ```
 
@@ -230,26 +229,24 @@ chart.point().position('x*y').shape('square'); // 指定所有点的图形是正
   shapes 是一个可选参数，如果没有声明会按照 G2 默认为特定 geom 类型配置的形状进行渲染，当然用户也可自己指定渲染的形状，具体的形状已在上面列出，下面是 G2 为特定的几何图形对象提供的 shapes:
 
   ```js
-  var shapes = {
-    point: ['hollowCircle', 'hollowSquare', 'hollowDiamond', 'hollowBowtie', 'hollowTriangle',
-      'hollowHexagon', 'cross', 'tick', 'plus', 'hyphen', 'line'
-    ],
-    line: ['line', 'dash', 'dot'],
-    area: ['area']
+  const shapes = {
+    point: [ 'hollowCircle', 'hollowSquare', 'hollowDiamond', 'hollowBowtie', 'hollowTriangle', 'hollowHexagon', 'cross', 'tick', 'plus', 'hyphen', 'line' ],
+    line: [ 'line', 'dash', 'dot' ],
+    area: [ 'area' ]
   };
   ```
 
 ##### 代码示例
 
 ```js
-var defs = {
+const defs = {
   'cut': {
-    values: ['Ideal', 'Premium', 'Very-Good', 'Good', 'Fair']
+    values: [ 'Ideal', 'Premium', 'Very-Good', 'Good', 'Fair' ]
   }
 };
 chart.source(data, defs);
 chart.point().position('carat*price').shape('cut'); // 使用默认的 shapes
-chart.point().position('carat*price').shape('cut', ['cross', 'tick', 'plus', 'hyphen', 'line']); // 使用自定义的 shapes
+chart.point().position('carat*price').shape('cut', [ 'cross', 'tick', 'plus', 'hyphen', 'line' ]); // 使用自定义的 shapes
 ```
 
 #### shape(field, callback)
@@ -269,12 +266,11 @@ chart.point().position('carat*price').shape('cut', ['cross', 'tick', 'plus', 'hy
 ##### 代码示例
 
 ```js
-chart.point().position('x*y').shape('z', function(value) {
+chart.point().position('x*y').shape('z', (value) => {
   if (value === 1) {
     return 'circle'
-  }else {
-    return 'square';
   }
+  return 'square';
 });
 ```
 
@@ -286,12 +282,11 @@ chart.point().position('x*y').shape('z', function(value) {
 point.size(10); // 常量
 point.size('type'); // 使用字段映射到大小
 point.size('type', [ 0, 10 ]); // 使用字段映射到大小，并指定最大值和最小值
-point.size('type', function(type) { // 回调函数
+point.size('type', (type) => { // 回调函数
   if(type === 'a') {
     return 10;
-  } else {
-    return 5;
   }
+  return 5;
 });
 ```
 
@@ -338,7 +333,7 @@ chart.point().position('x*y').size('z', [ 10, 100 ]); // 使用 z 字段的值�
 ##### 代码示例
 
 ```js
-chart.point().position('x*y').size('z', function(value) {
+chart.point().position('x*y').size('z', (value) => {
   if(value === 1) {
     return 5;
   }
@@ -353,12 +348,11 @@ chart.point().position('x*y').size('z', function(value) {
 ```js
 point.opacity(0.3); // 常量，但是数值范围为 0 - 1
 point.opacity('type'); // 使用字段映射到透明度
-point.opacity('type', function(type) { // 回调函数
+point.opacity('type', (type) => { // 回调函数
   if(type === 'a') {
     return 1;
-  } else {
-    return 0.5;
   }
+  return 0.5;
 });
 ```
 
@@ -378,7 +372,7 @@ chart.interval().position('x*y').opacity(0.8); // 图形颜色为 0.8 透明度
 
 ##### 代码示例
 
-```javascript
+```js
 chart.interval().position('x*y').opacity('z');
 ```
 
@@ -389,7 +383,7 @@ chart.interval().position('x*y').opacity('z');
 ##### 代码示例
 
 ```javascript
-chart.point().position('x*y').opacity('z', function(value) {
+chart.point().position('x*y').opacity('z', (value) => {
   if(value === 1) {
     return 0.5;
   }
@@ -425,8 +419,8 @@ chart.interval().position('x*y').color('z').adjust('stack');
 
 ```js
 line.label('field'); // 显示某个字段的文本
-line.label('x*y*z', function(x, y, z) {
-  return // something
+line.label('x*y*z', (x, y, z) => {
+  return; // something
 });
 
 line.label('x', {
@@ -475,23 +469,26 @@ chart.line().label('x', {
     fontWeight: 'bold', // 文本粗细
       rotate: 30, 
       textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
-  } || function(text) {
+  } || (text) => {
     // text: 坐标轴对应字段的数值
   }, 
   // 文本是否需要自动旋转，默认为 true
   autoRotate: boolean,
-  // 回调函数，用于格式化坐标轴上显示的文本信息
-  formatter: function(text, item, index) {
-    // text: string: 文本值
-    // item: object 该文本值对应的原始数据记录
-    // index: 索引值
-  },
-  // 声明此属性表示使用 html 渲染文本
-  htmlTemplate: function(text, item, index) {
-    // text: string: 文本值
-    // item: object 该文本值对应的原始数据记录
-    // index: 索引值
-  }, // 使用 html 自定义 label
+  /**
+   * 用于格式化坐标轴上显示的文本信息的回调函数
+   * @param  {string} text  文本值
+   * @param  {object} item  该文本值对应的原始数据记录
+   * @param  {number} index 索引值
+   * @return {string}       返回格式化后的文本
+   */
+  formatter: (text, item, index) => {},
+  /**
+   *  使用 html 渲染文本
+   * @param  {string} text  文本值
+   * @param  {object} item  该文本值对应的原始数据记录
+   * @param  {number} index 索引值
+   * @return {string}       返回 html 字符串
+   */
 })
 ```
 
@@ -516,8 +513,10 @@ chart.line().label('x', {
 ##### 代码示例
 
 ```js
-chart.polygon().position('children*value').color('type').shape('stroke')
-  .label('name*children', function(name, children) { // 仅显示没有子节点的名称
+chart.polygon()
+  .position('children*value')
+  .color('type').shape('stroke')
+  .label('name*children', (name, children) => { // 仅显示没有子节点的名称
     if (!children) {
       return name;
     }
@@ -536,9 +535,7 @@ chart.polygon().position('children*value').color('type').shape('stroke')
 tooltip(false); // 关闭该 geom 上的 tooltip
 tooltip('x');
 tooltip('x*y');
-tooltip('x*y', (x, y) => {
-  
-})
+tooltip('x*y', (x, y) => {})
 ```
 
 #### tooltip(false)
@@ -564,14 +561,14 @@ chart.<geom>.tooltip('dim1*dim2...*dimN');
 <div id="c2" class="chart-container"></div>
 
 ```js+
-var data = [
-  {"gender":"female","height":161.2,"weight":51.6},
-  {"gender":"female","height":167.5,"weight":59},
-  {"gender":"male","height":159.5,"weight":49.2},
-  {"gender":"male","height":157,"weight":63},
-  {"gender":"female","height":155.8,"weight":53.6}
+const data = [
+  { gender: "female", height: 161.2, weight: 51.6 },
+  { gender: "female", height: 167.5, weight: 59 },
+  { gender: "male", height: 159.5, weight: 49.2 },
+  { gender: "male", height: 157, weight: 63 },
+  { gender: "female", height: 155.8, weight: 53.6 }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c2',
   forceFit: true,
   height: 400
@@ -589,7 +586,7 @@ chart.tooltip({
   showTitle: false
 });
 chart.point().position('height*weight')
-  .color('gender', ['#f96a52', '#00a3d7'])
+  .color('gender', [ '#f96a52', '#00a3d7' ])
   .opacity(0.5)
   .shape('circle')
   .tooltip('gender*height*weight');
@@ -606,12 +603,14 @@ geom.tooltip() 方法支持回调，使用方式如下，其返回的值必须�
 chart.tooltip({
   itemTpl: '<li>{x}: {y}</li>'
 });
-chart.line().position('x*y').tooltip('x*y', (x, y) => {
-  return {
-    x, 
-    y
-  };
-);
+chart.line()
+  .position('x*y')
+  .tooltip('x*y', (x, y) => {
+    return {
+      x, 
+      y
+    };
+  );
 ```
 
 下面是一个实际 demo: 
@@ -619,62 +618,62 @@ chart.line().position('x*y').tooltip('x*y', (x, y) => {
 <div id="c3"></div>
 
 ```js+
-  const { DataView } = DataSet;
-  const data = [
-    { item: '事例一', count: 40 },
-    { item: '事例二', count: 21 },
-    { item: '事例三', count: 17 },
-    { item: '事例四', count: 13 },
-    { item: '事例五', count: 9 }
-  ];
-  const dv = new DataView();
-  dv.source(data).transform({
-    type: 'percent',
-    field: 'count',
-    dimension: 'item',
-    as: 'percent'
-  });
-  const chart = new G2.Chart({
-    container: 'c3',
-    forceFit: true,
-    height: 400,
-    padding: [ 80, 100, 80, 80 ]
-  });
-  chart.source(dv, {
-    percent: {
-      formatter: val => {
-        val = (val * 100) + '%';
-        return val;
-      }
+const { DataView } = DataSet;
+const data = [
+  { item: '事例一', count: 40 },
+  { item: '事例二', count: 21 },
+  { item: '事例三', count: 17 },
+  { item: '事例四', count: 13 },
+  { item: '事例五', count: 9 }
+];
+const dv = new DataView();
+dv.source(data).transform({
+  type: 'percent',
+  field: 'count',
+  dimension: 'item',
+  as: 'percent'
+});
+const chart = new G2.Chart({
+  container: 'c3',
+  forceFit: true,
+  height: 400,
+  padding: [ 80, 100, 80, 80 ]
+});
+chart.source(dv, {
+  percent: {
+    formatter: val => {
+      val = (val * 100) + '%';
+      return val;
     }
+  }
+});
+chart.coord('theta', {
+  radius: 0.75
+});
+chart.tooltip({
+  showTitle: false,
+  itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
+});
+chart.intervalStack()
+  .position('percent')
+  .color('item')
+  .label('percent', {
+    formatter: (val, item) => {
+      return item.point.item + ': ' + val;
+    }
+  })
+  .tooltip('item*percent', (item, percent) => {
+    percent = percent * 100 + '%';
+    return {
+      name: item,
+      value: '<span style="color: #1890ff;">' + percent + '</span>'
+    };
+  })
+  .style({
+    lineWidth: 1,
+    stroke: '#fff'
   });
-  chart.coord('theta', {
-    radius: 0.75
-  });
-  chart.tooltip({
-    showTitle: false,
-    itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
-  });
-  chart.intervalStack()
-    .position('percent')
-    .color('item')
-    .label('percent', {
-      formatter: (val, item) => {
-        return item.point.item + ': ' + val;
-      }
-    })
-    .tooltip('item*percent', (item, percent) => {
-      percent = percent * 100 + '%';
-      return {
-        name: item,
-        value: '<span style="color: #1890ff;">' + percent + '</span>'
-      };
-    })
-    .style({
-      lineWidth: 1,
-      stroke: '#fff'
-    });
-  chart.render();
+chart.render();
 ```
 
 ### style
@@ -687,9 +686,7 @@ line().style({ // 统一为所有 shape 设置固定的样式
   lineWidth: 2
 });
 line().style('a*b', { // 使用回调函数设置属性
-  lineWidth: function(a, b) {
-
-  },
+  lineWidth: (a, b) => {},
   stroke: 'red'
 });
 ```
@@ -702,8 +699,8 @@ line().style('a*b', { // 使用回调函数设置属性
 geom.select(false); // 关闭
 geom.select(true); // 打开
 geom.select([true,] {
-  mode: 'single' || 'multiple', // 选中模式，单选、多选
-  style: { }, // 选中后 shape 的样式
+  mode: 'single' | 'multiple', // 选中模式，单选、多选
+  style: {}, // 选中后 shape 的样式
   cancelable: true | false, // 选中之后是否允许取消选中，默认允许取消选中
   animate: true | false // 选中是否执行动画，默认执行动画
 });

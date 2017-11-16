@@ -19,11 +19,11 @@ resource:
 创建图表：
 
 ```js
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1',
   width: 500,
   height: 500,
-  padding: [20, 10, 50, 40]
+  padding: [ 20, 10, 50, 40 ]
 });
 ```
 
@@ -42,7 +42,7 @@ var chart = new F2.Chart({
 * 默认值：null
 
 ```js
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   el: document.getElementById('c1')
 });
 ```
@@ -61,12 +61,12 @@ var chart = new F2.Chart({
 
 ```js
 // 如果 canvas 上设置了宽高，不需要设置 width,height
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1'
 });
 
 // 如果 canvas 没有设置宽高，创建图表时需要声明
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1',
   width: 500,
   height: 300
@@ -80,14 +80,14 @@ var chart = new F2.Chart({
 * 默认值：40
 
 ```js
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1',
   padding: 40 // 单个值
 });
 
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1',
-  padding: [0, 10, 40, 100] // 分别设置上、右、下、左边距
+  padding: [ 0, 10, 40, 100 ] // 分别设置上、右、下、左边距
 });
 
 ```
@@ -109,7 +109,7 @@ var chart = new F2.Chart({
 // 全局设置，所有的图表生效
 F2.Global.pixelRatio = window.devicePixelRatio;
 
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1',
   pixelRatio: 2 // 单独设置
 });
@@ -126,12 +126,12 @@ var chart = new F2.Chart({
 <div style="clear:both;"></div>
 
 ```js-
-var data = [
-  {x: 1, y: 1},
-  {x: 2, y: 0},
-  {x: 3, y: 3}
+const data = [
+  { x: 1, y: 1 },
+  { x: 2, y: 0 },
+  { x: 3, y: 3 }
 ]
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'can1',
   width: 400,
   height: 200,
@@ -147,13 +147,13 @@ chart.source(data, {
   }
 });
 chart.line().position('x*y');
-chart.guide().text([2, 3.5], 'pxielRatio = 1', {
+chart.guide().text([ 2, 3.5 ], 'pxielRatio = 1', {
   textAlign: 'center',
   fontSize: 14
 });
 chart.render();
 
-var chart1 = new F2.Chart({
+const chart1 = new F2.Chart({
   id: 'can2',
   width: 400,
   height: 200,
@@ -169,12 +169,11 @@ chart1.source(data, {
   }
 });
 chart1.line().position('x*y');
-chart1.guide().text([2, 3.5], 'pxielRatio = 2', {
+chart1.guide().text([ 2, 3.5 ], 'pxielRatio = 2', {
   textAlign: 'center',
   fontSize: 14
 });
 chart1.render();
-
 ```
 
 ## 方法
@@ -239,9 +238,9 @@ F2 除了提供了字段映射到图形属性上的方法外还提供了：
 绘制一个点图，将 a,b 分为作为 x 轴、y 轴, 点的大小设置成 10
 
 ```js
-var data = [
-  {a: 1, b: 1},
-  {a: 2, b: 2}
+const data = [
+  { a: 1, b: 1 },
+  { a: 2, b: 2 }
 ];
 
 chart.source(data);
@@ -325,20 +324,19 @@ chart.destroy();
       value: 5,// 刻度线长度
     },
     // 0％ 处的栅格线着重显示
-    grid: function(text,index) {
-      if(text === '0%'){
+    grid: (text, index) => {
+      if(text === '0%') {
         return {
           stroke: '#efefef'
         };
-      }else{
-        return {
-          stroke: '#f7f7f7'
-        };
+      }
+      return {
+        stroke: '#f7f7f7'
       }
     },
     // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
-    label: function(text, index, total) {
-      var cfg = {
+    label: (text, index, total) => {
+      const cfg = {
         fill: '#979797',
         font: '14px san-serif',
         offset: 6
@@ -387,14 +385,14 @@ chart.destroy();
       + 偏移(offset)：格式 Array：[x, y]，代表画布偏移坐标。
 
   ```js
-  var point = ['周日',28];
-  var html = "<div style='border-radius: 12px;border: none;width: 22px;height: 22px;background-color: rgba(102, 182, 241, 0.5);'></div>";
-  var cfg = {
+  const point = [ '周日', 28 ];
+  const html = "<div style='border-radius: 12px;border: none;width: 22px;height: 22px;background-color: rgba(102, 182, 241, 0.5);'></div>";
+  const cfg = {
     align: 'cc',
-    offset: [-5,-5]
+    offset: [ -5, -5 ]
   }
 
-  chart.guide().html(point,html,cfg);
+  chart.guide().html(point, html, cfg);
   ```
 
 
@@ -420,7 +418,7 @@ chart.destroy();
 
 ```js
 // 添加辅助框
-chart.guide().rect([startXValue, startYValue], [endXValue, startYValue], {
+chart.guide().rect([ startXValue, startYValue ], [ endXValue, startYValue ], {
   lineWidth: 0, // 辅助框的边框宽度
   fill: '#f80', // 辅助框填充的颜色
   fillOpacity: 0.1, // 辅助框的背景透明度
@@ -447,10 +445,10 @@ chart.guide().rect([startXValue, startYValue], [endXValue, startYValue], {
 辅助线的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
 
 ```js
-chart.guide().line(['min', 0], ['min', 'max'], {
+chart.guide().line([ 'min', 0 ], [ 'min', 'max' ], {
   lineWidth: 2, // 辅助线宽度
   stroke: '#ccc', // 辅助线颜色设置
-  lineDash: [2, 2]
+  lineDash: [ 2, 2 ]
 });
 ```
 
@@ -562,7 +560,7 @@ chart.animate(cfg|false) 执行动画
   chart.animate({
     duration: 2000,
     easing: 'elastic',
-    success: function() {
+    success() {
       alert('ok');
     }
   });
@@ -575,7 +573,7 @@ chart.animate(cfg|false) 执行动画
   * record：`Object` 原始的数据对象
 
   ```js
-  var point = chart.getPosition({time: '2010-02-02', value: 20});
+  const point = chart.getPosition({time: '2010-02-02', value: 20});
   ```
 
 ### getRecord
@@ -585,7 +583,7 @@ chart.animate(cfg|false) 执行动画
   * point：`Object`  画布上的点
 
   ```js
-  var obj = chart.getRecord({x: 100, y: 100});
+  const obj = chart.getRecord({x: 100, y: 100});
   ```
 
 ### getSnapRecords
@@ -595,6 +593,6 @@ chart.animate(cfg|false) 执行动画
   * point 画布上的点
   * field 用于逼近数据的字段，默认都是 x 轴对应的字段，但是饼图情况下需要自己指定对应 y 轴的字段
   ```js
-  var records = chart.getSnapRecords({x: 100, y: 100});
+  const records = chart.getSnapRecords({x: 100, y: 100});
   ```
   

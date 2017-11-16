@@ -43,11 +43,11 @@ resource:
 
 ```js
 [
-  {"month": "一月", "temperature": 7, "city": "tokyo"},
-  {"month": "二月", "temperature": 6.9, "city": "newYork"},
-  {"month": "三月", "temperature": 9.5, "city": "tokyo"},
-  {"month": "四月", "temperature": 14.5, "city": "tokyo"},
-  {"month": "五月", "temperature": 18.2, "city": "berlin"}
+  { month: '一月', temperature: 7, city: 'tokyo' },
+  { month: '二月', temperature: 6.9, city: 'newYork' },
+  { month: '三月', temperature: 9.5, city: 'tokyo' },
+  { month: '四月', temperature: 14.5, city: 'tokyo' },
+  { month: '五月', temperature: 18.2, city: 'berlin' }
 ]
 ```
 
@@ -141,13 +141,13 @@ G2创建图表的时候，values字段一般会自动从数据中取得，但是
 
 ```js
   [
-    {a: 'a1', b:'b1', type: '最小'},
-    {a: 'a2', b:'b2', type: '最大'},
-    {a: 'a3', b:'b3', type: '适中'}
+    { a: 'a1', b:'b1', type: '最小' },
+    { a: 'a2', b:'b2', type: '最大' },
+    { a: 'a3', b:'b3', type: '适中' }
   ]
   
-  var defs = {
-    'type': {type: 'cat',values: ['最小','适中','最大']}
+  const defs = {
+    'type': { type: 'cat', values: [ '最小', '适中', '最大' ] }
   };
 ```
 
@@ -157,13 +157,13 @@ G2创建图表的时候，values字段一般会自动从数据中取得，但是
 
 ```js
   [
-    {a: 'a1', b:'b1', type: 0},
-    {a: 'a2', b:'b2', type: 2},
-    {a: 'a3', b:'b3', type: 1}
+    { a: 'a1', b:'b1', type: 0 },
+    { a: 'a2', b:'b2', type: 2 },
+    { a: 'a3', b:'b3', type: 1 }
   ]
   
-  var defs = {
-    'type': {type: 'cat',values: ['最小','适中','最大']}
+  const defs = {
+    'type': { type: 'cat', values: [ '最小', '适中', '最大' ] }
   };
 
 ```
@@ -389,25 +389,25 @@ mask| 数据的格式化格式
 整除的场景：
 
 ```js
-var values= ["第一周","第二周","第三周","第四周","第五周","第六周","第七周","第八周","第九周"];
-var tickCount = 5;
+const values= [ '第一周', '第二周', '第三周', '第四周', '第五周', '第六周', '第七周', '第八周', '第九周' ];
+const tickCount = 5;
 // 由于 values.length = 9;
 // 平均间隔 step = (9 - 1) / (5 - 1) = 2;
 
-var ticks = ["第一周","第三周","第五周","第七周","第九周"]
+const ticks = [ '第一周', '第三周', '第五周', '第七周', '第九周' ]
 
 ```
 
 不能整除：
 
 ```js
-var values= ["第一周","第二周","第三周","第四周","第五周"];
+var values= [ '第一周', '第二周', '第三周', '第四周', '第五周' ];
 var tickCount = 4;
 // 由于 values.length = 5;
 // 平均间隔 step = (5 - 1) / (4 - 1) = 4/3; 取整 step = 1;
 
 // 舍弃了第四周
-var ticks = ["第一周","第二周","第三周","第五周"]
+var ticks = [ '第一周', '第二周', '第三周', '第五周' ]
 ```
 
 #### 连续数据度量的计算
@@ -432,21 +432,21 @@ var ticks = ["第一周","第二周","第三周","第五周"]
 伪代码如下：
 
 ```js
-var snapArray = [0, 2, 5,10];
-var min = 0;
-var max = 10003;
-var tickCount = 4;
-var tickInterval = (max - min) / (tickCount - 1); // 3001;
+const snapArray = [ 0, 2, 5, 10 ];
+const min = 0;
+const max = 10003;
+const tickCount = 4;
+const tickInterval = (max - min) / (tickCount - 1); // 3001;
 
-var factor = getFactor(tickInterval)// 1000，如果value > 10 则不断除以10 直到除数 1<value<10，如果value < 1,则不断乘以10， 直到 1< value < 10
-var snapValue = snap(snapArray, tickInterval / factor, 'ceil'); // 向上逼近，逼近值5
-var tickInterval = snapValue * factor;
+const factor = getFactor(tickInterval); // 1000，如果value > 10 则不断除以10 直到除数 1<value<10，如果value < 1,则不断乘以10， 直到 1< value < 10
+const snapValue = snap(snapArray, tickInterval / factor, 'ceil'); // 向上逼近，逼近值5
+const tickInterval = snapValue * factor;
 
-var min = snapMultiple(tickInterval, min, 'floor')// 向下取tickInterval的整数倍，0
-var max = snapMultiple(tickInterval,max, 'ceil') //向上取tickInterval的整数倍，15000
+const min = snapMultiple(tickInterval, min, 'floor'); // 向下取tickInterval的整数倍，0
+const max = snapMultiple(tickInterval, max, 'ceil');  // 向上取tickInterval的整数倍，15000
 
-var ticks = [];
-for(var i = min; i <= max; i+= tickInterval){
+const ticks = [];
+for(let i = min; i <= max; i += tickInterval){
   ticks.push(i);
 }
 

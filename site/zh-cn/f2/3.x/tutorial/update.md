@@ -21,7 +21,7 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
    chart.animate().wavec({
     duration: 2000,
     easing: 'elastic',
-    success: function() {
+    success() {
       alert('ok');
     } 
    });
@@ -31,7 +31,7 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
     type: 'wavec',
     duration: 2000,
     easing: 'elastic',
-    success: function() {
+    success() {
       alert('ok');
     } 
    });
@@ -41,11 +41,11 @@ F2 是由 G2-mobile 升级而来，两者基本兼容，本章列出从 G2-mobil
   为了升级方面，margin 还保留支持
   ```js
   // G2-mobile 2.0
-  var chart = new Chart({
+  const chart = new Chart({
     margin: 20
   });
   // F2 3.0
-  var chart = new Chart({
+  const chart = new Chart({
     padding: 20
   });
   ```

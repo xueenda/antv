@@ -20,7 +20,7 @@ chart.view();
 下面是创建视图的语法，首先你需要创建一个 chart 对象，然后调用 `chart.view(cfg)` 方法生成：
 
 ```js
-var view = chart.view({
+const view = chart.view({
   start: {
     x: 0,
     y: 0
@@ -39,7 +39,7 @@ var view = chart.view({
   start: null, // 绘制区域的起始坐标，默认值为 {x: 0, y: 0}
   end: null, // 绘制区域的终点坐标，默认值为 {x: 1, y: 1}
   data: null, // 源数据，标准的 JSON 数组
-  animate: boolean // 同 chart 配置保持一致
+  animate: {boolean} // 同 chart 配置保持一致
 }
 ```
 
@@ -84,19 +84,19 @@ var view = chart.view({
 <div id="c1"></div>
 
 ```js-
-var data = [
-  {genre: 'Sports', sold: 275},
-  {genre: 'Strategy', sold: 115},
-  {genre: 'Action', sold: 120},
-  {genre: 'Shooter', sold: 350},
-  {genre: 'Other', sold: 150},
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   id: 'c1',
   forceFit: true,
   height: 400,
-  padding: [ 40, 80, 100, 80]
+  padding: [ 40, 80, 100, 80 ]
 });
 
 chart.source(data, {
@@ -121,7 +121,7 @@ chart.axis('genre', {
 });
 chart.interval().position('genre*sold').color('genre');
 
-var view = chart.view({
+const view = chart.view({
   start: {
     x: 0.25,
     y: 0.25
@@ -136,8 +136,9 @@ view.coord('polar', {
   innerRadius: 0
 }); // 覆盖了 chart 的 coord 配置
 view.axis('sold', false); // 对于 genre 对应的坐标轴配置会默认使用 chart 的坐标轴配置
-view.interval().position('genre*sold')
-  .color('genre', ['#61A5E8', '#7ECF51', '#EECB5F', '#E4925D', '#E16757']);
+view.interval()
+  .position('genre*sold')
+  .color('genre', [ '#61A5E8', '#7ECF51', '#EECB5F', '#E4925D', '#E16757' ]);
 chart.render();
 ```
 

@@ -32,7 +32,7 @@ chart.tooltip(false); // 关闭 tooltip
 ```js
 chart.tooltip({
   triggerOn: 'mousemove' | 'click' | 'none', // tooltip 的触发方式，默认为 mousemove 
-  showTitle: {Boolean}, // 是否展示 title，默认为 true
+  showTitle: {boolean}, // 是否展示 title，默认为 true
   crosshairs: {
     type: 'rect' || 'x' || 'y' || 'cross',
     style: {
@@ -76,7 +76,7 @@ chart.<geom>.tooltip('field1*field2...*fieldN');
 所以在回调函数中可以通过修改这几个值，达到自定义tooltip 的目的
 
 ```js
-chart.<geom>.tooltip('a*b', function(a, b) {
+chart.<geom>.tooltip('a*b', (a, b) => {
   return {
     name: a,
     value: b
@@ -102,34 +102,32 @@ tooltip 的目的是为了展示数据点相关的数据，具体展示的内容
 <div id="c0" class="chart-container"></div>
 
 ```js+
-var data = [
-  {"month":0,"tem":7,"city":"tokyo"},
-  {"month":1,"tem":6.9,"city":"tokyo"},
-  {"month":2,"tem":9.5,"city":"tokyo"},
-  {"month":3,"tem":14.5,"city":"tokyo"},
-  {"month":4,"tem":18.2,"city":"tokyo"},
-  {"month":5,"tem":21.5,"city":"tokyo"},
-  {"month":6,"tem":25.2,"city":"tokyo"},
-  {"month":7,"tem":26.5,"city":"tokyo"},
-  {"month":8,"tem":23.3,"city":"tokyo"},
-  {"month":9,"tem":18.3,"city":"tokyo"},
-  {"month":10,"tem":13.9,"city":"tokyo"},
-  {"month":11,"tem":9.6,"city":"tokyo"}
+const data = [
+  { month: 0, tem: 7, city: 'tokyo' },
+  { month: 1, tem: 6.9, city: 'tokyo' },
+  { month: 2, tem: 9.5, city: 'tokyo' },
+  { month: 3, tem: 14.5, city: 'tokyo' },
+  { month: 4, tem: 18.2, city: 'tokyo' },
+  { month: 5, tem: 21.5, city: 'tokyo' },
+  { month: 6, tem: 25.2, city: 'tokyo' },
+  { month: 7, tem: 26.5, city: 'tokyo' },
+  { month: 8, tem: 23.3, city: 'tokyo' },
+  { month: 9, tem: 18.3, city: 'tokyo' },
+  { month: 10, tem: 13.9, city: 'tokyo' },
+  { month: 11, tem: 9.6, city: 'tokyo' }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c0',
   width: 800,
   height: 300
 });
 
-var defs = {
+const defs = {
   'month':{
     type: 'cat',
     alias: '月份', // 别名，如果没有别名显示成字段名 month
-    values: [
-      '一月','二月','三月','四月','五月','六月',
-      '七月','八月','九月','十月','十一月','十二月']
+    values: [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ]
   },
   'tem': {
     alias: '温度'
@@ -190,7 +188,7 @@ chart.line().position('x*y').tooltip('x*y', (x, y) => {
 <div id="c1"></div>
 
 ```js+
-var data = [
+const data = [
   { name: 'Microsoft Internet Explorer', value: 30 },
   { name: 'Chrome', value: 20 },
   { name: 'Firefox', value: 10 },
@@ -198,7 +196,7 @@ var data = [
   { name: 'Opera', value: 15 },
   { name: 'Others', value: 15 }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   forceFit: true,
   height: 400
@@ -212,7 +210,7 @@ chart.tooltip({
 chart.intervalStack()
   .position('value')
   .color('name')
-  .tooltip('name*value', function(name, value) {
+  .tooltip('name*value', (name, value) => {
     return {
       name: name,
       value: value + '%'
@@ -226,30 +224,30 @@ chart.render();
 <div id="c2"></div>
 
 ```js+
-var data = [ // 数据
-  {"time": 1428163200000,"start": 469,"end": 480},
-  {"time": 1428163203600,"start": 480,"end": 430},
-  {"time": 1428163207200,"start": 430,"end": 410},
-  {"time": 1428163210800,"start": 410,"end": 420},
-  {"time": 1428163214400,"start": 420,"end": 440},
-  {"time": 1428163218000,"start": 440,"end": 460},
-  {"time": 1428163221600,"start": 460,"end": 410},
-  {"time": 1428163225200,"start": 410,"end": 440},
-  {"time": 1428163228800,"start": 440,"end": 490}
+const data = [ // 数据
+  { time: 1428163200000, start: 469, end: 480 },
+  { time: 1428163203600, start: 480, end: 430 },
+  { time: 1428163207200, start: 430, end: 410 },
+  { time: 1428163210800, start: 410, end: 420 },
+  { time: 1428163214400, start: 420, end: 440 },
+  { time: 1428163218000, start: 440, end: 460 },
+  { time: 1428163221600, start: 460, end: 410 },
+  { time: 1428163225200, start: 410, end: 440 },
+  { time: 1428163228800, start: 440, end: 490 }
 ];
 
-var DataView = DataSet.DataView;
-var dv = new DataView();
+const DataView = DataSet.DataView;
+const dv = new DataView();
 dv.source(data).transform({
   type: 'map', 
-  callback: function(obj) {
+  callback: obj => {
     obj.range = [ obj.start, obj.end ];
     obj.trend = (obj.start <= obj.end) ? '上涨' : '下跌';
     return obj;
   }
 });
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c2',
   width: 800,
   height: 400,
@@ -270,9 +268,9 @@ chart.interval()
   .size(20);
 chart.render();
 chart.on('tooltip:change', function(ev) {
-  var items = ev.items; // tooltip显示的项
-  var origin = items[0]; // 将一条数据改成多条数据
-  var range = origin.point._origin.range;
+  const items = ev.items; // tooltip显示的项
+  const origin = items[0]; // 将一条数据改成多条数据
+  const range = origin.point._origin.range;
   items.splice(0); // 清空
   items.push({
     name: '开始值',
@@ -331,23 +329,23 @@ chart.tooltip(true, {
 2. 在 html 页面的 style 标签内，为对应的 dom 标签设置样式；
 3. 在 `chart.tooltip(cfg)` 中设置属性，如下，具体的说明详见 [API](/zh-cn/g2/3.x/api/chart.html#_chart.tooltip-tooltipConfig-)
 
-  ```js
-    chart.tooltip({
-      'g2-tooltip': {
-        position: 'absolute',
-        visibility: 'hidden',
-        border : '1px solid #efefef',
-        backgroundColor: 'white',
-        color: '#000',
-        opacity: "0.8",
-        padding: '5px 15px',
-        'transition': 'top 200ms,left 200ms'
-      }, // 设置 tooltip 的 css 样式
-      'g2-tooltip-list': {
-        margin: '10px'
-      }
-    });
-  ```
+```js
+chart.tooltip({
+  'g2-tooltip': {
+    position: 'absolute',
+    visibility: 'hidden',
+    border : '1px solid #efefef',
+    backgroundColor: 'white',
+    color: '#000',
+    opacity: "0.8",
+    padding: '5px 15px',
+    'transition': 'top 200ms,left 200ms'
+  }, // 设置 tooltip 的 css 样式
+  'g2-tooltip-list': {
+    margin: '10px'
+  }
+});
+```
 
 ## 其他配置
 
@@ -386,7 +384,7 @@ crosshairs: {
 当然在任何触发方式下，用户都可以通过调用 `chart.showTooltip(point)` 可以控制在固定的位置显示提示信息，参数 `point` 为画布上的坐标点，格式如下：
 
 ```js
-var point = {
+const point = {
   x: 23,
   y: 30
 };
@@ -397,21 +395,21 @@ var point = {
 <div id="c3"></div>
 
 ```js+
-var data = [
-  {'time': '2016-10-25 00:00:00', 'runCount': 4, 'type': 2, 'runTime': 2},
-  {'time': '2016-10-25 00:30:00', 'runCount': 2, 'type': 6, 'runTime': 3},
-  {'time': '2016-10-25 01:00:00', 'runCount': 13, 'type': 2, 'runTime': 5},
-  {'time': '2016-10-25 01:30:00', 'runCount': 9, 'type': 9, 'runTime': 1},
-  {'time': '2016-10-25 02:00:00', 'runCount': 5, 'type': 2, 'runTime': 3},
-  {'time': '2016-10-25 02:30:00', 'runCount': 8, 'type': 2, 'runTime': 1},
-  {'time': '2016-10-25 03:00:00', 'runCount': 13, 'type': 1, 'runTime': 2},
-  {'time': '2016-10-25 03:30:00', 'runCount': 4, 'type': 2, 'runTime': 2},
-  {'time': '2016-10-25 04:00:00', 'runCount': 2, 'type': 6, 'runTime': 3},
-  {'time': '2016-10-25 04:30:00', 'runCount': 13, 'type': 2, 'runTime': 5},
-  {'time': '2016-10-25 05:00:00', 'runCount': 9, 'type': 9, 'runTime': 1},
-  {'time': '2016-10-25 05:30:00', 'runCount': 5, 'type': 2, 'runTime': 3}
+const data = [
+  { time: '2016-10-25 00:00:00', runCount: 4, type: 2, runTime: 2 },
+  { time: '2016-10-25 00:30:00', runCount: 2, type: 6, runTime: 3 },
+  { time: '2016-10-25 01:00:00', runCount: 13, type: 2, runTime: 5 },
+  { time: '2016-10-25 01:30:00', runCount: 9, type: 9, runTime: 1 },
+  { time: '2016-10-25 02:00:00', runCount: 5, type: 2, runTime: 3 },
+  { time: '2016-10-25 02:30:00', runCount: 8, type: 2, runTime: 1 },
+  { time: '2016-10-25 03:00:00', runCount: 13, type: 1, runTime: 2 },
+  { time: '2016-10-25 03:30:00', runCount: 4, type: 2, runTime: 2 },
+  { time: '2016-10-25 04:00:00', runCount: 2, type: 6, runTime: 3 },
+  { time: '2016-10-25 04:30:00', runCount: 13, type: 2, runTime: 5 },
+  { time: '2016-10-25 05:00:00', runCount: 9, type: 9, runTime: 1 },
+  { time: '2016-10-25 05:30:00', runCount: 5, type: 2, runTime: 3 }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c3',
   forceFit: true,
   height: 300,
@@ -451,6 +449,6 @@ chart.point()
 chart.render();
 
 // 初始化到最新一个点
-var lastPoint  = chart.get('plotRange').br;
+const lastPoint  = chart.get('plotRange').br;
 chart.showTooltip(lastPoint);
 ```

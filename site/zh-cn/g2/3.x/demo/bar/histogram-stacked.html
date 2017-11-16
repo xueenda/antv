@@ -33,6 +33,11 @@ chartDetail: ${base}/zh-cn/vis/chart/histogram.html
       grid: {
       }
     });
+    chart.tooltip({
+          crosshairs: false,
+          position: 'top',
+          inPlot: false
+        });
     chart.intervalStack()
       .position('depth*count')
       .color('cut');

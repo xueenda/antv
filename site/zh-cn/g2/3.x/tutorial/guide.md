@@ -40,22 +40,22 @@ guide 辅助标记用于标示位置的方式主要有两种
 
 ```js
 chart.guide().line({
-  start: {Object} || {Function} || {Array}, // 辅助线起始位置，值为原始数据值，支持 callback
-  end: {Object} || {Function}|| {Array},// 辅助线结束位置，值为原始数据值，支持 callback
+  start: {object} | {function} | {array}, // 辅助线起始位置，值为原始数据值，支持 callback
+  end: {object} | {function}|| {array},// 辅助线结束位置，值为原始数据值，支持 callback
   lineStyle: {
     stroke: '#999', // 线的颜色
-    lineDash: [0, 2, 2], // 虚线的设置
+    lineDash: [ 0, 2, 2 ], // 虚线的设置
     lineWidth: 3 // 线的宽度
   }, // 图形样式配置
   text: {
-    position: 'start' || 'center' || 'end' || '39%' || 0.5, // 文本的显示位置
-    autoRotate: {Boolean}, // 是否沿线的角度排布，默认为 true
+    position: 'start' | 'center' | 'end' | '39%' | 0.5, // 文本的显示位置
+    autoRotate: {boolean}, // 是否沿线的角度排布，默认为 true
     style: {
       // 文本图形样式配置
     },
-    content: {String}, // 文本的内容
-    offsetX: {Number}, // x 方向的偏移量
-    offsetY: {Number} // y 方向的偏移量
+    content: {string}, // 文本的内容
+    offsetX: {number}, // x 方向的偏移量
+    offsetY: {number} // y 方向的偏移量
   } // 文本配置
 });
 ```
@@ -63,12 +63,12 @@ chart.guide().line({
 <div id="c1"></div>
 
 ```js+
-var DataView = DataSet.DataView;
+const DataView = DataSet.DataView;
 $.getJSON('/assets/data/diamond.json', function(data) {
-  var dv = (new DataView()).source(data);
-  var caratAvg = dv.mean('carat'); // 计算克拉数均值
-  var priceAvg = dv.mean('price'); // 计算价格均值
-  var chart = new G2.Chart({ // 创建图表
+  const dv = (new DataView()).source(data);
+  const caratAvg = dv.mean('carat'); // 计算克拉数均值
+  const priceAvg = dv.mean('price'); // 计算价格均值
+  const chart = new G2.Chart({ // 创建图表
     container : 'c1',
     forceFit: true,
     height: 450
@@ -112,39 +112,39 @@ $.getJSON('/assets/data/diamond.json', function(data) {
 ```js
 // 辅助图片 image，只是指定了 start，则该点表示图片左上角坐标
 chart.guide().image({
-  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  zIndex: {Number},
-  start: {Object} || {Function} || {Array}, // 图片起始位置， 值为原始数据值，支持 callback
-  src: {String}, // 图片路径
-  width: {Number},
-  height: {Number},
-  offsetX: {Number}, // x 方向的偏移量
-  offsetY: {Number} // y 方向偏移量
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  zIndex: {number},
+  start: {object} | {function} | {array}, // 图片起始位置， 值为原始数据值，支持 callback
+  src: {string}, // 图片路径
+  width: {number},
+  height: {number},
+  offsetX: {number}, // x 方向的偏移量
+  offsetY: {number} // y 方向偏移量
 });
 // 辅助图片 image，通过指定 start 和 end 确定图片的位置和宽高
 chart.guide().image({
-  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层 
-  start: {Array} || {Function} || {Array}, // 图片起始位置， 值为原始数据值，支持 callback
-  end: {Array} || {Function} || {Array}, // 图片结束位置， 值为原始数据值，支持 callback
-  src: {String}, // 图片路径
-  offsetX: {Number}, // x 方向的偏移量
-  offsetY: {Number} // y 方向偏移量
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层 
+  start: {array} | {function} | {array}, // 图片起始位置， 值为原始数据值，支持 callback
+  end: {array} | {function} | {array}, // 图片结束位置， 值为原始数据值，支持 callback
+  src: {string}, // 图片路径
+  offsetX: {number}, // x 方向的偏移量
+  offsetY: {number} // y 方向偏移量
 });
 ```
 
 <div id="c2"></div>
 
 ```js+
-var DataView = DataSet.DataView;
+const DataView = DataSet.DataView;
 $.getJSON('/assets/data/diamond.json', function(data) {
-  var dv = new DataView();
+  const dv = new DataView();
   dv.source(data).transform({
     type: 'bin.histogram',
     field: 'depth',
     binWidth: 0.5,
-    as: ['depth', 'count'],
+    as: [ 'depth', 'count' ],
   });
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c2',
     forceFit: true,
     height: 450
@@ -169,43 +169,43 @@ $.getJSON('/assets/data/diamond.json', function(data) {
 
 ```js
 chart.guide().text({
-  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  zIndex: {Number},
-  position: {Object} || {Function} || {Array}, // 文本的起始位置，值为原始数据值，支持 callback
-  content: {String}, // 显示的文本内容
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  zIndex: {number},
+  position: {object} | {function} | {array}, // 文本的起始位置，值为原始数据值，支持 callback
+  content: {string}, // 显示的文本内容
   style: {
     fill: '#666', // 文本颜色
     fontSize: '12', // 文本大小
     fontWeight: 'bold' // 文本粗细
     rotate: 30 // 旋转角度
   }, // 文本的图形样式属性
-  offsetX: {Number}, // x 方向的偏移量
-  offsetY: {Number} // y 方向偏移量
+  offsetX: {number}, // x 方向的偏移量
+  offsetY: {number} // y 方向偏移量
 });
 ```
 
 <div id="c3"></div>
 
 ```js+
-var colors = G2.Global.colors;
+const colors = G2.Global.colors;
 $.getJSON('/assets/data/diamond.json', function(data) {
-  var chart = new G2.Chart({ // 创建图表
+  const chart = new G2.Chart({ // 创建图表
     container : 'c3',
     forceFit: true,
     height: 450,
     padding: [ 20, 90, 60, 80 ]
   });
-  var defs = {
+  const defs = {
     'cut': {
       type: 'cat',
-      values:['Ideal', 'Premium', 'Very-Good', 'Good', 'Fair']
+      values:[ 'Ideal', 'Premium', 'Very-Good', 'Good', 'Fair' ]
     }
   };
   chart.source(data, defs); // 设置数据源
   chart.legend(false);
   chart.pointJitter().position('cut*depth').color('cut');
   chart.guide().text({
-    position: ['Ideal', 67], 
+    position: [ 'Ideal', 67 ], 
     content: '越完美的钻石切割工艺越集中', 
     style: {
       fill: colors[0],
@@ -214,7 +214,7 @@ $.getJSON('/assets/data/diamond.json', function(data) {
     }
   });
   chart.guide().text({
-    position: ['Fair', 63], 
+    position: [ 'Fair', 63 ], 
     content: '越差的钻石切割工艺越分散', 
     style: {
       fill: colors[4],
@@ -230,9 +230,9 @@ $.getJSON('/assets/data/diamond.json', function(data) {
 
 ```js
 chart.guide().region({
-  top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start: {Object} || {Function} || {Array}, // 辅助框起始位置，值为原始数据值，支持 callback 
-  end: {Object} || {Function} || {Array},// 辅助框结束位置，值为原始数据值，支持 callback
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
+  end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
   style: {
     lineWidth: 0, // 辅助框的边框宽度
     fill: '#f80', // 辅助框填充的颜色
@@ -245,45 +245,45 @@ chart.guide().region({
 <div id="c4"></div>
 
 ```js+
-var data = [
-  {"month":0,"tem":7,"city":"tokyo"},
-  {"month":1,"tem":6.9,"city":"tokyo"},
-  {"month":2,"tem":9.5,"city":"tokyo"},
-  {"month":3,"tem":14.5,"city":"tokyo"},
-  {"month":4,"tem":18.2,"city":"tokyo"},
-  {"month":5,"tem":21.5,"city":"tokyo"},
-  {"month":6,"tem":25.2,"city":"tokyo"},
-  {"month":7,"tem":26.5,"city":"tokyo"},
-  {"month":8,"tem":23.3,"city":"tokyo"},
-  {"month":9,"tem":18.3,"city":"tokyo"},
-  {"month":10,"tem":13.9,"city":"tokyo"},
-  {"month":11,"tem":9.6,"city":"tokyo"},
-  {"month":0,"tem":-0.2,"city":"newYork"},
-  {"month":1,"tem":0.8,"city":"newYork"},
-  {"month":2,"tem":5.7,"city":"newYork"},
-  {"month":3,"tem":11.3,"city":"newYork"},
-  {"month":4,"tem":17,"city":"newYork"},
-  {"month":5,"tem":22,"city":"newYork"},
-  {"month":6,"tem":24.8,"city":"newYork"},
-  {"month":7,"tem":24.1,"city":"newYork"},
-  {"month":8,"tem":20.1,"city":"newYork"},
-  {"month":9,"tem":14.1,"city":"newYork"},
-  {"month":10,"tem":8.6,"city":"newYork"},
-  {"month":11,"tem":2.5,"city":"newYork"},
-  {"month":0,"tem":-0.9,"city":"berlin"},
-  {"month":1,"tem":0.6,"city":"berlin"},
-  {"month":2,"tem":3.5,"city":"berlin"},
-  {"month":3,"tem":8.4,"city":"berlin"},
-  {"month":4,"tem":13.5,"city":"berlin"},
-  {"month":5,"tem":17,"city":"berlin"},
-  {"month":6,"tem":18.6,"city":"berlin"},
-  {"month":7,"tem":17.9,"city":"berlin"},
-  {"month":8,"tem":14.3,"city":"berlin"},
-  {"month":9,"tem":9,"city":"berlin"},
-  {"month":10,"tem":3.9,"city":"berlin"},
-  {"month":11,"tem":1,"city":"berlin"}
+const data = [
+  { month: 0, tem: 7, city: 'tokyo' },
+  { month: 1, tem: 6.9, city: 'tokyo' },
+  { month: 2, tem: 9.5, city: 'tokyo' },
+  { month: 3, tem: 14.5, city: 'tokyo' },
+  { month: 4, tem: 18.2, city: 'tokyo' },
+  { month: 5, tem: 21.5, city: 'tokyo' },
+  { month: 6, tem: 25.2, city: 'tokyo' },
+  { month: 7, tem: 26.5, city: 'tokyo' },
+  { month: 8, tem: 23.3, city: 'tokyo' },
+  { month: 9, tem: 18.3, city: 'tokyo' },
+  { month: 10, tem: 13.9, city: 'tokyo' },
+  { month: 11, tem: 9.6, city: 'tokyo' },
+  { month: 0, tem: -0.2, city: 'newYork' },
+  { month: 1, tem: 0.8, city: 'newYork' },
+  { month: 2, tem: 5.7, city: 'newYork' },
+  { month: 3, tem: 11.3, city: 'newYork' },
+  { month: 4, tem: 17, city: 'newYork' },
+  { month: 5, tem: 22, city: 'newYork' },
+  { month: 6, tem: 24.8, city: 'newYork' },
+  { month: 7, tem: 24.1, city: 'newYork' },
+  { month: 8, tem: 20.1, city: 'newYork' },
+  { month: 9, tem: 14.1, city: 'newYork' },
+  { month: 10, tem: 8.6, city: 'newYork' },
+  { month: 11, tem: 2.5, city: 'newYork' },
+  { month: 0, tem: -0.9, city: 'berlin' },
+  { month: 1, tem: 0.6, city: 'berlin' },
+  { month: 2, tem: 3.5, city: 'berlin' },
+  { month: 3, tem: 8.4, city: 'berlin' },
+  { month: 4, tem: 13.5, city: 'berlin' },
+  { month: 5, tem: 17, city: 'berlin' },
+  { month: 6, tem: 18.6, city: 'berlin' },
+  { month: 7, tem: 17.9, city: 'berlin' },
+  { month: 8, tem: 14.3, city: 'berlin' },
+  { month: 9, tem: 9, city: 'berlin' },
+  { month: 10, tem: 3.9, city: 'berlin' },
+  { month: 11, tem: 1, city: 'berlin' }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c4',
   forceFit: true,
   height: 450
@@ -291,8 +291,8 @@ var chart = new G2.Chart({
 chart.source(data);
 chart.line().position('month*tem').color('city');
 chart.guide().region({
-  start: [5, 'min'], 
-  end: [7, 'max']
+  start: [ 5, 'min' ], 
+  end: [ 7, 'max' ]
 }); // 6月 - 8月最低温度
 chart.render();
 ```
@@ -302,25 +302,25 @@ chart.render();
 
 ```js
 chart.guide().html({
-  position: {Object} || {Function} || {Array}, // html 的中心位置， 值为原始数据值，支持 callback
-  alignX: 'left' || 'middle' || 'right',
-  alignY: 'top' || 'middle' || 'bottom',
-  offsetX: {Number},
-  offsetY: {Number},
-  html: {String}, // html 代码，也支持callback,可能是最大值、最小值之类的判定
-  zIndex: {Number}
+  position: {object} | {function} | {array}, // html 的中心位置， 值为原始数据值，支持 callback
+  alignX: 'left' | 'middle' | 'right',
+  alignY: 'top' | 'middle' | 'bottom',
+  offsetX: {number},
+  offsetY: {number},
+  html: {string}, // html 代码，也支持callback,可能是最大值、最小值之类的判定
+  zIndex: {number}
 });
 ```
 
 <div id="c5"></div>
 
 ```js+
-var DataView = DataSet.DataView;
+const DataView = DataSet.DataView;
 $.getJSON('/assets/data/diamond.json', function(data) {
-  var dv = (new DataView()).source(data);
-  var caratAvg = dv.mean('carat'); // 计算克拉数均值
-  var priceAvg = dv.mean('price'); // 计算价格均值
-  var chart = new G2.Chart({
+  const dv = (new DataView()).source(data);
+  const caratAvg = dv.mean('carat'); // 计算克拉数均值
+  const priceAvg = dv.mean('price'); // 计算价格均值
+  const chart = new G2.Chart({
     container: 'c5',
     forceFit: true,
     height: 450
@@ -328,9 +328,9 @@ $.getJSON('/assets/data/diamond.json', function(data) {
   chart.source(data);
   chart.point().position('carat*price');
   // 坐标点
-  var point = [ 3.5, 12000 ];
+  const point = [ 3.5, 12000 ];
   //html字符串
-  var tooltipHtml = "<div style='border: 2px solid #0f8de8;width: 50px;height: 26px;color: #0f8de8;position: relative;'>" +
+  const tooltipHtml = "<div style='border: 2px solid #0f8de8;width: 50px;height: 26px;color: #0f8de8;position: relative;'>" +
       "<span style='color:#63c6c2;font-size:15px'>异常值</span>" +
       "<div style='width: 0;height: 0;border-bottom: 8px solid #0f8de8;border-right:10px solid transparent;position: absolute;top: 16px;left: 46px;'></div>" +
       "</div>";
@@ -350,11 +350,9 @@ $.getJSON('/assets/data/diamond.json', function(data) {
 ```js
 chart.arc({
   top: true | false, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
-  start: {Object} || {Function} || {Array}, // 辅助框起始位置，值为原始数据值，支持 callback 
-  end: {Object} || {Function} || {Array},// 辅助框结束位置，值为原始数据值，支持 callback
-  style: {
-  
-  } // 图形样式属性
+  start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
+  end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
+  style: {} // 图形样式属性
 });
 ```
 
@@ -370,7 +368,7 @@ chart.arc({
 chart.clear();
 // 重新声明图形语法
 chart.point().position('carat*price');
-chart.guide().html([newX, newY], htmlstring);
+chart.guide().html([ newX, newY ], htmlstring);
 chart.render();
 ```
 
@@ -386,10 +384,10 @@ chart.render();
 <div id="c6"></div>
 
 ```js+
-var data = [];                                                 
-var time = Math.floor((new Date()).getTime()/1000) * 1000;                             
+const data = [];                                                 
+const time = Math.floor((new Date()).getTime() / 1000) * 1000;                             
                                                                 
-for (var i = -19; i <= 0; i++) {                                    
+for (let i = -19; i <= 0; i++) {                                    
   data.push({                                                 
     time: time + i * 3 * 1000,                                     
     value: Math.random() + .25                                      
@@ -398,9 +396,9 @@ for (var i = -19; i <= 0; i++) {
 
 // 查找最大值
 function findMax() {
-  var maxValue = 0;
-  var maxObj = null;
-  data.forEach(function(obj) {
+  let maxValue = 0;
+  let maxObj = null;
+  data.forEach(obj => {
     if (obj.value > maxValue) {
       maxValue = obj.value;
       maxObj = obj;
@@ -409,7 +407,7 @@ function findMax() {
   return maxObj;
 }
 
-var chart = new G2.Chart({ // 创建图表
+const chart = new G2.Chart({ // 创建图表
   container: 'c6',
   forceFit: true,
   height: 450
@@ -429,9 +427,9 @@ chart.guide().line({
   end: [ 'max', 0.25] 
 });
 chart.guide().text({
-  position: function(){
-    var obj = findMax();
-    return [obj.time, obj.value];
+  position() {
+    const obj = findMax();
+    return [ obj.time, obj.value ];
   },
   content: '最大值'
 });
@@ -447,4 +445,3 @@ setInterval(function() {
   chart.changeData(data);
 }, 3000);
 ```
-

@@ -170,20 +170,20 @@ F2.Global.setTheme({
 ```js
 F2.Global.pixelRatio = 2;
 
-F2.Global.colors = ['red', 'blue'];
+F2.Global.colors = [ 'red', 'blue' ];
 ```
 
 #### 设置皮肤
 
 ```js
-  F2.Global.setTheme({
-    colors: ['red','blue'],
-    pixelRatio: 2,
-    guide: {
-      line: {
-        stroke: 'red',
-        lineWidth: 2
-      }
+F2.Global.setTheme({
+  colors: [ 'red','blue' ],
+  pixelRatio: 2,
+  guide: {
+    line: {
+      stroke: 'red',
+      lineWidth: 2
     }
+  }
 });
 ```

@@ -9,7 +9,7 @@ resource:
 
 # DataSet
 
-自G2 3.0版本开始，原先内置的数据处理模块frame从G2包中抽离出来，独立成为DataSet包。DataSet的目标是为数据可视化场景提供状态驱动（state driven）的、丰富而强大的数据处理能力。
+自 G2 3.0 版本开始，原先内置的数据处理模块 frame 从 G2 包中抽离出来，独立成为 DataSet 包。DataSet 的目标是为数据可视化场景提供状态驱动（state driven）的、丰富而强大的数据处理能力。
 
 ## 术语表
 
@@ -19,7 +19,7 @@ resource:
 | 数据视图 | DataView | 单个数据视图，目前有普通二维数据（类似一张数据库表）、树形数据、图数据和地理信息数据几种类型 |
 | 状态量 | state | 数据集内部流转的控制数据状态的变量 |
 | 变换 | Transform | 数据变换函数，数据视图做数据处理时使用，包括图布局、数据补全、数据过滤等等 |
-| 连接器 | Connector | 数据接入函数，用于把某种数据源（譬如csv）载入到某个数据视图上 |
+| 连接器 | Connector | 数据接入函数，用于把某种数据源（譬如 csv）载入到某个数据视图上 |
 
 ## 简介
 
@@ -31,7 +31,7 @@ resource:
 
 ![data-set structure](/assets/image/g2/tutorial/data-set-structure.svg)
 
-DataSet 支持状态量 （State）可以实现多个图表之间的联动
+DataSet 支持状态量（State）可以实现多个图表之间的联动
 
 ## 安装
 
@@ -99,32 +99,28 @@ DataSet 主要完成了以下功能：
 1. 改变状态量，所有 DataView 更新
 
 ```js
-
 // step1 创建 dataset 指定状态量
 const ds = new DataSet({
-    state: {
-       year: '2010'
-    }
+  state: {
+    year: '2010'
+  }
 });
 
 // step2 创建 DataView
-const dv = ds.createView()
-             .source(data);
+const dv = ds.createView().source(data);
 
 dv.transform({
-    type: 'filter',
-    callback(row) {
-        return row.year === ds.state.year;
-    }
+  type: 'filter',
+  callback(row) {
+    return row.year === ds.state.year;
+  }
 });
 
 
 // step3 引用 DataView
-
 chart.source(dv);
 
 // step4 更新状态量
-
 ds.setState('year', '2012');
 ```
 
@@ -152,9 +148,9 @@ ds.setState('year', '2012');
 
 ```js
 const ds = new DataSet({
-    state: {
-        currentState: 'WY'
-    }
+  state: {
+    currentState: 'WY'
+  }
 });
 ```
 
@@ -167,11 +163,11 @@ const ds = new DataSet({
  * 本例需要用状态量在不同的数据视图实例之间通信，所以需要有一个 DataSet 实例管理状态量
  */
 $.get('/assets/data/population-by-age.csv', data => {
-    const dvForAll = ds
-        .createView('populationByAge') // 在 DataSet 实例下创建名为 populationByAge 的数据视图
-        .source(data, {
-            type: 'csv', // 使用 CSV 类型的 Connector 装载 data
-        });
+  const dvForAll = ds
+    .createView('populationByAge') // 在 DataSet 实例下创建名为 populationByAge 的数据视图
+    .source(data, {
+      type: 'csv', // 使用 CSV 类型的 Connector 装载 data
+    });
 });
 ```
 
@@ -179,10 +175,10 @@ $.get('/assets/data/population-by-age.csv', data => {
 
 ```js
 dvForAll.transform({
-    type: 'fold',
-    fields: [ '小于5岁','5至13岁','14至17岁','18至24岁','25至44岁','45至64岁','65岁及以上' ],
-    key: 'age',
-    value: 'population'
+  type: 'fold',
+  fields: [ '小于5岁','5至13岁','14至17岁','18至24岁','25至44岁','45至64岁','65岁及以上' ],
+  key: 'age',
+  value: 'population'
 });
 ```
 
@@ -190,78 +186,78 @@ dvForAll.transform({
 
 ```js
 const dvForOneState = ds
-    .createView('populationOfOneState')
-    .source(dvForAll); // 从全量数据继承，写法也可以是 .source('populationByAge')
+  .createView('populationOfOneState')
+  .source(dvForAll); // 从全量数据继承，写法也可以是 .source('populationByAge')
     
 dvForOneState
-    .transform({ // 过滤数据
-        type: 'filter',
-        callback(row) {
-            return row.state === ds.state.currentState;
-        }
-    })
-    .transform({
-        type: 'percent',
-        field: 'population',
-        dimension: 'age',
-        as: 'percent'
-    });
+  .transform({ // 过滤数据
+    type: 'filter',
+    callback(row) {
+      return row.state === ds.state.currentState;
+    }
+  })
+  .transform({
+    type: 'percent',
+    field: 'population',
+    dimension: 'age',
+    as: 'percent'
+  });
 ```
 
 > Step5：最后使用 G2 绘图、绑定事件
 
 ```js
 const c1 = new G2.Chart({
-    id: 'c1',
-    forceFit: true,
-    height: 400,
+  id: 'c1',
+  forceFit: true,
+  height: 400,
 });
 c1.source(dvForAll);
 c1.legend({
-    position: 'top',
+  position: 'top',
 });
 c1.axis('population', {
-    label: {
-        formatter: function(val) {
-            return val / 1000000 + 'M';
-        }
+  label: {
+    formatter: val => {
+      return val / 1000000 + 'M';
     }
+  }
 });
 c1.intervalStack()
-    .position('state*population')
-    .color('age')
-    .select(true, {
-        mode: 'single',
-        style: {
-            stroke: 'red',
-            strokeWidth: 5
-        }
-    });
-c1.on('tooltip:change', function(evt) {
-    var items = evt.items || [];
-    if (items[0]) {
-        ds.setState('currentState', items[0].title);
+  .position('state*population')
+  .color('age')
+  .select(true, {
+    mode: 'single',
+    style: {
+      stroke: 'red',
+      strokeWidth: 5
     }
+  });
+c1.on('tooltip:change', function(evt) {
+  const items = evt.items || [];
+  if (items[0]) {
+    ds.setState('currentState', items[0].title);
+  }
 });
 
 const c2 = new G2.Chart({
-    id: 'c2',
-    forceFit: true,
-    height: 300,
-    padding: 0,
+  id: 'c2',
+  forceFit: true,
+  height: 300,
+  padding: 0,
 });
 c2.source(dvForOneState);
 c2.coord('theta', {
-    radius: 0.8 // 设置饼图的大小
+  radius: 0.8 // 设置饼图的大小
 });
 c2.legend(false);
 c2.intervalStack()
-    .position('percent')
-    .color('age')
-    .label('age*percent',function(age, percent) {
-        percent = (percent * 100).toFixed(2) + '%';
-        return age + ' ' + percent;
-    });
+  .position('percent')
+  .color('age')
+  .label('age*percent',function(age, percent) {
+    percent = (percent * 100).toFixed(2) + '%';
+    return age + ' ' + percent;
+  });
 
 c1.render();
 c2.render();

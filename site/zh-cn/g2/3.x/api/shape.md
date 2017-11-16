@@ -9,21 +9,21 @@ resource:
 
 # Shape
 
-- 获取方式：`G2.Shape` 
+**获取方式：`G2.Shape`**
 
 通过在 Shape 上注册图形，实现自定义 Shape 的功能。
 
-- 创建方式
+**创建方式**
 
 自定义 Shape 的入口如下：
 
 ```js
-var Shape = G2.Shape;
-var shapeObj = Shape.registerShape('geomType', 'shapeName', { 
-  getPoints: function(pointInfo) {
+const Shape = G2.Shape;
+const shapeObj = Shape.registerShape('geomType', 'shapeName', { 
+  getPoints(pointInfo) {
     // 获取每种 shape 绘制的关键点
   },
-  draw: function(cfg, container) {
+  draw(cfg, container) {
     // 自定义最终绘制的逻辑
   }
 });
@@ -66,7 +66,7 @@ edge | edge 边同 line 线一致，区别就是 edge 是一个线段，连接�
 
 #### 参数
 
-- `cfg`: Object
+- `cfg`: object
 
 该参数包含经过图形映射后的所有数据以及该数据对应的原始数据，结构如下图所示：
 
@@ -82,10 +82,10 @@ edge | edge 边同 line 线一致，区别就是 edge 是一个线段，连接�
 
 ```js
 Shape.registerShape('interval', 'rect', {
-  getPoints: function(pointInfo) {
+  getPoints(pointInfo) {
     // ...
   },
-  draw: function(cfg, container) {
+  draw(cfg, container) {
     // ...
     path = this.parsePath(path);
     // ...
@@ -101,7 +101,7 @@ Shape.registerShape('interval', 'rect', {
 
 #### 参数
 
-- `point`: Object
+- `point`: object
 
 结构如下：
 
@@ -126,8 +126,8 @@ Shape.registerShape('interval', 'rect', {
 
 ```js
 [
-  {x: 0.3, y: 0.34},
-  {x: 0.3, y: 0.34}
+  { x: 0.3, y: 0.34 },
+  { x: 0.3, y: 0.34 }
 ]
 ```
 
@@ -154,27 +154,27 @@ Shape.registerShape('interval', 'rect', {
 <div id="c1"></div>
 
 ```js+
-var Shape = G2.Shape;
+const Shape = G2.Shape;
 Shape.registerShape('interval', 'triangle', {
-  getPoints: function(cfg){
-    var x = cfg.x;
-    var y = cfg.y;
-    var y0 = cfg.y0;
-    var width = cfg.size;
+  getPoints(cfg) {
+    const x = cfg.x;
+    const y = cfg.y;
+    const y0 = cfg.y0;
+    const width = cfg.size;
     return [
-      {x: x-width/2, y: y0},
-      {x: x, y: y},
-      {x: x+width/2, y: y0}
+      { x: x - width / 2, y: y0 },
+      { x: x, y: y },
+      { x: x + width / 2, y: y0 }
     ]
   },
-  draw: function(cfg, group) {
-    var points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
-    var polygon = group.addShape('polygon', {
+  draw(cfg, group) {
+    const points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
+    const polygon = group.addShape('polygon', {
       attrs: {
         points: [
-          [points[0].x, points[0].y],
-          [points[1].x, points[1].y],
-          [points[2].x, points[2].y]
+          [ points[0].x, points[0].y ],
+          [ points[1].x, points[1].y ],
+          [ points[2].x, points[2].y ]
         ],
         fill: cfg.color
       }
@@ -183,15 +183,15 @@ Shape.registerShape('interval', 'triangle', {
   }
 });
 
-var data = [
-  {genre: 'Sports', sold: 275},
-  {genre: 'Strategy', sold: 115},
-  {genre: 'Action', sold: 120},
-  {genre: 'Shooter', sold: 350},
-  {genre: 'Other', sold: 150},
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   id: 'c1',
   height : 300,
   forceFit: true,
@@ -205,27 +205,27 @@ chart.render();
 自定义 Shape 的完整代码如下：
 
 ```js
-var Shape = G2.Shape;
+const Shape = G2.Shape;
 Shape.registerShape('interval', 'triangle', {
-  getPoints: function(cfg){
-    var x = cfg.x;
-    var y = cfg.y;
-    var y0 = cfg.y0;
-    var width = cfg.size;
+  getPoints(cfg) {
+    const x cfg.x;
+    const y = cfg.y;
+    const y0 = cfg.y0;
+    const width = cfg.size;
     return [
-      {x: x-width/2, y: y0},
-      {x: x, y: y},
-      {x: x+width/2, y: y0}
+      { x: x - width / 2, y: y0 },
+      { x: x, y: y },
+      { x: x + width / 2, y: y0 }
     ]
   },
-  draw: function(cfg, group) {
-    var points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
-    var polygon = group.addShape('polygon', {
+  draw(cfg, group) {
+    const points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
+    const polygon = group.addShape('polygon', {
       attrs: {
         points: [
-          [points[0].x, points[0].y],
-          [points[1].x, points[1].y],
-          [points[2].x, points[2].y]
+          [ points[0].x, points[0].y ],
+          [ points[1].x, points[1].y ],
+          [ points[2].x, points[2].y ]
         ],
         fill: cfg.color
       }

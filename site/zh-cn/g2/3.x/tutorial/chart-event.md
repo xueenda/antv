@@ -1,6 +1,6 @@
 <!--
 index: 17
-title: 图表事件
+title: Event 图表事件
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -59,7 +59,7 @@ chart.on('tooltip:change', ev => {}); // tooltip 内容发生变化的时候
 4. 图形元素事件，即组成图表的各种图形元素；
    我们以 『图形元素名』+ 『基础事件名』 的方式来组合图形元素上的事件，帮助用户进行更精准的事件监听，同时也给交互提供了更大的可能性。
 
-```javascript
+```js
 chart.on('point:click', ev => {});
 chart.on('axis-label:click', ev => {});
 ```
@@ -86,23 +86,23 @@ chart.on('axis-label:click', ev => {});
 完整代码：
 
 ```js+
-var data = [
-  {name: 'IE', value: 56.33 },
-  {name: 'Chrome', value: 24.03},
-  {name: 'Firefox', value: 10.38},
-  {name: 'Safari',  value: 4.77},
-  {name: 'Opera', value: 0.91},
-  {name: 'Unknown', value: 0.2}
+const data = [
+  { name: 'IE', value: 56.33 },
+  { name: 'Chrome', value: 24.03 },
+  { name: 'Firefox', value: 10.38 },
+  { name: 'Safari',  value: 4.77 },
+  { name: 'Opera', value: 0.91 },
+  { name: 'Unknown', value: 0.2 }
 ];
-var DataView = DataSet.DataView;
-var dv = new DataView();
+const DataView = DataSet.DataView;
+const dv = new DataView();
 dv.source(data).transform({
   type: 'percent',
   field: 'value',
   dimension: 'name',
   as: 'percent'
 });
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   forceFit: true,
   height: 400
@@ -118,9 +118,9 @@ chart.tooltip({
 chart.intervalStack()
   .position('percent')
   .color('name')
-  .tooltip('name*percent', function(name, percent) {
+  .tooltip('name*percent', (name, percent) => {
     return {
-      name: name,
+      name,
       value: (percent * 100).toFixed(2) + '%'
     };
   })
@@ -131,10 +131,10 @@ chart.intervalStack()
 
 chart.render();
 
-chart.on('interval:click',function(ev) {
-  var data = ev.data;
+chart.on('interval:click', ev => {
+  const data = ev.data;
   if (data) {
-    var name = data._origin['name'];
+    const name = data._origin['name'];
     window.open('http://www.baidu.com/s?wd=' + name);
   }
 });
@@ -166,21 +166,21 @@ chart.on('interval:click',function(ev) {
 完整代码如下：
 
 ```js+
-var data = [
-  {name: '示例 A', value: 38.8 },
-  {name: '示例 B', value: 9.15 },
-  {name: '示例 C', value: 26.35 },
-  {name: '示例 D ',  value: 22.6 },
-  {name: '示例 E', value: 3.1 }
+const data = [
+  { name: '示例 A', value: 38.8 },
+  { name: '示例 B', value: 9.15 },
+  { name: '示例 C', value: 26.35 },
+  { name: '示例 D ',  value: 22.6 },
+  { name: '示例 E', value: 3.1 }
 ];
-var dv = new DataSet.DataView();
+const dv = new DataSet.DataView();
 dv.source(data).transform({
   type: 'percent',
   field: 'value',
   dimension: 'name',
   as: 'percent'
 });
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c2',
   width: 800,
   height: 400
@@ -198,8 +198,8 @@ chart.intervalStack()
   .color('name');
 chart.render();
 
-chart.on('tooltip:change', function(ev) {
-  var item = ev.items[0]; // 获取tooltip要显示的内容
+chart.on('tooltip:change', ev => {
+  const item = ev.items[0]; // 获取tooltip要显示的内容
   item.value = '格式化-' + (item.value * 100).toFixed(2) + '%';
 });
 ```

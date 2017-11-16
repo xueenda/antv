@@ -37,6 +37,7 @@ G2 (The Grammar Of Graphics) 是一个由纯 JavaScript 编写、强大的语义
 ```
 
 ### 通过 npm 安装
+
 <a href="https://www.npmjs.com/package/@antv/g2" target="_blank"><img src="https://img.shields.io/npm/v/@antv/g2.svg?style=flat-square"></a>
 
 我们提供了 G2 npm 包，通过下面的命令即可完成安装
@@ -47,8 +48,9 @@ npm install @antv/g2 --save
 成功安装完成之后，即可使用 `import` 或 `require` 进行引用。
 
 ```js
-var G2 = require('g2');
-var chart = new G2.Chart({
+import G2 from '@antv/g2';
+
+const chart = new G2.Chart({
   container: 'c1',
   width: 600,
   height: 300
@@ -83,15 +85,15 @@ var chart = new G2.Chart({
 这部分代码用 `<script></script>`，可以放在页面代码的任意位置（最好的做法是放在 `</body>` 之前）。
 
 ```js
-var data = [
-  {genre: 'Sports', sold: 275},
-  {genre: 'Strategy', sold: 115},
-  {genre: 'Action', sold: 120},
-  {genre: 'Shooter', sold: 350},
-  {genre: 'Other', sold: 150},
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
 ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
 // Step 1: 创建 Chart 对象
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1', // 指定图表容器 ID
   width : 600, // 指定图表宽度
   height : 300 // 指定图表高度
@@ -141,15 +143,15 @@ chart.render();
     <!-- 创建图表容器 -->
     <div id="c1"></div>
     <script>
-      var data = [
-        {genre: 'Sports', sold: 275},
-        {genre: 'Strategy', sold: 115},
-        {genre: 'Action', sold: 120},
-        {genre: 'Shooter', sold: 350},
-        {genre: 'Other', sold: 150},
+      const data = [
+        { genre: 'Sports', sold: 275 },
+        { genre: 'Strategy', sold: 115 },
+        { genre: 'Action', sold: 120 },
+        { genre: 'Shooter', sold: 350 },
+        { genre: 'Other', sold: 150 }
       ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
       // Step 1: 创建 Chart 对象
-      var chart = new G2.Chart({
+      const chart = new G2.Chart({
         container: 'c1', // 指定图表容器 ID
         width : 600, // 指定图表宽度
         height : 300 // 指定图表高度

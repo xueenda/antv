@@ -22,7 +22,7 @@ resource:
 **1. 传入 dom 容器的 id**
 
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   width: 1000,
   height: 500
@@ -32,7 +32,7 @@ var chart = new G2.Chart({
 **2. 传入 dom 容器的 html 节点对象**
 
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: document.getElementById('c1'),
   width: 1000,
   height: 500
@@ -48,7 +48,7 @@ var chart = new G2.Chart({
 创建 chart 对象时，需要指定图表的宽高，通过如下方式指定：
 
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   width: 1000,
   height: 500
@@ -66,7 +66,7 @@ var chart = new G2.Chart({
 用法如下，具体详见 [api](/zh-cn/g2/3.x/api/chart.html#_属性):
 
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   width: 1000,
   height: 500,
@@ -85,7 +85,7 @@ var chart = new G2.Chart({
 默认情况下，G2 图表的宽度需要用户手动设置 `width` 参数，当需要图表跟随图表容器宽度变化时，则需要开启 `forceFit` 属性，默认其值为  false，开启方式如下：
 
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   forceFit: true,
   height : 400
@@ -110,7 +110,7 @@ chart.forceFit(); // 手动调用自适应函数
 
 ```js
 // 方式一： 设置 animate 属性
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   width: 800,
   height : 400,
