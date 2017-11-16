@@ -1,21 +1,16 @@
 'use strict';
-
-var fs = require('fs'),
-    lstatSync = fs.lstatSync,
-    readdirSync = fs.readdirSync;
-
-var path = require('path'),
-    basename = path.basename,
-    extname = path.extname,
-    join = path.join;
-
+var fs = require('fs');
+var lstatSync = fs.lstatSync;
+var readdirSync = fs.readdirSync;
+var path = require('path');
+var basename = path.basename;
+var extname = path.extname;
+var join = path.join;
 var _ = require('lodash');
-
 var renderMd = require('../../../../lib/render-md');
+var siteConfig = require('../../../../site-config');
 
-var siteConfig = require('../../../../site-config'),
-    base = siteConfig.base;
-
+var base = siteConfig.base;
 var isFile = function isFile(source) {
     return lstatSync(source).isFile();
 };
@@ -25,23 +20,22 @@ var getFiles = function getFiles(source) {
     }).filter(isFile);
 };
 
-// docsByTag
-// docByName
-
 var docList = [];
 var docFiles = getFiles(__dirname).filter(function (file) {
     return extname(file) === '.md';
 });
-var docNamesByTag = {};
-var docByName = {};
-var tagDocByName = {};
 docFiles.forEach(function(file) {
-    var _renderMd = renderMd(file),
-        meta = _renderMd.meta,
-        tags = meta.tags || [];
-
-    var index = _.isNumber(meta.index) ? meta.index : 999,
-        title = meta.title;
+    var _renderMd = renderMd(file);
+    var meta = _renderMd.meta;
+    var authors = meta.authors || [];
+    var author = authors[0] || {
+        name: 'AntV',
+        avatar: 'xxx',
+    };
+    var landscape = meta.landscape;
+    var date = meta.date || '2017-11-22';
+    var index = _.isNumber(meta.index) ? meta.index : 999;
+    var title = meta.title;
 
     var name = basename(file, '.md');
     var doc = {
@@ -49,18 +43,12 @@ docFiles.forEach(function(file) {
         index: index,
         name: name,
         title: title,
+        date: date,
+        authors: authors,
+        author: author,
+        landscape: landscape,
         // hideFromNav: true,
     };
-    if (/^tag-/.test(name)) {
-        var tag = name.replace(/^tag-/, '');
-        tagDocByName[tag] = doc;
-        doc.hideFromNav = false;
-    }
-    docByName[name] = doc;
-    tags.forEach(function (tag) {
-        docNamesByTag[tag] = docNamesByTag[tag] || [];
-        docNamesByTag[tag].push(name);
-    });
     docList.push(doc);
 
 });
@@ -77,11 +65,8 @@ module.exports = {
     navName: 'blog',
     docList: docList,
     docIndexByHref: indexByHref,
-    docNamesByTag,
-    docByName,
-    tagDocByName,
     docsCount: docList.length,
-    template: 'doc',
+    template: 'blog',
     docMenuHeader: '${resource.translate.visBlog}',
     showFooter: false,
     docFilteringSupport: true,

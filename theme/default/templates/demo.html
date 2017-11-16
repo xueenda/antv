@@ -15,7 +15,10 @@
                     <div class="item card">
                         <div class="card-header" role="tab">
                             <h6>
-                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">{{ cat.title }}</a>
+                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">
+                                    <span class="iconfont icon-{{ cat.category }}"></span>
+                                    {{ cat.title }}
+                                </a>
                             </h6>
                         </div>
                         <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}" role="tabpanel" data-parent="#accordion">
@@ -33,7 +36,7 @@
                 </div>
             </div>
             <button type="button" class="btn btn-light btn-lg btn-block collapse-expand">
-                <svg width="16" height="16" fill="#697b8c"><use xlink:href="#_si-left"></use></svg>
+                <span class="iconfont icon-left"></span>
             </button>
         </div>
         <div class="col detail container" id="detail-container">

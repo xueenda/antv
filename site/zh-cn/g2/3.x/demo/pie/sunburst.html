@@ -29,9 +29,9 @@ relativePlots:
   });
   const chart = new G2.Chart({
     container: 'mountNode',
-    width: 700,
-    height: 400,
-    padding: 10
+    forceFit: true,
+    height: window.innerHeight,
+    padding: 0
   });
   chart.source(dv, {
     percent: {

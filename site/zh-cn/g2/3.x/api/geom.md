@@ -252,7 +252,7 @@ chart.point().position('carat*price').shape('cut'); // 使用默认的 shapes
 chart.point().position('carat*price').shape('cut', ['cross', 'tick', 'plus', 'hyphen', 'line']); // 使用自定义的 shapes
 ```
 
-#### shape(field, callback);#
+#### shape(field, callback)
 
 通过回调函数设置图形类型.
 

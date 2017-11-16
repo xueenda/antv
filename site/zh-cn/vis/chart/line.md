@@ -18,7 +18,7 @@ variations:
 
 在折线图中，数据是递增还是递减、增减的速率、增减的规律（周期性、螺旋性等）、峰值等特征都可以清晰地反映出来。所以，折线图常用来分析数据随时间的变化趋势，也可用来分析多组数据随时间变化的相互作用和相互影响。例如可用来分析某类商品或是某几类相关的商品随时间变化的销售情况，从而进一步预测未来的销售情况。在折线图中，一般水平轴（X轴）用来表示时间的推移，并且间隔相同；而垂直轴（Y轴）代表不同时刻的数据的大小。
 
-英文名：Line chart
+英文名：Line Chart
 
 ## 折线图的构成
 
@@ -88,7 +88,8 @@ $.getJSON('/assets/data/system.json?nowrap',function (data) {
   var chart = new G2.Chart({
     id: 'c2',
     forceFit: true,
-    height : 400
+    height : 400,
+    padding: 80
   });
   chart.source(data);
   chart.legend({position: 'top'});
@@ -106,7 +107,7 @@ $.getJSON('/assets/data/system.json?nowrap',function (data) {
     }
   });
   chart.axis('avgRt', {
-    titleOffset: 135
+    grid: null
   });
   chart.line().position('timeStamp*requestCount').size(3);
   chart.line().position('timeStamp*avgRt').color('#E47668').size(3);
@@ -226,10 +227,9 @@ var data = [
 
 <div style="clear: both"></div>
 
-当折线的条数过多时不建议将多条线绘制在一张图上,下图展示了多台机器（实例）的资源占用情况
+当折线的条数过多时不建议将多条线绘制在一张图上，下图展示了多台机器（实例）的资源占用情况
 
-<div id="c5">
-</div>
+<div id="c5"></div>
 
 ```js-
 $.getJSON('/assets/data/monitor.json?nowrap', function(data) {
@@ -240,6 +240,7 @@ $.getJSON('/assets/data/monitor.json?nowrap', function(data) {
     forceFit: true,
     height : 400,
     animate: false,
+    padding: [ 20, 150, 80, 80]
   });
   chart.source(data, {
     time: {
@@ -251,6 +252,9 @@ $.getJSON('/assets/data/monitor.json?nowrap', function(data) {
       alias: '实例'
     }
   });
+  chart.legend({
+  position: 'right'
+});
 
   chart.line().position('time*value').color('type');
   chart.render();
@@ -271,6 +275,8 @@ $.getJSON('/assets/data/monitor.json?nowrap', function(data) {
     forceFit: true,
     height : 400,
     animate: false,
+    padding: [ 20, 150, 80, 80]
+
   });
   chart.source(data, {
     time: {
@@ -284,13 +290,16 @@ $.getJSON('/assets/data/monitor.json?nowrap', function(data) {
   });
 
   chart.legend({
-    selectedMode: 'single'
+    selectedMode: 'single',
+    position: 'right'
   });
-  chart.filter('type', [data[0].type]);
+  chart.filter('type', val => {
+    return val === '40.101.31.134';
+  });
   chart.line().position('time*value').color('type');
   chart.render();
 });
-</div>
+```
 
 ### 折线图的扩展
 
@@ -339,7 +348,7 @@ var data = [
 * 柱状图主要用于多个分类间的数据（大小、数量）的对比，折线图主要用于时间或者连续数据上的趋势。
 * 分类间的数据比较，如果分类不存在顺序，那么不要使用折线图。
 
-## 折线图和[面积图](area)
+## 折线图和[面积图](area.html)
 
 * 折线图和面积图都可以表示一段时间（或者有序分类）的趋势，相比之下面积图的表现力更强一些
 * 面积图还可以表示数据的上下限，例如可以表示温度的最小值、最大值

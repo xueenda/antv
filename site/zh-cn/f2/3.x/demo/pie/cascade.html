@@ -1,0 +1,34 @@
+<!--
+index: 3
+title: 嵌套饼图
+resource:
+  jsFiles:
+-->
+
+<script>
+  F2.Global.pixelRatio = window.devicePixelRatio;
+  const  data = [
+    {a: '1', b: 0.2, c: '1'},
+    {a: '2', b: 0.5, c: '1'},
+    {a: '3', b: 0.4, c: '1'},
+
+    {a: '1', b: 0.8, c: '2'},
+    {a: '2', b: 0.5, c: '2'},
+    {a: '3', b: 0.6, c: '2'}
+  ];
+
+  const chart = new F2.Chart({
+    id: 'mountNode'
+  });
+
+  chart.source(data);
+
+  chart.coord('polar', {
+    transposed: true,
+    inner: 0.5
+  });
+
+  chart.axis(false);
+  chart.interval().position('a*b').color('c').adjust('stack');
+  chart.render();
+</script>

@@ -8,27 +8,9 @@
 
 # Canvas
 
-本文档是G6图形库——G6.Canvas的API文档, 您能从该文档中快速查找到我们的绘图引擎提供的所有**对外发布**的`方法`、`配置`、`属性` 及它们的使用方法。如果有你觉得描述的不够清晰的地方敬请[联系我们](/about/index.html)！
+本文档是G6图形库—G6.Canvas的API文档, 您能从该文档中快速查找到我们的绘图引擎提供的所有**对外发布**的`方法`、`配置`、`属性` 及它们的使用方法。如果有你觉得描述的不够清晰的地方敬请[联系我们](/about/index.html)！
 
-* [直线——line](#_直线——line)
-* [二阶bezier曲线——quadratic](#_二阶bezier曲线——quadratic)
-* [三阶bezier曲线——cubic](#_三阶bezier曲线——cubic)
-* [圆弧线——arc](#_圆弧线——arc)
-* [多段线——polyline](#_多段线——polyline)
-* [矩形——rect](#_矩形——rect)
-* [圆——circle](#_圆——circle)
-* [椭圆形——ellipse](#_椭圆形——ellipse)
-* [扇形——fan](#_扇形——fan)
-* [多边形——polygon](#_多边形——polygon)
-* [图像——image](#_图像——image)
-* [文本——text](#_文本——text)
-* [svg的path——path](#_svg的path——path)
-* [动画——animate](#_动画——animate)
-* [变换——transform](#_变换——transform)
-* [通用属性](#_通用属性)
-* [通用方法](#_通用方法)
-
-# 直线——line
+## 直线—line
 
 <div id="c1"></div>
 
@@ -130,6 +112,7 @@
 ```
 
 ## 属性
+
 ### [x1](#_x1)
 [Number]，默认值: 0 第一个点的 x 值。
 
@@ -161,13 +144,13 @@
 
 ### [getPoint](#_getPoint)
 
-##### 参数
+#### 参数
 - t 百分比
 
-##### 返回
+#### 返回
 - point 画布坐标点
 
-# 二阶bezier曲线——quadratic
+## 二阶bezier曲线—quadratic
 
 <div id="c2"></div>
 
@@ -236,7 +219,9 @@
 ```
 
 ## 属性
+
 ### [p1](#_p1)
+
 二阶贝赛尔曲线的第一个点，曲线总是开始于这个点。
 
 <span style="font-style:italic;color:#F93D26">
@@ -244,6 +229,7 @@
 </span>
 
 ### [p2](#_p2)
+
 二阶贝赛尔曲线控制点，曲线总是不经过这个点，不过这个点会影响曲线的形状
 
 <span style="font-style:italic;color:#F93D26">
@@ -269,13 +255,16 @@
 ## 方法
 
 ### [getPoint](#_getPoint)
-##### 参数
+
+#### 参数
+
 - t 百分比
 
-##### 返回
+#### 返回
+
 - point 画布坐标点
 
-# 三阶bezier曲线——cubic
+## 三阶bezier曲线——cubic
 
 <div id="c3"></div>
 
@@ -346,7 +335,9 @@
 ```
 
 ## 属性
+
 ### [p1](#_p1)
+
 cubic的第一个点，曲线总是开始于这个点。
 
 <span style="font-style:italic;color:#F93D26">
@@ -354,6 +345,7 @@ cubic的第一个点，曲线总是开始于这个点。
 </span>
 
 ### [p2](#_p2)
+
 cubic第一个控制点，曲线总是不经过这个点，不过这个点会影响曲线的形状
 
 <span style="font-style:italic;color:#F93D26">
@@ -361,6 +353,7 @@ cubic第一个控制点，曲线总是不经过这个点，不过这个点会影
 </span>
 
 ### [p3](#_p3)
+
 cubic第二个控制点，曲线总是不经过这个点，不过这个点会影响曲线的形状
 
 <span style="font-style:italic;color:#F93D26">
@@ -368,6 +361,7 @@ cubic第二个控制点，曲线总是不经过这个点，不过这个点会影
 </span>
 
 ### [p4](#_p4)
+
 cubic的终点，曲线总是结束于这个点
 
 <span style="font-style:italic;color:#F93D26">
@@ -392,7 +386,7 @@ cubic的终点，曲线总是结束于这个点
 ##### 返回
 - point 画布坐标点
 
-# 圆弧线——arc
+## 圆弧线—arc
 
 <div id="c4"></div>
 
@@ -439,6 +433,7 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
+
 ### [x](#_x)
 默认值: 0 圆心的x值
 
@@ -483,7 +478,7 @@ cubic的终点，曲线总是结束于这个点
 ##### 返回
 - point 画布坐标点
 
-# 多段线——polyline
+## 多段线—polyline
 
 <div id="c5"></div>
 
@@ -504,6 +499,7 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
+
 ### [points](#_points)
 多个点组成的数组, 数组的每一项是一个数组[x, y], 这个样个数组代表一个点，x是这个点的x坐标，y是这个点的y坐标
 
@@ -529,7 +525,7 @@ cubic的终点，曲线总是结束于这个点
 ##### 返回
 - point 画布坐标点
 
-# 矩形——rect
+## 矩形—rect
 
 <div id="c6"></div>
 
@@ -571,6 +567,7 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
+
 ### [x](#_x)
 矩形的左上角x的坐标
 
@@ -598,7 +595,7 @@ cubic的终点，曲线总是结束于这个点
 ### [storkeOpacity](#_storkeOpacity)
 边框透明度
 
-# 圆——circle
+## 圆—circle
 
 <div id="c7"></div>
 
@@ -638,6 +635,7 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
+
 ### [x](#_x)
 圆心坐标的x坐标
 
@@ -659,7 +657,7 @@ cubic的终点，曲线总是结束于这个点
 ### [storkeOpacity](#_storkeOpacity)
 边框透明度
 
-# 椭圆形——ellipse
+## 椭圆形—ellipse
 
 <div id="c8"></div>
 
@@ -808,7 +806,7 @@ cubic的终点，曲线总是结束于这个点
 ### [storkeOpacity](#_storkeOpacity)
 边框透明度
 
-# 多边形——polygon
+## 多边形—polygon
 
 <div id="c9.1"></div>
 
@@ -848,7 +846,7 @@ cubic的终点，曲线总是结束于这个点
 ### [storkeOpacity](#_storkeOpacity)
 边框透明度
 
-# 图像——image
+## 图像—image
 
 <div id="c10"></div>
 
@@ -922,7 +920,7 @@ cubic的终点，曲线总是结束于这个点
 ### [storkeOpacity](#_storkeOpacity)
 边框透明度
 
-# 文本——text
+## 文本—text
 
 <div id="c11"></div>
 
@@ -970,6 +968,7 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
+
 ### [x](#_x)
 文字的左上角的x值
 
@@ -980,40 +979,50 @@ cubic的终点，曲线总是结束于这个点
 文字内容
 
 ### [fontFamily](#_fontFamily)
+
 字体 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
 ### [fontSize](#_fontSize)
+
 字体大小 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
 ### [fontWeight](#_fontWeight)
+
 字体粗细 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
 ### [fontStyle](#_fontStyle)
+
 字体样式 [参见](http://www.w3school.com.cn/tags/canvas_font.asp)
 
 ### [textAlign](#_textAlign)
+
 左右对齐方式
 
 ![image](https://zos.alipayobjects.com/rmsportal/oMVFeaVCYNkDCeN.png)
 
 ### [textBaseline](#_textBaseline)
+
 上下对齐方式
 
 ![image](https://zos.alipayobjects.com/rmsportal/VejEpbzakKrESzH.png)
 
 ### [fill](#_fill)
+
 填充颜色
 
 ### [fillOpacity](#_fillOpacity)
+
 填充透明度
 
 ### [stroke](#_stroke)
+
 边框颜色
 
 ### [storkeOpacity](#_storkeOpacity)
+
 边框透明度
 
-# svg的path——path
+## svg的path—path
 
 <div id="c12"></div>
 
@@ -1047,30 +1056,38 @@ cubic的终点，曲线总是结束于这个点
 ```
 
 ## 属性
+
 ### [path](#_path)
+
 path规范的命令 [参见](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths)
 
 ### [fill](#_fill)
+
 填充颜色
 
 ### [fillOpacity](#_fillOpacity)
+
 填充透明度
 
 ### [stroke](#_stroke)
+
 边框颜色
 
 ### [storkeOpacity](#_storkeOpacity)
+
 边框透明度
 
 ### [getPoint](#_getPoint)
 
-##### 参数
+#### 参数
+
 - t 百分比
 
 ##### 返回
 - point 画布坐标点
 
-# 动画——animate
+## 动画—animate
+
 动画
 
 ## 方法
@@ -1153,27 +1170,36 @@ shape.animate(cfg, duration, easing, callback);
   },5000, 'linear');
 ```
 
-# 通用属性
+## 通用属性
+
 下列属性是所有元素都共有的。
 
 ### capture
+
 是否可被捕捉
 
 ### zIndex
+
 图层层级
 
 ### lineWidth
+
 线宽
+
 画布坐标
 
 ### lineDash
 虚线
+
 a1, a2 …… 分别指的是实线和空线所占像素的多少
+
 - [a1, a2, a3……]
 - "a1 a2"
 
 ### clip
+
 剪切
+
 图形可以接受另外一个图形作为它的剪切图形, 用作剪切的图形必须是能够填充(fill)的图形。
 
 <div id="c100"></div>
@@ -1275,7 +1301,8 @@ a1, a2 …… 分别指的是实线和空线所占像素的多少
   canvas.draw();
 ```
 
-# 变换——transform
+## 变换——transform
+
 #### translate(tx, ty)
 
 ![](https://zos.alipayobjects.com/rmsportal/NPknvcCQMFCFsSjBNwdc.png)
@@ -1338,5 +1365,6 @@ sy表示y方向的缩放量
 销毁自身
 
 #### remove(destroy)
+
 删除自己, 从父元素中删除自己
 如果destroy为true，则移除后销毁自身

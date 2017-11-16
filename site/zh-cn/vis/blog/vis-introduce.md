@@ -1,9 +1,16 @@
 <!--
 index: 0
-title: 可视化概览
+title: 数据可视化概览
+authors:
+  - name: 萧庆
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+  - name: 御术
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+  - name: 玉伯
+    avatar: ${assets}/image/vis/avatar/placeholder.png
+date: "2017-11-22"
+landscape: ${assets}/image/vis/blog/vis-introduce.jpg
 -->
-
-# 可视化概览
 
 ## 一、什么是数据可视化
 
@@ -20,21 +27,19 @@ title: 可视化概览
 
 科学可视化（Scientific Visualization）是科学之中的一个跨学科研究与应用领域，主要关注三维现象的可视化，如建筑学、气象学、医学或生物学方面的各种系统，重点在于对体、面以及光源等等的逼真渲染。科学可视化是计算机图形学的一个子集，是计算机科学的一个分支。 科学可视化的目的是以图形方式说明科学数据，使科学家能够从数据中了解、说明和收集规律。
 
-![b588fdbeccd3e61da33d4887844e5dd2.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/b588fdbeccd3e61da33d4887844e5dd2.png "")
-
+![image.png | center | 600x535](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/538dd228-eb40-43b4-9ec2-c3d762d405a2.png "")
 
 ### 信息可视化
 
 信息可视化（Information Visualization）是研究抽象数据的交互式视觉表示以加强人类认知。 抽象数据包括数字和非数字数据，如地理信息与文本。信息可视化与科学可视化有所不同：科学可视化处理的数据具有天然几何结构（如磁感线、流体分布等），信息可视化处理的数据具有抽象数据结构。柱状图、趋势图、流程图、树状图等，都属于信息可视化，这些图形的设计都将抽象的概念转化成为可视化信息。
 
-![f1e257be9068717f0b1269c3a8f69d52.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/f1e257be9068717f0b1269c3a8f69d52.png "")
-
+![image.png | center | 658x494](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/51e1c82c-fe14-49b3-b89f-1f6f48782596.png "")
 
 ### 可视分析学
 
 可视分析学（Visual Analytics）是随着科学可视化和信息可视化发展而形成的新领域，重点是通过交互式视觉界面进行分析推理。
 
-![bed4411e2a9198b4cece239484ecdc42.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/bed4411e2a9198b4cece239484ecdc42.png "")
+![image.png | center | 704x375](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/53b46dac-4982-41c1-8b34-c67759de3290.png "")
 
 
 科学可视化、信息可视化与可视分析学三者有一些重叠的目标和技术，这些领域之间的边界尚未有明确共识，初略来说有以下区分：
@@ -48,14 +53,15 @@ title: 可视化概览
 
 ### 人类利用视觉获取的信息量，远远超出其他器官
 
-人类通过视觉获取数据比任何其他形式的获取方式更好，人类大脑处理图像的速度比文本快 6 万倍，传输给大脑的信息 90％ 是可视化的。人类天生是视觉性的，我们可以利用天生技能来增强数据处理和组织效率。
+人类的眼睛是一对高带宽巨量视觉信号输入的并行处理器，拥有超强模式识别能力，配合超过50%功能用于视觉感知相关处理的大脑，使得人类通过视觉获取数据比任何其他形式的获取方式更好，大量视觉信息在潜意识阶段就被处理完成，人类对图像的处理速度比文本快 6 万倍。
 
-![43a5be3896556814030e5d6cd4925278.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/43a5be3896556814030e5d6cd4925278.png "")
+数据可视化正是利用人类天生技能来增强数据处理和组织效率。
 
+![image.png | center | 704x469](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/706cdf34-fa08-46ee-ab6c-10b29c29058d.png "")
 
 ### 可视化可以帮助我们处理更加复杂的信息并增强记忆
 
-大多数人对统计数据了解甚少，基本统计方法（平均值、中位数、范围等）并不符合人类的认知天性。 最着名的一个例子是 Anscombe 的四重奏，根据统计方法看数据很难看出规律，但一可视化出来，规律就非常清楚。
+大多数人对统计数据了解甚少，基本统计方法（平均值、中位数、范围等）并不符合人类的认知天性。 最著名的一个例子是 Anscombe 的四重奏，根据统计方法看数据很难看出规律，但一可视化出来，规律就非常清楚。
 
 ![6c3b9a8d8e26341efd0756c558751372.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/6c3b9a8d8e26341efd0756c558751372.png "")
 
@@ -153,7 +159,7 @@ D3 没有提供封装好的组件，在复用性、易用性方面不佳，社�
 * c3.js: 一个轻量级的基于状态管理的图表库
 
 
-==D3 有着Stanford的血脉渊源，在学术界享有很高声誉，灵活强大使得它成为目前领域内使用最广泛的可视化类库，但偏底层的API和数据驱动模式，使得上手D3存在一定门槛，基于D3的工程实现上需要自己考虑和处理更多内容，如动画、交互、统一样式等，研发成本较高。==
+==D3 有着 Stanford 的血脉渊源，在学术界享有很高声誉，灵活强大使得它成为目前领域内使用最广泛的可视化类库，但偏底层的API和数据驱动模式，使得上手D3存在一定门槛，基于D3的工程实现上需要自己考虑和处理更多内容，如动画、交互、统一样式等，研发成本较高。==
 
 ### HighCharts
 
@@ -174,7 +180,7 @@ HighCharts 的优劣：
 
 ### ECharts
 
-ECharts 缩写自 Enterprise Charts，企业级图表，开源来自百度数据可视化团队，是一个纯 Javascript 的图表库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器，底层依赖另一个也是该团队自主研发的轻量级的 Canvas 类库 ZRender，提供直观，生动，可交互，可高度个性化定制的数据可视化图表。ECharts 是目前国内唯一一个入选 GitHub 全球可视化榜单的开源项目，1.7w+ star 全球排名第四，社区活跃，覆盖主流前端框架和 8 种编程语言的扩展，目前国内市场占有率处于绝对领先地位。
+ECharts 缩写自 Enterprise Charts，企业级图表，开源来自百度数据可视化团队，是一个纯 Javascript 的图表库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器，底层依赖另一个也是该团队自主研发的轻量级的 Canvas 类库 ZRender，提供直观，生动，可交互，可高度个性化定制的数据可视化图表。ECharts 是目前国内唯一一个入选 GitHub 全球可视化榜单的开源项目，2w+ star 全球排名第三，社区活跃，覆盖主流前端框架和 8 种编程语言的扩展，目前国内市场占有率处于绝对领先地位。
 
 ![0dab29eb55e265d088e40b2a2284fcf8.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/0dab29eb55e265d088e40b2a2284fcf8.png "")
 
@@ -245,16 +251,19 @@ Vega 的优劣：
 
 ## 六、大阿里的数据可视化
 
-大阿里（阿里巴巴、蚂蚁金服、菜鸟物流等集团）有各种数据可视化业务，在业务中沉淀了不少可视化类库与工具。目前总体来说，底层技术已逐步收敛到蚂蚁金服的 AntV 系列，同时基于 AntV 的组件、工具、产品等可视化生态开始繁荣，开始逐步影响业界。
+大阿里（阿里巴巴、蚂蚁金服、菜鸟物流等集团统称）有各种数据可视化产品和业务，如QuickBI，信鸽地图，阿里云的 [DataV](https://data.aliyun.com/visual/datav) 更是可视化大屏方面的人气产品在领域内有着很高的赞誉。
+
+而另一方，在数量更多的普通用户产品，中后台应用系统中也存在大量的数据可视化需求，在这些业务中沉淀出了很多优秀的可视化类库与工具，如国际UED的 BizCharts、淘宝基础平台的 IceChart、集团数据技术和产品部的Recharts等等。在这大量的业务应用和类库背后有一个共同的名字，AntV。
 
 ### AntV 是什么
 
-AntV 是一整套数据可视化解决方案，包括
+AntV 是蚂蚁金服全新一代数据可视化解决方案，主要面向从事数据可视化应用相关的工程师和设计师，目前包括：
 
-* 底层绘图引擎 G：目前基于 canvas 2d 提供基础绘图能力，基于 webgl 的 3d 版本在规划中
-* 可视化语法类库 G2：提供类似于 Vega 的一整套图形语法，主要是对统计类数据展示，灵活强大
-* 关系可视化类库 G6：用于流程图、树图等关系数据的可视化
-* 可视化解决方案沉淀：梳理各种图表的最佳适用场景、不适场景，以及特定场景下的可视化方案
+* 底层绘图引擎 G：目前基于 canvas 2d 提供基础绘图能力，基于 webgl 的版本正在规划中；
+* 可视化语法类库 G2：一套数据驱动的高交互可视化图形语法，提供了丰富的图表、专业的数据处理能力、便利的扩展方式和强大交互能力；
+* 关系可视化类库 G6：专注解决流程与关系分析的图表库，集成了大量的交互，可以轻松的进行动态流程图和关系网络的开发；
+* 移动端图表类库 F2：是一套精简、高效易扩展的移动端图表库，适于对性能、体积、扩展性要求严苛的移动应用场景下使用；
+* 可视化设计指引与使用规范：统计图表以及常用场景下的可视化设计指引和使用规范；
 
 
 ### G2
@@ -293,54 +302,11 @@ G6 的优劣：
 
 ### AntV 发展现状
 
-G2 于 2016 年 3 月份正式对外开放（代码尚未开源），目前正在迅猛发展。
-
-![a4277f5b7bf2b404ead80281ea4cff41.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/a4277f5b7bf2b404ead80281ea4cff41.png "")
-
+得益于丰富的业务场景和用户需求挑战，AntV经历多年积累与不断打磨，G2 于 2016 年 3 月份对外开放，2017 年 11 月 22 日正式开源，目前已支撑起阿里集团内外2000+业务系统，通过了千万级UV产品的严苛考验，同时基于 AntV 的组件、工具、产品等可视化生态逐渐繁荣。
 
 AntV 的整体产品层次图如下：
 
 ![bd5523855201fe9718baac633f37271e.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/bd5523855201fe9718baac633f37271e.png "")
-
-
-目前基于 G2 进行二次业务封装的技术方案有：
-
-* [bizchart](http://groups.alidemo.cn/bizcharts/bizcharts/demo/)，国际 UED，风月
-* [icechart](http://ice.alibaba-inc.com/chart/about)，淘宝-基础平台技术部，晴苑
-* [DataV](https://data.aliyun.com/visual/datav)，已确定底层迁移 G2，阿里云事业群-飞天一部-数据引擎-产品研发一组-可视化
-* [Alisis](https://bigdata.alibaba-inc.com/worksheet/index.htm)，平台数据技术事业群-基础平台部-数据服务平台部，祁涛
-* [金蝉](http://cicada.bz00b.alipay.net/hmpln/index.htm)，商家开放产品技术部
-* 淘票票 App 对 g2-mobile 进行了二次封装
-* [recharts](http://recharts.org/#/zh-CN/)，基于 D3 的 react 图表库，集团-数据技术及产品部-产品技术，流形。==待沟通，将底层迁移到 AntV==
-* [chartx](http://thx.github.io/chartx/)，声明式图表库，阿里妈妈 UED，释剑。==待沟通，将底层迁移到 AntV==
-* [Hilo](http://hiloteam.github.io/index.html), 互动小游戏引擎，天猫事业部-产品技术部-行业&供应链平台-积分&互动平台，江成。==领域不一样，属于图形互动领域==
-* Kissy Chart，不再维护
-* Pizza，不再维护
-
-
-### 大阿里数据可视化小组规划
-
-当前集团内存有大量数据可视化相关应用，大多数 BU 都无明确的技术选型指南，所采用的可视化技术栈种类繁多，设计和交互规范也是参差不齐。
-
-由于缺乏通畅的信息沟通渠道导致重复建设的存在，而缺乏专业的数据可视化素养的工程师往往不能真正理解和发挥所使用的技术类库的优势和特点，影响工程研发效率。
-
-核心可视化技术团队一般成员较少，而且分散在各 BU 各部门，无法形成有效的合力，无法统一对外发声，缺乏技术交流也不利于工程师自身的成长发展。
-
-基于现状，2018 财年将尝试成立大阿里数据可视化工作小组。
-
-![7d935f9f8168031d0e990f8d7b1c81f8.png | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/10334/7d935f9f8168031d0e990f8d7b1c81f8.png "")
-
-
-关键事项是：
-
-1. **研发资源共享**，合力打造底层通用基础统计模块，通用基础图形类库等；
-2. **设计资源共享**，统一可视化设计基础规范，提升产品质量和用户体验；
-3. **最佳实践共享**，互通有无，减少不必要的重复劳动甚至重复造轮子；
-4. **倒三角技术栈**，协同策应帮助各BU实现技术栈收敛统一，提升工程研发效能；
-5. **成就技术社群**，形成阿里数据可视化技术社群，促进技术交流和布道，帮助工程师加速成长。
-
-
-![cc37345ef02af0edcea9a66d4ca0e817 | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/attach/9119/cc37345ef02af0edcea9a66d4ca0e817 "")
 
 
 ## 七、写在最后
@@ -358,3 +324,4 @@ AntV 的整体产品层次图如下：
 数据可视化是个庞大的领域，涉及的学科非常多。但正是因为这种跨学科性，让可视化领域充满活力与机遇。这篇文章仅仅是对数据可视化非常粗浅的一个概要介绍，更多内容，推荐陈为老师编著的《数据可视化》等经典著作。
 
 最后，非常欢迎大家一起来用用 [AntV](https://antv.alipay.com/) 可视化解决方案。非常期待有更多同仁对可视化感兴趣，无论在哪，我们都可以协同合作，让数据的世界栩栩如生起来！
+

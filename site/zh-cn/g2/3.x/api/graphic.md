@@ -18,7 +18,7 @@ title: 绘图属性
 * `opacity` 设置绘图的当前 alpha 或透明值；
 * `globalCompositeOperation` 设置新图像如何绘制到已有的图像上。
 
-**！注意：**
+> **！注意：**
 
 G2 对图形属性进行了缩写
 
@@ -33,13 +33,20 @@ G2 对图形属性进行了缩写
 * [`lineWidth`](http://www.w3school.com.cn/tags/canvas_linewidth.asp) 设置当前的线条宽度；
 * [`miterLimit`](http://www.w3school.com.cn/tags/canvas_miterlimit.asp)  设置最大斜接长度。
 
-**！注意：**
+> **！注意：**
 
-G2 在现有线的样式基础上增加了虚线的支持：
+1. G2 在现有线的样式基础上增加了虚线的支持：
 
 * `lineDash`：设置线的虚线样式，可以指定一个数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。 如果数组元素的数量是奇数， 数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]。
 
 这个属性取决于浏览器是否支持 setLineDash 函数，详情参考[setLineDash](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash)。
+
+2. G2 在现有线的基础上增加了首尾箭头的绘制支持：
+
+- `startArrow`: true|boolean，是否渲染起点箭头
+- `endArrow`: true|boolean，是否渲染终点箭头
+- `arrowAngle`: number，角度，箭头的夹角大小
+- `arrowRadius`: number，箭头长度
 
 ## 文本属性
 

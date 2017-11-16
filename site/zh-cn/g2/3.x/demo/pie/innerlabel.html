@@ -28,9 +28,8 @@ chartDetail: ${base}/zh-cn/vis/chart/pie.html
   });
   const chart = new G2.Chart({
     container: 'mountNode',
-    width: 700,
-    height: 350,
-    padding: 80
+    forceFit: true,
+    height: window.innerHeight,
   });
   chart.source(dv, {
     percent: {

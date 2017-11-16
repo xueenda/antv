@@ -1,0 +1,71 @@
+<!--
+index: 1
+title: 弧长链接图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 弧长链接图是节点－链接法的一个变种，节点－链接法是指用节点表示对象，用线（或边）表示关系的节点－链接布局(node-link)的一种可视化布局表示。弧长链接图在此概念的基础上，采用一维布局方式，即节点沿某个线性轴或环状排列，用圆弧表达节点之间的链接关系。
+plotUsage: 弧长链接图适用于表达数据之间的关系，以及关系的重要性。
+relativePlots:
+  - ${plotByName.arc}
+  - ${plotByName.chord}
+chartDetail: ${base}/zh-cn/vis/chart/arc.html
+-->
+<script>
+  $.getJSON('/assets/data/relationship-with-weight.json', data => {
+    // arc diagram layout
+    const ds = new DataSet();
+    const dv = ds.createView().source(data, {
+      type: 'graph',
+      edges: d => d.links
+    });
+    dv.transform({
+      type: 'diagram.arc',
+      marginRatio: 0.5,
+      // sortBy: 'frequency' // id, weight, frequency, {function}
+    });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.legend(false);
+    chart.tooltip({
+      showTitle: false
+    });
+
+    const edgeView = chart.view();
+    edgeView.source(dv.edges);
+    edgeView.axis(false);
+    edgeView.edge()
+      .position('x*y')
+      .shape('arc')
+      .color('source')
+      .opacity(0.5)
+      .tooltip('source*target');
+
+    const nodeView = chart.view();
+    nodeView.source(dv.nodes);
+    nodeView.axis(false);
+    nodeView.point()
+      .position('x*y')
+      .shape('circle')
+      .size('value')
+      .color('id')
+      .opacity(0.5)
+      .style({
+        stroke: 'grey'
+      })
+      .label('name', { // label configuration for non-polar coord
+        offset: -10,
+        textStyle: {
+        textAlign: 'left',
+        rotate: 90
+        }
+      });
+
+    chart.render();
+  });
+</script>

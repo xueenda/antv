@@ -16,7 +16,7 @@ tags:
 漏斗图总是开始于一个100%的数量，结束于一个较小的数量。在开始和结束之间由N个流程环节组成。每个环节用一个梯形来表示，梯形的上底宽度表示当前环节的输入情况，梯形的下底宽度表示当前环节的输出情况，上底与下底之间的差值形象的表现了在当前环节业务量的减小量，当前梯形边的斜率表现了当前环节的减小率。
 通过给不同的环节标以不同的颜色，可以帮助用户更好的区分各个环节之间的差异。漏斗图的所有环节的流量都应该使用同一个度量。
 
-英文名：Funnel plot
+英文名：Funnel Chart
 
 ## 漏斗图的构成
 
@@ -74,9 +74,7 @@ tags:
     id: 'c3',
     forceFit: true,
     height : 580,
-    plotCfg: {
-      margin: [50,100,80,50]
-    }
+    padding: [50,100,80,50]
   });
 
   chart.source(data);
@@ -87,7 +85,7 @@ tags:
   chart.scale('step',{alias: '交易环节'});
   chart.coord('rect').transpose().scale(1,-1);
 
-  chart.intervalSymmetric().position('step*value').color('step').shape('funnel').label('step',{label: {'text-anchor': 'start'},offset: 5});
+  chart.intervalSymmetric().position('step*value').color('step').shape('funnel').label('step',{textStyle: {textAlign: 'start'},offset: 5});
   chart.render();
 ```
 
@@ -124,7 +122,7 @@ tags:
   var chart = new G2.Chart({
     id : 'c4',
     forceFit: true,
-    height : 400
+    height: 400
   });
 
   chart.source(data);
@@ -134,9 +132,9 @@ tags:
   chart.render();
 
   var chart = new G2.Chart({
-    id : 'c4_1',
+    id: 'c4_1',
     forceFit: true,
-    height : 400
+    height: 400
   });
 
   chart.source(data);
@@ -166,7 +164,7 @@ tags:
   var chart = new G2.Chart({
     container: 'c5',
     forceFit: true,
-    height : 400
+    height: 400
   });
 
   chart.source(data);
@@ -206,7 +204,7 @@ tags:
   var chart = new G2.Chart({
     container: 'c6',
     forceFit: true,
-    height : 400
+    height: 400
   });
   
   var actualView = chart.view();
@@ -224,9 +222,9 @@ tags:
     .color('name')
     .shape('pyramid')
     .style({
-    lineWidth: 2,
-    stroke: '#fff'
-  });
+      lineWidth: 2,
+      stroke: '#fff'
+    });
 
   var expectView = chart.view();
   expectView.source(expectData, {
@@ -239,7 +237,7 @@ tags:
   expectView.coord('rect').transpose().scale(1,-1);
   expectView.axis(false);
   expectView.tooltip({
-    title: null
+    showTitle: false
   });
   expectView.intervalSymmetric()
     .position('name*value')

@@ -124,6 +124,9 @@ chart.intervalStack()
       value: (percent * 100).toFixed(2) + '%'
     };
   })
+  .style({
+    cursor: 'pointer'
+  })
   .label('name');
 
 chart.render();
@@ -136,6 +139,11 @@ chart.on('interval:click',function(ev) {
   }
 });
 ```
+
+说明：
+
+* 通过 interval:click 监听饼图的点击事件
+* 通过 style 方法中设置 cursor: 'pointer' 改变鼠标形状
 
 ### 示例 2：动态改变 tooltip 显示信息
 

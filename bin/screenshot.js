@@ -9,28 +9,22 @@ var getPort = require('get-port');
 var http = require('http');
 var serveStatic = require('serve-static');
 var program = require('commander');
-
-var _require = require('fs'),
-    writeFileSync = _require.writeFileSync;
-
-var _require2 = require('d3-queue'),
-    queue = _require2.queue;
-
-var _require3 = require('walk'),
-    walk = _require3.walk;
-
-var _require4 = require('shelljs'),
-    mkdir = _require4.mkdir;
-
-var _require5 = require('path'),
-    extname = _require5.extname,
-    join = _require5.join,
-    relative = _require5.relative,
-    resolve = _require5.resolve;
-
+var fs = require('fs');
+var writeFileSync = fs.writeFileSync;
+var d3Queue = require('d3-queue');
+var queue = d3Queue.queue;
+var walk = require('walk').walk;
+var shelljs = require('shelljs');
+var mkdir = shelljs.mkdir;
+var path = require('path');
+var extname = path.extname;
+var join = path.join;
+var relative = path.relative;
+var resolve = path.resolve;
 var loadConfig = require('../lib/load-config');
 var loadTemplates = require('../lib/load-templates');
 var md2html = require('../lib/md2html');
+var imageminDir = require('../lib/imagemin-dir');
 var pkg = require('../package.json');
 
 program.version(pkg.version).option('-c, --config', 'configuration').parse(process.argv);
@@ -93,10 +87,12 @@ getPort().then(function (port) {
             }
             var ext = extname(stat.name);
             if (ext === '.html' || ext === '.md') {
-                var htmlContent = renderFile(resolve(root, stat.name), {
+                var renderedFile = renderFile(resolve(root, stat.name), {
                     template: template,
                     demoTheme: demoTheme,
                 });
+                var htmlContent = renderedFile.content;
+                var htmlMeta = renderedFile.data;
                 var fileBasename = relativeName.replace(/\.html$/, '').replace(/\.md$/, '');
                 var targetFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.html');
                 writeFileSync(targetFilename, htmlContent, 'utf8');
@@ -106,11 +102,15 @@ getPort().then(function (port) {
 
                 var outputFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.png');
                 debug(screenshotDest, fileBasename);
-                taskQueue.push({
-                    fileBasename: fileBasename,
-                    outputFilename: outputFilename,
-                    targetUrl: targetUrl,
-                });
+                if (htmlMeta.screenshot) {
+                    debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> skipping file because screenshot is specified......');
+                } else {
+                    taskQueue.push({
+                        fileBasename: fileBasename,
+                        outputFilename: outputFilename,
+                        targetUrl: targetUrl,
+                    });
+                }
             }
             next();
         });
@@ -156,13 +156,17 @@ getPort().then(function (port) {
                 });
             });
             q.awaitAll(function (error) {
-                if (error) {
-                    debug(error);
-                    // process.exit(1);
-                } else {
-                    index ++;
-                    screenshotTasks(tasks, index);
-                }
+                imageminDir(screenshotDest, {
+                    callback: function () {
+                        if (error) {
+                            debug(error);
+                            // process.exit(1);
+                        } else {
+                            index ++;
+                            screenshotTasks(tasks, index);
+                        }
+                    }
+                });
             });
         });
     }

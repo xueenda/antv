@@ -1,6 +1,7 @@
 import CodeMirror from 'codemirror';
 import Clipboard from 'clipboard';
 import getQueryVariable from './utils/get-query-variable';
+import inView from './utils/in-view';
 import './demo.less';
 
 const $code = $('#code');
@@ -124,11 +125,11 @@ const $collapseExpand = $('.collapse-expand');
 $collapseExpand.click(() => {
     if ($menu.hasClass('collapsed')) {
         $menu.removeClass('collapsed');
-        $collapseExpand.find('svg').html('<use xlink:href="#_si-left"></use>');
+        $collapseExpand.find('.iconfont').removeClass('icon-right').addClass('icon-left');
     } else {
         $menu.addClass('collapsed');
         $menu.find('.collapse.show').removeClass('show');
-        $collapseExpand.find('svg').html('<use xlink:href="#_si-right"></use>');
+        $collapseExpand.find('.iconfont').removeClass('icon-left').addClass('icon-right');
     }
     resizePreview();
 });
@@ -141,4 +142,8 @@ $menu.find('.menu-inner').click(() => {
         resizePreview();
     }
 });
+const $currentMenuItem = $('.list-group-item.active');
+if (!inView($currentMenuItem)) {
+    $currentMenuItem[0].scrollIntoView();
+}
 

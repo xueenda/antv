@@ -1,0 +1,60 @@
+<!--
+index: 6
+title: 动态变化的图表
+resource:
+  jsFiles:
+-->
+
+<script>
+  F2.Global.pixelRatio = window.devicePixelRatio;
+  const data = [];
+
+  // 添加数据，模拟数据，可以指定当前时间的偏移的秒
+  function getRecord(offset) {
+    offset = offset || 0;
+    return {
+      time: new Date().getTime() + offset * 1000,
+      value: Math.random() + 10
+    };
+  }
+
+  data.push(getRecord(-2));
+  data.push(getRecord(-1));
+  data.push(getRecord());
+
+  const chart = new F2.Chart({
+    id: 'mountNode'
+  });
+
+  const defs = {
+    time: {
+      type: 'timeCat',
+      mask: 'hh:mm:ss',
+      tickCount: 5,
+      range: [ 0, 1 ]
+    },
+    value: {
+      tickCount: 5,
+      min: 8
+    }
+  };
+  // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
+  chart.axis('value', {
+    label: {
+      fontSize: 14
+    }
+  });
+  chart.axis('time', {
+    label: {
+      fontSize: 14
+    }
+  });
+  chart.source(data, defs);
+  chart.line().position('time*value');
+  chart.render();
+
+  setInterval(function() {
+    data.push(getRecord());
+    chart.changeData(data);
+  }, 2000);
+</script>

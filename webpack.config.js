@@ -2,10 +2,8 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
-
-var _require = require('path'),
-  resolve = _require.resolve;
-
+var path = require('path');
+var resolve = path.resolve;
 var pkg = require('./package.json');
 
 var extractLess = new ExtractTextPlugin({
@@ -18,7 +16,7 @@ function resolveTheme(src) {
 module.exports = {
   entry: {
     // 'demo-detail': resolveTheme('demo-detail.js'),
-    blogs: resolveTheme('blogs.js'),
+    blog: resolveTheme('blog.js'),
     common: resolveTheme('common.js'),
     demo: resolveTheme('demo.js'),
     demos: resolveTheme('demos.js'),

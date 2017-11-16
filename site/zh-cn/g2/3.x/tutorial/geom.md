@@ -47,8 +47,8 @@ geom 类型 | 描述
 
 geom 类型| 图表类型 | 备注
 -------- | -------- | -------- 
-point| 点图、折线图中的点| 点的形状有很多，也可以使用图片代表点（[TODO 气泡图](/g2/demo/01-point/bubble-c.html)），同时点也可以在不同坐标系下显示，所以可以扩展出非常多的图表类型。
-path| [TODO 路径图](/g2/demo/02-line/path.html)，地图上的路径 | 路径图是无序的线图。
+point| 点图、折线图中的点| 点的形状有很多，也可以使用图片代表点（[气泡图](/zh-cn/g2/3.x/demo/point/bubble.html)），同时点也可以在不同坐标系下显示，所以可以扩展出非常多的图表类型。
+path| [路径图](/zh-cn/g2/3.x/demo/other/path.html)，地图上的路径 | 路径图是无序的线图。
 line| 折线图、曲线图、[阶梯线图](/zh-cn/g2/3.x/demo/line/step.html)| 在极坐标系下可以转换成雷达图。
 area| 区域图（面积图）、层叠区域图、[区间区域图](/zh-cn/g2/3.x/demo/area/range.html)|极坐标系下可用于绘制雷达区域图。
 interval| 柱状图、直方图、南丁格尔玫瑰图、饼图、条形环图（玉缺图）、漏斗图等| 通过坐标系的转置、变化，可以生成各种常见的图表类型；所有的图表都可以进行层叠、分组。
@@ -73,9 +73,10 @@ heatmap| 热力图 | --
 
   + label(dims, [callback], cfg)几何标记上[显示文本](label.html)
   + tooltip(dims) 映射到[tooltip](tooltip.html)的字段
-  + style(cfg) 配置图形的样式 [详情](/g2/api/geom.html#style)
+  + style(cfg) 配置图形的样式 [详情](/g2/api/geom.html#_style)
   + select(cfg) 图形选中操作
   + active(boolean) 图形激活交互开关
+  + animate(cfg) 图形的动画 [详情](../api/geom.html#_animate)
 
 ## 几何标记和图形形状
 
@@ -98,3 +99,7 @@ interval| 'rect','hollowRect','line',<br>'tick','stroke','funnel', 'pyramid'| [h
 polygon|'polygon','hollow','stroke'| polygon：多边形、hollow：空心多边形和 stroke：带边框的多边形
 schema| 'box','candle'| 目前仅支持箱须图、K线图
 edge| 'line','vhv','smooth','arc'|vhv：直角折线，arc：弧线，分为笛卡尔坐标系、极坐标系、带权重和不带权重四种情况。
+
+
+如果上面各种几何标记的图形形状没法满足你需求的话，可以进行 [自定义shape](customize-shape.html)
+

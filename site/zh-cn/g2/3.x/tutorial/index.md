@@ -172,7 +172,7 @@ chart.render();
 
 ## 体验改进计划说明
 
-为了更好服务用户，G2 会将 URL 等信息发送回 AntV 服务器：
+为了更好服务用户，G2 会将 URL 和版本信息发送回 AntV 服务器：
 
 ```html
 https://kcart.alipay.com/web/bi.do

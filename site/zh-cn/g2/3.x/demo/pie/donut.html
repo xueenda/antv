@@ -28,9 +28,8 @@ chartDetail: ${base}/zh-cn/vis/chart/donut.html
   });
   const chart = new G2.Chart({
     container: 'mountNode',
-    width: 700,
-    height: 400,
-    padding: 80
+    forceFit: true,
+    height: window.innerHeight,
   });
   chart.source(dv, {
     percent: {

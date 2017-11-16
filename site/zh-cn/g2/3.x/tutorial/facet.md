@@ -61,10 +61,11 @@ chart.facet(type, {
 - `fileds` 属性用于指定数据集划分依据的字段；
 - `eachView` 回调函数中创建各个视图的图表类型；
 
+也可以设置每个分面之间的间距 padding
 ```js
 chart.facet('list', {
   fileds: ['cut', 'carat'],
-  padding: 20 // 各个分面之间的间距
+  padding: 20 // 各个分面之间的间距，也可以是数组 [top, right, bottom, left]
 });
 ```
 
@@ -76,12 +77,12 @@ G2 支持的分面类型如下表所示：
 
 分面类型 | 说明
 --- | ---
-[rect](facet.html#rect-类型) | **默认类型**，指定 2 个维度作为行列，形成图表的矩阵。
-[list](facet.html#list-类型) | 指定一个维度，可以指定一行有几列，超出自动换行。
-[circle](facet.html#circle-类型) | 指定一个维度，沿着圆分布。
-[tree](facet.html#tree-类型) | 指定多个维度，每个维度作为树的一级，展开多层图表。
-[mirror](facet.html#mirror-类型) | 指定一个维度，形成镜像图表。
-[matrix](facet.html#matrix-类型) | 指定一个维度，形成矩阵分面。
+[rect](facet.html#_rect-矩形分面) | **默认类型**，指定 2 个维度作为行列，形成图表的矩阵。
+[list](facet.html#_list-水平列表分面) | 指定一个维度，可以指定一行有几列，超出自动换行。
+[circle](facet.html#_circle-圆形分面) | 指定一个维度，沿着圆分布。
+[tree](facet.html#_tree-树形分面) | 指定多个维度，每个维度作为树的一级，展开多层图表。
+[mirror](facet.html#_mirror-镜像分面) | 指定一个维度，形成镜像图表。
+[matrix](facet.html#_matrix-矩阵分面) | 指定一个维度，形成矩阵分面。
 
 
 ### rect 矩形分面
@@ -130,6 +131,9 @@ $.getJSON('/assets/data/diamond.json', function(data) {
 }); 
 ````
 
+说明：
+* 可以将 `fields` 字段中表示行和列的字段名时，可以设置行或者列为 `null`,会变成单行或者单列的分面
+
 ### list 水平列表分面
 
 该类型分面可以通过设置 `cols` 属性来指定每行可显示分面的个数，超出时会自动换行。
@@ -176,10 +180,10 @@ var DataView = DataSet.DataView;
 $.getJSON('/assets/data/diamond.json',function (data) {
   var chart = new G2.Chart({
     container: 'c3',
-    width: 800,
-    height: 400,
+    width: 600,
+    height: 600,
     animate: false,
-    padding: [30, 90, 80, 80]
+    padding: [20, 20, 70, 20]
   });
   chart.source(data, {
     mean: {
@@ -193,6 +197,7 @@ $.getJSON('/assets/data/diamond.json',function (data) {
   chart.axis(false);
   chart.facet('circle', {
     fields: [ 'clarity' ],
+    padding: 0,
     eachView(view, facet) {
       var data = facet.data;
       var dv = new DataView();
@@ -212,6 +217,8 @@ $.getJSON('/assets/data/diamond.json',function (data) {
 ```
 
 ### tree 树形分面
+
+树形分面一般用于展示存在层次结构的数据，展示的是整体和部分之间的关系
 
 提供了 `line` 和 `lineSmooth` 两个属性，用于配置连接各个分面的线的样式，其中：
 
@@ -280,6 +287,8 @@ chart.render();
 ````
 
 ### mirror 镜像分面
+
+镜像分面一般用于对比两类数据的场景，例如 男女的比例、正确错误的对比等
 
 通过配置 `transpose` 属性为 true，可以将镜像分面翻转。
 
@@ -369,6 +378,7 @@ $.getJSON('/assets/data/population.json', function(data) {
 
 ### matrix 矩阵分面
 
+矩阵分面主要对比数据中多个字段之间的关系，例如常见的散点矩阵图
 
 <div id="c6"></div>
 

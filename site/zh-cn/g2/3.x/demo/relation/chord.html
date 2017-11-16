@@ -1,0 +1,77 @@
+<!--
+index: 3
+title: 和弦图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 和弦图(chord Diagram)，是一种显示矩阵中数据间相互关系的可视化方法，节点数据沿圆周径向排列，节点之间使用带权重（有宽度）的弧线链接。
+plotUsage: 和弦图用于探索实体组之间的关系。 它们被生物科学界广泛用于可视化基因数据，在Wired，New York Times和American Scientist等刊物上也被称为信息图表(info graphics)。
+relativePlots:
+  - ${plotByName.chord}
+  - ${plotByName.arc}
+chartDetail: ${base}/zh-cn/vis/chart/chord.html
+-->
+<script>
+  $.getJSON('/assets/data/relationship-with-weight.json', data => {
+    // arc diagram layout
+    const ds = new DataSet();
+    const dv = ds.createView().source(data, {
+      type: 'graph',
+      edges: d => d.links
+    });
+    dv.transform({
+      type: 'diagram.arc',
+      sourceWeight: e => e.sourceWeight,
+      targetWeight: e => e.targetWeight,
+      weight: true,
+      marginRatio: 0.3
+    });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.legend(false);
+    chart.tooltip({
+      showTitle: false
+    });
+
+    chart.scale({
+      x: {
+        sync: true
+      },
+      y: {
+        sync: true
+      }
+    });
+
+    const edgeView = chart.view();
+    edgeView.source(dv.edges);
+    edgeView.coord('polar').reflect('y');
+    edgeView.axis(false);
+    edgeView.edge()
+      .position('x*y')
+      .shape('arc')
+      .color('source')
+      .opacity(0.5)
+      .tooltip('source*target*value');
+
+    const nodeView = chart.view();
+    nodeView.source(dv.nodes);
+    nodeView.coord('polar').reflect('y');
+    nodeView.axis(false);
+    nodeView.polygon()
+      .position('x*y')
+      .color('id')
+      .label('name', {
+        labelEmit: true,
+        textStyle: {
+          fill: '#8c8c8c'
+        }
+      });
+
+    chart.render();
+  });
+</script>

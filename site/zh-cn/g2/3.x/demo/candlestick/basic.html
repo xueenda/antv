@@ -15,11 +15,11 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
 <script>
   $('<div id="slider"></div>').insertAfter('#mountNode');
   $.getJSON('/assets/data/candle-sticks.json',function(data) {
-    // 设置状态量，时间格式建议转换为时间戳
+    // 设置状态量，时间格式建议转换为时间戳，转换为时间戳时请注意区间
     const ds = new DataSet({
       state: {
-        start: new Date('2015-04-07').getTime(),
-        end: new Date('2015-07-20').getTime()
+        start: '2015-04-07',
+        end: '2015-07-28'
       }
     });
     const dv = ds.createView();
@@ -27,7 +27,7 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
       .transform({
         type: 'filter',
         callback: obj => {
-          const date = new Date(obj.time).getTime();
+          const date = obj.time;
           return date <= ds.state.end && date >= ds.state.start;
         }
       })
@@ -42,17 +42,15 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
     const chart = new G2.Chart({
       container: 'mountNode',
       forceFit: true,
-      height: 400,
+      height: window.innerHeight - 50,
       animate: false,
-      padding: [ 20, 80, 40 ]
+      padding: [ 10, 40, 40, 40 ],
     });
     chart.source(dv, {
       'time': {
         type: 'timeCat',
         nice: false,
-        mask: 'MM-DD',
-        tickCount: 10,
-        range: [ 0, 1]
+        range: [ 0, 1 ]
       },
       trend: {
         values: [ '上涨', '下跌' ]
@@ -63,21 +61,21 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
       'max': {alias: '最高价'},
       'min': {alias: '最低价'},
       'range': {alias: '股票价格'}
-      });
+    });
     chart.legend({
-      offset: 30
+      offset: 20
     });
     chart.tooltip({
       showTitle: false,
       itemTpl: '<li data-index={index}>'
-        + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
-        + '{name}{value}</li>',
+      + '<span style="background-color:{color};" class="g2-tooltip-marker"></span>'
+      + '{name}{value}</li>',
     });
 
     const kView = chart.view({
       end: {
         x: 1,
-        y: 0.65
+        y: 0.5
       }
     });
     kView.source(dv);
@@ -97,16 +95,16 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
         return {
           name: time,
           value: '<br><span style="padding-left: 16px">开盘价：' + start + '</span><br/>'
-            + '<span style="padding-left: 16px">收盘价：' + end + '</span><br/>'
-            + '<span style="padding-left: 16px">最高价：' + max + '</span><br/>'
-            + '<span style="padding-left: 16px">最低价：' + min + '</span>'
+          + '<span style="padding-left: 16px">收盘价：' + end + '</span><br/>'
+          + '<span style="padding-left: 16px">最高价：' + max + '</span><br/>'
+          + '<span style="padding-left: 16px">最低价：' + min + '</span>'
         };
       });
 
     const barView = chart.view({
       start: {
         x: 0,
-        y: 0.8
+        y: 0.65
       }
     });
     barView.source(dv, {
@@ -145,20 +143,26 @@ chartDetail: ${base}/zh-cn/vis/chart/k-chart.html
 
     chart.render();
 
-    //  生成 slider
+    // 生成 slider
     const slider = new Slider({
       container: 'slider', // DOM id
       width: 'auto',
       height: 26,
-      padding: [ 20, 80, 90 ],
+      padding: [ 20, 40, 20, 40 ],
       start: ds.state.start, // 和状态量对应
       end: ds.state.end,
       data, // 源数据
       xAxis: 'time', // 背景图的横轴对应字段，同时为数据筛选的字段
       yAxis: 'volumn', // 背景图的纵轴对应字段，同时为数据筛选的字段
-      onChange: ({startValue, endValue}) => {
-        ds.setState('start', startValue);
-        ds.setState('end', endValue);
+      scales: {
+        time: {
+          type: 'timeCat',
+          nice: false,
+        }
+      },
+      onChange: ({startText, endText}) => {
+        ds.setState('start', startText);
+        ds.setState('end', endText);
       }
     });
     slider.render();

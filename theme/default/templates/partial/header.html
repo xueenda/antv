@@ -13,13 +13,15 @@
     <!--<a class="prevous-site" href="{{ previous.href }}">{{ previous.text }}</a>-->
     <div class="collapse navbar-collapse" id="navbarHeader">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group">
-            {% if isHome %}
-            {% else %}
             {% set product = products[currentProduct] %}
             <span class="nav-separator"></span>
             <li class="nav-item dropdown" id="sub-product-navs">
                 <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {% if product %}
                     {{ product.name }}
+                    {% else %}
+                    {{ resource.translate.product }}
+                    {% endif %}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="">
                     {% for name, item in products %}
@@ -32,17 +34,13 @@
                     {% endfor %}
                 </div>
             </li>
-            {% endif %}
             <a id="btn-search" class="nav-link">
-                <svg width="12" height="12" fill="#ced4d9"><use xlink:href="#_si-search"></use></svg>
+                <span class="iconfont icon-search"></span>
             </a>
             <input id="query" class="query" type="text" placeholder="{{ resource.translate.search }}..." aria-label="Search">
         </ul>
         <ul class="navbar-nav mt-2 mt-lg-0" id="sub-site-nav">
             {% if isHome %}
-            {% for name, item in products %}
-            <a class="nav-link" href="{{ item.href }}">{{ item.name }}</a>
-            {% endfor %}
             {% else %}
             {% set product = products[currentProduct] %}
             {% for name, link in product.links %}
@@ -54,7 +52,7 @@
             {% endfor %}
             {% endif %}
             <!--<a class="nav-link"><img src="{{ assets }}/image/icon/more-apps.svg" alt=""></a>-->
-            <a class="back2old-version">
+            <a class="back2old-version" href="http://antvis.github.io/" target="_blank">
                 <span class="btn border">
                 {{ resource.translate.back2oldVersion }}
                 </span>

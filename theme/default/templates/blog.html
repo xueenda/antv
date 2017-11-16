@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/highlight-9.12.0/solarized-light.css" />
+<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/tocbot-3.0.2/tocbot.css" />
+<!--<link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />-->
+<link rel="stylesheet" type="text/css" href="{{ dist }}/blog.css" />
+{% endblock %}
+{% block content %}
+<div class="blog-container">
+    <div class="container">
+        <article>
+            <h1>{{ title }}</h1>
+            <p><img class="avatar" width="24" height="24" src="{{ authors[0].avatar }}" alt=""> <span>{{ authors[0].name }}</span></p>
+            <img class="landscape" src="{{ landscape }}" alt="">
+            {{ content | safe }}
+        </article>
+        <div class="toc-container"><div class="toc"></div></div>
+    </div>
+</div>
+{% endblock %}
+{% block plugins %}
+<!--scroll2top-->
+<!--<div class="scroll2top">top</div>-->
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.headroom-0.9.4.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/clipboard-1.7.1.min.js"></script>
+<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/tocbot-3.0.2/tocbot.min.js"></script>
+<!--<script type="text/javascript" src="{{ dist }}/scroll2top.js"></script>-->
+<script type="text/javascript" src="{{ dist }}/blog.js"></script>
+{% endblock %}

@@ -103,9 +103,7 @@ chart.render();
 
 属性名 | 解释 | 默认值
 ----|----|----
-allowAllCanceled | (分类图例)是否保留一项不能取消勾选，默认为 false，即不能取消勾选| false
-offsetX | 用于调整各个图例项之间的水平间距 | 0
-offsetY | 用于调整各个图例项之间的垂直间距 | 0
+allowAllCanceled | (分类图例)是否保留一项不能取消勾选，默认为 false，即最后一项不能取消勾选| false
 unCheckColor | 未选中时marker的颜色 | '#bfbfbf'
 textStyle | 图例项文本的样式配置 | {fill: '#3c3c3c'}
 itemWidth | 图例项的宽度，当图例有很多图例项，并且用户想要这些图例项在同一平面内垂直对齐，此时这个属性可帮用户实现此效果 | --
@@ -257,22 +255,29 @@ chart.legend({
     });
     chart.legend({
       useHtml: true,
-      containerTpl: '<div class="g2-legend" style="position:absolute;height: 250px;top:50%;margin-top: -125px;margin-left: 45px;">' +
-        '<table class="g2-legend-itemlist" style="list-style-type:none;margin:0;padding:0;"></table>' +
+      position: 'right',
+      containerTpl: '<div class="g2-legend">' +
+        '<table class="g2-legend-list" style="list-style-type:none;margin:0;padding:0;"></table>' +
         '</div>',
       itemTpl: (value, color, checked, index) => {
         const obj = dv.rows[index];
         checked = checked ? 'checked' : 'unChecked';
-        console.log(value);
-        return '<tr class="g2-legend-item item-' + index + ' ' + checked +
+        return '<tr class="g2-legend-list-item item-' + index + ' ' + checked +
         '" data-value="' + value + '" data-color=' + color +
         ' style="cursor: pointer;font-size: 14px;">' +
-        '<td width=120><i class="g2-legend-marker" style="width:10px;height:10px;display:inline-block;margin-right:10px;background-color:' + color + ';"></i>' +
+        '<td width=150 style="border: none;padding:0;"><i class="g2-legend-marker" style="width:10px;height:10px;display:inline-block;margin-right:10px;background-color:' + color + ';"></i>' +
         '<span class="g2-legend-text">' + value + '</span></td>' +
-        '<td style="text-align: right;">' + obj.litres + '</td>' +
+        '<td style="text-align: right;border: none;padding:0;">' + obj.litres + '</td>' +
         '</tr>';
       },
-      offsetX: 15
+      offsetX: 15,
+      'g2-legend': {
+        marginLeft: '100px',
+        marginTop: '-107px'
+      },
+      'g2-legend-list': {
+        border: 'none'
+      }
     });
     chart.filter('country', val => {
       return val !== 'UK';

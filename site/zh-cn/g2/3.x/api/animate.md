@@ -31,7 +31,7 @@ geom.animate({
 });
 ```
 
-另外 `easing delay duration 均可支持回调，如下：
+另外 `easing` `delay` `duration` 均可支持回调，如下：
 
 ```js
 /**
@@ -73,6 +73,7 @@ delay: (index, id) => {}
     fadeIn,
     fanIn
   }
+}
 ```
 
 如果上述动画动作不满足需求，用户也可以自己注册动画动作：
@@ -101,7 +102,11 @@ Animate.registerAnimation(animationType, animationName, animationFun);
   shape.animate(toProps, duration, delay = 0, easing, callback)
 ```
 
-### 例子
+**说明：**
+
+`easing` 动画缓动效果参见 [d3-ease](https://github.com/d3/d3-ease)。
+
+##### 例子
 
 <div id="c1"></div>
 

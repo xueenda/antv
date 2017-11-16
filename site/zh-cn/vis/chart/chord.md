@@ -12,7 +12,7 @@ variations:
 
 ## 和弦图的简介
 
-和弦图(chord Diagram)，是一种显示矩阵中数据间相互关系的可视化方法，节点数据沿圆周径向排列，节点之间使用带权重（有宽度）的弧线链接
+和弦图(chord Diagram)，是一种显示矩阵中数据间相互关系的可视化方法，节点数据沿圆周径向排列，节点之间使用带权重（有宽度）的弧线链接。
 
 ## 和弦图的构成
 
@@ -47,7 +47,9 @@ variations:
 
 和弦图用于探索实体组之间的关系。 它们被生物科学界广泛用于可视化基因数据，在Wired，New York Times和American Scientist等刊物上也被称为信息图表(info graphics)。其他应用场景如下：
 
-例子1：**展示层次结构中的依赖关系** 例如在软件类层次结构中的类存在复杂的依赖关系，根据源和目标包进行分组，然后根据依赖的程度使用带宽度的边连接具有依赖关系的节点，下图每个节点表示一个独立的包，每条边展示了包与包之间的依赖关系，每个节点上边的数量展示了当前包依赖的目标包的数量，边的初始宽度展示了当前包的类依赖目标包的类的数量，边的结束宽度展示了目标包的类依赖当前包的类的数量，也就是说，当一条边的结束宽度不为0时，表示包之间有循环依赖，在图表中表现为节点上连接了颜色与节点不同的边，例如图中左下角的vis.data与vis.event。[数据来源：d3](http://bl.ocks.org/mbostock/raw/1046712/0e8c66400c2db4aacc99f935fbb480e2d77fbe19/readme.json)
+例子1：**展示层次结构中的依赖关系**
+
+例如在软件类层次结构中的类存在复杂的依赖关系，根据源和目标包进行分组，然后根据依赖的程度使用带宽度的边连接具有依赖关系的节点，下图每个节点表示一个独立的包，每条边展示了包与包之间的依赖关系，每个节点上边的数量展示了当前包依赖的目标包的数量，边的初始宽度展示了当前包的类依赖目标包的类的数量，边的结束宽度展示了目标包的类依赖当前包的类的数量，也就是说，当一条边的结束宽度不为0时，表示包之间有循环依赖，在图表中表现为节点上连接了颜色与节点不同的边，例如图中左下角的 vis.data 与 vis.event。[数据来源：d3](http://bl.ocks.org/mbostock/raw/1046712/0e8c66400c2db4aacc99f935fbb480e2d77fbe19/readme.json)
 
 <div id="c1"></div>
 
@@ -74,6 +76,7 @@ $.getJSON('/assets/data/relationship-with-weight.json', function(data) {
     forceFit: true,
     height: 500,
     animate: false,
+    padding: [100 , 40]
   });
   chart.scale({
     x: {
@@ -85,8 +88,9 @@ $.getJSON('/assets/data/relationship-with-weight.json', function(data) {
   });
 
   chart.tooltip({
-    title: null
+    showTitle: false
   });
+  chart.legend(false);
 
   var edgeView = chart.view();
   edgeView.source(dv.edges);

@@ -3,25 +3,18 @@
 
 var debug = require('debug')('app:indexing');
 var program = require('commander');
-
-var _require = require('lodash'),
-    forIn = _require.forIn;
-
-var _require2 = require('walk'),
-    walk = _require2.walk;
-
-var _require3 = require('shelljs'),
-    mkdir = _require3.mkdir;
-
-var _require4 = require('fs'),
-    readFileSync = _require4.readFileSync,
-    writeFile = _require4.writeFile;
-
-var _require5 = require('path'),
-    extname = _require5.extname,
-    join = _require5.join,
-    relative = _require5.relative;
-
+var _ = require('lodash');
+var forIn = _.forIn;
+var walk = require('walk').walk;
+var shelljs = require('shelljs');
+var mkdir = shelljs.mkdir;
+var fs = require('fs');
+var readFileSync = fs.readFileSync;
+var writeFile = fs.writeFile;
+var path = require('path');
+var extname = path.extname;
+var join = path.join;
+var relative = path.relative;
 var loadConfig = require('../lib/load-config');
 var indexHtml = require('../lib/index-html');
 var pkg = require('../package.json');
@@ -29,9 +22,9 @@ var pkg = require('../package.json');
 program.version(pkg.version).option('-c, --config', 'configuration').parse(process.argv);
 
 var CONFIG = loadConfig(program.config);
-var assets = CONFIG.assets,
-    dest = CONFIG.dest,
-    indices = CONFIG.indices;
+var assets = CONFIG.assets;
+var dest = CONFIG.dest;
+var indices = CONFIG.indices;
 
 var destData = join(dest, assets, './data');
 

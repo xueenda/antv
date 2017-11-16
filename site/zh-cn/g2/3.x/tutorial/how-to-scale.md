@@ -33,7 +33,7 @@ Example:
 var defs = {
   'a': {
     type: 'time', // 指定 time 类型
-    mask: 'yyyy-mm-dd HH:MM:ss' // 指定时间的输出格式
+    mask: 'YYYY-MM-DD HH:mm:ss' // 指定时间的输出格式
   },
   'b': {
     type: 'linear', // 指定 linear 连续类型
@@ -119,7 +119,7 @@ chart.source(data, {
   'time': {
     type: 'time',
     nice: false,
-    mask: 'HH:MM'
+    mask: 'HH:mm'
   },
   'value': {
     formatter: function(val) {

@@ -90,19 +90,18 @@ $.getJSON('/assets/data/mobile.json',function (data) {
   chart.source(nodes);
   chart.scale({value: {nice: false}});
   chart.tooltip({
-    map: {
-      title: 'name',
-      value: 'value'
-    }
+    title: 'name'
   });
   chart.axis(false);
   chart.legend(false);
   chart.polygon().position('x*y')
     .color('name')
+    .tooltip('value')
+    .active(false)
     .style({
-    stroke: '#fff',
-    lineWidth: 1
-  });;
+      stroke: '#fff',
+      lineWidth: 1
+    });
   chart.render();
 
 });
@@ -205,22 +204,22 @@ var nodes = dv.getAllNodes().map(function(node) {
   return node;
 });
 chart.source(nodes);
-chart.tooltip({
-  map: {
-    title: 'name',
-    value: 'value'
-  }
-});
+chart.tooltip(false);
 chart.axis(false);
 chart.legend(false);
 chart.polygon().position('x*y')
     .color('name')
+    .label('name', {
+      offset: 0
+    })
     .style({
-    stroke: '#fff',
-    lineWidth: 1
-});;
+      stroke: '#fff',
+      lineWidth: 1
+    });
 chart.render();
 ```
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/mvMACnOdeMbYHgtpuPbW.png">
 
 ## 矩形树图与其他图表的对比
 

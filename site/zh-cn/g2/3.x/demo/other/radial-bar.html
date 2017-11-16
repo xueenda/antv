@@ -24,7 +24,7 @@ chartDetail: ${base}/zh-cn/vis/chart/radial-bar.html
   const chart = new G2.Chart({
     container: 'mountNode',
     forceFit: true,
-    height: 450
+    height: window.innerHeight,
   });
   chart.source(data, {
     'percent': { min: 0, max: 2 },

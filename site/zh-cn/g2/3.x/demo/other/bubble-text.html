@@ -31,8 +31,8 @@ chartDetail: ${base}/zh-cn/vis/chart/bubble.html
   const chart = new G2.Chart({
     container: 'mountNode',
     forceFit: true,
-    height: 350,
-    padding: [20, 0, 80, 80],
+    height: window.innerHeight,
+    padding: [20, 20, 50, 80],
     plotBackground: {
       stroke: '#ccc', // 边颜色
       lineWidth: 1, // 边框粗细
@@ -74,7 +74,7 @@ chartDetail: ${base}/zh-cn/vis/chart/bubble.html
   });
   chart.axis('y', {
     title: {
-      offset: 80,
+      offset: 64,
     },
     label: {
       formatter: function(val) {
