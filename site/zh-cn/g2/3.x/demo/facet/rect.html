@@ -12,36 +12,36 @@ relativePlots:
 -->
 
 <script>
-$.getJSON('/assets/data/diamond.json', function(data) {
-  const chart = new G2.Chart({
-    container: 'mountNode',
-    forceFit: true,
-    height: window.innerHeight,
-    padding: [30, 80, 80, 80]
+  $.getJSON('/assets/data/diamond.json', function(data) {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [30, 80, 80, 80]
+    });
+    chart.source(data, {
+      carat: {
+        sync: true
+      },
+      price: {
+        sync: true,
+        tickCount: 3
+      },
+      cut: {
+        sync: true
+      }
+    });
+    chart.facet('rect', {
+      fields: [ 'cut', 'clarity' ],
+      eachView(view) {
+        view.point()
+          .position('carat*price')
+          .color('cut')
+          .shape('circle')
+          .opacity(0.3)
+          .size(3);
+      }
+    });
+    chart.render();
   });
-  chart.source(data, {
-    carat: {
-      sync: true
-    },
-    price: {
-      sync: true,
-      tickCount: 3
-    },
-    cut: {
-      sync: true
-    }
-  });
-  chart.facet('rect', {
-    fields: [ 'cut', 'clarity' ],
-    eachView(view) {
-      view.point()
-        .position('carat*price')
-        .color('cut')
-        .shape('circle')
-        .opacity(0.3)
-        .size(3);
-    }
-  });
-  chart.render();
-});
 </script>

@@ -12,65 +12,65 @@ relativePlots:
 -->
 
 <script>
-$.getJSON('/assets/data/population.json', function(data) {
-  const tmp = [];
-  const dates = [];
-  data.male.values.forEach(function(obj) {
-    if (dates.indexOf(obj.date) === -1) {
-      dates.push(obj.date);
-    }
-    obj.age_groups.forEach(function(subObject) {
-      subObject.gender = 'male';
-      subObject.date = obj.date;
-      tmp.push(subObject);
-    });
-  });
-  data.female.values.forEach(function(obj) {
-    obj.age_groups.forEach(function(subObject) {
-      subObject.gender = 'female';
-      subObject.date = obj.date;
-      tmp.push(subObject);
-    });
-  });
-  const ds = new DataSet();
-  const dv = ds.createView()
-    .source(tmp)
-    .transform({
-      type: 'filter',
-      callback(row) { // 判断某一行是否保留，默认返回true
-        return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+  $.getJSON('/assets/data/population.json', function(data) {
+    const tmp = [];
+    const dates = [];
+    data.male.values.forEach(function(obj) {
+      if (dates.indexOf(obj.date) === -1) {
+        dates.push(obj.date);
       }
+      obj.age_groups.forEach(function(subObject) {
+        subObject.gender = 'male';
+        subObject.date = obj.date;
+        tmp.push(subObject);
+      });
+    });
+    data.female.values.forEach(function(obj) {
+      obj.age_groups.forEach(function(subObject) {
+        subObject.gender = 'female';
+        subObject.date = obj.date;
+        tmp.push(subObject);
+      });
+    });
+    const ds = new DataSet();
+    const dv = ds.createView()
+      .source(tmp)
+      .transform({
+        type: 'filter',
+        callback(row) { // 判断某一行是否保留，默认返回true
+          return new Date(row.date * 1000).getFullYear() === new Date(dates[0] * 1000).getFullYear();
+        }
+      });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
     });
 
-  const chart = new G2.Chart({
-    container: 'mountNode',
-    forceFit: true,
-    height: window.innerHeight,
-  });
-
-  chart.source(dv, {
-    age: {
-      sync: true,
-      tickCount: 11
-    },
-    total_percentage: {
-      sync: true,
-      formatter(v) {
-        return v + '%';
+    chart.source(dv, {
+      age: {
+        sync: true,
+        tickCount: 11
+      },
+      total_percentage: {
+        sync: true,
+        formatter(v) {
+          return v + '%';
+        }
+      },
+      gender: {
+        sync: true
       }
-    },
-    gender: {
-      sync: true
-    }
+    });
+    chart.facet('mirror', {
+      fields: [ 'gender' ],
+      transpose: true,
+      eachView(view) {
+        view.interval().position('age*total_percentage')
+          .color('gender', [ '#1890ff', '#f04864' ]);
+      }
+    });
+    chart.render();
   });
-  chart.facet('mirror', {
-    fields: [ 'gender' ],
-    transpose: true,
-    eachView(view) {
-      view.interval().position('age*total_percentage')
-        .color('gender', [ '#1890ff', '#f04864' ]);
-    }
-  });
-  chart.render();
-});
 </script>

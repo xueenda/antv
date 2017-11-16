@@ -13,47 +13,47 @@ relativePlots:
 -->
 
 <script>
-const { DataView } = DataSet;
-$.getJSON('/assets/data/iris.json', function(data) {
-  const chart = new G2.Chart({
-    container: 'mountNode',
-    forceFit: true,
-    height: window.innerHeight
-  });
+  const { DataView } = DataSet;
+  $.getJSON('/assets/data/iris.json', function(data) {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
 
-  chart.source(data, {
-    Species: {
-      sync: true
-    }
-  });
-  chart.facet('matrix', {
-    fields: [ 'SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth' ],
-    eachView(view, facet) {
-      if (facet.rowIndex === facet.colIndex) {
-        var dv = new DataView();
-        dv.source(facet.data)
-          .transform({
-            type: 'bin.histogram',
-            field: facet.colField,  // 对应数轴上的一个点
-            bins: 30,               // 分箱个数
-            as: [ facet.colField, 'count' ],
-            groupBy: [ 'Species' ]
-          });
-        view.source(dv.rows);
-        view.intervalStack()
-          .position(facet.colField + '*count')
-          .color('Species')
-          .opacity(0.85);
-      } else {
-        view.point()
-          .position([ facet.colField, facet.rowField ])
-          .color('Species')
-          .shape('circle')
-          .opacity(0.3)
-          .size(3);
+    chart.source(data, {
+      Species: {
+        sync: true
       }
-    }
+    });
+    chart.facet('matrix', {
+      fields: [ 'SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth' ],
+      eachView(view, facet) {
+        if (facet.rowIndex === facet.colIndex) {
+          var dv = new DataView();
+          dv.source(facet.data)
+            .transform({
+              type: 'bin.histogram',
+              field: facet.colField,  // 对应数轴上的一个点
+              bins: 30,               // 分箱个数
+              as: [ facet.colField, 'count' ],
+              groupBy: [ 'Species' ]
+            });
+          view.source(dv.rows);
+          view.intervalStack()
+            .position(facet.colField + '*count')
+            .color('Species')
+            .opacity(0.85);
+        } else {
+          view.point()
+            .position([ facet.colField, facet.rowField ])
+            .color('Species')
+            .shape('circle')
+            .opacity(0.3)
+            .size(3);
+        }
+      }
+    });
+    chart.render();
   });
-  chart.render();
-});
 </script>
