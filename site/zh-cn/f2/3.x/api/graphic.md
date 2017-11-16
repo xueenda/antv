@@ -13,8 +13,8 @@ F2 由于是直接使用[ canvas 的 API](http://www.w3school.com.cn/tags/html_r
 
 ```js
 F2.Shape.registerShape('point', 'custom', {
-  draw: function(cfg, canvas) {
-    var ctx = canvas.getContext('2d');
+  draw: (cfg, canvas) => {
+    const ctx = canvas.getContext('2d');
     ctx.save(); // 保存当前上下文
     
     ctx.lineTo(..); // 调用 canvas 的方法
@@ -45,7 +45,7 @@ F2.Shape.registerShape('point', 'custom', {
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-var canvas = document.getElementById('c1');
+const canvas = document.getElementById('c1');
 
 F2.Graphic.drawLine({x: 0, y: 0}, {x: 100, y: 100}, canvas, {
   stroke: 'red',
@@ -65,9 +65,9 @@ F2.Graphic.drawLine({x: 0, y: 0}, {x: 100, y: 100}, canvas, {
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-var canvas = document.getElementById('c2');
+const canvas = document.getElementById('c2');
 
-F2.Graphic.drawLines([{x: 0, y: 0}, {x: 100, y: 100}, {x: 200, y: 40}], canvas, {
+F2.Graphic.drawLines([ {x: 0, y: 0}, {x: 100, y: 100}, {x: 200, y: 40} ], canvas, {
   stroke: 'red',
   lineWidth: 2
 });
@@ -86,9 +86,9 @@ F2.Graphic.drawLines([{x: 0, y: 0}, {x: 100, y: 100}, {x: 200, y: 40}], canvas, 
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-var canvas = document.getElementById('c3');
+const canvas = document.getElementById('c3');
 
-F2.Graphic.drawSmooth([{x: 0, y: 0}, {x: 50, y: 50}, {x: 100, y: 20}, {x: 150, y: 40}], canvas, {
+F2.Graphic.drawSmooth([ {x: 0, y: 0}, {x: 50, y: 50}, {x: 100, y: 20}, {x: 150, y: 40} ], canvas, {
   stroke: 'red',
   lineWidth: 2
 });
@@ -109,7 +109,7 @@ F2.Graphic.drawSmooth([{x: 0, y: 0}, {x: 50, y: 50}, {x: 100, y: 20}, {x: 150, y
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-var canvas = document.getElementById('c4');
+const canvas = document.getElementById('c4');
 
 F2.Graphic.drawText('test text', {x: 50, y: 50}, canvas, {
   fill: 'red',
@@ -131,9 +131,9 @@ F2.Graphic.drawText('test text', {x: 50, y: 50}, canvas, {
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-var canvas = document.getElementById('c5');
+const canvas = document.getElementById('c5');
 
-F2.Graphic.drawRect([{x: 50, y: 50}, {x: 100, y: 100}], canvas, {
+F2.Graphic.drawRect([ {x: 50, y: 50}, {x: 100, y: 100} ], canvas, {
   stroke: 'red',
   lineWidth: 2
 });
@@ -155,8 +155,7 @@ F2.Graphic.drawRect([{x: 50, y: 50}, {x: 100, y: 100}], canvas, {
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-
-var canvas = document.getElementById('c6');
+const canvas = document.getElementById('c6');
 
 F2.Graphic.drawCircle({x: 100, y: 100}, 50, canvas, {
   stroke: 'red',
@@ -182,7 +181,7 @@ F2.Graphic.drawCircle({x: 100, y: 100}, 50, canvas, {
 * cfg: `Object` 配置项，见[绘图属性](canvas.html)
 
 ```js+
-var canvas = document.getElementById('c7');
+const canvas = document.getElementById('c7');
 
 F2.Graphic.drawArc({x: 100, y: 100}, 50, 0, Math.PI, canvas, {
   fill: 'blue'
@@ -202,11 +201,11 @@ F2.Graphic.drawShape(canvas, cfg, callback)
 * callback: `Function` 回调函数, 函数原型 function(ctx) {}
 
 ```js+
-var canvas = document.getElementById('c8');
+const canvas = document.getElementById('c8');
 
 F2.Graphic.drawShape(canvas, {
   stroke: 'blue'
-}, function(ctx) {
+}, ctx => {
   ctx.rect(20,20,150,100);
   ctx.moveTo(20,20);
   ctx.lineTo(200, 200);

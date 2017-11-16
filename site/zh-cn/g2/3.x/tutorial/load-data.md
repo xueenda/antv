@@ -15,13 +15,13 @@ chart 对象支持两种数据载入的方式：
 
 - 方式 1：`data` 属性传入
 ```js
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   id: 'c1',
   width: 600,
   height: 300,
   data: [
-    {x: 'a', y: 1},
-    {x: 'b', y: 2},
+    { x: 'a', y: 1 },
+    { x: 'b', y: 2 },
     ...
   ]
 });
@@ -53,9 +53,9 @@ G2 接收的数据格式非常简单：标准的 JSON 数组，其中每个数�
 Example:
 
 ```js
-var data = [
-  {"gender":"男","count":40},
-  {"gender":"女","count":30}
+const data = [
+  { gender: '男', count: 40 },
+  { gender: '女', count: 30 }
 ];
 
 chart.source(data);

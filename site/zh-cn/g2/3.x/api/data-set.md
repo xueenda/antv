@@ -41,9 +41,9 @@ resource:
 
 ```js
 const ds = new DataSet({
-    state: { // 指定初始化状态量
-        foo: 'bar'
-    }
+  state: { // 指定初始化状态量
+    foo: 'bar'
+  }
 });
 ```
 
@@ -74,7 +74,7 @@ const ds = new DataSet({
 const dv0 = ds.createView();
 const dv1 = ds.createView('foo');
 const dv2 = ds.createView('bar', {
-    watchingStates: [ 'fakeState' ]
+  watchingStates: [ 'fakeState' ]
 });
 ```
 
@@ -139,7 +139,7 @@ ds.setState('foo', 'bar');
 
 ```js
 ds.on('statechange', (name, value) => {
-    console.log(`state ${name}'s value has been changed to ${value}!`)
+  console.log(`state ${name}'s value has been changed to ${value}!`)
 });
 ```
 
@@ -174,7 +174,7 @@ ds.on('statechange', (name, value) => {
 ```js
 const dv0 = new DataSet.View();
 const dv1 = new DataSet.View(ds, {
-    watchingStates: [ 'foo' ] // 监听 `foo` 状态量变化，默认监听 ds 上的所有状态量
+  watchingStates: [ 'foo' ] // 监听 `foo` 状态量变化，默认监听 ds 上的所有状态量
 });
 ```
 
@@ -243,15 +243,15 @@ const dv1 = new DataSet.View(ds, {
 ```js
 const _ = require('lodash');
 const {
-    csvParse
+  csvParse
 } = require('d3-dsv');
 
 DataSet.registerConnector('csv', (data, options = {}) => {
-    const delimiter = options.delimiter || ',';
-    if (!isString(delimiter)) {
-        throw new TypeError('Invalid delimiter: must be a string!');
-    }
-    return dsvFormat(delimiter).parse(str);
+  const delimiter = options.delimiter || ',';
+  if (!isString(delimiter)) {
+    throw new TypeError('Invalid delimiter: must be a string!');
+  }
+  return dsvFormat(delimiter).parse(str);
 });
 
 const testCSV = `Expt,Run,Speed
@@ -261,17 +261,17 @@ const testCSV = `Expt,Run,Speed
  1,4,1070`;
 
 const dv = new DataSet.View().source(testCSV, {
-    type: 'csv'
+  type: 'csv'
 });
 
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "1", Speed: "850"}
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "1", Speed: "850"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 ```
@@ -298,23 +298,23 @@ console.log(dv.rows);
 ```js
 // 承接上述 Connector 的代码
 DataSet.registerTransform('filter', (dv, options = {}) => {
-    dv.rows = dv.rows.filter(options.callback || (row => !!row));
+  dv.rows = dv.rows.filter(options.callback || (row => !!row));
 });
 
 dv.transform({
-    type: 'filter',
-    callback(row) {
-        return row.Run !== "1";
-    }
+  type: 'filter',
+  callback(row) {
+    return row.Run !== "1";
+  }
 })
 
 console.log(dv.rows);
 /*
  * dv.rows:
  * [
- *     {Expt: " 1", Run: "2", Speed: "740"}
- *     {Expt: " 1", Run: "3", Speed: "900"}
- *     {Expt: " 1", Run: "4", Speed: "1070"}
+ *   {Expt: " 1", Run: "2", Speed: "740"}
+ *   {Expt: " 1", Run: "3", Speed: "900"}
+ *   {Expt: " 1", Run: "4", Speed: "1070"}
  * ]
  */
 ```

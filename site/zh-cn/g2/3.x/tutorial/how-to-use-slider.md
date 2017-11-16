@@ -1,11 +1,12 @@
 <!--
 index: 19
-title: 数据滑动条 Slider 
+title: Slider 数据滑动条 
 resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.g2}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc
+    - ${url.jquery}
+    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
 -->
 
 # 简介
@@ -30,7 +31,7 @@ Slider 组件是完全基于数据的交互组件，同 chart 并无任何关联
 
 ```html
 <!-- 引入 Slider 组件脚本 -->
-<script src="http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc"></script>
+<script src="http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1"></script>
 ```
 
 （2）方式 2：npm 模块引入。
@@ -56,7 +57,7 @@ import '@antv/g2-plugin-slider';
 
 ```js
 // 创建 Slider
-var slider = new Slider({
+const slider = new Slider({
   container: 'slider', // dom 容器 id 或者 dom 容器对象
   width: 600, // slider 的宽度，默认为 'auto'，即自适应宽度
   height: 26, // slider 的高度，默认为 '26px'

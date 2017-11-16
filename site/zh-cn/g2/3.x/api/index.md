@@ -95,7 +95,7 @@ const Util = {
 4. `G2.MatrixUtil.transform(m, ts)`: 对三阶矩阵参数 m 按照 ts 进行变换，变换包含 `t`: translate，`s`: scale，`r`: rotate，`m`: multiply，具体使用如下：
 
 ```js
-G2.MatrixUtil.transform([1, 0, 0, 0, 1, 0, 0, 0, 1], [
+G2.MatrixUtil.transform([ 1, 0, 0, 0, 1, 0, 0, 0, 1 ], [
   [ 'r', Math.PI / 2 ], 
   [ 't', 10, 10 ], 
   [ 'r', -1 * Math.PI / 2 ]

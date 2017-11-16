@@ -22,14 +22,14 @@ Chart 是一种特殊的View，两者之间也有一定的差异：
 
 ```javascript
 // step 1: 需要创建 chart 对象
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   id: 'c1',
   width: 1000,
   height: 500,
   padding: [ 20, 200 ]
 });
 // step 2: 然后创建一个视图
-var view = chart.view({
+const view = chart.view({
   start: {
     x: 0.2,
     y: 0.2
@@ -38,7 +38,7 @@ var view = chart.view({
     x: 1,
     y: 1
   }, // 指定该视图绘制的结束位置，x y 为 [0 - 1] 范围的数据
-  padding: [ 20, 40] // 指定视图的留白
+  padding: [ 20, 40 ] // 指定视图的留白
 });
 ```
 
@@ -73,11 +73,11 @@ chart.render(); // 由 chart 负责统一的渲染
 
 ```js+
 $.getJSON('/assets/data/world.geo.json', function(mapData) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c1',
     forceFit: true,
     height: 450,
-    padding: [55, 20]
+    padding: [ 55, 20 ]
   });
   chart.tooltip({
     showTitle: false
@@ -97,12 +97,12 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
   });
   
   // 绘制世界地图背景
-  var ds = new DataSet();
-  var worldMap = ds.createView('back')
+  const ds = new DataSet();
+  const worldMap = ds.createView('back')
     .source(mapData, {
       type: 'GeoJSON'
     });
-  var worldMapView = chart.view();
+  const worldMapView = chart.view();
   worldMapView.source(worldMap);
   worldMapView.tooltip(false);
   worldMapView.polygon().position('longitude*latitude').style({
@@ -112,30 +112,30 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
   });
   
   // 可视化用户数据
-  var userData = [
-    {name: 'Russia',value: 86.8},
-    {name: 'China',value: 106.3},
-    {name: 'Japan',value: 94.7},
-    {name: 'Mongolia',value: 98},
-    {name: 'Canada',value: 98.4},
-    {name: 'United Kingdom',value: 97.2},
-    {name: 'United States of America',value: 98.3},
-    {name: 'Brazil',value: 96.7},
-    {name: 'Argentina',value: 95.8},
-    {name: 'Algeria',value: 101.3},
-    {name: 'France',value: 94.8},
-    {name: 'Germany',value: 96.6},
-    {name: 'Ukraine',value: 86.3},
-    {name: 'Egypt',value: 102.1},
-    {name: 'South Africa',value: 101.3},
-    {name: 'India',value: 107.6},
-    {name: 'Australia',value: 99.9},
-    {name: 'Saudi Arabia',value:130.1},
-    {name: 'Afghanistan',value: 106.5},
-    {name: 'Kazakhstan',value:93.4},
-    {name: 'Indonesia',value: 101.4}
+  const userData = [
+    { name: 'Russia', value: 86.8 },
+    { name: 'China', value: 106.3 },
+    { name: 'Japan', value: 94.7 },
+    { name: 'Mongolia', value: 98 },
+    { name: 'Canada', value: 98.4 },
+    { name: 'United Kingdom', value: 97.2 },
+    { name: 'United States of America', value: 98.3 },
+    { name: 'Brazil', value: 96.7 },
+    { name: 'Argentina', value: 95.8 },
+    { name: 'Algeria', value: 101.3 },
+    { name: 'France', value: 94.8 },
+    { name: 'Germany', value: 96.6 },
+    { name: 'Ukraine', value: 86.3 },
+    { name: 'Egypt', value: 102.1 },
+    { name: 'South Africa', value: 101.3 },
+    { name: 'India', value: 107.6 },
+    { name: 'Australia', value: 99.9 },
+    { name: 'Saudi Arabia', value: 130.1 },
+    { name: 'Afghanistan', value: 106.5 },
+    { name: 'Kazakhstan', value: 93.4 },
+    { name: 'Indonesia', value: 101.4 }
   ];
-  var userDv = ds.createView()
+  const userDv = ds.createView()
     .source(userData)
     .transform({
       geoDataView: worldMap,
@@ -145,12 +145,12 @@ $.getJSON('/assets/data/world.geo.json', function(mapData) {
     })
     .transform({
       type: 'map',
-      callback: function(obj) {
+      callback: obj => {
         obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
         return obj;
       }
     });
-  var userView = chart.view();
+  const userView = chart.view();
   userView.source(userDv, {
     'trend': {
       alias: '每100位女性对应的男性数量'

@@ -24,7 +24,7 @@ G2 默认提供了两种图表主题： default、dark。
 直接传入主题名
 
 ```js
-var Global = G2.Global; // 获取 Global 全局对象
+const { Global } = G2; // 获取 Global 全局对象
 Global.setTheme('dark'); // 传入值为 'default'、'dark'、'cheery'的一种，如果不是，那么使用 default 主题。
 ```
 
@@ -36,13 +36,13 @@ G2 图表样式的配置项都是设置到全局变量 `G2.Global` 上，可以�
 
 ```js
 G2.Global.animate = false ; // 关闭默认动画
-G2.Global.colors['default'] = ['red','blue','yellow']; // 更改默认的颜色
+G2.Global.colors['default'] = [ 'red', 'blue', 'yellow' ]; // 更改默认的颜色
 ```
 
 (2) 方式二： 使用 Global.setTheme 方法。推荐使用这种方式，使用方法如下：
 
 ```js
-var theme = G2.Util.deepMix({
+const theme = G2.Util.deepMix({
   animate: false,
   colors: {...},
   shapes: {...}
@@ -62,8 +62,8 @@ G2.Global.setTheme(theme); // 将主题设置为用户自定义的主题
 <div id="c2"></div>
 
 ```js+
-var Util = G2.Util;
-var theme = Util.deepMix({
+const Util = G2.Util;
+const theme = Util.deepMix({
   shape: {
     polygon: {
       stroke: '#213c51', // 地图轮廓线颜色
@@ -99,10 +99,10 @@ var theme = Util.deepMix({
 G2.Global.setTheme(theme);
 
 $.getJSON('/assets/data/china-geo.json', function(mapData) {
-  var userData = [];
-  var features = mapData.features;
-  for(var i=0; i<features.length; i++) {
-    var name = features[i].properties.name;
+  const userData = [];
+  const features = mapData.features;
+  for(let i=0; i<features.length; i++) {
+    const name = features[i].properties.name;
     userData.push({
       "name": name,
       "value": Math.round(Math.random()*1000)
@@ -110,12 +110,12 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
   }
 
   // 绘制地图背景
-  var ds = new DataSet();
-  var bgDataView = ds.createView('back')
+  const ds = new DataSet();
+  const bgDataView = ds.createView('back')
     .source(mapData, {
       type: 'GeoJSON'
     });
-  var userPolygonDv = ds.createView()
+  const userPolygonDv = ds.createView()
     .source(userData)
     .transform({
       geoDataView: bgDataView,
@@ -123,11 +123,11 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
       type: 'geo.region',
       as: [ 'longitude', 'latitude' ]
   });
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c1',
     width: 600,
     height: 320,
-    padding: [20, 80, 0, 80]
+    padding: [ 20, 80, 0, 80 ]
   });
   chart.source(userPolygonDv);
   chart.tooltip({
@@ -135,40 +135,43 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
   });
   chart.axis(false);
   chart.legend(false);
-  chart.polygon().position('longitude*latitude').color('value','#39ccf4-#20546b').style({
-    lineWidth: 1,
-    stroke: '#999'
-  });
+  chart.polygon()
+    .position('longitude*latitude')
+    .color('value','#39ccf4-#20546b')
+    .style({
+      lineWidth: 1,
+      stroke: '#999'
+    });
   chart.render();
 
-  var data = [
-    {'time': '10:10', 'call': 4, 'waiting': 2, 'people': 2},
-    {'time': '10:15', 'call': 2, 'waiting': 6, 'people': 3},
-    {'time': '10:20', 'call': 13, 'waiting': 2, 'people': 5},
-    {'time': '10:25', 'call': 9, 'waiting': 9, 'people': 1},
-    {'time': '10:30', 'call': 5, 'waiting': 2, 'people': 3},
-    {'time': '10:35', 'call': 8, 'waiting': 2, 'people': 1},
-    {'time': '10:40', 'call': 13, 'waiting': 1, 'people': 2}
+  const data = [
+    { time: '10:10', call: 4, waiting: 2, people: 2 },
+    { time: '10:15', call: 2, waiting: 6, people: 3 },
+    { time: '10:20', call: 13, waiting: 2, people: 5 },
+    { time: '10:25', call: 9, waiting: 9, people: 1 },
+    { time: '10:30', call: 5, waiting: 2, people: 3 },
+    { time: '10:35', call: 8, waiting: 2, people: 1 },
+    { time: '10:40', call: 13, waiting: 1, people: 2 }
   ];
-  var dv = new DataSet.DataView();
+  const dv = new DataSet.DataView();
   dv.source(data).transform({
     type: 'fold',
-    fields: ['call','waiting'],
+    fields: [ 'call','waiting' ],
     key: 'type',
     value: 'count',
-    retains: ['time', 'people']
+    retains: [ 'time', 'people' ]
   });
-  var chart2 = new G2.Chart({
+  const chart2 = new G2.Chart({
     container: 'c2',
     width: 600,
     height: 250
   });
   chart2.source(dv, {
-    'count': {alias: '话务量（通）', min: 0},
-    'people': {alias: '人数（人）', min: 0}
+    'count': { alias: '话务量（通）', min: 0 },
+    'people': { alias: '人数（人）', min: 0 }
   });
   chart2.legend(false);// 不显示图例
-  chart2.intervalStack().position('time*count').color('type', ['#348cd1', '#43b5d8']); // 绘制层叠柱状图
+  chart2.intervalStack().position('time*count').color('type', [ '#348cd1', '#43b5d8' ]); // 绘制层叠柱状图
   chart2.line().position('time*people').color('#5ed470').size(4).shape('smooth'); // 绘制曲线图
   chart2.point().position('time*people').color('#5ed470').tooltip(false); // 绘制点图
   chart2.render();
