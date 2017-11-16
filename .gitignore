@@ -66,6 +66,7 @@ _site
 temp
 .DS_Store
 .idea
+.vscode
 
 theme/default/assets/dist
 
