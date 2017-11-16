@@ -13,8 +13,8 @@ resource:
 
 - 动画注册 Animate.registAnimation()
 
-``` javascript
-var Animate = G2.Animate;
+```js
+const { Animate } = G2;
 /**
  * @param  {String} animationType      动画场景类型 appear enter leave update
  * @param  {String} 动画名称，用户自定义即可
@@ -29,7 +29,7 @@ Animate.registerAnimation(animationType, animationName, animationFun);
 chart.interval().position('x*y').animate({
   enter:{
     animation: 'fadeIn', // 动画名称
-    easing: 'easeInQuart' // 动画缓动效果
+    easing: 'easeInQuart', // 动画缓动效果
     delay: 100, // 动画延迟执行时间
     duration: 600 // 动画执行时间
   }
@@ -141,7 +141,7 @@ chart.interval().position('x*y').animate({
 ### 第一步：获取 Animate 对象
 
 ```js
-var Animate = G2.Animate;
+const Animate = G2.Animate;
 ```
 
 ### 第二步：自定义动画（核心）
@@ -159,43 +159,43 @@ var Animate = G2.Animate;
 4. 实现延迟放大效果的动画。调用 shape 的 animate() 方法，传入变换的结束状态、动画时间和缓动函数。结束状态中可以配置延迟参数 delay ，给每个 shape 的动画添加一个跟序号成正比的延迟，即可实现依次放大的效果。
 
 ```js
-  // shape 是柱子对象，animateCfg 是动画配置
-  var animateFun = function(shape, animateCfg) {
-    const box = shape.getBBox(); // 获取柱子包围盒
-    const origin = shape.get('origin'); // 获取柱子原始数据
-    const points = origin.points; // 获取柱子顶点
-    // 计算柱子的变换中点
-    const centerX = (box.minX + box.maxX) / 2;
-    let centerY;
-    if (points[0].y - points[1].y <= 0) { // 当顶点在零点之下
-      centerY = box.maxY;
-    } else {
-      centerY = box.minY;
-    }
-    // 设置初始态
-    shape.attr('transform', [
-      ['t', -centerX, -centerY],
-      ['s', 1, 0.1],
-      ['t', centerX, centerY]
-    ]);
-    const index = shape.get('index');
-    let delay = animateCfg.delay;
-    if (G2.Util.isFunction(delay)) {
-      delay = animateCfg.delay(index);
-    }
-    let easing = animateCfg.easing;
-    if (G2.Util.isFunction(easing)) {
-      easing = animateCfg.easing(index);
-    }
-    // 设置动画目标态
-    shape.animate({
-      transform: [
-        ['t', -centerX, -centerY],
-        ['s', 1, 10],
-        ['t', centerX, centerY]
-      ]
-    }, animateCfg.duration, easing, animateCfg.callback, delay);
+// shape 是柱子对象，animateCfg 是动画配置
+const animateFun = function(shape, animateCfg) {
+  const box = shape.getBBox(); // 获取柱子包围盒
+  const origin = shape.get('origin'); // 获取柱子原始数据
+  const points = origin.points; // 获取柱子顶点
+  // 计算柱子的变换中点
+  const centerX = (box.minX + box.maxX) / 2;
+  let centerY;
+  if (points[0].y - points[1].y <= 0) { // 当顶点在零点之下
+    centerY = box.maxY;
+  } else {
+    centerY = box.minY;
   }
+  // 设置初始态
+  shape.attr('transform', [
+    [ 't', -centerX, -centerY ],
+    [ 's', 1, 0.1 ],
+    [ 't', centerX, centerY ]
+  ]);
+  const index = shape.get('index');
+  let delay = animateCfg.delay;
+  if (G2.Util.isFunction(delay)) {
+    delay = animateCfg.delay(index);
+  }
+  let easing = animateCfg.easing;
+  if (G2.Util.isFunction(easing)) {
+    easing = animateCfg.easing(index);
+  }
+  // 设置动画目标态
+  shape.animate({
+    transform: [
+      [ 't', -centerX, -centerY ],
+      [ 's', 1, 10 ],
+      [ 't', centerX, centerY ]
+    ]
+  }, animateCfg.duration, easing, animateCfg.callback, delay);
+}
 ```
 
 ### 第三步：注册动画
@@ -220,4 +220,3 @@ chart.interval()
       }
   });
 ```
-

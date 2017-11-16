@@ -6,7 +6,7 @@ resource:
     - ${url.g2}
     - ${url.dataSet}
     - ${url.jquery}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc
+    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
 -->
 
 # Slider
@@ -20,20 +20,20 @@ resource:
 
 ```js
 new Slider({
-  container: string|HTMLElement,
-  width?: number | string,
-  height?: number,
-  padding?: object|number|Array,
-  xAxis: string,
-  yAxis: string,
-  start: string | number,
-  end: string | number,
-  data: array | dataview,
-  fillerStyle?: object,
-  backgroundStyle?: object,
-  textStyle?: object,
-  handleStyle?: object,
-  backgroundChart?: object
+  container: {string} | {HTMLElement},
+  width?: {number} | {string},
+  height?: {number},
+  padding?: {object} | {number} | {array},
+  xAxis: {string},
+  yAxis: {string},
+  start: {string} | {number},
+  end: {string} | {number},
+  data: {array} | {dataview},
+  fillerStyle?: {object},
+  backgroundStyle?: {object},
+  textStyle?: {object},
+  handleStyle?: {object},
+  backgroundChart?: {object}
 });
 ```
 
@@ -115,7 +115,7 @@ scales: {
 当滑动条滑块发生变化时，触发该回调函数，主要用于更新 ds 的状态量。该回调函数会提供一个参数，该参数是一个对象，包含如下属性：
 
 ```js
-onChange: (obj) {
+onChange: (obj) => {
   const { startValue, endValue, startText, endText } = obj;
 }
 ```
@@ -219,7 +219,7 @@ $.getJSON('/assets/data/top2000-disc.json',function(data) {
     forceFit: true,
     height: 350,
     animate: false,
-    padding: [ 20, 100, 60]
+    padding: [ 20, 100, 60 ]
   });
   chart.source(dv, { 
     count: {
@@ -234,7 +234,7 @@ $.getJSON('/assets/data/top2000-disc.json',function(data) {
   
   const slider = new Slider({
     container: document.getElementById('slider'),
-    padding: [ 20, 100, 60],
+    padding: [ 20, 100, 60 ],
     start: ds.state.from,
     end: ds.state.to,
     data,
@@ -242,7 +242,7 @@ $.getJSON('/assets/data/top2000-disc.json',function(data) {
     yAxis: 'count',
     scales: {
       release: {
-        formatter(val) {
+        formatter: (val) => {
           return parseInt(val, 10);
         }
       }
@@ -260,20 +260,12 @@ $.getJSON('/assets/data/top2000-disc.json',function(data) {
 
   slider.render();
 
-  // TODO 绝云 dataview 优化好之后修改代码
   // 更新数据源示例
   $('#changeData').click( ev => {
     const newData = data.slice(10, 90);
     ds.setState('from', 2000);
     ds.setState('to', 2015);
-    dv.source(newData)
-      .transform({
-        type: 'filter',
-        callback: obj => {
-          return obj.release >= ds.state.from && obj.release <= ds.state.to;
-        }
-      });
-    chart.changeData(dv);
+    dv.source(newData); // dv 重新装载数据即可
     slider.start = 2000;
     slider.end = 2015;
     slider.changeData(newData);
@@ -288,15 +280,3 @@ $.getJSON('/assets/data/top2000-disc.json',function(data) {
 ### destroy
 
 `slider.destroy()` 销毁。
-
-
-
-
-
-
-
-
-
-
-
-

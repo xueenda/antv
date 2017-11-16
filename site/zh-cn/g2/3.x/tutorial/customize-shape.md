@@ -12,12 +12,10 @@ resource:
 自 G2 2.0.x 版本开始我们添加了自定义的 Shape 的机制，以支持部分有 **高订制需求的** 图表可视化需求。这也是G2在向 **可编程可视化引擎** 迈出的重要一步。
 
 ```js
-var Shape = G2.Shape;
+const Shape = G2.Shape;
 Shape.registerShape(geomName, shapeName, { // 向Shape工厂注册某个geom的一个shape
-  getPoints: function(cfg) { // 自定义具体标记点
-  },
-  draw: function(cfg, container) { // 自定义最终绘制
-  }
+  getPoints(cfg) {}, // 自定义具体标记点
+  draw(cfg, container) {} // 自定义最终绘制
 });
 ```
 
@@ -43,27 +41,27 @@ Shape.registerShape(geomName, shapeName, { // 向Shape工厂注册某个geom的�
 <div id="c1"></div>
 
 ```js+
-var Shape = G2.Shape;
+const Shape = G2.Shape;
 Shape.registerShape('interval', 'triangle', {
-  getPoints: function(cfg){
-    var x = cfg.x;
-    var y = cfg.y;
-    var y0 = cfg.y0;
-    var width = cfg.size;
+  getPoints(cfg) {
+    const x = cfg.x;
+    const y = cfg.y;
+    const y0 = cfg.y0;
+    const width = cfg.size;
     return [
-      {x: x - width / 2, y: y0},
-      {x: x, y: y},
-      {x: x + width / 2, y: y0}
+      { x: x - width / 2, y: y0 },
+      { x: x, y: y },
+      { x: x + width / 2, y: y0 }
     ]
   },
-  drawShape: function(cfg, group) { // 自定义最终绘制
-    var points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
-    var polygon = group.addShape('polygon', {
+  draw(cfg, group) { // 自定义最终绘制
+    const points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
+    const polygon = group.addShape('polygon', {
       attrs: {
         points: [
-          [points[0].x, points[0].y],
-          [points[1].x, points[1].y],
-          [points[2].x, points[2].y]
+          [ points[0].x, points[0].y ],
+          [ points[1].x, points[1].y ],
+          [ points[2].x, points[2].y ]
         ],
         fill: cfg.color
       }
@@ -72,15 +70,15 @@ Shape.registerShape('interval', 'triangle', {
   }
 });
 
-var data = [
-  {genre:'Sports',sold:27500},
-  {genre:'Strategy',sold:11500},
-  {genre:'Action',sold:6000},
-  {genre:'Shooter',sold:3500},
-  {genre:'Other',sold:1500},
+const data = [
+  { genre:'Sports', sold:27500 },
+  { genre:'Strategy', sold:11500 },
+  { genre:'Action', sold:6000 },
+  { genre:'Shooter', sold:3500 },
+  { genre:'Other', sold:1500 }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   forceFit: true,
   height: 400,
@@ -97,26 +95,26 @@ chart.render();
 ```js
 Shape.registerShape('interval', 'triangle', {
   // 返回三角形的三个顶点
-  getPoints: function(cfg){
-    var x = cfg.x;
-    var y = cfg.y;
-    var y0 = cfg.y0;
-    var width = cfg.size;
+  getPoints(cfg) {
+    const x = cfg.x;
+    const y = cfg.y;
+    const y0 = cfg.y0;
+    const width = cfg.size;
     return [
-      {x: x - width / 2, y: y0},
-      {x: x, y: y},
-      {x: x + width / 2, y: y0}
+      { x: x - width / 2, y: y0 },
+      { x: x, y: y },
+      { x: x + width / 2, y: y0 }
     ]
   },
   // 绘制三角形
-  drawShape: function(cfg, group) { // 自定义最终绘制
-    var points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
-    var polygon = group.addShape('polygon', {
+  draw(cfg, group) { // 自定义最终绘制
+    const points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
+    const polygon = group.addShape('polygon', {
       attrs: {
         points: [
-          [points[0].x, points[0].y],
-          [points[1].x, points[1].y],
-          [points[2].x, points[2].y]
+          [ points[0].x, points[0].y ],
+          [ points[1].x, points[1].y ],
+          [ points[2].x, points[2].y ]
         ],
         fill: cfg.color
       }

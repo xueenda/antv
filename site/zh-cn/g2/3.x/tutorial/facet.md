@@ -28,11 +28,13 @@ chart.facet(type, {
   showTitle: true, // 显示标题
   autoSetAxis: true,// 自动设置坐标轴的文本，避免重复和遮挡
   padding: 10, // 每个view 之间的间距
-  eachView: function(view, facet) { // facet中有行列等信息
-    /*
-     facet 的常见属性：data, rows,cols,rowIndex,colIndex,rowField,colField
-    */
-  },
+  /**
+   * 创建每个分面中的视图
+   * @param  {object} view  视图对象
+   * @param  {object} facet facet中有行列等信息，常见属性：data rows cols rowIndex colIndex rowField colField
+   * @return {null}
+   */
+  eachView(view, facet) {},
   // 列标题
   colTitle: {
     offsetY: -15,
@@ -64,7 +66,7 @@ chart.facet(type, {
 也可以设置每个分面之间的间距 padding
 ```js
 chart.facet('list', {
-  fileds: ['cut', 'carat'],
+  fileds: [ 'cut', 'carat' ],
   padding: 20 // 各个分面之间的间距，也可以是数组 [top, right, bottom, left]
 });
 ```
@@ -104,11 +106,11 @@ chart.facet('rect', {
 
 ```js+
 $.getJSON('/assets/data/diamond.json', function(data) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c1',
     forceFit: true,
     height: 600,
-    padding: [30, 80, 80, 80]
+    padding: [ 30, 80, 80, 80 ]
   });
   chart.source(data, {
     carat: {
@@ -141,12 +143,12 @@ $.getJSON('/assets/data/diamond.json', function(data) {
 <div id="c2" class="chart-container"></div>
 
 ```js+
-$.getJSON('/assets/data/diamond.json',function (data) {
-  var chart = new G2.Chart({
+$.getJSON('/assets/data/diamond.json', function(data) {
+  const chart = new G2.Chart({
     container: 'c2',
     width: 800,
     height: 400,
-    padding: [30, 90, 80, 80]
+    padding: [ 30, 90, 80, 80 ]
   });
   chart.source(data, {
     carat: {
@@ -160,7 +162,7 @@ $.getJSON('/assets/data/diamond.json',function (data) {
     }
   });
   chart.facet('list', {
-    fields: ['cut'],
+    fields: [ 'cut' ],
     cols: 3, // 超过3个换行
     padding: 30,
     eachView(view) {
@@ -176,14 +178,14 @@ $.getJSON('/assets/data/diamond.json',function (data) {
 <div id="c3" class="chart-container"></div>
 
 ```js+
-var DataView = DataSet.DataView;
+const DataView = DataSet.DataView;
 $.getJSON('/assets/data/diamond.json',function (data) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c3',
     width: 600,
     height: 600,
     animate: false,
-    padding: [20, 20, 70, 20]
+    padding: [ 20, 20, 70, 20 ]
   });
   chart.source(data, {
     mean: {
@@ -199,8 +201,8 @@ $.getJSON('/assets/data/diamond.json',function (data) {
     fields: [ 'clarity' ],
     padding: 0,
     eachView(view, facet) {
-      var data = facet.data;
-      var dv = new DataView();
+      const data = facet.data;
+      const dv = new DataView();
       dv.source(data).transform({
         type: 'aggregate',
         fields: [ 'price' ],
@@ -231,27 +233,27 @@ $.getJSON('/assets/data/diamond.json',function (data) {
 下图展示了树形多层级的分面。
 
 ```js+
-var data = [
-  {gender:'男',count:40,'class': '一班',grade: '一年级'},
-  {gender:'女',count:30,'class': '一班',grade: '一年级'},
-  {gender:'男',count:35,'class': '二班',grade: '一年级'},
-  {gender:'女',count:45,'class': '二班',grade: '一年级'},
-  {gender:'男',count:20,'class': '三班',grade: '一年级'},
-  {gender:'女',count:35,'class': '三班',grade: '一年级'},
-  {gender:'男',count:30,'class': '一班',grade: '二年级'},
-  {gender:'女',count:40,'class': '一班',grade: '二年级'},
-  {gender:'男',count:25,'class': '二班',grade: '二年级'},
-  {gender:'女',count:32,'class': '二班',grade: '二年级'},
-  {gender:'男',count:28,'class': '三班',grade: '二年级'},
-  {gender:'女',count:36,'class': '三班',grade: '二年级'}
+const data = [
+  { gender: '男', count: 40, class: '一班', grade: '一年级' },
+  { gender: '女', count: 30, class: '一班', grade: '一年级' },
+  { gender: '男', count: 35, class: '二班', grade: '一年级' },
+  { gender: '女', count: 45, class: '二班', grade: '一年级' },
+  { gender: '男', count: 20, class: '三班', grade: '一年级' },
+  { gender: '女', count: 35, class: '三班', grade: '一年级' },
+  { gender: '男', count: 30, class: '一班', grade: '二年级' },
+  { gender: '女', count: 40, class: '一班', grade: '二年级' },
+  { gender: '男', count: 25, class: '二班', grade: '二年级' },
+  { gender: '女', count: 32, class: '二班', grade: '二年级' },
+  { gender: '男', count: 28, class: '三班', grade: '二年级' },
+  { gender: '女', count: 36, class: '三班', grade: '二年级' }
 ];
-var DataView = DataSet.DataView;
-var chart = new G2.Chart({
+const DataView = DataSet.DataView;
+const chart = new G2.Chart({
   container: 'c4',
   width: 800,
   height: 400,
   animate: false,
-  padding: [0, 90, 80, 80]
+  padding: [ 0, 90, 80, 80 ]
 });
 chart.source(data);
 chart.coord('theta');
@@ -259,14 +261,14 @@ chart.tooltip({
   showTitle: false
 });
 chart.facet('tree', {
-  fields: ['grade','class'],
+  fields: [ 'grade','class' ],
   line: {
     stroke: '#00a3d7'
   },
   lineSmooth: true,
   eachView(view, facet) {
-    var data = facet.data;
-    var dv = new DataView();
+    const data = facet.data;
+    const dv = new DataView();
     dv.source(data).transform({
       type: 'percent',
       field: 'count',
@@ -300,9 +302,9 @@ chart.render();
 
 ```js+
 $.getJSON('/assets/data/population.json', function(data) {
-  var tmp = [];
-  var dates = [];
-  var selEl = $('#selYear');
+  const tmp = [];
+  const dates = [];
+  const selEl = $('#selYear');
   data.male.values.forEach(function(obj) {
     if (dates.indexOf(obj.date) === -1) {
       dates.push(obj.date);
@@ -323,13 +325,13 @@ $.getJSON('/assets/data/population.json', function(data) {
   dates.forEach(date => {
     $('<option value="' + date + '">' + new Date(date * 1000).getFullYear() + '</option>').appendTo(selEl);
   });
-  var ds = new DataSet({
+  const ds = new DataSet({
     state: {
       date: dates[0]
     }
   });
 
-  var dv = ds.createView()
+  const dv = ds.createView()
     .source(tmp)
     .transform({
       type: 'filter',
@@ -338,7 +340,7 @@ $.getJSON('/assets/data/population.json', function(data) {
       }
     });
 
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c5',
     forceFit: true,
     height: 600
@@ -369,8 +371,8 @@ $.getJSON('/assets/data/population.json', function(data) {
   });
   chart.render();
   selEl.on('change', function() {
-    var val = selEl.val();
-    var date = parseInt(val);
+    const val = selEl.val();
+    const date = parseInt(val);
     ds.setState('date', date);
   });
 });
@@ -383,9 +385,9 @@ $.getJSON('/assets/data/population.json', function(data) {
 <div id="c6"></div>
 
 ```js+
-var DataView = DataSet.DataView;
+const DataView = DataSet.DataView;
 $.getJSON('/assets/data/iris.json', function(data) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c6',
     forceFit: true,
     height: 600
@@ -397,10 +399,10 @@ $.getJSON('/assets/data/iris.json', function(data) {
     }
   });
   chart.facet('matrix', {
-    fields: [ 'SepalLength','SepalWidth','PetalLength','PetalWidth' ],
+    fields: [ 'SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth' ],
     eachView(view, facet) {
       if (facet.rowIndex === facet.colIndex) {
-        var dv = new DataView();
+        const dv = new DataView();
         dv.source(facet.data)
           .transform({
             type: 'bin.histogram',

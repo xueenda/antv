@@ -33,10 +33,6 @@ chartDetail: ${base}/zh-cn/vis/chart/stacked-bar.html
   chart.source(dv);
   chart.intervalStack()
     .position('月份*月均降雨量')
-    .color('name')
-    .style({
-      stroke: '#fff',
-      lineWidth: 1
-    });
+    .color('name');
   chart.render();
 </script>

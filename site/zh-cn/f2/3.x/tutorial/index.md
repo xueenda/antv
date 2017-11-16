@@ -66,16 +66,16 @@ var F2 = require('@antv/f2');
 
 ```js
 // F2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
-var data = [ 
-  {genre: 'Sports', sold: 275},
-  {genre: 'Strategy', sold: 115},
-  {genre: 'Action', sold: 120},
-  {genre: 'Shooter', sold: 350},
-  {genre: 'Other', sold: 150},
+const data = [ 
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 },
 ];
 
 // Step 1: 创建 Chart 对象
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'c1', // 指定图表容器 ID
   width: 500, // 指定图表宽度
   height: 300 // 指定图表高度    

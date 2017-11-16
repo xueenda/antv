@@ -1,6 +1,6 @@
 <!--
 index: 8
-title: 图形属性
+title: Attr 图形属性
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -41,12 +41,11 @@ chart.<geomType>().<attrType>(fields[, callback]);
 ```js
 chart.point().position('a*b').color('c');
 
-chart.interval().position('a*b').color('c', function(cValue) {
+chart.interval().position('a*b').color('c', (cValue) => {
   if (cvalue === 'fail') {
     return 'red';
-  } else {
-    return 'green';
   }
+  return 'green';
 });
 ```
 
@@ -90,23 +89,23 @@ color 支持的映射语法如下：
 
 将 `city` 属性的数据值映射至制定的颜色来区分不同的城市。
 
-`.color('city', ['#1f77b4', '#ff7f0e', '#2ca02c'])`
+`.color('city', [ '#1f77b4', '#ff7f0e', '#2ca02c' ])`
 
 <div id="c1"></div>
 
 完整的代码如下：
 
 ```js+
-$.getJSON('/assets/data/avg-temp.json',function(data){
-  var ds = new DataSet();
-  var dv = ds.createView().source(data);
+$.getJSON('/assets/data/avg-temp.json', function(data) {
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
   dv.transform({
     type: 'fold',
-    fields: [ 'New York', 'San Francisco','Austin' ],
+    fields: [ 'New York', 'San Francisco', 'Austin' ],
     key: 'city',
     value: 'value' 
   });
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c1',
     forceFit: true,
     height : 400,
@@ -144,7 +143,11 @@ $.getJSON('/assets/data/avg-temp.json',function(data){
     },
     grid: null
   });
-  chart.line().position('date*value').color('city', ['#1f77b4', '#ff7f0e', '#2ca02c']).shape('spline').size(2);
+  chart.line()
+    .position('date*value')
+    .color('city', [ '#1f77b4', '#ff7f0e', '#2ca02c' ])
+    .shape('spline')
+    .size(2);
   chart.render();
 });
 ```
@@ -162,11 +165,11 @@ $.getJSON('/assets/data/avg-temp.json',function(data){
 
 ```js+
 $.getJSON('/assets/data/usa.geo.json', function(mapData) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c2',
     width: 800,
     height: 400,
-    padding: [40, 140]
+    padding: [ 40, 140 ]
   });
   chart.legend(false);
   chart.axis(false);
@@ -183,12 +186,12 @@ $.getJSON('/assets/data/usa.geo.json', function(mapData) {
     }
   });
   // 绘制地图背景
-  var ds = new DataSet();
-  var bgDataView = ds.createView('back')
+  const ds = new DataSet();
+  const bgDataView = ds.createView('back')
     .source(mapData, {
       type: 'GeoJSON'
     });
-  var bgView = chart.view();
+  const bgView = chart.view();
   bgView.source(bgDataView);
   bgView.polygon().position('longitude*latitude')
     .color('#e6e6e6')
@@ -201,8 +204,8 @@ $.getJSON('/assets/data/usa.geo.json', function(mapData) {
 
   $.getJSON('/assets/data/2014-usa-population.json', function(data) {
     // 绘制 choropleth map
-    var view = chart.view();
-    var userPolygonDv = ds.createView()
+    const view = chart.view();
+    const userPolygonDv = ds.createView()
       .source(data)
       .transform({
         geoDataView: bgDataView,
@@ -217,8 +220,8 @@ $.getJSON('/assets/data/usa.geo.json', function(mapData) {
       .tooltip('State*Population');
 
     // 绘制文字
-    var textView = chart.view();
-    var centerDv = ds.createView()
+    const textView = chart.view();
+    const centerDv = ds.createView()
       .source(data)
       .transform({
         geoDataView: bgDataView,
@@ -247,7 +250,7 @@ $.getJSON('/assets/data/usa.geo.json', function(mapData) {
 
 ```js
 // 根据单个字段计算颜色
-chart.point().position('x*y').color('z', function(z) {
+chart.point().position('x*y').color('z', z => {
   if (z >= 100) {
     return 'red';
   }
@@ -255,7 +258,7 @@ chart.point().position('x*y').color('z', function(z) {
 });
 
 // 根据多个字段计算颜色
-chart.point().position('x*y').color('level*value', function(level, value) {
+chart.point().position('x*y').color('level*value', (level, value) => {
   if (level < 2) {
     if (value > 10) {
       return 'green';
@@ -292,7 +295,7 @@ chart.point().position('x*y').color('level*value', function(level, value) {
 
 #### demo 演示
 
-`.shape('type', ['circle', 'triangle-down', 'square', 'diamond'])`
+`.shape('type', [ 'circle', 'triangle-down', 'square', 'diamond' ])`
 
 <div id="c3"></div>
 
@@ -300,7 +303,7 @@ chart.point().position('x*y').color('level*value', function(level, value) {
 
 ```js+
 $.getJSON('/assets/data/series-scatter.json', function(data) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c3',
     forceFit: true,
     height: 400
@@ -313,12 +316,12 @@ $.getJSON('/assets/data/series-scatter.json', function(data) {
   chart.point()
     .position('x*y')
     .color('type')
-    .shape('type', ['circle', 'triangle-down', 'square', 'diamond'])
+    .shape('type', [ 'circle', 'triangle-down', 'square', 'diamond' ])
     .opacity(0.65)
     .size(7);
   // 添加辅助元素
   chart.guide().text({
-    position: [250, 550], 
+    position: [ 250, 550 ], 
     content: '0 - 500', 
     style: {
       fontSize: 14,
@@ -326,7 +329,7 @@ $.getJSON('/assets/data/series-scatter.json', function(data) {
     }
   });
   chart.guide().text({
-    position: [1000, 550], 
+    position: [ 1000, 550 ], 
     content: '500 - 1500', 
     style: {
       fontSize: 14,
@@ -334,7 +337,7 @@ $.getJSON('/assets/data/series-scatter.json', function(data) {
     }
   });
   chart.guide().text({
-    position: [1700, 550], 
+    position: [ 1700, 550 ], 
     content: '1500 - 2000', 
     style: {
       fontSize: 14,
@@ -342,19 +345,19 @@ $.getJSON('/assets/data/series-scatter.json', function(data) {
     }
   });
   chart.guide().region({
-    start: [0, -600], 
-    end: [500, 600]
+    start: [ 0, -600 ], 
+    end: [ 500, 600 ]
   });
   chart.guide().region({
-    start: [500, -600], 
-    end: [1500, 600], 
+    start: [ 500, -600 ], 
+    end: [ 1500, 600 ], 
     style: {
       fillOpacity: 0.2
     }
   });
   chart.guide().region({
-    start: [1500, -600], 
-    end: [2000, 600], 
+    start: [ 1500, -600 ], 
+    end: [ 2000, 600 ], 
     style: {
       fillOpacity: 0.3
     }
@@ -368,20 +371,24 @@ $.getJSON('/assets/data/series-scatter.json', function(data) {
 shape 也可以通过字段值来计算，可以在 shape 方法中指定单个或者多个字段，通过回调函数返回指定的 shape。
 
 ```js
-chart.point().position('x*y').shape('value', function(value) {
-  if (value > 10) {
-    return 'circle';
-  }
-  return 'rect';
-});
+chart.point()
+  .position('x*y')
+  .shape('value', (value) => {
+    if (value > 10) {
+      return 'circle';
+    }
+    return 'rect';
+  });
 
 // 根据是否有子节点和节点是否展开确定shape
-chart.point().position('x*y').shape('children*collapsed', function(children, collapsed) {
-  if (children) {
-    return collapsed ? 'collapsed-node' : 'expand-node';
-  }
-  return 'leaf';
-});
+chart.point()
+  .position('x*y')
+  .shape('children*collapsed', (children, collapsed) => {
+    if (children) {
+      return collapsed ? 'collapsed-node' : 'expand-node';
+    }
+    return 'leaf';
+  });
 ```
 
 shape 的回调函数中也可以返回数组，G2 根据数组的第一个值来确定 shape，其他值可以作为自定义 shape 的参数,详情查看[自定义shape](./customize-shape.html)
@@ -390,8 +397,8 @@ shape 的回调函数中也可以返回数组，G2 根据数组的第一个值�
 chart.point().position('name*value')
   .size('value')
   .color('name')
-  .shape('url', function(url){
-    return ['image', url]; // 根据具体的字段指定 shape
+  .shape('url', url => {
+    return [ 'image', url ]; // 根据具体的字段指定 shape
   });
 
 ```
@@ -426,7 +433,7 @@ chart.point().position('name*value')
 
 ```js+
 $.getJSON('/assets/data/bubble-population.json', function(data) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c4',
     forceFit: true,
     height: 400
@@ -450,7 +457,7 @@ $.getJSON('/assets/data/bubble-population.json', function(data) {
   chart.axis('GDP', {
     label: {
       // 格式化坐标轴的显示
-      formatter: function (value) {
+      formatter: value => {
         return (value / 1000).toFixed(0) + 'k';
       }
     }
@@ -475,19 +482,18 @@ $.getJSON('/assets/data/bubble-population.json', function(data) {
 size可以根据数据的字段值通过回调函数计算，可以指定多个字段
 
 ```js
-chart.point().position('x*y').size('z', function(z) {
+chart.point().position('x*y').size('z', z => {
   if (z > 10) {
     return 20;
   }
   return z * 0.5;
 });
 
-chart.point().position('x*y').size('level*text', function(level, text) {
-  if (level == 0) {
+chart.point().position('x*y').size('level*text', (level, text) => {
+  if (level === 0) {
     return 50;
-  } else {
-    return text.length * 10; // 根据文本长度返回长度
   }
+  return text.length * 10; // 根据文本长度返回长度
 });
 
 ```

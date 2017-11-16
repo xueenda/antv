@@ -43,7 +43,7 @@ F2 的提供了两个入口：
 你可以仅引用 core.js
 
 ```js
-var F2 = require('@antv/f2/core');
+import F2 from '@antv/f2/core';
 ```
 
 核心包中包括了以下内容：

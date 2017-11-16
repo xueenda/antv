@@ -34,7 +34,7 @@ F2 提供了两种方式来解决这个问题：
 F2.Global.pixelRatio = window.devicePixelRatio;
 
 // 单个图表更改
-var chart1 = new F2.Chart({
+const chart1 = new F2.Chart({
   id: 'can2',
   pixelRatio: 2 // 单独设置，经常设置 window.devicePixelRatio
 });
@@ -44,12 +44,12 @@ var chart1 = new F2.Chart({
 <canvas id="can2"></canvas>
 
 ```js-
-var data = [
-  {x: 1, y: 1},
-  {x: 2, y: 0},
-  {x: 3, y: 3}
+const data = [
+  { x: 1, y: 1 },
+  { x: 2, y: 0 },
+  { x: 3, y: 3 }
 ]
-var chart = new F2.Chart({
+const chart = new F2.Chart({
   id: 'can1',
   width: 400,
   height: 200,
@@ -65,13 +65,13 @@ chart.source(data, {
   }
 });
 chart.line().position('x*y');
-chart.guide().text([2, 3.5], 'pxielRatio = 1', {
+chart.guide().text([ 2, 3.5 ], 'pxielRatio = 1', {
   textAlign: 'center',
   fontSize: 14
 });
 chart.render();
 
-var chart1 = new F2.Chart({
+const chart1 = new F2.Chart({
   id: 'can2',
   width: 400,
   height: 200,
@@ -87,7 +87,7 @@ chart1.source(data, {
   }
 });
 chart1.line().position('x*y');
-chart1.guide().text([2, 3.5], 'pxielRatio = 2', {
+chart1.guide().text([ 2, 3.5 ], 'pxielRatio = 2', {
   textAlign: 'center',
   fontSize: 14
 });
@@ -109,11 +109,11 @@ F2 没有默认设置 `window.devicePixelRatio` 的原因：
 现有数据格式：
 
 ```js
-var data = [
-  {time: '2011-01-01', value: 10},
-  {time: '2011-01-02', value: 20},
+const data = [
+  { time: '2011-01-01', value: 10 },
+  { time: '2011-01-02', value: 20 },
   ...
-  {time: '2011-01-20', value: 0}
+  { time: '2011-01-20', value: 0 }
 ];
 ```
 
@@ -144,7 +144,7 @@ chart.source(data, {
 ```js
 chart.source(data, {
   time: {
-    ticks: ['2011-01-01', '2011-01-10', '2011-01-20']
+    ticks: [ '2011-01-01', '2011-01-10', '2011-01-20' ]
   }
 })
 ```
@@ -154,8 +154,8 @@ chart.source(data, {
 ```js
 chart.source(data, {
   time: {
-    range: [0, 1],
-    ticks: ['2011-01-01', '2011-01-10', '2011-01-20']
+    range: [ 0, 1 ],
+    ticks: [ '2011-01-01', '2011-01-10', '2011-01-20' ]
   }
 })
 ```
@@ -202,7 +202,7 @@ F2 提供了三个方法用于跟获取图表的信息：
 
 ```js
 function getPoint(canvas, clientX, clientY) {  
-  var bbox = canvas.getBoundingClientRect();  
+  const bbox = canvas.getBoundingClientRect();  
   return {  
     x: clientX - bbox.left,   
     y: clientY - bbox.top 
@@ -210,12 +210,12 @@ function getPoint(canvas, clientX, clientY) {
 } 
 
 canvas.onclick=function(event){  
-  var point = getPoint(canvas, event.clientX, event.clientY);
-  var x = parseInt(point.x);  
-  var y = parseInt(point.y);  
+  const point = getPoint(canvas, event.clientX, event.clientY);
+  const x = parseInt(point.x);  
+  const y = parseInt(point.y);  
   console.log("x:" + x + ";" + "y:" + y);
   // 根据画布坐标获取对应数据集
-  var data = chart.getSnapRecords(point);
+  const data = chart.getSnapRecords(point);
   console.log(data);
 } 
 ```
@@ -231,7 +231,7 @@ F2 没有内置 tooltip，如果想在图表上显示，需要先获取手滑动
 
 ```js
 function getPoint(canvas, clientX, clientY) {  
-  var bbox = canvas.getBoundingClientRect();  
+  const bbox = canvas.getBoundingClientRect();  
   return {  
     x: clientX - bbox.left,   
     y: clientY - bbox.top 
@@ -240,10 +240,10 @@ function getPoint(canvas, clientX, clientY) {
 
 // 绑定事件，可以用原生的写法
 $(canvas).on('touchmove', function(ev) {
-  var touch = ev.touches[0];
+  const touch = ev.touches[0];
   if (touch) {
-    var point = getPoint(canvas, touch.clientX, touch.clientY);
-    var records = chart.getSnapRecords(point);
+    const point = getPoint(canvas, touch.clientX, touch.clientY);
+    const records = chart.getSnapRecords(point);
     // 生成 dom
     // 移动 dom
     // 显示 dom
@@ -313,14 +313,14 @@ F2 的图表定义时有多种方式可以设置渐变色
 3. 生成 DOM
 
 ```js
-var data = [
-  {time: '2011-01-01', value: 10, type: '类型1'},
-  {time: '2011-01-02', value: 20, type: '类型1'},
-  {time: '2011-01-01', value: 10, type: '类型2'},
-  {time: '2011-01-02', value: 20, type: '类型2'}
+const data = [
+  { time: '2011-01-01', value: 10, type: '类型1' },
+  { time: '2011-01-02', value: 20, type: '类型1' },
+  { time: '2011-01-01', value: 10, type: '类型2' },
+  { time: '2011-01-02', value: 20, type: '类型2' }
 ];
 
-var colors = {
+const colors = {
   '类型1': 'red',
   '类型2': 'blue'
 };
@@ -334,7 +334,7 @@ chart.line().position('time*value').color('type', funciton(type) {
 chart.render();
 
 $.each(colors, function(k, v) {
-  var str = '<li class="legend-item"><span style="color:' + v +'"></span>k</li>';
+  const str = '<li class="legend-item"><span style="color:' + v +'"></span>k</li>';
   $(str).appendTo('#legend-list');
 });
 
@@ -347,9 +347,9 @@ $.each(colors, function(k, v) {
 
 ```js
 $('#legend-list .legend-item').on('click', function(ev) {
-  var item = ev.target;
-  var type = $(item).text();
-  var filteredData = data.filter(function(obj) {
+  const item = ev.target;
+  const type = $(item).text();
+  const filteredData = data.filter(function(obj) {
     return obj.type === type;
   });
   chart.changeData(filteredData);
@@ -371,11 +371,11 @@ $('#legend-list .legend-item').on('click', function(ev) {
 这种情况都是将数字类型的数据表示成了字符串，如下所示：
 
 ```js
-var data = [
-  {time: '2010-01-01', value: '10'},
-  {time: '2010-01-02', value: '8'},
-  {time: '2010-01-03', value: '11'},
-  {time: '2010-01-04', value: '9'}
+const data = [
+  { time: '2010-01-01', value: '10' },
+  { time: '2010-01-02', value: '8' },
+  { time: '2010-01-03', value: '11' },
+  { time: '2010-01-04', value: '9' }
 ];
 
 ```
@@ -385,11 +385,11 @@ var data = [
 将字符串改成数字就解决了这个问题
 
 ```js
-var data = [
-  {time: '2010-01-01', value: 10},
-  {time: '2010-01-02', value: 8},
-  {time: '2010-01-03', value: 11},
-  {time: '2010-01-04', value: 9}
+const data = [
+  { time: '2010-01-01', value: 10 },
+  { time: '2010-01-02', value: 8 },
+  { time: '2010-01-03', value: 11 },
+  { time: '2010-01-04', value: 9 }
 ];
 
 ```

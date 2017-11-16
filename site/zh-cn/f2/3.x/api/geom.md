@@ -34,7 +34,7 @@ chart.interval().position('x*y');
   + fields: `String` 可以是字符串 'field1*field2' 也可以是数组 ['field1', 'field2']
   
   ```js
-  chart.point().position(['cut', 'price']);
+  chart.point().position([ 'cut', 'price' ]);
   chart.interval().position('cut*price');
   ```
 
@@ -47,7 +47,7 @@ chart.interval().position('x*y');
   ```js
   chart.point().position('x*y').color('x'); // 按照字段 x 进行映射，使用内置的颜色
   chart.point().position('x*y').color('red') // 设置常量颜色
-  chart.point().position('x*y').color('x', function(x) {
+  chart.point().position('x*y').color('x', x => {
     if (x > 100) {
       return 'red';
     }
@@ -65,12 +65,11 @@ chart.interval().position('x*y');
   chart.point().size(10); // 常量
   chart.point().size('value'); // 使用字段映射到大小，使用内置的大小
   chart.point().size('value', [10, 30]); // 指定大小范围
-  chart.point().size('value', function(value) { // 回调函数
+  chart.point().size('value', value => { // 回调函数
     if(type > 50) {
       return 10;
-    } else {
-      return 5;
-    }
+    } 
+    return 5;
   });
   ```
 
@@ -83,13 +82,12 @@ chart.interval().position('x*y');
   ```js
   chart.point().shape('circle'); // 常量
   chart.point().shape('type'); // 使用字段映射到形状，使用内置的形状
-  chart.point().shape('type', ['circle', 'rect']); // 指定形状
-  chart.point().shape('type', function(type) { // 回调函数
+  chart.point().shape('type', [ 'circle', 'rect' ]); // 指定形状
+  chart.point().shape('type', type => { // 回调函数
     if(type === 'a') {
       return 'circle';
-    } else {
-      return 'square';
     }
+    return 'square';
   });
   ```
 

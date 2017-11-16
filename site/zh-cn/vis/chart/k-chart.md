@@ -9,7 +9,7 @@ resource:
     - ${url.g2}
     - ${url.dataSet}
     - ${url.jquery}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc
+    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
 -->
 
 # K 线图

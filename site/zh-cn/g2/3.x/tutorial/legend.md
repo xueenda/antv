@@ -61,29 +61,29 @@ onClick | 自定义图例项点击事件， clickable 为 false 不生效 | --
 <div id="legendMarker"></div>
 
 ```js+
-var data = [
-  {'year': 'Year 1800', 'region': 'Africa', population: 107},
-  {'year': 'Year 1900', 'region': 'Africa', population: 133},
-  {'year': 'Year 2012', 'region': 'Africa', population: 1052},
-  {'year': 'Year 1800', 'region': 'America', population: 31},
-  {'year': 'Year 1900', 'region': 'America', population: 156},
-  {'year': 'Year 2012', 'region': 'America', population: 954},
-  {'year': 'Year 1800', 'region': 'Asia', population: 635},
-  {'year': 'Year 1900', 'region': 'Asia', population: 947},
-  {'year': 'Year 2012', 'region': 'Asia', population: 4250},
-  {'year': 'Year 1800', 'region': 'Europe', population: 203},
-  {'year': 'Year 1900', 'region': 'Europe', population: 408},
-  {'year': 'Year 2012', 'region': 'Europe', population: 740},
-  {'year': 'Year 1800', 'region': 'Oceania', population: 2},
-  {'year': 'Year 1900', 'region': 'Oceania', population: 6},
-  {'year': 'Year 2012', 'region': 'Oceania', population: 38}
+const data = [
+  { year: 'Year 1800', region: 'Africa', population: 107 },
+  { year: 'Year 1900', region: 'Africa', population: 133 },
+  { year: 'Year 2012', region: 'Africa', population: 1052 },
+  { year: 'Year 1800', region: 'America', population: 31 },
+  { year: 'Year 1900', region: 'America', population: 156 },
+  { year: 'Year 2012', region: 'America', population: 954 },
+  { year: 'Year 1800', region: 'Asia', population: 635 },
+  { year: 'Year 1900', region: 'Asia', population: 947 },
+  { year: 'Year 2012', region: 'Asia', population: 4250 },
+  { year: 'Year 1800', region: 'Europe', population: 203 },
+  { year: 'Year 1900', region: 'Europe', population: 408 },
+  { year: 'Year 2012', region: 'Europe', population: 740 },
+  { year: 'Year 1800', region: 'Oceania', population: 2 },
+  { year: 'Year 1900', region: 'Oceania', population: 6 },
+  { year: 'Year 2012', region: 'Oceania', population: 38 }
 ];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'legendMarker',
   width: 600,
   height: 350,
-  padding: [20, 90, 95, 80]
+  padding: [ 20, 90, 95, 80 ]
 });
 
 chart.source(data);
@@ -136,61 +136,95 @@ chart.legend({
 <div id="c1"></div>
 
 ```js+
-  var data = [{"部门":"部门0","小组":"组名0","完成人数":37,"未完成人数":9},{"部门":"部门0","小组":"组名2","完成人数":29,"未完成人数":10},{"部门":"部门0","小组":"组名8","完成人数":59,"未完成人数":14},{"部门":"部门0","小组":"组名9","完成人数":60,"未完成人数":8},{"部门":"部门0","小组":"组名10","完成人数":83,"未完成人数":14},{"部门":"部门0","小组":"组名12","完成人数":67,"未完成人数":21},{"部门":"部门0","小组":"组名14","完成人数":46,"未完成人数":18},{"部门":"部门0","小组":"组名17","完成人数":19,"未完成人数":27},{"部门":"部门0","小组":"组名19","完成人数":74,"未完成人数":17},{"部门":"部门1","小组":"组名15","完成人数":34,"未完成人数":19},{"部门":"部门1","小组":"组名20","完成人数":71,"未完成人数":25},{"部门":"部门1","小组":"组名26","完成人数":28,"未完成人数":23},{"部门":"部门1","小组":"组名29","完成人数":90,"未完成人数":24},{"部门":"部门2","小组":"组名7","完成人数":50,"未完成人数":5},{"部门":"部门2","小组":"组名11","完成人数":86,"未完成人数":26},{"部门":"部门2","小组":"组名13","完成人数":63,"未完成人数":16},{"部门":"部门2","小组":"组名27","完成人数":76,"未完成人数":2},{"部门":"部门2","小组":"组名28","完成人数":13,"未完成人数":28},{"部门":"部门3","小组":"组名1","完成人数":33,"未完成人数":16},{"部门":"部门3","小组":"组名3","完成人数":14,"未完成人数":1},{"部门":"部门3","小组":"组名4","完成人数":43,"未完成人数":25},{"部门":"部门3","小组":"组名16","完成人数":45,"未完成人数":13},{"部门":"部门3","小组":"组名18","完成人数":50,"未完成人数":21},{"部门":"部门3","小组":"组名22","完成人数":43,"未完成人数":7},{"部门":"部门3","小组":"组名23","完成人数":38,"未完成人数":6},{"部门":"部门3","小组":"组名24","完成人数":33,"未完成人数":24},{"部门":"部门3","小组":"组名25","完成人数":13,"未完成人数":27},{"部门":"部门4","小组":"组名5","完成人数":98,"未完成人数":4},{"部门":"部门4","小组":"组名6","完成人数":88,"未完成人数":12},{"部门":"部门4","小组":"组名21","完成人数":52,"未完成人数":9}];
+const data = [
+  { 部门: '部门0', 小组: '组名0', 完成人数: 37, 未完成人数: 9 },
+  { 部门: '部门0', 小组: '组名2', 完成人数: 29, 未完成人数: 10 },
+  { 部门: '部门0', 小组: '组名8', 完成人数: 59, 未完成人数: 14 },
+  { 部门: '部门0', 小组: '组名9', 完成人数: 60, 未完成人数: 8 },
+  { 部门: '部门0', 小组: '组名10', 完成人数: 83, 未完成人数: 14 },
+  { 部门: '部门0', 小组: '组名12', 完成人数: 67, 未完成人数: 21 },
+  { 部门: '部门0', 小组: '组名14', 完成人数: 46, 未完成人数: 18 },
+  { 部门: '部门0', 小组: '组名17', 完成人数: 19, 未完成人数: 27 },
+  { 部门: '部门0', 小组: '组名19', 完成人数: 74, 未完成人数: 17 },
+  { 部门: '部门1', 小组: '组名15', 完成人数: 34, 未完成人数: 19 },
+  { 部门: '部门1', 小组: '组名20', 完成人数: 71, 未完成人数: 25 },
+  { 部门: '部门1', 小组: '组名26', 完成人数: 28, 未完成人数: 23 },
+  { 部门: '部门1', 小组: '组名29', 完成人数: 90, 未完成人数: 24 },
+  { 部门: '部门2', 小组: '组名7', 完成人数: 50, 未完成人数: 5 },
+  { 部门: '部门2', 小组: '组名11', 完成人数: 86, 未完成人数: 26 },
+  { 部门: '部门2', 小组: '组名13', 完成人数: 63, 未完成人数: 16 },
+  { 部门: '部门2', 小组: '组名27', 完成人数: 76, 未完成人数: 2 },
+  { 部门: '部门2', 小组: '组名28', 完成人数: 13, 未完成人数: 28 },
+  { 部门: '部门3', 小组: '组名1', 完成人数: 33, 未完成人数: 16 },
+  { 部门: '部门3', 小组: '组名3', 完成人数: 14, 未完成人数: 1 },
+  { 部门: '部门3', 小组: '组名4', 完成人数: 43, 未完成人数: 25 },
+  { 部门: '部门3', 小组: '组名16', 完成人数: 45, 未完成人数: 13 },
+  { 部门: '部门3', 小组: '组名18', 完成人数: 50, 未完成人数: 21 },
+  { 部门: '部门3', 小组: '组名22', 完成人数: 43, 未完成人数: 7 },
+  { 部门: '部门3', 小组: '组名23', 完成人数: 38, 未完成人数: 6 },
+  { 部门: '部门3', 小组: '组名24', 完成人数: 33, 未完成人数: 24 },
+  { 部门: '部门3', 小组: '组名25', 完成人数: 13, 未完成人数: 27 },
+  { 部门: '部门4', 小组: '组名5', 完成人数: 98, 未完成人数: 4 },
+  { 部门: '部门4', 小组: '组名6', 完成人数: 88, 未完成人数: 12 },
+  { 部门: '部门4', 小组: '组名21', 完成人数: 52, 未完成人数: 9 }
+];
  
-  var DataView = DataSet.DataView;
-  var dv = new DataView();
-  dv.source(data).transform({
-      type: 'sort',
-      callback: function (obj1, obj2) {
-        return obj1['部门'] > obj2['部门'] ? 1 : -1;
-      }
-    }).transform({
-      type: 'map',
-      callback: function(obj) {
-        obj['完成人数'] *= -1; // 将完成人数转换成负数
-        return obj;
-      }
-    }).transform({
-      type: 'fold',
-      fields: ['完成人数', '未完成人数'],
-      key: '完成状态',
-      value: '人数'
-    });
-  var chart = new G2.Chart({
-    container: 'c1',
-    forceFit: true,
-    height: 400,
-    padding: [5, 100, 80]
-  });
-  chart.source(dv);
-  chart.filter('部门', function(val) {
-    return val === '部门0';
-  });
-  chart.coord().transpose();
-  // 关键代码：设置对应图例的选择模式
-  chart.legend('部门', {
-    selectedMode: 'single',
-    position: 'right',
-    hoverable: false
-  });
-  chart.legend('完成状态', false);
-  chart.axis('人数', {
-    label: {
-      formatter: function(value) {
-        value = parseInt(value);
-        return Math.abs(value); // 将负数格式化成正数
-      }
+const DataView = DataSet.DataView;
+const dv = new DataView();
+dv.source(data)
+  .transform({
+    type: 'sort',
+    callback: (obj1, obj2) => {
+      return obj1['部门'] > obj2['部门'] ? 1 : -1;
     }
+  })
+  .transform({
+    type: 'map',
+    callback: obj => {
+      obj['完成人数'] *= -1; // 将完成人数转换成负数
+      return obj;
+    }
+  })
+  .transform({
+    type: 'fold',
+    fields: ['完成人数', '未完成人数'],
+    key: '完成状态',
+    value: '人数'
   });
-  chart.interval()
-    .position('小组*人数')
-    .color('部门')
-    .shape('完成状态', ['rect', 'hollowRect'])
-    .style({
-      lineWidth: 1
-    });
-  chart.render();
+const chart = new G2.Chart({
+  container: 'c1',
+  forceFit: true,
+  height: 400,
+  padding: [ 5, 100, 80 ]
+});
+chart.source(dv);
+chart.filter('部门', val => {
+  return val === '部门0';
+});
+chart.coord().transpose();
+// 关键代码：设置对应图例的选择模式
+chart.legend('部门', {
+  selectedMode: 'single',
+  position: 'right',
+  hoverable: false
+});
+chart.legend('完成状态', false);
+chart.axis('人数', {
+  label: {
+    formatter: value => {
+      value = parseInt(value);
+      return Math.abs(value); // 将负数格式化成正数
+    }
+  }
+});
+chart.interval()
+  .position('小组*人数')
+  .color('部门')
+  .shape('完成状态', [ 'rect', 'hollowRect' ])
+  .style({
+    lineWidth: 1
+  });
+chart.render();
 ```
 
 ## 使用 html 渲染图例
@@ -200,101 +234,101 @@ G2 支持使用 html 渲染图例，方式非常简单，只要声明 `useHtml: 
 ```js
 chart.legend({
   useHtml: true,
-  containerTpl: {String}, // 可选，默认容器模板不满足要求时使用
-  itemTpl: {String | Function}, // 可选，用户设置的图例项 html 模板，默认提供的模板不满足要求时使用
+  containerTpl: {string}, // 可选，默认容器模板不满足要求时使用
+  itemTpl: {string} | {function}, // 可选，用户设置的图例项 html 模板，默认提供的模板不满足要求时使用
 });
 ```
 
 <div id="c2"></div>
 
 ```js+
-    var data = [
-      { country: 'Lithuania', litres: 501.9 },
-      { country: 'Czech Republic', litres: 301.9 },
-      { country: 'Ireland', litres: 201.1 },
-      { country: 'Germany', litres: 165.8 },
-      { country: 'Australia', litres: 139.9 },
-      { country: 'Austria', litres: 128.3 },
-      { country: 'UK', litres: 99 },
-      { country: 'Belgium', litres: 60 },
-      { country: 'The Netherlands', litres: 50 }
-    ];
+const data = [
+  { country: 'Lithuania', litres: 501.9 },
+  { country: 'Czech Republic', litres: 301.9 },
+  { country: 'Ireland', litres: 201.1 },
+  { country: 'Germany', litres: 165.8 },
+  { country: 'Australia', litres: 139.9 },
+  { country: 'Austria', litres: 128.3 },
+  { country: 'UK', litres: 99 },
+  { country: 'Belgium', litres: 60 },
+  { country: 'The Netherlands', litres: 50 }
+];
 
-    var ds = new DataSet();
-    var dv = ds.createView()
-      .source(data)
-      .transform({
-        type: 'percent',
-        field: 'litres',
-        dimension: 'country',
-        as: 'percent'
-      });
+const ds = new DataSet();
+const dv = ds.createView()
+  .source(data)
+  .transform({
+    type: 'percent',
+    field: 'litres',
+    dimension: 'country',
+    as: 'percent'
+  });
 
-    const chart = new G2.Chart({
-      container: 'c2',
-      width: 500,
-      height: 500,
-      padding: [ 20, 120, 20, 160 ]
-    });
-    chart.source(dv, {
-      percent: {
-        formatter: val => {
-          val = (val * 100).toFixed(2) + '%';
-          return val;
-        }
-      },
-      nice: false
-    });
-    chart.coord('theta', {
-      innerRadius: 0.3,
-      radius: 1
-    });
-    chart.tooltip({
-      showTitle: false, // 不展示标题
-      itemTpl: '<li data-index={index}><span style="color:{color}">{name}:</span>{value}</li>'
-    });
-    chart.legend({
-      useHtml: true,
-      position: 'right',
-      containerTpl: '<div class="g2-legend">' +
-        '<table class="g2-legend-list" style="list-style-type:none;margin:0;padding:0;"></table>' +
-        '</div>',
-      itemTpl: (value, color, checked, index) => {
-        const obj = dv.rows[index];
-        checked = checked ? 'checked' : 'unChecked';
-        return '<tr class="g2-legend-list-item item-' + index + ' ' + checked +
-        '" data-value="' + value + '" data-color=' + color +
-        ' style="cursor: pointer;font-size: 14px;">' +
-        '<td width=150 style="border: none;padding:0;"><i class="g2-legend-marker" style="width:10px;height:10px;display:inline-block;margin-right:10px;background-color:' + color + ';"></i>' +
-        '<span class="g2-legend-text">' + value + '</span></td>' +
-        '<td style="text-align: right;border: none;padding:0;">' + obj.litres + '</td>' +
-        '</tr>';
-      },
-      offsetX: 15,
-      'g2-legend': {
-        marginLeft: '100px',
-        marginTop: '-107px'
-      },
-      'g2-legend-list': {
-        border: 'none'
-      }
-    });
-    chart.filter('country', val => {
-      return val !== 'UK';
-    });
-    chart.intervalStack()
-      .position('percent')
-      .color('country', [ '#67b7dc', '#84b761', '#fdd400', '#cc4748', '#cd82ad', '#2f4074', '#448e4d', '#b7b83f', '#b9783f' ])
-      .label('percent', {
-        formatter: (val, item) => {
-          return item.point.country + ': ' + val;
-        }
-      })
-      .style({
-        lineWidth: 2,
-        stroke: '#fff'
-      });
-    chart.render();
+const chart = new G2.Chart({
+  container: 'c2',
+  width: 500,
+  height: 500,
+  padding: [ 20, 120, 20, 160 ]
+});
+chart.source(dv, {
+  percent: {
+    formatter: val => {
+      val = (val * 100).toFixed(2) + '%';
+      return val;
+    }
+  },
+  nice: false
+});
+chart.coord('theta', {
+  innerRadius: 0.3,
+  radius: 1
+});
+chart.tooltip({
+  showTitle: false, // 不展示标题
+  itemTpl: '<li data-index={index}><span style="color:{color}">{name}:</span>{value}</li>'
+});
+chart.legend({
+  useHtml: true,
+  position: 'right',
+  containerTpl: '<div class="g2-legend">' +
+    '<table class="g2-legend-list" style="list-style-type:none;margin:0;padding:0;"></table>' +
+    '</div>',
+  itemTpl: (value, color, checked, index) => {
+    const obj = dv.rows[index];
+    checked = checked ? 'checked' : 'unChecked';
+    return '<tr class="g2-legend-list-item item-' + index + ' ' + checked +
+      '" data-value="' + value + '" data-color=' + color +
+      ' style="cursor: pointer;font-size: 14px;">' +
+      '<td width=150 style="border: none;padding:0;"><i class="g2-legend-marker" style="width:10px;height:10px;display:inline-block;margin-right:10px;background-color:' + color + ';"></i>' +
+      '<span class="g2-legend-text">' + value + '</span></td>' +
+      '<td style="text-align: right;border: none;padding:0;">' + obj.litres + '</td>' +
+      '</tr>';
+  },
+  offsetX: 15,
+  'g2-legend': {
+    marginLeft: '100px',
+    marginTop: '-107px'
+  },
+  'g2-legend-list': {
+    border: 'none'
+  }
+});
+chart.filter('country', val => {
+  return val !== 'UK';
+});
+chart.intervalStack()
+  .position('percent')
+  .color('country', [ '#67b7dc', '#84b761', '#fdd400', '#cc4748', '#cd82ad', '#2f4074', '#448e4d', '#b7b83f', '#b9783f' ])
+  .label('percent', {
+    formatter: (val, item) => {
+      return item.point.country + ': ' + val;
+    }
+  })
+  .style({
+    lineWidth: 2,
+    stroke: '#fff'
+  });
+chart.render();
 ```
 
 ## 常见问题

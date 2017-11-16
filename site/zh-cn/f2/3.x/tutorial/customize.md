@@ -88,11 +88,11 @@ getPoints(cfg) {
 
 
 ```js
-var Shape = F2.Shape;
+const Shape = F2.Shape;
 Shape.registerShape('interval', 'custom', { // 向Shape工厂注册某个geom的一个shape
-  getPoints: function(cfg) { // 自定义具体标记点
+  getPoints(cfg) { // 自定义具体标记点
   },
-  draw: function(cfg, container) { // 自定义最终绘制
+  draw(cfg, container) { // 自定义最终绘制
   }
 });
 ```
@@ -117,57 +117,57 @@ Shape.registerShape('interval', 'custom', { // 向Shape工厂注册某个geom的
 <canvas id="canvas"></canvas>
 
 ```js+
-  var data = [
-    {"tem": 500, "city":"3月"},
-    {"tem": -50, "city":"4月"},
-    {"tem": 450, "city":"5月"},
-    {"tem": -40, "city":"6月"},
-    {"tem": 690, "city":"7月"},
-    {"tem": 346, "city":"8月"},
+  const data = [
+    { tem: 500, city: '3月' },
+    { tem: -50, city: '4月' },
+    { tem: 450, city: '5月' },
+    { tem: -40, city: '6月' },
+    { tem: 690, city: '7月' },
+    { tem: 346, city: '8月' }
   ];
-  var drawTriangle = function(points, canvas, cfg) {
-    var ctx = canvas.getContext('2d');
+  const drawTriangle = function(points, canvas, cfg) {
+    const ctx = canvas.getContext('2d');
     ctx.beginPath();
-    ctx.moveTo(points[0].x,points[0].y);
-    if(points.length>1){
-      for (var i = 1; i <= points.length - 1; i++) {
+    ctx.moveTo(points[0].x, points[0].y);
+    if(points.length > 1) {
+      for (let i = 1; i <= points.length - 1; i++) {
         ctx.lineTo(points[i].x,points[i].y);
       }
     }
     ctx.fillStyle = cfg.fill;
     ctx.fill();
   };
-  //自定义绘制数据的的形状
-  var Shape = F2.Shape;
+  // 自定义绘制数据的的形状
+  const Shape = F2.Shape;
   Shape.registerShape('interval', 'triangle', {
     getPoints: function(cfg){
-      var x = cfg.x;
-      var y = cfg.y;
-      var y0 = cfg.y0;
-      var width = cfg.size;
+      const x = cfg.x;
+      const y = cfg.y;
+      const y0 = cfg.y0;
+      const width = cfg.size;
       return [
-        {x: x-width/2, y: y0},
-        {x: x, y: y},
-        {x: x+width/2, y: y0}
+        { x: x - width / 2, y: y0 },
+        { x: x, y: y },
+        { x: x + width / 2, y: y0 }
       ];
     },
-    draw: function(cfg, canvas){
-      var points = this.parsePoints(cfg.points);
-      var style = cfg.style || {};
+    draw(cfg, canvas) {
+      const points = this.parsePoints(cfg.points);
+      const style = cfg.style || {};
       style.fill = cfg.color;
       drawTriangle(points, canvas, style);
     }
   });
-  var chart = new F2.Chart({
+  const chart = new F2.Chart({
     id: 'canvas',
     width: 500,
     height: 300,
-    padding: [10, 10, 50, 60],
+    padding: [ 10, 10, 50, 60 ],
     pixelRatio: 2
   });
   chart.source(data);
   
-  chart.interval().position('city*tem').color('tem', function(tem) {
+  chart.interval().position('city*tem').color('tem', tem => {
     if (tem >= 0){
       return '#f8bdad';
     }

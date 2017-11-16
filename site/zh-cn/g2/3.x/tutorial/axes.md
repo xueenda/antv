@@ -1,6 +1,6 @@
 <!--
 index: 10
-title: Axes 坐标轴
+title: Axis 坐标轴
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -80,7 +80,7 @@ chart.axis('xField', {
   line: {
     lineWidth: 2, // 设置线的宽度
     stroke: 'red', // 设置线的颜色
-    lineDash: [3, 3] // 设置虚线样式
+    lineDash: [ 3, 3 ] // 设置虚线样式
   }
 });
 ```
@@ -104,7 +104,7 @@ chart.axis('xField', {
 ```js
 chart.axis('xField', {
   label: {
-    offset: {Number}, // 设置坐标轴文本 label 距离坐标轴线的距离
+    offset: {number}, // 设置坐标轴文本 label 距离坐标轴线的距离
     textStyle: {
       textAlign: 'center', // 文本对齐方向，可取值为： start middle end
       fill: '#404040', // 文本的颜色
@@ -112,8 +112,8 @@ chart.axis('xField', {
       fontWeight: 'bold', // 文本粗细
       rotate: 30, 
       textBaseline: 'top' // 文本基准线，可取 top middle bottom，默认为middle
-    } || {Function}, // 文本样式，支持回调 
-    autoRotate: {Boolean} // 是否需要自动旋转，默认为 true
+    } || {function}, // 文本样式，支持回调 
+    autoRotate: {boolean} // 是否需要自动旋转，默认为 true
   }
 });
 ```
@@ -126,8 +126,8 @@ chart.axis('xField', {
 chart.axis('xField', {
   label: {
     // 使用 formatter 回调函数
-    formatter: function(val) {
-        return val + '元';
+    formatter: val => {
+      return val + '元';
     }
   }
 });
@@ -138,7 +138,7 @@ chart.axis('xField', {
 ```js
 chart.source(data, {
   xField: {
-    formatter: function(val) {
+    formatter: val => {
       return val + '元';
     }
   }
@@ -146,8 +146,8 @@ chart.source(data, {
 
 // 或者
 chart.scale('xField', {
-  formatter: function(val) {
-      return val + '元';
+  formatter: val => {
+    return val + '元';
   }
 });
 
@@ -156,7 +156,7 @@ chart.scale('xField', {
 <div id="c1"></div>
 
 ```js+
-var data = [
+const data = [
   { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
   { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
   { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },
@@ -171,17 +171,17 @@ var data = [
   { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
   { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
   { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
-  { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' },
+  { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',
   forceFit: true,
   height: 350,
-  padding: [20, 0, 80, 80],
+  padding: [ 20, 0, 80, 80 ],
   plotBackground: {
     stroke: '#ccc', // 边颜色
-    lineWidth: 1, // 边框粗细
-  }, // 绘图区域背景设置
+    lineWidth: 1 // 边框粗细
+  } // 绘图区域背景设置
 });
 chart.source(data, {
   x: {
@@ -189,71 +189,70 @@ chart.source(data, {
     tickInterval: 5, // 自定义刻度间距
     nice: false, // 不对最大最小值优化
     max: 96, // 自定义最大值
-    min: 62, // 自定义最小是
+    min: 62 // 自定义最小是
   },
   y: {
     alias: 'Daily sugar intake',
     tickInterval: 50,
     nice: false,
     max: 165,
-    min: 0,
+    min: 0
   },
   z: {
-    alias: 'Obesity(adults) %',
-  },
+    alias: 'Obesity(adults) %'
+  }
 });
 // 开始配置坐标轴
 chart.axis('x', {
   label: {
-    formatter: function(val) {
+    formatter: val => {
       return val + ' gr'; // 格式化坐标轴显示文本
-    },
+    }
   },
-
   grid: {
     lineStyle: {
       stroke: '#d9d9d9',
       lineWidth: 1,
-      lineDash: [2, 2],
-    },
-  },
+      lineDash: [ 2, 2 ]
+    }
+  }
 });
 chart.axis('y', {
   title: {
     offset: 70,
   },
   label: {
-    formatter: function(val) {
+    formatter: val => {
       if (val > 0) {
         return val + ' gr';
       }
-    },
-  },
+    }
+  }
 });
 chart.legend(false);
 chart.tooltip({
-  title: 'country',
+  title: 'country'
 });
 chart
   .point()
   .position('x*y')
-  .size('z', [10, 40])
+  .size('z', [ 10, 40 ])
   .label('name*country', {
     offset: 0, // 文本距离图形的距离
     textStyle: {
       fill: '#000',
       fontWeight: 'bold', // 文本粗细
       shadowBlur: 5, // 文本阴影模糊
-      shadowColor: '#fff', // 阴影颜色
-    },
+      shadowColor: '#fff' // 阴影颜色
+    }
   })
   .color('#3182bd')
   .opacity(0.5)
   .shape('circle')
   .tooltip('x*y*z');
 chart.guide().line({
-  start: [65, 'min'],
-  end: [65, 'max'],
+  start: [ 65, 'min' ],
+  end: [ 65, 'max' ],
   text: {
     content: 'Safe fat intake 65g/day',
     position: 'end',
@@ -264,19 +263,18 @@ chart.guide().line({
   },
 });
 chart.guide().line({
-  start: ['min', 50],
-  end: ['max', 50],
+  start: [ 'min', 50 ],
+  end: [ 'max', 50 ],
   text: {
     content: 'Safe sugar intake 50g/day',
     position: 'end',
     style: {
       textAlign: 'end'
     }
-  },
+  }
 });
 chart.render();
 ```
-
 
 [在线 demo](/zh-cn/g2/3.x/demo/other/bubble-with-text.html)
 
@@ -291,7 +289,7 @@ chart.render();
 ```js
 chart.axis('xField', {
   label: {
-    htmlTemplate: function(value){
+    htmlTemplate: value => {
       return '<img src="' +imageMap[value] + '" width="30px"/>';
     }
   }
@@ -301,20 +299,20 @@ chart.axis('xField', {
 **完整代码**
 
 ```js+
-var data = [
-  {"name":"John","vote":35654},
-  {"name":"Damon","vote":65456},
-  {"name":"Patrick","vote":45724},
-  {"name":"Mark","vote":13654}
+const data = [
+  { name: 'John', vote: 35654 },
+  { name: 'Damon', vote: 65456 },
+  { name: 'Patrick', vote: 45724 },
+  { name: 'Mark', vote: 13654 }
 ];
-var imageMap = {
+const imageMap = {
   'John': 'https://zos.alipayobjects.com/rmsportal/mYhpaYHyHhjYcQf.png',
   'Damon': 'https://zos.alipayobjects.com/rmsportal/JBxkqlzhrlkGlLW.png',
   'Patrick': 'https://zos.alipayobjects.com/rmsportal/zlkGnEMgOawcyeX.png',
   'Mark': 'https://zos.alipayobjects.com/rmsportal/KzCdIdkwsXdtWkg.png'
 }
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container : 'c2',
   width : 600,
   height : 250
@@ -327,7 +325,7 @@ chart.source(data, {
 chart.legend(false);
 chart.axis('name', {
   label: {
-    htmlTemplate: function(value){
+    htmlTemplate: value => {
       return '<img src="' +imageMap[value] + '" style="width:30px;max-width:none;"/>';
     }
   },
@@ -335,7 +333,7 @@ chart.axis('name', {
 });
 chart.interval()
   .position('name*vote')
-  .color('name', ['#7f8da9', '#fec514', '#db4c3c', '#daf0fd'])
+  .color('name', [ '#7f8da9', '#fec514', '#db4c3c', '#daf0fd' ])
   .size(20)
   .label('name');
 chart.render();
@@ -402,9 +400,9 @@ chart.axis('xField', {
     lineStyle: {
       stroke: '#d9d9d9',
       lineWidth: 1,
-      lineDash: [4, 4]
+      lineDash: [ 4, 4 ]
     },
-    align: 'center', // 网格顶点从两个刻度中间开始
+    align: 'center' // 网格顶点从两个刻度中间开始
   }
 });
 ```

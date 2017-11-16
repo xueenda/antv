@@ -13,11 +13,11 @@ resource:
 
 ```js
 $.getJSON('data.json',function (data) {
-  var chart = new G2.Chart({
+  const chart = new G2.Chart({
     container: 'c1',
     width: 1000,
     height: 500,
-    padding: [40, 80, 80, 80]
+    padding: [ 40, 80, 80, 80 ]
   });
   chart.source(data);
   chart.point().position('x*y').color('z');
@@ -31,11 +31,11 @@ $.getJSON('data.json',function (data) {
 
 ```js
 // 数据将会包含 genre 和 sold 字段
-var data = [];
+const data = [];
 
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c1',  // 指定图表容器 ID
-  height : 300,
+  height: 300,
   width: 400
 });
 
@@ -49,12 +49,12 @@ chart.render();
 当数据加载进来之后，再调用 chart.changeData(data); 即可绘制。
 
 ```js
-var newData = [
-  {genre: 'Sports', sold: 275},
-  {genre: 'Strategy', sold: 115},
-  {genre: 'Action', sold: 120},
-  {genre: 'Shooter', sold: 350},
-  {genre: 'Other', sold: 150},
+const newData = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
 ];
 
 setTimeout(function() {
@@ -80,16 +80,16 @@ setTimeout(function() {
 
 ```js+
 // 模拟数据
-var base = +new Date(2014, 9, 3);
-var oneDay = 24 * 3600 * 1000;
-var date = [];
+const base = +new Date(2014, 9, 3);
+const oneDay = 24 * 3600 * 1000;
+const date = [];
 
-var data = [];
-var values = [Math.random() * 150];
-var now = new Date(base);
+const data = [];
+const values = [Math.random() * 150];
+let now = new Date(base);
 
 function addData(shift) {
-  var item = {};
+  const item = {};
   now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/');
   item.date = now;
   item.value = (Math.random() - 0.4) * 10 + values[values.length - 1];
@@ -99,7 +99,7 @@ function addData(shift) {
 }
 
 // 创建图表
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   container: 'c3',
   forceFit: true, // 宽度自适应
   height: 400,
@@ -116,10 +116,10 @@ chart.line().position('date*value').color('#f80').size(3);
 chart.area().position('date*value').color('#f80');
 chart.render();
 
-var init = true;
+let init = true;
 setInterval(function () {
   if (init) { // 第一次载入数据
-    for (var i = 1; i < 100; i++) {
+    for (let i = 1; i < 100; i++) {
       addData();
     }
     init = false;
