@@ -4,7 +4,6 @@
  resource:
    jsFiles:
      - ${url.g6}
-     - ${url.jquery}
 -->
 
 ## 概述

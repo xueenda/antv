@@ -25,7 +25,6 @@ footer:
 resource:
   jsFiles:
     - ${url.g6}
-    - ${url.jquery}
     - ${url['g6-plugins']}
 -->
 

@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import QueueAnim from 'rc-queue-anim';
-
 import BannerImage from './BannerImage';
-
-import { resource, products } from '../../../../site/zh-cn/data';
-
 import { assets } from './data';
 
 class Banner extends React.PureComponent {
@@ -37,9 +33,9 @@ class Banner extends React.PureComponent {
               提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视 <br />
               设计规范，蚂蚁数据可视化解决方案。
             </p>
-            <a target="_blank" href={products.g2.href} key="a">
+            <a target="_blank" href={'/zh-cn/g2/3.x/index.html'} key="a">
               <button className="btn-round-link btn btn-primary btn-lg">
-                {resource.translate.getStarted}
+                开始使用
               </button>
             </a>
           </QueueAnim>
