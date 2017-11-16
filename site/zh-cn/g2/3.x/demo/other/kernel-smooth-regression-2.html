@@ -11,58 +11,58 @@ relativePlots:
 chartDetail: ${base}/zh-cn/vis/chart/regression-curve.html
 -->
 <script>
-    $.getJSON('/assets/data/diamond.json', data => {
-        const chart = new G2.Chart({
-            container: 'mountNode',
-            forceFit: true,
-            height: window.innerHeight
-        });
-
-        chart.source(data);
-        chart.scale({
-            carat: {
-                alias: '克拉数',
-                min: 0,
-                max: 4,
-                sync: true
-            },
-            price: {
-                alias: '价格',
-                sync: true
-            }
-        });
-        chart.point()
-            .position('carat*price');
-
-        [
-            'boxcar',
-            'cosine',
-            'epanechnikov',
-            'gaussian',
-            'quartic',
-            'triangular',
-            'tricube',
-            'triweight',
-            'uniform'
-        ].forEach((method, i) => {
-            const dv = new DataSet.View().source(data);
-            dv.transform({
-                type: 'kernel-smooth.regression',
-                method,
-                fields: [ 'carat', 'price' ],
-                as: [ 'carat', 'price' ],
-                bandwidth: 0.5,
-                extent: [ 0, 4 ]
-            });
-
-            const view = chart.view();
-            view.axis(false);
-            view.source(dv);
-            view.line()
-                .position('carat*price')
-                .color(G2.Global.colors_16[i]);
-        });
-
-        chart.render();
+  $.getJSON('/assets/data/diamond.json', data => {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
     });
+
+    chart.source(data);
+    chart.scale({
+      carat: {
+        alias: '克拉数',
+        min: 0,
+        max: 4,
+        sync: true
+      },
+      price: {
+        alias: '价格',
+        sync: true
+      }
+    });
+    chart.point()
+      .position('carat*price');
+
+    [
+      'boxcar',
+      'cosine',
+      'epanechnikov',
+      'gaussian',
+      'quartic',
+      'triangular',
+      'tricube',
+      'triweight',
+      'uniform'
+    ].forEach((method, i) => {
+      const dv = new DataSet.View().source(data);
+      dv.transform({
+        type: 'kernel-smooth.regression',
+        method,
+        fields: [ 'carat', 'price' ],
+        as: [ 'carat', 'price' ],
+        bandwidth: 0.5,
+        extent: [ 0, 4 ]
+      });
+
+      const view = chart.view();
+      view.axis(false);
+      view.source(dv);
+      view.line()
+        .position('carat*price')
+        .color(G2.Global.colors_16[i]);
+    });
+
+    chart.render();
+  });
 </script>

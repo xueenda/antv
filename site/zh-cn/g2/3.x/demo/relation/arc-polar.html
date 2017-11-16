@@ -12,57 +12,57 @@ relativePlots:
 chartDetail: ${base}/zh-cn/vis/chart/arc.html
 -->
 <script>
-    $.getJSON('/assets/data/relationship-with-weight.json', data => {
-        // arc diagram layout
-        const ds = new DataSet();
-        const dv = ds.createView().source(data, {
-            type: 'graph',
-            edges: d => d.links
-        });
-        dv.transform({
-            type: 'diagram.arc',
-            marginRatio: 0.5,
-            // sortBy: 'frequency' // id, weight, frequency, {function}
-        });
-
-        const chart = new G2.Chart({
-            container: 'mountNode',
-            forceFit: true,
-            height: window.innerHeight
-        });
-        chart.legend(false);
-        chart.tooltip({
-            showTitle: false
-        });
-
-        const edgeView = chart.view();
-        edgeView.coord('polar').reflect('y');
-        edgeView.source(dv.edges);
-        edgeView.axis(false);
-        edgeView.edge()
-            .position('x*y')
-            .shape('arc')
-            .color('source')
-            .opacity(0.5)
-            .tooltip('source*target');
-
-        const nodeView = chart.view();
-        nodeView.coord('polar').reflect('y');
-        nodeView.source(dv.nodes);
-        nodeView.axis(false);
-        nodeView.point()
-            .position('x*y')
-            .shape('circle')
-            .size('value')
-            .color('id')
-            .opacity(0.5)
-            .style({
-                stroke: 'grey'
-            })
-            .label('name', {
-                labelEmit: true
-            });
-
-        chart.render();
+  $.getJSON('/assets/data/relationship-with-weight.json', data => {
+    // arc diagram layout
+    const ds = new DataSet();
+    const dv = ds.createView().source(data, {
+      type: 'graph',
+      edges: d => d.links
     });
+    dv.transform({
+      type: 'diagram.arc',
+      marginRatio: 0.5,
+      // sortBy: 'frequency' // id, weight, frequency, {function}
+    });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.legend(false);
+    chart.tooltip({
+      showTitle: false
+    });
+
+    const edgeView = chart.view();
+    edgeView.coord('polar').reflect('y');
+    edgeView.source(dv.edges);
+    edgeView.axis(false);
+    edgeView.edge()
+      .position('x*y')
+      .shape('arc')
+      .color('source')
+      .opacity(0.5)
+      .tooltip('source*target');
+
+    const nodeView = chart.view();
+    nodeView.coord('polar').reflect('y');
+    nodeView.source(dv.nodes);
+    nodeView.axis(false);
+    nodeView.point()
+      .position('x*y')
+      .shape('circle')
+      .size('value')
+      .color('id')
+      .opacity(0.5)
+      .style({
+        stroke: 'grey'
+      })
+      .label('name', {
+        labelEmit: true
+      });
+
+    chart.render();
+  });
 </script>
