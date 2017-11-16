@@ -6,10 +6,10 @@ resource:
     - ${url.jquery}
 -->
 <script>
-// 设置屏幕像素比
-F2.Global.pixelRatio = window.devicePixelRatio;
-//获取本地数据
-$.getJSON('/assets/data/candle-sticks.json',function(data){
+  // 设置屏幕像素比
+  F2.Global.pixelRatio = window.devicePixelRatio;
+  //获取本地数据
+  $.getJSON('/assets/data/candle-sticks.json',function(data){
     data = data.slice(0, 100); // 仅显示100 个
     //数据处理
     data.sort(function(obj1, obj2) {
@@ -61,5 +61,5 @@ $.getJSON('/assets/data/candle-sticks.json',function(data){
       })
       .shape('candle');
     chart.render();
-});
+  });
 </script>

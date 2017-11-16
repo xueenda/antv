@@ -48,11 +48,10 @@ resource:
 
 <script>
   F2.Global.pixelRatio = window.devicePixelRatio;
-
   // 添加图例的容器
   const legendUl = $('<ul class="legend-list"></ul>');
   legendUl.appendTo($('#mountNode').parent());
-
+  
   const data = [
     { time: '2016-08-08 00:00:00', tem: 10, city: 'beijing' },
     { time: '2016-08-08 00:10:00', tem: 22, city: 'beijing' },
@@ -136,5 +135,4 @@ resource:
     });
     chart.changeData(tmp);
   });
-
 </script>
