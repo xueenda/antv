@@ -50,6 +50,7 @@ footer:
   isDark: true
 isHome: true
 -->
+<link rel="stylesheet" type="text/css" href="{{ dist }}/home-index.css" />
 <style>
     .intro .header{
         padding-top: 0;
@@ -57,98 +58,6 @@ isHome: true
         padding-right: 0;
     }
 </style>
-<section class="intro">
-    <div class="header row">
-        <div class="col-md-7">
-            <img class="img-landscape" height="542px" width="790px" src="{{ assets }}/image/home/intro-landscape.svg" alt="">
-        </div>
-        <div class="col-md-4">
-            <h1>让数据栩栩如生</h1>
-            <p class="main-info">提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视设计规范，蚂蚁数据可视化解决方案。</p>
-            <a target="_blank" href="{{ products.g2.href }}">
-                <button class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.getStarted }}</button>
-            </a>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
-    <div class="container">
-        <div class="products row text-center">
-            {% for card in introCards %}
-            <div class="col-md-4">
-                <a class="card" href="{{ card.href }}">
-                    <h3>{{ card.title }}</h3>
-                    <img src="{{ card.img }}" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <span class="title">{{ card.title }}</span>
-                        <span class="text-secondary">{{ card.description }}</span>
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
 
-<section class="description container text-center">
-    <h2>AntV可视化解决方案</h2>
-    <span class="separator"></span>
-    <div class="info-content">
-        <p class="main-info">已全面全新升级，主要包含G2、G6、F2 以及一套完整的图表使用和设计规范。</p>
-        <p class="main-info">得益于丰富的业务场景和用户需求挑战，AntV经历多年积累与不断打磨，已支撑整个阿里集团内外2000+业务系统，通过了百万级UV产品的严苛考验后方敢与君见。</p>
-    </div>
-</section>
-
-<section class="features text-center">
-    <div class="container">
-        <div class="row">
-            {% for card in featuresCards %}
-            <div class="feature col-md-4 text-center">
-                <img src="{{ card.img }}" alt="" width="120" height="120">
-                <h5>{{ card.title }}</h5>
-                <div class="detail">{{ card.description }}</div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="comments text-center">
-    <div class="container">
-        <div id="commentsCarousel" class="carousel">
-            <div class="carousel-inner slick" data-dots="true">
-                {% for item in commentsCarouselItems %}
-                <div class="carousel-item{% if loop.index0 === 0 %} active{% endif %}">
-                    <div class="d-block w-100">
-                        <img class="avatar" src="{{ item.avatar }}" alt="">
-                        <div class="detail">
-                            <img class="leftpad align-bottom" src="{{assets}}/image/home/comments-leftpad.svg" alt="">
-                            <span class="text-center main-info">{{ item.comment }}</span>
-                        </div>
-                        <h4 class="text-center">{{ item.name }}</h4>
-                        <p class="text-center author-title">{{ item.profile }}</p>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="users text-center">
-    <h2>2000+用户正在使用</h2>
-    <span class="separator"></span>
-    <div class="container">
-        <div class="row">
-            {% for card in organizationsCards %}
-            <div class="logo col-md-3 col-sm-6 col-xs-12">
-                <!--<div class="card border-light">-->
-                <img width="160px" src="{{ card.img }}" alt="">
-                <!--<div class="card-body"></div>-->
-                <!--</div>-->
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    </div>
-</section>
-
+<div id="react-content"></div>
+<script type="text/javascript" src="{{ dist }}/home-index.js"></script>
