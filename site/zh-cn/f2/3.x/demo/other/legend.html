@@ -51,7 +51,7 @@ resource:
   // 添加图例的容器
   const legendUl = $('<ul class="legend-list"></ul>');
   legendUl.appendTo($('#mountNode').parent());
-  
+
   const data = [
     { time: '2016-08-08 00:00:00', tem: 10, city: 'beijing' },
     { time: '2016-08-08 00:10:00', tem: 22, city: 'beijing' },
@@ -96,33 +96,33 @@ resource:
     beijing: '#8E77ED',
     hangzhou: '#1890FF'
   };
-  
+
   chart.line().position('time*tem')
     .color('city', function(city) {
       return colors[city];
     })
     .size(3);
-    
+
 
   chart.render();
 
   $.each(colors, function(k, v) {
-    var str = '<li class="legend-item"><span class="unchecked-icon"></span><span class="color-icon" style="background:' + v +'"></span>' + k +'</li>';
+    const str = '<li class="legend-item"><span class="unchecked-icon"></span><span class="color-icon" style="background:' + v +'"></span>' + k +'</li>';
     $(str).appendTo(legendUl);
   });
 
-  var uncheckItems = [];
+  const uncheckItems = [];
 
   function remove(arr, item) {
-    var index = arr.indexOf(item);
+    const index = arr.indexOf(item);
     if (index >= 0) {
       arr.splice(index, 1);
     }
   }
 
   $('.legend-item').on('click', function(ev) {
-    var item = $(ev.target);
-    var city = item.text();
+    const item = $(ev.target);
+    const city = item.text();
     if (item.hasClass('unchecked')) {
       item.removeClass('unchecked');
       remove(uncheckItems, city);
@@ -130,7 +130,7 @@ resource:
       item.addClass('unchecked');
       uncheckItems.push(city);
     }
-    var tmp = data.filter(function(obj) {
+    const tmp = data.filter(function(obj) {
       return uncheckItems.indexOf(obj.city) === -1;
     });
     chart.changeData(tmp);

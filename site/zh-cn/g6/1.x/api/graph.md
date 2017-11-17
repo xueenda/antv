@@ -67,7 +67,7 @@ graph.get('属性名');
 
 <div id='fitView'></div>
 
-[示例源码](../demo/other/fitView.html)
+[示例源码](../demo/other/fit-view.html)
 
 </br>
 

@@ -8,7 +8,7 @@ date: "2017-11-22"
 landscape: ${assets}/image/vis/blog/visualize-schedule-with-g2.jpg
 -->
 
-# 玩玩 G2 系列之作息表
+# 背景
 
 [《创作者的日常生活》](https://book.douban.com/subject/25844039/) 的作者 Mason Currey 研究了过去 400 年来 161 位伟大创作者每天如何分配时间，运用自己最大的能力，如何安排他们的作息，发挥创意和生产力。从内容来说，虽然每位创作者的个人生活习惯不同，有人习惯夜晚深耕，有人习惯白日劳作，但是几乎每个人都会提到的就是 -- **维持稳定规律的生活作息**。
 
@@ -33,38 +33,29 @@ landscape: ${assets}/image/vis/blog/visualize-schedule-with-g2.jpg
 1）模拟一份数据用于绘制 24 等分的饼图，数据结构如下：
 
 ```js
-[
-{type: '0', value: 10},
-{type: '1', value: 10},
-...
-{type: '23', value: 10},
+[{type:'0', value: 10},
+  {type:'1', value: 10},
+  ...
+  {type:'23', value: 10}
 ]
 ```
 2）绘制第一个视图：背景层的环图，在颜色映射上，我使用了回调函数，使得 type 为偶数时颜色为 "#E7E8EA" 奇数时为白色。
 
 ```js
 const dv = new DataView();
-  dv.source(data)
-    .transform({
-      type: 'percent',
-      field: 'value',
-      dimension: 'type',
-      as: 'percent'
-    });
-  var view = chart.view();
-  view.source(dv);
-  view.coord('theta', {
-    innerRadius: 0.75
+dv.source(data)
+  .transform({type:'percent',
+    field: 'value',
+    dimension: 'type',
+    as: 'percent'
   });
-  view.intervalStack().position('percent')
-    .color('type', function(val) {
-      if (val % 2 === 0) {
-        return '#E7E8EA';
-      } else {
-        return '#ffffff';
-      }
-    })
-    .select(false);
+const view = chart.view();
+view.source(dv);
+view.coord('theta', {innerRadius: 0.75});
+view.intervalStack().position('percent')
+  .color('type', function(val) {if (val % 2 === 0) {return'#E7E8EA';} else {return'#ffffff';}
+  })
+  .select(false);
 ```
 
 ![image](https://zos.alipayobjects.com/skylark/a52fa477-7762-4dc2-ad4f-f2923b71a885/attach/824/842cc271b962714a/image.png)
@@ -72,18 +63,16 @@ const dv = new DataView();
 3）绘制第二层视图：最外圈带边框的环图。这个环图和背景层环图使用相同的数据，唯一不同的就是需要给样式加上边框，并设置填充颜色为透明色。
 
 ```js
-  var bgView = chart.view();
-  bgView.coord('theta', {
-    innerRadius: 0.9
-  });
-  bgView.source(dv);
-  bgView.intervalStack().position('percent')
-    .color('type', ['rgba(255, 255, 255, 0)'])
-    .style({
-      stroke: '#444',
-      lineWidth: 1
-    })
-    .select(false);
+const bgView = chart.view();
+bgView.coord('theta', {innerRadius: 0.9});
+bgView.source(dv);
+bgView.intervalStack()
+  .position('percent')
+  .color('type', ['rgba(255, 255, 255, 0)' ])
+  .style({stroke:'#444',
+    lineWidth: 1
+  })
+  .select(false);
 ```
 
 ![image](https://zos.alipayobjects.com/skylark/89f46cbd-6d5f-4f8e-a15f-9e23304548a7/attach/824/ea6b9c30a41cbde1/image.png)
@@ -95,31 +84,22 @@ const dv = new DataView();
 这个其实可以使用宽度较细的柱状图绘制，在 size 的图形属性映射中，我会判断如果 type 值可被 3 整除，那么就会返回柱状图的宽度，否则宽度为 0，另外对于文本的标识，我也做了一个特殊的回调使得文本的显示更有意义。
 
 ```js
-var text = ['MIDNIGHT', '3', '6 AM', '9', 'NOON', '3', '6 PM', '9'];
-var intervalView = chart.view();
-  intervalView.source(data);
-  intervalView.coord('polar', {
-    innerRadius: 0.9
-  });
-  intervalView.axis(false);
-  intervalView.interval().position('type*value').size('type', function(val) {
-    if (val % 3 === 0) {
-      return 4;
-    } else {
-      return 0;
-    }
+const text = ['MIDNIGHT', '3', '6 AM', '9', 'NOON', '3', '6 PM', '9'];
+const intervalView = chart.view();
+intervalView.source(data);
+intervalView.coord('polar', {innerRadius: 0.9});
+intervalView.axis(false);
+intervalView.interval()
+  .position('type*value')
+  .size('type', val => {if (val % 3 === 0) {return 4;}
+    return 0;
   })
   .color('#444')
-  .label('type', function(val) {
-    if (val % 3 === 0) {
-      return text[val / 3];
+  .label('type', val => {if (val % 3 === 0) {return text[val / 3];
     }
-    return '';
-  }, {
+    return '';}, {
     offset: 25,
-    textStyle: {
-      fontSize: 16
-    }
+    textStyle: {fontSize: 16}
   });
 ```
 
@@ -128,10 +108,9 @@ var intervalView = chart.view();
 5）最后，可以使用 HTML 形式的 Guide 在环中心加一个文本标注，使得该图更具可读性~~
 
 ```js
-  intervalView.guide().html({
-    position: [ '50%', '50%' ],
-    html: '<p style="width: 240px;height: 240px;line-height: 240px;text-align: center;margin: 0;padding: 0;border-radius: 50%;font-size: 48px;color: #609064">24 hours</p>'
-  });
+intervalView.guide().html({position: ['50%','50%'],
+  html: '<p style="width: 240px;height: 240px;line-height: 240px;text-align: center;margin: 0;padding: 0;border-radius: 50%;font-size: 48px;color: #609064">24 hours</p>'
+});
 ```
 
 ![image](https://zos.alipayobjects.com/skylark/c3eca293-b642-410d-85e9-f5276908399e/attach/824/a357fb677e7ebf97/image.png)
@@ -141,95 +120,71 @@ var intervalView = chart.view();
 完整代码：
 
 ```js+
-  var DataView = DataSet.DataView;
-  var text = ['MIDNIGHT', '3', '6 AM', '9', 'NOON', '3', '6 PM', '9'];
-  var data = [];
-  for (var i = 0; i < 24; i++) {
-    var item = {};
-    item.type = i + '';
-    item.value = 10;
-    data.push(item);
-  }
+const DataView = DataSet.DataView;
+const text = ['MIDNIGHT', '3', '6 AM', '9', 'NOON', '3', '6 PM', '9'];
+const data = [];
+for (let i = 0; i < 24; i++) {const item = {};
+  item.type = i + '';
+  item.value = 10;
+  data.push(item);
+}
 
-  var chart = new G2.Chart({
-    id: 'c1',
-    forceFit: true,
-    height: 400,
-    padding: [40],
-    background: {
-      fill: '#E7E8EA'
-    }
-  });
-  chart.legend(false);
-  chart.tooltip(false);
+const chart = new G2.Chart({id:'c1',
+  forceFit: true,
+  height: 400,
+  padding: [40],
+  background: {fill:'#E7E8EA'}});
+chart.legend(false);
+chart.tooltip(false);
 
-  const dv = new DataView();
-  dv.source(data)
-    .transform({
-      type: 'percent',
-      field: 'value',
-      dimension: 'type',
-      as: 'percent'
-    });
-  var view = chart.view();
-  view.source(dv);
-  view.coord('theta', {
-    innerRadius: 0.75
+const dv = new DataView();
+dv.source(data)
+  .transform({type:'percent',
+    field: 'value',
+    dimension: 'type',
+    as: 'percent'
   });
-  view.intervalStack().position('percent')
-    .color('type', function(val) {
-      if (val % 2 === 0) {
-        return '#E7E8EA';
-      } else {
-        return '#ffffff';
-      }
-    })
-    .select(false);
+const view = chart.view();
+view.source(dv);
+view.coord('theta', {innerRadius: 0.75});
+view.intervalStack()
+  .position('percent')
+  .color('type', val => {if (val % 2 === 0) {return'#E7E8EA';}
+    return '#ffffff';
+  })
+  .select(false);
 
-  
-  var bgView = chart.view();
-  bgView.coord('theta', {
-    innerRadius: 0.9
-  });
-  bgView.source(dv);
-  bgView.intervalStack().position('percent')
-    .color('type', ['rgba(255, 255, 255, 0)'])
-    .style({
-      stroke: '#444',
-      lineWidth: 1
-    })
-    .select(false);
+const bgView = chart.view();
+bgView.coord('theta', {innerRadius: 0.9});
+bgView.source(dv);
+bgView.intervalStack()
+  .position('percent')
+  .color('type', ['rgba(255, 255, 255, 0)' ])
+  .style({stroke:'#444',
+    lineWidth: 1
+  })
+  .select(false);
 
-  var intervalView = chart.view();
-  intervalView.source(data);
-  intervalView.coord('polar', {
-    innerRadius: 0.9
-  });
-  intervalView.axis(false);
-  intervalView.interval().position('type*value').size('type', function(val) {
-    if (val % 3 === 0) {
-      return 4;
-    } else {
-      return 0;
-    }
+const intervalView = chart.view();
+intervalView.source(data);
+intervalView.coord('polar', {innerRadius: 0.9});
+intervalView.axis(false);
+intervalView.interval()
+  .position('type*value')
+  .size('type', val => {if (val % 3 === 0) {return 4;}
+    return 0;
   })
   .color('#444')
-  .label('type', function(val) {
-    if (val % 3 === 0) {
-      return text[val / 3];
+  .label('type', val => {if (val % 3 === 0) {return text[val / 3];
     }
-    return '';
-  }, {
+    return '';}, {
     offset: 25,
-    textStyle: {
-      fontSize: 16
-    }
+    textStyle: {fontSize: 16}
   });
-  intervalView.guide().html({
-    position: [ '50%', '50%' ],
-    html: '<p style="width: 240px;height: 240px;line-height: 240px;text-align: center;margin: 0;padding: 0;border-radius: 50%;font-size: 48px;color: #609064">24 hours</p>'
-  });
-  chart.render();
+intervalView.guide().html({position: ['50%','50%'],
+  html: '<p style="width: 240px;height: 240px;line-height: 240px;text-align: center;margin: 0;padding: 0;border-radius: 50%;font-size: 48px;color: #609064">24 hours</p>'
+});
+chart.render();
 ```
 
 
@@ -242,15 +197,14 @@ var intervalView = chart.view();
 1）首先，除了用户绘制表盘 24 等分背景的模拟数据外，我们还需要一份创作者一天的作息数据，如下所示（纯属虚构）：
 
 ```js
-const userData = [
-  { type: '睡眠', value: 70 },
-  { type: '淡茶 & 烟斗 & 冥想', value: 10 },
-  { type: '写作', value: 10 },
-  { type: '教课', value: 40 },
-  { type: '酒吧吃肉配红酒', value: 40 },
-  { type: '散步', value: 10 },
-  { type: '拜访约瑟夫', value: 30 },
-  { type: '阅读', value: 30 },
+const userData = [{type:' 睡眠 ', value: 70},
+  {type:' 淡茶 & 烟斗 & 冥想 ', value: 10},
+  {type:' 写作 ', value: 10},
+  {type:' 教课 ', value: 40},
+  {type:' 酒吧吃肉配红酒 ', value: 40},
+  {type:' 散步 ', value: 10},
+  {type:' 拜访约瑟夫 ', value: 30},
+  {type:' 阅读 ', value: 30},
 ];
 ```
 
@@ -259,23 +213,18 @@ const userData = [
 ```js
 const pieDv = new DataView();
 pieDv.source(userData)
-  .transform({
-    type: 'percent',
+  .transform({type:'percent',
     field: 'value',
     dimension: 'type',
     as: 'percent'
   });
 const pieView = chart.view();
 pieView.source(pieDv);
-pieView.coord('theta', {
-  innerRadius: 0.75,
-});
+pieView.coord('theta', {innerRadius: 0.75,});
 pieView.intervalStack()
   .position('percent')
   .color('type', ['#fff', '#F2B971', '#7DAB74', '#94979A', '#F2B971', '#60C2D4', '#7AA471', '#C0DBC7'])
-  .label('type', {
-    offset: 20,
-  })
+  .label('type', {offset: 20,})
   .select(false);
 ```
 
@@ -287,29 +236,24 @@ pieView.intervalStack()
 
 ```js
 const bgData = []; // 模拟数据，为了绘制 24 个扇形
-for (let i = 0; i < 24; i++) {
-  const item = {};
+for (let i = 0; i < 24; i++) {const item = {};
   item.type = `${i}`;
   item.value = 10;
   bgData.push(item);
 }
 const bgDv = new DataView();
 bgDv.source(bgData)
-  .transform({
-    type: 'percent',
+  .transform({type:'percent',
     field: 'value',
     dimension: 'type',
     as: 'percent'
   });
 const bgView = chart.view();
 bgView.source(bgDv);
-bgView.coord('theta', {
-  innerRadius: 0.9,
-});
+bgView.coord('theta', {innerRadius: 0.9,});
 bgView.intervalStack().position('percent')
   .color('type', ['rgba(255, 255, 255, 0)'])
-  .style({
-    stroke: '#000',
+  .style({stroke:'#000',
     lineWidth: 1,
   })
   .select(false);
@@ -320,9 +264,8 @@ bgView.intervalStack().position('percent')
 4）最后为了更显而易见得标识该作息表属于哪一位创作者，我们可以充分利用环图中的空心圆空间，来展示创作者的头像~ 这里我们还是使用 html 形式的 Guide 实现（因为我真的不会抠图，所以就拿官网现成的玉伯头像了，因为刚好是个圆形，嘻嘻）。
 
 ```js
-bgView.guide().html({
-  position: [ '50%', '50%' ],
-  html: '<img style="width: 240px;height: 240px;" src="https://os.alipayobjects.com/rmsportal/nbvqDjRaAhkxDmz.png" >'
+bgView.guide().html({position: ['50%','50%'],
+  html: '<img style="width: 240px;height: 240px;"src="https://os.alipayobjects.com/rmsportal/nbvqDjRaAhkxDmz.png">'
 });
 ```
 
@@ -331,26 +274,23 @@ bgView.guide().html({
 完整代码：
 
 ```js+
-const { DataView } = DataSet;
+const {DataView} = DataSet;
 const bgData = []; // 模拟数据，为了绘制 24 个扇形
-for (let i = 0; i < 24; i++) {
-  const item = {};
+for (let i = 0; i < 24; i++) {const item = {};
   item.type = 'i';
   item.value = 10;
   bgData.push(item);
 }
-const userData = [
-  { type: '睡眠', value: 70 },
-  { type: '淡茶 & 烟斗 & 冥想', value: 10 },
-  { type: '写作', value: 10 },
-  { type: '教课', value: 40 },
-  { type: '酒吧吃肉配红酒', value: 40 },
-  { type: '散步', value: 10 },
-  { type: '拜访约瑟夫', value: 30 },
-  { type: '阅读', value: 30 },
+const userData = [{type:' 睡眠 ', value: 70},
+  {type:' 淡茶 & 烟斗 & 冥想 ', value: 10},
+  {type:' 写作 ', value: 10},
+  {type:' 教课 ', value: 40},
+  {type:' 酒吧吃肉配红酒 ', value: 40},
+  {type:' 散步 ', value: 10},
+  {type:' 拜访约瑟夫 ', value: 30},
+  {type:' 阅读 ', value: 30},
 ];
-const chart = new G2.Chart({
-  id: 'c2',
+const chart = new G2.Chart({id:'c2',
   forceFit: true,
   height: 400,
   padding: [20, 110, 30, 70]
@@ -360,48 +300,38 @@ chart.tooltip(false);
 
 const pieDv = new DataView();
 pieDv.source(userData)
-  .transform({
-    type: 'percent',
+  .transform({type:'percent',
     field: 'value',
     dimension: 'type',
     as: 'percent'
   });
 const pieView = chart.view();
 pieView.source(pieDv);
-pieView.coord('theta', {
-  innerRadius: 0.75,
-});
+pieView.coord('theta', {innerRadius: 0.75,});
 pieView.intervalStack()
   .position('percent')
   .color('type', ['#fff', '#F2B971', '#7DAB74', '#94979A', '#F2B971', '#60C2D4', '#7AA471', '#C0DBC7'])
-  .label('type', {
-    offset: 20,
-  })
+  .label('type', {offset: 20,})
   .select(false);
 
 const bgDv = new DataView();
 bgDv.source(bgData)
-  .transform({
-    type: 'percent',
+  .transform({type:'percent',
     field: 'value',
     dimension: 'type',
     as: 'percent'
   });
 const bgView = chart.view();
 bgView.source(bgDv);
-bgView.coord('theta', {
-  innerRadius: 0.9,
-});
+bgView.coord('theta', {innerRadius: 0.9,});
 bgView.intervalStack().position('percent')
-  .color('type', ['rgba(255, 255, 255, 0)'])
-  .style({
-    stroke: '#000',
+  .color('type', ['rgba(255, 255, 255, 0)' ])
+  .style({stroke:'#000',
     lineWidth: 1,
   })
   .select(false);
-bgView.guide().html({
-  position: [ '50%', '50%' ],
-  html: '<img style="width: 240px;height: 240px;" src="https://os.alipayobjects.com/rmsportal/nbvqDjRaAhkxDmz.png" >'
+bgView.guide().html({position: ['50%','50%'],
+  html: '<img style="width: 240px;height: 240px;"src="https://os.alipayobjects.com/rmsportal/nbvqDjRaAhkxDmz.png">'
 });
 chart.render();
 ```

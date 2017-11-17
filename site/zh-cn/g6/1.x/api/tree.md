@@ -39,7 +39,7 @@
 
 ### layoutCfg
 
-[Object] 树布局属性。[布局API文档](../api/layout.html)。具体树布局属性参数配置可以通过[G6树图布局工具](../demo/tree/tree-layout.html)调试和预览。
+[Object] 树布局属性。[布局API文档](../api/layouts.html)。具体树布局属性参数配置可以通过[G6树图布局工具](../demo/tree/tree-layout.html)调试和预览。
 
 ## 实例方法
 

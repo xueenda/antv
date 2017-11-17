@@ -25,7 +25,7 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
       date: {
         type: 'cat',
         tickCount: 10,
-        range: [0, 1]
+        range: [ 0, 1 ]
       }
     });
     chart.tooltip({
@@ -60,28 +60,28 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
    **/
   function getKagiData(points, x, y) {
     // 初始最小值
-    var min = points[0][y];
+    let min = points[0][y];
     // 初始最大值
-    var max = points[0][y];
+    let max = points[0][y];
     // 初始绘制起点
-    var start = points[0];
+    let start = points[0];
     // 阳线和阴线判断标志
-    var isPos = points[1][y] >= points[0][y] ? true : false;
+    let isPos = points[1][y] >= points[0][y] ? true : false;
     // 初始绘制方向，1为向上，－1为向下
-    var direction = isPos ? 1 : -1;
+    let direction = isPos ? 1 : -1;
     // 阈值，默认为最大值的4%
-    var maxValue = getMax(points, y);
-    var threshold = maxValue * 0.04;
+    const maxValue = getMax(points, y);
+    const threshold = maxValue * 0.04;
     // 阴线数组
-    var negPath = [];
+    const negPath = [];
     // 阳线数组
-    var posPath = [];
-    var tmp1 = {};
+    const posPath = [];
+    const tmp1 = {};
     tmp1[x] = start[x];
     tmp1[y] = start[y];
     pushPoint(tmp1, isPos, posPath, negPath, x, y);
     if (points.length > 1) {
-      for (var i = 0; i <= points.length - 1; i++) {
+      for (let i = 0; i <= points.length - 1; i++) {
         // 浮动超过阈值时执行算法
         if (Math.abs(start[y] - points[i][y]) > threshold) {
           if (direction > 0) {
@@ -89,7 +89,7 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
               isPos = getVerticalPoints(start, points[i], max, direction, negPath, posPath, isPos, x, y);
               start[y] = points[i][y];
             } else {
-              var tmp2 = {};
+              const tmp2 = {};
               tmp2[x] = points[i][x];
               tmp2[y] = start[y];
               pushPoint(tmp2, isPos, posPath, negPath, x, y);
@@ -104,7 +104,7 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
               isPos = getVerticalPoints(start, points[i], min, direction, negPath, posPath, isPos, x, y);
               start[y] = points[i][y];
             } else {
-              var tmp3 = {};
+              const tmp3 = {};
               tmp3[x] = points[i][x];
               tmp3[y] = start[y];
               pushPoint(tmp3, isPos, posPath, negPath, x, y);
@@ -135,11 +135,11 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
    **/
   function getVerticalPoints(start, end, changePoint, direction, negPath, posPath, isPos, x, y) {
     // 阳线和阴线相互转换的判断条件
-    var condition = direction > 0 ? (end[y] > changePoint) && (start[y] < changePoint) && !isPos : (end[y] < changePoint) && (start[y] > changePoint) && isPos;
-    var tmp1 = {};
+    const condition = direction > 0 ? (end[y] > changePoint) && (start[y] < changePoint) && !isPos : (end[y] < changePoint) && (start[y] > changePoint) && isPos;
+    const tmp1 = {};
     tmp1[x] = start[x];
     tmp1[y] = changePoint;
-    var tmp2 = {};
+    const tmp2 = {};
     tmp2[x] = start[x];
     tmp2[y] = end[y];
     if (condition) {
@@ -162,7 +162,7 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
    * @param  {Boolean} isChangePoint 是否转折点
    **/
   function pushPoint(point, isPos, posPath, negPath, x, y, isChangePoint = false) {
-    var tmpPoint = {};
+    const tmpPoint = {};
     tmpPoint[x] = point[x];
     tmpPoint[y] = isChangePoint ? point[y] : null; // 转折点阳线和阴线都有数据，非转折点阳线或阴线的数据点为空
     if (isPos) {
@@ -179,9 +179,9 @@ chartDetail: ${base}/zh-cn/vis/chart/kagi.html
   }
 
   function getMax(points, y) {
-    var max = points[points.length - 1][y];
+    let max = points[points.length - 1][y];
     if (points.length > 0) {
-      for (var i = points.length - 1; i >= 0; i--) {
+      for (let i = points.length - 1; i >= 0; i--) {
         max = points[i][y] > max ? points[i][y] : max;
       }
     }
