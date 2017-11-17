@@ -96,7 +96,7 @@ const dagre = new G6.Plugins['layout.dagre']({
 const net = new G6.Net({
     id: 'mountNode',
     height: window.innerHeight,
-    fitView: 'cc',
+    fitView: 'autoZoom',
     plugins: [dagre]
 });
 net.source(data.nodes, data.edges);
