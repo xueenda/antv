@@ -82,15 +82,15 @@ const data = {
   }
 };
 const net = new G6.Net({
-    id: 'mountNode',           // 容器ID
-    height: window.innerHeight,        // 画布高
-    fitView: 'cc',      // 图居中自适应
-    mode: 'none',       // 模式
-    grid: {
-      forceAlign: true, // 是否支持网格对齐
-      cell: 10          // 网格大小
-    }
-  });
+  id: 'mountNode',           // 容器ID
+  height: window.innerHeight,        // 画布高
+  fitView: 'cc',      // 图居中自适应
+  mode: 'none',       // 模式
+  grid: {
+    forceAlign: true, // 是否支持网格对齐
+    cell: 10          // 网格大小
+  }
+});
 net.read(data);
 net.edge().shape('bezierQuadratic');
 net.render();

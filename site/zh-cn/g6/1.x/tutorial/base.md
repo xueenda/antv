@@ -47,7 +47,7 @@
 <div id="construction"></div>
 
 ```js-
-  var tree = new G6.Tree({
+  const tree = new G6.Tree({
     id: 'construction',
     height: 500,
     fitView: 'autoSize',
@@ -109,12 +109,12 @@
 ```
 
 ## 图
- 图 Graph 是所有上层图类的基类，如：Net 网、 Tree 树，都继承于Graph。与以往不同，1.0 后，Graph 已沉为一个抽象类(Abstract)，只实现了基础的功能，定义了接口规范，用户可基于 Graph 进行拓展，但不能直接用于画关系图。以后 G6 里还要容纳更多的关系图如 UML、Flow、Force都将基于 Graph ，详见：[Graph API](/g6/api/graph.html)。
+ 图 Graph 是所有上层图类的基类，如：Net 网、 Tree 树，都继承于Graph。与以往不同，1.0 后，Graph 已沉为一个抽象类(Abstract)，只实现了基础的功能，定义了接口规范，用户可基于 Graph 进行拓展，但不能直接用于画关系图。以后 G6 里还要容纳更多的关系图如 UML、Flow、Force都将基于 Graph ，详见：[Graph API](../api/graph.html)。
 
 <div id="graph"></div>
 
 ```js-
-  var tree = new G6.Tree({
+  const tree = new G6.Tree({
     id: 'graph',
     height: 500,
     fitView: 'autoSize',
@@ -136,7 +136,7 @@
 ```
 
 ## 网
-网图 Net 是 G6 提供的、可用于直接画关系图的、最基础的图类。它不仅能画由一组`nodes`、`edges`，确定的关系图，还集成了，如：拖拽节点（dragNode）、拖拽画布（dragCanvas）、拖拽边（dragEdge）、节点变形（resizeNode）等等，一系列的`基础`的编辑交互模式，用户可以比较方便的基于该类，绘制做一个关系图的展示视图或图编辑器。详见：[网图指南](/g6/doc/tutorial/start/net.html)，[Net API](/g6/api/net.html)。
+网图 Net 是 G6 提供的、可用于直接画关系图的、最基础的图类。它不仅能画由一组`nodes`、`edges`，确定的关系图，还集成了，如：拖拽节点（dragNode）、拖拽画布（dragCanvas）、拖拽边（dragEdge）、节点变形（resizeNode）等等，一系列的`基础`的编辑交互模式，用户可以比较方便的基于该类，绘制做一个关系图的展示视图或图编辑器。详见：[网图指南](./net.html)，[Net API](../api/net.html)。
 
 <div id='net' style="width: 800px;background: #222222"></div>
 
@@ -278,7 +278,7 @@ $.getJSON('/assets/data/influence-network.json',function(data){
 ```
 
 ## 树
-树 Tree 是 G6 1.0 发布后，我们尝试封装的第一个的图类。我们精细打磨的树相关的交互，已经提供 `20 +` 种树的布局，欢迎大家使用！详见[Tree Demo](/g6/demo/index.html#树图)，[Tree API](/g6/api/tree.html)。
+树 Tree 是 G6 1.0 发布后，我们尝试封装的第一个的图类。我们精细打磨的树相关的交互，已经提供 `20 +` 种树的布局，欢迎大家使用！详见[Tree Demo](../demo/index.html#树图)，[Tree API](../api/tree.html)。
 
 <div id="tree"></div>
 
@@ -427,7 +427,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
 ```
 
 ## 数据
-在使用关系图开发的过程中，我们常常需要导出导入数据，以满足关系图的存储、分享、编辑的功能。 G6 1.0 后，我们对这部分的需求做了总结。在 Graph 定义了一对相互对照的接口，read <==> save，后面用户应该严格通过这两个该接口导入导出数据。参看[Demo](/g6/demo/06-other/saveAndread.html)
+在使用关系图开发的过程中，我们常常需要导出导入数据，以满足关系图的存储、分享、编辑的功能。 G6 1.0 后，我们对这部分的需求做了总结。在 Graph 定义了一对相互对照的接口，read <==> save，后面用户应该严格通过这两个该接口导入导出数据。参看[Demo](../demo/other/save-and-read.html)
 
 ### 导入 -- read
 
@@ -623,7 +623,7 @@ $(function() {
 });
 ```
 
-[Demo源码](/g6/demo/06-other/event.html)
+[Demo源码](../demo/other/event.html)
 
 G6 封装了一套基础的鼠标事件。通过`graph.on()` 绑定，`graph.off()`解除。
 
@@ -651,7 +651,7 @@ G6 封装了一套基础的鼠标事件。通过`graph.on()` 绑定，`graph.off
 
 ### 行为 -- behaviour
 
-行为由事件组成，所描述的交互，比事件更具体，如 拖动节点（dragNode），滚轮缩放画布（wheelZoom），拖动画布（dragCanvas）。用户可以根据自己的需要选择对应的行为。此外 Graph 上还提供了一些简便方法管理行为。详见：[Graph API](/g6/api/graph.html)，行为列表详见：[Handle API](/g6/api/handler.html)
+行为由事件组成，所描述的交互，比事件更具体，如 拖动节点（dragNode），滚轮缩放画布（wheelZoom），拖动画布（dragCanvas）。用户可以根据自己的需要选择对应的行为。此外 Graph 上还提供了一些简便方法管理行为。详见：[Graph API](../api/graph.html)，行为列表详见：[Handle API](../api/handler.html)
 
 #### addBehaviour 添加行为
 
@@ -675,7 +675,7 @@ graph.addBehaviour(modeName, behaviours);
 graph.removeBehaviour(modeName, behaviours);
 ```
 
-参看[Demo](/g6/demo/06-other/mode.html)
+参看[Demo](../demo/other/mode.html)
 
 ### 模式 -- mode
 大多数行为可以随意相互组合，也有部分行为之间有可能发生矛盾，比如 拖动画布（dragCanvas）行为和多选行为（multiSelect），这个时候需要用户自己维护各种行为集合组成模式，比如`拖拽模式（drag）`，`编辑模式（edit）`，以便管理、切换。
@@ -690,4 +690,4 @@ graph.removeBehaviour(modeName, behaviours);
 graph.changeMode(modeName);
 ```
 
-参看[Demo](/g6/demo/06-other/mode.html)
+参看[Demo](../demo/other/mode.html)

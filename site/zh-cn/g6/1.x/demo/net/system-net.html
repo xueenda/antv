@@ -26,56 +26,53 @@ resource:
     cursor: pointer;
   }
   #mountNode {
-      padding-right: 130px; 
-    }
-  </style>
-  <script type="text/javascript">
-  $.getJSON('/assets/data/system-net.json', data => {
-    const Mapper = G6.Plugins['enhance.d3.mapper'];
-    const template = new G6.Plugins['template.analysis.maxSpanningForest']();
-    const nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 90 ], {
-      legendCfg: 
-      {
-        callback: legend => {
-          legend.labelFormat(value=>{
-                  return (value/10000).toFixed(0) + '万';
-                })
-                .title('流量大小');
-        },
-        fill: '#919191',
-        marginRight: -126,
-        marginBottom: 6,
-      }
-    });
-    const colors = ['#3dbd7d', '#76d0a3', '#f78e3d', '#f56a00'];
-    const nodeColorMapper = new Mapper('node', 'health', 'color', colors, {
-      legendCfg: 
-      {
-        callback: legend => {
-          legend.title('系统健康度');
-        },
-        marginRight: -120,
-        marginBottom: 190,
-      }
-    });
-    const edgeSizeMapper = new Mapper('edge', 'weight', 'size', [ 3.5, 10 ], {
-      scaleCfg: {
-        type: "log"
+    padding-right: 130px; 
+  }
+</style>
+<script type="text/javascript">
+$.getJSON('/assets/data/system-net.json', data => {
+  const Mapper = G6.Plugins['enhance.d3.mapper'];
+  const template = new G6.Plugins['template.analysis.maxSpanningForest']();
+  const nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 90 ], {
+    legendCfg: 
+    {
+      callback: legend => {
+        legend.title('流量大小');
       },
-      legendCfg: null
-    });
-    const miniMapper = new Mapper();
-    const net = new G6.Net({
-      id: 'mountNode',
-      height: window.innerHeight,
-      plugins: [template, nodeSizeMapper, edgeSizeMapper, nodeColorMapper]
-    });
-    net.node().label('id');
-    net.edge().style({
-      stroke: '#bfbfbf',
-      strokeOpacity: 0.5
-    });
-    net.source(data);
-    net.render();
+      fill: '#919191',
+      marginRight: -126,
+      marginBottom: 6,
+    }
   });
-  </script>
+  const colors = ['#3dbd7d', '#76d0a3', '#f78e3d', '#f56a00'];
+  const nodeColorMapper = new Mapper('node', 'health', 'color', colors, {
+    legendCfg: 
+    {
+      callback: legend => {
+        legend.title('系统健康度');
+      },
+      marginRight: -120,
+      marginBottom: 190,
+    }
+  });
+  const edgeSizeMapper = new Mapper('edge', 'weight', 'size', [ 3.5, 10 ], {
+    scaleCfg: {
+      type: "log"
+    },
+    legendCfg: null
+  });
+  const miniMapper = new Mapper();
+  const net = new G6.Net({
+    id: 'mountNode',
+    height: window.innerHeight,
+    plugins: [template, nodeSizeMapper, edgeSizeMapper, nodeColorMapper]
+  });
+  net.node().label('id');
+  net.edge().style({
+    stroke: '#bfbfbf',
+    strokeOpacity: 0.5
+  });
+  net.source(data);
+  net.render();
+});
+</script>

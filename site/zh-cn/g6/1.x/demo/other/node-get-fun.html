@@ -115,11 +115,11 @@ const data = {
 };
 // 第四步：配置G6画布
 const net = new G6.Net({
-    id: 'mountNode',      // 容器ID
-    fitView: 'autoZoom',
-    mode: 'none',
-    height: window.innerHeight    // 画布高
-  });
+  id: 'mountNode',      // 容器ID
+  fitView: 'autoZoom',
+  mode: 'none',
+  height: window.innerHeight    // 画布高
+});
 // 第五步：载入数据
 net.read(Util.clone(data));
 // 第六步：渲染关系图

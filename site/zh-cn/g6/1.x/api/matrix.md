@@ -5,6 +5,13 @@
    jsFiles:
      - ${url.g6}
 -->
+
+<style>
+.inner-page-toc{
+  display: none;
+}
+</style>
+
 # Matrix
 
 * [三阶矩阵——Matrix3](#_三阶矩阵——Matrix3)

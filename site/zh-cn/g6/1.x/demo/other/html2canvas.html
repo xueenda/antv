@@ -8,89 +8,89 @@ resource:
     - https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js
 -->
 <script type="text/javascript">
-    $('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
-    $('#toolBar').append('<button id="downloadCurrentImage">下载当前视口内图</button');
-    $('#toolBar').append('<button id="downloadFullImage">下载全图</button>');
+$('#mountNode').append('<div id="toolBar" style="position: absolute;z-index: 10"></div>');
+$('#toolBar').append('<button id="downloadCurrentImage">下载当前视口内图</button');
+$('#toolBar').append('<button id="downloadFullImage">下载全图</button>');
 
-    const downloadFullImage = $('#downloadFullImage');
-    const downloadCurrentImage = $('#downloadCurrentImage');
+const downloadFullImage = $('#downloadFullImage');
+const downloadCurrentImage = $('#downloadCurrentImage');
 
-    G6.registerNode('list', {
-        cssSize: true,
-        getHtml(cfg){
-            return '<ul><li>' + cfg.model.id + '</li><li>' + cfg.model.shape + '</li></ul>';
-        }
-    }, 'html');
-    const data = {
-        "nodes": [
-            {
-                "id": "node1",
-                "x": 220,
-                "y": 210,
-                "shape": "html",
-                "html": "<div class='dom'>我是 dom1 </div>"
-            },
-            {
-                "id": "node2",
-                "x": 220,
-                "y": 170,
-                "shape": "html",
-                "html": "<div class='dom'>我是 dom2 </div>"
-            },
-            {
-                "id": "node3",
-                "x": 20,
-                "y": 170,
-                "shape": "list"
-            },
-            {
-                "id": "node4",
-                "x": 100,
-                "y": 100,
-                "label": "文本"
-            }
-        ],
-        "edges": [
-            {
-                "source": "node1",
-                "id": "edge1",
-                "target": "node2"
-            }
-        ]
-    };
-    const net = new G6.Net({
-        id: 'mountNode',      // 容器ID
-        fitView:'cc',    // 画布宽
-        height: window.innerHeight    // 画布高
-    });
-    const graphContainer = net.get('graphContainer');
-    net.source(data.nodes, data.edges);
-    net.render();
-    downloadFullImage.on('click', () => {
-        downloadImage(true);
-    });
-    downloadCurrentImage.on('click', () => {
-        downloadImage();
-    });
-    /**
-     * 下载当前图片
-     */
-    function downloadImage(bool) {
-        const matrixStash = net.getMatrix(); // 缓存当前矩阵
-        if (bool) {
-            net.autoZoom(); // 图自动缩放以适应画布尺寸
-        }
-        html2canvas(graphContainer, {
-            onrendered(canvas) {
-                const dataURL = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                const saveName = 'graph.png';
-                link.download = saveName;
-                link.href = dataURL.replace('image/png', 'image/octet-stream');
-                link.click();
-                net.updateMatrix(matrixStash); // 还原矩阵
-                net.refresh();
-            }
-        });
+G6.registerNode('list', {
+  cssSize: true,
+  getHtml(cfg){
+    return '<ul><li>' + cfg.model.id + '</li><li>' + cfg.model.shape + '</li></ul>';
+  }
+}, 'html');
+const data = {
+  "nodes": [
+    {
+      "id": "node1",
+      "x": 220,
+      "y": 210,
+      "shape": "html",
+      "html": "<div class='dom'>我是 dom1 </div>"
+    },
+    {
+      "id": "node2",
+      "x": 220,
+      "y": 170,
+      "shape": "html",
+      "html": "<div class='dom'>我是 dom2 </div>"
+    },
+    {
+      "id": "node3",
+      "x": 20,
+      "y": 170,
+      "shape": "list"
+    },
+    {
+      "id": "node4",
+      "x": 100,
+      "y": 100,
+      "label": "文本"
     }
+  ],
+  "edges": [
+    {
+      "source": "node1",
+      "id": "edge1",
+      "target": "node2"
+    }
+  ]
+};
+const net = new G6.Net({
+  id: 'mountNode',      // 容器ID
+  fitView:'cc',    // 画布宽
+  height: window.innerHeight    // 画布高
+});
+const graphContainer = net.get('graphContainer');
+net.source(data.nodes, data.edges);
+net.render();
+downloadFullImage.on('click', () => {
+  downloadImage(true);
+});
+downloadCurrentImage.on('click', () => {
+  downloadImage();
+});
+/**
+ * 下载当前图片
+ */
+function downloadImage(bool) {
+  const matrixStash = net.getMatrix(); // 缓存当前矩阵
+  if (bool) {
+    net.autoZoom(); // 图自动缩放以适应画布尺寸
+  }
+  html2canvas(graphContainer, {
+    onrendered(canvas) {
+      const dataURL = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      const saveName = 'graph.png';
+      link.download = saveName;
+      link.href = dataURL.replace('image/png', 'image/octet-stream');
+      link.click();
+      net.updateMatrix(matrixStash); // 还原矩阵
+      net.refresh();
+    }
+  });
+}
 </script>

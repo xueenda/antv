@@ -36,22 +36,22 @@ const data = {
   ]
 };
 const net = new G6.Net({
-    id: 'mountNode',              // 容器ID
-    modes: {               // 模式集
-      // 默认模式
-      default: [
-        'dragNode', 'dragEdge', 'dragBlank', 'clickBlankClearActive', 'resizeEdge', 'clickActive',
-        'resizeNode', 'wheelZoom'
-      ],
-      // 编辑模式
-      edit: [
-        'dragNode', 'dragEdge', 'clickBlankClearActive', 'resizeEdge', 'clickActive',
-        'multiSelect', 'resizeNode', 'shortcut', 'wheelZoom'
-      ]
-    },
-    mode: 'default',       // 当前模式
-    height: window.innerHeight            // 画布高
-  });
+  id: 'mountNode',              // 容器ID
+  modes: {               // 模式集
+    // 默认模式
+    default: [
+      'dragNode', 'dragEdge', 'dragBlank', 'clickBlankClearActive', 'resizeEdge', 'clickActive',
+      'resizeNode', 'wheelZoom'
+    ],
+    // 编辑模式
+    edit: [
+      'dragNode', 'dragEdge', 'clickBlankClearActive', 'resizeEdge', 'clickActive',
+      'multiSelect', 'resizeNode', 'shortcut', 'wheelZoom'
+    ]
+  },
+  mode: 'default',       // 当前模式
+  height: window.innerHeight            // 画布高
+});
 net.source(data.nodes, data.edges);
 net.render();
 
