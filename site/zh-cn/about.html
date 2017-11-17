@@ -15,8 +15,24 @@ tocifyWithAnchor: false
 -->
 
 <style>
+    header.navbar-light {
+        background: transparent;
+        box-shadow: none;
+    }
     .intro {
-        min-height: 400px;
+        min-height: 360px;
+        height: 400px;
+        overflow: hidden;
+        max-height: 400px;
+    }
+    .intro .bg-left, .intro .bg-right {
+        max-width: 690px;
+    }
+    .bg-left {
+        transform: translate(-80px, -400px);
+    }
+    .bg-right {
+        transform: translate(-80px, 40px);
     }
     .member-card img {
         border-radius: 50%;
@@ -35,18 +51,27 @@ tocifyWithAnchor: false
         text-decoration: none;
         padding: 0 5px;
     }
+    @media (max-width: 768px) {
+        .bg-left, .bg-right {
+            display: none;
+        }
+    }
 </style>
 
 <section class="intro text-center">
     <div class="container">
-        <div class="header row">
-            <div class="col-md-3"></div>
+        <div class="row">
+            <div class="col-md-3">
+                <img class="bg-left" width="690px" height="690px" src="{{ assets }}/image/logo.svg" alt="">
+            </div>
             <div class="col-md-6">
                 <h1>团队介绍</h1>
                 <p class="main-info">我们是蚂蚁金服体验技术部数据图形团队</p>
                 <p class="main-info">我们是一群有爱的人，在一起快乐做一件有意义的事情</p>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <img class="bg-right" width="311px" height="311px" src="{{ assets }}/image/logo.svg" alt="">
+            </div>
         </div>
     </div>
 </section>
@@ -57,7 +82,7 @@ tocifyWithAnchor: false
         <span class="separator"></span>
         <div class="row">
             {% for card in teamMembers %}
-            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+            <div class="col-lg-5ths col-md-3 col-sm-4 col-xs-4">
                 <div class="card member-card">
                     <img src="{{ card.avatar }}" alt="" class="card-img-top" width="100px" height="100px">
                     <div class="card-body">

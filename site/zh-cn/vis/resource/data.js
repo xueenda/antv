@@ -1,20 +1,16 @@
 'use strict';
 
-var fs = require('fs'),
-    lstatSync = fs.lstatSync,
-    readdirSync = fs.readdirSync;
-
-var path = require('path'),
-    basename = path.basename,
-    extname = path.extname,
-    join = path.join;
-
+var fs = require('fs');
+var lstatSync = fs.lstatSync;
+var readdirSync = fs.readdirSync;
+var path = require('path');
+var basename = path.basename;
+var extname = path.extname;
+var join = path.join;
 var _ = require('lodash');
-
 var renderMd = require('../../../../lib/render-md');
-
-var siteConfig = require('../../../../site-config'),
-    base = siteConfig.base;
+var siteConfig = require('../../../../site-config');
+var base = siteConfig.base;
 
 var isFile = function isFile(source) {
     return lstatSync(source).isFile();
@@ -63,8 +59,48 @@ module.exports = {
     docMenuHeader: '${resource.translate.visResource}',
     showFooter: false,
     docFilteringSupport: true,
-    resource: {
-        jsFiles: [
-        ],
-    }
+    resourceCards: [
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+        {
+            icon: '${assets}/image/vis/resource/sketch.png',
+            title: 'Desktop Components',
+            description: '桌面组件 Sketch 模版',
+            href: '',
+        },
+    ]
 };

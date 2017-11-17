@@ -25,6 +25,9 @@ body {
   font-size: 16px;
   padding: 12px 28px;
   line-height: 1.15;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
   &:focus {
     box-shadow: none;
   }
@@ -35,6 +38,7 @@ body {
     box-shadow: 0 4px 12px rgba(24,144,255,.4);
     background-color: #40a9ff;
     border-color: #40a9ff;
+    color: white;
   }
 }
 
@@ -275,7 +279,7 @@ footer {
     margin: 0 8px;
     text-decoration: none;
     &:hover {
-      color: white;
+      color: #096DD9;
     }
   }
   .nav-link {
@@ -291,6 +295,9 @@ footer {
     //background: #4F545D !important;
     background: #06080A !important;
     border-top: 1px dotted rgba(197, 203, 217, 0.3);
+    .declaration:hover {
+      color: white;
+    }
   }
 }
 
