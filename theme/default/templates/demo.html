@@ -5,13 +5,14 @@
 <link rel="stylesheet" type="text/css" href="{{ dist }}/demo.css" />
 {% endblock %}
 {% block content %}
+{% set currentDemo = demoByHref[__href] %}
 <div class="container-fluid demo-container">
     <div class="d-flex flex-row border-secondary">
         <div class="col menu expanded">
             <div class="menu-inner">
                 <div id="accordion" role="tablist" data-children=".item">
                     {% for cat in demos %}
-                    {% set isCurrentCat = (categoryByHref[__href] === cat.category) %}
+                    {% set isCurrentCat = (currentDemo.category === cat.category) %}
                     <div class="item card">
                         <div class="card-header" role="tab">
                             <h6>
@@ -80,7 +81,7 @@
                         {% for plot in relativePlots %}
                         <li>
                             <a href="{{ plot.url }}">
-                                <span>{{ plot.icon }}</span>
+                                <span class="iconfont {{ plot.icon }}"></span>
                                 {{ plot.name }}
                             </a>
                         </li>
@@ -89,6 +90,15 @@
                 </section>
                 {% endif %}
                 {% endif %}
+                <section class="links">
+                    {% if chartDetail %}
+                    <a href="{{ chartDetail }}">
+                        {{ resource.translate.chartDetail }}
+                        <span class="iconfont icon-right"></span>
+                    </a>
+                    {% endif %}
+                    <a href=""></a>
+                </section>
             </div>
         </div>
         <div id="resize-handler" class="col"></div>

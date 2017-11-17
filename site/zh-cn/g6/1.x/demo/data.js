@@ -1,26 +1,20 @@
 'use strict';
-
-var _require = require('lodash'),
-    forIn = _require.forIn;
-
-var _require2 = require('fs'),
-    lstatSync = _require2.lstatSync,
-    readdirSync = _require2.readdirSync;
-
-var _require3 = require('path'),
-    basename = _require3.basename,
-    extname = _require3.extname,
-    join = _require3.join;
-
-var _require4 = require('../data'),
-    plotByName = _require4.plotByName;
-
+var _ = require('lodash');
+var forIn = _.forIn;
+var fs = require('fs');
+var lstatSync = fs.lstatSync;
+var readdirSync = fs.readdirSync;
+var path = require('path');
+var basename = path.basename;
+var extname = path.extname;
+var join = path.join;
+var data = require('../data');
+var plotByName = data.plotByName;
 var renderMd = require('../../../../../lib/render-md');
-
-var _require5 = require('../../../../../site-config'),
-    base = _require5.base,
-    assets = _require5.assets,
-    pkg = _require5.pkg;
+var siteConfig = require('../../../../../site-config');
+var base = siteConfig.base;
+var assets = siteConfig.assets;
+var pkg = siteConfig.pkg;
 
 var isDirectory = function isDirectory(source) {
     return lstatSync(source).isDirectory();
@@ -41,7 +35,7 @@ var getFiles = function getFiles(source) {
 
 var demosByCategory = {};
 var demoDirs = getDirectories(__dirname);
-var categoryByHref = {};
+var demoByHref = {};
 demoDirs.forEach(function (dir) {
     var category = basename(dir);
     var files = getFiles(dir).filter(function (file) {
@@ -67,14 +61,17 @@ demoDirs.forEach(function (dir) {
 
         var name = basename(file, '.html');
         var href = base + 'zh-cn/g6/1.x/demo/' + category + '/' + name + '.html';
-        demosByCategory[category].demos.push({
+        var demo = {
             screenshot: join(assets + '/dist/' + pkg.version + '/g6/1.x/', category + '/' + name + '.png'),
+            // screenshotDark: join(assets + '/dist/' + pkg.version + '/g6/1.x/', category + '/' + name + '-dark.png'),
             href: href,
             index: index,
             name: name,
+            category: category,
             title: title
-        });
-        categoryByHref[href] = category;
+        };
+        demoByHref[href] = demo;
+        demosByCategory[category].demos.push(demo);
     });
 });
 var demos = [];
@@ -91,8 +88,10 @@ demos.sort(function (a, b) {
 module.exports = {
     navName: 'demo',
     demos: demos,
-    template: 'g6-demo',
+    template: 'g2-demo',
+    canSwitchThemes: true,
     demosByCategory: demosByCategory,
-    categoryByHref: categoryByHref,
+    demoByHref: demoByHref,
     showFooter: false
 };
+

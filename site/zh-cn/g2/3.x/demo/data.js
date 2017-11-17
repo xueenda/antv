@@ -35,7 +35,7 @@ var getFiles = function getFiles(source) {
 
 var demosByCategory = {};
 var demoDirs = getDirectories(__dirname);
-var categoryByHref = {};
+var demoByHref = {};
 demoDirs.forEach(function (dir) {
     var category = basename(dir);
     var files = getFiles(dir).filter(function (file) {
@@ -61,15 +61,17 @@ demoDirs.forEach(function (dir) {
 
         var name = basename(file, '.html');
         var href = base + 'zh-cn/g2/3.x/demo/' + category + '/' + name + '.html';
-        demosByCategory[category].demos.push({
+        var demo = {
             screenshot: join(assets + '/dist/' + pkg.version + '/g2/3.x/', category + '/' + name + '.png'),
             screenshotDark: join(assets + '/dist/' + pkg.version + '/g2/3.x/', category + '/' + name + '-dark.png'),
             href: href,
             index: index,
             name: name,
+            category: category,
             title: title
-        });
-        categoryByHref[href] = category;
+        };
+        demoByHref[href] = demo;
+        demosByCategory[category].demos.push(demo);
     });
 });
 var demos = [];
@@ -89,6 +91,6 @@ module.exports = {
     template: 'g2-demo',
     canSwitchThemes: true,
     demosByCategory: demosByCategory,
-    categoryByHref: categoryByHref,
+    demoByHref: demoByHref,
     showFooter: false
 };

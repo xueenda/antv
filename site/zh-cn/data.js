@@ -76,6 +76,7 @@ module.exports = {
             usage: '图表用法',
             viewDetail: '查看详情',
             viewMore: '查看更多',
+            chartDetail: '了解更多',
             joinUs: '立即加入',
             vis: '墨者学院',
             visBlog: '博客',

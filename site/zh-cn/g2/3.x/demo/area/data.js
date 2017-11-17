@@ -1,3 +1,3 @@
 module.exports = {
-    description: ''
+    chartDetail: '${base}zh-cn/vis/chart/area.html',
 };
