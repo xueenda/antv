@@ -45,8 +45,8 @@ relativePlots:
     },
     lineSmooth: true,
     eachView(view, facet) {
-      var data = facet.data;
-      var dv = new DataView();
+      const data = facet.data;
+      const dv = new DataView();
       dv.source(data).transform({
         type: 'percent',
         field: 'count',

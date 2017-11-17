@@ -30,7 +30,7 @@ relativePlots:
       fields: [ 'SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth' ],
       eachView(view, facet) {
         if (facet.rowIndex === facet.colIndex) {
-          var dv = new DataView();
+          const dv = new DataView();
           dv.source(facet.data)
             .transform({
               type: 'bin.histogram',

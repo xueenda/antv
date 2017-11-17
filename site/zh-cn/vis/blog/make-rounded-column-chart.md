@@ -616,31 +616,31 @@ chart.render();
 
 ```js+
 function getRectPath(points) {
-  var path = [];
-  for (var i = 0; i < points.length; i++) {
-    var point = points[i];
+  const path = [];
+  for (let i = 0; i < points.length; i++) {
+    const point = points[i];
     if (point) {
-      var action = i === 0 ? 'M' : 'L';
-      path.push([action, point.x, point.y]);
+      const action = i === 0 ? 'M' : 'L';
+      path.push([ action, point.x, point.y ]);
     }
   }
-  var first = points[0];
-  path.push(['L', first.x, first.y]);
-  path.push(['z']);
+  const first = points[0];
+  path.push([ 'L', first.x, first.y ]);
+  path.push([ 'z' ]);
   return path;
 }
 G2.Shape.registerShape('interval', 'roundedRect', {
   draw(cfg, container) {
-    var points = cfg.points;
-    var path = getRectPath(cfg.points);
-    var r = (path[2][1] - path[1][1]) / 2;
+    const points = cfg.points;
+    let path = getRectPath(cfg.points);
+    const r = (path[2][1] - path[1][1]) / 2;
     path = this.parsePath(path); // 将 0 - 1 的值转换为画布坐标
-    var temp = [];
+    const temp = [];
     temp.push(path[0]);
     temp.push(path[1]);
-    temp.push(['A', r, r, 1, 0, 0, path[2][1], path[2][2]]);
+    temp.push([ 'A', r, r, 1, 0, 0, path[2][1], path[2][2] ]);
     temp.push(path[3]);
-    temp.push(['A', r, r, 1, 0, 0, path[4][1], path[4][2]]);
+    temp.push([ 'A', r, r, 1, 0, 0, path[4][1], path[4][2] ]);
     return container.addShape('path', {
       attrs: {
         path: temp,
@@ -650,17 +650,17 @@ G2.Shape.registerShape('interval', 'roundedRect', {
     });
   }
 });
-var data = [
+const data = [
   { cate: '活动', value: 100 },
   { cate: '锻炼', value: 100 },
   { cate: '站立', value: 100 }
 ];
-var userData = [
+const userData = [
   { type: '活动', value: 60 },
   { type: '锻炼', value: 100 },
   { type: '站立', value: 150 }
 ];
-var chart = new G2.Chart({
+const chart = new G2.Chart({
   id: 'c4',
   width: 400,
   height: 400,
@@ -671,15 +671,15 @@ chart.coord('polar', {
 }).transpose();
 chart.legend('cate', false);
 
-var view = chart.view();
+const view = chart.view();
 view.source(data);
 view.tooltip(false);
 view.interval()
   .position('cate*value')
-  .color('cate', ['#003732', '#183800', '#37000a'])
+  .color('cate', [ '#003732', '#183800', '#37000a' ])
   .opacity(0.8)
   .size(33);
-var userView = chart.view();
+const userView = chart.view();
 userView.source(userData, {
   value: {
     max: 200,
@@ -687,13 +687,11 @@ userView.source(userData, {
 });
 userView.interval()
   .position('type*value')
-  .color('type', ['#00fff1', '#c1ff00', '#ff0078'])
+  .color('type', [ '#00fff1', '#c1ff00', '#ff0078'])
   .opacity(0.7)
   .size(33)
   .shape('roundedRect');
 chart.render();
 ```
 
-使用多 view 和自定义 shape, 我们就可以模仿苹果的健身记录图表，绘制一个圆角玉珏图：
-
-
+使用多 view 和自定义 shape, 我们就可以模仿苹果的健身记录图表，绘制一个圆角玉珏图。
