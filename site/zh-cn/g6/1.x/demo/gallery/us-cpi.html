@@ -7,11 +7,17 @@ resource:
     - ${url.jquery}
     - ${url['g6-plugins']}
 -->
+<style>
+  #mountNode {
+    padding-right: 130px; 
+  }
+</style>
 <script type="text/javascript">
 $.getJSON('/assets/data/us-cpi.json', data => {
   const Mapper = G6.Plugins['enhance.d3.mapper'];
   const nodeSizeMapper = new Mapper('node', 'weight', 'size', [ 3.5, 60 ], {
     legendCfg: {
+      marginRight: -120,
       callback: function(legend) {
         legend.title("所占权重");
         legend.labelFormat(function(value){
@@ -23,8 +29,8 @@ $.getJSON('/assets/data/us-cpi.json', data => {
   const mappingColors = ['#007AE7', '#40BCD2', '#81D6C3', '#c1E4BC', '#FFDD9B', '#FEAC4C', '#FF7C01', '#C4201D'];
   const nodeColorMapper = new Mapper('node', 'percentChange', 'color', mappingColors, {
     legendCfg: {
-      marginBottom: 240,
-      marginRight: 24,
+      marginBottom: 180,
+      marginRight: -104,
       callback: legend => {
         legend.title("CPI");
         legend.labelFormat(value => {

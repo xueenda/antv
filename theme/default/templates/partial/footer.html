@@ -1,19 +1,24 @@
-<!--footer-->
 {% set isFixed = footer.isFixed %}
 {% set isDark = footer.isDark %}
 <footer class="navbar navbar-expand-lg{% if isFixed %} fixed-bottom{% endif %}{% if isDark %} bg-dark{% endif %}">
     <div class="container">
         <div class="navbar-collapse" id="navbarFooter">
-            <!--resources-->
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                {% for resource in footer.resources %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ resource.href }}">{{ resource.text }}</a>
+                    <a class="declaration" href="https://weibo.com/antv2017"><span class="iconfont icon-sinaweibo"></span></a>
                 </li>
-                {% endfor %}
+                <li class="nav-item">
+                    <a class="declaration" href="https://github.com/antvis/"><span class="iconfont icon-github"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="declaration" href="/zh-cn/about.html">{{ resource.translate.aboutUs }}</a>
+                </li>
             </ul>
-            <!--copyright-->
-            <a href="#" class="disabled">{{ footer.copyright }}</a>
+            <a class="declaration" href="https://docs.alipay.com/policies/privacy/antfin">{{ resource.translate.privacyDeclaration }}</a>
+            <span>|</span>
+            <a class="declaration" href="https://render.alipay.com/p/f/fd-izto3cem/index.html">{{ resource.translate.customerDeclaration }}</a>
+            <a class="declaration" href="#" class="disabled">{{ footer.copyright }}</a>
+            <img src="{{ assets }}/image/afx-logo.png" alt="">
         </div>
     </div>
 </footer>

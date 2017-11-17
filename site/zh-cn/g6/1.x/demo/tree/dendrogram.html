@@ -90,7 +90,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
   // 生成树图实例
   const tree = new G6.Tree({
     id: 'mountNode',
-    layoutFn: G6.Layout.Dendrogram,
+    layoutFn: G6.Layouts.Dendrogram,
     layoutCfg: layoutCfg,
     height: window.innerHeight,         // 画布高
     fitView: 'autoZoom', // 自动缩放

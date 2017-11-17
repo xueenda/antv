@@ -46,8 +46,8 @@ resource:
             id: 'mountNode',           // 容器ID
             height: window.innerHeight         // 画布高
         });
-        const width = net.get('width');
-        const height = net.get('height');
+        const width = net.getWidth();
+        const height = net.getHeight();
         net.source(data.nodes, data.edges);
         matrixInit.translate(-data.nodes[0].x, -data.nodes[0].y);
         matrixInit.scale(scale, scale);

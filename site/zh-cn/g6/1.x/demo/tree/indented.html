@@ -19,7 +19,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
           return 0;
       },
     },
-    layoutFn: G6.Layout.IndentedTree, // 缩进树布局
+    layoutFn: G6.Layouts.IndentedTree, // 缩进树布局
   });
   tree.source(data);
   tree.node()

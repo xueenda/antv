@@ -54,7 +54,7 @@ DataSet 支持状态量（State）可以实现多个图表之间的联动
 ```html
 <script src="{{ url.dataSet }}"></script>
 <script>
-var dv = new DataSet.View();
+const dv = new DataSet.View();
 </script>
 ```
 

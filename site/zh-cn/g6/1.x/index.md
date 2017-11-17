@@ -9,17 +9,17 @@ keywords:
   - 图
   - 树
   - 网
-description: G6 是一个由纯 JavaScript 编写的关系图基础技术框架。开发者能基于 G6 进行关系图的查看视图和编辑视图进行快速的二次开发。
+description: G6 是一个由纯 JavaScript 编写的关系图基础技术框架。开发者能基于 G6 进行关系图的分析视图和编辑视图进行快速的二次开发。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
-    title: 简单方便
-    description: 从数据出发，仅需几行代码可以轻松获得想要的图表展示效果。
+    title: 完备的基础设施
+    description: 一套简单、易用的、完备的图可视化引擎。
   - img: ${assets}/image/home/features-professional.svg
-    title: 完备的编码
-    description: 大量产品实践之上，提供绘图引擎。完备图形语法，专业设计规范。
+    title: 丰富插件
+    description: 轻易复用成熟、优雅、先进的解决方案
   - img: ${assets}/image/home/features-powerful.svg
     title: 强大扩展能力
-    description: 任何图表，都可以基于图形语法灵活绘制，满足你无限的创意。 - 有向图
+    description: 样式、交互轻易订制，满足你无限的创意
 footer:
   isDark: true
 resource:

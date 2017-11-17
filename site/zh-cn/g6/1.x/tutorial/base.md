@@ -7,7 +7,7 @@
 -->
 
 ## 概述
-本文档是关系图库图 —— G6 的基础使用文档，本文旨在说明 G6 的组成结构，和一些重要的`概念`、`属性`和`接口`，详细内容请参看[API 文档](/g6/api/index.html)。
+本文档是关系图库图 —— G6 的基础使用文档，本文旨在说明 G6 的组成结构，和一些重要的`概念`、`属性`和`接口`，详细内容请参看[API 文档](/zh-cn/g6/1.x/api/index.html)。
 
 * [安装--install](#_安装)
 * [结构--construction](#_结构)
@@ -382,7 +382,7 @@ $.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
    height: 450,     // 画布高
    fitView: 'autoZoom',
    behaviourFilter: ['wheelZoom'],
-   layoutFn: G6.Layout.LayeredTidyTree, // 布局类型
+   layoutFn: G6.Layouts.LayeredTidyTree, // 布局类型
   });
 
   // 加载数据

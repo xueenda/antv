@@ -9,7 +9,7 @@ resource:
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/influenceNetwork.json', data => {
+$.getJSON('/assets/data/ca2012.json', data => {
   const plugin = new G6.Plugins['tool.minimap']();
   const net = new G6.Net({
     id: 'mountNode',                      // dom id
@@ -20,25 +20,12 @@ $.getJSON('/assets/data/influenceNetwork.json', data => {
     plugins: [ plugin ],
     mode: 'analysis'
   });
-  net.tooltip(true);
-  net.node()
-    .tooltip( obj => {
-      return [
-        ['语言', obj.language],
-        ['影响力', obj.size],
-        ['模块数', obj.modularityClass]
-      ];
-    })
-    .size( obj => {
-      const rst = obj.size <= 10 ? 10 :obj.size;
-      return rst;
-    })
-    .shape('circle')
-    .label('language')
-    .style({
-      fillOpacity: 1
-    });
   net.source(data.nodes, data.edges);
+  net.node()
+     .shape('circle')
+     .style({
+       fillOpacity: 1
+     });
   net.render();
 });
 </script>

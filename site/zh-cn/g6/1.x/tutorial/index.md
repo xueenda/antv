@@ -8,7 +8,7 @@
 
 ## G6
 
-G6 是一个由纯 JavaScript 编写的关系图基础技术框架。开发者能基于 G6 进行关系图的**查看视图**和**编辑视图**进行快速的二次开发。
+G6 是一个由纯 JavaScript 编写的关系图基础技术框架。开发者能基于 G6 进行关系图的**分析视图**和**编辑视图**进行快速的二次开发。
 
 <div id = "g6_structure"></div>
 
@@ -163,7 +163,7 @@ var tree = new G6.Tree({
   width: 600,
   height: 400,                         // 画布高
   fitView: 'autoZoom',                 // 自动缩放
-  layoutFn: G6.Layout.LayeredTidyTree, // 布局类型
+  layoutFn: G6.Layouts.LayeredTidyTree, // 布局类型
   layoutCfg: layoutCfg,                // 布局配置
   behaviourFilter: ['wheelZoom'],
   showButton: false,

@@ -12,14 +12,14 @@ resource:
 const plugin = new G6.Plugins['layout.dagre']();
 const data = {
   nodes: [
-    { id: '0', label: '', x: 150, y: 10},
-    { id: '1', label: '步骤一', x: 150, y: 100},
-    { id: '2', label: '步骤二', x: 150, y: 200},
-    { id: '3', label: '条件', x: 150, y: 300},
-    { id: '4.1', label: '分步骤一', x: 50, y: 400},
-    { id: '4.2', label: '分步骤二', x: 200, y: 400},
-    { id: '5', label: '汇总', x: 150, y: 500},
-    { id: '6', label: '', x: 150, y: 600},
+    { id: '0', label: '起始', shape:'circle', size: 40},
+    { id: '1', label: '步骤一'},
+    { id: '2', label: '步骤二'},
+    { id: '3', label: '条件'},
+    { id: '4.1', label: '分步骤一'},
+    { id: '4.2', label: '分步骤二'},
+    { id: '5', label: '汇总'},
+    { id: '6', label: '结束', shape:'circle', size: 40},
   ],
   edges: [
     { id: '0-1', source: '0', target: '1' },
@@ -31,11 +31,11 @@ const data = {
     { id: '4.2-5', source: '4.2', target: '5' },
     { id: '5-6', source: '5', target: '6' },
   ]
-}
+};
 const net = new G6.Net({
-  id: 'mountNode',                      // dom id
+  id: 'mountNode',               // dom id
   height: window.innerHeight,    // 画布高
-  fitView: 'tc',
+  fitView: 'autoZoom',
   grid: null,
   plugins: [ plugin ],
 });

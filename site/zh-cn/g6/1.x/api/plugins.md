@@ -1,6 +1,6 @@
 <!--
-index: 6
-title: 插件指南
+index: 20
+title: Plugins
 resource:
   jsFiles:
     - ${url.g6}
@@ -43,13 +43,13 @@ resource:
 #### 第二步 —— 实例化插件：
 
 ```js
-const plugin = new G6.Plugins['name'];
+const plugin = new G6.Plugins['name']();
 ```
 
 #### 第三步 —— 配置插件到图类：
 
 ```js
-const plugin = new G6.Plugins['name'];
+const plugin = new G6.Plugins['name']();
 const net = new G6.Net({
   plugins: [plugin]
 });
@@ -141,7 +141,7 @@ const net = new G6.Net({
 
 官方自研的 G6 缩略图插件。
 
-[![image](https://gw.alipayobjects.com/zos/rmsportal/rVWqvTKSGdFIXruCJNDz.png)](../demo/other/plugin-minimap.html)
+[![image](https://gw.alipayobjects.com/zos/rmsportal/zVrjOLIdwlHoZbmmhSkO.gif)](../demo/other/plugin-minimap.html)
 
 ### new G6.Plugins\['tool.minimap'\](cfg)
 
@@ -308,50 +308,11 @@ edge:
 }
 ```
 
-- `nodeHoverActived`: boolean
-
-悬浮激活，默认值为：`true`
-
-- `dx`: number
-
-水平位移，默认值为：`0`
-
-- `dy`: number
-
-竖直位移，默认值为：`0`
-
-- `nodeToolCfg`: object
-
-节点工具栏配置，默认值为：
-
-```js
-  nodeToolCfg: {
-    class: 'node-tool',
-    lists: [
-      {
-        html: '显示所有来源',
-        event: 'click',
-        callback: 'showSource',
-      },
-      {
-        html: '显示所有去向',
-        event: 'click',
-        callback: 'showTargets',
-      },
-      {
-        html: '显示来源与去向',
-        event: 'click',
-        callback: 'showAll',
-      },
-    ],
-  }
-```
-
-### enhance.d3.mapper--d3映射增强器--enhance.d3.mapper--d3映射增强器
+### enhance.d3.mapper--d3映射增强器
 
 基于 d3 技术栈拓展的 G6 映射增强插件。该插件能接受简单的参数，自动创建度量和图例。
 
-![image](https://gw.alipayobjects.com/zos/rmsportal/QZoyzmKxsoyyBvAztAdU.png)
+[![image](https://gw.alipayobjects.com/zos/rmsportal/pVPRCHCjOzneemiAzEpL.png)](../demo/other/plugin-d3-mapper.html)
 
 ### new G6\['enhance.d3.mapper'\](itemType, dim, channel, range, cfg)
 

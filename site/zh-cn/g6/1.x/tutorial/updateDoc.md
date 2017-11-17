@@ -13,6 +13,21 @@
 ## G6 1.1.X -> G6 1.2.X
 
 * [移除了两个内置网图布局](#_移除了两个内置网图布局)
+* [拼写错误](#_拼写错误)
+
+### 移除了两个内置网图布局
+
+经过实践检验 `G6.Layouts.Force` &&  `G6.Layouts.Flow` 这两个布局，十分鸡肋。为了概念清晰以及代码结构完善，1.2.0 我们从源码中移除了这两个布局。其相关功能可以使用 [layout.d3.force--力导布局](../api/plugins.html#_layout.d3.force--力导布局) && [layout.dagre--统一分层布局](../api/plugins.html#_layout.dagre--统一分层布局)
+
+### 拼写错误
+
+该版本修复了一下拼写错误，错误的写法将在下个版本移除，敬请悉知，修复如下：
+
+* 错误 -> 正确
+* G6.Global.nodeAcitvedBoxStyle -> G6.Global.nodeActivedBoxStyle
+* G6.registNode -> G6.registerNode
+* G6.registEdge -> G6.registerEdge
+* G6.Layout -> G6.Layouts
 
 ## G6 0.X -> G6 1.X
 
@@ -21,10 +36,6 @@
 * [再见无穷尽的xxxable](#_再见无穷尽的xxxable)
 * [调整初始化视口应该用fitView](#_调整初始化视口应该用fitview)
 * [统一输入输出 save && read](#_统一输入输出-save-amp-amp-read)
-
-### 移除了两个内置网图布局
-
-
 
 ### 原来的 Graph 既是现在的 Net
 

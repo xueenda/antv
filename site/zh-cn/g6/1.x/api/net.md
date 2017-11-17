@@ -11,11 +11,11 @@
 
 ## 属性
 
-### [layout](#_layout)
+### layout
 
 [Function] 布局回调函数，回调方法中会传入，节点和边数据。
 
-### [behaviourSignal](#_behaviourSignal)
+### behaviourSignal
 
 [Object] 只读字段，存储一些行为的信号量。如：
 
@@ -28,15 +28,15 @@
 }
 ```
 
-### [clipboard](#_clipboard)
+### clipboard
 
 [Boolean] 剪贴板 `false`
 
-### [rollback](#_rollback)
+### rollback
 
 [Boolean] 回滚存储，默认值 `false`
 
-### [modes](#_modes)
+### modes
 
 [Object] 默认值
 
@@ -65,7 +65,7 @@
 }
 ```
 
-### [behaviourSignal](#_behaviourSignal)
+### behaviourSignal
 [Boolean] 交互信号量
 
 ```js
@@ -77,9 +77,7 @@
 
 ## 实例方法
 
-### [layout](#_updateAnchor)
-
-### [updateAnchor](#_updateAnchor)
+### updateAnchor
 
 更新锚点
 
@@ -99,7 +97,7 @@ net.showAnchor(node, anchorIndex, {
 });
 ```
 
-### [showAnchor](#_showAnchor)
+### showAnchor
 
 显示锚点
 
@@ -112,7 +110,7 @@ net.showAnchor(node, anchorIndex, {
 net.showAnchor(node);
 ```
 
-### [hideAnchor](#_hideAnchor)
+### hideAnchor
 
 隐藏锚点
 
@@ -125,7 +123,7 @@ net.showAnchor(node);
 net.hideAnchor(node);
 ```
 
-### [add](#_add)
+### add
 
 添加节点或边
 
@@ -139,7 +137,7 @@ net.hideAnchor(node);
 net.add(type, model);
 ```
 
-### [source](#_source)
+### source
 
 加载数据源
 
@@ -277,30 +275,30 @@ net.render();
 
 [示例源码](../demo/other/editor.html)
 
-### [beginAdd](#_beginAdd)
+### beginAdd
 
 开始添加元素，通常配合编辑器一并使用。
 
-### [endAdd](#_endAdd)
+### endAdd
 
 结束添加元素，通常配合编辑器一并使用。
 
-### [copy](#_copy)
+### copy
 
 复制激活子项
 
-### [paste](#_paste)
+### paste
 
 粘贴激活子项
 
-### [del](#_del)
+### del
 
 删除激活子项
 
-### [undo](#_undo)
+### undo
 
 撤销
 
-### [redo](#_redo)
+### redo
 
 重做
