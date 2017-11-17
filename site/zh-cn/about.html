@@ -1,0 +1,106 @@
+<!--
+template: home
+title: 关于我们
+keywords:
+  - Team
+  - 蚂蚁金服体验技术部数据可视化团队
+description: 蚂蚁金服体验技术部数据可视化团队
+footer:
+  isDark: true
+resource:
+  jsFiles:
+    - ${url.g2}
+    - ${url.dataSet}
+tocifyWithAnchor: false
+-->
+
+<style>
+    .intro {
+        min-height: 400px;
+    }
+    .member-card img {
+        border-radius: 50%;
+    }
+    .member-card p {
+        margin-bottom: 8px;
+    }
+    p.contact {
+        display: none;
+    }
+    .member-card:hover p.contact {
+        display: inline-block;
+    }
+    p.contact a {
+        color: #696969;
+        text-decoration: none;
+        padding: 0 5px;
+    }
+</style>
+
+<section class="intro text-center">
+    <div class="container">
+        <div class="header row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1>团队介绍</h1>
+                <p class="main-info">我们是蚂蚁金服体验技术部数据图形团队</p>
+                <p class="main-info">我们是一群有爱的人，在一起快乐做一件有意义的事情</p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+
+<section class="members text-center">
+    <div class="container">
+        <h2>团队成员</h2>
+        <span class="separator"></span>
+        <div class="row">
+            {% for card in teamMembers %}
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                <div class="card member-card">
+                    <img src="{{ card.avatar }}" alt="" class="card-img-top" width="100px" height="100px">
+                    <div class="card-body">
+                        <p>{{ card.name }}</p>
+                        <p>{{ card.jobTitle }}</p>
+                        <p class="contact">
+                            {% if card.github %}
+                            <a href="{{ card.github }}"><i class="iconfont icon-github"></i></a>
+                            {% endif %}
+                            {% if card.weibo %}
+                            <a href="{{ card.weibo }}"><i class="iconfont icon-sinaweibo"></i></a>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="join-us intro text-center">
+    <div class="container">
+        <h2>加入我们</h2>
+        <span class="separator"></span>
+        <div class="info-content">
+            <p class="main-info">我们是蚂蚁金服体验技术部数据图形团队，
+                我们是一群有爱的人，在一起快乐做一件有意义的事情。如果你对可视化、
+                图形技术充满激情，无论你是工程师，还是设计师，请联系我们，期待你的加入。</p>
+            <p class="main-info">antv@list.alibaba-inc.com</p>
+        </div>
+        <a href="mailto:antv@list.alibaba-inc.com" class="btn btn-primary btn-lg">{{ resource.translate.joinUs }}</a>
+    </div>
+</section>
+
+<section class="issues text-center">
+    <div class="container">
+        <h2>问题与反馈</h2>
+        <span class="separator"></span>
+        <div class="info-content">
+            <p class="main-info">任何问题，欢迎到我们的仓库提交相关的 issues。</p>
+        </div>
+        <a href="" class="btn btn-primary btn-lg">{{ resource.translate.joinUs }}</a>
+    </div>
+</section>
+

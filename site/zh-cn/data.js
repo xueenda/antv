@@ -85,6 +85,9 @@ module.exports = {
             variation: '变形',
             tag: '标签',
             themeSwitching: '主题切换',
+            privacyDeclaration: '隐私权政策',
+            customerDeclaration: '权益保障承诺书',
+            aboutUs: '关于我们',
         },
         cssFiles: [
         ],
@@ -125,6 +128,25 @@ module.exports = {
             }
         },
     ],
+    teamMembers: [
+        { name: '巴思'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/basi.png'     , weibo: 'https://weibo.com/145643593'      , github: ''                               } ,
+        { name: '沉鱼'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/chenyu.png'   , weibo: ''                                 , github: ''                               } ,
+        { name: '董珊珊', jobTitle: '设计师'     , avatar: '${assets}/image/members/shanshan.png' , weibo: ''                                 , github: ''                               } ,
+        { name: '顾倾'  , jobTitle: '设计师'     , avatar: '${assets}/image/members/guqing.jpg'   , weibo: ''                                 , github: ''                               } ,
+        { name: '画康'  , jobTitle: '设计师'     , avatar: '${assets}/image/members/huakang.png'  , weibo: 'https://weibo.com/u/1985143287'   , github: ''                               } ,
+        { name: '绝云'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/jueyun.png'   , weibo: 'https://weibo.com/omosirovincent' , github: 'https://github.com/leungwensen' } ,
+        { name: '陆沉'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/luchen.jpeg'  , weibo: ''                                 , github: ''                               } ,
+        { name: '罗宪'  , jobTitle: '动效设计师' , avatar: '${assets}/image/members/luoxian.png'  , weibo: ''                                 , github: ''                               } ,
+        { name: '完白'  , jobTitle: '设计师'     , avatar: '${assets}/image/members/wanbai.png'   , weibo: ''                                 , github: ''                               } ,
+        { name: '萧庆'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/xiaoqing.jpg' , weibo: ''                                 , github: 'https://github.com/dxq613'      } ,
+        { name: '亦叶'  , jobTitle: '设计师'     , avatar: '${assets}/image/members/yiye.png'     , weibo: ''                                 , github: ''                               } ,
+        { name: '有田'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/youtian.jpg'  , weibo: 'https://weibo.com/u/1869365461'   , github: 'https://github.com/TomHuangCN'  } ,
+        { name: '玉伯'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/yubo.png'     , weibo: 'https://weibo.com/lifesinger'     , github: 'https://github.com/lifesinger'  } ,
+        { name: '御术'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/yushu.png'    , weibo: 'https://weibo.com/kenerlinfeng'   , github: 'https://github.com/kener'       } ,
+        { name: '再飞'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/zaifei.jpg'   , weibo: 'https://weibo.com/simaoohappy'    , github: 'https://github.com/simaQ'       } ,
+        { name: '张初尘', jobTitle: '产品经理'   , avatar: '${assets}/image/members/chuchen.png'  , weibo: 'https://weibo.com/u/1824917073'   , github: 'https://github.com/lilyal'      } ,
+        { name: '祯逸'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/zhenyi.png'   , weibo: ''                                 , github: ''                               } ,
+    ],
     showFooter: true,
     footer: {
         isFixed: false,
@@ -133,6 +155,6 @@ module.exports = {
             { text: '版权说明', href: '' },
             { text: 'GitHub', href: 'https://github.com/antvis/' }
         ],
-        copyright: 'Copyright © 蚂蚁金服体验技术部出品 @ AFX'
+        copyright: 'ICP 证浙 B2-2-100257  Copyright © 蚂蚁金融服务集团',
     }
 };
