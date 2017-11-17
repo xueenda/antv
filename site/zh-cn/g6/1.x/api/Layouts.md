@@ -13,7 +13,7 @@
 
 ## 树布局
 
-G6 内置了4类树布局算法，共21种不同的树布局效果。具体树布局属性参数配置可以通过[G6树图布局工具](../demo/tree/tree-layout.html)调试和预览。
+G6 内置了4类树布局算法，共21种不同的树布局效果。
 
 * [紧凑树——CompactBoxTree](#_紧凑树——compactboxtree)
 * [生态树——Dendrogram](#_生态树——dendrogram)

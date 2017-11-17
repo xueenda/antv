@@ -15,9 +15,9 @@
 * 树图类：[G6.Tree](./tree.html)
 * 处理类：[G6.Handler](./handler.html)
 * 绘图类：[G6.Canvas](./canvas.html)
-* 矩阵类：[G6.Matrix](./matrix3.html)
+* 矩阵类：[G6.Matrix](./matrix.html)
 * 工具类：[G6.Util](./util.html)
-* 布局包：[G6.Layout](./layouts.html)
+* 布局包：[G6.Layouts](./layouts.html)
 * 全局配置项：[G6.Global](./global.html)
 
 ## 静态方法

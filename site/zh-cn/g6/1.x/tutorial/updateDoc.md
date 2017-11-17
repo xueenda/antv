@@ -61,7 +61,7 @@ Graph 在 G6 1.0 中已经沉为抽象类，用户不应该直接实例化 Graph
 0.X 中
 
 ```js
-var graph = new Graph({
+const graph = new Graph({
   zoomable: false
 });
 ```
@@ -69,16 +69,16 @@ var graph = new Graph({
 等于 1.X 中
 
 ```js
-var net = new Net();
+const net = new Net();
 net.removeBehaviour(['wheelZoom']);
 ```
 
 
-行为、模式的插拔组装，参见[Demo](/g6/demo/06-other/mode.html);
+行为、模式的插拔组装，参见[Demo](../demo/other/mode.html);
 
 ### 调整初始化视口应该用fitView
 
-0.x 中有时我们会`render`结束后，调用`autoZoom`方法，让图适应画布。1.X 中这种方法被废弃，需要在初始化图时配置`fitView`，以决定初始化时画布的视口。[Graph API](/g6/api/graph.html)，fitView 属性。
+0.x 中有时我们会`render`结束后，调用`autoZoom`方法，让图适应画布。1.X 中这种方法被废弃，需要在初始化图时配置`fitView`，以决定初始化时画布的视口。[Graph API](../api/graph.html)，fitView 属性。
 
 
 <button id='autoZoom'>自动缩放 autoZoom</button>&nbsp;&nbsp;<button id='autoSize'>自动画布尺寸 autoSize</button>&nbsp;&nbsp;<button id='restore'>还原</button>

@@ -216,7 +216,22 @@ tree.on('mouseleave', function(ev){
 
 ### 通过 npm 安装
 
-`外部用户暂不提供 npm 引入`，阿里内部同学可使用 tnpm 安装 "@ali/g6"。
+我们提供了 G6 npm 包，通过下面的命令即可完成安装
+
+```bash
+npm install @antv/g6 --save
+```
+成功安装完成之后，即可使用 `import` 或 `require` 进行引用。
+
+```js
+import G6 from '@antv/g6';
+
+const net = new G6.Net({
+  id: 'c1',
+  width: 600,
+  height: 300
+});
+```
 
 ## 快速开始
 
@@ -225,7 +240,7 @@ G6 中所有的图都由边和节点构成，只要给出`节点`和`边`数据�
 <div id="c1"></div>
 
 <script type="text/javascript">
-var data = {
+const data = {
   "nodes": [
     {
       "x": 140,
@@ -246,7 +261,7 @@ var data = {
     }
   ]
 };
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'c1',      // 容器ID
     width: 500,    // 画布宽
     height: 500   // 画布高
@@ -269,7 +284,7 @@ net.render();
     <div id="c1"></div>
     <script>
       // 第三步：设置数据
-      var data = {
+      const data = {
         "nodes": [
           {
             "x": 140,
@@ -291,7 +306,7 @@ net.render();
         ]
       };
       // 第四步：配置G6画布
-      var net = new G6.Net({
+      const net = new G6.Net({
           id: 'c1',      // 容器ID
           width: 500,    // 画布宽
           height: 500    // 画布高

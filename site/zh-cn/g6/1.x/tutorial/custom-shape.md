@@ -57,20 +57,20 @@ G6.registerEdge(name, {
 
 接口如上，接下来会逐章跟大家说明。
 
-!注意：G6 内置一些基础的节点如：矩形 `rect`、圆形 `circle`、文本 `text`、菱形 `rhombus`，一些基础的边如：直线 `line`、箭头 `arrow`、曲线 `smooth`、曲线箭头 `smoothArrow` 。建议大家在注册型(设置 name)时保留这几个字段，否则会覆盖 G6 内置的图形！[内置形详见](/g6/api/index.html)
+!注意：G6 内置一些基础的节点如：矩形 `rect`、圆形 `circle`、文本 `text`、菱形 `rhombus`，一些基础的边如：直线 `line`、箭头 `arrow`、曲线 `smooth`、曲线箭头 `smoothArrow` 。建议大家在注册型(设置 name)时保留这几个字段，否则会覆盖 G6 内置的图形！[内置形详见](../api/index.html)
 
 ## 绘制
 与 G2 自定 Shape 类似，`draw` 是子项最终绘制的接口，决定了一个子项最终画成什么样。
 
 ## 容器
-group 是绘图容器，其本身是一个完整的绘图引擎，通过操作我们图形库的 API，我们能在里面画出千千万万的图形！绘图 API 参见[绘图库 Canvas API](/g6/api/canvas.html)
+group 是绘图容器，其本身是一个完整的绘图引擎，通过操作我们图形库的 API，我们能在里面画出千千万万的图形！绘图 API 参见[绘图库 Canvas API](../api/canvas.html)
 
 实例：
 
 ![image](https://zos.alipayobjects.com/skylark/c2f10ada-bb93-44ac-af2c-ba869876be82/attach/2816/40fdb36628bbba8b/image.png)
 
 ```js
-var data = {
+const data = {
   "nodes": [
     {
       "shape": "customNode",
@@ -81,7 +81,7 @@ var data = {
 }
 
 G6.registerNode('customNode', {
-  draw: function(cfg, group){
+  draw(cfg, group){
     group.addShape('text', {
       attrs: {
         x: 100,
@@ -102,7 +102,7 @@ G6.registerNode('customNode', {
   }
 });
 
-var net = new G6.Net({
+const net = new G6.Net({
   id: 'c1',           // 容器ID
   width: 500,   // 画布宽
   height: 500, // 画布高
@@ -122,7 +122,7 @@ group 使我们有画图的能力，cfg 则是绘制一个子项的配置信息�
 
 实例：
 ```js
-var data = {
+const data = {
   "nodes": [
     {
       "shape": "customNode",
@@ -148,7 +148,7 @@ var data = {
 }
 
 G6.registerNode('customNode', {
-  draw: function(cfg, group){
+  draw(cfg, group){
     group.addShape('text', {
       attrs: {
         x: cfg.x-50,
@@ -170,7 +170,7 @@ G6.registerNode('customNode', {
 });
 
 G6.registerEdge('customEdge', {
-  draw: function(cfg, group){
+  draw(cfg, group){
     group.addShape('text', {
       attrs: {
         x: (cfg.points[0].x + cfg.points[1].x)/2,
@@ -194,7 +194,7 @@ G6.registerEdge('customEdge', {
   }
 });
 
-var net = new G6.Net({
+const net = new G6.Net({
   id: 'c1',       // 容器ID
   width: 500,     // 画布宽
   height: 500     // 画布高
@@ -222,7 +222,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
 返回 rect，则控制点参考 rect 生成！
 
 ```js
-          var data = {
+          const data = {
               "nodes": [
                   {
                       "shape": "customNode",
@@ -233,8 +233,8 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
           }
 
           G6.registerNode('customNode', {
-              draw: function(cfg, group){
-                var text = group.addShape('text', {
+              draw(cfg, group){
+                const text = group.addShape('text', {
                   attrs: {
                     x: 100,
                     y: 100,
@@ -242,7 +242,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
                     text: '我是一个自定义节点，\n有下面那个方形和我自己组成'
                   }
                 });
-                var rect = group.addShape('rect', {
+                const rect = group.addShape('rect', {
                   attrs: {
                     x: 100,
                     y: 100,
@@ -256,7 +256,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
               }
           });
 
-          net = new G6.Net({
+          const net = new G6.Net({
               id: 'c1',           // 容器ID
               width: 500,   // 画布宽
               height: 500, // 画布高
@@ -274,7 +274,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
 返回 text，则控制点参考 text 生成！
 
 ```js
-          var data = {
+          const data = {
               "nodes": [
                   {
                       "shape": "customNode",
@@ -285,8 +285,8 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
           }
 
           G6.registerNode('customNode', {
-              draw: function(cfg, group){
-                var text = group.addShape('text', {
+              draw(cfg, group){
+                const text = group.addShape('text', {
                   attrs: {
                     x: 100,
                     y: 100,
@@ -294,7 +294,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
                     text: '我是一个自定义节点，\n有下面那个方形和我自己组成'
                   }
                 });
-                var rect = group.addShape('rect', {
+                const rect = group.addShape('rect', {
                   attrs: {
                     x: 100,
                     y: 100,
@@ -308,7 +308,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
               }
           });
 
-          var net = new G6.Net({
+          const net = new G6.Net({
               id: 'c1',           // 容器ID
               width: 500,   // 画布宽
               height: 500, // 画布高
@@ -333,7 +333,7 @@ keyShape 是 G6 特有的概念。简单来说，keyShape 是该子项参与图�
 
 ```js
 G6.registerNode('customNode', {
-  getAnchorPoints: function(cfg, group) {
+  getAnchorPoints(cfg, group) {
     return [
       [0.5, 1], // 上边的中点
       [1, 0.5], // 右边的中点
@@ -346,11 +346,11 @@ G6.registerNode('customNode', {
 
 #### 属性配置
 
-除了定义位置，在做编辑的交互的时候，我们可能还要配置锚点的颜色、鼠标悬浮时候的颜色、该锚点是否可以连接，这个时候，我们还能通过设置第三个参数进行锚点配置项的设置，[示例](/g6/demo/06-other/anchor-type.html)。
+除了定义位置，在做编辑的交互的时候，我们可能还要配置锚点的颜色、鼠标悬浮时候的颜色、该锚点是否可以连接，这个时候，我们还能通过设置第三个参数进行锚点配置项的设置，[示例](../demo/other/anchor-type.html)。
 
 ```js
 G6.registerNode('customNode', {
-  getAnchorPoints: function(cfg, group) {
+  getAnchorPoints(cfg, group) {
     return [
       [0.5, 1, {
         // 锚点图形属性
@@ -375,12 +375,12 @@ G6.registerNode('customNode', {
 
 #### 锚点类型
 
-这里的 `getAnchorPoints` 方法除了返回 `二维数组` ，还能返回 `auto`、`false`，分别表示自动锚点和不使用锚点。[示例](/g6/demo/06-other/anchor-atrr.html)。
+这里的 `getAnchorPoints` 方法除了返回 `二维数组` ，还能返回 `auto`、`false`，分别表示自动锚点和不使用锚点。[示例](../demo/other/anchor-atrr.html)。
 
 ```js
 G6.registerNode('custom1', {
   // 常规锚点
-  getAnchorPoints: function(){
+  getAnchorPoints(){
     return [
       [0, 0.5],   // 左边中点 索引为 0
       [1, 0.5]    // 右边中点 索引为 1
@@ -389,13 +389,13 @@ G6.registerNode('custom1', {
 });
 G6.registerNode('custom2', {
   // 自动锚点
-  getAnchorPoints: function(){
+  getAnchorPoints(){
     return 'auto';
   }
 });
 G6.registerNode('custom3', {
   // 不使用锚点（ 自动连接中心 ）
-  getAnchorPoints: function(){
+  getAnchorPoints(){
     return null;
   }
 });
@@ -403,12 +403,12 @@ G6.registerNode('custom3', {
 
 ### 锚点的交互
 
-在更复杂的一些场景里，有的时候我们可能还需要动态控制锚点的数量，甚至对锚点的连接做一些控制。这个时候，我们不妨把`锚点的配置信息和节点的数据模型进行绑定`，从而实现节点的动态锚点的需求。[示例](/g6/demo/06-other/anchor-update.html)。
+在更复杂的一些场景里，有的时候我们可能还需要动态控制锚点的数量，甚至对锚点的连接做一些控制。这个时候，我们不妨把`锚点的配置信息和节点的数据模型进行绑定`，从而实现节点的动态锚点的需求。[示例](../demo/other/anchor-update.html)。
 
 ```js
 G6.registerNode('custom', {
-  getAnchorPoints: function(cfg){
-    var model = cfg.model;
+  getAnchorPoints(cfg){
+    const model = cfg.model;
     // 将锚点与数据源关联
     return model.anchorPoints;
   }
@@ -419,7 +419,7 @@ G6.registerNode('custom', {
 
 ![image](/assets/image/g6/04-editor/perventLink.gif)
 
-[示例源码](/g6/demo/04-editor/perventLink.html)
+[示例源码](../demo/04-editor/perventLink.html)
 
 ## 绘制后
 
@@ -429,7 +429,7 @@ G6.registerNode('custom', {
 
 ````js
 G6.registerNode('customRect', {
-  afterDraw: function(cfg, group) {
+  afterDraw(cfg, group) {
     group.addShape('text', {
       attrs: {
         x: cfg.x-cfg.size[0]/2,
@@ -441,8 +441,8 @@ G6.registerNode('customRect', {
   }
 });
 G6.registerEdge('line', {
-  afterDraw: function(cfg, group, keyShape) {
-    var center = keyShape.getPoint(0.5);
+  afterDraw(cfg, group, keyShape) {
+    const center = keyShape.getPoint(0.5);
     group.addShape('text', {
       attrs: {
         x: center.x,
@@ -454,7 +454,7 @@ G6.registerEdge('line', {
     });
   }
 });
-var data = {
+const data = {
   source: {
     "nodes": [
       {
@@ -477,7 +477,7 @@ var data = {
     ]
   }
 };
-var net = new G6.Net({
+const net = new G6.Net({
     id: 'c1',      // 容器ID
     width: 500,    // 画布宽
     height: 500,   // 画布高
@@ -507,15 +507,15 @@ net.render();
 
 #### 简单示例
 
-![image](/assets/image/g6/06-other/htmlnode.png)
+![image](/assets/image/g6/other/htmlnode.png)
 
-[示例源码](/g6/demo/06-other/htmlnode.html)
+[示例源码](../demo/other/htmlnode.html)
 
 #### 综合示例
 
 ![image](https://gw.alipayobjects.com/zos/rmsportal/kGCoKUTAKPdYUifVIWvJ.png)
 
-> 该图展示了对鸢尾花数据集进行关联分析的过程中，如何可视化关联分析的结果。该示例用颜色映射的花的种类，连接线映射了关联度在 0.7 以上的关系。连线上点的大小表示关联度的强弱。每个节点所画的占比玉玦图，表示每个品种在该属性下，不同数值区间内的占比。由图可得出结论，花瓣长度和花瓣宽度，在所有品种下都有关联关系，并且各个品类间有明显的分层。所以这两个属性，适合用于做区分种类的关键指示器。该示例主要向大家展示了如何使用 html 节点巧妙的结合 G6 与 G2，从而呈现一份精彩的可视化作品。[示例链接](/g6/demo/05-gallery/iris-flower.html)
+> 该图展示了对鸢尾花数据集进行关联分析的过程中，如何可视化关联分析的结果。该示例用颜色映射的花的种类，连接线映射了关联度在 0.7 以上的关系。连线上点的大小表示关联度的强弱。每个节点所画的占比玉玦图，表示每个品种在该属性下，不同数值区间内的占比。由图可得出结论，花瓣长度和花瓣宽度，在所有品种下都有关联关系，并且各个品类间有明显的分层。所以这两个属性，适合用于做区分种类的关键指示器。该示例主要向大家展示了如何使用 html 节点巧妙的结合 G6 与 G2，从而呈现一份精彩的可视化作品。[示例链接](../demo/gallery/iris-flower.html)
 
 
 ### 动态计算锚点
@@ -524,7 +524,7 @@ net.render();
 
 ![image](https://zos.alipayobjects.com/skylark/e537c24e-1976-41e7-b4f6-b3cc63e924db/attach/2816/68b3988f18d698b9/image.png)
 
-[Demo源码](/g6/demo/05-gallery/data-base.html)
+[Demo源码](../demo/gallery/data-base.html)
 
 ## 详解自定义边
 
@@ -535,8 +535,8 @@ net.render();
 ### 配置项详解
 
 * 边控制点：points // 理论上 `points` 可以有无穷多个点，从 points[0] 到 points[n]，依次是源节点到目标节点的控制点位置。
-* 目标节点： cfg.target // 目标节点 详见：[Node API](/g6/api/item.html#节点——node)
-* 源节点：cfg.source // 源节点 详见：[Node API](/g6/api/item.html#节点——node)
+* 目标节点： cfg.target // 目标节点 详见：[Node API](../api/item.html#节点——node)
+* 源节点：cfg.source // 源节点 详见：[Node API](../api/item.html#节点——node)
 * 颜色：cfg.color
 * 尺寸：cfg.size
 * 原始数据：cfg.model
@@ -547,7 +547,7 @@ net.render();
 
 <div id="customArrow"></div>
 
-[Demo源码](/g6/demo/06-other/custom-arrow.html)
+[Demo源码](../demo/other/custom-arrow.html)
 
 ```js-
 var Util = G6.Util;
