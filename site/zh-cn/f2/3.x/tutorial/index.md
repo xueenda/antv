@@ -36,7 +36,7 @@ npm install @antv/f2 --save
 成功安装完成之后，即可使用 `import` 或 `require` 进行引用。
 
 ```js
-var F2 = require('@antv/f2');
+const F2 = require('@antv/f2');
 ```
 
 ## 开始使用
