@@ -80,7 +80,7 @@ resource:
   chart.guide().html(endPoint, pointHtml2, { align: 'cc' });
   chart.guide().html(changePoint, tooltipHtml, { align: 'br', offset: [ -17, 0 ] });
   chart.guide().html(changePoint, changePointHtml, { align: 'cc' });
-  var canvas = document.getElementById('mountNode');
+  const canvas = document.getElementById('mountNode');
   const linear_gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 500);
   linear_gradient.addColorStop(0.5, '#fff');
   linear_gradient.addColorStop(0, 'rgb(15, 141, 232)');

@@ -34,8 +34,8 @@ relativePlots:
     chart.facet('circle', {
       fields: [ 'clarity' ],
       eachView(view, facet) {
-        var data = facet.data;
-        var dv = new DataView();
+        const data = facet.data;
+        const dv = new DataView();
         dv.source(data).transform({
           type: 'aggregate',
           fields: [ 'price' ],
