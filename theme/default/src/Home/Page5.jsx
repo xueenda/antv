@@ -14,7 +14,7 @@ export default function Page5() {
       style={{
           height: 80
       }}>
-      <img width={160} src={img} alt="" />
+      <img width={220} src={img} alt="" />
     </Col>
   ));
   return (
