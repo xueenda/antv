@@ -30,8 +30,7 @@ class Banner extends React.PureComponent {
           >
             <h1 key="h1">让数据栩栩如生</h1>
             <p className="main-info" key="p">
-              提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视 <br />
-              设计规范，蚂蚁数据可视化解决方案。
+              提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视设计规范，蚂蚁数据可视化解决方案。
             </p>
             <a target="_blank" href={'/zh-cn/g2/3.x/index.html'} key="a">
               <button className="btn-round-link btn btn-primary btn-lg">
