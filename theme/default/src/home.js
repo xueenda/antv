@@ -13,12 +13,15 @@ $('header').headroom({
     onTop() {
         $('header.homepage').addClass('transparent');
     },
+    onPin() {
+        $('header.homepage').removeClass('transparent');
+    },
     onNotTop() {
         $('header.homepage').removeClass('transparent');
     },
-    // onUnpin() {
-    //     $('#sub-product-navs').find('.dropdown-menu').removeClass('show');
-    // }
+    onUnpin() {
+        $('#sub-product-navs').find('.dropdown-menu').removeClass('show');
+    },
 });
 
 $('.slick').each(function () {
