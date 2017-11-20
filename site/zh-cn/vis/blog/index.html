@@ -5,12 +5,13 @@ title: 博客
 -->
 <style>
     .blogs {
-        margin: 64px 0;
+        padding: 64px 0;
     }
     .blogs .col-md-6 {
         margin-top: 50px;
     }
     .blogs .blog {
+        border-radius: 4px;
         max-width: 100%;
         width: 100%;
         display: inline-block;
@@ -20,6 +21,9 @@ title: 博客
         border: none;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
         margin: 0 auto;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
     }
     .blog:hover {
         text-decoration: none;
@@ -34,9 +38,15 @@ title: 博客
     .title {
         display: block;
         font-size: 16px;
+        color: rgba(0, 0, 0, .85);
+        margin-bottom: 4px;
+    }
+    .author {
+        color: rgba(0, 0, 0, .45);
     }
     .avatar {
-        border-radius: 12px;
+        border-radius: 10px;
+        margin-right: 8px;
     }
 </style>
 
@@ -50,7 +60,7 @@ title: 博客
                     <div class="card-body">
                         <span class="title">{{ doc.title }}</span>
                         <span class="author">
-                            <img class="avatar" width="24" height="24" src="{{ doc.author.avatar }}" alt="">
+                            <img class="avatar" width="20" height="20" src="{{ doc.author.avatar }}" alt="">
                             <span> {{ doc.author.name }}</span>
                             <span class="float-right">{{ doc.date }}</span>
                         </span>

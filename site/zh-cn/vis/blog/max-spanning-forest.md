@@ -3,7 +3,7 @@ index: 8
 title: 一种带权图的可视分析方案
 authors:
   - name: 有田
-    avatar: ${assets}/image/vis/avatar/placeholder.png
+    avatar: ${assets}/image/members/youtian.jpg
 date: "2017-11-18"
 landscape: ${assets}/image/vis/blog/maxspanningForest.jpg
 -->

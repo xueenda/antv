@@ -2,12 +2,12 @@
 index: 0
 title: 数据可视化概览
 authors:
-  - name: 萧庆
-    avatar: ${assets}/image/vis/avatar/placeholder.png
   - name: 御术
-    avatar: ${assets}/image/vis/avatar/placeholder.png
+    avatar: ${assets}/image/members/yushu.png
+  - name: 萧庆
+    avatar: ${assets}/image/members/xiaoqing.jpg
   - name: 玉伯
-    avatar: ${assets}/image/vis/avatar/placeholder.png
+    avatar: ${assets}/image/members/yubo.png
 date: "2017-11-22"
 landscape: ${assets}/image/vis/blog/vis-introduce.jpg
 -->

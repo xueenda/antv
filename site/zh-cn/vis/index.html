@@ -30,15 +30,8 @@ tocifyWithAnchor: false
 <style>
     .align-right {
         text-align: right;
-        margin-bottom: 32px;
-        padding-right: 24px;
-    }
-    .img-placeholder {
-        width: 366px;
-        height: 160px;
-        /*background-size: auto auto;*/
-        background-size: cover;
-        background-repeat: repeat-x;
+        margin-bottom: -32px;
+        margin-right: 16px;
     }
     .img-landscape {
         margin: -64px -16px 0 0;
@@ -64,10 +57,51 @@ tocifyWithAnchor: false
         font-weight: 300;
         padding: 0;
     }
-    .card img {
-        height: 56px;
+    .blogs {
+        padding: 112px 0 152px 0;
     }
-    /*.card */
+    .blogs .col-md-6 {
+        margin-top: 50px;
+        padding: 0 32px;
+    }
+    .blogs .blog {
+        border-radius: 4px;
+        /*max-width: 100%;*/
+        /*width: 100%;*/
+        display: inline-block;
+        height: 246px;
+        /*color: #868e96;*/
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
+        margin: 0 auto;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+    .blog:hover {
+        text-decoration: none;
+        -webkit-transform: translateY(-12px);
+        -ms-transform: translateY(-12px);
+        transform: translateY(-12px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, .09);
+    }
+    .card-body {
+        padding: 16px 24px;
+    }
+    .title {
+        display: block;
+        font-size: 16px;
+        color: rgba(0, 0, 0, .85);
+        margin-bottom: 4px;
+    }
+    .author {
+        color: rgba(0, 0, 0, .45);
+    }
+    .avatar {
+        border-radius: 10px;
+        margin-right: 8px;
+    }
 </style>
 
 <section class="intro">
@@ -124,21 +158,18 @@ tocifyWithAnchor: false
             <a href="{{ base }}zh-cn/vis/blog/index.html">{{ resource.translate.viewMore }}</a>
         </div>
         <div class="row">
-            {% for card in blogData.docList %}
-            {% if loop.index0 <= 2 %}
-            <div class="col-md-4">
-                <a class="card full-size" href="{{ card.href }}" style="overflow: hidden;">
-                    <div class="img-placeholder" style="background-image: url({{ card.landscape }});"></div>
-                    <div class="card-over">
-                        <h5 class="title">{{ card.title }}</h5>
-                        <span class="author text-secondary">{{ card.author.name }}</span>
-                        <span class="float-right">{{ card.date }}</span>
-                        <p>{{ card.description }}</p>
-                    </div>
+            {% for doc in blogData.docList %}
+            {% if loop.index0 <= 3 %}
+            <div class="col-md-6">
+                <a class="blog" href="{{ doc.href }}">
+                    <img src="{{ doc.landscape }}" alt="" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="title">{{ card.title }}</h5>
-                        <span class="author text-secondary">{{ card.author.name }}</span>
-                        <span class="float-right">{{ card.date }}</span>
+                        <span class="title">{{ doc.title }}</span>
+                        <span class="author">
+                            <img class="avatar" width="20" height="20" src="{{ doc.author.avatar }}" alt="">
+                            <span> {{ doc.author.name }}</span>
+                            <span class="float-right">{{ doc.date }}</span>
+                        </span>
                     </div>
                 </a>
             </div>

@@ -3,7 +3,7 @@ index: 2
 title: 一种画有向图的技术（译文）
 authors:
   - name: 绝云
-    avatar: ${assets}/image/vis/avatar/placeholder.png
+    avatar: ${assets}/image/members/jueyun.png
   - name: 青湳
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"

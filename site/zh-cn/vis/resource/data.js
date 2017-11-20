@@ -62,44 +62,14 @@ module.exports = {
     resourceCards: [
         {
             icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
-            href: '',
+            title: 'AntV Charts',
+            description: '图表组件 Sketch 模版',
+            href: 'https://github.com/antvis/feedback/releases/download/design/AntV.Charts.sketch',
         },
         {
             icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
-            href: '',
-        },
-        {
-            icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
-            href: '',
-        },
-        {
-            icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
-            href: '',
-        },
-        {
-            icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
-            href: '',
-        },
-        {
-            icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
-            href: '',
-        },
-        {
-            icon: '${assets}/image/vis/resource/sketch.png',
-            title: 'Desktop Components',
-            description: '桌面组件 Sketch 模版',
+            title: '',
+            description: 'Logo、图标等文件',
             href: '',
         },
     ]
