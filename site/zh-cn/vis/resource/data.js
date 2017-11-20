@@ -68,9 +68,9 @@ module.exports = {
         },
         {
             icon: '${assets}/image/vis/resource/sketch.png',
-            title: '',
+            title: 'AntV Charts Icons',
             description: 'Logo、图标等文件',
-            href: '',
+            href: 'https://github.com/antvis/feedback/releases/download/design/AntV.Charts.Icons.sketch',
         },
     ]
 };
