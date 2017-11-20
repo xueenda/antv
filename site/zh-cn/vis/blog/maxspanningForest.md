@@ -5,7 +5,7 @@ authors:
   - name: 有田
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-18"
-landscape: ${assets}/image/vis/blog/make-rounded-column-chart.jpg
+landscape: ${assets}/image/vis/blog/maxspanningForest.jpg
 -->
 
 ## 概述
