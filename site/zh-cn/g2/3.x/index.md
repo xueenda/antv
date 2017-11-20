@@ -24,6 +24,23 @@ resource:
     - ${url.dataSet}
 -->
 
+<style>
+  .slick-track:focus {
+    outline: none!important;
+  }
+  .slick-initialized .slick-slide:focus {
+    outline: none!important;
+  }
+
+  .highlight {
+    margin-top: 16px!important;
+  }
+
+  .pt-32 {
+    margin-top: 32px;
+  }
+</style>
+
 <section class="intro">
     <div class="container">
         <div class="header row">
@@ -67,8 +84,13 @@ resource:
     <p>通过 <code>&lt;script&gt;</code> 标签引入：</p>
 
 ```html
-<!-- 引入在线资源 -->
 <script src="{{ url.g2 }}"></script>
+```
+
+<p class="pt-32">通过 <code>&lt;npm&gt;</code> 安装：</p>
+
+```js
+npm install @antv/g2 --save
 ```
 
 </div>
