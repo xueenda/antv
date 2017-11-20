@@ -32,7 +32,7 @@ resource:
             <div class="col-md-5">
                 <h1>F2 移动端图表库</h1>
                 <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求很高的场景。</p>
-                <a href="{{ products.g2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
+                <a href="{{ products.f2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.demo }}</a>
                 <a href="{{base}}zh-cn/f2/3.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
             <div class="col-md-7 slick">
