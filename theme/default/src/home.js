@@ -11,7 +11,13 @@ $('header').headroom({
         unpinned: 'slideUp'
     },
     onTop() {
-        // $('header')
+        $('header').addClass('homepage');
+    },
+    onPin() {
+        $('header').removeClass('homepage');
+    },
+    onUnpin() {
+        $('#sub-product-navs').find('.dropdown-menu').removeClass('show');
     }
 });
 

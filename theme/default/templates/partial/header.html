@@ -2,7 +2,7 @@
 <header class="navbar navbar-expand-lg navbar-light fixed-top headroom animated{% if isHome %} homepage{% endif %}">
     <!--{% if header.isFullSize %}{% else %}<div class="container">{% endif %}-->
     <a href="{% if isHome %}#{% else %}{{ base }}{{ home }}{% endif %}">
-        <image class="logo" width="48" height="28" src="{{ brand.logo }}"></image>
+        <image class="logo" width="30" height="28" src="{{ brand.logo }}"></image>
     </a>
     <a class="navbar-brand" href="{% if isHome %}#{% else %}{{ base }}{{ home }}{% endif %}">
         {{ brand.name }}
