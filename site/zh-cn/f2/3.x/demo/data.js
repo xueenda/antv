@@ -89,7 +89,7 @@ module.exports = {
     navName: 'demo',
     demos: demos,
     template: 'f2-demo',
-    canSwitchThemes: true,
+    // canSwitchThemes: true,
     demosByCategory: demosByCategory,
     demoByHref: demoByHref,
     showFooter: false
