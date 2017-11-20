@@ -11,10 +11,10 @@ $('header').headroom({
         unpinned: 'slideUp'
     },
     onTop() {
-        $('header').addClass('homepage');
+        $('header.homepage').addClass('transparent');
     },
     onPin() {
-        $('header').removeClass('homepage');
+        $('header.homepage').removeClass('transparent');
     },
     onUnpin() {
         $('#sub-product-navs').find('.dropdown-menu').removeClass('show');
