@@ -33,9 +33,9 @@ body {
   border-radius: 20px;
   padding: 10px 15px;
   line-height: 1.15;
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
   cursor: pointer;
   &:focus {
     box-shadow: none;
@@ -69,6 +69,8 @@ body {
   width: 95px;
   margin-left: 18px;
   .nav-link {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
     font-size: 16px;
     font-weight: 400;
     padding-left: 0;
@@ -126,6 +128,14 @@ body {
   //height: 64px;
   .navbar-nav .nav-link {
     color: #314659;
+  }
+}
+
+#navbarHeader {
+  .nav-separator {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    height: 24px;
   }
 }
 
