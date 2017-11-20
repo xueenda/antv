@@ -40,18 +40,48 @@ tocifyWithAnchor: false
         background-size: cover;
         background-repeat: repeat-x;
     }
+    .img-landscape {
+        margin: -64px -16px 0 0;
+        max-width: 654px;
+    }
+    .main-info {
+        /*line-height: 48px;*/
+    }
+    .intro {
+        padding-bottom: 40px;
+    }
+    .features {
+        padding: 128px 0;
+    }
+    .features h4 {
+        font-size: 20px;
+    }
+    .blogs {
+        min-height: 625px;
+        padding: 112px 0 152px 0;
+    }
+    .card-body .description {
+        font-weight: 300;
+        padding: 0;
+    }
+    .card img {
+        height: 56px;
+    }
+    /*.card */
 </style>
 
 <section class="intro">
     <div class="container">
         <div class="header row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h1>墨者学院</h1>
-                <p class="main-info">墨者学院的描述</p>
-                <a href="{{ products.vis.links.blog.href }}" class="btn btn-primary btn-lg">{{ resource.translate.viewDetail }}</a>
+                <p class="main-info">TODO墨者学院的描述TODO墨者学院的描述TODO墨者学院的描述TODO墨者学院的描述TODO墨者学院的描述TODO墨者学院的描述TODO墨者学院的描述TODO墨者学院的描述</p>
+                <a href="{{ products.vis.links.blog.href }}" class="btn btn-primary btn-round-link btn-lg">
+                    {{ resource.translate.viewDetail }}
+                </a>
             </div>
-            <div class="col-md-6">
-                <img class="img-landscape" height="582px" width="654px" src="{{ assets }}/image/vis/intro-landscape.svg" alt="">
+            <div class="col-md-7">
+                <img class="img-landscape" width="654px" src="{{ assets }}/image/vis/intro-landscape.svg" alt="">
             </div>
         </div>
     </div>
@@ -73,10 +103,9 @@ tocifyWithAnchor: false
             <div class="col-md-4">
                 <a class="card" href="{{ card.href }}">
                     <img src="{{ card.img }}" alt="" class="card-img-top">
-                    <h3>{{ card.title }}</h3>
+                    <h4>{{ card.title }}</h4>
                     <div class="card-body">
-                        <span class="title">{{ card.title }}</span>
-                        <span class="description text-secondary">{{ card.description }}</span>
+                        <span class="description text-secondary">{{ card.title }} {{ card.description }}</span>
                     </div>
                 </a>
             </div>
@@ -119,7 +148,7 @@ tocifyWithAnchor: false
     </div>
 </section>
 
-<section class="join-us text-center">
+<section class="join-us get-started description text-center">
     <div class="container">
         <h2>加入我们</h2>
         <span class="separator"></span>
@@ -129,7 +158,7 @@ tocifyWithAnchor: false
                 图形技术充满激情，无论你是工程师，还是设计师，请联系我们，期待你的加入。</p>
             <p class="main-info">antv@list.alibaba-inc.com</p>
         </div>
-        <a href="mailto:antv@list.alibaba-inc.com" class="btn btn-primary btn-lg">{{ resource.translate.joinUs }}</a>
+        <a href="mailto:antv@list.alibaba-inc.com" class="btn btn-round-link more-tutorial btn-primary btn-lg">{{ resource.translate.joinUs }}</a>
     </div>
 </section>
 
