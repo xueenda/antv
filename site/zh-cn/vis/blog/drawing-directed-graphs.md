@@ -14,7 +14,7 @@ landscape: ${assets}/image/vis/blog/drawing-directed-graphs.jpg
 
 ## 原文信息
 
-原文是AT&T贝尔实验室graphviz项目组沉淀的一篇论文，描述了graphviz中的dot布局所用的算法。
+原文是 AT&T 贝尔实验室 graphviz 项目组沉淀的一篇论文，描述了 graphviz 中的 dot 布局所用的算法。
 
 ### 作者信息
 

@@ -47,6 +47,7 @@ docFiles.forEach(function(file) {
         authors: authors,
         author: author,
         landscape: landscape,
+        description: meta.description || title,
         // hideFromNav: true,
     };
     docList.push(doc);
