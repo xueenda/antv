@@ -24,13 +24,15 @@ $('header').headroom({
 $('.slick').each(function () {
     const $target = $(this);
     $target.slick({
-        // dots: !!$target.data('dots'),
+        dots: !!$target.data('dots'),
+        slidesToShow: 1,
+        adaptiveHeight: true,
         infinite: true,
         speed: 500,
         cssEase: 'linear',
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 2000,
         fade: true,
     });
 });
