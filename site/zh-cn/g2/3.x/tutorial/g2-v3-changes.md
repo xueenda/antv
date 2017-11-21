@@ -16,7 +16,7 @@ title: G2 3.0 升级指引
 ### cdn
 
 ```js
-<script src="http://unpkg.alipay.com/@antv/g2"></script>
+<script src="{{ url.g2 }}"></script>
 ```
 
 ### npm
