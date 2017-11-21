@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% set externalJsNotAllow = true %}
 {% block css %}
-<link rel="stylesheet" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/codemirror-5.29.0/codemirror-merged.min.css">
-<link rel="stylesheet" type="text/css" href="{{ dist }}/demo.css" />
+<link rel="stylesheet"
+      href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/codemirror-5.29.0/codemirror-merged.min.css">
+<link rel="stylesheet" type="text/css" href="{{ dist }}/demo.css"/>
 {% endblock %}
 {% block content %}
 {% set currentDemo = demoByHref[__href] %}
@@ -16,18 +17,24 @@
                     <div class="item card">
                         <div class="card-header" role="tab">
                             <h6>
-                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}" aria-controls="collapse-{{ cat.category }}">
+                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}"
+                                   class="menu-header{% if isCurrentCat %}{% else %} collapsed{% endif %}"
+                                   aria-controls="collapse-{{ cat.category }}">
                                     <span class="iconfont icon-{{ cat.category }}"></span>
                                     {{ cat.title }}
+                                    <span class="float-right arrow"></span>
                                 </a>
                             </h6>
                         </div>
-                        <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}" role="tabpanel" data-parent="#accordion">
+                        <div id="collapse-{{ cat.category }}" class="collapse{% if isCurrentCat %} show{% endif %}"
+                             role="tabpanel" data-parent="#accordion">
                             <div class="card-body">
                                 <ul class="list-group">
                                     {% for demo in cat.demos %}
                                     {% set isCurrentPage = (__href === demo.href) %}
-                                    <li class="list-group-item{% if isCurrentPage %} active{% endif %}"><a href="{{ demo.href }}">{{ demo.title }}</a></li>
+                                    <li class="list-group-item{% if isCurrentPage %} active{% endif %}">
+                                        <a href="{{ demo.href }}">{{ demo.title }}</a>
+                                    </li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -47,12 +54,62 @@
                     {% if canSwitchThemes %}
                     <form class="form-inline">
                         <label for="theme-switching">{{ resource.translate.themeSwitching }}: </label>
-                        <div class="btn-group theme-switching" id="theme-switching" role="group" aria-label="Basic example">
+                        <div class="btn-group theme-switching" id="theme-switching" role="group"
+                             aria-label="Basic example">
                             <a href="?theme=default" data-theme="default" class="btn btn-primary">
-                                <img src="{{ assets }}/image/icon/default-theme.svg" alt="">
+                                <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+                                    <title>Group 2</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <defs>
+                                        <rect id="path-1" x="0" y="0" width="28" height="28" rx="2"></rect>
+                                    </defs>
+                                    <g id="视觉稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="图表示例" transform="translate(-1333.000000, -105.000000)">
+                                            <g id="Group-2" transform="translate(1333.000000, 105.000000)">
+                                                <g id="Rectangle-2">
+                                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                                    <rect stroke="#9FB7D3" stroke-width="1" x="0.5" y="0.5" width="27"
+                                                          height="27" rx="2"></rect>
+                                                </g>
+                                                <rect id="Rectangle-2" fill="#1890FF" x="3.5" y="3.5" width="21"
+                                                      height="21"></rect>
+                                                <polygon id="Rectangle-2" fill="#2FC25B"
+                                                         points="3.5 3.5 24.5 3.5 24.5 24.5"></polygon>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
                             </a>
                             <a href="?theme=dark" data-theme="dark" class="btn btn-light">
-                                <img src="{{ assets }}/image/icon/dark-theme.svg" alt="">
+                                <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+                                    <title>Group 2</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <defs>
+                                        <rect id="path-1" x="0" y="0" width="28" height="28" rx="2"></rect>
+                                    </defs>
+                                    <g id="视觉稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="图表示例-detail-导航收起" transform="translate(-788.000000, -122.000000)">
+                                            <g id="Group-8" transform="translate(661.000000, 122.000000)">
+                                                <g id="Group-2" transform="translate(127.000000, 0.000000)">
+                                                    <g id="Rectangle-2">
+                                                        <use fill="#1F1F1F" fill-rule="evenodd"
+                                                             xlink:href="#path-1"></use>
+                                                        <rect stroke-opacity="0.45" stroke="#FFFFFF" stroke-width="1"
+                                                              x="0.5" y="0.5" width="27" height="27" rx="2"></rect>
+                                                    </g>
+                                                    <rect id="Rectangle-2" fill="#1984F7" x="3.5" y="3.5" width="21"
+                                                          height="21"></rect>
+                                                    <polygon id="Rectangle-2" fill="#13C2C2"
+                                                             points="3.5 3.5 24.5 3.5 24.5 24.5"></polygon>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
                             </a>
                         </div>
                     </form>
@@ -64,13 +121,13 @@
                 {% if plotDescription %}
                 <section class="description">
                     <h4>{{ resource.translate.plotDescription }}</h4>
-                    <div> {{ plotDescription | safe }} </div>
+                    <div> {{ plotDescription | safe }}</div>
                 </section>
                 {% endif %}
                 {% if plotUsage %}
                 <section class="usage">
                     <h4>{{ resource.translate.usage }}</h4>
-                    <div> {{ plotUsage | safe }} </div>
+                    <div> {{ plotUsage | safe }}</div>
                 </section>
                 {% endif %}
                 {% if relativePlots %}
@@ -118,8 +175,14 @@
                         <span id="alert-copy-fail" class="text-danger" style="display: none;">
                             {{ resource.translate.copyFail }}
                         </span>
-                        <button id="btn-copy" type="button" class="btn btn-light">{{ resource.translate.copy }}</button>
-                        <button id="btn-execute" type="button" class="btn btn-light">{{ resource.translate.execute }}</button>
+                        <button id="btn-copy" type="button" class="btn btn-light">
+                            <span class="iconfont icon-copy"></span>
+                            {{ resource.translate.copy }}
+                        </button>
+                        <button id="btn-execute" type="button" class="btn btn-light">
+                            <span class="iconfont icon-execute"></span>
+                            {{ resource.translate.execute }}
+                        </button>
                     </form>
                 </div>
                 <textarea id="code-default" style="display: none;">{{ renderedContent | safe }}</textarea>
@@ -133,9 +196,13 @@
 </div>
 {% endblock %}
 {% block js %}
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/clipboard-1.7.1.min.js"></script>
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/routie-0.3.2.min.js"></script>
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/codemirror-5.29.0/codemirror-merged.min.js"></script>
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.resizable-0.20.0.min.js"></script>
+<script type="text/javascript"
+        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/clipboard-1.7.1.min.js"></script>
+<script type="text/javascript"
+        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/routie-0.3.2.min.js"></script>
+<script type="text/javascript"
+        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/codemirror-5.29.0/codemirror-merged.min.js"></script>
+<script type="text/javascript"
+        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.resizable-0.20.0.min.js"></script>
 <script type="text/javascript" src="{{ dist }}/demo.js"></script>
 {% endblock %}

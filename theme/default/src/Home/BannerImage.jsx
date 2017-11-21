@@ -126,16 +126,7 @@ export default function BannerImage() {
                 <polygon id="Path-29" fill="#F0F1F6" points="278.94043 66.9602051 278.94043 72.1335449 137.096191 147.667969 137.173096 142.567932" />
               </TweenOne>
               <g id="Group-7" transform="translate(46.000000, 18.000000)">
-                <g id="Group-34" transform="translate(0.000000, 12.000000)">
-                  <TweenOne
-                    component="polygon" attr="attr"
-                    animation={{ ...animate.draw, delay: delay + 300 }}
-                    stroke="#FFC5BC"
-                    strokeWidth="2"
-                    points="49.8130579 0 70 9.06713957 22.0692752 39 0 28.9392547"
-                  />
-                </g>
-                <TweenOne component="g" animation={{ delay: delay + 700, ...animate.alpha }}>
+                <TweenOne component="g" animation={{ delay: delay + 300, ...animate.y }}>
                   <polygon id="Path-23" fill="#F0F1F6" points="49.8130579 23 70 32.0671396 22.0692752 62 0 51.9392547" />
                   <g id="Group-34" transform="translate(0.000000, 12.000000)">
                     <polygon id="Path-23" stroke="#FFC5BC" strokeWidth="0.25" fill="#FF543B" points="49.8130579 0 70 9.06713957 22.0692752 39 0 28.9392547" />
@@ -143,16 +134,7 @@ export default function BannerImage() {
                     <polygon id="Path-30" fill="#DA4435" points="0 29 0 33.9660046 22 44 22 38.9447747" />
                   </g>
                 </TweenOne>
-                <g id="Group-33" transform="translate(30.000000, 0.000000)">
-                  <TweenOne
-                    component="path"
-                    animation={{ ...animate.draw, delay: delay + 400 }}
-                    stroke="#FF9C9C"
-                    strokeWidth="2"
-                    d="M91.8659889,0.140511459 L0.270387554,53.9156367 L22.0112507,63.858695 L111.732753,9.09267537 L91.8659889,0.140511459 Z"
-                  />
-                </g>
-                <TweenOne component="g" animation={{ delay: delay + 800, ...animate.alpha }}>
+                <TweenOne component="g" animation={{ delay: delay + 400, ...animate.y }}>
                   <polygon id="Path-23" fill="#F0F1F6" points="121.858428 11 142 20.0759949 52.0196744 75 30 64.929429" />
                   <g id="Group-33" transform="translate(30.000000, 0.000000)">
                     <g id="Path-23">
@@ -163,16 +145,7 @@ export default function BannerImage() {
                     <polygon id="Path-30" fill="#DA4435" points="0 54 0 59.0783832 22 69 22 64.0640399" />
                   </g>
                 </TweenOne>
-                <g id="Group-30" transform="translate(60.000000, 39.000000)">
-                  < TweenOne
-                    component="polygon"
-                    animation={{ ...animate.draw, delay: delay + 500 }}
-                    stroke="#FFC5BC"
-                    strokeWidth="2"
-                    points="49.8130579 0 70 9.06713957 22.0692752 39 0 28.9392547"
-                  />
-                </g>
-                <TweenOne component="g" animation={{ delay: delay + 900, ...animate.alpha }}>
+                <TweenOne component="g" animation={{ delay: delay + 500, ...animate.y }}>
                   <polygon id="Path-23" fill="#F0F1F6" points="109.813058 50 130 59.0671396 82.0692752 89 60 78.9392547" />
                   <g id="Group-30" transform="translate(60.000000, 39.000000)">
                     <polygon id="Path-23" stroke="#FFC5BC" strokeWidth="0.25" fill="#FF543B" points="49.8130579 0 70 9.06713957 22.0692752 39 0 28.9392547" />
@@ -180,16 +153,7 @@ export default function BannerImage() {
                     <polygon id="Path-30" fill="#DA4435" points="0 29 0 34.0936125 22 44 22 39.0492377" />
                   </g>
                 </TweenOne>
-                <g id="Group-2" transform="translate(90.000000, 49.000000)">
-                  <TweenOne
-                    component="polygon"
-                    animation={{ ...animate.draw, delay: delay + 600 }}
-                    stroke="#FFCBB9"
-                    strokeWidth="2"
-                    points="76 8.84169526 19.0359941 42 0 33.4231661 58.4465721 0"
-                  />
-                </g>
-                <TweenOne component="g" animation={{ delay: delay + 1000, ...animate.alpha }}>
+                <TweenOne component="g" animation={{ delay: delay + 600, ...animate.y }}>
                   <polygon id="Path-24" fill="#F0F1F6" points="166 68.8416953 109.035994 102 90 93.4231661 148.446572 60" />
                   <g id="Group-2" transform="translate(90.000000, 49.000000)">
                     <polygon id="Path-24" stroke="#FFCBB9" strokeWidth="0.25" fill="#FF543B" points="76 8.84169526 19.0359941 42 0 33.4231661 58.4465721 0" />
@@ -217,7 +181,7 @@ export default function BannerImage() {
                 <ellipse id="Oval-3" fill="#D4D5E2" cx="20" cy="42.5" rx="20" ry="10.5" />
                 <path d="M37,27 L81,1" id="Line-4" stroke="#F1F1F9" strokeWidth="3" strokeLinecap="round" />
               </TweenOne>
-              <TweenOne component="g" animation={{ delay: delay + 500, ...animate.alpha }} id="Group-38" transform="translate(119.000000, 92.000000)">
+              <TweenOne component="g" animation={{ delay: delay + 500, ...animate.alpha }} id="Group-38" opacity="0.5" transform="translate(119.000000, 92.000000)">
                 <path d="M37,27 L81,1" id="Line-4" stroke="#F1F1F9" strokeWidth="3" strokeLinecap="round" />
                 <path d="M46.5,33.5 L103.5,0.5" id="Line-4" stroke="#E2E3F2" strokeLinecap="round" />
                 <path d="M54.5,36.5 L111.5,3.5" id="Line-4" stroke="#E2E3F2" strokeLinecap="round" />
@@ -248,17 +212,17 @@ export default function BannerImage() {
                   <g opacity="0.5" mask="url(#mask-6)">
                     <g transform="translate(-1.000000, -5.000000)">
                       <TweenOne component="g" animation={{ delay: delay + 900, ...animate.alpha }} id="Group-28">
-                        <polygon id="Path-51" fill="#4E99E2" points="61.4814453 72.4892578 48.1523438 82.2763672 96.5068359 105.611328 102.546875 97.7265625 90.6376953 67.8359375" />
-                        <polygon id="Path-52" fill="#4E99E2" points="93.9658203 67.5273438 127.579102 62.6025391 127.579102 102.199219 103.652344 97.6621094 89.9794922 67.5273438" />
-                        <polygon id="Path-53" fill="#4E99E2" points="128.986328 62.2207031 161.228516 57.7226562 164.310547 113.430664 128.837891 105.356445" />
-                        <polygon id="Path-49" fill="#4E99E2" points="83.8164062 30.5146484 44.0722656 43.9277344 61.0048828 72.0830078 102.643555 66.7998047" />
-                        <polygon id="Path-54" fill="#4E99E2" points="160.619141 58.1230469 163.996094 99.8916016 225.474609 64.2128906 202.646484 51.8007812" />
-                        <polygon id="Path-55" fill="#4987C3" points="42.3789062 45.5957031 61.2958984 72.5957031 44.8369141 85.3925781 13.2382812 70.3076172" />
-                        <polygon id="Path-56" fill="#4E99E2" points="37.5292969 37.0078125 41.3349609 44.4707031 75.4482422 33.8779297 80.4423828 9.03222656" />
-                        <polygon id="Path-57" fill="#4E99E2" points="0.698242188 59.1328125 16.6074219 66.0722656 40.9335938 45.1464844 34.6982422 34.09375" />
-                        <polygon id="Path-58" fill="#4477AA" points="125.668945 16.7744141 76.0351562 34.2070312 81.5234375 8.16894531 97.7324219 0.0859375" />
-                        <polygon id="Path-59" stroke="#979797" fill="#4E99E2" points="101.885742 97.5800781 95.2314453 105.722656 129.585938 122.524414 146.84668 109.826172" />
-                        <polygon id="Path-50" fill="#4E99E2" points="83.5800781 30.3320313 101.422852 65.90625 204.644531 52.9160156 125.508789 17.7236328" />
+                        <polygon id="Path-51" fill="#63AFF9" points="61.4814453 72.4892578 48.1523438 82.2763672 96.5068359 105.611328 102.546875 97.7265625 90.6376953 67.8359375"></polygon>
+                        <polygon id="Path-52" fill="#63AFF9" points="93.9658203 67.5273438 127.579102 62.6025391 127.579102 102.199219 103.652344 97.6621094 89.9794922 67.5273438"></polygon>
+                        <polygon id="Path-53" fill="#63AFF9" points="128.986328 62.2207031 161.228516 57.7226562 164.310547 113.430664 128.837891 105.356445"></polygon>
+                        <polygon id="Path-49" fill="#63AFF9" points="83.8164062 30.5146484 44.0722656 43.9277344 61.0048828 72.0830078 102.643555 66.7998047"></polygon>
+                        <polygon id="Path-54" fill="#63AFF9" points="160.619141 58.1230469 163.996094 99.8916016 225.474609 64.2128906 202.646484 51.8007812"></polygon>
+                        <polygon id="Path-55" fill="#63AFF9" points="42.3789062 45.5957031 61.2958984 72.5957031 44.8369141 85.3925781 13.2382812 70.3076172"></polygon>
+                        <polygon id="Path-56" fill="#63AFF9" points="37.5292969 37.0078125 41.3349609 44.4707031 75.4482422 33.8779297 80.4423828 9.03222656"></polygon>
+                        <polygon id="Path-57" fill="#63AFF9" points="0.698242188 59.1328125 16.6074219 66.0722656 40.9335938 45.1464844 34.6982422 34.09375"></polygon>
+                        <polygon id="Path-58" fill="#63AFF9" points="125.668945 16.7744141 76.0351562 34.2070312 81.5234375 8.16894531 97.7324219 0.0859375"></polygon>
+                        <polygon id="Path-59" stroke="#979797" fill="#63AFF9" points="101.885742 97.5800781 95.2314453 105.722656 129.585938 122.524414 146.84668 109.826172"></polygon>
+                        <polygon id="Path-50" fill="#63AFF9" points="83.5800781 30.3320313 101.422852 65.90625 204.644531 52.9160156 125.508789 17.7236328"></polygon>
                       </TweenOne>
                       <g id="Group-31" transform="translate(14.000000, 4.000000)">
                         <TweenOne component="path" attr="attr" animation={{ delay: delay + 550, ...animate.draw }} d="M28.5,40.5 L117.5,11.5" id="Line-15" stroke="#7BD4FF" strokeWidth="5" strokeLinecap="square" />

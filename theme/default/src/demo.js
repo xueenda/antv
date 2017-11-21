@@ -129,6 +129,7 @@ $collapseExpand.click(() => {
     } else {
         $menu.addClass('collapsed');
         $menu.find('.collapse.show').removeClass('show');
+        $menu.find('.menu-header').addClass('collapsed');
         $collapseExpand.find('.iconfont').removeClass('icon-left').addClass('icon-right');
     }
     resizePreview();

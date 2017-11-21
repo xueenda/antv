@@ -30,7 +30,7 @@ class Banner extends React.PureComponent {
           >
             <h1 key="h1">让数据栩栩如生</h1>
             <p className="main-info" key="p">
-              提供底层绘图引擎、具备完备图形语法大量产品实践，拥有专业可视设计规范，蚂蚁数据可视化解决方案。
+              AntV 是蚂蚁金服可视化团队提供的一套完整、可靠、高质量、易扩展的数据可视化最佳实践，主要面对的用户是程序员和图表设计人员。
             </p>
             <a target="_blank" href={'/zh-cn/g2/3.x/index.html'} key="a">
               <button className="btn-round-link btn btn-primary btn-lg">

@@ -53,7 +53,7 @@ module.exports = {
     },
     resource: {
         translate: {
-            api: 'API文档',
+            api: 'API 文档',
             back2oldVersion: '返回旧版',
             changelog: '更新日志',
             copy: '复制',
@@ -88,6 +88,7 @@ module.exports = {
             themeSwitching: '主题切换',
             privacyDeclaration: '隐私权政策',
             customerDeclaration: '权益保障承诺书',
+            feedback: '立即反馈',
             aboutUs: '关于我们',
         },
         cssFiles: [
@@ -118,14 +119,8 @@ module.exports = {
         {
             name: '体验云产品',
             links: {
-                antd: { text: 'AntD', href: '', description: '蚂蚁 UI 设计体系' },
-                antv: { text: 'AntV', href: '', description: '蚂蚁数据可视化方案' },
-                egg:  { text: 'Egg', href: '', description: '企业级 Node Web 开发框架' },
-                // chair: { text: 'Chair/Egg', href: '' },
-                // deer: { text: '九色鹿', href: '' },
-                // basement: { text: 'Basement', href: '' },
-                // fengdie: { text: '凤蝶', href: '' },
-                // lark: { text: '云雀', href: '' },
+                antd: { text: 'Ant Design', href: 'https://ant.design/index-cn', description: '蚂蚁 UI 设计体系' },
+                egg:  { text: 'Egg', href: 'https://eggjs.org/', description: '企业级 Node Web 开发框架' },
             }
         },
     ],
