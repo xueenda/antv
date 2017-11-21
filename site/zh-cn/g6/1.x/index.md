@@ -13,13 +13,13 @@ description: G6 是一个由纯 JavaScript 编写的关系图基础技术框架�
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 完备的基础设施
-    description: 一套简单、易用的、完备的图可视化引擎。
+    description: 简单、易用的、完备的图可视化引擎。
   - img: ${assets}/image/home/features-professional.svg
     title: 丰富插件
-    description: 轻易复用成熟、优雅、先进的解决方案
+    description: 丰富、优雅、易于复用的解决方案
   - img: ${assets}/image/home/features-powerful.svg
     title: 强大扩展能力
-    description: 样式、交互轻易订制，满足你无限的创意
+    description: 轻易订制，满足你无限的创意
 footer:
   isDark: true
 resource:
@@ -66,7 +66,7 @@ resource:
         <div class="header row">
             <div class="col-md-5 texts">
                 <h1>G6关系图类库</h1>
-                <p class="main-info">G6 是一套解决流程图和关系分析的图表库，集成了大量的交互，可以轻松的进行动态流程图和关系网络的开发。</p>
+                <p class="main-info">G6 是解决流程图和关系分析的图表库，集成了大量的交互，可以轻松的进行动态流程图和关系网络的开发。</p>
                 <a href="{{ products.g6.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.demo }}</a>
                 <a href="{{base}}zh-cn/g6/1.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
@@ -203,7 +203,7 @@ setInterval(()=>{
     });
     const layout = layouts[parseInt(layouts.length * Math.random())];
     const nodes = net.getNodes();
-    net.clearAllActived();
+    // net.clearAllActived();
     net.changeLayout(layout);
   }
   
