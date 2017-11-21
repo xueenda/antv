@@ -18,9 +18,11 @@
                         <div class="card-header" role="tab">
                             <h6>
                                 <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}"
+                                   class="menu-header{% if isCurrentCat %}{% else %} collapsed{% endif %}"
                                    aria-controls="collapse-{{ cat.category }}">
                                     <span class="iconfont icon-{{ cat.category }}"></span>
                                     {{ cat.title }}
+                                    <span class="float-right arrow"></span>
                                 </a>
                             </h6>
                         </div>
