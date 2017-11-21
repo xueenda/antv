@@ -3,7 +3,7 @@
  title: Edge
 -->
 
-# 边—Edge
+# Edge
 
 G6 内部的`边(edge)`。本文档将向大家说明，边已开放的 API。
 
