@@ -1,4 +1,5 @@
 import tocbot from 'tocbot';
+import inView from './utils/in-view';
 import './copy-code';
 import './doc.less';
 
@@ -28,6 +29,9 @@ $('header').headroom({
         $menu.css({
             'margin-top': 0
         });
+        $menu.children('.inner').css({
+            height: 'calc(100% - 64px)',
+        });
     },
     onUnpin() {
         $tocContainer.css({
@@ -37,5 +41,14 @@ $('header').headroom({
         $menu.css({
             'margin-top': '-64px'
         });
+        $menu.children('.inner').css({
+            height: '100%',
+        });
     }
 });
+
+const $currentMenuItem = $('.list-group-item.active');
+if (!inView($currentMenuItem)) {
+    $currentMenuItem[0].scrollIntoView();
+}
+
