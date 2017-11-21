@@ -99,6 +99,12 @@ resource:
 <script type="{{ url.g6 }}"></script>
 ```
 
+<p class="pt-32">通过 <code>&lt;npm&gt;</code> 安装：</p>
+
+```js
+npm install @antv/g6 --save
+```
+
 </div>
 <a href="{{ products.g6.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
