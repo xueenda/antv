@@ -211,7 +211,7 @@ tree.on('mouseleave', function(ev){
 ### 浏览器引入
 
 ```js
-<script src="http://unpkg.alipay.com/@ali/g6@1.2.0-beta.42/dist/g6.min.js"></script>
+<script src="https://gw.alipayobjects.com/as/g/datavis/g6/1.2.0/g6.min.js"></script>
 ```
 
 ### 通过 npm 安装

@@ -12,6 +12,7 @@ resource:
     padding-right: 130px; 
   }
 </style>
+<script src="https://cdn.bootcss.com/d3/4.11.0/d3.min.js"></script>
 <script type="text/javascript">
 $.getJSON('/assets/data/us-cpi.json', data => {
   const Mapper = G6.Plugins['enhance.d3.mapper'];
@@ -20,9 +21,7 @@ $.getJSON('/assets/data/us-cpi.json', data => {
       marginRight: -120,
       callback: function(legend) {
         legend.title("所占权重");
-        legend.labelFormat(function(value){
-          return value.toFixed(0) + ' %';
-        });
+        legend.labelFormat(d3.format(".0%"));
       }
     }
   });
@@ -33,9 +32,7 @@ $.getJSON('/assets/data/us-cpi.json', data => {
       marginRight: -104,
       callback: legend => {
         legend.title("CPI");
-        legend.labelFormat(value => {
-          return value.toFixed(0) + ' %';
-        });
+        legend.labelFormat(d3.format(".0%"));
       }
     }
   });
