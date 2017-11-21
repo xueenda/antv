@@ -7,11 +7,11 @@ var pkg = require('./package.json');
 module.exports = {
     url: {
         // TODO FIXME: use global CDN urls instead
-        dataSet: 'https://unpkg.alipay.com/@antv/data-set@0.6.2/build/data-set.js',
-        f2: 'https://unpkg.alipay.com/@antv/f2@3.0.0-rc1.8/build/f2.js',
-        g2: 'https://unpkg.alipay.com/@antv/g2@3.0.0-rc5.14/build/g2.js',
-        g6: 'https://unpkg.alipay.com/@ali/g6@1.2.0-beta.58/dist/g6.min.js',
-        'g6-plugins': 'https://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.31/dist/g6-plugins.min.js',
+        dataSet: 'https://unpkg.com/@antv/data-set@0.6.2/build/data-set.js',
+        f2: 'https://unpkg.com/@antv/f2@3.0.0-rc1.8/build/f2.js',
+        g2: 'https://unpkg.com/@antv/g2@3.0.0-rc5.14/build/g2.js',
+        g6: 'https://unpkg.com/@ali/g6@1.2.0-beta.58/dist/g6.min.js',
+        'g6-plugins': 'https://unpkg.com/@ali/g6-plugins@1.0.0-beta.31/dist/g6-plugins.min.js',
         jquery: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js',
         lodash: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/lodash-4.17.4.min.js',
     },
