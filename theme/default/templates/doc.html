@@ -10,15 +10,14 @@
     <div class="row flex-xl-nowrap">
         <div class="menu bd-sidebar">
             <div class="inner">
-                <!--<h4>{{ docMenuHeader }}</h4>-->
-                {% if docFilteringSupport %}
                 <div class="filter-container">
+                    {% if docFilteringSupport %}
                     <div class="inner">
                         <span class="iconfont icon-search"></span>
                         <input type="text" id="doc-filtering-query" placeholder="{{ resource.translate.inputKeyWord }}">
                     </div>
+                    {% endif %}
                 </div>
-                {% endif %}
                 <ul class="list-group">
                     {% for doc in docList %}
                     {% set isCurrentPage = (doc.href === __href) %}
@@ -100,6 +99,7 @@
                 {% set docIndex = docIndexByHref[__href] %}
                 {% set hasPrev = (docIndex > 0)  %}
                 {% set hasNext = (docIndex < (docsCount - 1))  %}
+                {% if hasPrev or hasNext %}
                 <div class="prev-next">
                     {% if hasPrev %}
                     {% set prevDoc = docList[docIndex - 1] %}
@@ -114,6 +114,7 @@
                     </a>
                     {% endif %}
                 </div>
+                {% endif %}
             </article>
         </div>
     </div>

@@ -1,133 +1,135 @@
 <!--
 index: 1
-title: 色彩
+title: 颜色使用原则
 -->
 
-# 色彩
+# 颜色使用原则
 
-数据可视化设计中，对色彩的运用应首先考虑准确性，需达到信息传递、操作指引、交互反馈，或是强化、凸显某一个信息的目的，其次是品牌的识别性。
+## 什么是颜色
 
-基于遵循可视化设计原则下，选择 AntV 色彩时有以下四个注意点：
+我们的生活中充满了颜色，人们之所以能看到各种颜色，主要是因为可见光的存在。光的实质是一种电磁波。但是整个波段中只有一小部分可以被我们人类眼睛识别。颜色是人的视觉系统对所接收到的光信号的一种主观的视觉感知。
 
-* 准确性 - 根据数据不同的特性选择对应的色彩，保证数据传达的准确性
-* 可辨性 - 视觉层次应清晰可辨
-* 环境配合度 - 结合当前页面环境，并建立视觉连续性
-* 无障碍设计 - 色彩可以被视障碍（色盲）用户识别
+这只是简单的把色彩理解成光，但是我们眼中的色彩还是存在差异化的，因为人类感知色彩的途径有很多种。
 
+## 颜色的感知
 
-## 色板
+人对颜色的感知是一个主观的过程，大脑需要响应光对人体视锥细胞产生的刺激。
 
-AntV 色板由 3 种不同类型的色板组成，用户在进行色板选择时，只需对照数据特性即可得到一套对应的配色方案。
+物体所呈现的颜色由物体的材料属性、光源中各种波长分布和人的心理认知所共同决定，因此存在个体差异。也就是说，不同的人对相同颜色的感知也可能是不一样的。
 
-### 定性色板
+## 色彩空间
 
-| **定义** | 通过每个颜色的不同，传达不同的数据点之间的视觉差异 |
-| :--- | :--- |
-| **适用数据类型** | 离散型数据（也称分类型数据） |
-| **例** | 事物分类、部门名称、地理名称等 |
+颜色的表示方法有很多，其中，色彩空间是描述使用一组值表示颜色的方法的抽象数学模型。常见的色彩空间包括RGB色彩空间、CMYK色彩空间和HSV/HSL色彩空间等。
 
-> 定性调色板中的颜色不具有任何语义。因此，我们建议使用以下顺序的颜色，而不仅仅因为喜欢使用任何颜色；  
-> 超过 16个数据时，请循环使用 16 色色板。
+RGB色彩空间采用笛卡尔坐标系定义颜色，三个轴分别对应红色(R)、绿色(G)、蓝色(B)三个分量。RGB色彩空间是迄今为止使用最为广泛的色彩空间，几乎所有的电子显示设备都在使用RGB色彩空间。而CMYK通常应用于印刷行业中。
 
+HSV/HSL色彩空间遵循了人类的感知方式。人类对于颜色感知的方式通常包括三个问题：是什么颜色？深浅如何？明暗如何？在HSV色彩空间中，H指色相(Hue)，S指饱和度(Saturation)，V指明度(Value)，在HSL色彩空间中，L表示亮度(Lightness)。它们比RGB色彩空间更加直观且符合人类对颜色的语言描述。在1979年的ACM SIGGRAPH(美国计算机协会计算机图形学专业组)年度会议上，计算机图形学标准委员会推荐将HSL色彩空间用于颜色设计。
 
-* **8 色色板 **![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/ddc7e640-0c9a-44e2-b07f-f7908d93d274.png "")
-* **16 色色板（**8 ＜ 数据个数 ≤ 16）![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/25253983-cb12-4e83-8458-be9cd45e1314.png "")
+在我们制定的颜色使用原则中，采用了HSL色彩空间作为制定规则的参考依据。
 
+## 颜色映射的基本规则
 
-> 定性色板中，根据饼图形状特性，对饼图的色板做了顺序的调整，使其更加连贯，更符合色彩认知。
+颜色映射指的是颜色和数据值之间的映射关系，也就是对颜色进行可视化编码的过程。
 
+从可视化编码的角度对颜色进行分析，可以将颜色分为色相、亮度和饱和度三个视觉通道。
+色相本身不具有明显的顺序性，因此一般被用作定性的视觉通道。而亮度和饱和度可以被用作定量或定序的视觉通道。
 
-* **8 色色板 - 饼图**![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/c8377e9c-2cfa-44db-bca3-756ed2200492.png "")
-* **16 色色板 - 饼图**![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/b2b8db78-179e-4de9-b3fe-cf9d9df1f3fa.png "")
+针对不同类型的数据，我们通常也会选用不同的颜色映射方式。
 
+在对有序型数据使用颜色映射时，应当利用亮度、饱和度这些量级视觉通道。在对类别型数据使用颜色映射时，应当利用色相这一定性通道。在某些情况下，若是已经通过其他方式编码了有序型数据的数值，也可以不使用亮度或饱和度来进行编码。问题在于，如果一旦使用了颜色映射，就应当遵循前面所说的规则。
 
-### 连续色板
+## 图表用色指南
 
-| **定义** | 通过使用不同的深浅层次，传达从低到高的值 |
-| :--- | :--- |
-| **适用数据类型** | 连续型数据 |
-| **例** | 年龄、销售额、时间、温度等 |
+我们提出了一些图表用色上的建议，希望能帮助更多人友好地使用图表颜色。这部分用色指南也会不断地完善和优化。
 
-* 默认：![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/871717d1-2f1a-4d72-b753-e84f25421149.png "")
-* 增强对比：  
-  ![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/bf3bb983-8afc-4b95-bafb-12a6dbb2c4ba.png "")
-* 双向对比：  
-  ![image.png | center | 676x45](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/ac5d8955-4fa7-44d0-bd63-b062237ab4e3.png "")
+我们尝试给出了一个标准的配色方案，尽管这个标准方案不一定能满足所有的业务需求或是所有人的色彩感知。但是它在大多数情况下可以给你一些良好的建议和参考。
 
+AntV 定义的七个标准颜色：
 
-> 如果上面的色板不能满足你的需求，你可以选择一个颜色，Ant Design 的色彩生成算法会为你生成完整的色板。  
-> 地址：[https://ant.design/docs/spec/colors-cn#色板生成工具](https://ant.design/docs/spec/colors-cn#%E8%89%B2%E6%9D%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7)
+<img src="https://os.alipayobjects.com/rmsportal/qBmJjXwCrcJgWQH.png">
 
-### 语义色板
-| **定义** | 通过四种公认的颜色，来传达“好”、“差”、“重要”和“中性”等含义，并且同样具备深浅层次 |
-| :--- | :--- |
-| **适用数据类型** | 公认的有含义的数据 |
-| **例** | 好、差、重要、中性、男女、主次等 |
+### 1.单色的使用
 
-* 表达正面的、可行、植物、安全、成功等含义
-  > ps. 在西方股票市场，绿色代表股价上升；在中国股票市场则相反。
+在使用单色就能表达数据意义的情况下，建议不使用多色。
 
-  ![image.png | center | 676x45](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/efc95ef4-9a2c-47b6-b757-2b0f7c54832e.png "")
-* 表达警告、注意、阻止等含义
-  > ps. 在西方股票市场，红色代表股价下降；在中国股票市场则相反。
+**单色相的使用：**
 
-  ![image.png | center | 663x44](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/34a01497-a01b-4fe9-9afa-ddac3bb3dd43.png "")
-* 表达负面的、不可行、严重、危险、失败等含义
-  ![image | center](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/a62339a5-69ec-4927-8d75-03e4d7a83344.png "")
-* 表达中性、可忽略的、次要、失效、已结束等含义
-  ![image.png | center | 676x45](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/38c53a62-8cef-4aec-838e-8bd98f7ec8f7.png "")
-* 热力图专用
-  ![image.png | center | 676x45](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/97022a9a-ec62-4d7b-b27a-b0e805798220.png "")
+在图表只展示单一属性的情况下，建议不要使用多种色相。
 
-## 透明度使用建议
+**单明度和单饱和度的使用：**
 
-<style>
-td span {
-  display: block;
-  text-align: center;
-}
-td img {
-  width: 120px;
-}
-table {
-  width: 640px;
-}
-</style>
+如果数据的数值已经通过形状、位置、角度等其他视觉通道进行了编码，那就没有必要再设置不同的亮度和饱和度。
 
-<div class="bi-table">
- <table>
-   <colgroup><col width="30%"><col width="30%"><col width="30%"></colgroup>
-   <tbody>
-    <tr>
-      <td><div data-type="p"><strong>形态</strong></div></td>
-      <td><div data-type="p"><strong>建议透明度</strong></div></td>
-      <td><div data-type="p"><strong>实例</strong></div></td>
-    </tr>
-    <tr>
-      <td><div data-type="p">线</div><div data-type="p">例如：折线图、图的边线</div></td>
-      <td><div data-type="p">100%</div></td>
-      <td><span><img width="80px" src="https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/eed3f682-ab84-4887-8952-dd6b492c94b3.png" width="81"/></span></td>
-    </tr>
-    <tr>
-      <td><div data-type="p">中等面积</div><div data-type="p">例如：柱形图、饼图、环图、漏斗图等</div></td>
-      <td><div data-type="p">85%</div></td>
-      <td><span><img width="80px" src="https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/b25dd3cb-4e8e-45b7-a98a-3adffefe3d5f.png" width="52"/></span><span><img width="80px" src="https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/61b6b0e6-dc28-4caf-a739-2a48c65ed48d.png" width="62"/></span></td>
-    </tr>
-    <tr>
-      <td><div data-type="p">大面积</div><div data-type="p">例如：面积图、点图、雷达图等</div><div data-type="p"></div><blockquote><div data-type="p">通常这种大面积的使用都伴随着100%透明度的实线做边线。</div></blockquote>
-</td>
-      <td><div data-type="p">30%</div></td>
-      <td><span><img width="80px" src="https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/adfd1020-667b-49c6-8197-8a32859ba9be.png" width="82"/></span><span><img width="80px" src="https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/cdb33b65-9aa8-4203-b668-1a0145751b75.png" width="82"/></span></td>
-    </tr>
-   </tbody>
- </table>
-</div>
+<img src="https://os.alipayobjects.com/rmsportal/ezxGJHeyJUjDqJV.png">
 
-## 无障碍色彩检验
+### 2.多色的使用
 
-以上色板均通过 [色盲色弱测试工具](http://www.color-blindness.com/coblis-color-blindness-simulator/) 进行测试。
-如果你使用了新的色板，我们建议使用此工具进行检验，最低限度保证 4 个颜色为一个单位，颜色之间是清晰可辨的。
+人们在不连续区域的情况下通常可以分辨6~12种不同色相，以及有限个可辨亮度层次。过多的颜色使用将对人类的视觉感知产生困扰。建议谨慎选择颜色的数量。
+
+- 注意：在考虑图表中的颜色数量时，需要将背景色和图例颜色考虑进去，即显示区域所有颜色的总和。
+- 注意：如果着色区域比较小，由于视觉通道的相互影响，可分辨的数量将相应有所下降。
+
+**多色相的使用：**
+
+当图表展示了多种不同的属性时，建议用不同色相来区分不同属性。
+
+-  注意：尽量避免使用相近色相。
+
+<img src="https://os.alipayobjects.com/rmsportal/ocBUSJeXFGBjUgo.png">
+
+<img src="https://os.alipayobjects.com/rmsportal/OoeDpGwgQeDxCAd.png">
 
 
-## 相关链接
-Ant Design 色彩：[https://ant.design/docs/spec/colors-cn](https://ant.design/docs/spec/colors-cn)
+**多亮度与多饱和度的使用：**
+
+亮度和饱和度可以编码数据的顺序或数量特征。通常我们只会在特定图表内使用到多亮度或多饱和度，例如在一个“热力图”中，用不同亮度的红色来表示不同的气温测量值。 
+
+### 3.背景色的使用
+
+图表设计中的颜色使用必须统一，建议背景颜色不要选取与图表主体内容相同或相近的颜色。
+
+在一个精心设计的图表中，背景颜色既要能良好地衬托图表主体，又不产生喧宾夺主的效果。
+
+通常我们较多地使用白色、浅灰色作为背景颜色，有些情况下也会使用黑色。
+
+### 4.透明度的使用
+
+透明度是与色相、亮度、饱和度紧密相关的另一个视觉通道。
+
+由于透明度编码本身受亮度和饱和度编码的强烈影响，建议不要同时使用这三个视觉通道。但是它可以和色相编码一起使用。
+
+通常使用透明度时，图表会有很多堆叠层次，我们需要做到使每一个前景层都能够在背景层之上良好地显示，并且不产生相互干扰。
+
+- 注意：由于视觉感知的限制，不要选择过多的透明度梯级。
+
+<img src="https://os.alipayobjects.com/rmsportal/NFYgbNKVhBWmOvI.png">
+
+
+### 5.辅助元素配色
+
+辅助元素的配色需要避免与图表主体配色产生冲突。
+
+在此基础上，尽量与图表主体配色统一。
+
+<img src="https://os.alipayobjects.com/rmsportal/zqUrlzDCtLBUdSQ.png">
+
+### 6.其他友好建议
+
+#### 1.视觉缺陷
+
+人群中存在一部分人具有视觉缺陷，包括色盲、色弱等。为了帮助他们识别图表，我们可能需要采取一些特殊方法。
+
+一种可以实践的方法是在设计时通过软件模拟视觉缺陷人群的视觉感知，设计出安全的方案。这类功能在很多软件中都有，例如 Adobe Photoshop 和 Adobe Illustrator 等。另一种方法是，增加亮度和饱和度的变化，当然这是在这两者原本并未参与视觉编码的情况下。
+
+
+#### 2.不要过分依赖视觉表现
+
+很多人喜欢在数据图表上加入更多视觉表现，来让这个图表更加丰富。但是往往这样做导致信息传达不聚合，尽量避免这种情况产生。我们的目的主要是为了传达数据本身。
+
+#### 3.大屏幕使用
+
+很多应用场景需要将数据展示到大屏幕上，传统的做法，希望在大屏幕上展示的时候颜色的饱和度越高越好。但是目前随着屏幕显示能力不断提高的情况下，其实选择一个贴近用户视觉的颜色更为合适。无论大屏幕还是小屏幕无非就是两点：
+
+1. 让数据传达更清晰；
+2. 让用户更友好的浏览。
+
