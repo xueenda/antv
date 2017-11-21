@@ -13,7 +13,7 @@ description: G6 是一个由纯 JavaScript 编写的关系图基础技术框架�
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 完备的基础设施
-    description: 简单、易用的、完备的图可视化引擎。
+    description: 简单、易用、完备的图可视化引擎。
   - img: ${assets}/image/home/features-professional.svg
     title: 丰富插件
     description: 丰富、优雅、易于复用的解决方案

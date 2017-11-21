@@ -15,7 +15,7 @@ featuresCards:
     description: 压缩后不到 100k 的代码，提供了几十种图表。
   - img: ${assets}/image/home/features-professional.svg
     title: 高性能
-    description: 为移动端做了大量的性能优化，性能做到极致。
+    description: 性能极致追求，针对移动设备做了大量的优化。
   - img: ${assets}/image/home/features-powerful.svg
     title: 强大扩展能力
     description: 任何图表，都可以基于图形语法灵活绘制，满足你无限的创意。
@@ -31,7 +31,7 @@ resource:
         <div class="header row">
             <div class="col-md-5">
                 <h1>F2 移动端图表库</h1>
-                <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求很高的场景。</p>
+                <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
                 <a href="{{ products.f2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.demo }}</a>
                 <a href="{{base}}zh-cn/f2/3.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
             </div>
