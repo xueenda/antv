@@ -13,10 +13,11 @@
     width: 79.16666667%;
     //padding: 40px 194px 64px 64px;
     padding: 40px 0 0 0;
-    margin-left: -1px;
+    margin-left: ~"calc(20.83333333% - 1px)";
     //min-height: 900px;
     overflow: hidden;
     order: 1;
+    z-index: 99;
   }
   article {
     //min-height: 900px;
@@ -26,7 +27,9 @@
   }
 
   .menu {
+    position: fixed;
     width: 20.83333333%;
+    height: 100%;
     padding: 0 1px 0;
     order: 0;
     .filter-container {
@@ -220,12 +223,14 @@
       //display: block;
     }
     .menu {
+      position: relative;
       width: 100%;
       .inner {
         position: relative;
       }
     }
     .detail {
+      margin-left: 0;
       width: 100%;
     }
   }
