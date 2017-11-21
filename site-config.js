@@ -6,7 +6,6 @@ var pkg = require('./package.json');
 
 module.exports = {
     url: {
-        // TODO FIXME: use global CDN urls instead
         dataSet: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.4/data-set/0.6.2/data-set.min.js',
         f2: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.4/f2/3.0.0/f2.min.js',
         g2: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.4/g2/3.0.0/g2.min.js',
