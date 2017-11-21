@@ -9,10 +9,10 @@ description: G2(The Grammar Of Graphics)是一个由纯 JavaScript 编写、强�
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 简单方便
-    description: 从数据出发，仅需几行代码可以轻松获得想要的图表展示效果。
+    description: 从数据出发，仅需几行代码就可以轻松获得想要的图表展示效果。
   - img: ${assets}/image/home/features-professional.svg
     title: 完备的编码
-    description: 大量产品实践之上，提供绘图引擎。完备图形语法，专业设计规范。
+    description: 以数据驱动，提供了从数据到图形的完整映射。
   - img: ${assets}/image/home/features-powerful.svg
     title: 强大扩展能力
     description: 任何图表，都可以基于图形语法灵活绘制，满足你无限的创意。
