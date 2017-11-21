@@ -50,10 +50,25 @@ $('header').headroom({
 $('.screenshot').each(function () {
     const $img = $(this);
     if (isDark) {
+        $('.demos').addClass('dark');
         $img.attr('data-src', $img.data('dark'));
+        $img.attr('src', `${__data.assets}/image/screenshot-placeholder-dark.png`);
     } else {
         $img.attr('data-src', $img.data('default'));
+        $img.attr('src', `${__data.assets}/image/screenshot-placeholder.png`);
     }
 });
 
 $('.lazyload').lazyload();
+
+function adjustScreenshotsSize() {
+    $('.screenshot').each(function () {
+        const $screenshot = $(this);
+        $screenshot.height($screenshot.width() / 16 * 9);
+    });
+}
+
+adjustScreenshotsSize();
+
+$(window).resize(adjustScreenshotsSize);
+

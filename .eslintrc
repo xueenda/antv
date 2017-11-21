@@ -15,6 +15,7 @@
     "G6": true,
     "Slider": true,
     "_": true,
+    "__data": true,
     "d3": true,
     "html2canvas": true,
     "React": true,

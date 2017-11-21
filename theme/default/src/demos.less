@@ -11,6 +11,11 @@
     margin-bottom: 32px;
     margin-top: 16px;
   }
+  &.dark {
+    .screenshot-container {
+      background: #1f1f1f;
+    }
+  }
   .card {
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
@@ -24,9 +29,13 @@
       box-shadow: 0 12px 24px rgba(84, 48, 132, .06);
     }
     .screenshot-container {
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      padding: 8px;
+      padding-right: 16px;
       display: inline-block;
       //width: 360px;
-      height: 202.5px;
+      max-height: 202.5px;
       img {
         //background: white;
         //background-image: url(/assets/image/screenshot-placeholder.png);
