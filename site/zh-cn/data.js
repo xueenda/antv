@@ -88,6 +88,7 @@ module.exports = {
             themeSwitching: '主题切换',
             privacyDeclaration: '隐私权政策',
             customerDeclaration: '权益保障承诺书',
+            feedback: '立即反馈',
             aboutUs: '关于我们',
         },
         cssFiles: [
