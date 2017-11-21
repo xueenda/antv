@@ -21,7 +21,7 @@ module.exports = {
     doc: resolveTheme('doc.js'),
     // headroom: resolveTheme('headroom.js'),
     home: resolveTheme('home.js'),
-    'home-index': resolveTheme('Home/index.jsx'),
+    // 'home-index': resolveTheme('Home/index.jsx'),
     scroll2top: resolveTheme('scroll2top.js')
   },
   output: {
