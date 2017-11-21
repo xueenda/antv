@@ -53,7 +53,7 @@ module.exports = {
     },
     resource: {
         translate: {
-            api: 'API文档',
+            api: 'API 文档',
             back2oldVersion: '返回旧版',
             changelog: '更新日志',
             copy: '复制',
@@ -120,7 +120,6 @@ module.exports = {
             name: '体验云产品',
             links: {
                 antd: { text: 'Ant Design', href: 'https://ant.design/index-cn', description: '蚂蚁 UI 设计体系' },
-                antv: { text: 'AntV', href: 'https://antv.alipay.com/', description: '蚂蚁数据可视化方案' },
                 egg:  { text: 'Egg', href: 'https://eggjs.org/', description: '企业级 Node Web 开发框架' },
             }
         },

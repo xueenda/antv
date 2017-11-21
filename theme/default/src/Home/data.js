@@ -5,19 +5,19 @@ export const page1 = [
     img: `${assets}/image/home/intro-g2.svg`,
     href: `${base}zh-cn/g2/3.x/index.html`,
     title: 'G2',
-    description: '（基础性可视化图表类库） 是一个由纯 JavaScript 编写、强大的语义化图',
+    description: ' 是以数据为驱动，具有高度的易用性和扩展性的可视化图形语法。',
   },
   {
     img: `${assets}/image/home/intro-g6.svg`,
     title: 'G6',
     href: `${base}zh-cn/g6/1.x/index.html`,
-    description: '（关系图可视化类库）是一个由纯 JavaScript 编写、强大的语义化图',
+    description: ' 是一套便捷、动态和富有交互的流程图和关系分析的图表库。',
   },
   {
     img: `${assets}/image/home/intro-f2.svg`,
     title: 'F2',
     href: `${base}zh-cn/f2/3.x/index.html`,
-    description: '（移动端可视化类库） 是一个由纯 JavaScript 编写、强大的语义化图',
+    description: ' 是一套精简、高性能、易扩展的的移动端图表库。',
   }
 ];
 
@@ -25,12 +25,12 @@ export const page3 = [
   {
     img: `${assets}/image/home/features-simple.svg`,
     title: '简单方便',
-    description: '从数据出发，仅需几行代码可以轻松获得想要的图表展示效果。'
+    description: '从数据出发，仅需几行代码就可以轻松获得想要的图表展示效果。'
   },
   {
     img: `${assets}/image/home/features-professional.svg`,
     title: '专业可靠',
-    description: '大量产品实践之上，提供绘图引擎。完备图形语法，专业设计规范。',
+    description: '大量产品实践之上，提供绘图引擎，完备图形语法以及专业设计规范。',
   },
   {
     img: `${assets}/image/home/features-powerful.svg`,
