@@ -3,12 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
-    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
 </head>
 <body{% if demoTheme == 'dark' %} style="background: #1f1f1f;"{% endif %}>
 <div id="mountNode"></div>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
 <script src="{{ url.g2 }}"></script>{% for js in resource.jsFiles %}
 <script src="{{ js }}"></script>{% endfor %}{% if demoTheme %}
 <script>G2.Global.setTheme('{{ demoTheme }}');</script>{% endif %}
@@ -27,6 +29,7 @@
 </head>
 <body>
 <div id="mountNode"></div>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
 <script src="{{ url.g6 }}"></script>{% for js in resource.jsFiles %}
 <script src="{{ js }}"></script>{% endfor %}
 {{ content | safe }}</body>
@@ -46,6 +49,7 @@
 <div style="width:600px; height:500px; margin: 0 auto;">
     <canvas id="mountNode" width="600" height="400" ></canvas>
 </div>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
 <script src="{{ url.f2 }}"></script>{% for js in resource.jsFiles %}
 <script src="{{ js }}"></script>{% endfor %}
 {{ content | safe }}</body>
