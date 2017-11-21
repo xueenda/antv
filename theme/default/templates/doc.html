@@ -98,7 +98,7 @@
                 <!-- previous and next pages -->
                 {% set docIndex = docIndexByHref[__href] %}
                 {% set hasPrev = (docIndex > 0)  %}
-                {% set hasNext = (docIndex < (docsCount - 1))  %}
+                {% set hasNext = (docIndex < (docsCount - 1)) %}
                 {% if hasPrev or hasNext %}
                 <div class="prev-next">
                     {% if hasPrev %}
