@@ -11,6 +11,7 @@ module.exports = {
         g2: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.4/g2/3.0.0/g2.min.js',
         g6: 'https://gw.alipayobjects.com/as/g/datavis/g6/1.2.0/g6.min.js',
         'g6-plugins': 'https://gw.alipayobjects.com/as/g/datavis/g6-plugins/1.0.0/g6-plugins.min.js',
+        'g2-plugin-slider': 'http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1',
         jquery: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/jquery-3.2.1.min.js',
         lodash: 'https://gw.alipayobjects.com/as/g/datavis/assets/1.0.1/lodash-4.17.4.min.js',
     },

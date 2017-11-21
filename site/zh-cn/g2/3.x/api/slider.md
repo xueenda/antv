@@ -5,7 +5,7 @@ resource:
   jsFiles:
     - ${url.g2}
     - ${url.dataSet}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
+    - ${url['g2-plugin-slider']}
 -->
 
 # Slider
