@@ -2,10 +2,10 @@
 index: 3
 title: AntV 是怎样命名图表的
 authors:
-  - name: 有田
-    avatar: ${assets}/image/members/youtian.jpg
   - name: 再飞
     avatar: ${assets}/image/members/zaifei.jpg
+  - name: 有田
+    avatar: ${assets}/image/members/youtian.jpg
 date: "2017-11-22"
 landscape: ${assets}/image/vis/blog/how-charts-be-named.jpg
 -->
