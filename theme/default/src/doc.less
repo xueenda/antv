@@ -140,12 +140,19 @@
       color: #666;
       display: block;
       border: 1px solid #E9E9E9;
+      border-radius: 4px;
       box-shadow: 0 1px 2px 0 rgba(191, 200, 209, 0.3);
       width: auto;
       padding: 12px 32px 12px 24px;
       margin-bottom: 32px;
       margin-right: 24px;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      transition: all .5s;
       &:hover {
+        -webkit-transform: translateY(-4px);
+        -ms-transform: translateY(-4px);
+        transform: translateY(-4px);
         box-shadow: 0 12px 24px rgba(84, 48, 132, .06);
       }
     }
