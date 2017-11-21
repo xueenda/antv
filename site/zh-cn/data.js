@@ -44,7 +44,7 @@ module.exports = {
             icon: '${assets}/image/icon/vis.svg',
             links: {
                 blog: { text: '${resource.translate.visBlog}', href: '${base}zh-cn/vis/blog/index.html' },
-                design: { text: '${resource.translate.visDesign}', href: '${base}zh-cn/vis/design/index.html'  },
+                design: { text: '${resource.translate.visDesign}', href: '${base}zh-cn/vis/design/color.html'  },
                 chart: { text: '${resource.translate.visChart}', href: '${base}zh-cn/vis/chart/index.html' },
                 resource: { text: '${resource.translate.visResource}', href: '${base}zh-cn/vis/resource/index.html' },
                 // publications: { text: '经典文献', href: '' },
