@@ -5,7 +5,7 @@ export const page1 = [
     img: `${assets}/image/home/intro-g2.svg`,
     href: `${base}zh-cn/g2/3.x/index.html`,
     title: 'G2',
-    description: ' 是以数据为驱动，具有高度的易用性和扩展性的可视化图形语法。',
+    description: ' 是以数据驱动，具有高度的易用性和扩展性的可视化图形语法。',
   },
   {
     img: `${assets}/image/home/intro-g6.svg`,
