@@ -52,10 +52,10 @@ $('.screenshot').each(function () {
     if (isDark) {
         $('.demos').addClass('dark');
         $img.attr('data-src', $img.data('dark'));
-        $img.attr('src', `${__data.assets}/image/screenshot-placeholder-dark.png`);
+        $img.attr('src', `${__meta.assets}/image/screenshot-placeholder-dark.png`);
     } else {
         $img.attr('data-src', $img.data('default'));
-        $img.attr('src', `${__data.assets}/image/screenshot-placeholder.png`);
+        $img.attr('src', `${__meta.assets}/image/screenshot-placeholder.png`);
     }
 });
 
