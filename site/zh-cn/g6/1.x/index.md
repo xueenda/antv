@@ -9,7 +9,7 @@ keywords:
   - 图
   - 树
   - 网
-description: G6 是一个由纯 JavaScript 编写的关系图基础技术框架。开发者能基于 G6 进行关系图的分析视图和编辑视图进行快速的二次开发。
+description: G6 是解决流程图和关系分析的图表库，集成了大量的交互，可以轻松的进行动态流程图和关系网络的开发。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 完备的基础设施

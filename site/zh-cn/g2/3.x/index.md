@@ -5,7 +5,7 @@ keywords:
   - G2
   - The Grammar of Graphics
   - 图形语法
-description: G2(The Grammar Of Graphics)是一个由纯 JavaScript 编写、强大的语义化图表生成工具，它提供了一整套图形语法，可以让用户通过简单的语法搭建出无数种图表，并且集成了大量的统计工具，支持多种坐标系绘制，可以让用户自由地定制图表，是为大数据时代而准备的强大的可视化工具。
+description: G2 是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 简单方便

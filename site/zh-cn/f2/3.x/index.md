@@ -8,7 +8,7 @@ keywords:
   - 移动端
   - Mobile
   - H5
-description: F2 是一个由纯 JavaScript 编写、强大、高性能的的语义化图表生成工具，它提供了一整套图形语法，可以让用户通过简单的语法搭建出无数种图表，是为移动端而准备的强大的可视化工具。
+description: F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 极小
