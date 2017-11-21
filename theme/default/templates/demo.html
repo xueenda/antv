@@ -118,8 +118,14 @@
                         <span id="alert-copy-fail" class="text-danger" style="display: none;">
                             {{ resource.translate.copyFail }}
                         </span>
-                        <button id="btn-copy" type="button" class="btn btn-light">{{ resource.translate.copy }}</button>
-                        <button id="btn-execute" type="button" class="btn btn-light">{{ resource.translate.execute }}</button>
+                        <button id="btn-copy" type="button" class="btn btn-light">
+                            <span class="iconfont icon-copy"></span>
+                            {{ resource.translate.copy }}
+                        </button>
+                        <button id="btn-execute" type="button" class="btn btn-light">
+                            <span class="iconfont icon-execute"></span>
+                            {{ resource.translate.execute }}
+                        </button>
                     </form>
                 </div>
                 <textarea id="code-default" style="display: none;">{{ renderedContent | safe }}</textarea>
