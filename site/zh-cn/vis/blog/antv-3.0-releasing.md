@@ -1,6 +1,6 @@
 <!--
 index: 0
-title: AntV 3.0 发布稿
+title: AntV 3.0 — 三生万物
 authors:
   - name: 有田
     avatar: ${assets}/image/members/youtian.jpg
@@ -10,8 +10,6 @@ resource:
   cssFiles:
     - ${url.katexCss}
 -->
-
-# AntV 3.0 — 三生万物
 
 ## Hello AntV 3.0
 
