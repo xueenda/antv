@@ -7,6 +7,5 @@ const plotByName = {
     other:   { index: 99, icon: '', url: '#', name: '其他', },
 };
 module.exports = {
-    // TODO
     plotByName,
 };
