@@ -8,6 +8,9 @@ authors:
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"
 landscape: ${assets}/image/vis/blog/drawing-directed-graphs.jpg
+resource:
+  cssFiles:
+    - ${url.katexCss}
 -->
 
 > 译者: 绝云、青湳
