@@ -5,7 +5,7 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.g2}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
+    - ${url['g2-plugin-slider']}
 -->
 
 # 简介
@@ -30,7 +30,7 @@ Slider 组件是完全基于数据的交互组件，同 chart 并无任何关联
 
 ```html
 <!-- 引入 Slider 组件脚本 -->
-<script src="http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1"></script>
+<script src="{{ url['g2-plugin-slider'] }}"></script>
 ```
 
 （2）方式 2：npm 模块引入。

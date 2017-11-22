@@ -1,6 +1,6 @@
 {
   "name": "@alipay/antv",
-  "version": "0.0.1",
+  "version": "3.0.0",
   "description": "homepage for antv",
   "main": "index.js",
   "author": "",
@@ -21,6 +21,8 @@
     "js-yaml": "^3.10.0",
     "lodash": "^4.17.4",
     "markdown-it": "^8.4.0",
+    "markdown-it-footnote": "^3.0.1",
+    "markdown-it-katex": "^2.0.3",
     "markdown-it-replace-link": "^1.0.1",
     "nightmare": "^2.10.0",
     "nunjucks": "^3.0.1",

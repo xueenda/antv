@@ -10,6 +10,5 @@ const plotByName = {
 
 };
 module.exports = {
-    // TODO
     plotByName,
 };

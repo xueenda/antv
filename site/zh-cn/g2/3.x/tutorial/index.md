@@ -10,7 +10,7 @@ resource:
 
 ## G2
 
-G2 是一套基于可视化编码的图形语法，以数据为驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。
+G2 是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。
 
 ## 特性
 
@@ -137,7 +137,7 @@ chart.render();
     <meta charset="utf-8">
     <title>柱状图</title>
     <!-- 引入 G2 文件 -->
-    <script src="http://unpkg.alipay.com/@antv/g2@3.0.0-rc5.11/build/g2.js"></script>
+    <script src="{{ url.g2 }}"></script>
   </head>
   <body>
     <!-- 创建图表容器 -->
@@ -167,10 +167,15 @@ chart.render();
 </html>
 ```
 
-### 在React中使用G2
+### 在 React / Vue / Angular 中使用 G2
 
-[BizCharts]()
-<!-- TODO -->
+基于 AntV 技术栈还有许多优秀的项目，在 React 环境下使用 G2，我们推荐可以尝试使用 BizCharts 和 Viser-react！这两个产品都是基于 G2 的 React 版本封装，使用体验更符合 React 技术栈的习惯，他们都与 AntV 有着紧密的协同，他们很快也将同步开源和发布基于 G2 3.0 的版本。
+
+此外，Viser 并不是针对 React 做的适配，它是对 G2 3.0 通用的抽象。通过基于 Viser 封装，现在已经支持对 React、 Angular 和 Vue 三个常用框架的深度整合，对应的是 viser-react、viser-ng 和 viser-vue。对，你都有机会用到一样的使用体验。当然，你甚至可以自己动手来封装针对任何库的版本，如果需要的话。Viser 提供了这种自定义的扩展能力，而且成本非常低。
+
+[BizCharts](https://alibaba.github.io/BizCharts/) 地址：https://alibaba.github.io/BizCharts/
+[Viser](https://viserjs.github.io/) 地址：https://viserjs.github.io/
+
 
 ## 体验改进计划说明
 

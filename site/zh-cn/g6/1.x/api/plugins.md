@@ -33,7 +33,7 @@ resource:
 * 脚本引入
 
 ```js
-<script src="http://unpkg.alipay.com/@ali/g6-plugins@1.0.0-beta.19/dist/g6-plugins.min.js"></script>
+<script src="{{ url['g6-plugins'] }}"></script>
 ```
 
 * npm 安装

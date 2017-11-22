@@ -8,6 +8,9 @@ authors:
     avatar: ${assets}/image/vis/avatar/placeholder.png
 date: "2017-11-22"
 landscape: ${assets}/image/vis/blog/drawing-directed-graphs.jpg
+resource:
+  cssFiles:
+    - ${url.katexCss}
 -->
 
 > 译者: 绝云、青湳
@@ -131,7 +134,7 @@ end
 
 > 图1-2a. (Sun-4/28上用时1.11秒)
 
-![figure-1-2a.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/1fbba23a5770db0d.png) 
+![figure-1-2a.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-1-2a.png) 
 
 > 图1-2b. 图文件
 
@@ -155,7 +158,7 @@ digraph world_dynamics {
 
 > 图1-3a. (Sun-4/28上用时0.5秒)
 
-![figure-1-3a.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/338bed4a3332dc96.png) 
+![figure-1-3a.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-1-3a.png) 
 
 > 图1-3b. 图文件
 
@@ -291,7 +294,7 @@ $$
 
 > 图2-3. 找到最优可行树
 
-![figure-2-3.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/987879eb22e49450.png) 
+![figure-2-3.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-2-3.png) 
 
 图2-3中展示了网络简单形算法的一个简单例子。图中虚线所示是非树边，所有边权重为1。a图展示的是分配了初始层级的图，其边的切值如图所示。举个例子，边$(g, h)$的切值为-1，表示边$(g, h)$（从尾分量连向头分量）的权重减去边$(a, e)$和边$(a, f)$（从头分量连向尾分量）的权重之和。b图中，负切值边$(g, h)$被非树边$(a, e)$替代，并标注了新所有树边的切值。此时所有边的切值均为正值，所以这个方案是最优的，算法结束。
 
@@ -329,13 +332,13 @@ $$
 
 > 图2-4. 逐步计算切值
 
-![figure-2-4.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/bf0cd28e74b54224.png) 
+![figure-2-4.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-2-4.png) 
 
 另一个有价值的优化是[^Ch]中描述过的技术，从某个固定根节点$v_{root}$开始执行后序遍历，并且对每个节点v，用$lim(v)$表示其后序遍历数，用$low(v)$表示其子孙节点中的最小后序遍历数，用$parent(v)$表示每个节点的父节点后序遍历数（见图2-5）。
 
 > 图2-5. 后序遍历，节点上的标签为$(low, lim)$
 
-![figure-2-5.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/e877086eb04e33ce.png) 
+![figure-2-5.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-2-5.png) 
 
 这个算法提供了一种廉价的方式来检验某个节点是否在树边的头分量或者尾分量上，从而可以简单求证某个非树边是否头尾分属头分量和尾分量。举个例子，如果$e = (u, v)$是一个树边，而$v_{root}$在边的头分量中（也就是$lim(u) < lim(v)$），那么当且仅当$low(u) \leq lim(w) \leq lim(u)$时，节点w在尾分量中。这些数字也可以用在每次网络简单形迭代中高效地进行生成树更新。假设当前处理的边是$f = (w, x)$，那么需要更新切值的边都是生成树里和w和x相连路径上的边。这个路径可以通过回溯w和x的父节点，直到找到最近的共同祖先节点来确定，举个例子，就是第一个符合$low(l) \leq lim(w), lim(x) \leq lim(l)$的节点。当然，这些后序遍历参数在交换树连线的时候需要再次更新，不过都仅限于节点l的子节点下。
 
@@ -519,13 +522,13 @@ $\Omega(e)$是一个与输入的边权重$\omega(e)$不同的内部值，用于�
 
 > 图4-2.
 
-![figure-4-2.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/cfbec5bd84f12567.png) 
+![figure-4-2.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-4-2.png) 
 
 我们现在可以考虑$G'$的层级分配问题了。这个问题可以用网络单纯形方法解决。任何解决$G$的定位问题的方式与$G'$的层级分配问题是统一的。根据图4-2的方式给每个$n_e$分配$min(x_u, x_v)$的值，$x_u$和$x_v$是$G$中$u$和$v$的X坐标。相反的，$G'$里的任何层级分配都会催生一个$G$中的有效位置。另外，在最优的层级分配中，$e_u$或$e_v$中必须有一个长度为0，其他几个的长度为$\left | x_u -x_v\right|$.这说明了$G$中一条边$(u, v)$的开销等于$G'$中的两条边$e_u$和$e_v$的总和。通常这两种解法有相同的开销，因此，$G'$的最优解意味着$G$的最优解，$G‘$的解法也就是$G$的解决方式。
 
 > 图4-3. 一个图中的节点连接桩
 
-![figure-4-3.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/2f53d14ad2aaba05.png) 
+![figure-4-3.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-4-3.png) 
 
 用辅助图也可以方便定义"节点连接桩"(node ports)，或者说是边的末端对于节点的中心的水平位移。这就让如图4-3的有向图扁平化成为可能。当计算图中节点的坐标时，边的长度必须包含连接桩的移位和到节点中心的距离。给出一条边$e=(u,v)$，$\Delta u$和$\Delta v$分别是水平方向上边的末端到$u$和$v$的中心的距离。$A\Delta$代表了连接桩在顶点中心的左侧。不失通用性的，假设$\Delta u \leq \Delta v$,让$d_e= \Delta v - \Delta u$。$d_e$是一个常量，因为它完全取决于节点的连接桩，而不是$u$和$v$的分配。我们现在可以解决相同的优化问题了，但是边的开销取决于$\Omega(e)\omega(e)\left | x_v -x_u+d_e\right|$。在辅助图中，我们设$\delta(e_u)=d_e$，$\delta(e_v)=0$。上述的问题可以扩展到$G$中的任何定位可以与$G'$的层级分配问题相统一，任何$G'$的最优的层级分配会催生一个$G$的有效定位。上面两个例子都说明了有：
 
@@ -537,7 +540,7 @@ $$
 
 > 图4-4.
 
-![figure-4-4.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/96217e7aeb7d2ea7.png) 
+![figure-4-4.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-4-4.png) 
 
 ### 4.3 实现细节重审
 
@@ -569,7 +572,7 @@ $$
 
 > (Sun4-280上用时0.48秒)
 
-![figure-5-1.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/c68133ad14b864b3.png) 
+![figure-5-1.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-5-1.png) 
 
 #### 5.1.1 跨层级边
 
@@ -716,7 +719,7 @@ $$
 
 > 图5-4. 三个阶段
 
-![figure-5-4.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/020a712134b01c52.png) 
+![figure-5-4.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-5-4.png) 
 
 ### 5.3 边标签
 
@@ -732,7 +735,7 @@ $$
 
 > （Sun-4/280上用时0.15秒）
 
-![figure-5-5.png](https://private-alipayobjects.alipay.com/alipay-rmsdeploy-image/skylark/png/10334/5b60d6feacf90118.png) 
+![figure-5-5.png](https://gw.alipayobjects.com/as/g/datavis/assets/1.0.6/image/figure-5-5.png) 
 
 ## 6. 总结
 

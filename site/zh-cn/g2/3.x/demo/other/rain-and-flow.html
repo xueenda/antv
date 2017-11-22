@@ -5,7 +5,7 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-    - http://unpkg.alipay.com/@antv/g2-plugin-slider@1.0.0-rc.1
+    - ${url['g2-plugin-slider']}
 plotDescription: 在折线图的基础上，使用镜像分面，对某城市某时间段雨量流量关系进行可视化。
 plotUsage: 用于对比。
 relativePlots:
@@ -90,7 +90,10 @@ chartDetail: ${base}zh-cn/vis/chart/line.html
           title: {
             autoRotate: false,
             offset: -10,
-            position: 'end'
+            position: 'end',
+            textStyle: {
+              textAlign: 'start'
+            }
           }
         });
         view.line().position('time*' + colValue).color(color);

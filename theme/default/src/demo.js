@@ -91,11 +91,9 @@ if (!$activeListGroupItem.is(':visible')) {
 $(window).resize(resizePreview);
 
 // resizable
-// hacking... TODO FIXME
 const $detail = $('.detail');
 const $codePanel = $('.code-panel');
 const $menu = $('.menu');
-// $codePanel.resizable({
 $detail.resizable({
     handleSelector: '#resize-handler',
     resizeWidthFrom: 'right',
