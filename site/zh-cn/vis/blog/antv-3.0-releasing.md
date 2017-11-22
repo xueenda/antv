@@ -1,6 +1,7 @@
 <!--
 index: 0
 title: AntV 3.0 — 三生万物
+description: AntV 发布稿
 authors:
   - name: 有田
     avatar: ${assets}/image/members/youtian.jpg
