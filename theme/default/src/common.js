@@ -30,15 +30,17 @@ function buildFlattenIndices(docs, invertedList) {
     // inverted list
     _.forIn(invertedList, (referenceIds, word) => {
         referenceIds.forEach(ids => {
-            const [ id, anchorId ] = ids;
-            indices.push({
-                data: {
-                    title: docById[id].anchors[0].title,
-                },
-                value: word,
-                id,
-                anchorId,
-            });
+            if (_.isArray(ids)) {
+                const [ id, anchorId ] = ids;
+                indices.push({
+                    data: {
+                        title: docById[id].anchors[0].title,
+                    },
+                    value: word,
+                    id,
+                    anchorId,
+                });
+            }
         });
     });
 

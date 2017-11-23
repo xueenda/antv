@@ -24,23 +24,6 @@ resource:
     - ${url.dataSet}
 -->
 
-<style>
-  .slick-track:focus {
-    outline: none!important;
-  }
-  .slick-initialized .slick-slide:focus {
-    outline: none!important;
-  }
-
-  .highlight {
-    margin-top: 16px!important;
-  }
-
-  .pt-32 {
-    margin-top: 32px;
-  }
-</style>
-
 <section class="intro">
     <div class="container">
         <div class="header row">
