@@ -71,7 +71,7 @@ net.on('itemclick', ev => {
   net.update(item, {
     anchorPoints: anchorPoints
   });
-  net.showAnchor();
+  item.showAnchor();
 });
 net.on('mouseenter', ev => {
   const shape = ev.shape;
