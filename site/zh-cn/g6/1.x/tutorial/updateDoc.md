@@ -17,7 +17,7 @@
 
 ### 移除了两个内置网图布局
 
-经过实践检验 `G6.Layouts.Force` &&  `G6.Layouts.Flow` 这两个布局，十分鸡肋。为了概念清晰以及代码结构完善，1.2.0 我们从源码中移除了这两个布局。其相关功能可以使用 [layout.d3.force--力导布局](../api/plugins.html#_layout.d3.force--力导布局) && [layout.dagre--统一分层布局](../api/plugins.html#_layout.dagre--统一分层布局)
+经过实践检验 `G6.Layouts.Force` &&  `G6.Layouts.Flow` 这两个布局，十分鸡肋。1.2.0 我们从源码中移除了这两个布局。其相关功能可以使用 [layout.d3.force--力导布局](../api/plugins.html#_layout.d3.force--力导布局) && [layout.dagre--统一分层布局](../api/plugins.html#_layout.dagre--统一分层布局)
 
 ### 拼写错误
 
