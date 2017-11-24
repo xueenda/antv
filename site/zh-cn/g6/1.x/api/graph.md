@@ -281,28 +281,33 @@ param 可是是值，也可是回调函数
  * @param  {String|Function} param 支持通用颜色
  */
 graph.node().color(param)    
+
 /**
  * 节点大小映射
  * @param  {Number|Array|Function} param 
  * Number 长宽均为该值
  * Array [width, height] 长宽
  */
-graph.node().size(param)     
+graph.node().size(param)   
+
 /**
  * 节点形状映射
  * @param  {String|Function} param
  */
 graph.node().shape(param)   
+
 /**
  * 节点文本映射
  * @param  {String|Function} param
  */
 graph.node().label(param)
+
 /**
  * 节点样式映射
  * @param  {Object|Function} param
  */
 graph.node().style(param)   
+
 /**
  * 提示信息映射
  * @param  {Array|Function} param
@@ -322,26 +327,31 @@ param 可是是值，也可是回调函数
  * @param  {String|Function} param 支持通用颜色
  */
 graph.edge().color(param)
+
 /**
  * 边粗细映射
  * @param  {Number|Function} param 
  */
 graph.edge().size(param)
+
 /**
  * 边形状映射
  * @param  {String|Function} param 
  */
 graph.edge().shape(param)   
+
 /**
  * 边文本映射
  * @param  {String|Function} param 
  */
 graph.edge().label(param)   
+
 /**
  * 样式映射
  * @param  {Object} param 
  */
 graph.edge().style(param)   
+
 /**
  * 提示信息映射
  * @param  {Array|Function} param 
@@ -482,7 +492,7 @@ net.render();
 
 * x 在画布上的坐标x
 * y 在画布上的坐标y
-* domX 相对于画布容器的坐标
+* domX 相对于画布容器的坐标x
 * domY 相对于画布容器的坐标y
 * item 节点或者边
 * shape 当前的形
@@ -602,10 +612,10 @@ graph.converPoint(point)
 
 ```js
 /**
-  * 将 DOM 坐标转为图坐标
-  * @param  {Object} point 点
-  * @return {Object} 转化后的点
-  */
+ * 将 DOM 坐标转为图坐标
+ * @param  {Object} point 点
+ * @return {Object} 转化后的点
+ */
 graph.invertPoint(point)
 ```
 
@@ -702,30 +712,6 @@ graph.removeBehaviour(behaviours);
 graph.setItemActived(item, bool);
 ```
 
-<!-- ### [autoZoom](#_autoZoom) {Function}
-
-自动缩放
-
-```js
-graph.autoZoom();
-```
-
-### [autoSize](#_autoSize) {Function}
-
-自动图形居中，并缩放画布尺寸
-
-```js
-graph.autoSize();
-```
-
-### [resetZoom](#_resetZoom) {Function}
-
-重置缩放
-
-```js
-graph.resetZoom();
-``` -->
-
 ### read
 
 读数据，与 `save` 对应。
@@ -751,6 +737,7 @@ graph.save();
 ```
 
 ### focusPoint
+
 以某点为中心显示画布
 
 ```js
@@ -762,6 +749,7 @@ graph.focusPoint(point);
 ```
 
 ### updateMatrix
+
 更新画布根节点矩阵
 
 ```js
@@ -772,7 +760,45 @@ graph.focusPoint(point);
 graph.updateMatrix(point);
 ```
 
+### updateAnchor
+
+更新锚点
+
+```js
+/**
+ * 更新锚点
+ * @param {Object}  node          节点
+ * @param {Object}  anchorIndex   目标锚点索引
+ * @param {Object}  cfg           配置项
+ * @return {Object} self
+ */
+graph.updateAnchor(node, anchorIndex, cfg);
+```
+
+##### 参数
+
+- `node`: object
+
+节点
+
+- `anchorIndex`: number
+
+锚点索引
+
+- `cfg`: object
+
+锚点配置
+
+```js
+{
+  linkable,   // {Boolean} 是否可连接
+  style,      // {Object}  锚点样式
+  hoverStyle, // {Object}  锚点 hover 样式
+}
+```
+
 ### changeSize
+
 更改画布的尺寸
 
 ```js
