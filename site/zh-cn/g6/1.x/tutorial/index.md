@@ -239,7 +239,7 @@ G6 中所有的图都由边和节点构成，只要给出`节点`和`边`数据�
 
 <div id="c1"></div>
 
-<script type="text/javascript">
+```js-
 const data = {
   "nodes": [
     {
@@ -268,7 +268,7 @@ const net = new G6.Net({
   });
 net.source(data.nodes, data.edges);
 net.render();
-</script>
+```
 
 ```html
 <!DOCTYPE html>
