@@ -285,6 +285,10 @@ edge:
    */
   dy,
 
+  /**
+   * 节点工具配置项
+   * @type  {Object}
+   */
   nodeToolCfg: {
     class: 'node-tool',
     lists: [
@@ -335,50 +339,55 @@ edge:
 - `cfg`: object
 
 ```js
-  // d3-scale 文档参考：https://github.com/d3/d3-scale
+{
   scaleCfg: {
     type: 'linear',    
     callback: scale => {
-      // 可以在此处自定义操作scale
+      // 可以在此处自定义操作scale 文档参考：https://github.com/d3/d3-scale
     },
   },
-  // d3-legend 文档参考：https://github.com/susielu/d3-legend
   legendCfg: {
     /**
-    * 九宫格位置
-    * 可取值为：'bl', 'tl', 'lc', 'cc', 'tc', 'tr', 'rc', 'br', 'bc' 默认值为： 'bl'。
-    * @type  {String}
-    */
+     * 九宫格位置
+     * 可取值为：'bl', 'tl', 'lc', 'cc', 'tc', 'tr', 'rc', 'br', 'bc' 默认值为： 'bl'。
+     * @type  {String}
+     */
     position: 'br',
     /**
-    * 左边距
-    * 默认值为：10
-    * @type  {Number}
-    */
+     * 左边距
+     * 默认值为：10
+     * @type  {Number}
+     */
     marginLeft,
 
     /**
-    * 上边距
-    * 默认值为：10
-    * @type  {Number}
-    */
+     * 上边距
+     * 默认值为：10
+     * @type  {Number}
+     */
     marginTop,
 
     /**
-    * 右边距
-    * 默认值为：10
-    * @type  {Number}
-    */
+     * 右边距
+     * 默认值为：10
+     * @type  {Number}
+     */
     marginRight,
 
     /**
-    * 下边距
-    * 默认值为：10
-    * @type  {Number}
-    */
+     * 下边距
+     * 默认值为：10
+     * @type  {Number}
+     */
     marginBottom,
+
+    /**
+     * 回调函数
+     * @type  {Function}
+     */
     callback: legend => {
-      // 可以在此处自定义操作legend
+      // 可以在此处自定义操作legend 文档参考：https://github.com/susielu/d3-legend
     },
   },
+}
 ```

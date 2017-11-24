@@ -104,10 +104,11 @@ const data = {
   ]
 };
 const net = new G6.Net({
-    id: 'mountNode',
-    height: window.innerHeight,
-    fitView: 'tc'
+  id: 'mountNode',
+  height: window.innerHeight,
+  fitView: 'tc'
 });
+net.removeBehaviour(['wheelZoom', 'resizeNode']);
 net.source(data.nodes, data.edges);
 net.node()
    .shape('customNode')
