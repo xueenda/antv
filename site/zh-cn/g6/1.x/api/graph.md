@@ -298,7 +298,7 @@ graph.node().shape(param)
 
 /**
  * 节点文本映射
- * @param  {String|Function} param
+ * @param  {String|Function|Object} param
  */
 graph.node().label(param)
 
@@ -342,7 +342,7 @@ graph.edge().shape(param)
 
 /**
  * 边文本映射
- * @param  {String|Function} param 
+ * @param  {String|Function|Object} param
  */
 graph.edge().label(param)   
 

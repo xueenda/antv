@@ -8,124 +8,253 @@ index: 1
 -->
 
 <script type="text/javascript">
-$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json', data => {
-  const Util = G6.Util;
-  // 准备布局配置
-  const layoutCfg = {
-    "direction": "LR",
-    "nodeSize": 20,
-    "rankSep": 400,
-  };
-  // 自定义树节点
-  const DEFAULT_NODE_SIZE = layoutCfg.nodeSize;
-  G6.registerNode('treeNode', {
-    draw(cfg, group) {
-      const model = cfg.model;
-      const r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
-      const shapeCfg = {
-        attrs: {
-          x: cfg.x,
-          y: cfg.y,
-          r: r,
-          stroke: '#003380',
-          fill: 'white',
-          fillOpacity: 1,
-        },
-      };
-      if (model.children && model.children.length) {
-        shapeCfg.class = model.isCollapsed ? 'spreadoutButton' : 'collapseButton';
-        shapeCfg.attrs.fill = '#044A9A';
-        shapeCfg.attrs.stroke = '#003380';
-        shapeCfg.attrs.fillOpacity = 0.4;
-      }
-      if (model.root) {
-        shapeCfg.attrs.fill = '#044A9A';
-        shapeCfg.attrs.stroke = '#003380';
-        shapeCfg.attrs.fillOpacity = 0.7;
-      }
-      shapeCfg.attrStash = Util.mix({}, shapeCfg.attrs);
-      return group.addShape('circle', shapeCfg);
+const miniMap = new G6.Plugins['tool.minimap']();
+const Global = G6.Global;
+const Util = G6.Util;
+
+Global.nodeControlPointStyle = null;
+Global.nodeActivedBoxStyle = {
+  stroke: '#108EE9',
+  fill: '#00B5F4',
+  fillOpacity: 0.2,
+  lineWidth: 2,
+  radius: 4
+};
+const data = {
+  "id": "root",
+  "name": "flare",
+  "children": [{
+    "name": "analytics",
+    "children": [{
+      "name": "cluster",
+      "children": [{
+        "name": "AgglomerativeCluster",
+      }, {
+        "name": "CommunityStructure",
+      }, {
+        "name": "HierarchicalCluster",
+      }, {
+        "name": "MergeEdge",
+      }]
+    }, {
+      "name": "tree",
+      "children": [{
+        "name": "BetweennessCentrality",
+      }, {
+        "name": "LinkDistance",
+      }, {
+        "name": "MaxFlowMinCut",
+      }, {
+        "name": "ShortestPaths",
+      }, {
+        "name": "SpanningTree",
+      }]
+    }, {
+      "name": "optimization",
+      "children": [{
+        "name": "AspectRatioBanker"
+      }]
+    }]
+  }, {
+    "name": "animate",
+    "children": [{
+      "name": "Easing",
+    }, {
+      "name": "FunctionSequence",
+    }, {
+      "name": "interpolate",
+      "children": [{
+        "name": "ArrayInterpolator",
+      }, {
+        "name": "ColorInterpolator",
+      }, {
+        "name": "DateInterpolator",
+      }, {
+        "name": "Interpolator",
+      }, {
+        "name": "MatrixInterpolator",
+      }, {
+        "name": "NumberInterpolator",
+      }, {
+        "name": "ObjectInterpolator",
+      }, {
+        "name": "PointInterpolator",
+      }, {
+        "name": "RectangleInterpolator",
+      }]
+    }, {
+      "name": "ISchedulable",
+    }, {
+      "name": "Parallel",
+    }, {
+      "name": "Pause",
+    }, {
+      "name": "Scheduler",
+    }, {
+      "name": "Sequence",
+    }, {
+      "name": "Transition",
+    }, {
+      "name": "Transitioner",
+    }, {
+      "name": "TransitionEvent",
+    }, {
+      "name": "Tween",
+    }]
+  }]
+};
+const tree = new G6.Tree({
+  id: 'mountNode',
+  height: 450,                    // 此处替换高度
+  fitView: {                      // 自动对齐到中心点
+    x: 0,
+    y: 0
+  },
+  behaviourFilter: ['wheelZoom'], // 过滤鼠标滚轮缩放行为
+  layoutCfg: {
+    direction: 'H',
+    getHGap: () => {
+      return 40;
     },
-    afterDraw(cfg, group) {
-      const model = cfg.model;
-      const r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
-      const align = model.align;
-      const labelAttrs = {
-        text: model.name,
-        fill: '#666',
-        fontSize: 30,
-        textBaseline: 'middle',
-        x: cfg.x + r + DEFAULT_NODE_SIZE,
-        y: cfg.y,
-        textAlign: 'left',
-      };
-      if (align === 'R') {
-        Util.mix(labelAttrs, {
-          x: cfg.x - r - DEFAULT_NODE_SIZE,
-          y: cfg.y,
-          textAlign: 'right',
-        });
-      } else if (align === 'T' || align === 'CH') {
-        Util.mix(labelAttrs, {
-          x: cfg.x,
-          y: cfg.y + r + DEFAULT_NODE_SIZE,
-          textAlign: 'right',
-          rotate: -Math.PI / 2,
-        });
-      } else if (align === 'B') {
-        Util.mix(labelAttrs, {
-          x: cfg.x,
-          y: cfg.y - r - DEFAULT_NODE_SIZE,
-          textAlign: 'left',
-          rotate: -Math.PI / 2,
+    getVGap: () => {
+      return 10;
+    }
+  },
+  plugins: [ miniMap ]
+});
+const graphContainer = tree.get('graphContainer');
+const input = Util.createDOM('<input class="g6-label-input" />', {
+  position: 'absolute',
+  zIndex: 10,
+  display: 'none'
+});
+const mouseEnterNodeStyle = {
+  lineWidth: 2
+};
+const nodeStyle = {
+  lineWidth: 1
+};
+
+function hasClass(shape, className) {
+  if (shape) {
+    const clasees = shape.get('class');
+    if (clasees && clasees.indexOf(className) !== -1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function showInputLabel(node) {
+  if(!node){
+    return;
+  }
+  const group = node.get('group');
+  const label = group.findBy(function(child){
+    if(hasClass(child, 'label')){
+      return true;
+    }
+    return false;
+  });
+  const rootGroup = tree.get('rootGroup');
+  const bbox = Util.getBBox(label, rootGroup);
+  const borderWidth = 1;
+  const text = label.attr('text');
+  clearAllActived();
+
+  input.value = text;
+  input.show();
+  input.css({
+    top: bbox.minY - borderWidth + 'px',
+    left: bbox.minX - borderWidth + 'px',
+    width: bbox.width + 'px',
+    height: bbox.height + 'px',
+    padding: '0px',
+    margin: '0px',
+    border: borderWidth + 'px solid #999'
+  });
+  input.focus();
+  input.node = node;
+}
+
+function updateLabel() {
+  if(input.visibility){
+    const node = input.node;
+    clearAllActived();
+    if(input.value !== node.get('model').name){
+      if(input.value){
+        tree.update(node, {
+          label: input.value
         });
       }
-      const label = group.addShape('text', {
-        attrs: labelAttrs,
-      });
-      return label;
     }
-  });
+    input.hide();
+  }
+}
 
-  // 生成树图实例
-  const tree = new G6.Tree({
-    id: 'mountNode',
-    layoutFn: G6.Layouts.Dendrogram,
-    layoutCfg: layoutCfg,
-    height: window.innerHeight,         // 画布高
-    fitView: 'autoZoom', // 自动缩放
-    showButton: false
+function clearAllActived(){
+  tree.clearAllActived();
+  tree.refresh(false);
+}
+input.hide = function(){
+  input.css({
+    display: 'none'
   });
-
-  // 加载数据
-  tree.source(data);
-  tree.node()
-      .shape('treeNode')
-      .style({
-        stroke: '#A9BCD3'  
-      });
-  tree.edge().shape('VH');
-
-  // 渲染树图
-  tree.render();
-
-  // 添加事件
-  tree.on('mouseenter', ev => {
-    const shape = ev.shape;
-    if (shape && shape.hasClass('Button')) {
-      shape.attr('fillOpacity', 0.2);
-      shape.attr('strokeOpacity', 0.8);
-      tree.refresh();
-    }
+  input.visibility = false;
+};
+input.show = function(){
+  input.css({
+    display: 'block'
   });
-  tree.on('mouseleave', ev => {
-    const shape = ev.shape;
-    let attrStash;
-    if (shape && shape.hasClass('Button')) {
-      attrStash = shape.get('attrStash');
-      shape.attr(attrStash);
-      tree.refresh();
-    }
-  });
+  input.visibility = true;
+};
+graphContainer.appendChild(input);
+tree.addBehaviour('default', ['clickActive']);
+tree.addBehaviour('default', ['clickBlankClearActive']);
+tree.node().label('name').style(nodeStyle);
+tree.edge().shape('smooth');
+tree.source(data);
+// 默认中心为树图根节点 (0, 0) 点
+tree.render();
+
+tree.on('itemmouseenter', ev =>{
+  if(ev.itemType !== 'node'){
+    return;
+  }
+  const keyShape = ev.item.getKeyShape();
+  keyShape.attr(mouseEnterNodeStyle);
+  tree.refresh();
+});
+
+tree.on('itemmouseleave', ev => {
+  if(ev.itemType !== 'node' || ev.item.destroyed){
+    return;
+  }
+  const keyShape = ev.item.getKeyShape();
+  keyShape.attr(nodeStyle);
+  tree.refresh();
+});
+
+tree.on('dragmove', () => {
+  input.hide();
+});
+
+tree.on('dblclick', ev => {
+  const item = ev.item;
+  const shape = ev.shape;
+
+  if ( hasClass(shape, 'label') && item && item.get('type') === 'node') {
+    showInputLabel(item);
+  }
+});
+
+input.on('keydown', ev=>{
+  if(ev.keyCode === 13){
+    updateLabel();
+  }
+});
+
+input.on('blur', ()=>{
+  updateLabel();
 });
 </script>
