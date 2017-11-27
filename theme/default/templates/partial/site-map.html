@@ -8,7 +8,7 @@
                 <div class="nav flex-column">
                     {% for key, link in site.links %}
                     <div class="nav-item">
-                        <a href="{{ link.href }}">{{ link.text }}</a>
+                        <a href="{{ link.href }}"{% if site.external %} target="_blank"{% endif %}>{{ link.text }}</a>
                         {% if link.description %}
                         <span class="description">- {{ link.description }}</span>
                         {% endif %}
