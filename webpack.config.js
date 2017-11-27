@@ -58,14 +58,16 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json', '.less'],
   },
   externals: {
+    'react-dom': 'ReactDOM',
     'wolfy87-eventemitter': 'EventEmitter',
+    clipboard: 'Clipboard',
     codemirror: 'CodeMirror',
     jquery: 'jQuery',
-    routie: 'Routie',
     lodash: '_',
+    meta: '__meta',
+    react: 'React',
+    routie: 'Routie',
     tocbot: 'tocbot',
-    clipboard: 'Clipboard',
-    meta: '__meta'
   },
   plugins: [
     extractLess,
