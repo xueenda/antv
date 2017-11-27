@@ -48,7 +48,7 @@ $('header').headroom({
 });
 
 const $currentMenuItem = $('.list-group-item.active');
-if (!inView($currentMenuItem)) {
+if ($currentMenuItem[0] && !inView($currentMenuItem)) {
     $currentMenuItem[0].scrollIntoView();
 }
 
