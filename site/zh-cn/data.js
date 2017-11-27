@@ -118,6 +118,7 @@ module.exports = {
         '${products.vis}',
         {
             name: '更多产品',
+            external: true,
             links: {
                 antd: { text: 'Ant Design', href: 'https://ant.design/index-cn', description: '蚂蚁 UI 设计体系' },
                 egg:  { text: 'Egg', href: 'https://eggjs.org/', description: '企业级 Node Web 开发框架' },
