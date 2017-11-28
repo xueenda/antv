@@ -36,9 +36,19 @@ resource:
 <script src="{{ url['g6-plugins'] }}"></script>
 ```
 
-* npm 安装
+### 通过 npm 安装
 
-`外部用户暂不提供 npm 引入`，阿里内部同学可使用 tnpm 安装 "@ali/g6-plugins"。
+我们提供了 G6 npm 包，通过下面的命令即可完成安装
+
+```bash
+npm install @antv/g6-plugins --save
+```
+
+成功安装完成之后，即可使用 `import` 或 `require` 进行引用。
+
+```js
+import Plugins from '@antv/g6-plugins';
+```
 
 #### 第二步 —— 实例化插件：
 

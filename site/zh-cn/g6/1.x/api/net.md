@@ -65,16 +65,6 @@
 }
 ```
 
-### behaviourSignal
-[Boolean] 交互信号量
-
-```js
-{
-  draggingEdge,   // true 为正在拖动边的端点
-  draggingNode    // true 为正在拖拽节点
-}
-```
-
 ## 实例方法
 
 ### updateAnchor
