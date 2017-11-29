@@ -98,7 +98,7 @@ const theme = Util.deepMix({
 }, G2.Global);
 G2.Global.setTheme(theme);
 
-$.getJSON('/assets/data/china-geo.json', function(mapData) {
+$.getJSON('/assets/data/world.geo.json', function(mapData) {
   const userData = [];
   const features = mapData.features;
   for(let i=0; i<features.length; i++) {
@@ -114,6 +114,10 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
   const bgDataView = ds.createView('back')
     .source(mapData, {
       type: 'GeoJSON'
+    })
+    .transform({
+      type: 'geo.projection',
+      projection: 'geoMercator'
     });
   const userPolygonDv = ds.createView()
     .source(userData)
@@ -125,11 +129,12 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
   });
   const chart = new G2.Chart({
     container: 'c1',
-    width: 600,
-    height: 320,
-    padding: [ 20, 80, 0, 80 ]
+    forceFit: true,
+    height: 400,
+    padding: 0
   });
   chart.source(userPolygonDv);
+  chart.coord().reflect();
   chart.tooltip({
     showTitle: false
   });
@@ -163,7 +168,7 @@ $.getJSON('/assets/data/china-geo.json', function(mapData) {
   });
   const chart2 = new G2.Chart({
     container: 'c2',
-    width: 600,
+    forceFit: true,
     height: 250
   });
   chart2.source(dv, {
