@@ -415,11 +415,11 @@ G6.registerNode('custom', {
 });
 ```
 
-### 综合示例
+<!-- ### 综合示例
 
 ![image](/assets/image/g6/04-editor/perventLink.gif)
 
-[示例源码](../demo/04-editor/perventLink.html)
+[示例源码](../demo/04-editor/perventLink.html) -->
 
 ## 绘制后
 
