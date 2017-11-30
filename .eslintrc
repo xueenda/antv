@@ -14,6 +14,8 @@
     "G2": true,
     "G6": true,
     "Slider": true,
+    "AMap": true,
+    "AMapUI": true,
     "_": true,
     "__data": true,
     "__meta": true,

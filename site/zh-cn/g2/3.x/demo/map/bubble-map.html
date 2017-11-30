@@ -1,0 +1,99 @@
+<!--
+index: 0
+title: 带气泡的地图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Bubble Map，带气泡的地图，其实就是气泡图和地图的结合，我们以地图为背景，在上面绘制气泡。我们将圆（这里我们叫它气泡）展示在一个指定的地理区域内，气泡的面积代表了这个数据的大小。Bubble Map 比分级统计图更适用于比较带地理信息的数据的大小。它的主要缺点是当地图上的气泡过多过大时，气泡间会相互遮盖而影响数据展示，所以在绘制时需要考虑这点。
+plotUsage:
+relativePlots:
+  - ${plotByName.map}
+chartDetail: ${base}zh-cn/vis/chart/bubble-map.html
+-->
+<p style="position:absolute;bottom: 0;right: 0;font-size: 10px; -webkit-transform: scale(0.83);-webkit-transform-origin: 0% 50%;color:#545454">数据来源于<br/> https://github.com/react-d3/react-d3-map-bubble</p>
+
+<script>
+  $.getJSON('/assets/data/world.geo.json', mapData => {
+    $.getJSON('/assets/data/earthquake.json', data => {
+      const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: [ 0, 20, 40 ]
+      });
+      // force sync scales
+      chart.scale({
+        x: { sync: true, nice: false },
+        y: { sync: true, nice: false }
+      });
+      chart.coord().reflect();
+      chart.legend(false);
+      chart.axis(false);
+
+      // style the tooltip
+      chart.tooltip({
+        showTitle: false,
+        containerTpl: '<div class="g2-tooltip">'
+          + '<table class="g2-tooltip-list"></table></div>',
+        itemTpl: '<tr data-index={index}><td style="padding: 5px; background-color:#545454">{name}</td><td style="padding: 5px; background-color:#fff;color: #000">{value}</td></tr>',
+        'g2-tooltip': {
+          borderRadius: '2px',
+          backgroundColor: '#DDDDDD',
+          padding: 0,
+          border: '1px solid #333'
+        }
+      });
+
+      // data set
+      const ds = new DataSet();
+
+      // draw the map
+      const dv = ds.createView('back')
+        .source(mapData, {
+          type: 'GeoJSON'
+        })
+        .transform({
+          type: 'geo.projection',
+          projection: 'geoMercator',
+          as: [ 'x', 'y', 'centroidX', 'centroidY' ]
+        });
+      const bgView = chart.view();
+      bgView.source(dv);
+      bgView.tooltip(false);
+      bgView.polygon()
+        .position('x*y')
+        .style({
+          fill: '#DDDDDD',
+          stroke: '#fff',
+          lineWidth: 0.5,
+          fillOpacity: 0.85
+        });
+
+      // draw the bubble plot
+      const userData = ds.createView().source(data);
+      userData.transform({
+        type: 'map',
+        callback: obj => {
+          const projectedCoord = dv.geoProjectPosition([obj.lng * 1, obj.lat * 1], 'geoMercator');
+          obj.x = projectedCoord[0];
+          obj.y = projectedCoord[1];
+          obj.deaths = obj.deaths * 1;
+          obj.magnitude = obj.magnitude * 1;
+          return obj;
+        }
+      });
+      const pointView = chart.view();
+      pointView.source(userData);
+      pointView.point()
+        .position('x*y')
+        .size('deaths', [2, 30])
+        .shape('circle')
+        .opacity(0.45)
+        .color('#FF2F29')
+        .tooltip('date*location*lat*lng*deaths*magnitude');
+
+      chart.render();
+    });
+  });
+</script>
