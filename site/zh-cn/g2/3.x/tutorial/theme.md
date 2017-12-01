@@ -25,7 +25,7 @@ G2 默认提供了两种图表主题： default、dark。
 
 ```js
 const { Global } = G2; // 获取 Global 全局对象
-Global.setTheme('dark'); // 传入值为 'default'、'dark'、'cheery'的一种，如果不是，那么使用 default 主题。
+Global.setTheme('dark'); // 传入值为 'default'、'dark' 的一种，如果不是，那么使用 default 主题。
 ```
 
 ### 局部样式设置
