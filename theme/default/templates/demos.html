@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% block css %}
-<link rel="stylesheet" type="text/css"
-      href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/tocbot-3.0.2/tocbot.css"/>
-<link rel="stylesheet" type="text/css" href="{{ dist }}/demos.css"/>
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css"/>
+<link rel="stylesheet" href="{{ dist }}/demos.css"/>
 {% endblock %}
 {% block content %}
 <div class="demos container-fluid">
@@ -102,11 +101,8 @@
 </div>
 {% endblock %}
 {% block js %}
-<script type="text/javascript"
-        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.headroom-0.9.4.min.js"></script>
-<script type="text/javascript"
-        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/tocbot-3.0.2/tocbot.min.js"></script>
-<script type="text/javascript"
-        src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/routie-0.3.2.min.js"></script>
-<script type="text/javascript" src="{{ dist }}/demos.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/routie-0.3.2.min.js"></script>
+<script src="{{ dist }}/demos.js"></script>
 {% endblock %}

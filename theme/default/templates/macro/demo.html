@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
-    <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
+    <link rel="stylesheet" href="{{ css }}" />{% endfor %}
     <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
 </head>
 <body{% if demoTheme == 'dark' %} style="background: #1f1f1f;"{% endif %}>
@@ -24,7 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
-    <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
+    <link rel="stylesheet" href="{{ css }}" />{% endfor %}
     <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
 </head>
 <body>
@@ -42,7 +42,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
-    <link rel="stylesheet" type="text/css" href="{{ css }}" />{% endfor %}
+    <link rel="stylesheet" href="{{ css }}" />{% endfor %}
     <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
 </head>
 <body>

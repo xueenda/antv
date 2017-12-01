@@ -1,6 +1,4 @@
-<!--header-->
 <header class="navbar navbar-expand-lg navbar-light fixed-top headroom animated{% if isHome %} homepage{% endif %}">
-    <!--{% if header.isFullSize %}{% else %}<div class="container">{% endif %}-->
     <a href="{% if isHome %}#{% else %}{{ base }}{{ home }}{% endif %}">
         <svg class="logo" width="30" height="26" viewBox="0 0 1133.9 1133.9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
@@ -91,7 +89,6 @@
             {% endif %}
             {% endfor %}
             {% endif %}
-            <!--<a class="nav-link"><img src="{{ assets }}/image/icon/more-apps.svg" alt=""></a>-->
             <a class="back2old-version" href="http://antvis.github.io/" target="_blank">
                 <span class="btn border">
                 {{ resource.translate.back2oldVersion }}
@@ -99,5 +96,4 @@
             </a>
         </ul>
     </div>
-    <!--{% if header.isFullSize %}{% else %}</div>{% endif %}-->
 </header>
