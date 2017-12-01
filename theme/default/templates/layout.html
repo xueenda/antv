@@ -25,7 +25,9 @@
 {% if showFooter %}
 {% include "partial/footer.html" %}
 {% endif %}
-<script type="text/javascript">/* eslint-disable */{% if isDev %}window.__data = {{ __self | safe }}; console.log(window.__data);{% endif %}window.__meta = {{ __meta | safe }};</script>
+<script type="text/javascript">/* eslint-disable */
+{% if isDev %}window.__data = {{ __self | safe }}; console.log(window.__data);{% endif %}window.__meta = {{ __meta | safe }};
+</script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js"></script>
@@ -36,7 +38,9 @@
     <script src="https://s11.cnzz.com/z_stat.php?id=1259109662&web_id=1259109662"></script>
     <script async src="https://tracert.alipay.com/bucNameTracker.js"></script>
     <script async src="https://tracert.alipay.com/loader.js"></script>
-    <script>window._readyToRun = window._readyToRun || [];window._Tracert = window._Tracert || { _isInit: true, call: function() {_readyToRun.push(arguments)}, start: function() {this.call('start')} };_Tracert.call('plugins', ['BucName']);_Tracert.call('config', { spmAPos: 'a369', spmBPos: 'b3938'});_Tracert.start();</script>
+    <script>
+        window._readyToRun = window._readyToRun || [];window._Tracert = window._Tracert || { _isInit: true, call: function() {_readyToRun.push(arguments)}, start: function() {this.call('start')} };_Tracert.call('plugins', ['BucName']);_Tracert.call('config', { spmAPos: 'a369', spmBPos: 'b3938'});_Tracert.start();
+    </script>
 </div>
 {% if externalJsNotAllow %}
 {% else %}
