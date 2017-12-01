@@ -8,6 +8,7 @@ var parseurl = require('parseurl');
 var program = require('commander');
 var serveIndex = require('serve-index');
 var serveStatic = require('serve-static');
+var connectRedirection = require('connect-redirection');
 var try2getOne = require('@lite-js/try2get').one;
 var path = require('path');
 var extname = path.extname;
@@ -48,6 +49,7 @@ app.use(assets, serveStatic(resolve(theme.root, theme.assets)));
 app.use(base, serveIndex(process.cwd()));
 app.use(dist + '/', serveIndex(join(dest, dist + '/')));
 app.use(dist + '/', serveStatic(join(dest, dist + '/')));
+app.use(connectRedirection());
 // markdown rendering
 app.use((req, res, next) => {
     if (req.method === 'GET') {
@@ -66,6 +68,18 @@ app.use((req, res, next) => {
                 }
             );
             res.end(content);
+        }
+    }
+    next();
+});
+app.use((req, res, next) => {
+    if (req.method === 'GET') {
+        var url = parseurl(req);
+        var pathname = url.pathname;
+        if (/\/$/.test(pathname)) {
+            debug('redirecting...');
+            debug(url);
+            res.redirect(join(pathname, './index.html'));
         }
     }
     next();

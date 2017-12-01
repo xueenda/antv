@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404 redirecting</title>
+</head>
+<body>
+<script>
+    (function () {
+        var href = window.location.href;
+        var urls = [];
+        function redirect2(url) {
+            urls.push(url);
+        }
+        var productMap = {
+            'g2-mobile': 'f2',
+            g2: 'g2',
+            g6: 'g6',
+            vis: 'vis',
+        };
+        var urlMap = {
+            index: '/zh-cn/',
+            about: '/zh-cn/about.html',
+            g2: '/zh-cn/g2/3.x/',
+            g6: '/zh-cn/g6/1.x/',
+            f2: '/zh-cn/f2/3.x/',
+            vis: '/zh-cn/vis/',
+        };
+        for (var key in productMap) {
+            var product = productMap[key];
+            if (href.indexOf(key) > -1) {
+                [
+                    'api',
+                    'demo',
+                ].forEach(function(category) {
+                    if (href.indexOf(category) > -1) {
+                        redirect2(urlMap[product] + category);
+                    }
+                });
+                if (href.indexOf('doc') > -1) {
+                    redirect2(urlMap[product] + 'tutorial/');
+                }
+                redirect2(urlMap[product]);
+            } else if (href.indexOf('about') > -1) {
+                redirect2(urlMap.about);
+            }
+        }
+        redirect2(urlMap.index);
+        window.location = urls[0];
+    })();
+</script>
+</body>
+</html>
