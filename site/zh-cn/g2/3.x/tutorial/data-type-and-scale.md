@@ -421,7 +421,7 @@ const ticks = [ '第一周', '第二周', '第三周', '第五周' ]
 连续数据坐标点的计算方式如下：
 
 * 指定一个逼近数组 [0,2,5,10],用于计算对人友好的tickInterval
-* 根据传入的min,max,tickCount 计算 tickInterval,将tickInterval的值转换到 0-10之间，保留转换的系数，例如min: 0, max: 1003,tickCount = 4,n那么计算的tickInterval = 3001 变成 3.001，系数是1000，然后在逼近数组中找到一个逼近值，以 3.001为示例
+* 根据传入的min,max,tickCount 计算 tickInterval,将tickInterval的值转换到 0-10之间，保留转换的系数，例如 min: 0, max: 10003, tickCount = 4，那么计算的 tickInterval = 3001 变成 3.001，系数是1000，然后在逼近数组中找到一个逼近值，以 3.001为示例
   + 可以选择向上逼近（最终生成的坐标点个数小于tickCount)，得出逼近值 5
   + 或者选择向下逼近（最终生成的坐标点的个数大于tickCount),得出逼近值 2
   + 或者四舍五入（有可能会多，有可能会少）,得出逼近值5
