@@ -170,14 +170,14 @@ G6.Global.edgeControlPointStyle = {
 };
 ```
 
-### nodeAcitveBoxStyle
+### nodeActivedBoxStyle
 
 [Object] 节点激活框样式
 
 默认：
 
 ```js
-G6.Global.nodeAcitveBoxStyle = {
+G6.Global.nodeActivedBoxStyle = {
   stroke: '#108EE9',
   lineDash: [3, 3]
 };

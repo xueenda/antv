@@ -423,7 +423,11 @@ chart.axis('x', {
 
   4. `title`: object | null
 
-  设置坐标轴标题的显示样式。如果该属性值为 `null` 则表示不展示坐标轴标题，默认不展示。
+  设置坐标轴标题的显示样式。如果该属性值为 `null` 则表示不展示坐标轴标题。
+
+  **在 G2 的默认主题中，坐标轴标题是不展示的。**
+
+  通过 `title: true` 渲染坐标轴标题。通过以下配置对标题进行个性化配置：
 
   ```js
   title: {
@@ -1051,7 +1055,11 @@ chart.tooltip(true, {
 
   该属性设置之后，就会在固定位置展示 tooltip，可设置的值为：`left`、`right`、`top`、`bottom`。
 
-  11. `containerTpl`: string
+  11. `hideMarkders`: boolean
+
+  对于 line、area、path 这三种几何图形，我们在渲染 tooltip 时会自动渲染 tooltipMarker <img src="https://gw.alipayobjects.com/zos/rmsportal/BlTPaZMgrTjZINmXExtm.png" style="width: 20px;">，通过声明该属性值为 false 来关闭 tooltipMarker。
+
+  12. `containerTpl`: string
 
   tooltip 默认的容器模板，默认值如下：
 
@@ -1064,7 +1072,7 @@ chart.tooltip(true, {
 
   如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
 
-  12. `itemTpl`: string
+  13. `itemTpl`: string
 
   tooltip 每项记录的默认模板，默认值如下：
 
@@ -1077,23 +1085,23 @@ chart.tooltip(true, {
 
   如默认结构不满足需求，可以自定义该模板，但是**自定义模板时必须包含各个 dom 节点的 class**，样式可以自定义。
 
-  13. `g2-tooltip`: object
+  14. `g2-tooltip`: object
 
   设置 tooltip 容器的 CSS 样式。
 
-  14. `g2-tooltip-title`: object
+  15. `g2-tooltip-title`: object
 
   设置 tooltip 标题的 CSS 样式。
 
-  15. `g2-tooltip-list`: object
+  16. `g2-tooltip-list`: object
 
   设置 tooltip 列表容器的 CSS 样式。
 
-  16. `g2-tooltip-list-item`: object
+  17. `g2-tooltip-list-item`: object
 
   设置 tooltip 列表容器中每一项的 CSS 样式。
 
-  17. `g2-tooltip-marker`: object
+  18. `g2-tooltip-marker`: object
 
   设置tooltip 列表容器中每一项 marker 的 CSS 样式。
 

@@ -5,7 +5,8 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
-    - https://a.alipayobjects.com/g/datavis/china-geojson/1.0.0/index.js
+    - //webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f
+    - //webapi.amap.com/ui/1.0/main.js?v=1.0.11
 plotDescription: 中国地图-省市下钻
 plotUsage: 可视化的方法显示地理区域上的数据。 使用地图作为背景，通过图形的位置来表现数据的地理位置， 通常来展示数据在不同地理区域上的分布情况。
 relativePlots:
@@ -13,48 +14,142 @@ relativePlots:
 -->
 
 <script>
-  $('#mountNode').html('<div style="position:relative;padding-left:250px;">' +
-    '<div id="china" style="position: absolute;top:5px;left:5px;"></div>' +
-    '<div id="province"></div>' +
+  $('#mountNode').html('<div style="position: relative;">' +
+    '<div id="china" style="width: 50%;height:400px;position: absolute;left: 0;top: 0;"></div>' +
+    '<div id="province" style="width: 50%;height:400px;position: absolute;right: 0;top: 0;"></div>' +
   '</div>');
-  let provinceChart;
-  function processData(mapData) {
-    // 构造虚拟数据
-    const userData = [];
-    const features = mapData.features;
-    for (let i = 0; i < features.length; i++) {
-      const name = features[i].properties.name;
-      userData.push({
-        name: name,
-        value: Math.round(Math.random() * 1000),
-      });
-    }
-    const ds = new DataSet();
-    const geoDataView = ds.createView().source(mapData, {
-      type: 'GeoJSON',
-    }); // geoJSON 经纬度数据
 
-    // 用户数据
-    const dvData = ds.createView().source(userData);
-    dvData.transform({
-      type: 'geo.region',
-      field: 'name',
-      geoDataView: geoDataView,
-      as: ['longitude', 'lantitude'],
+  // 调用高德 api 绘制底图以及获取 geo 数据
+  const map = new AMap.Map('china', {
+    zoom: 4
+  });
+  const colors = [ "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac" ];
+  // 当前聚焦的区域
+  let currentAreaNode;
+
+  AMapUI.load(['ui/geo/DistrictExplorer', 'lib/$'], function(DistrictExplorer) {
+    // 创建一个实例
+    const districtExplorer = window.districtExplorer = new DistrictExplorer({
+      eventSupport: true, //打开事件支持
+      map: map
     });
 
-    return dvData;
-  }
+    // feature被点击
+    districtExplorer.on('featureClick', function(e, feature) {
+      var props = feature.properties;
+      //如果存在子节点
+      if (props.childrenNum > 0) {
+        //切换聚焦区域
+        switch2AreaNode(props.adcode);
+      }
+    });
 
-  function renderProvinceChart(name) {
-    const provinceData = ChinaGeoJSON[name];
+    //外部区域被点击
+    districtExplorer.on('outsideClick', function(e) {
+      districtExplorer.locatePosition(e.originalEvent.lnglat, function(error, routeFeatures) {
+        if (routeFeatures && routeFeatures.length > 1) {
+          //切换到省级区域
+          switch2AreaNode(routeFeatures[1].properties.adcode);
+        } else {
+          //切换到全国
+          switch2AreaNode(100000);
+        }
+      }, {
+        evelLimit: 2
+      });
+    });
+    //绘制某个区域的边界
+    function renderAreaPolygons(areaNode) {
+      districtExplorer.clearFeaturePolygons();
+      districtExplorer.renderSubFeatures(areaNode, function(feature, i) {
+        var fillColor = colors[i % colors.length];
+        var strokeColor = colors[colors.length - 1 - i % colors.length];
+
+        return {
+          cursor: 'default',
+          bubble: true,
+          strokeColor: strokeColor, //线颜色
+          strokeOpacity: 1, //线透明度
+          strokeWeight: 1, //线宽
+          fillColor: fillColor, //填充色
+          fillOpacity: 0.35, //填充透明度
+        };
+      });
+
+      //绘制父区域
+      districtExplorer.renderParentFeature(areaNode, {
+        cursor: 'default',
+        bubble: true,
+        strokeColor: 'black', //线颜色
+        strokeOpacity: 1, //线透明度
+        strokeWeight: 1, //线宽
+        fillColor: null, //填充色
+        fillOpacity: 0.35, //填充透明度
+      });
+    }
+
+    //切换区域后刷新显示内容
+    function refreshAreaNode(areaNode) {
+      districtExplorer.setHoverFeature(null);
+      renderAreaPolygons(areaNode);
+    }
+
+    //切换区域
+    function switch2AreaNode(adcode, callback) {
+      if (currentAreaNode && ('' + currentAreaNode.getAdcode() === '' + adcode)) {
+        return;
+      }
+
+      loadAreaNode(adcode, function(error, areaNode) {
+        if (error) {
+          if (callback) {
+            callback(error);
+          }
+          return;
+        }
+        currentAreaNode = window.currentAreaNode = areaNode;
+        refreshAreaNode(areaNode);
+        if (callback) {
+          callback(null, areaNode);
+        }
+      });
+    }
+
+    //加载区域
+    function loadAreaNode(adcode, callback) {
+      districtExplorer.loadAreaNode(adcode, function(error, areaNode) {
+        if (error) {
+          if (callback) {
+            callback(error);
+          }
+          return;
+        }
+        renderG2Map(areaNode); // 使用 G2 绘制地图
+
+        if (callback) {
+          callback(null, areaNode);
+        }
+      });
+    }
+
+    // 浙江
+    switch2AreaNode(330000);
+  });
+
+
+  // 开始使用 G2 绘制地图
+  let provinceChart;
+  function renderG2Map(areaNode) {
+    const adcode = areaNode.getAdcode();
+    const geoJSON = areaNode.getSubFeatures(); // 获取 geoJSON 数据
+    const name = areaNode.getName();
+
     provinceChart && provinceChart.destroy();
     provinceChart = null;
-    if (!provinceData) {
+    if (!geoJSON || currentAreaNode && ('' + currentAreaNode.getAdcode() === '' + adcode)) {
       return;
     }
-    const dv = processData(provinceData);
-
+    const dv = processData(geoJSON);
     // start: 计算地图的最佳宽高
     const longitudeRange = dv.range('longitude');
     const lantitudeRange = dv.range('lantitude');
@@ -62,14 +157,13 @@ relativePlots:
     let width;
     let height;
     if (ratio > 1) {
-      width = 450;
+      width = $('#province').width();
       height = width / ratio;
     } else {
-      width = 350 * ratio;
-      height = 350;
+      width = 300 * ratio;
+      height = $('#province').height();
     }
     // end: 计算地图的最佳宽高
-
     provinceChart = new G2.Chart({
       container: 'province',
       width,
@@ -97,71 +191,46 @@ relativePlots:
         lineWidth: 1,
       })
       .color('value', '#BAE7FF-#1890FF-#0050B3');
-      provinceChart.render();
-  }
-
-  const mapData = ChinaGeoJSON['China'];
-  const chinaDv = processData(mapData);
-  const longitudeRange = chinaDv.range('longitude');
-  const lantitudeRange = chinaDv.range('lantitude');
-  const ratio = (longitudeRange[1] - longitudeRange[0]) / (lantitudeRange[1] - lantitudeRange[0]);
-
-  const chart = new G2.Chart({
-    container: 'china',
-    width: 250,
-    height: 250 / ratio,
-    padding: 0,
-    animate: false
-  });
-
-  chart.source(chinaDv);
-  chart.tooltip({
-    showTitle: false,
-  });
-  chart.axis(false);
-  chart
-    .polygon()
-    .position('longitude*lantitude')
-    .tooltip('name')
-    .style({
-      stroke: '#bfbfbf',
-      lineWidth: 1,
-      fill: '#e3e3e3',
-      globalAlpha: 0.85,
-      cursor: 'pointer', // 设置鼠标手势
-    })
-    .select({
-      // 设置是否允许选中以及选中样式
-      mode: 'single', // 多选还是单选
+    provinceChart.guide().text({
+      position: [ 'min', 'max'],
+      offsetY: 20,
+      content: name,
       style: {
-        fill: '#1890ff', // 选中的样式
-      },
+        fontSize: 14,
+        fontWeight: 'bold'
+      }
     });
-  chart.render();
-
-  const shapes = chart.getAllGeoms()[0].getShapes();
-  for (let i = 0, len = shapes.length; i < len; i++) {
-    const shape = shapes[i];
-    const origin = shape.get('origin')['_origin'];
-    const name = origin.name;
-    if (name === '浙江') {
-      renderProvinceChart(name);
-      chart.getAllGeoms()[0].setShapeSelected(shape);
-    }
+    provinceChart.render();
   }
 
-  chart.on('plotclick', function(ev) {
-    const shape = ev.shape;
-    if (!shape || !shape.name) {
-      return false;
+  function processData(geoJSON) {
+    const mapData = {
+      type: 'FeatureCollection',
+      features: geoJSON
+    };
+    // 构造虚拟数据
+    const userData = [];
+    for (let i = 0; i < geoJSON.length; i++) {
+      const name = geoJSON[i].properties.name;
+      userData.push({
+        name: name,
+        value: Math.round(Math.random() * 1000),
+      });
     }
-    if (shape.get('selected')) {
-      const item = shape.get('origin');
-      const data = item['_origin'];
-      const name = data.name;
-      renderProvinceChart(name);
-    } else {
-      provinceChart && provinceChart.clear();
-    }
-  });
+    const ds = new DataSet();
+    const geoDataView = ds.createView().source(mapData, {
+      type: 'GeoJSON',
+    }); // geoJSON 经纬度数据
+
+    // 用户数据
+    const dvData = ds.createView().source(userData);
+    dvData.transform({
+      type: 'geo.region',
+      field: 'name',
+      geoDataView: geoDataView,
+      as: ['longitude', 'lantitude'],
+    });
+
+    return dvData;
+  }
 </script>

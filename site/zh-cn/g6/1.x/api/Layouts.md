@@ -6,10 +6,15 @@
      - ${url.g6}
 -->
 
+<style>
+.inner-page-toc{
+  display: none;
+}
+</style>
+
 # Layouts
 
 本文档是关系图库 —— G6.Layouts 布局包文档, 您能从该文档中快速查找到其内置的所有布局。如果有你觉得描述的不够清晰的地方敬请[联系我们](/about/index.html)！G6 当前支持的布局：
-
 
 ## 树布局
 
