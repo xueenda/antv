@@ -25,7 +25,11 @@ var md2html = require('../lib/md2html');
 var imageminDir = require('../lib/imagemin-dir');
 var pkg = require('../package.json');
 
-program.version(pkg.version).option('-c, --config', 'configuration').parse(process.argv);
+program
+    .version(pkg.version)
+    .option('-c, --config <config>', 'configuration')
+    .option('-f, --filter <filter>', 'filtering')
+    .parse(process.argv);
 
 var CONFIG = loadConfig(program.config);
 var screenshots = CONFIG.screenshots,
@@ -97,12 +101,18 @@ getPort().then(function (port) {
 
                 var relativeUrl = relative(dest, targetFilename);
                 var targetUrl = join(url, relativeUrl);
-
                 var outputFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.png');
                 debug(screenshotDest, fileBasename);
+                var ignore = false;
                 if (htmlMeta.screenshot) {
+                    ignore = true;
                     debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> skipping file because screenshot is specified......');
-                } else {
+                }
+                if (program.filter && relativeName.indexOf(program.filter) === -1) {
+                    ignore = true;
+                    debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> skipping file because filter condition not matched......');
+                }
+                if (!ignore) {
                     taskQueue.push({
                         fileBasename: fileBasename,
                         outputFilename: outputFilename,
