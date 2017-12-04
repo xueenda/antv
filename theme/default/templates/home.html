@@ -1,22 +1,19 @@
 {% extends "layout.html" %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/slick-1.8.0/slick.css" />
-<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/slick-1.8.0/slick-theme.css" />
-<link rel="stylesheet" type="text/css" href="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/highlight-9.12.0/solarized-light.css" />
-<!--<link rel="stylesheet" type="text/css" href="{{ dist }}/scroll2top.css" />-->
-<link rel="stylesheet" type="text/css" href="{{ dist }}/home.css" />
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick.css" />
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick-theme.css" />
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css" />
+<link rel="stylesheet" href="{{ dist }}/home.css" />
 {% endblock %}
 {% block content %}{{ content | safe }}{% endblock %}
 {% block plugins %}
-<!--scroll2top-->
-<!--<div class="scroll2top">top</div>-->
 {% endblock %}
 {% block footer %}
 {% include "partial/site-map.html" %}
 {% endblock %}
 {% block js %}
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/jquery.headroom-0.9.4.min.js"></script>
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/slick-1.8.0/slick.min.js"></script>
-<script type="text/javascript" src="https://gw.alipayobjects.com/as/g/datavis/assets/1.0.2/clipboard-1.7.1.min.js"></script>
-<script type="text/javascript" src="{{ dist }}/home.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js"></script>
+<script src="{{ dist }}/home.js"></script>
 {% endblock %}

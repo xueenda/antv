@@ -52,11 +52,13 @@ const chart = new G2.Chart({
 
 ### `width`
 
-指定图表的宽度，默认单位为 'px'，当 `forceFit: true` 是宽度不生效。
+指定图表的宽度，单位为 'px'，当 `forceFit: true` 时宽度配置不生效。
 
 ### `height`
 
-指定图表的高度，默认单位为 'px'。
+指定图表的高度，单位为 'px'。
+
+> 宽和高未指定时，默认为 500px
 
 ### `padding`
 
@@ -66,7 +68,7 @@ const chart = new G2.Chart({
 2. `padding: 20`
 3. `padding: { top: 20, right: 30, bottom: 20, left: 30 }`
 
-另外也支持设置百分比，如 `padding: [ 20%, 30% ]`，该百分比相对于整个图表的宽高。
+另外也支持设置百分比，如 `padding: [ '20%', '30%' ]`，该百分比相对于整个图表的宽高。
 
 padding 为数字以及数组类型时使用方法同 CSS 盒模型。
 

@@ -111,9 +111,9 @@ G2.MatrixUtil.transform([ 1, 0, 0, 0, 1, 0, 0, 0, 1 ], [
 | `parsePathString(pathString)` | `pathString`:String，字符串格式的路径，如 'M 10,39 L 20,50' | 将字符串格式的路径转换为数组格式，[ [ 'M', 10, 39 ], [ 'L', 20, 50 ] ] |
 | `parsePathArray(pathArray)` | `pathArray`:Array，数组格式的路径，如 [ [ 'M', 10, 39 ], [ 'L', 20, 50 ] ] | 将数组格式的路径转化为字符串，'M 10,39 L 20,50' |
 | `pathTocurve(path)` | `path`:Array，数组格式的路径 | 路径转曲 |
-| `pathToAbsolute(path)` | `path`:Array，数组格式的路径 | 将所有的路径命令转换为绝对定位。 |
-| `catmullRomToBezier(pointsArray)` | `pointsArray`:Array，点的数组，如 [ [10, 12], [22, 1], ... ] | 将传入的点转曲。 |
-| `intersection(path1, path2)` | `path1`:Array，数组格式的路径；`path2`:Array，数组格式的路径 | 两条路径差值计算。 |
+| `pathToAbsolute(path)` | `path`:Array，数组格式的路径 | 将所有的路径命令转换为绝对定位 |
+| `catmullRomToBezier(pointsArray)` | `pointsArray`:Array，点的数组，如 [ 10, 12, 22, 1, ... ] | 将传入的点（至少四组点）转曲 |
+| `intersection(path1, path2)` | `path1`:Array，数组格式的路径；`path2`:Array，数组格式的路径 | 两条路径差值计算 |
 
 ### G
 

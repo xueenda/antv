@@ -124,7 +124,7 @@ formatter| 输出字段时的格式化函数，会影响数据在坐标轴、图
 min| 定义域的最小值
 max| 定义域的最大值
 tickCount| 连续类型的度量，默认生成坐标点的个数是5
-tickInterval| 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明
+tickInterval| 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 同时声明时以 tickCount 为准
 nice| 是否根据人对数字识别的友好度，来调整min和max。例如 min:3,max: 97，如果nice: true，那么会自动调整为：min: 0,max: 100
 
 ### cat
