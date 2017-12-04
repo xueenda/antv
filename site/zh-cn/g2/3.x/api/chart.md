@@ -495,6 +495,8 @@ chart.axis('x', {
       lineDash: [4, 4 ] // 网格线的虚线配置，第一个参数描述虚线的实部占多少像素，第二个参数描述虚线的虚部占多少像素
     },
     alternateColor: '#ccc' | [ '#f80', '#ccc' ], // 当网格类型 type 为 polygon 时，使用 alternateColor 为网格设置交替的颜色，指定一个值则先渲染奇数层，两个值则交替渲染
+    hideFirstLine: true | false, // 是否隐藏第一条网格线，默认为 false
+    hideLastLine: true | false // 是否隐藏最后一条网格线，默认为 false
   }
   ```
 
@@ -1055,9 +1057,9 @@ chart.tooltip(true, {
 
   该属性设置之后，就会在固定位置展示 tooltip，可设置的值为：`left`、`right`、`top`、`bottom`。
 
-  11. `hideMarkders`: boolean
+  11. `hideMarkers`: boolean
 
-  对于 line、area、path 这三种几何图形，我们在渲染 tooltip 时会自动渲染 tooltipMarker <img src="https://gw.alipayobjects.com/zos/rmsportal/BlTPaZMgrTjZINmXExtm.png" style="width: 20px;">，通过声明该属性值为 false 来关闭 tooltipMarker。
+  对于 line、area、path 这三种几何图形，我们在渲染 tooltip 时会自动渲染 tooltipMarker <img src="https://gw.alipayobjects.com/zos/rmsportal/BlTPaZMgrTjZINmXExtm.png" style="width: 20px;">，通过声明该属性值为 `true` 来关闭 tooltipMarker。
 
   12. `containerTpl`: string
 
@@ -2065,6 +2067,44 @@ chart.on('tooltip:change', ev => {}); // tooltip 内容发生变化的时候
 ```js
 chart.on('point:click', ev => {});
 chart.on('axis-label:click', ev => {});
+```
+
+由于我们抛出的图形元素事件是通用的，所以当需要针对某一个具体的图形元素进行事件监听时，我们提供了一个 `appendInfo` 属性，用于帮助用户对特定的图形元素进行事件标识，该属性可用于以下四个接口：
+
+- `chart.axis()`
+- `chart.legend()`
+- `chart.guide()`
+- `geom().label()`
+
+使用方式如下：
+
+```js
+chart.guide().line({
+  top: true,
+  start: ['min', 50],
+  end: ['max', 50],
+  text: {
+    content: 'Safe sugar intake 50g/day',
+    position: 'end',
+    style: {
+      textAlign: 'end'
+    }
+  },
+  lineStyle: {
+    endArrow: true,
+    lineWidth: 10
+  },
+  appendInfo: {
+    id: 'sugar'
+  }
+});
+
+chart.on('guide-line:click', ev => {
+  console.log('guide-line:click', ev.appendInfo); // {id: 'sugar'}
+});
+chart.on('guide-line-text:click', ev => {
+  console.log('guide-line-text:click', ev.appendInfo); // {id: 'sugar'}
+});
 ```
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/eFRpBGmvDRAhYnCcrnnh.png" style="width: 50%;">
