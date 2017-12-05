@@ -39,7 +39,6 @@ function renderFile(filename) {
     filename = resolve(src, filename);
     var templateMap = program.dev ? loadTemplates(resolve(theme.root, theme.templates)) : TEMPLATE_MAP;
     var config = program.dev ? loadConfig(program.config) : CONFIG;
-    debug(config);
     return md2html(filename, src, config, templateMap, null, program.dev).content;
 }
 
