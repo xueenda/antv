@@ -820,3 +820,19 @@ graph.changeSize(width, height);
  */
 graph.updateNodesPositon();
 ```
+
+
+### updateAnchor
+
+更新锚点
+
+```js
+/**
+  * 更新锚点
+  * @param {Object}  node          节点
+  * @param {Object}  anchorIndex   目标锚点索引
+  * @param {Object}  cfg           配置项
+  * @return {Object} self
+  */
+graph.updateAnchor(node, anchorIndex, cfg)
+```
