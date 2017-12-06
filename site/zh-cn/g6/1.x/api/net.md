@@ -138,7 +138,7 @@ net.add(type, model);
   id,      // 唯一标识
   x,       // x 坐标
   y,       // y 坐标
-  size,    // 尺寸
+  size,    // 尺寸  Number || Array [width, height] [长, 宽]
   style,   // 样式
   color,   // 颜色
   shape,   // 形状
