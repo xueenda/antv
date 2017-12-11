@@ -9,7 +9,7 @@ variations:
 
 # 点描法地图
 
-<img src="https://t.alipayobjects.com/images/T1txXjXaVfXXXXXXXX.png" />
+<img src="https://gw.alipayobjects.com/zos/rmsportal/dpmTuGGpBkGJidrRZFyy.png" />
 
 ## 点描法地图的简介
 
@@ -25,7 +25,7 @@ variations:
 
 ## 点描法地图的构成
 
-<img class="constitute-img" src="https://t.alipayobjects.com/images/T1i_JjXk8bXXXXXXXX.png" />
+<img class="constitute-img" src="https://gw.alipayobjects.com/zos/rmsportal/dZZwpIrEYwJDsfaTNIOk.png" style="max-width: 450px;" />
 
 <table class="struct-table">
   <tr>
@@ -171,117 +171,5 @@ variations:
 
 #### 不适合的场景
 
-例子1： **iphone5 全国销量** 
+汇总值在地图上的分布和对比，用点描法地图不太合适，最好采用气泡图结合地图来展示，气泡的大小作为一个维度可以显示出汇总值的分布和对比情况。
 
-汇总值在地图上的分布和对比，用点描法地图不太合适，最好采用气泡图结合地图来展示，气泡的大小作为一个维度可以显示出汇总值的分布和对比情况。<code>数据来源丢失，数据不可靠！</code>
-
-<div id="c2"></div>
-
-```js-
-  $.getJSON('/assets/data/china-geo.json', function(mapData) {
-    var ds = new DataSet();
-    var mapDv = ds.createView().source(mapData, {
-      type: 'GeoJSON'
-    });
-    var userData = [];
-    var features = mapData.features;
-    for(var feature of features) {
-      var name = feature.properties.name;
-      userData.push({
-        name: name
-      });
-    }
-    var chart = new G2.Chart({
-      container: 'c2',
-      forceFit: true,
-      height: 450,
-      padding: [0, 50]
-    });
-    chart.scale({
-      longitude: {
-        sync: true
-      },
-      latitude: {
-        sync: true
-      },
-    });
-    chart.tooltip({
-      showTitle: false
-    });
-
-    var mapView = chart.view();
-    mapView.source(mapDv);
-    mapView.axis(false);
-    mapView.tooltip(false);
-    mapView.polygon()
-      .position('longitude*latitude')
-      .style({
-        fill:'white',
-        stroke: '#333',
-        lineWidth: 1
-      });
-          
-    var randomData = function(){
-      return Math.round(Math.random()*1000);
-    }
-  
-    var data = [
-      {name: '北京',value: randomData() },
-      {name: '天津',value: randomData() },
-      {name: '上海',value: randomData() },
-      {name: '重庆',value: randomData() },
-      {name: '河北',value: randomData() },
-      {name: '河南',value: randomData() },
-      {name: '云南',value: randomData() },
-      {name: '辽宁',value: randomData() },
-      {name: '黑龙江',value: randomData() },
-      {name: '湖南',value: randomData() },
-      {name: '安徽',value: randomData() },
-      {name: '山东',value: randomData() },
-      {name: '新疆',value: randomData() },
-      {name: '江苏',value: randomData() },
-      {name: '浙江',value: randomData() },
-      {name: '江西',value: randomData() },
-      {name: '湖北',value: randomData() },
-      {name: '广西',value: randomData() },
-      {name: '甘肃',value: randomData() },
-      {name: '山西',value: randomData() },
-      {name: '陕西',value: randomData() },
-      {name: '吉林',value: randomData() },
-      {name: '福建',value: randomData() },
-      {name: '贵州',value: randomData() },
-      {name: '广东',value: randomData() },
-      {name: '青海',value: randomData() },
-      {name: '西藏',value: randomData() },
-      {name: '四川',value: randomData() },
-      {name: '宁夏',value: randomData() },
-      {name: '海南',value: randomData() },
-      {name: '台湾',value: randomData() },
-      {name: '香港',value: randomData() },
-      {name: '澳门',value: randomData() }			    
-    ];
-    var userDv = ds.createView().source(data);
-    userDv.transform({
-      type: 'geo.centroid',
-      geoDataView: mapDv,
-      field: 'name',
-      as: [ 'longitude', 'latitude' ]
-    });
-    var dotView = chart.view();
-    dotView.source(userDv);
-    dotView.axis(false);
-    dotView.point()
-      .position('longitude*latitude')
-      .color('#6A006F')
-      .shape('circle')
-      .tooltip('name*value', (name, value) => {
-        return {
-            name,
-            value
-        }
-      });
-
-    chart.legend(false);
-    chart.render();
-  });
-```
