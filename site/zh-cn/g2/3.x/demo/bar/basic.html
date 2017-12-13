@@ -23,7 +23,7 @@ relativePlots:
     .transform({
       type: 'sort',
       callback(a, b) { // 排序依据，和原生js的排序callback一致
-        return a.population - b.population > 0;
+        return a.population - b.population;
       }
     });
   const chart = new G2.Chart({
