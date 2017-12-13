@@ -53,13 +53,13 @@ import Plugins from '@antv/g6-plugins';
 #### 第二步 —— 实例化插件：
 
 ```js
-const plugin = new G6.Plugins['name']();
+const plugin = new Plugins['name']();
 ```
 
 #### 第三步 —— 配置插件到图类：
 
 ```js
-const plugin = new G6.Plugins['name']();
+const plugin = new Plugins['name']();
 const net = new G6.Net({
   plugins: [plugin]
 });
@@ -72,7 +72,7 @@ const net = new G6.Net({
 
 [![image](https://gw.alipayobjects.com/zos/rmsportal/lFrGMlJUldtKOYdHlYnR.png)](../demo/other/plugin-dagre.html)
 
-### G6 \['layout.dagre'\]\(cfg\)
+### new Plugins\['layout.dagre'\]\(cfg\)
 
 #### 参数
 
@@ -116,7 +116,7 @@ const net = new G6.Net({
 
 [![image](https://gw.alipayobjects.com/zos/rmsportal/CpxlqFNQcBDbDyHYpTau.png)](../demo/other/plugin-d3-force.html)
 
-###  new G6.Plugins\['layout.d3.force'\](cfg)</span>
+###  new Plugins\['layout.d3.force'\](cfg)</span>
 #### 参数
 
 - `cfg`: object
@@ -153,7 +153,7 @@ const net = new G6.Net({
 
 [![image](https://gw.alipayobjects.com/zos/rmsportal/zVrjOLIdwlHoZbmmhSkO.gif)](../demo/other/plugin-minimap.html)
 
-### new G6.Plugins\['tool.minimap'\](cfg)
+### new Plugins\['tool.minimap'\](cfg)
 
 #### 参数
 
@@ -265,7 +265,7 @@ edge:
 }
 ```
 
-### <span>new G6\['template.analysis.maxSpanningForest'\](cfg)</span>
+### <span>new Plugins\['template.analysis.maxSpanningForest'\](cfg)</span>
 
 
 #### 参数
@@ -328,7 +328,7 @@ edge:
 
 [![image](https://gw.alipayobjects.com/zos/rmsportal/pVPRCHCjOzneemiAzEpL.png)](../demo/other/plugin-d3-mapper.html)
 
-### new G6\['enhance.d3.mapper'\](itemType, dim, channel, range, cfg)
+### new Plugins\['enhance.d3.mapper'\](itemType, dim, channel, range, cfg)
 
 - `itemType`: string
 
