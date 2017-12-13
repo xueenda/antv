@@ -87,7 +87,7 @@ app.use((req, res, next) => {
 
 function serve(port) {
     http.createServer(app).listen(port);
-    var url = 'http://127.0.0.1:' + port;
+    var url = 'http://127.0.0.1:' + port + '/index.html';
     debug('server is ready on port: ' + port + '! url: ' + url);
     if (program.open) {
         open(url);
