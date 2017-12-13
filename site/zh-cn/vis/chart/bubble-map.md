@@ -127,7 +127,7 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
     .position('longitude*latitude')
     .style({
       fill: '#ccc',
-      stroke: '#fff',
+      stroke: '#bfbfbf',
       lineWidth: 1
     });
 
@@ -221,7 +221,7 @@ $.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
   view.polygon()
     .position('longitude*latitude')
     .style({
-      stroke: '#fff',
+      stroke: '#bfbfbf',
       fill: '#E6E6E6',
       lineWidth: 1
     });
@@ -351,7 +351,7 @@ longitude(经度) |latitude（维度）|temperature
 </div>
 
 ```js-
-  $.getJSON('/assets/data/china-geo.json', function(mapData) {
+  $.getJSON('/assets/data/world.geo.json', function(mapData) {
     $.getJSON('/assets/data/temp.json', function(data) {
       var ds = new DataSet();
       var mapDv = ds.createView('map').source(mapData, {
@@ -405,7 +405,7 @@ longitude(经度) |latitude（维度）|temperature
       userView.source(userDv);
       userView.point()
         .position('longitude*latitude')
-        .size('temperature', [1, 12])
+        .size('temperature', [1, 8])
         .color('temperature','#50a3ba-#eac736-#d94e5d')
         .shape('circle')
         .tooltip('city*temperature')
@@ -429,7 +429,7 @@ longitude(经度) |latitude（维度）|temperature
 </div>
 
 ```js-
-  $.getJSON('/assets/data/china-geo.json', function(mapData) {
+  $.getJSON('/assets/data/world.geo.json', function(mapData) {
     $.getJSON('/assets/data/temp.json', function(data) {
       var ds = new DataSet();
       var mapDv = ds.createView('map').source(mapData, {
@@ -489,7 +489,7 @@ longitude(经度) |latitude（维度）|temperature
       userView.source(userDv);
       userView.heatmap()
         .position('longitude*latitude')
-        .size(10)
+        .size(5)
         .color('temperature','#50a3ba-#eac736-#d94e5d')
         .shape('circle')
         .opacity(0.8)

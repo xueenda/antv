@@ -35,11 +35,12 @@
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js"></script>
 <div id="___tracers" style="display:none;">
-    <script src="https://s11.cnzz.com/z_stat.php?id=1259109662&web_id=1259109662"></script>
-    <script async src="https://tracert.alipay.com/bucNameTracker.js"></script>
-    <script async src="https://tracert.alipay.com/loader.js"></script>
+    <script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&web_id=1259109662"></script>
     <script>
-        window._readyToRun = window._readyToRun || [];window._Tracert = window._Tracert || { _isInit: true, call: function() {_readyToRun.push(arguments)}, start: function() {this.call('start')} };_Tracert.call('plugins', ['BucName']);_Tracert.call('config', { spmAPos: 'a369', spmBPos: 'b3938'});_Tracert.start();
+        !function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });
     </script>
 </div>
 {% if externalJsNotAllow %}

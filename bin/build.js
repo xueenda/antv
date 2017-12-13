@@ -42,8 +42,6 @@ function renderFile(filename) {
     return md2html(filename, src, config, templateMap, null, program.dev).content;
 }
 
-// indexing
-
 var walker = walk(src, { followLinks: false });
 walker.on('file', function (root, stat, next) {
     var relativeName = relative(src, join(root, stat.name));
