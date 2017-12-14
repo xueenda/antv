@@ -148,6 +148,7 @@ module.exports = {
     showFooter: true,
     footer: {
         isFixed: false,
+        isDark: true,
         resources: [
             { text: '关于我们', href: '' },
             { text: '版权说明', href: '' },

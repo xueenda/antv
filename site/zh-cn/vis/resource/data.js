@@ -57,7 +57,6 @@ module.exports = {
     docsCount: docList.length,
     template: 'doc',
     docMenuHeader: '${resource.translate.visResource}',
-    showFooter: false,
     docFilteringSupport: true,
     resourceCards: [
         {

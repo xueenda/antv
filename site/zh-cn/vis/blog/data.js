@@ -69,7 +69,6 @@ module.exports = {
     docsCount: docList.length,
     template: 'blog',
     docMenuHeader: '${resource.translate.visBlog}',
-    showFooter: false,
     docFilteringSupport: true,
     resource: {
         jsFiles: [
