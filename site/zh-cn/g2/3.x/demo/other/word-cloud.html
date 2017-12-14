@@ -14,84 +14,78 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
 -->
 
 <script>
-  function getTextAttrs(cfg) {
-    return _.assign({}, {
-      fillOpacity: cfg.opacity,
-      fontSize: cfg.size,
-      rotate: cfg.origin._origin.rotate,
-      text: cfg.origin._origin.text,
-      textAlign: 'center',
-      fontFamily: cfg.origin._origin.font,
-      fill: cfg.color,
-      textBaseline: 'Alphabetic'
-    }, cfg.style);
-  }
-  // 给point注册一个词云的shape
-  G2.Shape.registerShape('point', 'cloud', {
-    drawShape(cfg, container) {
-      const attrs = getTextAttrs(cfg);
-      return container.addShape('text', {
-        attrs: _.assign(attrs, {
-          x: cfg.x,
-          y: cfg.y
-        })
-      });
+    function getTextAttrs(cfg) {
+        return _.assign({}, {
+            fillOpacity: cfg.opacity,
+            fontSize: cfg.origin._origin.size,
+            rotate: cfg.origin._origin.rotate,
+            text: cfg.origin._origin.text,
+            textAlign: 'center',
+            fontFamily: cfg.origin._origin.font,
+            fill: cfg.color,
+            textBaseline: 'Alphabetic'
+        }, cfg.style);
     }
-  });
-  $.getJSON('/assets/data/g2pv.json', data => {
-    const ds = new DataSet();
-    const dv = ds.createView('g2pv').source(data);
-    dv.transform({
-      type: 'tag-cloud',
-      fields: [ 'site', 'pv' ],
-      font: 'Impact',
-      size: [ window.innerWidth, window.innerHeight ],
-      padding: 0,
-      text(d) {
-        const site = d.site;
-        let index = site.indexOf('.');
-        let text = site;
-        if (index > 0 && index < site.length) {
-          text = site.substr(0, index);
-          // 当字符串是'www'时获取下一个
-          if (text === 'www') {
-            text = site.substr(index + 1);
-            index = text.indexOf('.');
-            text = text.substr(0, index);
-          }
-          // 当字符串是数字时获取整个网址
-          if (/^[0-9]*$/g.test(text)) {
-            text = site;
-          }
+
+    // 给point注册一个词云的shape
+    G2.Shape.registerShape('point', 'cloud', {
+        drawShape(cfg, container) {
+            const attrs = getTextAttrs(cfg);
+            return container.addShape('text', {
+                attrs: _.assign(attrs, {
+                    x: cfg.x,
+                    y: cfg.y
+                })
+            });
         }
-        return text;
-      },
-      fontSize(d) {
-        const max = dv.max('pv');
-        const min = dv.min('pv');
-        return ((d.pv - min) / (max - min)) * (80 - 14) + 14;
-      }
     });
-    const chart = new G2.Chart({
-      container: 'mountNode',
-      width: window.innerWidth,
-      height: window.innerHeight,
-      padding: 0,
+    $.getJSON('/assets/data/world-population.json', data => {
+        const dv = new DataSet.View().source(data);
+        const range = dv.range('value');
+        const min = range[0];
+        const max = range[1];
+        dv.transform({
+            type: 'tag-cloud',
+            fields: ['x', 'value'],
+            size: [window.innerWidth, window.innerHeight],
+            font: 'Verdana',
+            padding: 0,
+            timeInterval: 5000, // max execute time
+            rotate() {
+                let random = ~~(Math.random() * 4) % 4;
+                if (random == 2) {
+                    random = 0;
+                }
+                return random * 90; // 0, 90, 270
+            },
+            fontSize(d) {
+                if (d.value) {
+                    return ((d.value - min) / (max - min)) * (80 - 24) + 24;
+                }
+                return 0;
+            }
+        });
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            width: window.innerWidth,
+            height: window.innerHeight,
+            padding: 0,
+        });
+        chart.source(dv, {
+            x: {nice: false},
+            y: {nice: false}
+        });
+        chart.legend(false);
+        chart.axis(false);
+        chart.tooltip({
+            showTitle: false
+        });
+        chart.coord().reflect();
+        chart.point()
+            .position('x*y')
+            .color('category')
+            .shape('cloud')
+            .tooltip('value*category');
+        chart.render();
     });
-    chart.source(dv);
-    chart.legend(false);
-    chart.axis(false);
-    chart.tooltip({
-      showTitle: false
-    });
-    chart.coord().reflect();
-    chart.point()
-      .position('x*y')
-      .color('text')
-      .size('size', function(size) {
-        return size;
-      })
-      .shape('cloud');
-    chart.render();
-  });
 </script>

@@ -1,4 +1,4 @@
-<--
+<!--
 title: 词云
 tags:
   - compare
@@ -161,13 +161,14 @@ $.getJSON('/assets/data/g2pv.json', data => {
 ```js-
 const imageMask = new Image();
 imageMask.crossOrigin = '';
-imageMask.src = 'https://zos.alipayobjects.com/rmsportal/EEFqYWuloqIHRnh.jpg';
+imageMask.src = 'https://gw.alipayobjects.com/zos/rmsportal/mttlWMkaUOSlczceleJf.png';
 imageMask.onload = () => {
   $.getJSON('/assets/data/g2pv.json', data => {
     const chart = new G2.Chart({
       container: 'c2',
       forctFit: true,
       height: 500,
+      padding: 0,
     });
     const dv = new DataSet.View().source(data);
     dv.transform({
@@ -175,6 +176,7 @@ imageMask.onload = () => {
       fields: [ 'site', 'pv' ],
       font: 'Impact',
       size: [ chart.get('width'), chart.get('height') ],
+      imageMask,
       padding: 0,
       text: getText,
       fontSize(d) {
@@ -224,9 +226,7 @@ $.getJSON('/assets/data/g2pv.json', function(data) {
     padding: 0,
     text: getText,
     fontSize(d) {
-      const max = dv.max('pv');
-      const min = dv.min('pv');
-      return ((d.pv - min) / (max - min)) * (80 - 14) + 14;
+      return 24;
     }
   });
   chart.source(dv);
@@ -256,7 +256,7 @@ $.getJSON('/assets/data/g2pv.json', function(data) {
   data.sort(function(a, b) {
     return b.pv - a.pv;
   });
-  data = data.slice(0, 10);
+  data = data.slice(0, 5);
   const chart = new G2.Chart({
     container: 'c4',
     forctFit: true,
@@ -277,7 +277,6 @@ $.getJSON('/assets/data/g2pv.json', function(data) {
       return ((d.pv - min) / (max - min)) * (80 - 14) + 14;
     }
   });
-  console.log(dv);
   chart.source(dv);
   chart.legend(false);
   chart.axis(false);

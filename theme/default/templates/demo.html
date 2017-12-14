@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% set externalJsNotAllow = true %}
 {% block css %}
-<link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.css">
+<link rel="stylesheet"
+      href="https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.css">
 <link rel="stylesheet" href="{{ dist }}/demo.css"/>
 {% endblock %}
 {% block content %}
@@ -119,6 +120,10 @@
                 <section class="description">
                     <h4>{{ resource.translate.plotDescription }}</h4>
                     <div> {{ plotDescription | safe }}</div>
+                    {% if chartDetail %}
+                    <p><a href="{{ chartDetail }}">{{ resource.translate.chartDetail }}<span
+                            class="iconfont icon-right"></span></a></p>
+                    {% endif %}
                 </section>
                 {% endif %}
                 {% if plotUsage %}
@@ -146,12 +151,7 @@
                 {% endif %}
                 {% if template == 'g2-demo' %}
                 <section class="links">
-                    {% if chartDetail %}
-                    <a href="{{ chartDetail }}">
-                        {{ resource.translate.chartDetail }}
-                        <span class="iconfont icon-right"></span>
-                    </a>
-                    {% endif %}
+                    <h4>{{ resource.translate.referenceLinks }}</h4>
                     <a href="https://alibaba.github.io/BizCharts/demo-detail.html?code=demo/{{ currentDemo.category }}/{{ currentDemo.name }} ">
                         BizCharts
                         <span class="iconfont icon-right"></span>

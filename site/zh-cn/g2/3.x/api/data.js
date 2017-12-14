@@ -57,7 +57,7 @@ module.exports = {
     docsCount: docList.length,
     template: 'doc',
     docMenuHeader: '${resource.translate.api}',
-    showFooter: false,
+    showFooter: true,
     tocifyWithAnchor: true,
     withInnerPageToc: true,
     docFilteringSupport: true

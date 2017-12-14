@@ -122,6 +122,6 @@ $.getJSON('/assets/data/relationship-with-weight.json', function(data) {
 ```
 
 
-例2：** 展示同级实体之间的流通关系 ** 下图展示了某个时段用户使用uber软件在美国旧金山各个城市之间乘车交通的情况，图中的节点表示城市，节点大小表示了交通流量的多少，从图中可以看出，交通行为主要发生在SoMa、Downtown、Financial District、Mission、Marina和Western Addition六个城市。边连接了有交通行为的两个城市，节点上边的条数表示与当前城市有交通行为的城市的数量，边的初始宽度表示从当前城市到目标城市的流通量，边的结束宽度表示从目标城市到当前城市的流通量，从图中可以看出，从 SoMa到Financial District的流量最大，[数据来源：uberdata](https://twitter.com/uberdata)
+例2：**展示同级实体之间的流通关系** 下图展示了某个时段用户使用uber软件在美国旧金山各个城市之间乘车交通的情况，图中的节点表示城市，节点大小表示了交通流量的多少，从图中可以看出，交通行为主要发生在SoMa、Downtown、Financial District、Mission、Marina和Western Addition六个城市。边连接了有交通行为的两个城市，节点上边的条数表示与当前城市有交通行为的城市的数量，边的初始宽度表示从当前城市到目标城市的流通量，边的结束宽度表示从目标城市到当前城市的流通量，从图中可以看出，从 SoMa到Financial District的流量最大，[数据来源：uberdata](https://twitter.com/uberdata)
 
 <img src="https://zos.alipayobjects.com/rmsportal/IWssILKPItzzYdrsmclc.png" style="width: 500px" />

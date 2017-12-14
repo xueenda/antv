@@ -86,7 +86,6 @@ module.exports = {
     docsCount: docList.length,
     template: 'doc',
     docMenuHeader: '${resource.translate.visChart}',
-    showFooter: false,
     docFilteringSupport: true,
     resource: {
         jsFiles: [

@@ -20,8 +20,6 @@ featuresCards:
   - img: ${assets}/image/home/features-powerful.svg
     title: 强大扩展能力
     description: 轻易订制，满足你无限的创意
-footer:
-  isDark: true
 resource:
   jsFiles:
     - ${url.g6}

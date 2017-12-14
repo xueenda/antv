@@ -61,7 +61,6 @@ module.exports = {
     docsCount: docList.length,
     template: 'doc',
     docMenuHeader: '${resource.translate.visDesign}',
-    showFooter: false,
     docFilteringSupport: false,
     resource: {
         jsFiles: [
