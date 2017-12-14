@@ -49,7 +49,7 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
             size: [window.innerWidth, window.innerHeight],
             padding: 0,
             rotate() {
-                return ~~(Math.random() * 8) * 90 / 2;
+                return ~~(Math.random() * 8) * 90 / 2; // 45度为间隔，取8个值
             },
             text(d) {
                 const site = d.site;
