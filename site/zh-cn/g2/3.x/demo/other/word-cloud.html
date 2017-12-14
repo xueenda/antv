@@ -48,8 +48,9 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
             type: 'tag-cloud',
             fields: ['x', 'value'],
             size: [window.innerWidth, window.innerHeight],
-            font: 'Impact',
+            font: 'Verdana',
             padding: 0,
+            timeInterval: 5000, // max execute time
             rotate() {
                 let random = ~~(Math.random() * 4) % 4;
                 if (random == 2) {

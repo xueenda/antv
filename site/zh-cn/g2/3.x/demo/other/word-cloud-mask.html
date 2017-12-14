@@ -52,9 +52,10 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
                 type: 'tag-cloud',
                 fields: ['name', 'value'],
                 imageMask,
-                font: 'Impact',
+                font: 'Verdana',
                 size: [window.innerHeight, window.innerHeight], // 宽高设置最好根据 imageMask 做调整
                 padding: 0,
+                timeInterval: 5000, // max execute time
                 rotate() {
                     let random = ~~(Math.random() * 4) % 4;
                     if (random == 2) {

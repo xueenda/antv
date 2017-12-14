@@ -55,7 +55,7 @@ Choropleth 地图最大的问题在于数据分布和地理区域大小的不对
 
 ### 适合的场景
 
-例子1： **2014 年美国各个州的人口情况（数据来源于 [United States Census Bureau](https://simple.wikipedia.org/wiki/United_States_Census_Bureau)）。** 分级统计地图较多的是反映呈面状但属分散分布的现象，如反映人口密度、某农作物播种面积的比、人均收入等。本例子中，通过颜色的深浅反映了人口的主要分布情况，并且能很明显看出 California、Texas 两大州人口最多，然而对于面积较小的区块，因为人口数量也少，所以渲染的颜色也浅，就导致了这一区块在图上就很难被看见，这也是 Choropleth map 的缺点。
+例子1： **2014 年美国各个州的人口情况（数据来源于 [United States Census Bureau](https://simple.wikipedia.org/wiki/United_States_Census_Bureau)）**。 分级统计地图较多的是反映呈面状但属分散分布的现象，如反映人口密度、某农作物播种面积的比、人均收入等。本例子中，通过颜色的深浅反映了人口的主要分布情况，并且能很明显看出 California、Texas 两大州人口最多，然而对于面积较小的区块，因为人口数量也少，所以渲染的颜色也浅，就导致了这一区块在图上就很难被看见，这也是 Choropleth map 的缺点。
 
 State（州名）| Population（人口）| Code（缩写）
 -----|------|--------
