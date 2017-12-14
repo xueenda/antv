@@ -39,41 +39,29 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
             });
         }
     });
-    $.getJSON('/assets/data/g2pv.json', data => {
-        const ds = new DataSet();
-        const dv = ds.createView('g2pv').source(data);
+    $.getJSON('/assets/data/world-population.json', data => {
+        const dv = new DataSet.View().source(data);
+        const range = dv.range('value');
+        const min = range[0];
+        const max = range[1];
         dv.transform({
             type: 'tag-cloud',
-            fields: ['site', 'pv'],
-            font: 'Impact',
+            fields: ['x', 'value'],
             size: [window.innerWidth, window.innerHeight],
+            font: 'Impact',
             padding: 0,
             rotate() {
-                return ~~(Math.random() * 8) * 90 / 2; // 45度为间隔，取8个值
-            },
-            text(d) {
-                const site = d.site;
-                let index = site.indexOf('.');
-                let text = site;
-                if (index > 0 && index < site.length) {
-                    text = site.substr(0, index);
-                    // 当字符串是'www'时获取下一个
-                    if (text === 'www') {
-                        text = site.substr(index + 1);
-                        index = text.indexOf('.');
-                        text = text.substr(0, index);
-                    }
-                    // 当字符串是数字时获取整个网址
-                    if (/^[0-9]*$/g.test(text)) {
-                        text = site;
-                    }
+                let random = ~~(Math.random() * 4) % 4;
+                if (random == 2) {
+                    random = 0;
                 }
-                return text;
+                return random * 90; // 0, 90, 270
             },
             fontSize(d) {
-                const max = dv.max('pv');
-                const min = dv.min('pv');
-                return ((d.pv - min) / (max - min)) * (80 - 14) + 14;
+                if (d.value) {
+                    return ((d.value - min) / (max - min)) * (80 - 24) + 24;
+                }
+                return 0;
             }
         });
         const chart = new G2.Chart({
@@ -94,8 +82,9 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
         chart.coord().reflect();
         chart.point()
             .position('x*y')
-            .color('text')
-            .shape('cloud');
+            .color('category')
+            .shape('cloud')
+            .tooltip('value*category');
         chart.render();
     });
 </script>
