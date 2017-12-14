@@ -89,6 +89,7 @@ module.exports = {
             privacyDeclaration: '隐私权政策',
             customerDeclaration: '权益保障承诺书',
             feedback: '立即反馈',
+            referenceLinks: '相关链接',
             aboutUs: '关于我们',
         },
         cssFiles: [
