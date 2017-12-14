@@ -41,8 +41,14 @@ export const page3 = [
 
 export const page4 = [
   {
+    name: 'Leland Wilkinson',
+    profile: '伊利诺伊大学计算机科学客座教授，H2O.ai 首席科学家，G2 项目顾问',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/fSPDqijMJrYFdODpgEBV.png',
+    comment: 'I am thrilled with G2. It is amazingly faithful to the GG system and has the potential to generate more graphics. If this project continues with the same energy you have demonstrated so far, this will be the most powerful visualization system in the world.'
+  },
+  {
     name: '陈为',
-    profile: '浙江大学计算机学院 CAD & CG 国家重点实验室教授 可视化专家',
+    profile: '浙江大学计算机学院 CAD & CG 国家重点实验室教授，可视化专家',
     avatar: 'https://os.alipayobjects.com/rmsportal/CcFeLxXurbQmwrT.jpg',
     comment: '在多年可视化设计与开发的积累基础上，蚂蚁金服团队推出了 AntV 产品，这是工业界在基础可视化语法与实践方面发出的最强声音，也是工业界与学术界一道推进可视化研发进展的最佳利器。'
   },
