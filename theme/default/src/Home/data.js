@@ -44,7 +44,7 @@ export const page4 = [
     name: 'Leland Wilkinson',
     profile: '伊利诺伊大学计算机科学客座教授，H2O.ai 首席科学家，G2 项目顾问',
     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/fSPDqijMJrYFdODpgEBV.png',
-    comment: 'I am thrilled with G2. It is amazingly faithful to the GG system and has the potential to generate more graphics. If this project continues with the same energy you have demonstrated so far, this will be the most powerful visualization system in the world.'
+    comment: 'I am thrilled with G2. It is amazingly faithful to the GG system and has the potential to generate more graphics.'
   },
   {
     name: '陈为',

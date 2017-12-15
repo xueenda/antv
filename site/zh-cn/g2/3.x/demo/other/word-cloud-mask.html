@@ -46,14 +46,14 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
         const max = range[1];
         const imageMask = new Image();
         imageMask.crossOrigin = '';
-        imageMask.src = '/assets/image/logo-mask.png';
+        imageMask.src = '/assets/image/logo-mask-16x9.png';
         imageMask.onload = () => {
             dv.transform({
                 type: 'tag-cloud',
                 fields: ['name', 'value'],
                 imageMask,
                 font: 'Verdana',
-                size: [window.innerHeight, window.innerHeight], // 宽高设置最好根据 imageMask 做调整
+                size: [window.innerWidth, window.innerHeight], // 宽高设置最好根据 imageMask 做调整
                 padding: 0,
                 timeInterval: 5000, // max execute time
                 rotate() {
@@ -64,12 +64,12 @@ chartDetail: ${base}zh-cn/vis/chart/word-cloud.html
                     return random * 90; // 0, 90, 270
                 },
                 fontSize(d) {
-                    return ((d.value - min) / (max - min)) * (64 - 12) + 12;
+                    return ((d.value - min) / (max - min)) * (32 - 8) + 8;
                 }
             });
             const chart = new G2.Chart({
                 container: 'mountNode',
-                width: window.innerHeight, // 宽高设置最好根据 imageMask 做调整
+                width: window.innerWidth, // 宽高设置最好根据 imageMask 做调整
                 height: window.innerHeight,
                 padding: 0,
             });
