@@ -11,7 +11,9 @@ class SEEConfAd extends React.Component {
         super(props);
         this.state = {
             animation: {
-                top: '0',
+                position: 'relative',
+                height: window.innerWidth / 1440 * 500,
+                top: 0,
                 repeat: 0,
                 duration: 1000
             }
@@ -39,7 +41,8 @@ class SEEConfAd extends React.Component {
         this.coverTimeout = setTimeout(() => {
             self.setState({
                 animation: {
-                    top: '-200%',
+                    // position: 'absolute',
+                    height: 0,
                     repeat: 0,
                     duration: 1000
                 }
@@ -61,7 +64,9 @@ class SEEConfAd extends React.Component {
             <TweenOne
                 animation={this.state.animation}
                 paused={this.props.paused}
-                style={{top: '-100%'}}
+                style={{
+                    height: 0
+                }}
                 className="see-conf-banner">
                 <a target='_blank' href={link}>
                     <img src="https://gw.alipayobjects.com/zos/rmsportal/srgGWDMwzIsmDIlJDrXk.png"/>

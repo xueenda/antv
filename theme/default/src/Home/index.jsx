@@ -45,21 +45,21 @@ class Home extends React.PureComponent {
     }
 
     render() {
-        const content = [
-            <Banner key="banner" isMobile={this.state.isMobile}/>,
-            <Page1 key="page1"/>,
-            <Page2 key="page2"/>,
-            <Page3 key="page3"/>,
-            <Page4 key="page4" isMobile={this.state.isMobile}/>,
-            <Page5 key="page5"/>,
-        ];
+        const content = [];
         const SEE_CONF_DATE = moment('2018-01-07');
         const now = moment();
         if (now < SEE_CONF_DATE) {
             content.push(<SEEConfAd/>);
         }
         return (
-            content
+            content.concat([
+                <Banner key="banner" isMobile={this.state.isMobile}/>,
+                <Page1 key="page1"/>,
+                <Page2 key="page2"/>,
+                <Page3 key="page3"/>,
+                <Page4 key="page4" isMobile={this.state.isMobile}/>,
+                <Page5 key="page5"/>,
+            ])
         );
     }
 }
