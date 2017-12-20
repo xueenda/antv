@@ -11,8 +11,18 @@ $('.theme-switching .btn').each(function () {
     if (isDark) {
         if ($btn.data('theme') === 'dark') {
             $btn.removeClass('btn-light').addClass('btn-primary');
+            $('a.screenshot-container').each(function () {
+                const $link = $(this);
+                const href = $link.attr('href');
+                $link.attr('href', `${href}?theme=dark`);
+            });
         } else {
             $btn.removeClass('btn-primary').addClass('btn-light');
+            $('a.screenshot-container').each(function () {
+                const $link = $(this);
+                const href = $link.attr('href');
+                $link.attr('href', href.replace('?theme=dark', ''));
+            });
         }
     }
 });

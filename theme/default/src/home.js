@@ -3,8 +3,8 @@ import './copy-code';
 import './home.less';
 
 $('header').headroom({
-    offset: 205,
-    tolerance: 5,
+    offset: 0,
+    tolerance: 0,
     classes: {
         initial: 'animated',
         pinned: 'slideDown',
