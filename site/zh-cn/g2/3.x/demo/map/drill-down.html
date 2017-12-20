@@ -5,6 +5,7 @@ resource:
   jsFiles:
     - ${url.dataSet}
     - ${url.jquery}
+    - ${url.lodash}
     - https://webapi.amap.com/maps?v=1.4.1&key=0d78256ea89beeb8c25d1cd047549d1f
     - https://webapi.amap.com/ui/1.0/main.js?v=1.0.11
 plotDescription: 中国地图-省市下钻
@@ -60,8 +61,9 @@ relativePlots:
     });
     //绘制某个区域的边界
     function renderAreaPolygons(areaNode) {
+      var node = _.cloneDeep(areaNode);
       districtExplorer.clearFeaturePolygons();
-      districtExplorer.renderSubFeatures(areaNode, function(feature, i) {
+      districtExplorer.renderSubFeatures(node, function(feature, i) {
         var fillColor = colors[i % colors.length];
         var strokeColor = colors[colors.length - 1 - i % colors.length];
 
@@ -77,7 +79,7 @@ relativePlots:
       });
 
       //绘制父区域
-      districtExplorer.renderParentFeature(areaNode, {
+      districtExplorer.renderParentFeature(node, {
         cursor: 'default',
         bubble: true,
         strokeColor: 'black', //线颜色
