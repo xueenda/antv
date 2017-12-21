@@ -1,6 +1,7 @@
 @import "./less/headroom.less";
 @import "./less/toc.less";
 @import "./less/article.less";
+@import "./less/search-input.less";
 
 .doc-container {
   min-width: 640px;
@@ -54,8 +55,11 @@
             border: none;
             outline: none;
           }
-          &::placeholder {
-            color: #bfbfbf;
+          &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+            .search-input-placeholder()
+          }
+          &::placeholder { /* Most modern browsers support this now. */
+            .search-input-placeholder()
           }
         }
       }
@@ -238,6 +242,7 @@
     .row {
       //display: block;
     }
+
     .menu {
       position: relative;
       width: 100%;
@@ -245,6 +250,7 @@
         position: relative;
       }
     }
+
     .detail {
       margin-left: 0;
       width: 100%;
