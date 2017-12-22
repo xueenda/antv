@@ -3,6 +3,7 @@
 @import "./less/autocomplete.less";
 @import "./less/site-map.less";
 @import "./less/footer.less";
+@import "./less/search-input.less";
 
 body {
   //overflow: hidden;
@@ -217,8 +218,11 @@ body {
     border: none;
     outline: none;
   }
-  &::placeholder {
-    color: #bfbfbf;
+  &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    .search-input-placeholder()
+  }
+  &::placeholder { /* Most modern browsers support this now. */
+    .search-input-placeholder()
   }
 }
 

@@ -78,6 +78,10 @@ const dv2 = ds.createView('bar', {
 });
 ```
 
+##### options.watchingStates
+
+创建数据视图实例时，传入的 `watchingStates` 是用于指定该数据视图监听的 `states` 状态量的。默认监听所有状态量（也就是任何状态量变更都会导致数据视图重新计算），如果指定为空数组 `[]`，则不监听任何状态量，如果指定为非空数组，则只监听数组元素对应的状态量变更。
+
 #### ds.getView()
 
 `ds.getView(name)` 返回 name 对应的数据视图实例。

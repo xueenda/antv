@@ -1,6 +1,7 @@
 @import "./less/headroom.less";
 @import "./less/toc.less";
 @import "./less/article.less";
+@import "./less/search-input.less";
 
 .doc-container {
   min-width: 640px;
@@ -54,8 +55,11 @@
             border: none;
             outline: none;
           }
-          &::placeholder {
-            color: #bfbfbf;
+          &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+            .search-input-placeholder()
+          }
+          &::placeholder { /* Most modern browsers support this now. */
+            .search-input-placeholder()
           }
         }
       }
@@ -77,7 +81,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         padding: 9.5px 0 9.5px 40px;
-        margin: 0;
+        margin: 4px 0 4px 0;
         border: none;
         a {
           display: block;
@@ -238,6 +242,7 @@
     .row {
       //display: block;
     }
+
     .menu {
       position: relative;
       width: 100%;
@@ -245,6 +250,7 @@
         position: relative;
       }
     }
+
     .detail {
       margin-left: 0;
       width: 100%;
