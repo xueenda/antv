@@ -40,8 +40,8 @@ chart.legend({
   custom: true,
   allowAllCanceled: true,
   items: [
-    { value: 'waiting', fill: '#3182bd', marker: 'square'}, 
-    { value: 'people', fill: '#fdae6b', marker: 'circle' }
+    { value: 'waiting', marker: {symbol: 'square', fill: '#3182bd', radius: 5} }, 
+    { value: 'people', marker: {symbol: 'hyphen', stroke: '#fdae6b', radius: 5, lineWidth: 3} }
   ],
   onClick: ev => {
     const item = ev.item;

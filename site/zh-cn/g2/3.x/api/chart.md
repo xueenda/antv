@@ -834,7 +834,7 @@ chart.legend('gender', {
   默认为 false，当 `custom` 为 true，表示不使用默认生成的图例，允许用户自定义图例，包括具体的图例项以及 click、hover 交互。
 
   自定义图例时需要用户自己声明具体的图例项 `items`(该属性是一个对象数组，数组中每一项为一个对象类型，结构为：
-  `{ value: '', fill: '', marker: '' }`)以及图例项的 hover 和 click 事件。
+  `{ value: '', marker:{fill: 'red'}}`)以及图例项的 hover 和 click 事件。
   
   具体使用如下：
 
@@ -845,18 +845,26 @@ chart.legend('gender', {
     items: [
       { 
         value: 'waiting', // 图例项的文本内容
-        fill: '#3182bd',  // 该图例项 marker 的填充颜色
-        marker: 'shape'  // 该图例项 marker 的形状，参见 marker 参数的说明
+        marker: {
+          symbol: 'circle',  // 该图例项 marker 的形状，参见 marker 参数的说明
+          fill: '#3182bd'  // 该图例项 marker 的填充颜色
+        }
       },
       { 
         value: 'call', 
-        fill: '#99d8c9', 
-        marker: 'shape'
+        marker: {
+          symbol: 'square',  // 该图例项 marker 的形状，参见 marker 参数的说明
+          fill: '#99d8c9'  // 该图例项 marker 的填充颜色
+        }
       },
       { 
         value: 'people',
         fill: '#fdae6b', 
-        marker: 'shape' 
+        marker: {
+          symbol: 'line',  // 该图例项 marker 的形状，参见 marker 参数的说明
+          stroke: '#fdae6b',  // 该图例项 marker 的填充颜色
+          radius: 6
+        }
       }
     ],
     onHover: ev => {}, // 自定义 hover 事件  
@@ -868,18 +876,26 @@ chart.legend('gender', {
     items: [
       { 
         value: 'waiting', // 图例项的文本内容
-        fill: '#3182bd',  // 该图例项 marker 的填充颜色
-        marker: 'shape'  // 该图例项 marker 的形状，参见 marker 参数的说明
+        marker: {
+          symbol: 'circle',  // 该图例项 marker 的形状，参见 marker 参数的说明
+          fill: '#3182bd'  // 该图例项 marker 的填充颜色
+        }
       },
       { 
         value: 'call', 
-        fill: '#99d8c9', 
-        marker: 'shape' 
+        marker: {
+          symbol: 'square',  // 该图例项 marker 的形状，参见 marker 参数的说明
+          fill: '#99d8c9'  // 该图例项 marker 的填充颜色
+        }
       },
       { 
-        value: 'people', 
+        value: 'people',
         fill: '#fdae6b', 
-        marker: 'shape' 
+        marker: {
+          symbol: 'line',  // 该图例项 marker 的形状，参见 marker 参数的说明
+          stroke: '#fdae6b',  // 该图例项 marker 的填充颜色
+          radius: 6
+        }
       }
     ],
     onHover: ev => {}, // 自定义 hover 事件  
@@ -901,7 +917,6 @@ chart.legend('gender', {
     { time: '10:35', call: 8, waiting: 2, people: 1 },
     { time: '10:40', call: 13, waiting: 1, people: 2 }
   ];
-
   const chart = new G2.Chart({
     container: 'c2',
     forceFit: true,
@@ -922,9 +937,9 @@ chart.legend('gender', {
     custom: true,
     allowAllCanceled: true,
     items: [
-      { value: 'waiting', fill: '#3182bd' }, 
-      { value: 'call', fill: '#99d8c9' }, 
-      { value: 'people', fill: '#fdae6b' }
+      { value: 'waiting', marker: {symbol: 'square', fill: '#3182bd', radius: 5} }, 
+      { value: 'call', marker: {symbol: 'hyphen', stroke: '#99d8c9', radius: 5, lineWidth: 3} }, 
+      { value: 'people', marker: {symbol: 'hyphen', stroke: '#fdae6b', radius: 5, lineWidth: 3} }
     ],
     onClick: ev => {
       const item = ev.item;
