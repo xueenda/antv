@@ -67,10 +67,12 @@ const chart = new G2.Chart({
 1. `padding: [ 20, 30, 20, 30]`
 2. `padding: 20`
 3. `padding: { top: 20, right: 30, bottom: 20, left: 30 }`
+4. `padding: 'auto'`
+5. `padding: [20, 'auto', 30, 'auto']` 
 
-另外也支持设置百分比，如 `padding: [ '20%', '30%' ]`，该百分比相对于整个图表的宽高。
-
-padding 为数字以及数组类型时使用方法同 CSS 盒模型。
+* 另外也支持设置百分比，如 `padding: [ '20%', '30%' ]`，该百分比相对于整个图表的宽高。
+* padding 为数字以及数组类型时使用方法同 CSS 盒模型。
+* padding 中存在 'auto'，时会自动计算边框，目前仅考虑 axis 和 legend 占用的边框。
 
 ### `background`
 
