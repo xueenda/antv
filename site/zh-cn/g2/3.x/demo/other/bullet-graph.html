@@ -105,31 +105,26 @@ chartDetail: ${base}zh-cn/vis/chart/bullet.html
     items: [
       {
         value: '差',
-        fill: '#FFA39E',
-        marker: 'square'
+        marker: {symbol: 'square', fill: '#FFA39E', radius: 5}
       },
       {
         value: '良',
-        fill: '#FFD591',
-        marker: 'square'
+        marker: {symbol: 'square', fill: '#FFD591', radius: 5}
       },
       {
         value: '优',
-        fill: '#A7E8B4',
-        marker: 'square'
+        marker: {symbol: 'square', fill: '#A7E8B4', radius: 5}
       },
       {
         value: '实际值',
-        fill: '#223273',
-        marker: 'square'
+        marker: {symbol: 'square', fill: '#223273', radius: 5}
       },
       {
         value: '目标值',
-        fill: '#262626',
         marker: {
-        symbol: 'line',
-        stroke: '#262626',
-        radius: 5
+          symbol: 'line',
+          stroke: '#262626',
+          radius: 5
         }
       },
     ]

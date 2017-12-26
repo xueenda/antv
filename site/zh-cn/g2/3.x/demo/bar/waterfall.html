@@ -104,8 +104,8 @@ relativePlots:
     custom: true,
     clickable: false,
     items: [
-      { value: '各项花销', fill: '#1890FF', marker: 'square' },
-      { value: '总费用', fill: '#8c8c8c', marker: 'square' }
+      { value: '各项花销', marker: {symbol: 'square', fill: '#1890FF', radius: 5}},
+      { value: '总费用', marker: {symbol: 'square', fill: '#8c8c8c', radius: 5}}
     ]
   });
   chart.interval().position('type*money').color('type', type => {
