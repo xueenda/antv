@@ -22,7 +22,7 @@
 ### 浏览器引入
 
 ```js
-<script src="https://gw.alipayobjects.com/as/g/datavis/g6/1.1.6/index.js"></script>
+<script src="{{ url['g6'] }}"></script>
 ```
 
 ### 通过 npm 安装
