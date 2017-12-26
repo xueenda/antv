@@ -481,7 +481,7 @@ chart.line().label('x', {
    * @param  {number} index 索引值
    * @return {string}       返回格式化后的文本
    */
-  formatter: (text, item, index) => {},
+  formatter(text, item, index) {},
   /**
    *  使用 html 渲染文本
    * @param  {string} text  文本值
@@ -489,6 +489,7 @@ chart.line().label('x', {
    * @param  {number} index 索引值
    * @return {string}       返回 html 字符串
    */
+  htmlTemplate(text, item, index) {}
 })
 ```
 

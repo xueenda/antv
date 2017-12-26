@@ -667,7 +667,7 @@ chart.legend('gender', {
   回调函数，用于格式化图例每项的文本显示。
 
   ```js
-  itemFormatte(val) {
+  itemFormatter(val) {
     return val; // val 为每个图例项的文本值
   }
   ```
