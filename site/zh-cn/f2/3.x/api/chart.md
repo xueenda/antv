@@ -47,6 +47,17 @@ const chart = new F2.Chart({
 });
 ```
 
+### context 
+
+* 参数类型：`CanvasRenderingContext2D`
+* 描述：canvas 的上下文，[F2 3.0.1](https://gw.alipayobjects.com/os/antv/assets/f2/3.0.1/f2.js) 版本开始支持。
+
+```js
+const chart = new F2.Chart({
+  context: document.getElementById('c1').getContext('2d')
+});
+```
+
 ### width
 
 * 参数类型：`Number`
@@ -372,7 +383,7 @@ chart.destroy();
 
     当然，如果 x y 值为分类类型的话，还可以传入索引值。
 
-    另外还提供了两个关键字： `min`、`max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
+    另外还提供了两个关键字： `min`、`max`  用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
 
   + `cfg`: Object
 
@@ -449,6 +460,39 @@ chart.guide().line([ 'min', 0 ], [ 'min', 'max' ], {
   lineWidth: 2, // 辅助线宽度
   stroke: '#ccc', // 辅助线颜色设置
   lineDash: [ 2, 2 ]
+});
+```
+
+#### chart.guide().text(point, text, [cfg])
+
+绘制辅助文本。
+
++ `point`: Array
+
+表示文本在画布上的显示位置，为数组 Array 格式： [x, y]：
+
++ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
++ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
+
+当然，如果 x、y 值为分类类型的话，则支持传入索引值。
+
+另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
+
++ `text`: String
+
+指定显示文本的内容。
+
++ `cfg`: Object
+
+辅助文本的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
+
+```js
+// 添加辅助文本
+chart.guide().text([ startXValue, startYValue ], '我是辅助文本', {
+  fontSize: 14,
+  fill: '#f80',
+  fontWeight: 'bold',
+  offset: [ 10, 10] // 格式 Array：[x, y]，代表画布偏移坐标。
 });
 ```
 
