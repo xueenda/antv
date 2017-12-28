@@ -50,7 +50,7 @@ const chart = new F2.Chart({
 ### context 
 
 * 参数类型：`CanvasRenderingContext2D`
-* 描述：canvas 的上下文，[F2 3.0.1](https://gw.alipayobjects.com/os/antv/assets/f2/3.0.1/f2.js) 版本开始支持。
+* 描述：canvas 的上下文，<a href="{{ url.f2 }}">F2 3.0.1</a> 版本开始支持。
 
 ```js
 const chart = new F2.Chart({
