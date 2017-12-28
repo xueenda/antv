@@ -1523,7 +1523,7 @@ html 层级。
 
 ```js
 chart.arc({
-  top: {object}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
+  top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
   start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
   end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
   style: {object} // 图形样式属性
