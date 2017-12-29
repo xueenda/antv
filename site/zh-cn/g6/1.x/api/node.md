@@ -82,7 +82,7 @@ node.getAnchor(param);
 
 <div id="c0"></div>
 
-[示例源码](../demo/other/event.html)
+[示例源码](../demo/other/node-get-fun.html)
 
 ```js-
 var Util = G6.Util;
