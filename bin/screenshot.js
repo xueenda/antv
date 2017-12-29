@@ -61,7 +61,7 @@ getPort().then(function (port) {
     http.createServer(app).listen(port);
     var url = 'http://127.0.0.1:' + port;
     debug('server is ready on port ' + port + '! url: ' + url);
-    var DELAY = 6000;
+    var DELAY = 10000;
 
     function screenshotTasks(tasks, index) {
         var task = tasks[index];
@@ -89,6 +89,13 @@ getPort().then(function (port) {
             }
             var ext = extname(stat.name);
             if (ext === '.html' || ext === '.md') {
+                var ignore = false;
+                if (program.filter && relativeName.indexOf(program.filter) === -1) {
+                    next();
+                    ignore = true;
+                    debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> skipping file because filter condition not matched......');
+                    return;
+                }
                 var renderedFile = renderFile(resolve(root, stat.name), {
                     template: template,
                     demoTheme: demoTheme,
@@ -103,14 +110,9 @@ getPort().then(function (port) {
                 var targetUrl = join(url, relativeUrl);
                 var outputFilename = join(screenshotDest, fileBasename + (demoTheme ? ('-' + demoTheme) : '') + '.png');
                 debug(screenshotDest, fileBasename);
-                var ignore = false;
                 if (htmlMeta.screenshot) {
                     ignore = true;
                     debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> skipping file because screenshot is specified......');
-                }
-                if (program.filter && relativeName.indexOf(program.filter) === -1) {
-                    ignore = true;
-                    debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> skipping file because filter condition not matched......');
                 }
                 if (!ignore) {
                     taskQueue.push({
@@ -151,6 +153,7 @@ getPort().then(function (port) {
                         .goto(t.targetUrl)
                         // .wait('#mountNode canvas')
                         .wait(DELAY)
+                        // .wait(10000000)
                         // .click('canvas')
                         .screenshot(t.outputFilename, function () {
                             debug(t.fileBasename + ' took ' + (Date.now() - t0) + ' to take a screenshot.');
