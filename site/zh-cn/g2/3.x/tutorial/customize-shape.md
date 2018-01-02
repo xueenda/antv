@@ -7,9 +7,9 @@ resource:
     - ${url.g2}
 -->
 
-# 自定义 shape
+# 自定义 Shape
 
-自 G2 2.0.x 版本开始我们添加了自定义的 Shape 的机制，以支持部分有 **高订制需求的** 图表可视化需求。这也是G2在向 **可编程可视化引擎** 迈出的重要一步。
+自 G2 2.0.x 版本开始我们添加了自定义 Shape 的机制，以支持部分有 **高订制需求的** 图表可视化需求。这也是 G2 在向 **可编程可视化引擎** 迈出的重要一步。
 
 ```js
 const Shape = G2.Shape;
@@ -19,7 +19,7 @@ Shape.registerShape(geomName, shapeName, { // 向Shape工厂注册某个geom的�
 });
 ```
 
-上述 7 行的代码片段即使自定义Shape的所有接口。
+上述 7 行的代码片段即使自定义 Shape 的所有接口。
 
 * geomName [几何标记](geom.html)名, 如 point, line 等
 * shapeName 注册的具体图形名，自定义的图形的名称
@@ -28,7 +28,7 @@ Shape.registerShape(geomName, shapeName, { // 向Shape工厂注册某个geom的�
 
 上述方法更详细的使用说明详见： [Shape API](/zh-cn/g2/3.x/api/shape.html)。
 
-## 1分钟上手自定义Shape
+## 1分钟上手自定义 Shape
 
 以[柱状图](/zh-cn/g2/3.x/demo/bar/basic-column.html)举例，几何标记 interval 会给出四个关键点（即组成矩形的四个顶点），然后将这四个点依次连接，得到每个柱子的形状。**红色圆形** 标记就是几何标记点。默认的柱状图就是通过四个几何标记点，依次相连后得到的。
 
