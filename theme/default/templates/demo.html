@@ -7,9 +7,12 @@
 {% endblock %}
 {% block content %}
 {% set currentDemo = demoByHref[__href] %}
+<div class="drawer-toggle">
+    <span class="iconfont icon-menu-fold"></span>
+</div>
 <div class="container-fluid demo-container">
     <div class="d-flex flex-row border-secondary">
-        <div class="col menu expanded">
+        <div class="col menu expanded drawer">
             <div class="menu-inner">
                 <div id="accordion" role="tablist" data-children=".item">
                     {% for cat in demos %}
@@ -195,6 +198,7 @@
         </div>
     </div>
 </div>
+<div class="drawer-overlay"></div>
 {% endblock %}
 {% block js %}
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js"></script>

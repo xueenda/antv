@@ -2,6 +2,7 @@ import CodeMirror from 'codemirror';
 import Clipboard from 'clipboard';
 import getQueryVariable from './utils/get-query-variable';
 import inView from './utils/in-view';
+import './drawer';
 import './demo.less';
 
 const $code = $('#code');

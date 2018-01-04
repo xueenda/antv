@@ -229,7 +229,7 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
   transform: translateZ(0);
   white-space: nowrap;
   will-change: scroll-position;
-  z-index: 1;
+  //z-index: 1;
 }
 
 .code-panel, .code, .code .CodeMirror {
@@ -306,16 +306,23 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
 @media only screen and (max-width: @screen-sm) {
   body, .demo-container {
     height: auto;
+    overflow-x: hidden;
   }
   .demo-container {
     .flex-row {
       flex-direction: column !important;
     }
-    .col.menu, .col.code-panel {
+    .col.code-panel {
       display: none;
+    }
+    .col.menu {
+      border-right: none;
     }
   }
   #preview {
     padding: 0;
+  }
+  .btn.collapse-expand.btn-light {
+    display: none;
   }
 }
