@@ -32,9 +32,8 @@ class SEEConfAd extends React.Component {
                            style={{width: '24px', height: '24px'}}/>,
                 duration: 0,
                 style: {
-                    right: 24,
                     top: 60,
-                    width: 360
+                    width: '100%'
                 },
             };
             notification.open(args);

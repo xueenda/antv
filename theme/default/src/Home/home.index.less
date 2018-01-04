@@ -230,10 +230,6 @@ h2, h3, h4, h5, h6 {
 }
 
 .see-conf-banner {
-  //position: absolute;
-  //top: 0;
-  //left: 0;
-  //right: 0;
   margin: auto;
   overflow: hidden;
   width: 100%;
@@ -301,5 +297,14 @@ h2, h3, h4, h5, h6 {
   }
   .page2 {
     min-height: 513px;
+  }
+}
+
+@media only screen and (max-width: @screen-sm) {
+  .feature {
+    margin: 24px auto;
+  }
+  .page4 .slick-slide {
+    height: 540px;
   }
 }
