@@ -45,6 +45,7 @@ const htmlEditor = CodeMirror.fromTextArea($code[0], {
 });
 
 const $iframeContainer = $('#preview');
+
 function syncCode() {
     $iframeContainer.html('<iframe></iframe>');
     const iframe = $iframeContainer.find('iframe')[0];
@@ -54,10 +55,21 @@ function syncCode() {
     iframeDoc.close();
 }
 
+$('header').headroom({
+    offset: 0,
+    tolerance: 0,
+    classes: {
+        initial: 'animated',
+        pinned: 'slideDown',
+        unpinned: 'slideUp'
+    }
+});
+
 function resizePreview() {
     $iframeContainer.height($iframeContainer.width() / 16 * 9);
     syncCode();
 }
+
 resizePreview();
 
 const $execute = $('#btn-execute');

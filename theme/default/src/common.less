@@ -308,15 +308,16 @@ img {
     max-width: @screen-lg;
   }
 }
-@media only screen and (max-width: @screen-sm) {
+@media only screen and (max-width: @screen-md) {
   header.navbar {
     padding: 16px;
   }
   .card-wrapper {
     margin: 16px auto;
+    .card {
+      height: auto;
+    }
   }
-}
-@media only screen and (max-width: @screen-xs) {
   .container-fluid {
     padding-left: 0;
     padding-right: 0;

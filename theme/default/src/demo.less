@@ -1,4 +1,5 @@
 @import "./less/theme-switching.less";
+@import "./less/headroom.less";
 @import "./less/variables.less";
 
 html, body, .demo-container, .demo-container .flex-column, .demo-container .flex-row {
@@ -302,7 +303,10 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
   }
 }
 
-@media screen and (max-width: 900px) {
+@media only screen and (max-width: @screen-sm) {
+  body, .demo-container {
+    height: auto;
+  }
   .demo-container {
     .flex-row {
       flex-direction: column !important;
@@ -311,9 +315,6 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
       display: none;
     }
   }
-}
-
-@media only screen and (max-width: @screen-xs) {
   #preview {
     padding: 0;
   }
