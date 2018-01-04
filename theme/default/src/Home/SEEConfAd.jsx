@@ -6,6 +6,8 @@ import {
     Link
 } from 'react-router';
 
+console.log(window.innerWidth);
+
 class SEEConfAd extends React.Component {
     constructor(props) {
         super(props);
@@ -30,9 +32,9 @@ class SEEConfAd extends React.Component {
                            style={{width: '24px', height: '24px'}}/>,
                 duration: 0,
                 style: {
-                    right: 60,
-                    marginTop: 50,
-                    width: 400
+                    right: 24,
+                    top: 60,
+                    width: 360
                 },
             };
             notification.open(args);
