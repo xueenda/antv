@@ -7,8 +7,8 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
 import Page5 from './Page5';
-import SEEConfAd from './SEEConfAd';
-import moment from 'moment';
+// import SEEConfAd from './SEEConfAd';
+// import moment from 'moment';
 import './home.index.less';
 
 function enquireScreen(cb) {
@@ -46,11 +46,11 @@ class Home extends React.PureComponent {
 
     render() {
         const content = [];
-        const SEE_CONF_DATE = moment('2018-01-07');
-        const now = moment();
-        if (now < SEE_CONF_DATE) {
-            content.push(<SEEConfAd/>);
-        }
+        // const SEE_CONF_DATE = moment('2018-01-07');
+        // const now = moment();
+        // if (now < SEE_CONF_DATE) {
+        //     content.push(<SEEConfAd/>);
+        // }
         return (
             content.concat([
                 <Banner key="banner" isMobile={this.state.isMobile}/>,
