@@ -1,7 +1,8 @@
-@import "./less/headroom.less";
-@import "./less/toc.less";
 @import "./less/article.less";
+@import "./less/headroom.less";
 @import "./less/search-input.less";
+@import "./less/toc.less";
+@import "./less/variables.less";
 
 .doc-container {
   min-width: 640px;
@@ -238,31 +239,6 @@
     }
   }
 
-  @media (max-width: 881px) {
-    .row {
-      //display: block;
-    }
-
-    .menu {
-      position: relative;
-      width: 100%;
-      .inner {
-        position: relative;
-      }
-    }
-
-    .detail {
-      margin-left: 0;
-      width: 100%;
-    }
-  }
-  @media (min-width: 1200px) {
-    //.menu {
-    //  -ms-flex: 0 0 220px;
-    //  flex: 0 0 220px;
-    //  max-width: 220px;
-    //}
-  }
 }
 
 .inner-page-toc {
@@ -288,6 +264,35 @@
     &:hover {
       text-decoration: none;
       color: #1890ff;
+    }
+  }
+}
+
+@media (max-width: 881px) {
+  .doc-container {
+    .row {
+      //display: block;
+    }
+    .menu {
+      position: relative;
+      width: 100%;
+      .inner {
+        position: relative;
+      }
+    }
+    .detail {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: @screen-xs) {
+  .doc-container {
+    min-width: 0;
+    article {
+      padding: 0;
+      border-left: none;
     }
   }
 }

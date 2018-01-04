@@ -317,6 +317,10 @@ img {
   }
 }
 @media only screen and (max-width: @screen-xs) {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .row {
     margin-right: 0;
     margin-left: 0;
@@ -330,11 +334,16 @@ img {
   .back2old-version {
     .btn {
       width: 100%;
-      border-radius: 0;
+      border-radius: 4px;
+      padding: 16px;
     }
   }
   #sub-site-nav {
     line-height: 1em;
+    .nav-link {
+      padding: 20px;
+      text-align: center;
+    }
   }
   #sub-product-navs, .back2old-version .btn, #query {
     margin-left: 0;

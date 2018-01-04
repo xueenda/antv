@@ -107,7 +107,7 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
     $query.autocomplete({
         lookupLimit: 20,
         // groupBy: 'title',
-        width: 278,
+        // width: 278,
         lookup: flattenIndices,
         triggerSelectOnValidInput: false,
         onSelect,
@@ -141,7 +141,7 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
         $docFilteringQuery.autocomplete({
             lookupLimit: 20,
             // groupBy: 'title',
-            width: 278,
+            // width: 278,
             lookup: docIndices,
             triggerSelectOnValidInput: false,
             onSelect,
