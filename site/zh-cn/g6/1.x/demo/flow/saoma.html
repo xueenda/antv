@@ -5,32 +5,32 @@ index: 2
 
 -->
 <style>
-  .node-conatiner{
+  .node-container{
     width: 200px;
     height: 100px;
     border: 1px solid #999;
     border-radius: 6px;
     overflow: hidden;
   }
-  .node-conatiner .node-conatiner-title{
+  .node-container .node-container-title{
     color: white;
     padding-left: 10px;
     line-height: 48px;
     height: 60px;
   }
-  .node-conatiner .node-conatiner-success{
+  .node-container .node-container-success{
     background: #228ACC;
   }
-  .node-conatiner .node-conatiner-fail{
+  .node-container .node-container-fail{
     background: #FF0030;
   }
-  .node-conatiner .node-conatiner-list{
+  .node-container .node-container-list{
     background: white;
     padding-left: 10px;
     height: 40px;
     line-height: 40px;
   }
-  .node-conatiner .node-delete{
+  .node-container .node-delete{
     position: absolute;
     top: 4px;
     right: 4px;
@@ -43,11 +43,11 @@ G6.registerNode('customNode', {
   cssSize: true, // 不使用内部 size 作为节点尺寸
   getHtml: function(cfg){
     const model = cfg.model;
-    const container = Util.createDOM('<div class="node-conatiner"></div>');
-    const title = Util.createDOM(`<div class="node-conatiner-title node-conatiner-${model.status}">
+    const container = Util.createDOM('<div class="node-container"></div>');
+    const title = Util.createDOM(`<div class="node-container-title node-container-${model.status}">
       ${model.name}
     </div>`);
-    const list = Util.createDOM(`<div class="node-conatiner-list">
+    const list = Util.createDOM(`<div class="node-container-list">
       <span>数量：</span>
       <span>${model.count}</span>
     </div>`);

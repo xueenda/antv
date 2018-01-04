@@ -277,7 +277,7 @@ net.render();
     <meta charset="utf-8">
     <title>关系图</title>
     <!-- 第一步：引入G6 -->
-    <script src="https://gw.alipayobjects.com/os/antv/assets/g6/1.2.1/g6.min.js"></script>
+    <script src="{{ url['g6'] }}"></script>
   </head>
   <body>
     <!-- 第二步：创建DOM容器 -->
