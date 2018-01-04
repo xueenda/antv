@@ -1,4 +1,5 @@
 @import "./less/headroom.less";
+@import "./less/variables.less";
 
 h1 {
   font-weight: 500;
@@ -58,7 +59,7 @@ section {
     padding-left: 24px;
     border-radius: 4px;
     overflow: auto;
-    width: 895px;
+    max-width: 895px;
     margin: 0 auto; 
     margin-top: 24px;
     text-align: left;
@@ -297,6 +298,18 @@ section {
     border-radius: 0;
     &:hover {
       box-shadow: none;
+    }
+  }
+}
+
+@media only screen and (max-width: @screen-xs) {
+  .intro {
+    .header {
+      padding-top: 30px;
+      padding-left: 30px;
+    }
+    .slick {
+      padding-left: 0;
     }
   }
 }
