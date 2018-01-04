@@ -309,6 +309,9 @@ img {
   }
 }
 @media only screen and (max-width: @screen-sm) {
+  header.navbar {
+    padding: 16px;
+  }
   .card-wrapper {
     margin: 16px auto;
   }
@@ -317,6 +320,28 @@ img {
   .row {
     margin-right: 0;
     margin-left: 0;
+  }
+  .nav-separator, #btn-search {
+    display: none;
+  }
+  #sub-product-navs {
+    width: 100%;
+  }
+  .back2old-version {
+    .btn {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+  #sub-site-nav {
+    line-height: 1em;
+  }
+  #sub-product-navs, .back2old-version .btn, #query {
+    margin-left: 0;
+    text-align: center;
+  }
+  #query {
+    margin: 16px 0;
   }
 }
 

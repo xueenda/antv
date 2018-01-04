@@ -15,7 +15,7 @@ class SEEConfAd extends React.Component {
             animation: {
                 position: 'relative',
                 height: window.innerWidth / 1440 * 500,
-                top: 0,
+                top: 64,
                 repeat: 0,
                 duration: 1000
             }
