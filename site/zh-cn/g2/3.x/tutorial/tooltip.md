@@ -430,7 +430,7 @@ chart.scale('runTime', {
   alias: '运行时间(ms)'
 });
 chart.tooltip({
-  triggerOn: 'click' // 鼠标点击出发 tooltip
+  triggerOn: 'click' // 鼠标点击触发 tooltip
 }); // 关闭 tooltip
 chart.legend(false); // 不显示图例
 chart.line()
