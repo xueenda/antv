@@ -1,6 +1,7 @@
 import tocbot from 'tocbot';
 import inView from './utils/in-view';
 import './copy-code';
+import './drawer';
 import './doc.less';
 
 // toc

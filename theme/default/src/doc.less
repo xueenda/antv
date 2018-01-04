@@ -278,6 +278,7 @@
       width: 100%;
       .inner {
         position: relative;
+        padding-bottom: 32px;
       }
     }
     .detail {
@@ -288,6 +289,10 @@
 }
 
 @media only screen and (max-width: @screen-sm) {
+  body, .doc-container {
+    height: auto;
+    overflow-x: hidden;
+  }
   .doc-container {
     min-width: 0;
     article {
@@ -295,6 +300,7 @@
       border-left: none;
     }
     .menu {
+      padding: 0;
       .list-group {
         padding-bottom: 0;
       }

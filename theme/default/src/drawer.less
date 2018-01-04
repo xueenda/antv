@@ -1,7 +1,12 @@
 @import "./less/variables.less";
 
+.drawer-toggle {
+  display: none;
+}
+
 @media only screen and (max-width: @screen-sm) {
   .drawer {
+    margin-top: 0 !important;
     display: block !important;
     transition: left 0.25s;
     left: -60vw;
@@ -10,7 +15,10 @@
     height: 100% !important;
     top: 0 !important;
     background: white !important;
-    z-index: 9999;
+    z-index: 8888;
+    .inner {
+      height: 100% !important;
+    }
   }
 
   .drawer-overlay {
@@ -21,7 +29,7 @@
 
   .drawer-toggle {
     display: inline-block;
-    z-index: 10000;
+    z-index: 8889;
     transition: left 0.25s;
     left: 0;
     position: fixed;
@@ -47,15 +55,26 @@
     border-radius: 0 4px 4px 0;
   }
 
-  .demo-container .detail {
+  .demo-container .detail, .doc-container .detail {
     transform: translateX(0);
-    transition: transform 0.5s;
+    transition: transform 0.25s;
+  }
+
+  header.navbar,
+  header.animated.slideDown,
+  footer.navbar {
+    transform: translateX(0);
+    transition: transform 0.25s;
   }
 
   .drawer-open {
-    .demo-container .detail, .doc-container, header {
+    .demo-container .detail,
+    .doc-container .detail,
+    header.navbar,
+    header.animated.slideDown,
+    footer.navbar {
       transform: translateX(60vw);
-      transition: transform 0.5s;
+      transition: transform 0.25s;
     }
     .drawer-toggle {
       left: 60vw;
@@ -75,8 +94,7 @@
       height: 100%;
       opacity: .3;
       transition: opacity 0.25s;
-      z-index: 9998;
+      z-index: 8887;
     }
   }
-
 }
