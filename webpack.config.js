@@ -16,6 +16,7 @@ module.exports = {
     // 'demo-detail': resolveTheme('demo-detail.js'),
     blog: resolveTheme('blog.js'),
     common: resolveTheme('common.js'),
+    palette: resolveTheme('palette.js'),
     demo: resolveTheme('demo.js'),
     demos: resolveTheme('demos.js'),
     doc: resolveTheme('doc.js'),

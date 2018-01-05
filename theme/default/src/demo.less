@@ -1,4 +1,6 @@
 @import "./less/theme-switching.less";
+@import "./less/headroom.less";
+@import "./less/variables.less";
 
 html, body, .demo-container, .demo-container .flex-column, .demo-container .flex-row {
   width: 100%;
@@ -145,7 +147,7 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
     &.detail {
       overflow-y: scroll;
       padding: 0;
-      min-width: 480px;
+      //min-width: 480px;
       flex: 1;
       .demo-preview {
         padding-top: 32px;
@@ -227,7 +229,7 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
   transform: translateZ(0);
   white-space: nowrap;
   will-change: scroll-position;
-  z-index: 1;
+  //z-index: 1;
 }
 
 .code-panel, .code, .code .CodeMirror {
@@ -296,18 +298,38 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
     border: none;
   }
   .iconfont {
-    
+
     font-size: 12px;
   }
 }
 
-@media screen and (max-width: 900px) {
+@media only screen and (max-width: @screen-sm) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body, .demo-container {
+    height: auto;
+    overflow-x: hidden;
+  }
+
   .demo-container {
     .flex-row {
       flex-direction: column !important;
     }
-    .col.menu, .col.code-panel {
+    .col.code-panel {
       display: none;
     }
+    .col.menu {
+      border-right: none;
+    }
+  }
+
+  #preview {
+    padding: 0;
+  }
+
+  .btn.collapse-expand.btn-light {
+    display: none;
   }
 }

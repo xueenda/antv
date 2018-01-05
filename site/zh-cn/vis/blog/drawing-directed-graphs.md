@@ -21,14 +21,12 @@ resource:
 
 ### 作者信息
 
-```
-Emden R. Gansner
-Eleftherios Koutsofios
-Stephen C. North
-Kiem-Phong Vo
+- Emden R. Gansner
+- Eleftherios Koutsofios
+- Stephen C. North
+- Kiem-Phong Vo
 
 AT&T Bell Laboratories Murray Hill, New Jersey 07974
-```
 
 ## 术语表（按字母顺序排序）
 

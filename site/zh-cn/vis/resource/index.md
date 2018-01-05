@@ -56,6 +56,11 @@ title: 资源下载
         color: #999;
         padding-right: 8px;
     }
+    @media only screen and (max-width: 480px) {
+        .resource-card {
+            width: 100%;
+        }
+    }
 </style>
 
 # 资源下载

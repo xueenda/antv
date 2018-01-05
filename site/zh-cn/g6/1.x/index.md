@@ -44,11 +44,8 @@ resource:
   cursor: pointer;
 }
 .outter-graph-container{
-    position: absolute;
-    top: 20px;
-    left: 500px;
     white-space:nowrap;
-    width: 730px;
+    width: 100%;
     z-index: 1;
 }
 .intro .header{
@@ -69,7 +66,7 @@ resource:
                 <a href="{{base}}zh-cn/g6/1.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
                 <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=g6&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
             </div>
-            <div id="c1" class="outter-graph-container"></div>
+            <div id="c1" class="col-md-7 outter-graph-container"></div>
         </div>
     </div>
 </section>
@@ -116,19 +113,22 @@ G6.Global.modalRectStyle = {
     fillOpacity: 0.7
 }
 $.getJSON('/assets/data/g6-index.json', data => {
+    var $container = $('#c1');
+    var height = 580;
     data.nodes.forEach(node=>{
         delete node.color;
     })
     const Plugins = G6.Plugins;
     const Util = G6.Util;
     const layoutCfg = {
-    width: 500,
-    height: 460,
-    center: {
-        x: 380,
-        y: 260
-    }
+        width: $container.width(),
+        height: height,
+        center: {
+            x: $container.width() / 2,
+            y: height / 2
+        }
     };
+    console.log(layoutCfg);
     const grid = new G6.Layouts['grid'](Util.mix({}, layoutCfg, {
         center: {
             x: layoutCfg.center.x,
@@ -170,7 +170,7 @@ $.getJSON('/assets/data/g6-index.json', data => {
     });
     const net = new G6.Net({
         id: 'c1',
-        height: 580,
+        height: height,
         useAnchor: null,
         layout: force,
         plugins: [ template, nodeSizeMapper, edgeSizeMapper, nodeColorMapper ],

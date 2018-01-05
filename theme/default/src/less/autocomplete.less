@@ -1,5 +1,8 @@
+@import "./variables.less";
+
 .autocomplete-suggestions {
   //border: 1px solid #999;
+  min-width: 340px;
   overflow: auto;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,.15);
@@ -38,4 +41,10 @@
 .autocomplete-group strong {
   display: block;
   border-bottom: 1px solid #000;
+}
+
+@media only screen and (max-width: @screen-xs) {
+  .autocomplete-suggestions {
+    left: 16px !important;
+  }
 }

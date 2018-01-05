@@ -91,7 +91,7 @@ h2, h3, h4, h5, h6 {
   &-wrapper {
     background: #f8fafe;
     padding-top: 64px;
-    height: 620px;
+    height: auto;
     overflow: hidden;
   }
   >div {
@@ -230,23 +230,18 @@ h2, h3, h4, h5, h6 {
 }
 
 .see-conf-banner {
-  //position: absolute;
-  //top: 0;
-  //left: 0;
-  //right: 0;
   margin: auto;
   overflow: hidden;
   width: 100%;
   z-index: 9;
   img {
     width: 100%;
-    margin-top: 64px;
   }
 }
 
 @media only screen and (max-width: @screen-md) {
   .banner-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     .banner {
       overflow: hidden;
       .banner-img-wrapper,
@@ -282,6 +277,11 @@ h2, h3, h4, h5, h6 {
 }
 
 @media only screen and (max-width: @screen-xs) {
+  .see-conf-banner {
+    img {
+      margin-top: 0;
+    }
+  }
   .banner-text-wrapper {
     h1 {
       font-size: 32px;
@@ -296,5 +296,17 @@ h2, h3, h4, h5, h6 {
   }
   .page2 {
     min-height: 513px;
+  }
+}
+
+@media only screen and (max-width: @screen-sm) {
+  .banner-text-wrapper {
+    height: auto;
+  }
+  .feature {
+    margin: 24px auto;
+  }
+  .page4 .slick-slide {
+    height: 540px;
   }
 }

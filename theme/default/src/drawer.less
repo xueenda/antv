@@ -1,0 +1,100 @@
+@import "./less/variables.less";
+
+.drawer-toggle {
+  display: none;
+}
+
+@media only screen and (max-width: @screen-sm) {
+  .drawer {
+    margin-top: 0 !important;
+    display: block !important;
+    transition: left 0.25s;
+    left: -60vw;
+    position: fixed !important;
+    width: 60vw !important;
+    height: 100% !important;
+    top: 0 !important;
+    background: white !important;
+    z-index: 8888;
+    .inner {
+      height: 100% !important;
+    }
+  }
+
+  .drawer-overlay {
+    opacity: 0;
+    transition: opacity 0.25s;
+    background: #000;
+  }
+
+  .drawer-toggle {
+    display: inline-block;
+    z-index: 8889;
+    transition: left 0.25s;
+    left: 0;
+    position: fixed;
+    width: 41px;
+    height: 40px;
+    cursor: pointer;
+    pointer-events: auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: #fff;
+    top: 72px;
+    -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .demo-container .detail, .doc-container .detail {
+    transform: translateX(0);
+    transition: transform 0.25s;
+  }
+
+  header.navbar,
+  header.animated.slideDown,
+  footer.navbar {
+    transform: translateX(0);
+    transition: transform 0.25s;
+  }
+
+  .drawer-open {
+    .demo-container .detail,
+    .doc-container .detail,
+    header.navbar,
+    header.animated.slideDown,
+    footer.navbar {
+      transform: translateX(60vw);
+      transition: transform 0.25s;
+    }
+    .drawer-toggle {
+      left: 60vw;
+      transition: left 0.25s;
+    }
+    .drawer {
+      transition: left 0.25s;
+      left: 0;
+
+    }
+    .drawer-overlay {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .3;
+      transition: opacity 0.25s;
+      z-index: 8887;
+    }
+  }
+}
