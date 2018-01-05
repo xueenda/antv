@@ -1,6 +1,11 @@
 <!--
 index: 1
 title: 色彩
+resource:
+  cssFiles:
+    - ${dist}/palette.css
+  jsFiles:
+    - ${dist}/palette.js
 -->
 
 # 色彩
@@ -28,6 +33,7 @@ AntV 色板包含分类色板、连续色板及语义色板，用户选择色板
 
 <div id="palette-category"></div>
 
+
 ### 连续色板
 | **色板定义** | 通过使用不同的深浅层次，传达从低到高的值 |
 | :--- | :--- |
@@ -48,27 +54,25 @@ AntV 色板包含分类色板、连续色板及语义色板，用户选择色板
 | **适用数据类型** | 公认的有含义的数据 |
 | **示例** | 好、差、重要、中性、男女、主次等 |
 
-* 表达正面的、可行、植物、安全、成功等含义
+表达正面的、可行、植物、安全、成功等含义
 
 > ps. 在西方股票市场，绿色代表股价上升；在中国股票市场则相反。
 
 <div id="palette-success"></div>
 
-* 表达警告、注意、阻止等含义
-
-> ps. 在西方股票市场，红色代表股价下降；在中国股票市场则相反。
+表达警告、注意、阻止等含义
 
 <div id="palette-warn"></div>
- 
-* 表达负面的、不可行、严重、危险、失败等含义
+
+表达负面的、不可行、严重、危险、失败等含义
  
 <div id="palette-error"></div>
 
-* 表达中性、可忽略的、次要、失效、已结束等含义  
+表达中性、可忽略的、次要、失效、已结束等含义  
 
 <div id="palette-secondary"></div>
 
-* 热力图专用  
+热力图专用  
 
 <div id="palette-heatmap"></div>
 
@@ -84,3 +88,99 @@ AntV 色板包含分类色板、连续色板及语义色板，用户选择色板
 
 以上色板均通过 [色盲色弱测试工具](http://www.color-blindness.com/coblis-color-blindness-simulator/) 测试，如果你使用了新的色板，我们建议使用此工具进行检验。
 
+
+```js-
+$(document).ready(function() {
+  new Palette({
+    container: '#palette-category',
+  });
+  new Palette({
+    container: '#palette-linear',
+    colors: [
+      '#E6F7FF',
+      '#BAE7FF',
+      '#91D5FF',
+      '#69C0FF',
+      '#40A9FF',
+      '#1890FF',
+      '#096DD9',
+      '#0050B3',
+      '#003A8C',
+      '#002766',
+    ]
+  });
+  new Palette({
+    container: '#palette-success',
+    colors: [
+      '#F0FFF2',
+      '#D7F5DC',
+      '#A7E8B4',
+      '#7BDB91',
+      '#53CF74',
+      '#2FC25B',
+      '#1E9C48',
+      '#107535',
+      '#074F24',
+      '#032914',
+    ]
+  });
+  new Palette({
+    container: '#palette-warn',
+    colors: [
+      '#FFF7E6',
+      '#FFE7BA',
+      '#FFD591',
+      '#FFC069',
+      '#FFA940',
+      '#FA8C16',
+      '#D46B08',
+      '#AD4E00',
+      '#873800',
+      '#612500',
+    ]
+  });
+  new Palette({
+    container: '#palette-error',
+    colors: [
+      '#FFF0F0',
+      '#FFDCDC',
+      '#FFC8CB',
+      '#FF9EA8',
+      '#FC7486',
+      '#F04864',
+      '#C93251',
+      '#A32240',
+      '#7C132F',
+      '#570D23',
+    ]
+  });
+  new Palette({
+    container: '#palette-secondary',
+    colors: [
+      '#FAFBFC',
+      '#F2F4F5',
+      '#EBEDF0',
+      '#CED4D9',
+      '#A3B1BF',
+      '#697B8C',
+      '#314659',
+      '#0D1A26',
+    ]
+  });
+  new Palette({
+    container: '#palette-heatmap',
+    colors: [
+      '#531DAB',
+      '#2F54EB',
+      '#40A9FF',
+      '#5CDBD3',
+      '#B7EB8F',
+      '#FFE58F',
+      '#FFC069',
+      '#FF7A45',
+      '#F53B44',
+      '#A8071A',
+    ]
+  });
+});
+```
