@@ -91,7 +91,7 @@ h2, h3, h4, h5, h6 {
   &-wrapper {
     background: #f8fafe;
     padding-top: 64px;
-    height: 620px;
+    height: auto;
     overflow: hidden;
   }
   >div {
@@ -241,7 +241,7 @@ h2, h3, h4, h5, h6 {
 
 @media only screen and (max-width: @screen-md) {
   .banner-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     .banner {
       overflow: hidden;
       .banner-img-wrapper,
@@ -300,6 +300,9 @@ h2, h3, h4, h5, h6 {
 }
 
 @media only screen and (max-width: @screen-sm) {
+  .banner-text-wrapper {
+    height: auto;
+  }
   .feature {
     margin: 24px auto;
   }

@@ -298,16 +298,21 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
     border: none;
   }
   .iconfont {
-    
+
     font-size: 12px;
   }
 }
 
 @media only screen and (max-width: @screen-sm) {
+  html, body {
+    overflow-x: hidden;
+  }
+
   body, .demo-container {
     height: auto;
     overflow-x: hidden;
   }
+
   .demo-container {
     .flex-row {
       flex-direction: column !important;
@@ -319,9 +324,11 @@ html, body, .demo-container, .demo-container .flex-column, .demo-container .flex
       border-right: none;
     }
   }
+
   #preview {
     padding: 0;
   }
+
   .btn.collapse-expand.btn-light {
     display: none;
   }

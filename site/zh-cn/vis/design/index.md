@@ -16,7 +16,7 @@ AntV 数据可视化设计原则是基于 [Ant Design](https://ant.design/docs/s
 从数据转化到可视表达时不歪曲，不误导，不遗漏，忠实反映数据里包含的信息。
 
 ### **有效**
-信息传达有重点，克制不冗余，避免信息过载，用最适量的数据-油墨比（Data-ink Ratio）^1 ^表达对用户最有用的信息。
+信息传达有重点，克制不冗余，避免信息过载，用最适量的数据-油墨比（Data-ink Ratio）[^footnote1]表达对用户最有用的信息。
 
 ### **清晰**
 表现方式清楚易读，具条理性，可以帮助用户快速达成目标，在最少的时间内获取更多的信息。
@@ -24,4 +24,4 @@ AntV 数据可视化设计原则是基于 [Ant Design](https://ant.design/docs/s
 ### **美**
 对数据的完美表达，合理利用视觉元素进行艺术创作，不过度修饰，给用户优雅的体验。
 
-> 注 1 : Data-ink Ratio, Edward Tufte, The Visual Display of Quantitative Information, p. 51.
+[^footnote1]: 注 1 : Data-ink Ratio, Edward Tufte, The Visual Display of Quantitative Information, p. 51.
