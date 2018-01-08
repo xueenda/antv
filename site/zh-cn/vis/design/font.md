@@ -18,7 +18,6 @@ AntV 的字体是基于[ Ant Design 字体体系](https://ant.design/docs/spec/f
 AntV 的字体家族优先使用系统默认的界面字体，同时提供了一套利于屏显的备用字体库，来维护在不同平台以及浏览器的显示下字体始终保持良好的可读性和易读性，体现了友好，稳定和专业的特性。
 
 字体家族 css 代码如下：  
-（@绝云(wensen.lws) 代码格式化一下~ ） 
 
 ```css
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
