@@ -676,6 +676,8 @@ graph.addBehaviour(modeName, behaviours);
 graph.addBehaviour(behaviours);
 ```
 
+[示例](../demo/other/mode.html)
+
 ### removeBehaviour
 
 移除行为（与`addBehaviour` 对应）
@@ -698,6 +700,8 @@ graph.removeBehaviour(modeName, behaviours);
  */
 graph.removeBehaviour(behaviours);
 ```
+
+[示例](../demo/other/mode.html)
 
 ### setItemActived
 
