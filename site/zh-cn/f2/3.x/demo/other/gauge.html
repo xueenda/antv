@@ -6,11 +6,10 @@ resource:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   const Shape = F2.Shape;
   const G = F2.Graphic;
   const data = [{pointer: '当前收益',value: 5, length:2,y:1.05}];
-  //自定义绘制数据的的形状      
+  //自定义绘制数据的的形状
   Shape.registerShape('point', 'dashBoard', {
     getPoints:function(cfg){
       const x = cfg.x;
@@ -26,7 +25,7 @@ resource:
       let point2 = cfg.points[1];
       point1 = this.parsePoint(point1);
       point2 = this.parsePoint(point2);
-     
+
       G.drawLines([point1, point2], canvas, {
         stroke: '#18b7d6',
         lineWidth: 2
@@ -49,7 +48,8 @@ resource:
   });
 
   const chart = new F2.Chart({
-  	id : 'mountNode'
+  	id : 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
   	'value': {
@@ -84,22 +84,22 @@ resource:
   chart.axis('y', false);
 
   //绘制仪表盘辅助元素
-  chart.guide().arc([0,1.05],[4.8,1.05],{ 
+  chart.guide().arc([0,1.05],[4.8,1.05],{
   	strokeStyle: '#18b7d6',
   	lineWidth:5,
   	lineCap: 'round'
   });
-  chart.guide().arc([5.2,1.05],[9.8,1.05],{ 
+  chart.guide().arc([5.2,1.05],[9.8,1.05],{
   	strokeStyle: '#ccc',
   	lineWidth:5,
   	lineCap: 'round'
   });
-  chart.guide().arc([10.2,1.05],[15,1.05],{ 
+  chart.guide().arc([10.2,1.05],[15,1.05],{
   	strokeStyle: '#ccc',
   	lineWidth:5,
   	lineCap: 'round'
   });
-  chart.guide().arc([0,1.2],[15,1.2],{ 
+  chart.guide().arc([0,1.2],[15,1.2],{
   	strokeStyle: '#ccc',
   	lineWidth:1
   });

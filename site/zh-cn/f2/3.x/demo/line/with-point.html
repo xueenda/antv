@@ -6,7 +6,6 @@ resource:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   //双精度
   const data = [
     { time: '2016-08-08 00:00:00', tem: 10 },
@@ -20,7 +19,8 @@ resource:
     { time: '2016-08-10 02:20:00', tem: 28 }
   ];
   const chart = new F2.Chart({
-    id: 'mountNode'
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
   const defs = {
     time: {

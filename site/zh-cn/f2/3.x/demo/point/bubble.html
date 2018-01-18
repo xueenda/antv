@@ -6,7 +6,6 @@ resource:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   const data = [
     { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
     { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
@@ -26,7 +25,8 @@ resource:
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
-    padding: [20, 20, 50, 60]
+    padding: [20, 20, 50, 60],
+    pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
     y: {

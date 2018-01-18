@@ -6,8 +6,6 @@ resource:
 -->
 
 <script>
-  // 设置屏幕像素比
-  F2.Global.pixelRatio = window.devicePixelRatio;
   const data = [
     { time: '周一', tem: 6.9, rain: 10 },
     { time: '周二', tem: 9.5, rain: 13 },
@@ -18,7 +16,8 @@ resource:
     { time: '周日', tem: 26.5, rain: 13 }
   ];
   const chart = new F2.Chart({
-    id: 'mountNode'
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
 
   chart.source(data, {
