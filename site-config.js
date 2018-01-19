@@ -7,7 +7,7 @@ var pkg = require('./package.json');
 module.exports = {
     url: {
         dataSet: 'https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.3/data-set.min.js',
-        f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.0.1/f2.js',
+        f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.0.2/f2.js',
         g2: 'https://gw.alipayobjects.com/os/antv/assets/g2/3.0.4-beta.2/g2.min.js',
         g6: 'https://gw.alipayobjects.com/os/antv/assets/g6/1.2.3/g6.min.js',
         'g6-plugins': 'https://gw.alipayobjects.com/os/antv/assets/g6-plugins/1.0.1/g6-plugins.min.js',

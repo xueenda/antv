@@ -8,7 +8,6 @@ resource:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
   var data = [
       {iconType: "learn", amount: 16, ratio: 0.1, memo: "学习", namekey: "namekey"},
@@ -20,7 +19,8 @@ resource:
       {iconType: "none", amount: 20, ratio: 0.05, memo: "暂无备注", namekey: "namekey"}
   ];
   var chart = new F2.Chart({
-      id: 'mountNode'
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
 
   // Step 2: 载入数据源

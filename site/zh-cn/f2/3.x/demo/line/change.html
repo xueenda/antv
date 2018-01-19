@@ -1,12 +1,11 @@
 <!--
-index: 6
+index: 5
 title: 动态变化的图表
 resource:
   jsFiles:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   const data = [];
 
   // 添加数据，模拟数据，可以指定当前时间的偏移的秒
@@ -23,7 +22,8 @@ resource:
   data.push(getRecord());
 
   const chart = new F2.Chart({
-    id: 'mountNode'
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
 
   const defs = {

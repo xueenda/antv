@@ -47,7 +47,6 @@ resource:
 </style>
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   // 添加图例的容器
   const legendUl = $('<ul class="legend-list"></ul>');
   legendUl.appendTo($('#mountNode').parent());
@@ -75,7 +74,8 @@ resource:
   const chart = new F2.Chart({
     id: 'mountNode',
     height: 200,
-    padding: [20, 30, 40, 80]
+    padding: [20, 30, 40, 80],
+    pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
     time: {

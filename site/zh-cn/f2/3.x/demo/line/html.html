@@ -1,12 +1,11 @@
 <!--
-index: 3
+index: 4
 title: 折线渐变
 resource:
   jsFiles:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   const data = [
       { time: '2016-08-08 00:00:00', tem: 10, city: 'beijing' },
       { time: '2016-08-08 00:10:00', tem: 22, city: 'beijing' },
@@ -25,7 +24,8 @@ resource:
       { time: '2016-08-10 02:20:00', tem: 20, city: 'tokyo' }
   ];
   const chart = new F2.Chart({
-    id: 'mountNode'
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
   const defs = {
     time: {

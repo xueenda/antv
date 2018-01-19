@@ -440,7 +440,10 @@ chart.guide().rect([ startXValue, startYValue ], [ endXValue, startYValue ], {
 
 #### chart.guide().line(start, end, [cfg])
 
-绘制辅助线
+绘制辅助线。
+
++ `start`: Array
++ `end`: Array
 
 分别表示线起始、结束顶点，这两个参数均为数组 Array 格式： [x, y]：
 
@@ -495,6 +498,82 @@ chart.guide().text([ startXValue, startYValue ], '我是辅助文本', {
   offset: [ 10, 10] // 格式 Array：[x, y]，代表画布偏移坐标。
 });
 ```
+
+#### chart.guide().arc(start, end, [cfg])
+
+绘制圆弧，**适用于极坐标**。
+
++ `start`: Array
++ `end`: Array
+
+分别表示圆弧起始、结束点，这两个参数均为数组 Array 格式： [x, y]：
+
++ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
++ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
+
+当然，如果 x、y 值为分类类型的话，则可以传入索引值替代原始数值。
+
+另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
+
++ `cfg`: Object
+
+辅助圆弧的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
+
+```js
+chart.guide().arc([ 'min', 0 ], [ 'min', 'max' ], {
+  lineWidth: 2, // 辅助线宽度
+  stroke: '#ccc'// 辅助线颜色设置
+});
+```
+
+#### chart.guide().tag(point, text, cfg)
+
+绘制标记 TAG，如下：
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/DPGqOpVSvUISofoIeYKs.png" width="323">
+
++ `point`: Array
+
+表示 TAG 在画布上的显示位置，为数组 Array 格式： [x, y]：
+
++ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
++ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
+
+当然，如果 x、y 值为分类类型的话，则支持传入索引值。
+
+另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
+
++ `text`: String
+
+指定显示文本的内容。
+
++ `cfg`: Object
+
+辅助 TAG 的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
+
+```js
+// 添加辅助文本
+chart.guide().tag([ startXValue, startYValue ], '我是辅助文本', {
+  direct: 'tl', // tag 默认的方向，可配置值： 'tl'、'tc'、'tr'、'cl'、'cr'、'bl'、'bc'、'br'
+  padding: [ 4, 6 ], // tag 内边距，使用方式同 CSS 盒模型的 padding
+  radius: 2, // tag 圆角大小
+  fill: '#1890FF', // tag 背景色
+  stroke: null, // 无边框
+  offsetX: 0, // X 轴偏移
+  offsetY: 0, // Y 轴偏移
+  side: 4, // 三角标的边长
+  fontStyle: '', // 字体样式普通,斜体
+  fontVariant: '',
+  fontWeight: '',
+  fontSize: 14,
+  fontFamily: 'sans-serif',
+  color: '#FFFFFF' // 字体的颜色
+});
+```
+
+`direct` 方向相对于 point，如下所示：
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/hyRzDvMdRVwukHVfmGWL.png" width="350">
 
 ### coord
 

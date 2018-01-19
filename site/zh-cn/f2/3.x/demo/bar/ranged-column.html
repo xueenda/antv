@@ -6,7 +6,6 @@ resource:
 -->
 
 <script>
-  F2.Global.pixelRatio = window.devicePixelRatio;
   const data = [
     { month: '周一', tem: [ 0, 7 ] },
     { month: '周二', tem: [ 7, 5 ] },
@@ -17,7 +16,8 @@ resource:
     { month: '周日', tem: [ 21.5, 25.2 ] }
   ];
   const chart = new F2.Chart({
-    id: 'mountNode'
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
     tem: {
