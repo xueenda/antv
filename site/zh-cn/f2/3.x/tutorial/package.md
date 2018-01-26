@@ -29,8 +29,8 @@ type | 说明| 对应的图表类型
 
 ### 安装 npm 包
 
-```js
-npm install @antv/f2
+```bash
+$ npm install @antv/f2
 ```
 
 ### 引用核心代码
@@ -43,12 +43,12 @@ F2 的提供了两个入口：
 你可以仅引用 core.js
 
 ```js
-import F2 from '@antv/f2/core';
+const F2 = require('@antv/f2/lib/core');
 ```
 
 核心包中包括了以下内容：
 
-* axis 坐标系
+* axis 坐标轴
 * chart 图表的入口
 * coord 坐标系
 * scale 度量
@@ -58,23 +58,25 @@ import F2 from '@antv/f2/core';
 
 除了核心模块外 F2，还包括下面几种模块
 
-* geom 某种具体图表的代码，例如 line ,interval
+* geom 某种具体图表的代码，例如 line，interval
 * animate 动画模块
 * guide 辅助元素模块
-* adjust 分组、层叠柱状图，层叠面积图 相关的数据调整模块
+* adjust 分组、层叠柱状图，层叠面积图相关的数据调整模块
 
 以引入 line 为例：
 
 ```js
-require('@antv/f2/src/geom/line');
+// 注意顺序
+require('@antv/f2/lib/geom/line');
+const F2 = require('@antv/f2/lib/core'); // 必须引入
 ```
 
 如果你要引入 animate、guide、adjust 模块
 
 ```js
-require('@antv/f2/src/animate');
-require('@antv/f2/src/guide');
-require('@antv/f2/src/adjust');
+require('@antv/f2/lib/animate');
+require('@antv/f2/lib/guide');
+require('@antv/f2/lib/adjust');
 ```
 
 ## 自定义引用示例
@@ -87,9 +89,10 @@ require('@antv/f2/src/adjust');
 则需要下面的引用：
 
 ```js
-require('@antv/f2/src/geom/line');
-require('@antv/f2/src/geom/area');
-require('@antv/f2/src/geom/interval');
+require('@antv/f2/lib/geom/line');
+require('@antv/f2/lib/geom/area');
+require('@antv/f2/lib/geom/interval');
 
-require('@antv/f2/src/animate/');
+require('@antv/f2/lib/animate/');
+const F2 = require('@antv/f2/lib/core'); // 必须引入
 ```

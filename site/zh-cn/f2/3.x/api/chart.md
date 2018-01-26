@@ -317,6 +317,7 @@ chart.destroy();
     - grid: `Object|Function` 栅格线的配置项，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
     - tickLine: `Object` 坐标点对应刻度线的样式，设置 null 不显示，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
     - label: `Object|Function` 坐标轴上的文本，设置 null 不显示, 支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
+    - position: x 轴默认位于底部 'bottom'，y 轴可设置 position 为 'left'、'right'。（**3.0.3 版本开始支持**）
 
   ```js
   chart.axis('field', false); // 不显示该字段对应的坐标轴
