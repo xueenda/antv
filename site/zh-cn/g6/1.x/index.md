@@ -92,7 +92,7 @@ resource:
     
 ```html
 <!-- 引入在线资源 -->
-<script type="{{ url.g6 }}"></script>
+<script src="{{ url.g6 }}"></script>
 ```
 
 <p class="pt-32">通过 <code>&lt;npm&gt;</code> 安装：</p>
