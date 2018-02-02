@@ -74,7 +74,7 @@ resource:
 
 ```html
 <!-- 引入在线资源 -->
-<script type="{{ url.f2 }}"></script>
+<script src="{{ url.f2 }}"></script>
 ```
 
 </div>
