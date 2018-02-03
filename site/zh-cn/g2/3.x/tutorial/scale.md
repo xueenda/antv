@@ -41,7 +41,7 @@ Scale 的功能非常简单易理解，但是在 G2 的数据处理流程中起�
 
 2. 连续数据，时间也是一种连续数据类型。
 
-Example: 
+Example:
 
 ```js
 const data = [
@@ -56,7 +56,7 @@ const data = [
 chart.scale({
   month: {
     alias: '月份' // 为属性定义别名
-  }, 
+  },
   temperature: {
     alias: '温度' // 为属性定义别名
   }
@@ -90,7 +90,7 @@ chart.scale({
 默认生成度量的机制如下：
 * 查看用户是否制定了对应字段的数据类型，查看[列定义](how-to-scale.html)
 * 如果没有，判断字段的第一条数据的字段类型
-  + 如果数据中不存在对应的字段，则为 'identity' 
+  + 如果数据中不存在对应的字段，则为 'identity'
   + 如果是数字则为 'linear'；
   + 如果是字符串，判定是否是时间格式，如果是时间格式则为时间类型 'time',
   + 否则是分类类型 'cat'
@@ -151,7 +151,7 @@ chart.source(data, {
 });
 
 chart.point().position('name*score').color('name');
-``` 
+```
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/SazSTcmlxdGnNGGsjRAb.png" alt="数据范围">
 
@@ -182,7 +182,7 @@ chart.source(data, {
 chart.source(data, {
   score: {
     min: 0,
-    max: 100,
+    maxLimit: 100,
     tickCount: 4
   }
 });
@@ -245,7 +245,7 @@ pow 类型的度量也是 linear 类型的一个子类，除了支持所有通�
 }
 ```
 
-### time 
+### time
 
 连续的时间类型，是一种特殊的连续性数据。time 类型的度量也是 linear 的子类，除了支持所有通用的属性和 linear 度量的属性外，还有自己特殊的属性：
 
@@ -312,7 +312,7 @@ chart.scale('type', {
 
 timeCat 度量对应时间数据，但是不是连续的时间类型，而是有序的分类数据。例如股票交易的日期，此时如果使用 time 类型，那么由于节假日没有数据，折线图、k 线图就会发生断裂，所以此时需要使用 timeCat 类型度量将日期转换为有序的分类数据，该度量默认会对数据做排序。
 
-timeCat 是 cat 度量的子类，除了支持所有通用的属性和 cat 度量的属性外也有自己的属性: 
+timeCat 是 cat 度量的子类，除了支持所有通用的属性和 cat 度量的属性外也有自己的属性:
 
 ```js
 {
