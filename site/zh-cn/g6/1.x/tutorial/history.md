@@ -8,9 +8,35 @@
 
 # 更新日志
 
+## v1.2.5
+
+* fix:     修复 clickFocus bug
+* fix:     修复 tooltip 显示 bug
+* feat:    新增 开发一些图查询接口
+
+## v1.2.4
+
+* fix:     修复 windows 下首次进入画布 mousedown 触发 dragstart
+* feat:    新增 行为继承
+
+## v1.2.3
+
+* fix:     修复 repeat 动画 bug 
+
+## v1.2.2
+
+* feat:    新增 autoLayout 配置项，以决定渲染完后是否自动布局，默认为 true
+* improve: 改进 removeItem 里，destroy后再 delete itemcache
+
+## v1.2.1
+
+* feat:    新增 layout 接口
+
 ## v1.2.0
 
-* fix:     修复 右键后再移动鼠标触发dragstart
+* fix:     修复 nodeActivedBoxStyle 拼写错误
+* fix:     修复 删除环时报错
+* fix:     修复 右键后再移动鼠标触发 dragstart
 * feat:    新增 统一布局机制到 Graph
 * feat:    新增 插件机制
 * feat:    新增 数据过滤机制
@@ -19,6 +45,7 @@
 * feat:    新增 graph 配置项 preciseAnchor
 * remove:  移除 Global.preciseAnchor
 * remove:  移除 Layout.Flow、Layout.Force
+* improve: 改进 html 容器策略
 
 ## v1.1.6
 
