@@ -253,10 +253,6 @@ grid: null
 
 [String] 当前选择的模式，默认 `default`
 
-### animate
-
-[Boolean] 是否开启动画
-
 ## 实例方法
 
 ### render
@@ -823,4 +819,37 @@ graph.changeSize(width, height);
  * 更新节点位置信息
  */
 graph.updateNodesPositon();
+```
+
+### 获取所有元素
+
+获取所有元素
+
+```js
+/**
+ * 获取所有元素
+ */
+graph.getItems();
+```
+
+### 获取所有节点
+
+获取所有节点
+
+```js
+/**
+ * 获取所有节点
+ */
+graph.getNodes();
+```
+
+### 获取所有边
+
+获取所有边
+
+```js
+/**
+ * 获取所有边
+ */
+graph.getEdges();
 ```

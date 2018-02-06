@@ -12,6 +12,10 @@
 
 ## 属性
 
+### animate
+
+[Boolean] 是否开启动画
+
 ### modes
 
 [String] 默认模式集
