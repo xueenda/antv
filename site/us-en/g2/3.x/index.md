@@ -1,6 +1,6 @@
 <!--
 template: home
-title: G2 基础图表类库
+title: G2 Charting Library
 keywords:
   - G2
   - The Grammar of Graphics
@@ -26,7 +26,7 @@ resource:
     <div class="container">
         <div class="header row">
             <div class="col-md-5">
-                <h1>G2 可视化图形语法</h1>
+                <h1>G2 - The Grammar of Graphics</h1>
                 <p class="main-info">G2 是一套基于可视化编码的图形语法，以数据驱动，具有高度的易用性和扩展性，用户无需关注各种繁琐的实现细节，一条语句即可构建出各种各样的可交互的统计图表。</p>
                 <a href="{{ products.g2.links.demo.href }}" class="btn-round-link btn btn-primary btn-lg">{{ resource.translate.demo }}</a>
                 <a href="{{base}}zh-cn/g2/3.x/tutorial/index.html#_安装" class="btn-round-link btn btn-light btn-lg">{{ resource.translate.downloadAndUse }}</a>
