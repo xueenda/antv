@@ -1,0 +1,44 @@
+<!--
+index: 7
+title: 直方图范围刻度
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Histogram，直方图。直方图牵涉统计学的概念，首先要对数据进行分组，然后统计每个分组内数据元的数量。 在平面直角坐标系中，横轴标出每个组的端点，纵轴表示频数，每个矩形的高代表对应的频数，称这样的统计图为频数分布直方图。频数分布直方图需要经过频数乘以组距的计算过程才能得出每个分组的数量，同一个直方图的组距是一个固定不变的值，所以如果直接用纵轴表示数量，每个矩形的高代表对应的数据元数量，既能保持分布状态不变，又能直观的看出每个分组的数量。
+plotUsage: 直方图主要用于显示各组频数或数量分布的情况以及各组之间频数或数量的差别，通过直方图还可以观察和估计哪些数据比较集中，异常或者孤立的数据分布在何处。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/histogram.html
+
+-->
+<script>
+  $.getJSON('/assets/data/diamond.json', data => {
+    const ds = new DataSet();
+    const dv = ds.createView('diamond').source(data);
+    dv.transform({
+        type: 'bin.histogram',
+        field: 'depth',
+        binWidth: 4, // 在此修改矩形的宽度，代表真实数值的大小
+        as: ['depth', 'count'],
+    });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.source(dv, {
+      depth: {
+        tickInterval: 4
+      }
+    });
+    chart.tooltip({
+      crosshairs: false,
+      position: 'top',
+      inPlot: false
+    });
+    chart.interval().position('depth*count');
+    chart.render();
+  });
+</script>

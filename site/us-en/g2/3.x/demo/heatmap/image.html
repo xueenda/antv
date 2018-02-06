@@ -1,0 +1,40 @@
+<!--
+index: 5
+title: 热力图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Heatmap on Geography，热力图（地理应用）。
+plotUsage: 热力图(Heat Map)，“热力图”一词最初是由软件设计师Cormac Kinney于1991年提出并创造的，用来描述一个2D显示实时金融市场信息。最开始的热力图，是矩形色块加上颜色编码。经过多年的演化，习语上的热力图，如今更规范，更被大多数人理解的是这种经过平滑模糊过的热力图谱。
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.line}
+-->
+<script>
+  $.getJSON('/assets/data/heatmap.json', data => {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [ 0, 30, 60, 30 ]
+    });
+    chart.source(data);
+    chart.tooltip({
+      showTitle: false
+    });
+    chart.axis(false);
+    chart.legend({
+      offset: 10
+    });
+    chart.heatmap()
+      .position('g*l')
+      .color('tmp', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2');
+    chart.guide().image({
+      start: [ 'min', 'max' ],
+      end: [ 'max', 'min' ],
+      src: 'https://gw.alipayobjects.com/zos/rmsportal/NeUTMwKtPcPxIFNTWZOZ.png'
+    });
+    chart.render();
+  });
+</script>

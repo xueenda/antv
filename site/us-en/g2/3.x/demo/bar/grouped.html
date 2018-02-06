@@ -1,0 +1,51 @@
+<!--
+index: 9
+title: 分组条形图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Grouped Bar Chart，分组条形图
+plotUsage: 同分组柱状图，相比于分组柱状图，分组条形图更适用于此类分类较多的场景。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/multi-set-bar.html
+
+-->
+<script>
+  const data = [
+    { label: 'Mon.', series1: 2800, series2: 2260 },
+    { label: 'Tues.', series1: 1800, series2: 1300 },
+    { label: 'Wed.', series1: 950, series2: 900 },
+    { label: 'Thur.', series1: 500, series2: 390 },
+    { label: 'Fri.', series1: 170, series2: 100 },
+  ];
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: [ 'series1', 'series2' ], // 展开字段集
+    key: 'type', // key字段
+    value: 'value', // value字段
+  });
+
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv);
+  chart.axis('value', {
+    position: 'right'
+  });
+  chart.axis('label', {
+    label: {
+      offset: 12
+    }
+  });
+  chart.coord().transpose().scale(1, -1);
+  chart.interval().position('label*value').color('type').adjust([{
+    type: 'dodge',
+    marginRatio: 1 / 32
+  }]);
+  chart.render();
+</script>

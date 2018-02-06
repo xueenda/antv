@@ -1,0 +1,45 @@
+<!--
+index: 27
+title: 核函数概率密度分布
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 用热力图展示两个字段的核函数概率密度分布。
+relativePlots:
+  - ${plotByName.heatmap}
+  - ${plotByName.point}
+chartDetail: ${base}zh-cn/vis/chart/regression-curve.html
+-->
+<script>
+  $.getJSON('/assets/data/diamond.json', data => {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+
+    const dv = new DataSet.View().source(data);
+    dv.transform({
+      type: 'kernel-smooth.density',
+      fields: [ 'carat', 'price' ],
+      as: [ 'carat', 'price', 'density' ]
+    });
+
+    chart.source(data);
+    chart.legend({
+      offset: 45
+    });
+    chart.point()
+      .position('carat*price');
+
+    const view = chart.view();
+    view.axis(false);
+    view.source(dv);
+    view.heatmap()
+      .position('carat*price')
+      .color('density', 'blue-cyan-lime-yellow-red');
+
+    chart.render();
+  });
+</script>

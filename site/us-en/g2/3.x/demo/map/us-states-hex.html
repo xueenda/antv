@@ -1,0 +1,75 @@
+<!--
+index: 3
+title: 美国地图六边形分割
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 六边形分割的美国示意地图。
+plotUsage: 当地理信息不重要，甚至会对可视化信息造成干扰时，可以用这样的示意地图。
+relativePlots:
+  - ${plotByName.map}
+-->
+
+<script>
+    $.getJSON('/assets/data/us-states.hex.json', data => {
+        const dv = new DataSet.View().source(data, {
+            type: 'hex',
+            width: 100,
+            height: 100,
+        });
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: window.innerHeight / 24
+        });
+        chart.scale({
+            x: {
+                nice: false,
+                sync: true
+            },
+            y: {
+                nice: false,
+                sync: true
+            }
+        });
+        chart.coord().reflect(); // 视数据而定要不要翻转 Y 轴。
+        chart.tooltip({
+            showTitle: false
+        });
+        chart.axis(false);
+
+        const bgView = chart.view();
+        bgView.source(dv._gridRows);
+        bgView.polygon()
+            .position('x*y')
+            .color('grey')
+            .opacity(0.5)
+            .style({
+                stroke: 'white',
+                lineWidth: 1
+            })
+            .tooltip('key');
+
+        const mapView = chart.view();
+        mapView.source(dv);
+        mapView.polygon()
+            .position('x*y')
+            .color(G2.Global.colors[1])
+            .style({
+                stroke: 'white',
+                lineWidth: 5
+            })
+            .label('key', {
+                offset: 0,
+                textStyle: {
+                    fontSize: window.innerHeight / 18,
+                    fontWeight: 500
+                }
+            })
+            .tooltip('capital');
+
+        chart.render();
+    });
+</script>

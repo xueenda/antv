@@ -1,0 +1,77 @@
+<!--
+index: 2
+title: 基础环图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Donut Chart，基础环图，其本质是饼图将中间区域挖空。
+plotUsage: 饼图的整体性太强，我们会将注意力集中在比较饼图内各个扇形之间占整体比重的关系。但如果我们将两个饼图放在一起，饼图很难同时对比两个图。环图在解决上述问题时，采用了让我们更关注长度而不是面积的做法。这样我们就能相对简单的对比不同的环图。同时环图相对于饼图空间的利用率更高，比如我们可以使用它的空心区域显示文本信息，比如标题等。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/donut.html
+-->
+<script>
+  const { DataView } = DataSet;
+  const data = [
+    { item: '事例一', count: 40 },
+    { item: '事例二', count: 21 },
+    { item: '事例三', count: 17 },
+    { item: '事例四', count: 13 },
+    { item: '事例五', count: 9 }
+  ];
+  const dv = new DataView();
+  dv.source(data).transform({
+    type: 'percent',
+    field: 'count',
+    dimension: 'item',
+    as: 'percent'
+  });
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight,
+  });
+  chart.source(dv, {
+    percent: {
+      formatter: val => {
+        val = (val * 100) + '%';
+        return val;
+      }
+    }
+  });
+  chart.coord('theta', {
+    radius: 0.75,
+    innerRadius: 0.6
+  });
+  chart.tooltip({
+    showTitle: false,
+    itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
+  });
+  // 辅助文本
+  chart.guide().html({
+    position: [ '50%', '50%' ],
+    html: '<div style="color:#8c8c8c;font-size: 14px;text-align: center;width: 10em;">主机<br><span style="color:#8c8c8c;font-size:20px">200</span>台</div>',
+    alignX: 'middle',
+    alignY: 'middle'
+  });
+  chart.intervalStack()
+    .position('percent')
+    .color('item')
+    .label('percent', {
+      formatter: (val, item) => {
+        return item.point.item + ': ' + val;
+      }
+    })
+    .tooltip('item*percent', (item, percent) => {
+      percent = percent * 100 + '%';
+      return {
+        name: item,
+        value: percent
+      };
+    })
+    .style({
+      lineWidth: 1,
+      stroke: '#fff'
+    });
+  chart.render();
+</script>

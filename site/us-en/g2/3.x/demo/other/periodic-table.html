@@ -1,0 +1,47 @@
+<!--
+index: 32
+title: 元素周期表
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Periodic Table of Elements，元素周期表。这个图用六边形的形式展示每个元素，使用了 HexJSON 格式的数据。
+plotUsage: 信息可视化，展示所有化学元素。
+-->
+<script>
+  $.getJSON('/assets/data/periodic-table.hex.json', data => {
+    const dv = new DataSet.View().source(data, {
+      type: 'hex'
+    });
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: window.innerHeight / 24
+    });
+    chart.tooltip({
+      showTitle: false
+    });
+    chart.axis(false);
+
+    chart.legend(false);
+    chart.source(dv);
+    chart.polygon()
+      .position('x*y')
+      .color('category')
+      .style({
+        stroke: 'white',
+        lineWidth: 2
+      })
+      .label('symbol', {
+        offset: 0,
+        textStyle: {
+          fontSize: window.innerHeight / 24,
+          fontWeight: 500
+        }
+      })
+      .tooltip('symbol*name*number*atomic_mass*category');
+
+    chart.render();
+  });
+</script>

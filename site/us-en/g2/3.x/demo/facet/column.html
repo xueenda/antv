@@ -1,0 +1,46 @@
+<!--
+index: 3
+title: 列分面
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 列分面。
+plotUsage: 一行布局分面。
+relativePlots:
+  - ${plotByName.point}
+-->
+
+<script>
+  $.getJSON('/assets/data/diamond.json', function(data) {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [40, 80, 80, 80]
+    });
+    chart.source(data, {
+      carat: {
+        sync: true
+      },
+      price: {
+        sync: true
+      },
+      clarity: {
+        sync: true
+      }
+    });
+    chart.facet('rect', {
+      fields: ['cut'],
+      eachView(view) {
+        view.point()
+          .position('carat*price')
+          .color('clarity')
+          .shape('circle')
+          .opacity(0.3)
+          .size(3);
+      }
+    });
+    chart.render();
+  });
+</script>
