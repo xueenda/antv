@@ -1,0 +1,32 @@
+<!--
+index: 4
+title: 区间柱状图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Range Column Chart，区间柱状图。通过绘制每个数据点的两个 Y 值来显示一系列数据。
+plotUsage: 区间柱状图使用的每个 Y 值被绘制为柱的上限和下限。有时区间柱状图被称为“浮动”柱状图。某些数据可能看起来非常漂亮，并且以这种形式容易理解，其中列在图表中浮动，跨越从最小值到最大值的区域。
+relativePlots:
+  - ${plotByName.bar}
+-->
+<script>
+  const data = [
+    { x: '分类一', y: [ 76, 100 ] },
+    { x: '分类二', y: [ 56, 108 ] },
+    { x: '分类三', y: [ 38, 129 ] },
+    { x: '分类四', y: [ 58, 155 ] },
+    { x: '分类五', y: [ 45, 120 ] },
+    { x: '分类六', y: [ 23, 99 ] },
+    { x: '分类七', y: [ 18, 56 ] },
+    { x: '分类八', y: [ 18, 34 ] },
+  ];
+
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(data);
+  chart.interval().position('x*y');
+  chart.render();
+</script>

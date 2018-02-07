@@ -1,0 +1,68 @@
+<!--
+index: 6
+title: 六边形分箱
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 六边形分箱图
+plotUsage: 分块的热力图用于表现 x，y 都是连续数据，对 x，y 进行划分封装成一个个的六边形，使用颜色的深浅标示数据的大小。
+relativePlots:
+  - ${plotByName.point}
+  - ${plotByName.heatmap}
+-->
+<script>
+    $.getJSON('/assets/data/gaussion-distribution.json', data => {
+    const ds = new DataSet({
+      state: {
+        sizeEncoding: false
+      }
+    });
+    const dv = ds.createView().source(data)
+      .transform({
+        sizeByCount: '$state.sizeEncoding', // calculate bin size by binning count
+        type: 'bin.hexagon',
+        fields: [ 'x', 'y' ], // 对应坐标轴上的一个点
+        bins: [ 10, 5 ]
+      });
+
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.source(dv);
+    chart.tooltip({
+      showTitle: false,
+      crosshairs: false
+    });
+    chart.legend({
+      offset: 40
+    });
+    chart.axis('x', {
+      grid: {
+        lineStyle: {
+          stroke: '#d9d9d9',
+          lineWidth: 1,
+          lineDash: [ 2, 2 ]
+        }
+      }
+    });
+    chart.polygon().position('x*y')
+      .color('count', '#BAE7FF-#1890FF-#0050B3')
+      .style({
+        lineWidth: 1,
+        stroke: '#fff'
+      });
+    chart.render();
+
+    const $sizeEncoding = $('#size-encoding');
+    $sizeEncoding.on('change', () => {
+      if ($sizeEncoding.val() === 'on') {
+        ds.setState('sizeEncoding', true);
+      } else {
+        ds.setState('sizeEncoding', false);
+      }
+    });
+  });
+</script>

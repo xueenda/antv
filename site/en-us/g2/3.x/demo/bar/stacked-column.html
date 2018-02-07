@@ -1,0 +1,38 @@
+<!--
+index: 2
+title: 堆叠柱状图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Stacked Column Chart，堆叠柱状图。与并排显示分类的分组柱状图不同，堆叠柱状图将每个柱子进行分割以显示相同类型下各个数据的大小情况。
+plotUsage: 堆叠柱状图可以形象得展示一个大分类包含的每个小分类的数据，以及各个小分类的占比，显示的是单个项目与整体之间的关系。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/stacked-bar.html
+
+-->
+<script>
+  const data = [
+    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },
+    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}
+  ];
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ], // 展开字段集
+    key: '月份', // key字段
+    value: '月均降雨量', // value字段
+  });
+
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv);
+  chart.intervalStack()
+    .position('月份*月均降雨量')
+    .color('name');
+  chart.render();
+</script>

@@ -1,0 +1,52 @@
+<!--
+index: 1
+title: 圆形分面
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 圆形分面
+plotUsage: 环状布局分面。
+relativePlots:
+  - ${plotByName.pie}
+  - ${plotByName.bar}
+-->
+
+<script>
+  const { DataView } = DataSet;
+  $.getJSON('/assets/data/diamond.json', function(data) {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [30, 90, 80, 80]
+    });
+    chart.source(data, {
+      mean: {
+        sync: true
+      },
+      cut: {
+        sync: true
+      }
+    });
+    chart.coord('polar');
+    chart.axis(false);
+    chart.facet('circle', {
+      fields: [ 'clarity' ],
+      eachView(view, facet) {
+        const data = facet.data;
+        const dv = new DataView();
+        dv.source(data).transform({
+          type: 'aggregate',
+          fields: [ 'price' ],
+          operations: [ 'mean' ],
+          as: [ 'mean' ],
+          groupBy: [ 'cut' ]
+        });
+        view.source(dv);
+        view.interval().position('cut*mean').color('cut');
+      }
+    }); // 分面设置
+    chart.render();
+  });
+</script>

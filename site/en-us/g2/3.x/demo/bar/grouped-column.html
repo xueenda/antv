@@ -1,0 +1,39 @@
+<!--
+index: 1
+title: 分组柱状图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Grouped Column Chart，分组柱状图。又叫聚合柱状图。当使用者需要在同一个轴上显示各个分类下不同的分组时，需要用到分组柱状图。
+plotUsage: 跟柱状图类似，使用柱子的高度来映射和对比数据值。每个分组中的柱子使用不同的颜色或者相同颜色不同透明的方式区别各个分类，各个分组之间需要保持间隔。分组柱状图经常用于不同组间数据的比较，这些组都包含了相同分类的数据。但是仍需要注意，避免分组中分类过多的情况，分类过多会导致分组中柱子过多过密，非常影响图表可读性。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/multi-set-bar.html
+
+-->
+<script>
+  const data = [
+    { name:'London', 'Jan.': 18.9, 'Feb.': 28.8, 'Mar.' :39.3, 'Apr.': 81.4, 'May': 47, 'Jun.': 20.3, 'Jul.': 24, 'Aug.': 35.6 },
+    { name:'Berlin', 'Jan.': 12.4, 'Feb.': 23.2, 'Mar.' :34.5, 'Apr.': 99.7, 'May': 52.6, 'Jun.': 35.5, 'Jul.': 37.4, 'Aug.': 42.4}
+  ];
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: [ 'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.' ], // 展开字段集
+    key: '月份', // key字段
+    value: '月均降雨量', // value字段
+  });
+
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv);
+  chart.interval().position('月份*月均降雨量').color('name').adjust([{
+    type: 'dodge',
+    marginRatio: 1 / 32
+  }]);
+  chart.render();
+</script>

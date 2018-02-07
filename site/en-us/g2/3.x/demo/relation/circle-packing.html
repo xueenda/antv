@@ -1,0 +1,71 @@
+<!--
+index: 10
+title: Circle Packing
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: voronoi 图得名于 Georgy Voronoi，是由一组由连接两邻点直线的垂直平分线组成的连续多边形组成。
+plotUsage: 由于voronoi图在空间剖分上的等分性特征，因此可用于解决最近点、最小封闭圆等问题，以及许多空间分析问题，如邻接、接近度和可达性分析等。
+relativePlots:
+  - ${plotByName.voronoi}
+-->
+<script>
+    $.getJSON('/assets/data/flare.json', data => {
+        const dv = new DataSet.View().source(data, {
+            type: 'hierarchy'
+        });
+        dv.transform({
+            type: 'hierarchy.circle-packing',
+        });
+        const diameter = Math.min(window.innerWidth, window.innerHeight) - 20;
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            height: diameter,
+            width: diameter,
+            padding: 0
+        });
+        chart.axis(false);
+        chart.legend(false);
+        chart.tooltip({
+            showTitle: false
+        });
+
+        chart.source(dv.getAllNodes().map(node => ({
+            hasChildren: !!(node.data.children && node.data.children.length),
+            name: node.data.name.split(/(?=[A-Z][^A-Z])/g).join('\n'),
+            value: node.value,
+            depth: node.depth,
+            x: node.x,
+            y: node.y,
+            r: node.r
+        })));
+        chart.point()
+            .position('x*y')
+            .color('hasChildren')
+            .shape('circle')
+            .tooltip('name')
+            .size('r', r => r * diameter)
+            .color('r', 'rgb(252, 253, 191)-rgb(231, 82, 99)-rgb(183, 55, 121)')
+            .style({
+                stroke: 'rgb(183, 55, 121)'
+            })
+            .label('name', {
+                offset: 0,
+                textStyle: (text, item) => {
+                    if (item.point.hasChildren) {
+                        return {
+                            opacity: 0
+                        };
+                    }
+                    return {
+                        textBaseline: 'middle',
+                        fill: 'grey',
+                        fontSize: 9,
+                        textAlign: 'center'
+                    };
+                }
+            });
+        chart.render();
+    });
+</script>

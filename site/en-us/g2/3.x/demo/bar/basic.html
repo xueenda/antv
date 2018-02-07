@@ -1,0 +1,43 @@
+<!--
+index: 8
+title: 基础条形图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: Basic Bar Chart，基础条形图。使用水平的柱子显示类别之间的数值比较。其中一个轴表示需要对比的分类维度，另一个轴代表相应的数值。
+plotUsage: 对比分类数据的数值大小，当分类情况过多时，柱状图的文本为了排布合理，需要进行旋转，不利于阅读，相比于纵向柱状图，横向柱状图更适用于此类分类较多的场景。
+relativePlots:
+  - ${plotByName.bar}
+-->
+<script>
+  const data = [
+    { country: '中国', population: 131744 },
+    { country: '印度', population: 104970 },
+    { country: '美国', population: 29034 },
+    { country: '印尼', population: 23489 },
+    { country: '巴西', population: 18203 }
+  ];
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.source(data)
+    .transform({
+      type: 'sort',
+      callback(a, b) { // 排序依据，和原生js的排序callback一致
+        return a.population - b.population;
+      }
+    });
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv);
+  chart.axis('country', {
+    label: {
+      offset: 12
+    }
+  });
+  chart.coord().transpose();
+  chart.interval().position('country*population');
+  chart.render();
+</script>

@@ -1,0 +1,63 @@
+<!--
+index: 26
+title: 回归曲线
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 各种回归方法描绘两个字段之间的相关曲线。
+relativePlots:
+  - ${plotByName.line}
+chartDetail: ${base}zh-cn/vis/chart/regression-curve.html
+-->
+<script>
+  $.getJSON('/assets/data/diamond.json', data => {
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+
+    chart.scale({
+      carat: {
+        sync: true
+      },
+      price: {
+        sync: true
+      }
+    });
+
+    // background
+    const pointsView = chart.view();
+    pointsView.source(data);
+    pointsView.point().position('carat*price');
+
+    const REGRESSION_METHODS = [
+      'linear',
+      'exponential',
+      'logarithmic',
+      'power',
+      'polynomial'
+    ];
+    REGRESSION_METHODS.forEach((method, i) => {
+      const dv = new DataSet.View().source(data)
+        .transform({
+          type: 'regression',
+          method,
+          fields: [ 'carat', 'price' ],
+          bandwidth: 0.1,
+          extent: [ 0, 4 ],
+          as: [ 'carat', 'price' ]
+        });
+      const view = chart.view();
+      view.axis(false);
+      view.source(dv);
+      view.line()
+        .position('carat*price')
+        .size(1)
+        .color(G2.Global.colors_16[i]);
+    });
+
+    chart.render();
+  });
+</script>

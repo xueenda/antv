@@ -1,0 +1,63 @@
+<!--
+index: 6
+title: 直方图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Histogram，直方图。直方图牵涉统计学的概念，首先要对数据进行分组，然后统计每个分组内数据元的数量。 在平面直角坐标系中，横轴标出每个组的端点，纵轴表示频数，每个矩形的高代表对应的频数，称这样的统计图为频数分布直方图。频数分布直方图需要经过频数乘以组距的计算过程才能得出每个分组的数量，同一个直方图的组距是一个固定不变的值，所以如果直接用纵轴表示数量，每个矩形的高代表对应的数据元数量，既能保持分布状态不变，又能直观的看出每个分组的数量。
+plotUsage: 直方图主要用于显示各组频数或数量分布的情况以及各组之间频数或数量的差别，通过直方图还可以观察和估计哪些数据比较集中，异常或者孤立的数据分布在何处。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/histogram.html
+
+-->
+<script>
+  const values = [ 1.2, 3.4, 3.7, 4.3, 5.2, 5.8, 6.1, 6.5, 6.8, 7.1, 7.3, 7.7, 8.3, 8.6, 8.8, 9.1, 9.2, 9.4, 9.5, 9.7, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, 11.4, 11.4, 11.7, 12.0, 12.9, 12.9, 13.3, 13.7, 13.8, 13.9, 14.0, 14.2, 14.5, 15, 15.2, 15.6, 16.0, 16.3, 17.3, 17.5, 17.9, 18.0, 18.0, 20.6, 21, 23.4 ];
+  const data = [];
+  for (let i = 0; i < values.length; i++) {
+    const obj = {};
+    obj.value = values[i];
+    data.push(obj);
+  }
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.transform({
+    type: 'bin.histogram',
+    field: 'value',
+    binWidth: 2,
+    as: ['value', 'count'],
+  });
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv, {
+    value: {
+      nice: false,
+      min: 0,
+      tickInterval: 1
+    },
+    count: {
+      max: 14
+    }
+  });
+  chart.tooltip({
+    crosshairs: false,
+    inPlot: false,
+    position: 'top'
+  });
+  chart.axis('value', {
+    label: {
+      formatter: val => {
+        if ((val % 2)) {
+          return val;
+        }
+        return '';
+      }
+    }
+  });
+  chart.interval().position('value*count');
+  chart.render();
+</script>

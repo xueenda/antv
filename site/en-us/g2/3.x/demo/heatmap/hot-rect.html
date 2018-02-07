@@ -1,0 +1,38 @@
+<!--
+index: 3
+title: 分块热力图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 分块热力图
+plotUsage: 分块的热力图用于表现x,y都是连续数据，对x,y进行划分封装成一个个的方块，使用颜色的深浅标示数据的大小。
+relativePlots:
+  - ${plotByName.point}
+  - ${plotByName.heatmap}
+-->
+<script>
+  $.getJSON('/assets/data/diamond.json', function(data) {
+    const { DataView } = DataSet;
+    const dv = new DataView();
+    dv.source(data)
+      .transform({
+        type: 'bin.rectangle',
+        fields: [ 'carat', 'price' ]
+      });
+    const chart = new G2.Chart({
+      id: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight,
+      padding: [ 20, 80, 120, 85 ]
+    });
+    chart.source(dv);
+    chart.tooltip({
+      showTitle: false
+    });
+    chart.polygon()
+      .position('x*y')
+      .color('count', [ '#BAE7FF', '#1890FF', '#0050B3' ]);
+    chart.render();
+  });
+</script>

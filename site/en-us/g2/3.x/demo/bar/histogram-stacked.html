@@ -1,0 +1,46 @@
+<!--
+index: 7
+title: 层叠直方图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Stacked Histogram， 层叠直方图。
+plotUsage: 直方图主要用于显示各组频数或数量分布的情况以及各组之间频数或数量的差别，通过直方图还可以观察和估计哪些数据比较集中，异常或者孤立的数据分布在何处。
+relativePlots:
+  - ${plotByName.bar}
+chartDetail: ${base}zh-cn/vis/chart/histogram.html
+
+-->
+<script>
+  $.getJSON('/assets/data/diamond.json', data => {
+    const ds = new DataSet();
+    const dv = ds.createView().source(data);
+    dv.transform({
+      type: 'bin.histogram',
+      field: 'depth',
+      binWidth: 1,
+      groupBy: [ 'cut' ],
+      as: [ 'depth', 'count' ]
+    });
+    const chart = new G2.Chart({
+      container: 'mountNode',
+      forceFit: true,
+      height: window.innerHeight
+    });
+    chart.source(dv);
+    chart.axis('depth', {
+      grid: {
+      }
+    });
+    chart.tooltip({
+          crosshairs: false,
+          position: 'top',
+          inPlot: false
+        });
+    chart.intervalStack()
+      .position('depth*count')
+      .color('cut');
+    chart.render();
+  });
+</script>

@@ -1,0 +1,66 @@
+<!--
+index: 18
+title: 个性化 tooltip
+resource:
+  jsFiles:
+    - ${url.dataSet}
+plotDescription: 个性化 tooltip
+plotUsage: 折线图用于显示数据在一个连续的时间间隔或者时间跨度上的变化，它的特点是反映事物随时间或有序类别而变化的趋势。
+relativePlots:
+  - ${plotByName.line}
+chartDetail: ${base}zh-cn/vis/chart/line.html
+-->
+
+<style type="text/css">
+  .g2-tooltip-list td {
+    border: 1px solid #cdcdcd;
+    padding: 5px 8px;
+  }
+</style>
+<script>
+  const data = [
+    {"month": '一月', "tem":7, "city": "tokyo" },
+    {"month": '二月', "tem":6.9, "city": "tokyo" },
+    {"month": '三月', "tem":9.5, "city": "tokyo" },
+    {"month": '四月', "tem":14.5, "city": "tokyo" },
+    {"month": '五月', "tem":18.2, "city": "tokyo" },
+    {"month": '六月', "tem":21.5, "city": "tokyo" },
+    {"month": '七月', "tem":25.2, "city": "tokyo" },
+    {"month": '八月', "tem":26.5, "city": "tokyo" },
+    {"month": '九月' , "tem":23.3, "city": "tokyo" },
+    {"month": '十月', "tem":18.3, "city": "tokyo" },
+    {"month": '十一月', "tem":13.9, "city": "tokyo" }
+  ];
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(data);
+  chart.tooltip({
+    containerTpl: '<div class="g2-tooltip">'
+      + '<p class="g2-tooltip-title"></p>'
+      + '<table class="g2-tooltip-list"></table>'
+      + '</div>', // tooltip的外层模板
+    itemTpl: '<tr class="g2-tooltip-list-item"><td style="color:{color}">{name}</td><td>{value}</td></tr>', // 支持的字段 index,color,name,value
+    offset: 50,
+    'g2-tooltip': {
+      position: 'absolute',
+      visibility: 'hidden',
+      border : '1px solid #efefef',
+      backgroundColor: 'white',
+      color: '#000',
+      opacity: "0.8",
+      padding: '5px 15px',
+      'transition': 'top 200ms,left 200ms'
+    }, // 设置 tooltip 的 css 样式
+    'g2-tooltip-list': {
+      margin: '10px'
+    }
+  });
+  chart.line().position('month*tem');
+  chart.render();
+  // 默认展示 七月 的提示信息
+  const point = chart.getXY({"month": '七月', "tem":25.2});
+  chart.showTooltip(point);
+</script>
