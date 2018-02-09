@@ -156,6 +156,8 @@ net.add(type, model);
   color,         // 颜色
   shape,         // 形状
   label,         // 标注
+  source,        // 来源节点 id
+  target,        // 目标节点 id
   controlPoints, // 控制点
   sourceAnchor,  // 连接源节点锚点索引
   targetAnchor   // 连接目标节点锚点索引
