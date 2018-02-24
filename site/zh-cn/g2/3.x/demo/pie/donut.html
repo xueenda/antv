@@ -30,6 +30,7 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
     container: 'mountNode',
     forceFit: true,
     height: window.innerHeight,
+    animate: false
   });
   chart.source(dv, {
     percent: {
@@ -54,7 +55,7 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
     alignX: 'middle',
     alignY: 'middle'
   });
-  chart.intervalStack()
+  const interval = chart.intervalStack()
     .position('percent')
     .color('item')
     .label('percent', {
@@ -74,4 +75,5 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
       stroke: '#fff'
     });
   chart.render();
+  interval.setSelected(dv.rows[0]);
 </script>
