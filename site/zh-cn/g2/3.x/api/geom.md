@@ -738,3 +738,34 @@ geom().animate({
 ```
 
 **更加详细的配置参见 [G2 Animate API](./animate.html)**。
+
+## 其他方法
+
+### show 显示，默认 geometry 显示，如果在创建 geometry 时设置 visible: false 
+
+```js
+const line = chart.line({visible: false}).position('x*y');
+
+line.show();
+```
+### hide 隐藏
+
+```js
+const line = chart.line().position('x*y');
+
+line.hide();
+```
+### setSelected
+
+可以指定原始数据选中对应的图形
+
+```js
+const data = [{}, {}];
+const interval = chart.intervalStack()
+    .position('percent')
+    .color('item');
+
+
+chart.render();
+interval.setSelected(data[0]);
+```
