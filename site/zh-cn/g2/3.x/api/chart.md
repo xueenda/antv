@@ -986,7 +986,7 @@ chart.legend('gender', {
 
 图表的 tooltip 配置，G2 图表的 tooltip 使用 html 渲染。
 
-#### chart.tootip(false)
+#### chart.tooltip(false)
 
 关闭 tooltip 功能。
 
@@ -1522,7 +1522,7 @@ html 层级。
 辅助圆弧。
 
 ```js
-chart.arc({
+chart.guide().arc({
   top: {boolean}, // 指定 giude 是否绘制在 canvas 最上层，默认为 false, 即绘制在最下层
   start: {object} | {function} | {array}, // 辅助框起始位置，值为原始数据值，支持 callback 
   end: {object} | {function} | {array},// 辅助框结束位置，值为原始数据值，支持 callback
