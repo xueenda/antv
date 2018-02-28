@@ -1086,7 +1086,7 @@ chart.tooltip(true, {
 
   ```js
   containerTpl: '<div class="g2-tooltip">'
-    + '<div class="g2-tooltip-title" style="margin:10px 0;"></div>'
+    + '<div class="g2-tooltip-title" style="margin-bottom: 4px;"></div>'
     + '<ul class="g2-tooltip-list"></ul>'
     + '</div>',
   ```
