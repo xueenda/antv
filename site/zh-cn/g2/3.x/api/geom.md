@@ -22,7 +22,7 @@ chart.<geomType>()
   .tooltip()
   .label()
   .style()
-  .selected();
+  .select();
 ```
 
 几何标记对象，决定创建图表的类型，具体的概念介绍请参见 [Geom](/zh-cn/g2/3.x/tutorial/geom.html)。
