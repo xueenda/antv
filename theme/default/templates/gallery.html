@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block css %}
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css" />
+<link rel="stylesheet" href="{{ dist }}/demos.css" />
+<link rel="stylesheet" href="{{ dist }}/gallery.css" /> {% endblock %} {% block content %}
+<div class="demos container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-xl-1"></div>
+        <div class="col-12 col-md-12 col-xl-10">
+            <div class="container content">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 gallery-header">
+                        <div class="header-inner row">
+                            <div class="sort-container col-md-3 col-sm-6 col-xs-12">
+                                <span>{{ resource.translate.sortBy }}</span>:
+                                <a class="btn-sort-by" id="btn-sort-by-recommended" href="?sort=recommended">{{ resource.translate.recommended }}</a> |
+                                <a class="btn-sort-by" id="btn-sort-by-latest" href="?sort=latest">{{ resource.translate.latest }}</a>
+                            </div>
+                            <div class="filter-container col-md-3 col-sm-6 col-xs-12 ml-auto">
+                                <div class="inner">
+                                    <span class="iconfont icon-search"></span>
+                                    <input type="text" id="gallery-filtering-query" placeholder="{{ resource.translate.inputKeyWord }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="gallery-container" class="row">
+                    {% for cat in demos %} {% for demo in cat.demos %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center gallery-case" data-index="{{ demo.index }}" data-date="{{ demo.date }}" data-title="{{ demo.title }}">
+                        <div class="card">
+                            <a class="screenshot-container" href="{{ demo.href }}">
+                                <img src="{{ assets }}/image/screenshot-placeholder.png" class="card-img-top screenshot lazyload" data-src="{{ demo.screenshot }}"
+                                    alt="{{ demo.title }}">
+                            </a>
+                            <div class="card-body">
+                                <a href="{{ demo.href }}"> {{ demo.title }} </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="toc-container">
+            <div class="toc"></div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block js %}
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/routie-0.3.2.min.js"></script>
+<script src="{{ dist }}/gallery.js"></script> {% endblock %}

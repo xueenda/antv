@@ -51,6 +51,11 @@ module.exports = {
             dest: '${assets}/dist/${pkg.version}/f2/3.x',
             template: 'f2-demo-standalone'
         },
+        {
+            src: 'zh-cn/gallery/g2',
+            dest: '${assets}/dist/${pkg.version}/gallery/g2',
+            template: 'g2-demo-standalone'
+        },
     ],
     indices: [{
         src: 'zh-cn',
