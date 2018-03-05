@@ -33,7 +33,7 @@ date: "2018-03-05"
       container: 'mountNode',
       forceFit: true,
       height: window.innerHeight - 40,
-      padding: [20, 40, 0, 80],
+      padding: [40, 40, 40, 80],
       animate: false
     });
     chart.source(dv, {
@@ -51,6 +51,9 @@ date: "2018-03-05"
     });
     chart.axis('rain', {
       grid: null
+    });
+    chart.axis('flow', {
+      title: true
     });
     chart.legend({
       custom: true,
