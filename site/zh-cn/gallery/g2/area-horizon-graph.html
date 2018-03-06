@@ -1,0 +1,65 @@
+<!--
+title: 地平线图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 地平线图，面积图的特例，加上了基准值和上限
+plotUsage: 用于描述数据基于某个基准值的变化趋势，忽略超过某个上限的信息
+chartDetail: ${base}zh-cn/vis/chart/area.html
+date: "2018-03-06"
+-->
+<script>
+    var series = {
+        0: "All Industries",
+        32229: "Nonagriculture, Private Wage and Salary Workers",
+        32230: "Mining and Extraction",
+        32231: "Construction",
+        32232: "Manufacturing",
+        32233: "Durable goods manufacturing",
+        32234: "Nondurable goods manufacturing",
+        32235: "Wholesale and Retail Trade",
+        32236: "Transportation and Utilities",
+        32237: "Information",
+        32238: "Finance",
+        32239: "Business services",
+        32240: "Education and Health",
+        32241: "Leisure and hospitality",
+        32242: "Other",
+        35109: "Agriculture",
+        28615: "Government",
+        35181: "Self-employed"
+    };
+    $.getJSON('/assets/data/unemployment.json', data => {
+        var dv = new DataSet.View().source(data);
+        dv.transform({
+            type: 'map',
+            callback: function(row) {
+                row.series = series[row.series];
+                return row;
+            }
+        });
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: [ '50%', 0, 0 ]
+        });
+        chart.source(dv, {
+            date: {
+                type: 'time',
+            },
+            rate: {
+                min: 0
+            }
+        });
+        chart.axis(false);
+        chart.legend(false);
+        chart.tooltip(false);
+        chart.area()
+            .position('date*rate')
+            .color('series')
+            .opacity(0.85);
+        chart.render();
+    });
+</script>
