@@ -8,38 +8,32 @@ resource:
 
 # Chart
 
-用于创建图表的类，用于为创建的图表设置属性以及提供各种配置项方法。
+## 创建 chart 实例
 
-绘制图表前需要创建 canvas 元素：
-
-```html
-<canvas id="c1"></canvas>
-```
-
-创建图表：
+绘制图表前必须创建一个 `<canvas>` 元素或者一个 canvas 上下文环境。
 
 ```js
 const chart = new F2.Chart({
   id: 'c1',
   width: 500,
   height: 500,
-  padding: [ 20, 10, 50, 40 ]
+  padding: 'auto'
 });
 ```
 
 ## 参数
 
-### id
+### `id`
 
-* 参数类型 `String`
-* 描述：指定对应 canvas 的 id
-* 默认值：null
+- 参数类型：String
+- 描述：指定对应 canvas 的 id
+- 默认值：null
 
-### el
+### `el`
 
-* 参数类型：`HTMLElement`
-* 描述：如果未指定 id 时可以直接传入 canvas 对象
-* 默认值：null
+- 参数类型：HTMLElement
+- 描述：如果未指定 id 时可以直接传入 canvas 对象
+- 默认值：null
 
 ```js
 const chart = new F2.Chart({
@@ -47,10 +41,11 @@ const chart = new F2.Chart({
 });
 ```
 
-### context 
+### `context`
 
-* 参数类型：`CanvasRenderingContext2D`
-* 描述：canvas 的上下文，<a href="{{ url.f2 }}">F2 3.0.1</a> 版本开始支持。
+- 参数类型：CanvasRenderingContext2D
+- 描述：canvas 的上下文，F2 3.0.1 版本开始支持。
+- 默认值：null
 
 ```js
 const chart = new F2.Chart({
@@ -58,25 +53,26 @@ const chart = new F2.Chart({
 });
 ```
 
-### width
+**说明：`id`、`el`、`context` 这三个属性必须设置一个。**
 
-* 参数类型：`Number`
-* 描述：图表的宽度，如果 canvas 上设置了宽度，可以不传入
-* 默认值：null
+### `width`
 
-### height
+- 参数类型：Number
+- 描述：图表的宽度，如果 `<canvas>` 元素上设置了宽度，可以不传入
+- 默认值：null
 
-* 参数类型：`Number`
-* 描述：图表的高度，如果 canvas 上设置了高度，可以不传入
-* 默认值：null
+### `height`
+
+- 参数类型：Number
+- 描述：图表的高度，如果 `<canvas>` 元素上设置了高度，可以不传入
+- 默认值：null
 
 ```js
-// 如果 canvas 上设置了宽高，不需要设置 width,height
+// 默认使用 canvas 元素的宽高
 const chart = new F2.Chart({
   id: 'c1'
 });
 
-// 如果 canvas 没有设置宽高，创建图表时需要声明
 const chart = new F2.Chart({
   id: 'c1',
   width: 500,
@@ -84,16 +80,16 @@ const chart = new F2.Chart({
 });
 ```
 
-### padding
+### `padding`
 
-* 参数类型：`Number|Array`
-* 描述：图表绘图区域和画布边框的间距，用于显示坐标轴文本
-* 默认值：40
+- 参数类型：Number/Array/String
+- 描述：图表绘图区域和画布边框的间距，用于显示坐标轴文本、图例
+- 默认值：'auto'，自动计算
 
 ```js
 const chart = new F2.Chart({
   id: 'c1',
-  padding: 40 // 单个值
+  padding: 'auto' // 默认值，自动计算 padding
 });
 
 const chart = new F2.Chart({
@@ -101,177 +97,215 @@ const chart = new F2.Chart({
   padding: [ 0, 10, 40, 100 ] // 分别设置上、右、下、左边距
 });
 
+const chart = new F2.Chart({
+  id: 'c1',
+  padding: 40 // 单个值
+});
+
+const chart = new F2.Chart({
+  id: 'c1',
+  padding: [ 40, 10, 'auto', 'auto' ]  // 指定几个方向自动计算 padding 
+});
 ```
 
-* padding: `Number|Array` 绘图区域（坐标轴包围的区域）跟画布边缘的边距，可以是数字或者数组 [top, right, bottom, left]
-* pixelRatio：`Number` 画布的像素比，默认读取 Global 上的 pixelRatio
+> 说明：padding 的使用方法同 CSS 盒模型中的 padding。
 
+### `pixelRatio`
 
-### pixelRatio
+- 参数类型：Number
+- 描述：屏幕画布的像素比
+- 默认值：1
 
-* 参数类型：`Number`
-* 描述：屏幕画布的像素比
-* 默认值：1
-
-屏幕画布的像素比，由于 canvas 在高清屏上显示时会模糊，所以需要设置 `pixelRatio`，一般情况下这个值可以设置成 `window.devicePixelRatio`
-这个值之所以没有默认使用 `window.devicePixelRatio` 的原因在于不同场景下的高清方案不同，不同平台上的实现也不一致，所以需要用户自己指定。
+屏幕画布的像素比，由于 canvas 在高清屏上显示时会模糊，所以需要设置 `pixelRatio`，一般情况下这个值可以设置成 `window.devicePixelRatio`。 这个值之所以没有默认使用 `window.devicePixelRatio` 的原因在于不同场景下的高清方案不同，不同平台上的实现也不一致，所以需要用户自己指定。
 
 ```js
 // 全局设置，所有的图表生效
 F2.Global.pixelRatio = window.devicePixelRatio;
-
+// 只为某个 chart 实例单独设置
 const chart = new F2.Chart({
   id: 'c1',
-  pixelRatio: 2 // 单独设置
+  pixelRatio: window.devicePixelRatio
 });
 ```
 
-#### 不同精度的对比
+### `plugins`
 
-下图是 pixelRatio = 1 和 pixelRatio = 2 的对比，在单精度屏幕下没有区别，但是在高精屏幕下会有明显的差别
+- 参数类型：Object/Array
+- 描述：为 chart 实例注册插件
+- 默认值：null
 
-<div>
-  <canvas id="can1" style="float:left;"></canvas>
-  <canvas id="can2" style="float:left;"></canvas>
-</div>
-<div style="clear:both;"></div>
+更多关于插件的使用，详见[Plugin](./plugin.html)。
 
-```js-
-const data = [
-  { x: 1, y: 1 },
-  { x: 2, y: 0 },
-  { x: 3, y: 3 }
-]
-const chart = new F2.Chart({
-  id: 'can1',
-  width: 400,
-  height: 200,
-  pixelRatio: 1 // 单独设置
-});
+### `animate`
 
-chart.source(data, {
-  y: {
-    tickCount: 4,
-    formatter(val) {
-      return val.toFixed(1);
-    }
-  }
-});
-chart.line().position('x*y');
-chart.guide().text([ 2, 3.5 ], 'pxielRatio = 1', {
-  textAlign: 'center',
-  fontSize: 14
-});
-chart.render();
-
-const chart1 = new F2.Chart({
-  id: 'can2',
-  width: 400,
-  height: 200,
-  pixelRatio: 2 // 单独设置
-});
-
-chart1.source(data, {
-  y: {
-    tickCount: 4,
-    formatter(val) {
-      return val.toFixed(1);
-    }
-  }
-});
-chart1.line().position('x*y');
-chart1.guide().text([ 2, 3.5 ], 'pxielRatio = 2', {
-  textAlign: 'center',
-  fontSize: 14
-});
-chart1.render();
-```
+- 参数类型：Boolean
+- 描述：是否关闭 chart 的动画
+- 默认值：null
 
 ## 方法
 
-### source
+### `source`
 
-`chart.source(data, defs)` 设置
-  + data `Array` 图表显示的数据
-  + defs `Object` 【可选】 图表数据的列定义
+* 描述： 装载数据
+* 返回：当前 chart 实例
 
-  ```js
-    chart.source(data, {
-      a: {
-        min: 0,
-        max: 100
-      }
-    });
-  ```
+#### `chart.source(data)`
 
-#### defs 列定义
+- `data`：Array，可视化数据
 
-图表数据的列定义用于数据字段的定义，如数据的类型，显示别名，时间类型的格式等，不同的数字类型的配置项不同，支持的数据类型有：
-  * linear: 数字类型
-  * cat: 分类类型
-  * timeCat：时间类型
+#### `chart.source(data, colDefs)`
 
-F2 会自动检测数据类型，但是有时候用户需要更改一些属性或者数据的类型，详情参考 [G2 Scale](/zh-cn/g2/3.x/api/scale.html)  API  中对数字类型(linear)、分类类型(cat)、和时间类型(timeCat）的介绍。
+- `data`：Array，可视化数据
+- `colDefs`：Object，可选，列定义配置（各个字段的度量配置）
 
+```js
+chart.source(data, {
+  a: {
+    min: 0,
+    max: 100
+  }
+});
+```
 
-### geom
+图表数据的列定义用于对数据字段进行定义，如数据的类型，显示别名，数值的格式化等，不同的数字类型的配置项不同，支持的数据类型有：
 
-chart.&lt;geom&gt;().position('x*y').color('type');
+* `linear`: 数字类型
+* `cat`: 分类类型
+* `timeCat`：时间类型
 
-geom 是 geometry 的简写，用于显示特定的图表，F2 提供了下面几种 geometry：
+F2 会自动检测数据类型，用户也可以根据自身需求更改一些属性或者数据的类型，具体支持的配置属性详见 [Scale](./scale.html) API。
 
-type | 说明
---- | ---
-`point` | 点，用于点图的构建。
-`path` | 路径，无序的点连接而成的一条线。
-`line` | 线，点按照 x 轴连接成一条线，构成线图。
-`area` | 填充线图跟坐标系之间构成区域图，也可以指定上下范围。
-`interval` | 使用矩形或者弧形，用面积来表示大小关系的图形，一般构成柱状图、饼图等图表。
-`polygon` | 多边形，可以用于色块图、地图等图表类型。
-`schema` | k 线图
+### `scale`
 
-F2 的核心语法就是指定`视觉通道`和数据字段的映射关系，支持下面几种视觉通道：
+* 描述：为数据字段进行列定义
+* 返回：当前 chart 实例
 
-* [position](geom.html#_position)：数据字段映射到位置
-* [color](geom.html#_color)：数据字段映射到颜色
-* [shape](geom.html#_shape)：数据字段映射到形状
-* [size](geom.html#_size)：数据字段映射到大小
+!注意: 如数据属性 field 在 `chart.source()` 和 `chart.scale()` 中均有定义，那么后声明的会覆盖之前声明的配置。
 
-F2 除了提供了字段映射到图形属性上的方法外还提供了：
+#### `chart.scale('field', colDef)`
 
-* [style](geom.html#_style) 设置图形样式的接口
-* [adjust](geom.html#_adjust) 进行数据调整，可以实现层叠柱状图、分组柱状图、层叠面积图
+为指定的数据字段进行列定义。
 
-更详细的信息参考 [geom](geom.html)。
+- `field`：String，设置列定义的数据字段名。
+- `colDef`：Object，度量配置，详见 [Scale](./scale.html) API。
 
-<h4>示例</h4>
-
-绘制一个点图，将 a,b 分为作为 x 轴、y 轴, 点的大小设置成 10
+示例：
 
 ```js
 const data = [
-  { a: 1, b: 1 },
-  { a: 2, b: 2 }
+  { x: 0, y: 1 },
+  { x: 1, y: 2 },
+  { x: 2, y: 3 }
 ];
 
-chart.source(data);
-chart.point().position('a*b').size(10);
-chart.render();
+// 为 x 字段设置列定义
+chart.scale('x', {
+  type: 'cat', // 声明 type 字段为分类类型
+  values: [ 'A', 'B', 'C' ] // 重新显示的值
+  alias: '类型' // 设置属性的别名  
+});
 ```
 
-### render
+#### `chart.scale(colDef)`
 
-`chart.render()` 渲染图表。
+为一个或者多个数据字段进行列定义配置。
+
+- `colDef`：Object，度量配置，详见 [Scale](./scale.html) API。
+
+示例：
 
 ```js
-chart.render();
+const data = [
+  { x: 0, y: 1 },
+  { x: 1, y: 2 },
+  { x: 2, y: 3 }
+];
+
+// 为多个字段设置列定义
+chart.scale({
+  x: {
+    type: 'cat', // 声明 type 字段为分类类型
+    values: [ 'A', 'B', 'C' ] // 重新显示的值
+    alias: '类型' // 设置属性的别名
+  },
+  y: {
+    type: 'cat'
+  }
+});
 ```
 
-### clear
+### `coord`
 
-`chart.clear()` 清除图表内容。
+`chart.coord()` 
 
-F2 重新绘制时不需要 destroy，而仅需要 `chart.clear()` 然后重新声明语法。
+* 描述：配置坐标系
+* 返回：当前 chart 实例
+
+详见 [Coordinate](./coordinate.html)。
+
+### `axis`
+
+`chart.axis()` 
+
+* 描述：配置坐标轴
+* 返回：当前 chart 实例
+
+详见 [Axis](./axis.html)。
+
+### `legend`
+
+`chart.legend()`
+
+* 描述： 配置图例
+* 返回：当前 chart 实例
+
+详见 [Legend](./legend.html)。
+
+### `tooltip`
+
+`chart.tooltip()` 
+
+* 描述：配置提示信息
+* 返回：当前 chart 实例
+
+详见 [Tooltip](./tooltip.html)。
+
+### `guide`
+
+`chart.guide()` 
+
+* 描述：配置辅助元素
+* 返回：当前 guideController 实例
+
+详见 [Guide](./guide.html)。
+
+### 创建 Geometry 对象
+
+- `chart.point()`：创建 point（点）的几何标记对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+- `chart.line()`：创建 line（线）的几何标记对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+- `chart.area()`：创建 area（区域）的几何标记对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+- `chart.path()`：创建 path（路径）的几何标记对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+- `chart.interval()`：创建 interval（柱）的几何标记对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+- `chart.polygon()`：创建 polygon（多边形）的几何标记对象并返回该对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+- `chart.schema()`：创建 schema 的几何标记对象并返回该对象，具体的方法详见 [Geometry](./geometry.html)
+
+注意：以上方法返回的是几何标记实例，不是 chart 实例。
+
+### `render`
+
+`chart.render()`
+
+* 描述：渲染图表，在最后调用
+* 返回： 当前 chart 实例
+
+### `clear`
+
+`chart.clear()`
+
+* 描述：清除图表内容
+* 返回：当前 chart 实例
+
+F2 重新绘制时不需要 destroy，而仅需要 `chart.clear()` 然后重新声明语法，如下示例：
 
 ```js
 chart.clear(); // 清除
@@ -280,443 +314,120 @@ chart.line().position('a*b');
 chart.render();
 ```
 
-### repaint
+### `repaint`
 
-`chart.repaint()` 重新绘制图表。
+`chart.repaint()`
+
+* 描述：重新绘制图表
+* 返回：当前 chart 实例
 
 当修改了 guide、geometry 的配置项时可以重新绘制图表。
 
+### `changeData`
+
+`chart.changeData(data)`
+
+* 参数：`data`: Array，数据源
+* 描述：改变数据，同时图表刷新
+* 返回：当前 chart 实例
+
+### `destroy`
+
+`chart.destroy()`
+
+* 描述：销毁图表，`<canvas>` dom 元素不会销毁
+
+### `getPosition`
+
+`chart.getPosition(record)`
+
+* 参数：`record`，Object 类型，原始数据对象
+* 描述：获取原始数据对应在画布上的坐标
+* 返回：Object 类型，record 对应的画布坐标，格式为 `{ x: , y: }`
+
 ```js
-chart.repaint();
+const point = chart.getPosition({ time: '2010-02-02', value: 20 });
+```
+
+### `getRecord`
+
+`chart.getRecord(point)`
+
+* 参数：`point`，Object 类型，画布坐标，格式为 `{x: ,y: }`
+* 描述：根据画布上的坐标获取对应的原始数据
+* 返回：Object 类型，point 对应的原始数据
+
+```js
+const obj = chart.getRecord({ x: 100, y: 100 });
 ``` 
 
-### changeData
+### `getSnapRecords`
 
-`chart.changeData(data)` 改变数据，同时图表刷新。
+`chart.getSnapRecords(point)`
 
-```js
-chart.changeData(data);
-```
-
-### destroy
-
-`chart.destroy()` 销毁图表，canvas 元素不会销毁。
+* 参数：`point`，Object 类型，画布坐标，格式为 `{x: ,y: }`
+* 描述：根据画布上的坐标获取附近的数据集
+* 返回：Array 类型，返回数据集，该数据集中的每一项记录包含映射后的数据以及对应的原始数据集，结构如下
 
 ```js
-chart.destroy();
-```
-
-### axis
-
-`chart.axis(field, cfg|enable) `
-
-  + field: 坐标轴对应的字段
-  + cfg 坐标轴的配置信息，也可以设置成 false
-    - line: `Object` 线的配置信息，设置 null 不显示，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)
-    - labelOffset: `Number` 坐标轴文本距离轴线的距离
-    - grid: `Object|Function` 栅格线的配置项，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
-    - tickLine: `Object` 坐标点对应刻度线的样式，设置 null 不显示，支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
-    - label: `Object|Function` 坐标轴上的文本，设置 null 不显示, 支持所有的 canvas 属性，参考 [canvas 属性](canvas.html)，支持回调函数
-    - position: x 轴默认位于底部 'bottom'，y 轴可设置 position 为 'left'、'right'。（**3.0.3 版本开始支持**）
-
-  ```js
-  chart.axis('field', false); // 不显示该字段对应的坐标轴
-  chart.axis('field', {
-    // 设置坐标轴线的样式，如果值为 null，则不显示坐标轴线，图形属性
-    line: {
-      lineWidth: 1, 
-      stroke: '#ccc' 
-    }, 
-    // 坐标轴文本距离轴线的距离
-    labelOffset: 20, 
-    // 坐标点对应的线，null 不显示，图形属性
-    tickLine: {
-      lineWidth: 1,
-      stroke: '#ccc',
-      value: 5,// 刻度线长度
-    },
-    // 0％ 处的栅格线着重显示
-    grid: (text, index) => {
-      if(text === '0%') {
-        return {
-          stroke: '#efefef'
-        };
-      }
-      return {
-        stroke: '#f7f7f7'
-      }
-    },
-    // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
-    label: (text, index, total) => {
-      const cfg = {
-        fill: '#979797',
-        font: '14px san-serif',
-        offset: 6
-      };
-      if (index === 0) {
-        cfg.textAlign = 'left';
-      }
-      if (index > 0 && index === total - 1) {
-        cfg.textAlign = 'right';
-      }
-      cfg.text = text + '%';  // cfg.text 支持文本格式化处理
-      return cfg;
-    },
-  });
-  ```
-
-### guide
-
-`chart.guide()` 设置辅助元素。
-
-为图表添加自定义的辅助元素，如辅助线、辅助文本等。目前支持的辅助类型有：折线（line）、弧线（arc）、长方形（rect）、文字（text）和自定义 html，其中 line、arc、rect 是提前绘制在背景上，text 和 html 是在动画完成后绘制在图形上。
-
-#### chart.guide().html(point, html, [cfg])
-
-绘制辅助 html。
-
-  + `point`: Array
-
-    表示在画布上放置 html 的坐标点，格式 Array：[x, y]
-
-      + x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-      + y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-
-    当然，如果 x y 值为分类类型的话，还可以传入索引值。
-
-    另外还提供了两个关键字： `min`、`max`  用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
-
-  + `cfg`: Object
-
-    辅助 html 的显示样式配置，可选。
-
-      + 对齐(align)：支持 tr、tc、tl、br、bc、bl、lc、rc、cc 9 点对齐。
-       
-      <img src="https://zos.alipayobjects.com/rmsportal/MTSKhszvHZiZWkSOKidQ.png">
-
-      + 偏移(offset)：格式 Array：[x, y]，代表画布偏移坐标。
-
-  ```js
-  const point = [ '周日', 28 ];
-  const html = "<div style='border-radius: 12px;border: none;width: 22px;height: 22px;background-color: rgba(102, 182, 241, 0.5);'></div>";
-  const cfg = {
-    align: 'cc',
-    offset: [ -5, -5 ]
-  }
-
-  chart.guide().html(point, html, cfg);
-  ```
-
-
-#### chart.guide().rect(start, end, [cfg])
-
-绘制辅助框。
-
-+ `start`: Array
-+ `end`: Array
-
-分别表示线的左上角顶点和右下角顶点，这两个参数均为数组 Array 格式： [x, y]：
-
-+ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-+ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-
-当然，如果 x、y 值为分类类型的话，则支持传入索引值。
-
-另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
-
-+ `cfg`: Object
-
-辅助框的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
-
-```js
-// 添加辅助框
-chart.guide().rect([ startXValue, startYValue ], [ endXValue, startYValue ], {
-  lineWidth: 0, // 辅助框的边框宽度
-  fill: '#f80', // 辅助框填充的颜色
-  fillOpacity: 0.1, // 辅助框的背景透明度
-  stroke: '#ccc', // 辅助框的边框颜色设置
-  radius: 5 // 辅助框的圆角设置
-});
-```
-
-#### chart.guide().line(start, end, [cfg])
-
-绘制辅助线。
-
-+ `start`: Array
-+ `end`: Array
-
-分别表示线起始、结束顶点，这两个参数均为数组 Array 格式： [x, y]：
-
-+ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-+ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-
-当然，如果 x、y 值为分类类型的话，则可以传入索引值替代原始数值。
-
-另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
-
-+ `cfg`: Object
-
-辅助线的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
-
-```js
-chart.guide().line([ 'min', 0 ], [ 'min', 'max' ], {
-  lineWidth: 2, // 辅助线宽度
-  stroke: '#ccc', // 辅助线颜色设置
-  lineDash: [ 2, 2 ]
-});
-```
-
-#### chart.guide().text(point, text, [cfg])
-
-绘制辅助文本。
-
-+ `point`: Array
-
-表示文本在画布上的显示位置，为数组 Array 格式： [x, y]：
-
-+ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-+ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-
-当然，如果 x、y 值为分类类型的话，则支持传入索引值。
-
-另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
-
-+ `text`: String
-
-指定显示文本的内容。
-
-+ `cfg`: Object
-
-辅助文本的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
-
-```js
-// 添加辅助文本
-chart.guide().text([ startXValue, startYValue ], '我是辅助文本', {
-  fontSize: 14,
-  fill: '#f80',
-  fontWeight: 'bold',
-  offset: [ 10, 10] // 格式 Array：[x, y]，代表画布偏移坐标。
-});
-```
-
-#### chart.guide().arc(start, end, [cfg])
-
-绘制圆弧，**适用于极坐标**。
-
-+ `start`: Array
-+ `end`: Array
-
-分别表示圆弧起始、结束点，这两个参数均为数组 Array 格式： [x, y]：
-
-+ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-+ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-
-当然，如果 x、y 值为分类类型的话，则可以传入索引值替代原始数值。
-
-另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
-
-+ `cfg`: Object
-
-辅助圆弧的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
-
-```js
-chart.guide().arc([ 'min', 0 ], [ 'min', 'max' ], {
-  lineWidth: 2, // 辅助线宽度
-  stroke: '#ccc'// 辅助线颜色设置
-});
-```
-
-#### chart.guide().tag(point, text, cfg)
-
-绘制标记 TAG，如下：
-
-<img src="https://gw.alipayobjects.com/zos/rmsportal/DPGqOpVSvUISofoIeYKs.png" width="323">
-
-+ `point`: Array
-
-表示 TAG 在画布上的显示位置，为数组 Array 格式： [x, y]：
-
-+ x：是 x 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-+ y：是 y 轴坐标对应字段的值，是原始数据值，不是画布坐标。
-
-当然，如果 x、y 值为分类类型的话，则支持传入索引值。
-
-另外还提供了两个关键字： `min` `max` 用于表示对应字段的最大值和最小值，主要用户快速定位坐标轴的起点和终点。
-
-+ `text`: String
-
-指定显示文本的内容。
-
-+ `cfg`: Object
-
-辅助 TAG 的显示样式配置，可选，详细配置参考[绘图属性](canvas.html)。
-
-```js
-// 添加辅助文本
-chart.guide().tag([ startXValue, startYValue ], '我是辅助文本', {
-  direct: 'tl', // tag 默认的方向，可配置值： 'tl'、'tc'、'tr'、'cl'、'cr'、'bl'、'bc'、'br'
-  padding: [ 4, 6 ], // tag 内边距，使用方式同 CSS 盒模型的 padding
-  radius: 2, // tag 圆角大小
-  fill: '#1890FF', // tag 背景色
-  stroke: null, // 无边框
-  offsetX: 0, // X 轴偏移
-  offsetY: 0, // Y 轴偏移
-  side: 4, // 三角标的边长
-  fontStyle: '', // 字体样式普通,斜体
-  fontVariant: '',
-  fontWeight: '',
-  fontSize: 14,
-  fontFamily: 'sans-serif',
-  color: '#FFFFFF' // 字体的颜色
-});
-```
-
-`direct` 方向相对于 point，如下所示：
-
-<img src="https://gw.alipayobjects.com/zos/rmsportal/hyRzDvMdRVwukHVfmGWL.png" width="350">
-
-### coord
-
-`chart.coord(type, cfg)` 设置坐标系
-  + type 坐标系类型，目前支持 rect, polar 两种
-  + cfg 坐标系的配置项，rect（直角坐标系） 和 polar(极坐标）的配置项不完全一样
-    - transposed: 坐标系翻转
-    - startAngle: polar（极坐标）的起始角度
-    - endAngle: polar（极坐标）的结束角度
-    - innerRadius: polar（极坐标）的内环半径
-
-  ```js
-    chart.coord('rect') // 直角坐标系
-    chart.coord('rect', {
-      transposed: true // 坐标系翻转，柱状图会变成条形图
-    });
-    
-    chart.coord('polar'); // 极坐标
-    chart.coord('polar', {
-      startAngle: -Math.PI,
-      endAngle: 0
-    });
-    chart.coord('polar', {
-      transposed: true // 饼图一般使用这个坐标系
-    });
-  ```
-
-<div>
-  <canvas id="can3" style="float:left;"></canvas>
-  <canvas id="can4" style="float:left;"></canvas>
-</div>
-<div style="clear:both;"></div>
-
-```js-
-var data = [
-  {x: '1', y: 1},
-  {x: '2', y: 2},
-  {x: '3', y: 3}
+[
+  {
+    _origin: { year: '1959 年', sales: 38 }, // 该 shape 对应的原始数据
+    points: [
+      { x: 0.65625, y: 0 },
+      { x: 0.65625, y: 0.2375 },
+      { x: 0.71875, y: 0.2375 },
+      { x: 0.71875, y: 0 }
+    ], // 组成该 shape 的关键顶点，归一化数据
+    _originY: 38, // Y 轴对应的原始数据
+    x: 260.53499698638916, // 该 shape 的 x 轴画布坐标
+    y: 165.34375, // 该 shape 的 y 轴画布坐标
+    index: 5 // shape 的索引
+  },
+  ...
+  {}
 ]
-var chart = new F2.Chart({
-  id: 'can3',
-  width: 400,
-  height: 200,
-  pixelRatio: 2 // 单独设置
-});
-
-chart.source(data, {
-  y: {
-    tickCount: 4,
-    formatter(val) {
-      return val.toFixed(1);
-    }
-  }
-});
-
-chart.coord({
-  transposed: true
-});
-
-chart.interval().position('x*y');
-chart.guide().text([2.5, 1.5], 'transposed', {
-  textAlign: 'center',
-  fontSize: 14
-});
-chart.render();
-
-var chart1 = new F2.Chart({
-  id: 'can4',
-  width: 400,
-  height: 200,
-  pixelRatio: 2 // 单独设置
-});
-
-chart1.coord({
-  type: 'polar',
-  innerRadius: 0.5
-})
-chart1.source(data, {
-  y: {
-    tickCount: 4,
-    formatter(val) {
-      return val.toFixed(1);
-    }
-  }
-});
-chart1.axis(false);
-chart1.interval().position('x*y');
-chart1.guide().text([0, 3.5], 'polar and innerRadius = 0.5', {
-  textAlign: 'center',
-  fontSize: 14
-});
-chart1.render();
 ```
 
+```js
+const obj = chart.getSnapRecords({x: 100, y: 100});
+``` 
 
-### animate
+### `getLegendItems`
 
-chart.animate(cfg|false) 执行动画
-  * cfg|false 指定动画的配置项或者禁用动画
-    + type: 动画的类型
-    + duration: 动画时间（毫秒），默认1000。
-    + easing: Function/String 缓动函数或缓动函数名称，默认 easeInOut。支持 linear、easeIn、easeOut、easeInOut、backIn、backOut、elastic、bounce
-    + success: Function 动画结束后执行的回调函数。
+`chart.getLegendItems()`
 
-  ```js
-  chart.animate(false);// 禁用动画
-  chart.animate({
-    duration: 2000,
-    easing: 'elastic',
-    success() {
-      alert('ok');
-    }
-  });
-  ```
+* 描述：获取图例的 items，用于图例相关的操作
+* 返回：Array 类型
 
-### getPosition
 
-`chart.getPosition(record)` 获取数据对应在画布上的坐标。
+### `getXScale`
 
-  * record：`Object` 原始的数据对象
+`chart.getXScale()`
 
-  ```js
-  const point = chart.getPosition({time: '2010-02-02', value: 20});
-  ```
+* 描述：获取图表 x 轴对应的度量
+* 返回：Scale 类型，x 轴对应的度量对象
 
-### getRecord
+### `getYScales`
 
-`chart.getRecord(point)` 根据画布上的坐标获取对应的数据。
+`chart.getYScales()`
 
-  * point：`Object`  画布上的点
+* 描述：获取图表 Y 轴对应的度量，有可能会有多个 Y 轴
+* 返回：Array，y 轴对应的度量对象的数组
 
-  ```js
-  const obj = chart.getRecord({x: 100, y: 100});
-  ```
+### `showTooltip`
 
-### getSnapRecords
+`chart.showTooltip(point)`
 
-`chart.getSnapRecords(point, [field])` 根据画布上的坐标获取附近的数据。
+* 参数：`point`，Object 类型，画布坐标，格式为 `{x: ,y: }`
+* 描述：在该点显示 tooltip
+* 返回：当前 chart 实例
 
-  * point 画布上的点
-  * field 用于逼近数据的字段，默认都是 x 轴对应的字段，但是饼图情况下需要自己指定对应 y 轴的字段
-  ```js
-  const records = chart.getSnapRecords({x: 100, y: 100});
-  ```
-  
+### `hideTooltip`
+
+`chart.hideTooltip()`
+
+* 描述：隐藏当前 tooltip
+* 返回：当前 chart 实例
+
+

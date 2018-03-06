@@ -1,6 +1,6 @@
 <!--
-index: 6
-title: 全局配置项
+index: 12
+title: Global 全局配置
 -->
 
 # Global
@@ -23,7 +23,7 @@ const Global = {
     column: 1 / 2, // 一般的柱状图占比 1/2
     rose: 0.999999, // 玫瑰图的占的宽度
     multiplePie: 3 / 4, // 多层饼图的宽度
-    dodgeMargin: 1 / 2 // 分组柱状图的间距
+    dodgeMargin: 0 // 分组柱状图的间距
   },
   // 动画降频倍数
   animateReduceMultiple: 1,
@@ -36,106 +36,82 @@ const Global = {
 ### [皮肤主题相关](#皮肤主题相关)
 
 ```js
-const axisLineColor = '#999999';
-const lineColor = '#E9E9E9';
+const color1 = '#E8E8E8'; // 坐标轴线、坐标轴网格线的颜色
+const color2 = '#808080'; // 字体颜色
+// 坐标轴的默认样式配置
 const defaultAxis = {
   label: {
-    fillStyle: '#979797',
-    font: '20px san-serif'
-  },
-  labelOffset: 6,
+    fill: color2,
+    fontSize: 10
+  }, // 坐标轴文本的样式
   line: {
-    stroke: lineColor,
-    lineWidth: 1
-  },
+    stroke: color1,
+    lineWidth: 1,
+    top: true
+  }, // 坐标轴线的样式
   grid: {
-    stroke: lineColor,
-    lineWidth: 1
-  },
-  tickLine: null
-};
-
-const defaultFont = {
-  fontStyle: '',
-  fontVariant: '',
-  fontWeight: '',
-  fontSize: '12px',
-  fontFamily: '"Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", SimSun, "sans-serif"'
+    stroke: color1,
+    lineWidth: 1,
+    lineDash: [ 2 ]
+  }, // 坐标轴网格线的样式
+  tickLine: null, // 坐标轴刻度线，默认不展示
+  labelOffset: 7.5 // 坐标轴文本距离坐标轴线的距离
 };
 
 const Theme = {
-  defaultFont, // 默认字体
-  pixelRatio: 1, // 屏幕像素比
-  padding: [ 40, 40, 40, 40 ], // 默认的边框
-  // 颜色
-  colors: [ '#4E7CCC', '#36B3C3', '#4ECDA5', '#94E08A', '#E2F194', '#EDCC72', '#F8AB60', '#F9815C', '#EB4456', '#C82B3D' ],
-  shapes: { // 不同图表类型默认的形状
+  fontFamily: '"Helvetica Neue", "San Francisco", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", sans-serif', // 默认字体
+  defaultColor: '#1890FF', // 默认颜色
+  pixelRatio: 1, // 默认像素比，具体参数由用户自己设置
+  padding: 'auto', // 图表边距，默认自动计算
+  appendPadding: 15, // 默认留白，15 像素
+  colors: [
+    '#1890FF',
+    '#2FC25B',
+    '#FACC14',
+    '#223273',
+    '#8543E0',
+    '#13C2C2',
+    '#3436C7',
+    '#F04864'
+  ], // 默认色系
+  shapes: {
     line: [ 'line', 'dash' ],
     point: [ 'circle', 'hollowCircle' ]
   },
-  opacities: [ 0.1, 0.9 ], // 默认的透明度范围
   sizes: [ 4, 10 ], // 默认的大小范围
-  axis: { // 坐标轴的配置信息
-    bottom: Util.deepMix({}, defaultAxis, {
-      line: {
-        stroke: axisLineColor
-      },
-      label: {
-        textBaseline: 'hanging'
-      },
-      labelOffset: 12,
-      gridAttrs: {},
-      grid(text, index, total) {
-        if (index === 0 || index === total - 1) {
-          return null;
-        }
-        return Util.mix({}, defaultAxis.grid, Theme.axis.bottom.gridAttrs);
-      }
-    }),
-    left: Util.deepMix({}, defaultAxis, {
-      label: {
-        textAlign: 'end'
-      },
-      line: null,
-      tickLine: null
-    }),
-    right: Util.deepMix({}, defaultAxis, {
-      label: {
-        textAlign: 'start'
-      },
-      line: null,
-      tickLine: null,
+  axis: {
+    bottom: Util.mix({}, defaultAxis, {
       grid: null
-    }),
-    circle: Util.deepMix({}, defaultAxis, {
-      line: {
-        stroke: axisLineColor
-      }
-    }),
-    radius: Util.deepMix({}, defaultAxis, {})
-  },
-  guide: { // 辅助元素的配置信息
+    }), // 底部坐标轴配置
+    left: Util.mix({}, defaultAxis, {
+      line: null
+    }), // 左侧坐标轴配置
+    right: Util.mix({}, defaultAxis, {
+      line: null
+    }), // 右侧坐标轴配置
+    circle: Util.mix({}, defaultAxis, {
+      line: null
+    }), // 极坐标下的圆弧坐标轴配置
+    radius: Util.mix({}, defaultAxis, {
+      labelOffset: 4
+    }) // 极坐标下的半径坐标轴配置
+  }, // 各种坐标轴配置
+  shape: {
     line: {
-      stroke: '#000',
-      lineWidth: 1
-    },
-    text: {
-      fill: '#000',
-      textAlign: 'center'
-    },
-    rect: {
-      fillStyle: '#fafafa'
-    },
-    arc: {
-      stroke: '#CCC'
-    },
-    html: {
-      offset: [ 0, 0 ],
-      align: 'cc'
-    }
-  }
+      lineWidth: 2, // 线的默认宽度
+      lineJoin: 'round',
+      lineCap: 'round'
+    }, // 线图样式配置
+    point: {
+      lineWidth: 0,
+      size: 3 // 圆的默认半径
+    }, // 点图样式配置
+    area: {
+      fillOpacity: 0.1
+    } // 区域图样式配置
+  },
+  _defaultAxis: defaultAxis // 用于获取默认的坐标轴配置
 };
-  
 ```
 
 ## 方法
@@ -146,7 +122,7 @@ const Theme = {
 
 `Global.setTheme(cfg)`
 
-- `object`
+- cfg: Object
   
   用户自定义的主题配置。
 
