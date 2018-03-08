@@ -11,7 +11,7 @@ date: "2018-03-08"
 -->
 
 <script>
-    $.getJSON('/assets/data/gaussion-distribution.json', data => {
+    $.getJSON('/assets/data/gaussion-distribution.json', function(data) {
         var dv = new DataSet.View().source(data);
         dv.transform({
             sizeByCount: true, // calculate bin size by binning count
