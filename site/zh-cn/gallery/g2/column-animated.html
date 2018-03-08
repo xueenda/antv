@@ -1,0 +1,52 @@
+<!--
+title: 柱状图带更新动效
+plotDescription: 柱状图，展示更新动效
+plotUsage: 柱状图在数据更新的时候有专门的更新动画效果
+chartDetail: ${base}zh-cn/vis/chart/bar.html
+date: "2018-03-08"
+-->
+
+<script>
+    var data = [];
+    var getValue = function () {
+        var value = 0;
+        return function () {
+            if (value >= Math.PI * 2) {
+                value = 0;
+            }
+            var result = Math.sin(value);
+            value += Math.PI / 6;
+            return result;
+        };
+    }();
+    for (var i = 1; i <= 12; i++) {
+        data.push({'month': i, value: getValue() * 8 + 15});
+    }
+    var chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight
+    });
+    chart.legend(false);
+    chart.source(data, {
+        month: {
+            type: 'cat',
+            formatter: function (dimValue) {
+                return dimValue + '月';
+            }
+        },
+        value: {
+            min: 0,
+            max: 30
+        }
+    });
+    chart.interval().position('month*value').color('month');
+    chart.render();
+    setInterval(function () {
+        getValue();
+        data.map(function (item) {
+            item.value = getValue() * 8 + 15;
+        });
+        chart.changeData(data);
+    }, 120);
+</script>
