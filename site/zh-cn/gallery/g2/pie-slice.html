@@ -43,12 +43,16 @@ G2.Shape.registerShape('interval', 'sliceShape', {
 const chart = new G2.Chart({
   container: 'mountNode',
   forceFit: true,
-  height: 400
+  height: window.innerHeight
 });
 
-
 chart.source(data);
-chart.coord('theta');
+chart.coord('theta', {
+    innerRadius: 0.75
+});
+chart.tooltip({
+    showTitle: false
+});
 chart.intervalStack()
   .position('value')
   .color('type')

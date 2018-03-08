@@ -54,11 +54,11 @@ demoDirs.forEach(function (dir) {
         plot: plotInfo,
         demos: []
     };
-    files.forEach(function (file) {
+    files.forEach(function (file, i) {
         var _renderMd = renderMd(file),
             meta = _renderMd.meta;
 
-        var index = meta.index,
+        var index = meta.index || i,
             title = meta.title;
 
         var name = basename(file, '.html');

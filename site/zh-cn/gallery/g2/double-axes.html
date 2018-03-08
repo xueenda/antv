@@ -1,12 +1,7 @@
 <!--
-index: 8
 title: 双轴图表
-resource:
 plotDescription: 同时显示两个坐标轴，并自定义图例。
 plotUsage: 双轴图表同时显示两个坐标轴，主要应用于不同数据字段的数据对比。
-relativePlots:
-  - ${plotByName.bar}
-  - ${plotByName.line}
 date: "2018-03-02"
 -->
 
@@ -24,7 +19,7 @@ const data = [
 const chart = new G2.Chart({
   container: 'mountNode',
   forceFit: true,
-  height: 400
+  height: window.innerHeight
 });
 chart.source(data, {
   call: {

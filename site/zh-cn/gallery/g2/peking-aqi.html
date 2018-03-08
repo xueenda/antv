@@ -1,0 +1,106 @@
+<!--
+title: 北京市2010至2015年空气质量指数
+plotDescription: 空气质量指数图
+plotUsage: 结合线图和 guide，展示空气质量随时间变化
+chartDetail: ${base}zh-cn/vis/chart/line.html
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+    - ${url['g2-plugin-slider']}
+date: "2018-03-08"
+-->
+
+<script>
+    const ds = new DataSet({
+        state: {
+            start: new Date('2000-06-05').getTime(),
+            end: new Date('2000-12-29').getTime()
+        }
+    });
+    $('<h4 style="text-align: center;margin-bottom: 5px;">北京市 2010-2015 年 AQI 指数</h4>').appendTo($('#mountNode'));
+    $('<div id="slider"></div>').insertAfter('#mountNode');
+    $.getJSON('/assets/data/peking-aqi.json', function (data) {
+        var dv = ds.createView().source(data);
+        dv.transform({
+            type: 'filter',
+            callback(obj) {
+                const time = new Date(obj.date).getTime(); // !注意：时间格式，建议转换为时间戳进行比较
+                return time >= ds.state.start && time <= ds.state.end;
+            }
+        });
+        var ticks = [0, 50, 100, 150, 200, 300, 500];
+        var colors = [
+            '#5AC405',
+            '#F9C709',
+            '#FD942C',
+            '#e4440D',
+            '#810043',
+            '#45001B'
+        ];
+        var chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight - 90,
+            padding: [ 20, 20, 40, 80 ]
+        });
+        chart.source(dv, {
+            date: {
+                type: 'time',
+                mask: 'YYYY-MM-DD',
+                tickCount: 4,
+                alias: '日期',
+                nice: false
+            },
+            aqi: {
+                min: 0,
+                ticks: ticks,
+                alias: 'AQI(空气质量指数)'
+            }
+        });
+        chart.line()
+            .position('date*aqi')
+            .opacity(0.75);
+        ticks.forEach(function (tick, i) {
+            var nextTick = ticks[i + 1];
+            if (nextTick) {
+                chart.guide().region({
+                    start: ['min', tick],
+                    end: ['max', nextTick],
+                    style: {
+                        fill: colors[i],
+                        fillOpacity: 0.4
+                    }
+                });
+            }
+        });
+        chart.render();
+
+        // 创建 Slider
+        const slider = new Slider({
+            container: 'slider',
+            width: 'auto',
+            height: 26,
+            start: '2000-06-05', // 和状态量对应
+            end: '2000-12-29',
+            xAxis: 'date',
+            yAxis: 'aqi',
+            scales: {
+                time: {
+                    type: 'time',
+                    tickCount: 10,
+                    mask: 'YYYY-MM-DD'
+                }
+            },
+            data: data,
+            backgroundChart: {
+                type: 'line'
+            },
+            onChange({startValue, endValue}) {
+                ds.setState('start', startValue);
+                ds.setState('end', endValue);
+            }
+        });
+        slider.render();
+    });
+</script>
