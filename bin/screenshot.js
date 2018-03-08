@@ -73,6 +73,7 @@ getPort().then(function (port) {
         var q = queue(MAX_POOL_SIZE > 2 ? MAX_POOL_SIZE - 1 : MAX_POOL_SIZE);
         var demoSrc = join(src, task.src);
         var screenshotDest = join(dest, task.dest);
+        mkdir('-p', screenshotDest);
         var template = task.template;
         var demoTheme = task.demoTheme;
 
