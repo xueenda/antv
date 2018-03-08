@@ -24,8 +24,8 @@ data.forEach(function(obj){
 });
 const otherRatio  = data[data.length - 1].value / sum; // Other 的占比
 const otherOffsetAngle = otherRatio * Math.PI; // other 占的角度的一半
-const chartWidth = 600;
-const chartHeight = 380;
+const chartWidth = window.innerWidth;
+const chartHeight = window.innerHeight;
 const others = [
   {otherType: 'Other1', value: 2},
   {otherType: 'Other2', value: 3},
@@ -135,5 +135,4 @@ view2.intervalStack()
   });
 
 chart.render();
-
 </script>
