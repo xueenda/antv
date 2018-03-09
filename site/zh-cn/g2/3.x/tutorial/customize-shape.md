@@ -124,11 +124,11 @@ Shape.registerShape('interval', 'triangle', {
 });
 ```
 
-上面代码中，我们进行了两步操作：
+上面代码中，我们进行了三步操作：
 
 1. 通过 `getPoints()`  方法返回三角形的三个关键点（即三个顶点）。此时 cfg 中会传入，x, y, y0, size。其中 x, y 是柱子最高点的坐标，y0 是横坐标轴的 y 坐标，size 是柱子默认宽度。
 
 2. 得到标记点后，我们在 `draw()` 方法中拿到 cfg.points 数据和数据映射后的图形属性数据（比如 cfg.color），再通过绘图库提供的多边形图形，将三个点依次头尾相连，生成每个三角形。
 
-
+3. 通过 addShap 来绘制图形，addShape 的参数参考： [绘图文档](https://github.com/antvis/g)
 > 注意：points 数据和参与 points 计算的配置项都是 0-1 空间的数据！
