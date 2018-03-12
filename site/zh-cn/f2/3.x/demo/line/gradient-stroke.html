@@ -1,0 +1,58 @@
+<!--
+index: 5
+title: 渐变色曲线 1
+-->
+
+<script>
+  // 使用 html5 canvas api 创建渐变色对象
+  const canvas = document.getElementById('mountNode');
+  const ctx = canvas.getContext('2d');
+  const grd = ctx.createLinearGradient(0,0,window.innerWidth,0);
+  grd.addColorStop(0.,"#F2C587");
+  grd.addColorStop(0.5,"#ED7973");
+  grd.addColorStop(1,"#8659AF");
+
+  const data = [
+    { time: '周一', tem: 10 },
+    { time: '周二', tem: 22 },
+    { time: '周三', tem: 20 },
+    { time: '周四', tem: 26 },
+    { time: '周五', tem: 20 },
+    { time: '周六', tem: 26 },
+    { time: '周日', tem: 28 }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
+  });
+  const defs = {
+    time: {
+      tickCount: 7,
+      range: [ 0, 1 ]
+    },
+    tem: {
+      tickCount: 5,
+      min: 0
+    }
+  };
+  chart.axis('time', {
+    label(text, index, total) {
+      const cfg = {
+        textAlign: 'center'
+      };
+      if (index === 0) {
+        cfg.textAlign = 'start';
+      }
+      if (index > 0 && index === total - 1) {
+        cfg.textAlign = 'end';
+      }
+      return cfg;
+    }
+  });
+  chart.source(data, defs);
+  chart.line().position('time*tem')
+    .color(grd)
+    .shape('smooth')
+    .size(6);
+  chart.render();
+</script>

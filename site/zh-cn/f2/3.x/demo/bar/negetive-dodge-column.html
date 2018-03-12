@@ -1,0 +1,69 @@
+<!--
+index: 10
+title: 带负值的分组柱状图
+resource:
+  jsFiles:
+    - ${url.lodash}
+-->
+
+<script>
+  const data = [
+    { time: '周一', tem: 6.9, city: 'tokyo' },
+    { time: '周二', tem: 9.5, city: 'tokyo' },
+    { time: '周三', tem: 14.5, city: 'tokyo' },
+    { time: '周四', tem: 18.2, city: 'tokyo' },
+    { time: '周五', tem: 21.5, city: 'tokyo' },
+    { time: '周六', tem: 25.2, city: 'tokyo' },
+    { time: '周日', tem: 26.5, city: 'tokyo' },
+    { time: '周一', tem: -10.8, city: 'newYork' },
+    { time: '周二', tem: -5.7, city: 'newYork' },
+    { time: '周三', tem: -11.3, city: 'newYork' },
+    { time: '周四', tem: -17, city: 'newYork' },
+    { time: '周五', tem: -22, city: 'newYork' },
+    { time: '周六', tem: -24.8, city: 'newYork' },
+    { time: '周日', tem: -24.1, city: 'newYork' },
+    { time: '周一', tem: 0.6, city: 'berlin' },
+    { time: '周二', tem: 3.5, city: 'berlin' },
+    { time: '周三', tem: 8.4, city: 'berlin' },
+    { time: '周四', tem: 13.5, city: 'berlin' },
+    { time: '周五', tem: 17, city: 'berlin' },
+    { time: '周六', tem: -18.6, city: 'berlin' },
+    { time: '周日', tem: 17.9, city: 'berlin' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
+  });
+
+  chart.source(data, {
+    tem: {
+      tickCount: 5
+    }
+  });
+  chart.tooltip({
+    custom(obj) {
+      const legend = chart.get('legendController').legends.top[0];
+      const tooltipItems = obj.items;
+      const legendItems = legend.items;
+      const map = {};
+      legendItems.map(item => {
+        map[item.name] = _.clone(item);
+      });
+      tooltipItems.map(item => {
+        const { name, value } = item;
+        if (map[name]) {
+          map[name].value = value;
+        }
+      });
+      legend.setItems(Object.values(map));
+    },
+    onHide() {
+      const legend = chart.get('legendController').legends.top[0];
+      legend.setItems(chart.getLegendItems().country);
+    }
+  });
+  chart.interval().position('time*tem')
+    .color('city')
+    .adjust('dodge');
+  chart.render();
+</script>

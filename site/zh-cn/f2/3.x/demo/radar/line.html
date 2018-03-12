@@ -1,10 +1,9 @@
 <!--
-index: 1
-title: 雷达面积图
+index: 0
+title: 雷达图
 resource:
   jsFiles:
     - ${url.lodash}
-
 -->
 
 <script>
@@ -82,7 +81,6 @@ resource:
       top: false
     }
   });
-  chart.area().position('item*score').color('user');
   chart.line().position('item*score').color('user');
   chart.point().position('item*score').color('user').style({
     stroke: '#fff',

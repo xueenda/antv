@@ -1,65 +1,59 @@
 <!--
-index: 2
+index: 1
 title: 带点的折线图
 resource:
   jsFiles:
 -->
 
 <script>
-  //双精度
   const data = [
-    { time: '2016-08-08 00:00:00', tem: 10 },
-    { time: '2016-08-08 00:10:00', tem: 22 },
-    { time: '2016-08-08 00:30:00', tem: 20 },
-    { time: '2016-08-09 00:35:00', tem: 26 },
-    { time: '2016-08-09 01:00:00', tem: 20 },
-    { time: '2016-08-09 01:20:00', tem: 26 },
-    { time: '2016-08-10 01:40:00', tem: 28 },
-    { time: '2016-08-10 02:00:00', tem: 20 },
-    { time: '2016-08-10 02:20:00', tem: 28 }
+    { day: '周一', value: 300 },
+    { day: '周二', value: 400 },
+    { day: '周三', value: 350 },
+    { day: '周四', value: 500 },
+    { day: '周五', value: 490 },
+    { day: '周六', value: 600 },
+    { day: '周日', value: 900 }
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
     pixelRatio: window.devicePixelRatio
   });
-  const defs = {
-    time: {
-      type: 'timeCat',
-      tickCount: 3,
-      range: [ 0, 1 ]
-    },
-    tem: {
+
+  chart.source(data, {
+    value: {
       tickCount: 5,
       min: 0
+    },
+    day: {
+      range: [ 0, 1 ]
     }
-  };
-  // 配置time刻度文字样式
-  const label = {
-    fill: '#979797',
-    font: '14px san-serif',
-    offset: 6
-  };
-  chart.axis('time', {
+  });
+  chart.tooltip({
+    showCrosshairs: true,
+    showItemMarker: false,
+    onShow(ev) {
+      const { items } = ev;
+      items[0].name = null;
+      items[0].value = '$ ' + items[0].value;
+    }
+  });
+  chart.axis('day', {
     label(text, index, total) {
-      const cfg = label;
-      // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
+      const textCfg = {};
       if (index === 0) {
-        cfg.textAlign = 'start';
+        textCfg.textAlign = 'left';
       }
-      if (index > 0 && index === total - 1) {
-        cfg.textAlign = 'end';
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
       }
-      return cfg;
+      return textCfg;
     }
   });
-  // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
-  chart.axis('tem', {
-    label: {
-      fontSize: 14
-    }
+  chart.line().position('day*value');
+  chart.point().position('day*value').style({
+    stroke: '#fff',
+    lineWidth: 1
   });
-  chart.source(data, defs);
-  chart.line().position('time*tem').shape('smooth');
-  chart.point().position('time*tem');
   chart.render();
 </script>

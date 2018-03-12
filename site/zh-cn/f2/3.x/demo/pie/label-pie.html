@@ -1,48 +1,41 @@
 <!--
-index: 0.1
-title: 饼图带 label
+index: 4
+title: 带文本的饼图
 resource:
   jsFiles:
-    - ${url.dataSet}
     - ${url.lodash}
 -->
 
 <script>
-  // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
-  var data = [
-      {iconType: "learn", amount: 16, ratio: 0.1, memo: "学习", namekey: "namekey"},
-      {iconType: "foo", amount: 16, ratio: 0.5, memo: "睡觉", namekey: "namekey"},
-      {iconType: "foo", amount: 16, ratio: 0.05, memo: "吃饭", namekey: "namekey"},
-      {iconType: "manner", amount: 2, ratio: 0.15, memo: "讲礼貌", namekey: "namekey"},
-      {iconType: "other", amount: 4, ratio: 0.05, memo: "其他", namekey: "namekey"},
-      {iconType: "sport", amount: 81, ratio: 0.1, memo: "运动", namekey: "namekey"},
-      {iconType: "none", amount: 20, ratio: 0.05, memo: "暂无备注", namekey: "namekey"}
+  const data = [
+    { iconType: 'learn', amount: 16, ratio: 0.1, memo: '学习', namekey: 'namekey' },
+    { iconType: 'foo', amount: 16, ratio: 0.5, memo: '睡觉', namekey: 'namekey' },
+    { iconType: 'foo', amount: 16, ratio: 0.05, memo: '吃饭', namekey: 'namekey' },
+    { iconType: 'manner', amount: 2, ratio: 0.15, memo: '讲礼貌', namekey: 'namekey' },
+    { iconType: 'other', amount: 4, ratio: 0.05, memo: '其他', namekey: 'namekey' },
+    { iconType: 'sport', amount: 81, ratio: 0.1, memo: '运动', namekey: 'namekey' },
+    { iconType: 'none', amount: 20, ratio: 0.05, memo: '暂无备注', namekey: 'namekey' }
   ];
-  var chart = new F2.Chart({
+  const chart = new F2.Chart({
     id: 'mountNode',
     pixelRatio: window.devicePixelRatio
   });
 
-  // Step 2: 载入数据源
+
   chart.source(data);
   chart.coord('polar', {
-      transposed: true,
-      innerRadius: 0.4
+    transposed: true,
+    innerRadius: 0.4
   });
   chart.axis(false);
-  // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+  chart.legend(false);
+  chart.tooltip(false);
   chart.interval().position('namekey*ratio')
-      .color('memo')
-      .adjust('stack');
-  // Step 4: 渲染图表
+    .color('memo')
+    .adjust('stack');
   chart.render();
 
-  // >>>>>>>>>>>>>>>>>>>>>>>>> labeling <<<<<<<<<<<<<<<<<<<<<<<<<<
-//   function distance(p1, p2) {
-//       const x = p1.x - p2.x;
-//       const y = p1.y - p2.y;
-//       return Math.sqrt(x * x + y * y);
-//   }
+// >>>>>>>>>>>>>>>>>>>>>>>>> labeling <<<<<<<<<<<<<<<<<<<<<<<<<<
   function getEndPoint(center, angle, r) {
       return {
           x: center.x + r * Math.cos(angle),
@@ -50,65 +43,86 @@ resource:
       };
   }
   function getPointAngle(center, point) {
-      return Math.atan2(point.y - center.y, point.x - center.x);
+    return Math.atan2(point.y - center.y, point.x - center.x);
   }
 
   const geom = chart.get('geoms')[0];
-  const shapesData = geom.get('shapeDatas');
+  const shapesData = geom.get('dataArray');
   const coord = geom.get('coord');
   const center = coord.center;
-  const r = coord.radius;
+  const r = coord.circleRadius;
 
   let sum = 0;
   const OFFSET = 20;
   const lineHeight = 32;
   const totalHeight = 2 * r + 2 * OFFSET + lineHeight;
-//   const LABEL_OFFSET = 20;
   const LABEL_LEN = 50;
   const lineStyle = {
-      lineWidth: 1,
-      fill: 'transparent',
-      stroke: 'none',
-      opacity: 0.3,
-      z: false,
+    lineWidth: 1,
+    fill: 'transparent',
+    stroke: 'none',
+    opacity: 0.3,
+    z: false,
   };
 
   function drawLabel(label) {
-      const origin = label._origin;
-      const canvas = chart.get('canvas');
-      const pos = { // label position
-          y: label.y,
-      };
-      if (label._side === 'left') { // 具体文本的位置
-          pos.x = 120;
-          label.textAlign = 'left';
-          F2.Graphic.drawLine(pos, {
-              x: pos.x - LABEL_LEN,
-              y: pos.y
-          }, canvas, lineStyle);
-      } else {
-          pos.x = r * 2 + 200;
-          label.textAlign = 'right';
-          F2.Graphic.drawLine(pos, {
-              x: pos.x,
-              y: pos.y
-          }, canvas, lineStyle);
-      }
-      F2.Graphic.drawCircle({ // anchor
-          x: label._anchor.x,
-          y: label._anchor.y
-      }, 1, canvas, {
-          fill: 'grey'
+    const origin = label._origin;
+    const canvas = chart.get('canvas');
+    const pos = { // label position
+      y: label.y,
+    };
+    if (label._side === 'left') { // 具体文本的位置
+      pos.x = 120;
+      label.textAlign = 'left';
+      canvas.addShape('Line', {
+        attrs: F2.Util.mix({
+          x1: pos.x,
+          y1: pos.y,
+          x2: pos.x - LABEL_LEN,
+          y2: pos.y
+        }, lineStyle)
       });
-      F2.Graphic.drawText(origin.memo, { // memo
-          x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
-          y: pos.y - 4,
-      }, canvas, label);
-      F2.Graphic.drawText(origin.amount.toFixed(2), { // amount
-          x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
-          y: pos.y + 12,
-      }, canvas, _.assign({}, label, {fill: '#8A8A8F' }));
-      F2.Graphic.drawLines([label._anchor, label._router, pos], canvas, lineStyle);
+    } else {
+      pos.x = r * 2 + 200;
+      label.textAlign = 'right';
+      canvas.addShape('Line', {
+        attrs: F2.Util.mix({
+          x1: pos.x,
+          y1: pos.y,
+          x2: pos.x,
+          y2: pos.y
+        }, lineStyle)
+      });
+    }
+
+    canvas.addShape('Circle', {
+      attrs: {
+        x: label._anchor.x,
+        y: label._anchor.y,
+        r: 1,
+        fill: 'grey'
+      }
+    });
+    canvas.addShape('Text', {
+      attrs: F2.Util.mix(_.assign({}, label), {
+        x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
+        y: pos.y,
+        text: origin.memo,
+        fill: '#8A8A8F'
+      })
+    });
+    canvas.addShape('Text', {
+      attrs: F2.Util.mix(_.assign({}, label, {fill: '#8A8A8F' }), {
+        x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
+        y: pos.y + 16,
+        text: origin.amount.toFixed(2)
+      })
+    });
+    canvas.addShape('Polyline', {
+      attrs: F2.Util.mix({
+        points: [label._anchor, label._router, pos]
+      }, lineStyle)
+    });
   }
 
   // distribute labels
@@ -119,6 +133,7 @@ resource:
       [], // right
   ];
   shapesData.forEach(data => {
+      data = data[0];
       const label = {};
       let angle;
       const percent = label._percent = data._origin.ratio;
@@ -181,6 +196,7 @@ resource:
           // step 3: distribute position (x and y)
           half.sort((a, b) => a.y - b.y);
           antiCollision(half, index);
+          chart.get('canvas').draw();
       });
 
   }, 2000);

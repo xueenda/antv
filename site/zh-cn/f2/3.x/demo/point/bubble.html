@@ -21,36 +21,76 @@ resource:
     { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
     { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
     { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
-    { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
+    { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' },
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
-    padding: [20, 20, 50, 60],
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
-    y: {
-      min: 0
-    },
     x: {
-      max: 100
+      alias: 'Daily fat intake', // 定义别名
+      tickInterval: 5, // 自定义刻度间距
+      nice: false, // 不对最大最小值优化
+      max: 96, // 自定义最大值
+      min: 62, // 自定义最小是
+    },
+    y: {
+      alias: 'Daily sugar intake',
+      tickInterval: 50,
+      nice: false,
+      max: 165,
+      min: 0,
+    },
+    z: {
+      alias: 'Obesity(adults) %',
+    },
+  });
+  // 开始配置坐标轴
+  chart.axis('x', {
+    label(text) {
+      return {
+        text: text + ' gr' // 格式化坐标轴显示文本
+      };
+    },
+    grid: {
+      stroke: '#d9d9d9',
+      lineWidth: 1,
+      lineDash: [ 2, 2 ]
     }
   });
-
-  chart.point().position('x*y')
-    .size('z', [10, 40])
-    .color('#3182bd')
+  chart.axis('y', {
+    label(text) {
+      if (text > 0) {
+        return {
+          text: text + ' gr'
+        };
+      }
+    }
+  });
+  chart.tooltip(false);
+  chart
+    .point()
+    .position('x*y')
+    .color('#1890ff')
+    .size('z', [ 10, 40 ])
     .shape('circle')
     .style({
-      opacity: 0.7
+      lineWidth: 1,
+      stroke: '#1890ff',
+      opacity: 0.3
     });
 
-  // F2 没有提供 riddle 所以需要用户使用guide 来生成文本
-  data.forEach(function (obj) {
-    chart.guide().text([obj.x, obj.y], obj.name, {
-      textAlign: 'center',
-      fontSize: 14,
-      textBaseline: 'middle'
+  // 绘制辅助文本
+  data.map(item => {
+    chart.guide().text({
+      position: [ item.x, item.y ],
+      content: item.name,
+      style: {
+        textAlign: 'center',
+        textBaseline: 'middle',
+        fill: '#1890FF'
+      }
     });
   });
   chart.render();

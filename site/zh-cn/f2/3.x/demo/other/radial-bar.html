@@ -1,0 +1,35 @@
+<!--
+index: 4
+title: 玉珏图
+-->
+
+<script>
+  const data = [
+    { tem: 6.9, city: 'Tokyo' },
+    { tem: 11.3, city: 'New York' },
+    { tem: 13.5, city: 'Berlin' },
+    { tem: 17, city: 'London' },
+    { tem: 18.6, city: 'Peking' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.coord('polar', {
+    transposed: true,
+    endAngle: Math.PI
+  });
+
+  chart.source(data);
+  chart.axis('city', {
+    grid: null,
+    line: null
+  });
+  chart.axis('tem', false);
+  chart.legend({
+    position: 'right'
+  });
+  chart.interval().position('city*tem').
+    color('city');
+  chart.render();
+</script>

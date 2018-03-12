@@ -1,0 +1,87 @@
+<!--
+index: 8
+title: 点线
+resource:
+  jsFiles:
+-->
+
+<script>
+  const data = [
+    { time: '2016-08-08 00:00:00', tem: 10, city: 'Peking' },
+    { time: '2016-08-08 00:10:00', tem: 22, city: 'Peking' },
+    { time: '2016-08-08 00:30:00', tem: 16, city: 'Peking' },
+    { time: '2016-08-09 00:35:00', tem: 26, city: 'Peking' },
+    { time: '2016-08-09 01:00:00', tem: 12, city: 'Peking' },
+    { time: '2016-08-09 01:20:00', tem: 26, city: 'Peking' },
+    { time: '2016-08-10 01:40:00', tem: 18, city: 'Peking' },
+    { time: '2016-08-10 02:00:00', tem: 26, city: 'Peking' },
+    { time: '2016-08-10 02:20:00', tem: 12, city: 'Peking' },
+    { time: '2016-08-08 00:00:00', tem: 4, city: 'HangZhou' },
+    { time: '2016-08-08 00:10:00', tem: 3, city: 'HangZhou' },
+    { time: '2016-08-08 00:30:00', tem: 6, city: 'HangZhou' },
+    { time: '2016-08-09 00:35:00', tem: -12, city: 'HangZhou' },
+    { time: '2016-08-09 01:00:00', tem: 1, city: 'HangZhou' },
+    { time: '2016-08-09 01:20:00', tem: 9, city: 'HangZhou' },
+    { time: '2016-08-10 01:40:00', tem: 13, city: 'HangZhou' },
+    { time: '2016-08-10 02:00:00', tem: -3, city: 'HangZhou' },
+    { time: '2016-08-10 02:20:00', tem: 11, city: 'HangZhou' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data, {
+    time: {
+      type: 'timeCat',
+      tickCount: 3,
+      mask: 'hh:mm',
+      range: [ 0, 1 ]
+    },
+    tem: {
+      tickCount: 3,
+      formatter(item) {
+        return item + '%';
+      }
+    }
+  });
+  chart.axis('time', {
+    line: null,
+    label(text, index, total) {
+      const textCfg = {};
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
+    }
+  });
+  chart.axis('tem', {
+    grid(text) {
+      if (text === '0%') {
+        return {
+          lineDash: null,
+          lineWidth: 1
+        };
+      }
+    }
+  });
+  chart.legend({
+    itemWidth: null,
+    position: 'bottom',
+    align: 'center'
+  });
+  chart.line().position('time*tem')
+    .color('city')
+    .shape('city', function(city) {
+      if (city === 'Peking') {
+        return 'line';
+      }
+      if (city === 'HangZhou') {
+        return 'dash';
+      }
+    });
+
+  chart.render();
+</script>

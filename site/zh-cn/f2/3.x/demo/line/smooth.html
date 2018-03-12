@@ -1,69 +1,49 @@
 <!--
-index: 1
-title: 平滑折线图
-resource:
-  jsFiles:
+index: 2
+title: 平滑折线图(带点)
 -->
 
 <script>
   const data = [
-    { time: '周一', tem: 10, city: 'beijing' },
-    { time: '周二', tem: 22, city: 'beijing' },
-    { time: '周三', tem: 20, city: 'beijing' },
-    { time: '周四', tem: 26, city: 'beijing' },
-    { time: '周五', tem: 20, city: 'beijing' },
-    { time: '周六', tem: 26, city: 'beijing' },
-    { time: '周日', tem: 28, city: 'beijing' },
-    { time: '周一', tem: 5, city: 'newYork' },
-    { time: '周二', tem: 12, city: 'newYork' },
-    { time: '周三', tem: 26, city: 'newYork' },
-    { time: '周四', tem: 20, city: 'newYork' },
-    { time: '周五', tem: 28, city: 'newYork' },
-    { time: '周六', tem: 26, city: 'newYork' },
-    { time: '周日', tem: 20, city: 'newYork' }
+    { month: 'Aug.', temperature: 16.5 },
+    { month: 'Sep.', temperature: 23.3 },
+    { month: 'Oct.', temperature: 18.3 },
+    { month: 'Nov.', temperature: 13.9 },
+    { month: 'Dec.', temperature: 29.6 }
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
     pixelRatio: window.devicePixelRatio
   });
-  const defs = {
-    time: {
-      tickCount: 7,
-      range: [ 0, 1 ]
-    },
-    tem: {
+
+  chart.source(data, {
+    temperature: {
       tickCount: 5,
       min: 0
+    },
+    month: {
+      range: [ 0, 1 ]
     }
-  };
-    // 配置time刻度文字样式
-  const label = {
-    fill: '#979797',
-    font: '14px san-serif',
-    offset: 6
-  };
-  chart.axis('time', {
+  });
+  chart.tooltip({
+    showCrosshairs: true
+  });
+  chart.axis('month', {
     label(text, index, total) {
-      const cfg = label;
-        // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
+      const textCfg = {};
       if (index === 0) {
-        cfg.textAlign = 'start';
+        textCfg.textAlign = 'left';
       }
-      if (index > 0 && index === total - 1) {
-        cfg.textAlign = 'end';
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
       }
-      return cfg;
+      return textCfg;
     }
   });
-    // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
-  chart.axis('tem', {
-    label: {
-      fontSize: 14
-    }
-  });
-  chart.source(data, defs);
-  chart.line().position('time*tem')
-    .color('city')
-    .shape('smooth');
+  chart.line().position('month*temperature').shape('smooth'); // 绘制线图
+  chart.point().position('month*temperature').style({
+    stroke: '#fff',
+    lineWidth: 1
+  }); // 绘制点图
   chart.render();
 </script>

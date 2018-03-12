@@ -1,9 +1,6 @@
 <!--
-index: 1
-title: 环图
-resource:
-  jsFiles:
-    - ${url.jquery}
+index: 0
+title: 饼图
 -->
 
 <script>
@@ -36,7 +33,6 @@ resource:
   });
   chart.coord('polar', {
     transposed: true,
-    innerRadius: 0.6,
     radius: 0.8
   });
   chart.axis(false);
@@ -49,20 +45,5 @@ resource:
       stroke: '#fff'
     });
 
-  chart.guide().html({
-    position: [ '50%', '50%' ],
-    html: '<div id="show" style="width: 250px;height: 41.5px;text-align: center;"></div>',
-  });
-  chart.tooltip({
-    custom(ev) {
-      const { items } = ev;
-      const content = '<span style="font-size: 24px; color: rgba(0, 0, 0, 0.85);">' + items[0].name + '</span><br />'
-        + '<span style="font-size: 12px; color: rgba(0, 0, 0, 0.45);">' + items[0].value * 100 + '%' + '</span>';
-      $('#show').html(content);
-    },
-    onHide() {
-      $('#show').html('');
-    }
-  });
   chart.render();
 </script>

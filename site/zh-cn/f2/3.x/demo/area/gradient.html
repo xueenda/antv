@@ -1,5 +1,5 @@
 <!--
-index: 3
+index: 6
 title: 渐变面积图
 resource:
   jsFiles:
@@ -32,41 +32,35 @@ resource:
       min: 0
     }
   });
-    // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
-  chart.axis('tem', {
-    label: {
-      fontSize: 14
-    }
-  });
-    // 配置time刻度文字样式
+
   chart.axis('time', {
     label(text, index, total) {
-      const cfg = {
-        fill: '#979797',
-        font: '14px san-serif',
-        offset: 6
-      };
-        // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
+      const textCfg = {};
       if (index === 0) {
-        cfg.textAlign = 'start';
+        textCfg.textAlign = 'left';
       }
-      if (index > 0 && index === total - 1) {
-        cfg.textAlign = 'end';
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
       }
-      return cfg;
+      return textCfg;
     }
   });
+  chart.tooltip({
+    showCrosshairs: true
+  });
+
+  // 创建渐变色
   const canvas = document.getElementById('mountNode');
   const ctx = canvas.getContext('2d');
-  const grd = ctx.createLinearGradient(0,0,500,0);
-  grd.addColorStop(0,"#293c55");
+  const grd = ctx.createLinearGradient(0,0,window.innerWidth,0);
+  grd.addColorStop(0,"#FE6384");
   grd.addColorStop(1,"#f7f7f7");
 
   chart.area().position('time*tem')
     .color(grd)
-    .shape('smooth')
-    .style({
-      opacity: 0.6
-    });
+    .shape('smooth');
+  chart.line().position('time*tem')
+    .color(grd)
+    .shape('smooth');
   chart.render();
 </script>

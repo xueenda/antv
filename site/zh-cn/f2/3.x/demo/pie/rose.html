@@ -3,31 +3,33 @@ index: 2
 title: 玫瑰图
 resource:
   jsFiles:
+    - ${url.jquery}
 -->
 
 <script>
   const data = [
-      {"tem":7,"city":"tokyo"},
-      {"tem":4,"city":"newYork"},
-      {"tem":3,"city":"berlin"}
-    ];
+    {year: '2001', population: 41.8 },
+    {year: '2002', population: 25.8 },
+    {year: '2003', population: 31.7 },
+    {year: '2004', population: 46 },
+    {year: '2005', population: 28 }
+  ];
+
   const chart = new F2.Chart({
     id: 'mountNode',
     pixelRatio: window.devicePixelRatio
   });
-
-  chart.source(data, {
-    tem: {
-      min: 0,
-      nice: false
-    }
+  chart.source(data);
+  chart.coord('polar');
+  chart.legend({
+    position: 'right'
   });
-
-  chart.coord('polar', {
-    inner: 0
-  });
-
   chart.axis(false);
-  chart.interval().position('city*tem').color('city');
+  chart.interval().position('year*population')
+    .color('year')
+    .style({
+      lineWidth: 1,
+      stroke: '#fff'
+    });
   chart.render();
 </script>
