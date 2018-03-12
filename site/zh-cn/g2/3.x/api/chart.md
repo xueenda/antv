@@ -1128,7 +1128,7 @@ chart.tooltip(true, {
 
   除了使用配置上述属性来自定义 tooltip 的样式外，用户也可以直接为 html 定义 CSS 样式。
 
-  [自定义 html 模板示例](/zh-cn/g2/3.x/demo/other/cutomize-tooltip.html)
+  [自定义 html 模板示例](/zh-cn/gallery/g2/cutomize-tooltip.html)
   
   <div id="c3"></div>
   <style type="text/css">

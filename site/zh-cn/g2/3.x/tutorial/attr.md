@@ -403,7 +403,7 @@ chart.point().position('name*value')
 
 ```
 
-查看[自定义气泡的示例](/zh-cn/g2/3.x/demo/other/bubble-image.html)
+查看[自定义气泡的示例](/zh-cn/gallery/g2/bubble-image.html)
 
 ## size
 
