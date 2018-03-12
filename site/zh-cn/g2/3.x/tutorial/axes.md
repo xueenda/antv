@@ -276,7 +276,7 @@ chart.guide().line({
 chart.render();
 ```
 
-[在线 demo](/zh-cn/g2/3.x/demo/other/bubble-with-text.html)
+[在线 demo](/zh-cn/gallery/g2/bubble-text.html)
 
 (4) 使用 html 自定义 label 
 
