@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+process.env.DEBUG = 'lib:*,app:*';
 var debug = require('debug')('app:screenshot');
 var MAX_POOL_SIZE = require('os').cpus().length;
 var Nightmare = require('nightmare');

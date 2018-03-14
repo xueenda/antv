@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+process.env.DEBUG = 'lib:*,app:*';
 var debug = require('debug')('app:build');
 var program = require('commander');
 var walk = require('walk').walk;

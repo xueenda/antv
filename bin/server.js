@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+process.env.DEBUG = 'lib:*,app:*';
 var debug = require('debug')('app:server');
 var connect = require('connect');
 var getPort = require('get-port');
