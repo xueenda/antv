@@ -22,14 +22,16 @@
     <img src="{{ assets }}/image/logo-with-text.svg" alt="">
 </div>
 <body class="template-{{ template }}">
+{% if showHeader %}
 {% include "partial/header.html" %}
+{% endif %}
 {% block content %}{% endblock %}
 {% block plugins %}{% endblock %}
 {% block footer %}{% endblock %}
 {% if showFooter %}
 {% include "partial/footer.html" %}
 {% endif %}
-<script type="text/javascript">/* eslint-disable */
+<script type="text/javascript">
 {% if isDev %}window.__data = {{ __self | safe }}; console.log(window.__data);{% endif %}window.__meta = {{ __meta | safe }};
 </script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js"></script>
