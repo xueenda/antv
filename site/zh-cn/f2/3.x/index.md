@@ -84,9 +84,6 @@ resource:
 <!-- chart1 -->
 
 ```js-
-
-F2.Global.pixelRatio = window.devicePixelRatio;
-
   const data = [
       { time: '周一', tem: 10, city: 'beijing' },
       { time: '周二', tem: 22, city: 'beijing' },
@@ -104,7 +101,8 @@ F2.Global.pixelRatio = window.devicePixelRatio;
       { time: '周日', tem: 20, city: 'newYork' }
   ];
   const chart = new F2.Chart({
-    id: 'c1'
+    id: 'c1',
+    pixelRatio: window.devicePixelRatio
   });
   const defs = {
     time: {
@@ -162,7 +160,8 @@ const data = [
     { tem: 346, month: '8月' }
   ];
   const chart = new F2.Chart({
-    id: 'c2'
+    id: 'c2',
+    pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
     tem: {
@@ -193,21 +192,28 @@ const data = [
       return '#99d6c0';
     }
   });
-  // y轴方向的缩放动画
-  chart.animate({
-    type: 'scaley'
-  });
+
   // 辅助元素
   data.forEach(function(obj, index) {
     // 文字部分
     const offsetY = obj.tem > 0 ? -16 : 14;
-    chart.guide().html([ obj.month, obj.tem ], `<div style='color: #999999;'><span>${obj.tem}</span></div>`, {
-      align: 'cc',
-      offset: [ 0, offsetY ]
+    chart.guide().text({
+      position: [ obj.month, obj.tem ], 
+      content: obj.tem,
+      style: {
+        textAlign: 'center',
+        textBaseline: 'middle',
+        fill: '#999999'
+      },
+      offsetY: offsetY
     });
     // 背景部分
     const offset = 0.25;
-    chart.guide().rect([ index - offset, 'max' ], [ index + offset, 'min' ], { fill: '#f8f8f8' });
+    chart.guide().rect({
+      start: [ index - offset, 'max' ],
+      end: [ index + offset, 'min' ], 
+      style: { fill: '#f8f8f8' }
+    });
   });
   chart.render();
 ```
@@ -223,7 +229,8 @@ const  data = [
 ];
 
 const chart = new F2.Chart({
-  id: 'c3'
+  id: 'c3',
+  pixelRatio: window.devicePixelRatio
 });
 
 chart.source(data);
@@ -235,9 +242,6 @@ chart.coord('polar', {
 
 chart.axis(false);
 chart.interval().position('a*b').color('c').adjust('stack');
-chart.animate({
-  type: 'wavec'
-});
 chart.render();
 
 ```
