@@ -1,5 +1,5 @@
 <!--
-index: 8
+index: 9
 title: 时序动画
 resource:
   jsFiles:
@@ -7,44 +7,53 @@ resource:
 -->
 
 <style type="text/css">
+.tab {
+  width: 100%;
+  height: 40px;
+}
 .btn {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .25rem .75rem;
-    font-size: .5rem;
-    line-height: 1.25;
-    border-radius: .25rem;
-    transition: all .15s ease-in-out;
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    margin-left: 10px;
-    margin-top: 10px;
+  float: left;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none;
+  font-size: 13px;
+  width: 25%;
+  height: 40px;
+  line-height: 40px;
+  color: #808080;
+  background-color: #FBFBFC;
+  padding: 0;
+  margin: 0;
 }
 .btn.focus, .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 1px rgba(0,123,255,.25);
 }
 .btn:focus, .btn:hover {
     text-decoration: none;
 }
+.btn.active {
+    background: #fff;
+    color: #2E2E2E;
+}
+canvas {
+  display: inherit;
+  background:
+}
 </style>
 
 <script>
-  $(`<div>
-    <button class="btn" id='one'>近 1 月</button>
+  $(`<div class="tab">
+    <button class="btn active" id='one'>近 1 月</button>
     <button class="btn" id='three'>近 3 月</button>
     <button class="btn" id='six'>近 6 月</button>
     <button class="btn" id='oneYear'>近 1 年</button>
-  </div>`).insertBefore('#mountNode');
+  </div>`).insertAfter('#mountNode');
 
   const G = F2.G;
 
@@ -56,21 +65,29 @@ resource:
   let chart;
 
   $('#one').click(() => {
+    $('.btn').removeClass('active');
+    $('#one').addClass('active');
     const one = data.slice(oneMonth);
     chart.changeData(one);
   });
 
   $('#three').click(() => {
+    $('.btn').removeClass('active');
+    $('#three').addClass('active');
     const three  = data.slice(threeMonth);
     chart.changeData(three);
   });
 
   $('#six').click(() => {
+    $('.btn').removeClass('active');
+    $('#six').addClass('active');
     const six  = data.slice(sixMonth);
     chart.changeData(six);
   });
 
   $('#oneYear').click(() => {
+    $('.btn').removeClass('active');
+    $('#oneYear').addClass('active');
     const six  = data.slice(oneYear);
     chart.changeData(six);
   });
@@ -142,6 +159,9 @@ resource:
       reportDateTimestamp: {
         type: 'timeCat',
         tickCount: 3
+      },
+      value: {
+        tickCount: 5
       }
     });
     chart.axis('reportDateTimestamp', {

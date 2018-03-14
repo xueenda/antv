@@ -69,6 +69,11 @@ chartDetail: ${base}zh-cn/vis/chart/multi-set-bar.html
   });
   chart.interval().position('time*tem')
     .color('city')
+    .style('tem', {
+      radius(val) {
+        return val > 0 ? [ 4, 4, 0, 0 ] : [ 0, 0, 4, 4];
+      }
+    })
     .adjust('dodge');
   chart.render();
 </script>

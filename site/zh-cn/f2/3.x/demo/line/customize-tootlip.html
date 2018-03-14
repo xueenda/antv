@@ -139,7 +139,7 @@ resource:
     });
   chart.point().position('date*value')
     .size('tag', val => {
-      return val ? 3 : 0
+      return val ? 3 : 0;
     })
     .style('tag', {
       fill(val) {
@@ -151,7 +151,7 @@ resource:
       },
       stroke: '#fff',
       lineWidth: 1
-    })
+    });
   chart.render();
 
   // 图表加载后默认展示某一点的 tooltip

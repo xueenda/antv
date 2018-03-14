@@ -59,7 +59,7 @@ title: 渐变色曲线 2
 
   // 创建渐变色
   const canvas = document.getElementById('mountNode');
-  const linear_gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, 500);
+  const linear_gradient = canvas.getContext('2d').createLinearGradient(0, 0, 0, window.innerWidth / 2);
   linear_gradient.addColorStop(0.65, '#fff');
   linear_gradient.addColorStop(0, 'rgb(15, 141, 232)');
 
@@ -89,16 +89,19 @@ title: 渐变色曲线 2
 
   chart.guide().html({
     position: endPoint,
-    html: '<div style="border-radius: 12px;border: none;width: 22px;height: 22px;background-color: rgba(102, 182, 241, 0.5);""></div>'
+    html: '<div style="border-radius: 100%;border: none;width: 18px;height: 18px;background-color: rgba(102, 182, 241, 0.5);""></div>'
   });
   chart.guide().html({
     position: endPoint,
-    html: '<div style="border-radius: 7px;border: none;width: 12px;height: 12px;background-color: rgb(15, 141, 232);""></div>'
+    html: '<div style="border-radius: 100%;border: none;width: 10px;height: 10px;background-color: rgb(15, 141, 232);""></div>'
   });
   chart.guide().tag({
     position: changePoint,
     content: '方案调整',
     background: {
+      fill: '#ff4d4f'
+    },
+    pointStyle: {
       fill: '#ff4d4f'
     },
     direct: 'tc',
