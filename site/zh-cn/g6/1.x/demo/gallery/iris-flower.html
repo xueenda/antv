@@ -7,6 +7,7 @@ resource:
     - ${url.jquery}
     - ${url.g2}
     - ${url.dataSet}
+    - ${url.d3}
 -->
 
 <style>
@@ -19,7 +20,6 @@ resource:
   position: relative;
 }
 </style>
-<script src="https://cdn.bootcss.com/d3/4.11.0/d3.min.js"></script>
 <script type="text/javascript">
 $.getJSON('/assets/data/iris.json', irisData=>{
   const Util = G6.Util;
