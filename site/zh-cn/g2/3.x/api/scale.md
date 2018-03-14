@@ -83,7 +83,7 @@ chart.source(data, defs);
 
 用于指定坐标轴上刻度点的文本信息，当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
 
-效果参加该 [demo](/zh-cn/g2/3.x/demo/other/bubble.html) 纵轴刻度的设置。
+效果参加该 [demo](/zh-cn/gallery/g2/bubble.html) 纵轴刻度的设置。
 
 #### 代码示例 
 
