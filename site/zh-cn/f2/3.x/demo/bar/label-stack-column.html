@@ -1,0 +1,100 @@
+<!--
+index: 13
+title: 带文本的层叠柱状图
+resource:
+  jsFiles:
+    - ${url.lodash}
+-->
+
+<script>
+  const { Shape, Util } = F2;
+  Shape.registerShape('interval', 'text', {
+    draw(cfg, container) {
+      const points = this.parsePoints(cfg.points);
+      const style = {
+        fill: cfg.color,
+        z: true, // 需要闭合
+      };
+      container.addShape('rect', {
+        attrs: Util.mix({
+          x: points[1].x,
+          y: points[1].y,
+          width: points[2].x - points[1].x,
+          height: points[0].y  - points[1].y
+        }, style)
+      });
+
+      const origin = cfg.origin._origin; // 获取对应的原始数据
+      return container.addShape('text', {
+        attrs: {
+          x: (points[1].x + points[2].x) / 2,
+          y: (points[0].y + points[1].y) / 2,
+          text: origin.yName,
+          fill: '#fff',
+          textAlign: 'center',
+          textBaseline: 'middle'
+        }
+      });
+    },
+  });
+
+  const data = [
+    { groupName: 'GroupA', xName: '1', yName: 100 },
+    { groupName: 'GroupA', xName: '2', yName: 200 },
+    { groupName: 'GroupA', xName: '3', yName: 300 },
+    { groupName: 'GroupB', xName: '1', yName: 300 },
+    { groupName: 'GroupB', xName: '2', yName: 100 },
+    { groupName: 'GroupB', xName: '3', yName: 200 },
+  ];
+
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+
+  const defs = {
+    xName: {
+      range: [0.15, 0.85],
+      type: 'cat',
+    },
+  };
+  chart.source(data, defs);
+  chart.axis('yName', {
+    grid: null,
+  });
+  chart.axis('xName', {
+    grid: null,
+  });
+  chart.tooltip({
+    custom(obj) {
+      const legend = chart.get('legendController').legends.top[0];
+      const tooltipItems = obj.items;
+      const legendItems = legend.items;
+      const map = {};
+      legendItems.map(item => {
+        map[item.name] = _.clone(item);
+      });
+      tooltipItems.map(item => {
+        const { name, value } = item;
+        if (map[name]) {
+          map[name].value = (value);
+        }
+      });
+      legend.setItems(Object.values(map));
+    },
+    onHide() {
+      const legend = chart.get('legendController').legends.top[0];
+      legend.setItems(chart.getLegendItems().country);
+    }
+  });
+  chart
+    .interval()
+    .position('xName*yName')
+    .color('groupName')
+    .adjust('stack')
+    .shape('text');
+
+  chart.render();
+</script>

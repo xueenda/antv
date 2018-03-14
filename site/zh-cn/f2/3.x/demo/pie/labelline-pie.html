@@ -18,6 +18,8 @@ resource:
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
 
@@ -25,7 +27,8 @@ resource:
   chart.source(data);
   chart.coord('polar', {
     transposed: true,
-    innerRadius: 0.4
+    innerRadius: 0.4,
+    radius: 0.75
   });
   chart.axis(false);
   chart.legend(false);
@@ -53,7 +56,7 @@ resource:
   const r = coord.circleRadius;
 
   let sum = 0;
-  const OFFSET = 20;
+  const OFFSET = 15;
   const lineHeight = 32;
   const totalHeight = 2 * r + 2 * OFFSET + lineHeight;
   const LABEL_LEN = 50;
@@ -72,7 +75,7 @@ resource:
       y: label.y,
     };
     if (label._side === 'left') { // 具体文本的位置
-      pos.x = 120;
+      pos.x = 70;
       label.textAlign = 'left';
       canvas.addShape('Line', {
         attrs: F2.Util.mix({
@@ -108,7 +111,6 @@ resource:
         x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
         y: pos.y,
         text: origin.memo,
-        fill: '#8A8A8F'
       })
     });
     canvas.addShape('Text', {
@@ -158,7 +160,6 @@ resource:
       }
       const edgePoint = getEndPoint(center, angle, r);
       const routerPoint = getEndPoint(center, angle, r + OFFSET);
-
       _.merge(label, {
           _angle: angle,
           _anchor: edgePoint,
@@ -169,6 +170,7 @@ resource:
           x: routerPoint.x,
           y: routerPoint.y,
           r: r + OFFSET,
+          fill: data.color
       });
       if ((sum + percent / 2) > 0.5 || (sum === 0.5 && percent === 0)) {
           label._side = 'left';
@@ -199,7 +201,7 @@ resource:
           chart.get('canvas').draw();
       });
 
-  }, 2000);
+  }, 800);
 
   function antiCollision(half, isRight) {
       let overlapping = true;

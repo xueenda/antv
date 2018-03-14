@@ -14,6 +14,8 @@ title: 带负值的柱状图
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.587,
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
@@ -37,9 +39,13 @@ title: 带负值的柱状图
   data.forEach(function(obj, index) {
     // 文字部分
     const offsetY = obj.tem > 0 ? -16 : 14;
-    chart.guide().html({
+    chart.guide().text({
       position: [ obj.month, obj.tem ],
-      html: `<div style='color: #999999;font-size: 10px;'><span>${obj.tem}</span></div>`,
+      content: obj.tem,
+      style: {
+        fill: '#999',
+        fontSize: 12
+      },
       offsetX: 0,
       offsetY
     });

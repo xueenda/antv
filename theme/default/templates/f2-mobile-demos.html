@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="{{ keywords | join(',') }}">
+    <meta name="description" content="{{ description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - AntV</title>
+    <link rel="icon" href="https://gw.alipayobjects.com/os/antv/assets/favoricon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_470089_ngla9eua3df5hfr.css" />
+    <link rel="stylesheet" href="{{ dist }}/common.css" />
+    <link rel="stylesheet" href="{{ dist }}/mobile-demos.css"/>
+    <style>
+        .demos {
+            padding-top: 32px;
+        }
+        .demos .flex-xl-nowrap {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<div style="display: none;">
+    <!-- preload assets -->
+    <img src="{{ assets }}/image/logo-with-text.svg" alt="">
+</div>
+<body class="template-{{ template }}">
+{% set currentDemo = demoByHref[__href] %}
+<div class="drawer-toggle">
+    <span class="iconfont icon-menu-fold"></span>
+</div>
+<div class="drawer-overlay"></div>
+
+<div class="demos container-fluid">
+    <div class="row flex-xl-nowrap">
+        <!-- <div class="col-xl-1"> -->
+
+            <div class="col menu expanded drawer">
+                <div class="menu-inner">
+                    <div id="accordion" role="tablist" data-children=".item">
+                        {% for cat in demos %}
+                        <div class="item">
+                            <div class="card-header" role="tab">
+                            <h6>
+                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}"
+                                   class="menu-header collapsed"
+                                   aria-controls="collapse-{{ cat.category }}">
+                                    <span class="iconfont icon-{{ cat.category }}"></span>
+                                    {{ cat.title }}
+                                    <span class="float-right arrow"></span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse-{{ cat.category }}" class="collapse"
+                             role="tabpanel" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {% for demo in cat.demos %}
+                                    {% set isCurrentPage = (__href === demo.href) %}
+                                    <li class="list-group-item">
+                                        <a href="#{{ demo.title }}">{{ demo.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- </div> -->
+        <div class="col-12 col-md-12 col-xl-10">
+            <div class="container content">
+                {% for cat in demos %}
+                <h5>{{ cat.title }}</h5>
+                <div class="row">
+                    {% for demo in cat.demos %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                        <div class="card" id="{{ demo.title }}">
+                            <a class="screenshot-container" href="{{ demo.naked }}">
+                                <!--data-original="{{ demo.screenshot }}"-->
+                                <img src="{{ assets }}/image/screenshot-placeholder.png"
+                                     class="card-img-top screenshot lazyload"
+                                     data-default="{{ demo.screenshot }}"
+                                     data-dark="{{ demo.screenshotDark }}"
+                                     alt="{{ demo.title }}">
+                            </a>
+                            <div class="card-body">
+                                <a href="{{ demo.href }}"> {{ demo.title }} </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+/* eslint-disable */
+{% if isDev %}window.__data = {{ __self | safe }}; console.log(window.__data);{% endif %}window.__meta = {{ __meta | safe }};
+/* eslint-disable */
+</script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js"></script>
+<!-- <div id="___tracers" style="display:none;">
+    <script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&web_id=1259109662"></script>
+    <script>
+        !function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });
+    </script>
+</div> -->
+<script type="text/javascript" src="{{ dist }}/common.js"></script>
+{{ __userScripts | join | safe }}
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/routie-0.3.2.min.js"></script>
+<script src="{{ dist }}/mobile-demos.js"></script>
+</body>
+</html>

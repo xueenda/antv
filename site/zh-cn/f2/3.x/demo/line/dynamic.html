@@ -23,6 +23,8 @@ resource:
 
   const chart = new F2.Chart({
     id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.587,
     pixelRatio: window.devicePixelRatio
   });
 
@@ -30,7 +32,7 @@ resource:
     time: {
       type: 'timeCat',
       mask: 'hh:mm:ss',
-      tickCount: 5,
+      tickCount: 3,
       range: [ 0, 1 ]
     },
     value: {

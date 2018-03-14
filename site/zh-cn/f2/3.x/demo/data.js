@@ -63,6 +63,7 @@ demoDirs.forEach(function (dir) {
         var href = base + 'zh-cn/f2/3.x/demo/' + category + '/' + name + '.html';
         var demo = {
             screenshot: join(assets + '/dist/' + pkg.version + '/f2/3.x/', category + '/' + name + '.png'),
+            naked: join(assets + '/dist/' + pkg.version + '/f2/3.x/', category + '/' + name + '.html'),
             // screenshotDark: join(assets + '/dist/' + pkg.version + '/f2/3.x/', category + '/' + name + '-dark.png'),
             href: href,
             index: index,

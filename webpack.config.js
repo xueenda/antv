@@ -24,7 +24,9 @@ module.exports = {
     gallery: resolveTheme('gallery.js'),
     home: resolveTheme('home.js'),
     'home-index': resolveTheme('Home/index.jsx'),
-    scroll2top: resolveTheme('scroll2top.js')
+    scroll2top: resolveTheme('scroll2top.js'),
+    'mobile-demos': resolveTheme('mobile-demos.js'),
+    'f2-naked-demo': resolveTheme('f2-naked-demo'),
   },
   output: {
     filename: '[name].js',

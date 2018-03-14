@@ -41,17 +41,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" href="{{ css }}" />{% endfor %}
-    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}</style>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;margin: 0;}canvas{background-color:#fff;}</style>
 </head>
 <body>
-<div style="width:600px; height:500px; margin: 0 auto;">
-    <canvas id="mountNode" width="600" height="400" ></canvas>
-</div>
+  <canvas id="mountNode"></canvas>
 <script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
 <script src="{{ url.f2 }}"></script>{% for js in resource.jsFiles %}
 <script src="{{ js }}"></script>{% endfor %}
+<script src="{{ url.jquery }}"></script>
+<script src="{{ dist }}/f2-naked-demo.js"></script>
 {{ content | safe }}</body>
 </html>
 {% endmacro %}

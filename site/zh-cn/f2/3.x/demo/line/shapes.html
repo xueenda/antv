@@ -1,5 +1,5 @@
 <!--
-index: 8
+index: 7
 title: 点线
 resource:
   jsFiles:
@@ -28,6 +28,8 @@ resource:
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {

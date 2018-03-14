@@ -7,6 +7,8 @@ title: 环形进度条
   const data = [ { x: '1', y: 85 } ];
   const chart = new F2.Chart({
     id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
@@ -16,6 +18,7 @@ title: 环形进度条
     }
   });
   chart.axis(false);
+  chart.tooltip(false);
   chart.coord('polar', {
     transposed: true,
     innerRadius: 0.8

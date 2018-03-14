@@ -10,6 +10,8 @@ resource:
   $.getJSON('/assets/data/polar-heatmap.json',function (data) {
     const chart = new F2.Chart({
       id: 'mountNode',
+      width: window.innerWidth,
+      height: window.innerWidth * 0.8,
       pixelRatio: window.devicePixelRatio
     });
     chart.source(data);

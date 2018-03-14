@@ -67,7 +67,9 @@ $('header').headroom({
 });
 
 function resizePreview() {
-    $iframeContainer.height($iframeContainer.width() / 16 * 9);
+    if (!$iframeContainer.hasClass("f2")) {
+        $iframeContainer.height($iframeContainer.width() / 16 * 9);
+    }
     syncCode();
 }
 
