@@ -10,13 +10,14 @@ var extname = path.extname;
 var join = path.join;
 var renderMd = require('../../../lib/render-md');
 var siteConfig = require('../../../site-config');
+var plotConfig = require('../g2/3.x/data');
 var base = siteConfig.base;
 var assets = siteConfig.assets;
 var pkg = siteConfig.pkg;
 
-const plotByName = {
+const plotByName = _.merge({}, plotConfig.plotByName, {
     g2: { icon: 'icon-g2', index: 0,  url: '${base}zh-cn/g2/3.x/demo/index.html', name: 'G2', },
-};
+});
 
 var isDirectory = function isDirectory(source) {
     return lstatSync(source).isDirectory();
@@ -89,6 +90,7 @@ demos.sort(function (a, b) {
 });
 
 module.exports = {
+    plotByName: plotByName,
     navName: 'demo',
     currentProduct: 'gallery',
     demos: demos,
