@@ -44,7 +44,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" href="{{ css }}" />{% endfor %}
-    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;margin: 0;}canvas{background-color:#fff;}</style>
+    <link rel="stylesheet" href="{{ dist }}/f2-naked-demo.css" />
 </head>
 <body>
   <canvas id="mountNode"></canvas>

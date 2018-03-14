@@ -8,39 +8,39 @@ resource:
 
 <script>
  const data = [
-    { date: "2017-06-05", value: 116 },
-    { date: "2017-06-06", value: 129 },
-    { date: "2017-06-07", value: 135 },
-    { date: "2017-06-08", value: 86 },
-    { date: "2017-06-09", value: 73 },
-    { date: "2017-06-10", value: 85 },
-    { date: "2017-06-11", value: 73 },
-    { date: "2017-06-12", value: 68 },
-    { date: "2017-06-13", value: 92 },
-    { date: "2017-06-14", value: 130 },
-    { date: "2017-06-15", value: 245 },
-    { date: "2017-06-16", value: 139 },
-    { date: "2017-06-17", value: 115 },
-    { date: "2017-06-18", value: 111 },
-    { date: "2017-06-19", value: 309 },
-    { date: "2017-06-20", value: 206 },
-    { date: "2017-06-21", value: 137 },
-    { date: "2017-06-22", value: 128 },
-    { date: "2017-06-23", value: 85 },
-    { date: "2017-06-24", value: 94 },
-    { date: "2017-06-25", value: 71 },
-    { date: "2017-06-26", value: 106 },
-    { date: "2017-06-27", value: 84 },
-    { date: "2017-06-28", value: 93 },
-    { date: "2017-06-29", value: 85 },
-    { date: "2017-06-30", value: 73 }
+    { date: "2017-06-05", value: 116, tag: 0 },
+    { date: "2017-06-06", value: 129, tag: 0 },
+    { date: "2017-06-07", value: 135, tag: 0 },
+    { date: "2017-06-08", value: 86, tag: 2 },
+    { date: "2017-06-09", value: 73, tag: 2 },
+    { date: "2017-06-10", value: 85, tag: 0 },
+    { date: "2017-06-11", value: 73, tag: 0 },
+    { date: "2017-06-12", value: 68, tag: 0 },
+    { date: "2017-06-13", value: 92, tag: 0 },
+    { date: "2017-06-14", value: 130, tag: 1 },
+    { date: "2017-06-15", value: 245, tag: 0 },
+    { date: "2017-06-16", value: 13, tag: 0 },
+    { date: "2017-06-17", value: 115, tag: 1 },
+    { date: "2017-06-18", value: 111, tag: 0 },
+    { date: "2017-06-19", value: 309, tag: 0 },
+    { date: "2017-06-20", value: 206, tag: 1 },
+    { date: "2017-06-21", value: 137, tag: 1 },
+    { date: "2017-06-22", value: 128, tag: 1 },
+    { date: "2017-06-23", value: 85, tag: 0 },
+    { date: "2017-06-24", value: 94, tag: 1},
+    { date: "2017-06-25", value: 71, tag: 0 },
+    { date: "2017-06-26", value: 106, tag: 0 },
+    { date: "2017-06-27", value: 84, tag: 0 },
+    { date: "2017-06-28", value: 93, tag: 0 },
+    { date: "2017-06-29", value: 85, tag: 0 },
+    { date: "2017-06-30", value: 73, tag: 0 }
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
     height: window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio,
-    padding: [ 0, 'auto', 'auto' ]
+    padding: [ 45, 'auto', 'auto' ]
   });
 
   chart.source(data, {
@@ -79,27 +79,50 @@ resource:
       return textCfg;
     }
   });
+  chart.legend({
+    custom: true,
+    itemWidth: null,
+    items: [
+      { name: '买入点', marker: 'circle', fill: '#F35833' },
+      { name: '卖出点', marker: 'circle', fill: '#518DFE' }
+    ]
+  });
   chart.guide().html({
     position: [ 'min', 'max' ],
     html: `
-      <div id="tooltipWrapper" style="height: 30px;background-color:#BAE7FF;line-height: 30px;">
-        <div id="tooltipName" style="float:left;fontSize:12px;color:#000;"></div>
-        <div id="tooltipValue" style="float:right;fontSize:12px;color:#000;"></div>
+      <div id="tooltipWrapper" style="height: 45px;background-color:#E9F1FF;line-height: 45px;">
+        <div id="tooltipName" style="float:left;font-size:12px;color:#2E2E2E;"></div>
+        <div id="tooltipValue" style="float:right;font-size:12px;color:#2E2E2E;"></div>
       </div>
       `,
-    offsetY: -15
+    offsetY: -22.5
   });
   chart.tooltip({
+    showCrosshairs: true,
     custom(obj) {
       const { items } = obj;
-      const { date, value } = items[0].origin;
+      const { date, value, tag} = items[0].origin;
       $('#tooltipWrapper').width($('#mountNode').width());
       $('#tooltipWrapper').css('left', 0);
       $('#tooltipName').css('margin-left', 15);
       $('#tooltipValue').css('margin-right', 15);
 
-      $('#tooltipName').text(date);
-      $('#tooltipValue').text(value);
+      if (tag === 1) {
+        $('#tooltipName').html(date + '<img style="width:27.5px;vertical-align:middle;margin-left:3px;" src="https://gw.alipayobjects.com/zos/rmsportal/RcgYrLNGIUfTytjjijER.png">');
+      } else if (tag === 2) {
+        $('#tooltipName').html(date + '<img style="width:27.5px;vertical-align:middle;margin-left:3px;" src="https://gw.alipayobjects.com/zos/rmsportal/XzNFpOkuSLlmEWUSZErB.png">');
+      } else {
+        $('#tooltipName').text(date);
+      }
+      let color;
+      if (tag === 1) {
+        color = '#FA541C';
+      } else if (tag === 2) {
+        color = '#1CAA3D';
+      } else {
+        color = '#2E2E2E';
+      }
+      $('#tooltipValue').html('金额：<span style="color:' + color + '">' + value + '</span>');
       $('#tooltipWrapper').show();
     },
     onHide() {
@@ -108,14 +131,30 @@ resource:
   });
   chart.line()
     .position('date*value')
+    .color('#518DFE')
     .animate({
       appear: {
         duration: 1200
       }
     });
+  chart.point().position('date*value')
+    .size('tag', val => {
+      return val ? 3 : 0
+    })
+    .style('tag', {
+      fill(val) {
+        if (val === 2) {
+          return '#518DFE';
+        } else if (val === 1) {
+          return '#F35833';
+        }
+      },
+      stroke: '#fff',
+      lineWidth: 1
+    })
   chart.render();
 
   // 图表加载后默认展示某一点的 tooltip
-  const point = chart.getPosition({ date: "2017-06-15", value: 245 });
+  const point = chart.getPosition({ date: "2017-06-14", value: 130 });
   chart.showTooltip(point);
 </script>
