@@ -1,6 +1,6 @@
 <!--
 index: 11
-title: 动态变化的图表
+title: 实时折线
 resource:
   jsFiles:
 -->
@@ -52,6 +52,27 @@ resource:
       }
       return textCfg;
     }
+  });
+
+  chart.guide().html({
+    position(xScale, yScales) {
+      const xValues = xScale.values;
+      const yValues = yScales[0].values;
+      const xMax = xValues[xValues.length - 1];
+      const yMax = yValues[yValues.length - 1];
+      return [ xMax, yMax ];
+    },
+    html: '<div style="border-radius: 100%;border: none;width: 12px;height: 12px;background-color: rgb(24, 144, 255);"></div>'
+  });
+  chart.guide().html({
+    position(xScale, yScales) {
+      const xValues = xScale.values;
+      const yValues = yScales[0].values;
+      const xMax = xValues[xValues.length - 1];
+      const yMax = yValues[yValues.length - 1];
+      return [ xMax, yMax ];
+    },
+    html: '<div style="border-radius: 100%;border: none;width: 20px;height: 20px;background-color: rgba(24, 144, 255, 0.5);"></div>'
   });
   chart.line().position('time*value');
   chart.render();

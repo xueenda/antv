@@ -1,5 +1,5 @@
 <!--
-index: 5
+index: 4
 title: 百分比层叠面积图
 resource:
   jsFiles:
@@ -85,7 +85,7 @@ chartDetail: ${base}zh-cn/vis/chart/stacked-area.html
       tooltipItems.map(item => {
         const { name, value } = item;
         if (map[name]) {
-          map[name].value = formatterPercent(value);
+          map[name].value = value;
         }
       });
       legend.setItems(Object.values(map));

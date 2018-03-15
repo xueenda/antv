@@ -1,6 +1,6 @@
 <!--
 index: 9
-title: 时序动画
+title: xx 股近一年走势
 resource:
   jsFiles:
     - ${url.jquery}
@@ -161,7 +161,11 @@ canvas {
         tickCount: 3
       },
       value: {
-        tickCount: 5
+        alias: '涨幅',
+        tickCount: 5,
+        formatter(val) {
+          return val.toFixed(2) + '%';
+        }
       }
     });
     chart.axis('reportDateTimestamp', {
