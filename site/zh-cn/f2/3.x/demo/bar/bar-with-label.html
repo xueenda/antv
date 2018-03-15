@@ -1,0 +1,61 @@
+<!--
+index: 14
+title: 新增用户来源
+-->
+
+<script>
+  const { Global } = F2;
+  const data = [
+    { action: '名片分享', value: 47 },
+    { action: '公众号搜索', value: 61 },
+    { action: '视频广告', value: 174 },
+    { action: '其他途径', value: 339 },
+    { action: '扫描二维码', value: 420 },
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.587,
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data, {
+    value: {
+      tickCount: 5
+    }
+  });
+  chart.coord({
+    transposed: true
+  });
+  chart.axis('action', {
+    line: Global._defaultAxis.line,
+    grid: null
+  });
+  chart.axis('value', {
+    line: null,
+    grid: Global._defaultAxis.grid,
+    label(text, index, total) {
+      const textCfg = {};
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
+    }
+  });
+  chart.interval().position('action*value');
+
+  // 绘制文本
+  data.map(obj => {
+    chart.guide().text({
+      position: [ obj.action, obj.value ],
+      content: obj.value,
+      style: {
+        textAlign: 'start'
+      },
+      offsetX: 10
+    });
+  });
+  chart.render();
+</script>

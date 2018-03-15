@@ -1,6 +1,6 @@
 <!--
 index: 12
-title: 三角柱状图
+title: 中国五大高峰
 resource:
   jsFiles:
     - ${url.lodash}
@@ -37,30 +37,37 @@ resource:
   });
 
   const data = [
-    { genre: 'Sports', sold: 275 },
-    { genre: 'Strategy', sold: 115 },
-    { genre: 'Action', sold: 120 },
-    { genre: 'Shooter', sold: 350 },
-    { genre: 'Other', sold: 150 }
+    { name: '珠穆朗玛峰', height: 8844.43 },
+    { name: '乔戈里峰', height: 8611 },
+    { name: '贡嘎雪山', height: 7556 },
+    { name: '布喀达坂峰', height: 6860 },
+    { name: '梅里雪山', height: 6710 }
   ];
 
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
     height: window.innerWidth * 0.587,
-    pixelRatio: window.devicePixelRatio
+    pixelRatio: window.devicePixelRatio,
+    padding: [ 'auto', 40 ]
   });
 
-  chart.source(data, {
-    sold: {
-      max: 450,
-      nice: false
-    }
+  chart.source(data);
+  chart.axis('height', false);
+  chart.axis('name', { line: null });
+  chart.legend(false);
+  chart.interval().position('name*height').color('name').shape('triangle');
+
+  data.map(obj => {
+    chart.guide().text({
+      position: [ obj.name, obj.height ],
+      content: obj.height + '米',
+      style: {
+        textAlign: 'center',
+        textBaseline: 'bottom'
+      },
+      offsetY: -10
+    });
   });
-  chart.legend({
-    position: 'right',
-    verticalAlign: 'bottom'
-  });
-  chart.interval().position('genre*sold').color('genre').shape('triangle');
   chart.render();
 </script>

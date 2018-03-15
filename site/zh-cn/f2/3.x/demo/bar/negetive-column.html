@@ -1,63 +1,75 @@
 <!--
 index: 9
-title: 带负值的柱状图
+title: 某基金近 4 季度资产变动
 plotDescription: 柱状图，使用垂直的柱子显示类别之间的数值比较。其中一个轴表示需要对比的分类维度，另一个轴代表相应的数值。
 plotUsage: 柱状图有别于直方图，柱状图无法显示数据在一个区间内的连续变化趋势。柱状图描述的是分类数据，回答的是每一个分类中“有多少？”这个问题。 需要注意的是，当柱状图显示的分类很多时会导致分类名层叠等显示问题。
 -->
 
 <script>
+  function numberToMoney(n) {
+    return String(Math.floor(n * 100) / 100).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
   const data = [
-    { tem: 500, month: '3月' },
-    { tem: -150, month: '4月' },
-    { tem: 450, month: '5月' },
-    { tem: -140, month: '6月' },
-    { tem: 690, month: '7月' },
-    { tem: 346, month: '8月' }
+    { value: -139255.5, season: '第四季' },
+    { value: 51926.5, season: '第三季' },
+    { value: -49959.4, season: '第二季' },
+    { value: -37099.9, season: '第一季' }
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
     height: window.innerWidth * 0.587,
-    pixelRatio: window.devicePixelRatio
+    pixelRatio: window.devicePixelRatio,
+    padding: [ 45, 'auto', 'auto' ]
   });
-  chart.source(data, {
-    tem: {
-      tickCount: 5
-    }
+  chart.source(data);
+  chart.axis('value', false);
+  chart.tooltip(false);
+  chart.legend({
+    custom: 'true',
+    items: [
+      { name: '净申购', marker: 'circle', fill: '#FC674D' },
+      { name: '净赎回', marker: 'circle', fill: '#9AC2AB' },
+    ],
+    align: 'right',
+    itemWidth: null
   });
-  chart.interval().position('month*tem').color('tem*month', function(tem, month) {
-    if (month === '8月') {
-      return '#f5623a';
-    }
-    if (tem >= 0) {
-      return '#f8bdad';
-    }
-    if (tem < 0) {
-      return '#99d6c0';
-    }
-  });
+  chart.interval().position('season*value')
+    .color('value', val => {
+      return val > 0 ? '#FC674D' : '#9AC2AB';
+    }).size(80);
 
   // 辅助元素
   data.forEach(function(obj, index) {
     // 文字部分
-    const offsetY = obj.tem > 0 ? -16 : 14;
+    const color = obj.value > 0 ? '#FC674D' : '#9AC2AB';
     chart.guide().text({
-      position: [ obj.month, obj.tem ],
-      content: obj.tem,
+      position: [ obj.season, obj.value > 0 ? obj.value : 0 ],
+      content: numberToMoney(obj.value),
       style: {
-        fill: '#999',
-        fontSize: 12
+        fill: color,
+        textBaseline: 'bottom'
       },
-      offsetX: 0,
-      offsetY
+      offsetY: -5
     });
     // 背景部分
-    const offset = 0.25;
+    const offset = 0.46;
     chart.guide().rect({
       start: [ index - offset, 'max' ],
       end: [ index + offset, 'min' ],
       style: { fill: '#f8f8f8' }
     });
   });
+
+  chart.guide().text({
+    position: [ 'min', 'max' ],
+    content: '单位（万元）',
+    style: {
+      textBaseline: 'middle',
+      textAlign: 'start'
+    },
+    offsetY: -23
+  });
+
   chart.render();
 </script>

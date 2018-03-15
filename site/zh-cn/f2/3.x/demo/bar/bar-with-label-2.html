@@ -1,0 +1,55 @@
+<!--
+index: 15
+title: 各品牌销售量对比
+-->
+
+<script>
+  function numberToMoney(n) {
+    return String(Math.floor(n * 100) / 100).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  const data = [
+    { brand: 'Kenmore', sales: 103902, const: 100 },
+    { brand: 'Craftsman', sales: 112352, const: 100 },
+    { brand: 'DieHard', sales: 121823, const: 100 },
+    { brand: 'Lands End', sales: 154092, const: 100 },
+    { brand: 'Laclyn Smith', sales: 182023, const: 100 },
+    { brand: 'Joe Boxer', sales: 263523, const: 100 },
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.587,
+    pixelRatio: window.devicePixelRatio,
+    padding: [ 20, 20, 5]
+  });
+  chart.source(data);
+  chart.coord({
+    transposed: true
+  });
+  chart.axis(false);
+  chart.interval().position('brand*const').color('#d9e4eb').size(10);
+  chart.interval().position('brand*sales').size(10);
+
+  // 绘制文本
+  data.map(obj => {
+    chart.guide().text({
+      position: [ obj.brand, 'min' ],
+      content: obj.brand,
+      style: {
+        textAlign: 'start',
+        textBaseline: 'bottom',
+      },
+      offsetY: -8
+    });
+    chart.guide().text({
+      position: [ obj.brand, 'max' ],
+      content: '$' + numberToMoney(obj.sales),
+      style: {
+        textAlign: 'end',
+        textBaseline: 'bottom',
+      },
+      offsetY: -8
+    });
+  });
+  chart.render();
+</script>

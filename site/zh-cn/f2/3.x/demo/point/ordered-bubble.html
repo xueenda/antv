@@ -1,0 +1,50 @@
+<!--
+index: 2
+title: 支付平台使用量比对
+-->
+
+<script>
+  const data = [
+    { name: 'Stripe', volumes: 1.5, const: 100 },
+    { name: 'Swipely', volumes: 2, const: 100 },
+    { name: 'Square', volumes: 30, const: 100 },
+    { name: 'Alipay', volumes: 150, const: 100 },
+    { name: 'Paypal', volumes: 180, const: 100 }
+
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data, {
+    const: {
+      min: 0,
+      max: 200
+    }
+  });
+  chart.axis(false);
+  chart.tooltip(false);
+  chart.legend(false);
+  chart
+    .point()
+    .position('name*const')
+    .color('name')
+    .size('volumes', [ 10, 50 ])
+    .shape('circle');
+
+  // 绘制辅助文本
+  data.map(item => {
+    chart.guide().text({
+      position: [ item.name, item.const ],
+      content: item.name + '\n' + '$' + item.volumes + 'billion',
+      style: {
+        textAlign: 'center',
+        textBaseline: 'bottom'
+      },
+      offsetY: - 10
+    });
+  });
+  chart.render();
+</script>

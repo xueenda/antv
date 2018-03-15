@@ -1,6 +1,6 @@
 <!--
 index: 6
-title: 自定义图例交互
+title: 我的月账单
 -->
 
 <script>
@@ -31,7 +31,7 @@ title: 自定义图例交互
       attrs: {
         x: point2.x,
         y: point2.y,
-        text: origin._origin.name + '  ' + origin._origin.proportion * 100 + '%',
+        text: origin._origin.type + '  ' + origin._origin.cost + ' 元',
         fill: '#808080',
         textAlign: 'start',
         textBaseline: 'bottom'
@@ -61,12 +61,12 @@ title: 自定义图例交互
   }
 
   const data = [
-    { name: '芳华', proportion: 0.4, a: '1' },
-    { name: '妖猫传', proportion: 0.2, a: '1' },
-    { name: '机器之血', proportion: 0.18, a: '1' },
-    { name: '心理罪', proportion: 0.15, a: '1' },
-    { name: '寻梦环游记', proportion: 0.05, a: '1' },
-    { name: '其他', proportion: 0.02, a: '1' }
+    { type: '饮食', cost: 669.47, a: '1' },
+    { type: '服饰美容', cost: 338, a: '1' },
+    { type: '健康', cost: 118.5, a: '1' },
+    { type: '生活用品', cost: 78.64, a: '1' },
+    { type: '其他', cost: 14.9, a: '1' },
+    { type: '交通出行', cost: 8.7, a: '1' }
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
@@ -94,7 +94,7 @@ title: 自定义图例交互
       // 找到被点击的 shape
       Util.each(shapes, shape => {
         const origin = shape.get('origin');
-        if (origin && origin._origin.name === dataValue) {
+        if (origin && origin._origin.type === dataValue) {
           clickedShape = shape;
           return false;
         }
@@ -132,7 +132,7 @@ title: 自定义图例交互
         const color = clickedShape.attr('fill');
         clickedShape.animate().to({
           attrs: {
-            lineWidth: 8
+            lineWidth: 5
           },
           duration: 350,
           easing: 'bounceOut'
@@ -161,8 +161,8 @@ title: 自定义图例交互
   });
   chart.axis(false);
   chart.interval()
-    .position('a*proportion')
-    .color('name', [ '#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0' ])
+    .position('a*cost')
+    .color('type', [ '#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0' ])
     .adjust('stack');
   chart.render();
 </script>
