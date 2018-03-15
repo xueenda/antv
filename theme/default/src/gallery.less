@@ -16,11 +16,20 @@
     display: inline-block;
   }
   .btn-sort-by {
+    text-decoration: none;
     margin: 0 8px;
+    color: #0D1A26;
+    opacity: 0.5;
+    &:hover {
+      color: #1890ff;
+    }
     &.disabled {
-      color: #0D1A26;
+      &:hover {
+        color: #0D1A26;
+      }
+      opacity: 0.8;
+      font-weight: bold;
       cursor: not-allowed;
-      opacity: 0.5;
       text-decoration: none;
       pointer-events: none;
     }
