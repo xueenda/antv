@@ -1,0 +1,89 @@
+<!--
+index: 2
+title: 投资能力评估
+-->
+
+<script>
+  const canvas = document.getElementById('mountNode');
+  const ctx = canvas.getContext('2d');
+  //使用径向渐变
+  const grd = ctx.createRadialGradient(187.5, 140, 0, 187.5, 140, 92.5625);
+  grd.addColorStop(0, '#fff');
+  grd.addColorStop(0.35, '#DEF5F5');
+  grd.addColorStop(0.75, '#C8EEEF');
+  grd.addColorStop(1, '#A8E5E6');
+
+  const data = [
+    { item: '投资经验', score: 90, img: 'https://gw.alipayobjects.com/zos/rmsportal/txPVjdlnLANzxmwZcchu.png' },
+    { item: '财务状况', score: 80, img: 'https://gw.alipayobjects.com/zos/rmsportal/UMqgEqZdEcPhRekNGAdc.png' },
+    { item: '风险承受能力', score: 70, img: 'https://gw.alipayobjects.com/zos/rmsportal/eBXrRufzPGlOisYGZwnv.png' },
+    { item: '风险偏好', score: 75, img: 'https://gw.alipayobjects.com/zos/rmsportal/zqqWMLXrFwnqhySFHVjZ.png' },
+    { item: '投资规划', score: 60, img: 'https://gw.alipayobjects.com/zos/rmsportal/DxcRoUZXpYOzAWKrlRvv.png' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+
+
+  chart.coord('polar', {
+    radius: 0.8
+  });
+  chart.source(data, {
+    score: {
+      min: 0,
+      max: 100
+    }
+  });
+  chart.tooltip(false);
+  chart.axis('item', {
+    grid: {
+      lineDash: null,
+      top: true
+    },
+    label: null
+  });
+  chart.axis('score', {
+    label: null,
+    grid(text) {
+      if (text === '100') {
+        return {
+          lineDash: null
+        };
+      }
+      return {
+        lineWidth: 0
+      };
+    },
+    line: null
+  });
+  chart.area().position('item*score').style({
+    fill: grd,
+    fillOpacity: 100
+  });
+
+  data.map(obj => {
+    const offsetY = obj.item === '风险偏好' || obj.item === '风险承受能力' ? -10 : 0;
+    chart.guide().html({
+      position: [ obj.item, 140 ],
+      html: `
+        <div style="width: 80px;height: 24px;text-align: center">
+            <img src=${obj.img} style="width: 24px;height: 24px;" />
+            <div style="color: #808080;transform:scale(0.8, 0.8);font-size:12px;">${obj.item}</div>
+          </div>
+        </div>`,
+      offsetY
+    });
+    // chart.guide().text({
+    //   position: [ obj.item, 120 ],
+    //   content: obj.item,
+    //   style: {
+    //     fontSize: 10,
+    //     textBaseline: 'top'
+    //   }
+    // })
+  });
+  chart.render();
+</script>

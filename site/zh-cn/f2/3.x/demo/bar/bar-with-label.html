@@ -18,11 +18,7 @@ title: 新增用户来源
     height: window.innerWidth * 0.587,
     pixelRatio: window.devicePixelRatio
   });
-  chart.source(data, {
-    value: {
-      tickCount: 5
-    }
-  });
+  chart.source(data);
   chart.coord({
     transposed: true
   });

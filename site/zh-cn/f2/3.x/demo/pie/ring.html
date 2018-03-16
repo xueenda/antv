@@ -1,6 +1,6 @@
 <!--
 index: 1
-title: 环图
+title: 资产配置(环图)
 resource:
   jsFiles:
     - ${url.jquery}
@@ -10,64 +10,54 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
 -->
 
 <script>
-  const map = {
-    '芳华': '40%',
-    '妖猫传': '20%',
-    '机器之血': '18%',
-    '心理罪': '15%',
-    '寻梦环游记': '5%',
-    '其他': '2%',
-  };
   const data = [
-    { name: '芳华', proportion: 0.4, a: '1' },
-    { name: '妖猫传', proportion: 0.2, a: '1' },
-    { name: '机器之血', proportion: 0.18, a: '1' },
-    { name: '心理罪', proportion: 0.15, a: '1' },
-    { name: '寻梦环游记', proportion: 0.05, a: '1' },
-    { name: '其他', proportion: 0.02, a: '1' }
+    { name: '股票类', percent: 83.59, a: '1' },
+    { name: '债券类', percent: 2.17, a: '1' },
+    { name: '现金类', percent: 14.24, a: '1' }
   ];
+
+  const map = {};
+  data.map(obj => {
+    map[obj.name] = obj.percent + '%';
+  });
+
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
     height: window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
-  chart.source(data);
+  chart.source(data, {
+    percent: {
+      formatter(val) {
+        return val + '%';
+      }
+    }
+  });
   chart.legend({
     position: 'right',
     itemFormatter(val) {
-      return val + '  ' + map[val];
+      return val + '    ' + map[val];
     }
   });
   chart.coord('polar', {
     transposed: true,
-    innerRadius: 0.6,
-    radius: 0.8
+    innerRadius: 0.7,
+    radius: 0.85
   });
   chart.axis(false);
   chart.interval()
-    .position('a*proportion')
-    .color('name', [ '#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0' ])
-    .adjust('stack')
-    .style({
-      lineWidth: 1,
-      stroke: '#fff'
-    });
+    .position('a*percent')
+    .color('name', [ '#FE5D4D', '#3BA4FF', '#737DDE'])
+    .adjust('stack');
 
   chart.guide().html({
-    position: [ '50%', '50%' ],
-    html: '<div id="show" style="width: 250px;height: 41.5px;text-align: center;"></div>',
-  });
-  chart.tooltip({
-    custom(ev) {
-      const { items } = ev;
-      const content = '<span style="font-size: 24px; color: rgba(0, 0, 0, 0.85);">' + items[0].name + '</span><br />'
-        + '<span style="font-size: 12px; color: rgba(0, 0, 0, 0.45);">' + items[0].value * 100 + '%' + '</span>';
-      $('#show').html(content);
-    },
-    onHide() {
-      $('#show').html('');
-    }
+    position: [ '50%', '45%' ],
+    html: `
+      <div style="width: 250px;height: 40px;text-align: center;">
+        <div style="font-size: 16px">总资产</div>
+        <div style="font-size: 24px">133.08 亿</div>
+      </div>`,
   });
   chart.render();
 </script>

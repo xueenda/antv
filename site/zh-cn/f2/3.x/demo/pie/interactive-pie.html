@@ -1,6 +1,7 @@
 <!--
 index: 6
 title: 我的月账单
+screenshot: https://gw.alipayobjects.com/zos/rmsportal/IweaISVBwrfYVLpxRZne.png
 -->
 
 <script>
@@ -68,6 +69,11 @@ title: 我的月账单
     { type: '其他', cost: 14.9, a: '1' },
     { type: '交通出行', cost: 8.7, a: '1' }
   ];
+
+  let sum = 0;
+  data.map(obj => {
+    sum += obj.cost;
+  });
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
@@ -164,5 +170,13 @@ title: 我的月账单
     .position('a*cost')
     .color('type', [ '#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0' ])
     .adjust('stack');
+
+  chart.guide().text({
+    position: [ '50%', '50%' ],
+    content: sum.toFixed(2),
+    style: {
+      fontSize: 20
+    }
+  });
   chart.render();
 </script>

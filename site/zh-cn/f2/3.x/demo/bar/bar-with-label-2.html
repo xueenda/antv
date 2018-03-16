@@ -27,7 +27,8 @@ title: 各品牌销售量对比
     transposed: true
   });
   chart.axis(false);
-  chart.interval().position('brand*const').color('#d9e4eb').size(10);
+  chart.tooltip(false);
+  chart.interval().position('brand*const').color('#d9e4eb').size(10).animate(false);
   chart.interval().position('brand*sales').size(10);
 
   // 绘制文本

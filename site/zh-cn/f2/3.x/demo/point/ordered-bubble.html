@@ -4,12 +4,43 @@ title: 支付平台使用量比对
 -->
 
 <script>
+  const { Shape } = F2;
+  Shape.registerShape('point', 'with-text', {
+    draw(cfg, container) {
+      const size = cfg.size;
+      const x = cfg.x;
+      const y = cfg.y;
+      const circle = container.addShape('Circle', {
+        className: 'point',
+        attrs: {
+          x,
+          y,
+          r: size,
+          fill: cfg.color
+        }
+      });
+      const origin = cfg.origin._origin;
+      const text = container.addShape('Text', {
+        className: 'text',
+        attrs: {
+          x,
+          y: y - size - 4,
+          fill: '#000',
+          text: origin.name + '\n' + '$' + origin.volumes + 'billion',
+          textBaseline: 'bottom',
+          textAlign: 'center',
+          fontSize: 10
+        }
+      });
+      return [ circle, text ];
+    }
+  });
   const data = [
-    { name: 'Stripe', volumes: 1.5, const: 100 },
-    { name: 'Swipely', volumes: 2, const: 100 },
-    { name: 'Square', volumes: 30, const: 100 },
-    { name: 'Alipay', volumes: 150, const: 100 },
-    { name: 'Paypal', volumes: 180, const: 100 }
+    { name: 'Stripe', volumes: 1.5, x: 0.8, y: 50 },
+    { name: 'Swipely', volumes: 2, x: 2.5, y: 50 },
+    { name: 'Square', volumes: 30, x: 4.2, y: 50 },
+    { name: 'Alipay', volumes: 150, x: 6.7, y: 50 },
+    { name: 'Paypal', volumes: 180, x: 10.5, y: 50 }
 
   ];
   const chart = new F2.Chart({
@@ -19,9 +50,13 @@ title: 支付平台使用量比对
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
-    const: {
+    y: {
       min: 0,
-      max: 200
+      max: 100
+    },
+    x: {
+      max: 12,
+      tickInerval: 1
     }
   });
   chart.axis(false);
@@ -29,22 +64,9 @@ title: 支付平台使用量比对
   chart.legend(false);
   chart
     .point()
-    .position('name*const')
-    .color('name')
+    .position('x*y')
+    .color('volumes', '#BAE7FF-#1890FF-#0050B3')
     .size('volumes', [ 10, 50 ])
-    .shape('circle');
-
-  // 绘制辅助文本
-  data.map(item => {
-    chart.guide().text({
-      position: [ item.name, item.const ],
-      content: item.name + '\n' + '$' + item.volumes + 'billion',
-      style: {
-        textAlign: 'center',
-        textBaseline: 'bottom'
-      },
-      offsetY: - 10
-    });
-  });
+    .shape('with-text');
   chart.render();
 </script>

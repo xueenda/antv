@@ -62,7 +62,7 @@ resource:
       const yMax = yValues[yValues.length - 1];
       return [ xMax, yMax ];
     },
-    html: '<div style="border-radius: 100%;border: none;width: 12px;height: 12px;background-color: rgb(24, 144, 255);"></div>'
+    html: '<div style="border-radius: 100%;border: none;width: 12px;height: 12px;background-color: rgb(24, 144, 255);transition: top 0.35s cubic-bezier(0.23, 1, 0.32, 1);"></div>'
   });
   chart.guide().html({
     position(xScale, yScales) {
@@ -72,7 +72,7 @@ resource:
       const yMax = yValues[yValues.length - 1];
       return [ xMax, yMax ];
     },
-    html: '<div style="border-radius: 100%;border: none;width: 20px;height: 20px;background-color: rgba(24, 144, 255, 0.5);"></div>'
+    html: '<div style="border-radius: 100%;border: none;width: 20px;height: 20px;background-color: rgba(24, 144, 255, 0.5);transition: top 0.35s cubic-bezier(0.23, 1, 0.32, 1);"></div>'
   });
   chart.line().position('time*value');
   chart.render();
