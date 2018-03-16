@@ -1,0 +1,119 @@
+<!--
+title: 桑基图布局
+plotDescription: 展示桑基图的几种布局
+plotUsage: 展示桑基图的几种布局
+relativePlots:
+  - ${plotByName.relation}
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+date: "2018-03-17"
+-->
+
+<script>
+    $('#mountNode').append(`
+<div class="toolbar" style="text-align: center;">
+    <label for="node-align">Select nodeAlign style: </label>
+    <select name="node-align" id="node-align">
+        <option value="sankeyLeft" selected="selected">sankeyLeft</option>
+        <option value="sankeyRight" >sankeyRight</option>
+        <option value="sankeyCenter">sankeyCenter</option>
+        <option value="sankeyJustify">sankeyJustify</option>
+    </select>
+</div>
+`);
+
+    $.getJSON('/assets/data/energy.json', data => {
+        const $nodeAlign = $('#node-align');
+
+        const edges = data.links;
+        const graph = {
+            nodes: [],
+            edges
+        };
+        const nodeById = {};
+
+        function addNode(id) {
+            if (!nodeById[id]) {
+                const node = {
+                    id,
+                    name: id
+                };
+                nodeById[id] = node;
+                graph.nodes.push(node);
+            }
+        }
+
+        edges.forEach(function (edge) {
+            addNode(edge.source);
+            addNode(edge.target);
+        });
+
+        let chart, dv;
+
+        function repaint() {
+            if (chart) chart.destroy();
+
+            dv = new DataSet.View().source(graph, {
+                // const dv = ds.createView().source(data, {
+                // edges: data => data.links,
+                type: 'graph'
+            });
+            dv.transform({
+                type: 'diagram.sankey',
+                nodeId: node => node.id,
+                nodeAlign: $nodeAlign.val()
+            });
+
+            chart = new G2.Chart({
+                container: 'mountNode',
+                forceFit: true,
+                height: window.innerHeight
+            });
+            chart.legend(false);
+            chart.tooltip({
+                showTitle: false
+            });
+
+            chart.scale({
+                x: {sync: true},
+                y: {sync: true}
+            });
+            // edge view
+            const edgeView = chart.view();
+            edgeView.source(dv.edges);
+            edgeView.axis(false);
+            edgeView.edge()
+                .position('x*y')
+                .shape('arc')
+                .color('#bbb')
+                .opacity(0.6)
+                .tooltip('value');
+
+            // node view
+            const nodeView = chart.view();
+            nodeView.axis(false);
+            nodeView.source(dv.nodes);
+            nodeView.polygon()
+                .position('x*y')
+                .color('name')
+                // .label('name', {
+                //   labelEmit: true,
+                //   textStyle: {
+                //     fill: 'black'
+                //   }
+                // })
+                .style({
+                    stroke: '#ccc'
+                });
+            chart.render();
+        }
+
+        repaint();
+
+        $nodeAlign.on('change', () => {
+            repaint();
+        });
+    });
+</script>
