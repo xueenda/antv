@@ -31,10 +31,27 @@ TouchEmulator.template = function(touch) {
 
 TouchEmulator();
 
+// 手机端相应
 const userAgent = navigator.userAgent;
 const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
-
-if (mobile) { // in mobile
+let pathname = window.location.pathname;
+pathname = pathname.split('/')[1];
+if (mobile && pathname === 'assets') { // in mobile
+  const chartName = $('meta[name="chart-name"]').attr('content');
   const url = window.location.protocol + '//' + window.location.host + '/zh-cn/f2/3.x/demo/mobile-index.html';
-  $('<a href="' + url + '">返回 demo 主页</a>').insertAfter('#mountNode');
+  $(`
+  <div class="header">
+    <a class="icon" href="${url}"></a>
+    ${chartName}
+  </div>`).insertBefore('.chart-wrapper');
+
+  // 监听横竖屏
+  window.addEventListener('orientationchange', function() {
+    if ( window.orientation == 180 || window.orientation==0 ) {
+      window.location.reload();
+    }
+    if( window.orientation == 90 || window.orientation == -90 ) {
+      window.location.reload();
+    }
+});
 }

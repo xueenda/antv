@@ -42,12 +42,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>{% for css in resource.cssFiles %}
+    <meta name="chart-name" content="{{title}}">
+    <title>F2 图表组件库 - AntV</title>{% for css in resource.cssFiles %}
     <link rel="stylesheet" href="{{ css }}" />{% endfor %}
     <link rel="stylesheet" href="{{ dist }}/f2-naked-demo.css" />
 </head>
 <body>
-  <canvas id="mountNode"></canvas>
+  <div class="chart-wrapper" >
+    <canvas id="mountNode"></canvas>
+  </div>
 <script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
 <script src="{{ url.f2 }}"></script>{% for js in resource.jsFiles %}
 <script src="{{ js }}"></script>{% endfor %}

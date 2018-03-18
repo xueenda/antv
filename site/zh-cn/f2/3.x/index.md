@@ -30,8 +30,18 @@ resource:
             <div class="col-md-5">
                 <h1>F2 移动端图表库</h1>
                 <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
-                <a href="{{ products.f2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.demo }}</a>
-                <a href="{{base}}zh-cn/f2/3.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
+                <a href="{{ products.f2.links.tutorial.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
+                  <button class="btn btn-light border btn-lg btn-round-link" id="scanCodeBtn">{{ resource.translate.scanCode }}</button>
+                  <div style="position: absolute;">
+                    <div class="scancode-wrapper">
+                      <div class="scancode-content">
+                        <div class="scancode-arrow"></div>
+                        <div class="scancode-inner">
+                          <div id="scanCode" data-url={{ products.f2.links.mobile.href }} ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=f2&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
             </div>
             <div class="col-md-7 slick">

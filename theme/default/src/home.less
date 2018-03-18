@@ -14,7 +14,7 @@ h2, h3, h4 {
 .img-landscape {
   margin: 0 0 0 -20px;
 }
- 
+
 .main-info {
   font-size: 20px;
   line-height: 36px;
@@ -60,7 +60,7 @@ section {
     border-radius: 4px;
     overflow: auto;
     max-width: 895px;
-    margin: 0 auto; 
+    margin: 0 auto;
     margin-top: 24px;
     text-align: left;
     line-height: 2;
@@ -301,6 +301,60 @@ section {
     }
   }
 }
+
+.scancode-wrapper {
+  display: none;
+  padding-top: 9px;
+  width: 160px;
+  height: 160px;
+
+  .scancode-content {
+    position: relative;
+  }
+
+  .scancode-arrow {
+    background: #fff;
+    width: 7.07106781px;
+    height: 7.07106781px;
+    position: absolute;
+    display: block;
+    border-color: transparent;
+    border-style: solid;
+    top: -3px;
+    -webkit-box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.06);
+    left: 50%;
+    -webkit-transform: translateX(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .scancode-inner {
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  #scanCode {
+    padding: 12px;
+    color: rgba(0, 0, 0, 0.65);
+
+    img {
+      width: 136px;
+      height: 136px;
+    }
+  }
+
+}
+
+#scanCodeBtn:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+
 
 @media only screen and (max-width: @screen-sm) {
   .intro {

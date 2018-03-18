@@ -54,9 +54,21 @@
         <div class="col detail" id="detail-container">
             <div class="demo-preview" id="demo-preview">
                 <div class="navbar justify-content-between">
-                    {% if template != 'f2-demo' %}
-                    <h4 class="nav-link">{{ title }}</h4>
+                    <h4 class="nav-link">{{ title }}
+                    {% if template == 'f2-demo' %}
+                    <div class="f2-qrcode">
+                        <span class="iconfont icon-erweima"></span>
+                        <div class="qrcode-wrapper">
+                            <div class="qrcode-content">
+                                <div class="qrcode-arrow"></div>
+                                <div class="qrcode-inner">
+                                    <div id="qrcode" data-url={{ currentDemo.naked }} ></div>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
                     {% endif %}
+                    </h4>
 
                     {% if canSwitchThemes %}
                     <form class="form-inline">
@@ -129,9 +141,9 @@
                     <div class="content">
                         <div class="content-header">
                             <div class="content-statbar">
-                                <img width="375px" alt="presentation" src="https://gw.alipayobjects.com/zos/rmsportal/EclnAKKpuporHFJFHboS.png">
+                                <img width="375px" alt="presentation" src="https://gw.alipayobjects.com/zos/rmsportal/upXhABKsXgtHOGYGmbOi.png">
+                                <div class="url" data-url={{ currentDemo.naked }}></div>
                             </div>
-                            <h1 class="content-title">{{ title }}</h1>
                         </div>
                         <section class="code-box-demo code-box-demo-preview">
                             <div class="demo f2" id="preview"></div>
@@ -233,14 +245,27 @@
 {% if template == 'f2-demo' %}
 <script src="https://gw.alipayobjects.com/os/rmsportal/ZTwgYuEqPkjWTERMsszu.js"></script>
 <script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), {
-    text: window.location.protocol + '//' + window.location.host + $('#qrcode').data('value'),
-    width: 128,
-    height: 128,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-});
+const userAgent = navigator.userAgent;
+const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+const currentUrl = window.location.protocol + '//' + window.location.host + $('#qrcode').data('url');
+$('.url').html(currentUrl);
+
+if (!mobile) { // in mobile
+    new QRCode(document.getElementById("qrcode"), {
+        text: currentUrl,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    $('.icon-erweima').hover(() => {
+        $('.qrcode-wrapper').toggle();
+    });
+} else {
+    $('.icon-erweima').hide();
+}
 </script>
 {% endif %}
 

@@ -16,4 +16,31 @@
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js"></script>
 <script src="{{ dist }}/home.js"></script>
+{% if currentProduct == 'f2' %}
+<script src="https://gw.alipayobjects.com/os/rmsportal/ZTwgYuEqPkjWTERMsszu.js"></script>
+<script type="text/javascript">
+new QRCode(document.getElementById("scanCode"), {
+    text: window.location.protocol + '//' + window.location.host + $('#scanCode').data('url'),
+    width: 273,
+    height: 273,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+const scanCodeBtn = $('#scanCodeBtn');
+const btnPos = scanCodeBtn.position();
+const scancodeWrapper = $('.scancode-wrapper');
+$('#scanCodeBtn').click(() => {
+  scancodeWrapper.parent().css('left', btnPos.left + (scanCodeBtn.outerWidth() / 2) - (scancodeWrapper.outerWidth() / 2));
+  scancodeWrapper.toggle();
+});
+
+$('body').click(event => {
+  const target = $(event.target);
+  if (!target.is( "button#scanCodeBtn") && !target.parents('.scancode-wrapper').length) {
+    $('.scancode-wrapper').hide();
+  }
+});
+</script>
+{% endif %}
 {% endblock %}

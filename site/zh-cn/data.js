@@ -35,6 +35,7 @@ module.exports = {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
                 tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/3.x/tutorial/index.html' },
+                mobile: { text: '${resource.translate.scanCode}', href: '${base}zh-cn/f2/3.x/demo/mobile-index.html' }
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }
         },
@@ -103,6 +104,7 @@ module.exports = {
             visChart: '图表用法',
             visDesign: '设计原则',
             visResource: '资源',
+            scanCode: '扫码演示',
         },
         cssFiles: [
         ],
