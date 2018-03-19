@@ -44,6 +44,7 @@ if (mobile && pathname === 'assets') { // in mobile
     <a class="icon" href="${url}"></a>
     ${chartName}
   </div>`).insertBefore('.chart-wrapper');
+  $('html').css('background-color', '#F4F6F9');
 
   // 监听横竖屏
   window.addEventListener('orientationchange', function() {

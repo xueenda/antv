@@ -161,3 +161,17 @@ if (!inView($currentMenuItem)) {
     $currentMenuItem[0].scrollIntoView();
 }
 
+
+const userAgent = navigator.userAgent;
+const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+
+if ($iframeContainer.hasClass('f2')) {
+    if (mobile) {
+        $('.mobile-wrapper .content').hide();
+        $iframeContainer.css('top', 0);
+    } else {
+        $('.mobile-wrapper .content').show();
+        $iframeContainer.css('top', 74);
+    }
+}
+
