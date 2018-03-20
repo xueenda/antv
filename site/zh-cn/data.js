@@ -31,11 +31,11 @@ module.exports = {
             name: 'F2',
             href: '${base}zh-cn/f2/3.x/index.html',
             icon: '${assets}/image/icon/f2.svg',
+            qrCode: { text: '${resource.translate.scanCode}', href: '${base}zh-cn/f2/3.x/demo/mobile-index.html' },
             links: {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
                 tutorial: { text: '${resource.translate.tutorial}', href: '${base}zh-cn/f2/3.x/tutorial/index.html' },
-                mobile: { text: '${resource.translate.scanCode}', href: '${base}zh-cn/f2/3.x/demo/mobile-index.html' }
                 // changelog: { hideFromNav: true, text: '${resource.translate.changelog}', href: '${base}zh-cn/f2/3.x/tutorial/changelog.html' },
             }
         },

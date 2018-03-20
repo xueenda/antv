@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ dist }}/demos.css"/>
 {% endblock %}
 {% block content %}
-<div class="demos container-fluid">
+<div class="demos container-fluid {% if currentProduct == 'f2' %}f2{% endif %}">
     <div class="row flex-xl-nowrap">
         <div class="col-xl-1"></div>
         <div class="col-12 col-md-12 col-xl-10">

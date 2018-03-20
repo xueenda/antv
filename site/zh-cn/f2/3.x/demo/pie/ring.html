@@ -24,8 +24,9 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
-    pixelRatio: window.devicePixelRatio
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio,
+    padding: [ 20, 'auto' ]
   });
   chart.source(data, {
     percent: {
@@ -34,6 +35,7 @@ chartDetail: ${base}zh-cn/vis/chart/donut.html
       }
     }
   });
+  chart.tooltip(false);
   chart.legend({
     position: 'right',
     itemFormatter(val) {

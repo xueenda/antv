@@ -18,7 +18,7 @@ resource:
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
 
@@ -45,7 +45,11 @@ resource:
   chart.line().position('time*rain')
     .color('#5ed470')
     .shape('smooth');
-  chart.point().position('time*rain').color('#5ed470');
+  chart.point().position('time*rain').style({
+    stroke: '#5ed470',
+    fill: '#fff',
+    lineWidth: 2
+  });
 
   // 绘制辅助线
   chart.guide().line({

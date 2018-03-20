@@ -37,7 +37,7 @@ resource:
                       <div class="scancode-content">
                         <div class="scancode-arrow"></div>
                         <div class="scancode-inner">
-                          <div id="scanCode" data-url={{ products.f2.links.mobile.href }} ></div>
+                          <div id="scanCode" data-url={{ products.f2.qrCode.href }} ></div>
                         </div>
                       </div>
                     </div>

@@ -9,12 +9,12 @@ title: 玉珏图
     { tem: 11.3, city: 'New York' },
     { tem: 13.5, city: 'Berlin' },
     { tem: 17, city: 'London' },
-    { tem: 18.6, city: 'Peking' }
+    { tem: 18.6, city: 'Beijing' }
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
   chart.coord('polar', {

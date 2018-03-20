@@ -16,7 +16,7 @@ plotUsage: 区间条形图可视化后的数据可能看起来非常漂亮，并
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
 

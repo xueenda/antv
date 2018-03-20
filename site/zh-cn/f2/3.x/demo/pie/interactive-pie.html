@@ -77,14 +77,14 @@ screenshot: https://gw.alipayobjects.com/zos/rmsportal/IweaISVBwrfYVLpxRZne.png
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data);
   let lastClickedShape;
   chart.legend({
     position: 'bottom',
-    offsetY: 15,
+    offsetY: -5,
     marker: 'square',
     align: 'center',
     onClick(ev) {
@@ -163,7 +163,7 @@ screenshot: https://gw.alipayobjects.com/zos/rmsportal/IweaISVBwrfYVLpxRZne.png
   chart.coord('polar', {
     transposed: true,
     innerRadius: 0.7,
-    radius: 0.8
+    radius: 0.85
   });
   chart.axis(false);
   chart.interval()
@@ -175,7 +175,7 @@ screenshot: https://gw.alipayobjects.com/zos/rmsportal/IweaISVBwrfYVLpxRZne.png
     position: [ '50%', '50%' ],
     content: sum.toFixed(2),
     style: {
-      fontSize: 20
+      fontSize: 24
     }
   });
   chart.render();

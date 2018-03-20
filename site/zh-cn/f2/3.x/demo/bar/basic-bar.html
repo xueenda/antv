@@ -20,7 +20,7 @@ plotUsage: 对比分类数据的数值大小，当分类情况过多时，柱状
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
 

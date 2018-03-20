@@ -7,7 +7,7 @@ title: 投资能力评估
   const canvas = document.getElementById('mountNode');
   const ctx = canvas.getContext('2d');
   //使用径向渐变
-  const grd = ctx.createRadialGradient(187.5, 140, 0, 187.5, 140, 92.5625);
+  const grd = ctx.createRadialGradient(187.5, 195, 0, 187.5, 195, 92.5625);
   grd.addColorStop(0, '#fff');
   grd.addColorStop(0.35, '#DEF5F5');
   grd.addColorStop(0.75, '#C8EEEF');
@@ -23,7 +23,7 @@ title: 投资能力评估
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth,
     pixelRatio: window.devicePixelRatio
   });
 
@@ -67,7 +67,7 @@ title: 投资能力评估
   data.map(obj => {
     const offsetY = obj.item === '风险偏好' || obj.item === '风险承受能力' ? -10 : 0;
     chart.guide().html({
-      position: [ obj.item, 140 ],
+      position: [ obj.item, 130 ],
       html: `
         <div style="width: 80px;height: 24px;text-align: center">
             <img src=${obj.img} style="width: 24px;height: 24px;" />
@@ -76,14 +76,6 @@ title: 投资能力评估
         </div>`,
       offsetY
     });
-    // chart.guide().text({
-    //   position: [ obj.item, 120 ],
-    //   content: obj.item,
-    //   style: {
-    //     fontSize: 10,
-    //     textBaseline: 'top'
-    //   }
-    // })
   });
   chart.render();
 </script>

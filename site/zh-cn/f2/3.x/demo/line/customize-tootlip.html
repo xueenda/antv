@@ -38,7 +38,7 @@ resource:
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio,
     padding: [ 45, 'auto', 'auto' ]
   });
@@ -133,12 +133,7 @@ resource:
   });
   chart.line()
     .position('date*value')
-    .color('#518DFE')
-    .animate({
-      appear: {
-        duration: 1200
-      }
-    });
+    .color('#518DFE');
   chart.point().position('date*value')
     .size('tag', val => {
       return val ? 3 : 0;
@@ -155,8 +150,4 @@ resource:
       lineWidth: 1
     });
   chart.render();
-
-  // 图表加载后默认展示某一点的 tooltip
-  const point = chart.getPosition({ date: "2017-06-14", value: 130 });
-  chart.showTooltip(point);
 </script>

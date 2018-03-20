@@ -167,11 +167,13 @@ const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini
 
 if ($iframeContainer.hasClass('f2')) {
     if (mobile) {
+        $('.mobile-wrapper').height(265);
         $('.mobile-wrapper .content').hide();
-        $iframeContainer.css('top', 0);
+        $iframeContainer.css('top', -30);
     } else {
+        $('.mobile-wrapper').height(590);
         $('.mobile-wrapper .content').show();
-        $iframeContainer.css('top', 74);
+        $iframeContainer.css('top', 82);
     }
 }
 

@@ -18,7 +18,7 @@ resource:
 
       return [
         { x: x, y: y },
-        { x: x, y: 0.5 }
+        { x: x, y: 0.4 }
       ];
     },
     draw: function(cfg, container) {
@@ -30,7 +30,7 @@ resource:
       const line = container.addShape('Polyline', {
         attrs: {
           points: [ point1, point2 ],
-          stroke: '#18b7d6',
+          stroke: '#1890FF',
           lineWidth: 2
         }
       });
@@ -41,8 +41,8 @@ resource:
           text: text+'%',
           x: cfg.center.x,
           y: cfg.center.y,
-          fill: '#f75b5b',
-          font:'30px Arial',
+          fill: '#1890FF',
+          fontSize: 24,
           textAlign: 'center',
           textBaseline: 'bottom'
         }
@@ -65,7 +65,7 @@ resource:
   const chart = new F2.Chart({
     id : 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     animate: false,
     pixelRatio: window.devicePixelRatio
   });
@@ -90,9 +90,9 @@ resource:
   //配置value轴刻度线
   chart.axis('value', {
     tickLine: {
-      strokeStyle: '#b9e6ef',
+      strokeStyle: '#ccc',
       lineWidth: 2,
-      value: -5
+      length: -5
     },
     label: null,
     grid: null,
@@ -106,7 +106,7 @@ resource:
     start: [ 0, 1.05 ],
     end: [ 4.8, 1.05 ],
     style: {
-      strokeStyle: '#18b7d6',
+      strokeStyle: '#1890FF',
       lineWidth:5,
       lineCap: 'round'
     }
@@ -168,7 +168,7 @@ resource:
 
   chart.point().position('value*y')
     .size('length')
-    .color('#18b7d6')
+    .color('#1890FF')
     .shape('dashBoard');
   chart.render();
 </script>

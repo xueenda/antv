@@ -25,7 +25,7 @@ plotUsage: 饼图广泛得应用在各个领域，用于表示不同分类的占
   const chart = new F2.Chart({
     id: 'mountNode',
     width: window.innerWidth,
-    height: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
@@ -41,9 +41,10 @@ plotUsage: 饼图广泛得应用在各个领域，用于表示不同分类的占
       return val + '  ' + map[val];
     }
   });
+  chart.tooltip(false);
   chart.coord('polar', {
     transposed: true,
-    radius: 0.8
+    radius: 0.85
   });
   chart.axis(false);
   chart.interval()
@@ -52,7 +53,9 @@ plotUsage: 饼图广泛得应用在各个领域，用于表示不同分类的占
     .adjust('stack')
     .style({
       lineWidth: 1,
-      stroke: '#fff'
+      stroke: '#fff',
+      lineJoin: 'round',
+      lineCap: 'round'
     })
     .animate({
       appear: {

@@ -74,7 +74,9 @@ $('.lazyload').lazyload();
 function adjustScreenshotsSize() {
     $('.screenshot').each(function () {
         const $screenshot = $(this);
-        $screenshot.height($screenshot.width() / 16 * 9);
+        if (!$('.demos').hasClass('f2')) {
+          $screenshot.height($screenshot.width() / 16 * 9);
+        }
     });
 }
 
