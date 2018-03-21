@@ -24,7 +24,7 @@ $('header').headroom({
     },
 });
 
-const names = [ '层叠条形图', '饼图', '商品价格 7 年走势对比' ];
+const names = [ '商品价格 7 年走势对比', '层叠条形图', '饼图' ];
 
 $('.slick').each(function () {
     const $target = $(this);
