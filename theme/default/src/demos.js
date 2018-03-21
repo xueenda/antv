@@ -76,6 +76,8 @@ function adjustScreenshotsSize() {
         const $screenshot = $(this);
         if (!$('.demos').hasClass('f2')) {
           $screenshot.height($screenshot.width() / 16 * 9);
+        } else {
+          $screenshot.height($screenshot.width() * 0.535);
         }
     });
 }

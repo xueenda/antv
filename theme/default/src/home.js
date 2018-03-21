@@ -24,6 +24,8 @@ $('header').headroom({
     },
 });
 
+const names = [ '层叠条形图', '饼图', '商品价格 7 年走势对比' ];
+
 $('.slick').each(function () {
     const $target = $(this);
     $target.slick({
@@ -37,5 +39,7 @@ $('.slick').each(function () {
         autoplay: true,
         autoplaySpeed: 2000,
         fade: true,
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+       $('#chartTitle').text(names[nextSlide]);
     });
 });
