@@ -54,7 +54,7 @@ chartDetail: ${base}zh-cn/vis/chart/stacked-bar.html
       tooltipItems.map(item => {
         const { name, value } = item;
         if (map[name]) {
-          map[name].value = (value * 100).toFixed(2) + '%';
+          map[name].value = value;
         }
       });
       legend.setItems(Object.values(map));
