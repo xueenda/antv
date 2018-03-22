@@ -821,7 +821,7 @@ graph.changeSize(width, height);
 graph.updateNodesPositon();
 ```
 
-### 获取所有元素
+### getItems
 
 获取所有元素
 
@@ -832,7 +832,7 @@ graph.updateNodesPositon();
 graph.getItems();
 ```
 
-### 获取所有节点
+### getNodes
 
 获取所有节点
 
@@ -843,7 +843,7 @@ graph.getItems();
 graph.getNodes();
 ```
 
-### 获取所有边
+### getEdges
 
 获取所有边
 
