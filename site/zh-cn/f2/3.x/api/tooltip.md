@@ -73,9 +73,7 @@ chart.tooltip({
     lineWidth: 2,
     stroke: '#fff'
   }, // 每条记录项前面的 marker 的样式配置
-  custom(obj) {
-    // obj: { x, y, title, items }
-  }, // 自定义 tooltip 的回调函数
+  custom: {Boolean}, // 是否自定义 tooltip 提示框
   onShow(obj) {
     // obj: { x, y, title, items }
   }, // tooltip 显示时的回调函数
@@ -121,7 +119,8 @@ chart.tooltip({
     });
     chart.source(data);
     chart.tooltip({
-      custom(obj) {
+      custom: true, // 自定义 tooltip 内容框
+      onChange(obj) {
         const legend = chart.get('legendController').legends.top[0]; // 获取 legend
         const tooltipItems = obj.items;
         const legendItems = legend.items;

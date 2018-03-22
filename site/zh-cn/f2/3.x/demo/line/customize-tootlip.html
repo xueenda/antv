@@ -103,7 +103,8 @@ resource:
   });
   chart.tooltip({
     showCrosshairs: true,
-    custom(obj) {
+    custom: true, // 自定义 tooltip 内容框
+    onChange(obj) {
       const { items } = obj;
       const { date, value, tag } = items[0].origin;
       $('#tooltipWrapper').width($('#mountNode').width());

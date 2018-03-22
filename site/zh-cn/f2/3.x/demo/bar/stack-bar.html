@@ -63,7 +63,8 @@ chartDetail: ${base}zh-cn/vis/chart/stacked-bar.html
     }
   });
   chart.tooltip({
-    custom(obj) {
+    custom: true, // 自定义 tooltip 内容框
+    onChange(obj) {
       const legend = chart.get('legendController').legends.top[0];
       const tooltipItems = obj.items;
       const legendItems = legend.items;
