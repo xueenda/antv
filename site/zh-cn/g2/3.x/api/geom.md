@@ -431,6 +431,8 @@ line.label('x', {
 });
 ```
 
+* textStyle 的更详细的配置项 [绘图属性](graphic.html)
+
 #### label(field)
 
 显示 field 字段对应的文本。
@@ -493,6 +495,9 @@ chart.line().label('x', {
 })
 ```
 
+* textStyle 的更详细的配置项 [绘图属性](graphic.html)
+* htmlTemplate 默认为 null, 配置为回调函数时，既开启 html 渲染文本
+
 #### label(field, callback, cfg)
 
 使用回调函数控制文本显示。
@@ -527,6 +532,9 @@ chart.polygon()
     }
   });
 ```
+* textStyle 的更详细的配置项 [绘图属性](graphic.html)
+
+
 
 ### tooltip
 
@@ -677,6 +685,9 @@ chart.intervalStack()
 chart.render();
 ```
 
+* style 的更详细的配置项 [绘图属性](graphic.html)
+
+
 ### style
 
 用于配置几何标记显示的图形属性。
@@ -691,6 +702,9 @@ line().style('a*b', { // 使用回调函数设置属性
   stroke: 'red'
 });
 ```
+
+* style 的更详细的配置项 [绘图属性](graphic.html)
+
 
 ### select
 
@@ -707,6 +721,9 @@ geom.select([true,] {
 });
 ```
 
+* style 的更详细的配置项 [绘图属性](graphic.html)
+
+
 ### active
 
 开启以及关闭 shape 对于鼠标 hover 时的响应效果，G2 默认为各个 shaoe 内置了 active 效果 。
@@ -714,7 +731,17 @@ geom.select([true,] {
 ```js
 geom.active(false); // 关闭默认响应
 geom.active(true); // 开启默认响应
+
+geom.active([true], {
+  highlight: false, // true 是否开启 highlight 效果，开启时没有激活的变灰
+  style: {
+    fill: 'red'
+  }
+}); 
 ```
+
+* style 的更详细的配置项 [绘图属性](graphic.html)
+
 
 ### animate
 
