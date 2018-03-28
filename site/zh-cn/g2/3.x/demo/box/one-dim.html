@@ -1,0 +1,49 @@
+<!--
+index: 1
+title: 一维箱型图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: Basic Box Chart，基础箱型图，又称盒须图、盒式图或箱线图，是一种用作显示一组数据分布情况的统计图。
+plotUsage: 仅包含一条数据的时候可以使用占位符 '1'
+relativePlots:
+  - ${plotByName.box}
+-->
+<script>
+  const { DataView } = DataSet;
+  const data = [
+    { low: 1, q1: 9, median: 16, q3: 22, high: 24 }
+    
+  ];
+  const dv = new DataView().source(data);
+  dv.transform({
+    type: 'map',
+    callback: (obj) => {
+      obj.range = [ obj.low, obj.q1, obj.median, obj.q3, obj.high ];
+      return obj;
+    }
+  });
+  const chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight
+  });
+  chart.source(dv, {
+    range: {
+      max: 35
+    }
+  });
+  chart.tooltip({
+    crosshair: false
+  });
+  chart.schema().position('range*1')
+  .shape('box')
+  .tooltip('x*low*q1*median*q3*high')
+  .style({
+    stroke: '#545454',
+    fill: '#1890FF',
+    fillOpacity: 0.3
+  });
+  chart.render();
+</script>
