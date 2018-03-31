@@ -8,7 +8,7 @@ keywords:
   - 移动端
   - Mobile
   - H5
-description: F2 是专为移动端定制的一套开箱即用的可视化图表解决方案，基于图形语法理论，具有精简、高性能、易扩展的特性，适用于对性能、大小、扩展性要求严苛的场景。
+description: F2 是专为移动端定制的一套开箱即用的可视化解决方案，基于图形语法理论，具有精简、高性能、易扩展的特性，适用于对性能、大小、扩展性要求严苛的场景。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 极小
@@ -29,23 +29,13 @@ resource:
     <div class="container">
         <div class="header row">
             <div class="col-md-5">
-                <h1>F2 移动端图表解决方案</h1>
-                <p class="main-info">F2 是专为移动端定制的一套开箱即用的可视化图表解决方案，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
+                <h1>F2 移动端可视化解决方案</h1>
+                <p class="main-info">F2 是专为移动端定制的一套开箱即用的可视化解决方案，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
                 <a href="{{ products.f2.links.tutorial.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
                   <button class="btn btn-light border btn-lg btn-round-link" id="scanCodeBtn">{{ resource.translate.scanCode }}</button>
-                  <div style="position: absolute;">
-                    <div class="scancode-wrapper">
-                      <div class="scancode-content">
-                        <div class="scancode-arrow"></div>
-                        <div class="scancode-inner">
-                          <div id="scanCode" data-url={{ products.f2.qrCode.href }} ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=f2&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
             </div>
-            <div class="col-md-7" style="position: relative;">
+            <div class="col-md-7">
               <div class="chart-wrapper">
                 <div class="chart-header">
                   <div id="chartTitle">商品价格 7 年走势对比</div>
@@ -100,6 +90,17 @@ resource:
 </div>
 <a href="{{ products.f2.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
+
+<div style="position: absolute;">
+  <div class="scancode-wrapper">
+    <div class="scancode-content">
+      <div class="scancode-arrow"></div>
+      <div class="scancode-inner">
+        <div id="scanCode" data-url={{ products.f2.qrCode.href }} ></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- chart1 -->
 
@@ -161,7 +162,7 @@ resource:
 <!-- chart2 -->
 
 ```js-
-const data = [
+  const data = [
     { State: 'WY', 年龄段 : '小于5岁', 人口数量: 25635 },
     { State: 'WY', 年龄段 : '5至13岁', 人口数量: 1890 },
     { State: 'WY', 年龄段 : '14至17岁', 人口数量: 9314 },

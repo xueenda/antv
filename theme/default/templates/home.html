@@ -28,10 +28,11 @@ new QRCode(document.getElementById("scanCode"), {
     correctLevel : QRCode.CorrectLevel.H
 });
 const scanCodeBtn = $('#scanCodeBtn');
-const btnPos = scanCodeBtn.position();
+const btnPos = scanCodeBtn.offset();
 const scancodeWrapper = $('.scancode-wrapper');
 $('#scanCodeBtn').click(() => {
   scancodeWrapper.parent().css('left', btnPos.left + (scanCodeBtn.outerWidth() / 2) - (scancodeWrapper.outerWidth() / 2));
+  scancodeWrapper.parent().css('top', btnPos.top + scanCodeBtn.outerHeight());
   scancodeWrapper.toggle();
 });
 
