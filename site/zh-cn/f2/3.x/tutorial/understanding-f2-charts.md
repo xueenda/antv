@@ -16,8 +16,8 @@ resource:
 
 F2 基本组成部分如下图所示：
 
-<img src="https://gw.alipayobjects.com/zos/rmsportal/tpfdzWDYmxzHkquTihJe.png" width="373">
-<img src="https://gw.alipayobjects.com/zos/rmsportal/lUqXwLjgRWhugemcNsqc.png" width="373">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/tpfdzWDYmxzHkquTihJe.png" style="width: 373px;">
+<img src="https://gw.alipayobjects.com/zos/rmsportal/lUqXwLjgRWhugemcNsqc.png" style="width: 373px;"">
 
 
 ## 术语

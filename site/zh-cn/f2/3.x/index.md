@@ -8,11 +8,11 @@ keywords:
   - 移动端
   - Mobile
   - H5
-description: F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。
+description: F2 是专为移动端定制的一套开箱即用的可视化图表解决方案，基于图形语法理论，具有精简、高性能、易扩展的特性，适用于对性能、大小、扩展性要求严苛的场景。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 极小
-    description: 压缩后不到 100k 的代码，提供了几十种图表。
+    description: 在支持丰富（45+）图表的基础上保持代码量的小巧。
   - img: ${assets}/image/home/features-professional.svg
     title: 高性能
     description: 性能极致追求，针对移动设备做了大量的优化。
@@ -29,8 +29,8 @@ resource:
     <div class="container">
         <div class="header row">
             <div class="col-md-5">
-                <h1>F2 移动端图表库</h1>
-                <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
+                <h1>F2 移动端图表解决方案</h1>
+                <p class="main-info">F2 是专为移动端定制的一套开箱即用的可视化图表解决方案，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
                 <a href="{{ products.f2.links.tutorial.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
                   <button class="btn btn-light border btn-lg btn-round-link" id="scanCodeBtn">{{ resource.translate.scanCode }}</button>
                   <div style="position: absolute;">
