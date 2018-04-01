@@ -1,0 +1,80 @@
+<!--
+index: 10
+title: 带负值的分组柱状图
+resource:
+  jsFiles:
+    - ${url.lodash}
+plotDescription: 分组柱状图。又叫聚合柱状图。当使用者需要在同一个轴上显示各个分类下不同的分组时，需要用到分组柱状图。
+plotUsage: 跟柱状图类似，使用柱子的高度来映射和对比数据值。每个分组中的柱子使用不同的颜色或者相同颜色不同透明的方式区别各个分类，各个分组之间需要保持间隔。分组柱状图经常用于不同组间数据的比较，这些组都包含了相同分类的数据。但是仍需要注意，避免分组中分类过多的情况，分类过多会导致分组中柱子过多过密，非常影响图表可读性。
+chartDetail: ${base}zh-cn/vis/chart/multi-set-bar.html
+-->
+
+<script>
+  const data = [
+    { time: '周一', tem: 6.9, city: 'tokyo' },
+    { time: '周二', tem: 9.5, city: 'tokyo' },
+    { time: '周三', tem: 14.5, city: 'tokyo' },
+    { time: '周四', tem: 18.2, city: 'tokyo' },
+    { time: '周五', tem: 21.5, city: 'tokyo' },
+    { time: '周六', tem: 25.2, city: 'tokyo' },
+    { time: '周日', tem: 26.5, city: 'tokyo' },
+    { time: '周一', tem: -10.8, city: 'newYork' },
+    { time: '周二', tem: -5.7, city: 'newYork' },
+    { time: '周三', tem: -11.3, city: 'newYork' },
+    { time: '周四', tem: -17, city: 'newYork' },
+    { time: '周五', tem: -22, city: 'newYork' },
+    { time: '周六', tem: -24.8, city: 'newYork' },
+    { time: '周日', tem: -24.1, city: 'newYork' },
+    { time: '周一', tem: 0.6, city: 'berlin' },
+    { time: '周二', tem: 3.5, city: 'berlin' },
+    { time: '周三', tem: 8.4, city: 'berlin' },
+    { time: '周四', tem: 13.5, city: 'berlin' },
+    { time: '周五', tem: 17, city: 'berlin' },
+    { time: '周六', tem: -18.6, city: 'berlin' },
+    { time: '周日', tem: 17.9, city: 'berlin' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+
+  chart.source(data, {
+    tem: {
+      tickCount: 5
+    }
+  });
+  chart.tooltip({
+    custom: true, // 自定义 tooltip 内容框
+    onChange(obj) {
+      const legend = chart.get('legendController').legends.top[0];
+      const tooltipItems = obj.items;
+      const legendItems = legend.items;
+      const map = {};
+      legendItems.map(item => {
+        map[item.name] = _.clone(item);
+      });
+      tooltipItems.map(item => {
+        const { name, value } = item;
+        if (map[name]) {
+          map[name].value = value;
+        }
+      });
+      legend.setItems(Object.values(map));
+    },
+    onHide() {
+      const legend = chart.get('legendController').legends.top[0];
+      legend.setItems(chart.getLegendItems().country);
+    }
+  });
+  chart.interval().position('time*tem')
+    .color('city')
+    .style('tem', {
+      radius(val) {
+        return val > 0 ? [ 4, 4, 0, 0 ] : [ 0, 0, 4, 4];
+      }
+    })
+    .adjust('dodge');
+  chart.render();
+</script>

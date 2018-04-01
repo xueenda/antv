@@ -380,7 +380,7 @@ mask| 数据的格式化格式
 * values: 当前度量的分类值，如果未指定，则直接从数据源中提取
 * tickCount: 保留几个坐标点
 
-分类的ticks计算非常简单个
+分类的ticks计算非常简单：
 
 * 均匀的从values中取tickCount个坐标点
 * 为了保证values第一个和最后一个value都在ticks中，取值的间隔是 (values.length - 1) / (tickCount - 1),则保证values第一个和最后一个value都在ticks中

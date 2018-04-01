@@ -67,7 +67,9 @@ $('header').headroom({
 });
 
 function resizePreview() {
-    $iframeContainer.height($iframeContainer.width() / 16 * 9);
+    if (!$iframeContainer.hasClass("f2")) {
+        $iframeContainer.height($iframeContainer.width() / 16 * 9);
+    }
     syncCode();
 }
 
@@ -157,5 +159,21 @@ $menu.find('.menu-inner').click(() => {
 const $currentMenuItem = $('.list-group-item.active');
 if (!inView($currentMenuItem)) {
     $currentMenuItem[0].scrollIntoView();
+}
+
+
+const userAgent = navigator.userAgent;
+const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+
+if ($iframeContainer.hasClass('f2')) {
+    if (mobile) {
+        $('.mobile-wrapper').height(265);
+        $('.mobile-wrapper .content').hide();
+        $iframeContainer.css('top', -30);
+    } else {
+        $('.mobile-wrapper').height(590);
+        $('.mobile-wrapper .content').show();
+        $iframeContainer.css('top', 82);
+    }
 }
 

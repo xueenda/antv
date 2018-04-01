@@ -1,37 +1,42 @@
 <!--
 index: 0
-title: 柱状图
-resource:
-  jsFiles:
+title: 基础柱状图
+plotDescription: Column Chart，基础柱状图，使用垂直的柱子显示类别之间的数值比较。其中一个轴表示需要对比的分类维度，另一个轴代表相应的数值。
+plotUsage: 柱状图有别于直方图，柱状图无法显示数据在一个区间内的连续变化趋势。柱状图描述的是分类数据，回答的是每一个分类中“有多少？”这个问题。 需要注意的是，当柱状图显示的分类很多时会导致分类名层叠等显示问题。
 -->
 
 <script>
   const data = [
-    { tem: 10, city: 'tokyo' },
-    { tem: 4, city: 'newYork' },
-    { tem: 3, city: 'berlin' }
+    { year: '1951 年', sales: 38 },
+    { year: '1952 年', sales: 52 },
+    { year: '1956 年', sales: 61 },
+    { year: '1957 年', sales: 145 },
+    { year: '1958 年', sales: 48 },
+    { year: '1959 年', sales: 38 },
+    { year: '1960 年', sales: 38 },
+    { year: '1962 年', sales: 38 },
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
+
   chart.source(data, {
-    tem: {
+    sales: {
       tickCount: 5
     }
   });
-  // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
-  chart.axis('city', {
-    label: {
-      fontSize: 14
-    },
-    grid: null
-  });
-  chart.axis('tem', {
-    label: {
-      fontSize: 14
+  chart.tooltip({
+    showItemMarker: false,
+    onShow(ev) {
+      const { items } = ev;
+      items[0].name = null;
+      items[0].name = items[0].title;
+      items[0].value = '¥ ' + items[0].value;
     }
   });
-  chart.interval().position('city*tem').color('city');
+  chart.interval().position('year*sales');
   chart.render();
 </script>

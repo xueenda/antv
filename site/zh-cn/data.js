@@ -31,6 +31,7 @@ module.exports = {
             name: 'F2',
             href: '${base}zh-cn/f2/3.x/index.html',
             icon: '${assets}/image/icon/f2.svg',
+            qrCode: { text: '${resource.translate.scanCode}', href: '${base}zh-cn/f2/3.x/demo/mobile-index.html' },
             links: {
                 demo: { text: '${resource.translate.demo}', href: '${base}zh-cn/f2/3.x/demo/index.html' },
                 api: { text: '${resource.translate.api}', href: '${base}zh-cn/f2/3.x/api/index.html' },
@@ -103,6 +104,7 @@ module.exports = {
             visChart: '图表用法',
             visDesign: '设计原则',
             visResource: '资源',
+            scanCode: '扫码演示',
         },
         cssFiles: [
         ],

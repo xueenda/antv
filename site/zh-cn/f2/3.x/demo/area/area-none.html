@@ -1,0 +1,48 @@
+<!--
+index: 2
+title: 区域图（存在空值）
+resource:
+  jsFiles:
+    - ${url.lodash}
+    - ${url.jquery}
+plotDescription: Area Chart，面积图又叫区域图。 它是在折线图的基础之上形成的, 它将折线图中折线与自变量坐标轴之间的区域使用颜色或者纹理填充，这样一个填充区域我们叫做面积，颜色的填充可以更好的突出趋势信息。
+plotUsage: 面积图用于强调数量随时间而变化的程度，也可用于引起人们对总值趋势的注意。他们最常用于表现趋势和关系,而不是传达特定的值。
+relativePlots:
+  - ${plotByName.line}
+-->
+
+<script>
+$.getJSON('/assets/data/f2-area-none.json', function(data) {
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data);
+  chart.scale('year', {
+    tickCount: 5,
+    range: [ 0, 1 ]
+  });
+  chart.axis('year', {
+    label(text, index, total) {
+      const textCfg = {};
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
+    }
+  });
+  chart.legend(false);
+  chart.tooltip({
+    showCrosshairs: true
+  });
+  chart.area().position('year*value').color('type').shape('smooth');
+  chart.line().position('year*value').color('type').shape('smooth');
+  chart.render();
+
+});
+</script>

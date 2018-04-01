@@ -17,7 +17,7 @@ export const page1 = [
     img: `${assets}/image/home/intro-f2.svg`,
     title: 'F2',
     href: `${base}zh-cn/f2/3.x/index.html`,
-    description: ' 是一套精简、高性能、易扩展的的移动端图表库。',
+    description: ' 是一套精简、高性能、易扩展的移动端可视化解决方案。',
   }
 ];
 

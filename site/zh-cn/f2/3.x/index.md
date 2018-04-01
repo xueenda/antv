@@ -8,11 +8,11 @@ keywords:
   - 移动端
   - Mobile
   - H5
-description: F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。
+description: F2 是专为移动端定制的一套开箱即用的可视化解决方案，基于图形语法理论，具有精简、高性能、易扩展的特性，适用于对性能、大小、扩展性要求严苛的场景。
 featuresCards:
   - img: ${assets}/image/home/features-simple.svg
     title: 极小
-    description: 压缩后不到 100k 的代码，提供了几十种图表。
+    description: 在支持丰富（45+）图表的基础上保持代码量的小巧。
   - img: ${assets}/image/home/features-professional.svg
     title: 高性能
     description: 性能极致追求，针对移动设备做了大量的优化。
@@ -22,32 +22,42 @@ featuresCards:
 resource:
   jsFiles:
     - ${url.f2}
+    - ${url.jquery}
 -->
 
 <section class="intro">
     <div class="container">
         <div class="header row">
             <div class="col-md-5">
-                <h1>F2 移动端图表库</h1>
-                <p class="main-info">F2 是面向移动端的一套基于可视化图形语法的图表库，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
-                <a href="{{ products.f2.links.demo.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.demo }}</a>
-                <a href="{{base}}zh-cn/f2/3.x/tutorial/index.html#_安装" class="btn btn-light border btn-lg btn-round-link">{{ resource.translate.downloadAndUse }}</a>
+                <h1>F2 移动端可视化解决方案</h1>
+                <p class="main-info">F2 是专为移动端定制的一套开箱即用的可视化解决方案，具有精简、高性能、易扩展的特性。适用于对性能、大小、扩展性要求严苛的场景。</p>
+                <a href="{{ products.f2.links.tutorial.href }}" class="btn btn-primary btn-lg btn-round-link">{{ resource.translate.getStarted }}</a>
+                  <button class="btn btn-light border btn-lg btn-round-link" id="scanCodeBtn">{{ resource.translate.scanCode }}</button>
                 <iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&repo=f2&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
             </div>
-            <div class="col-md-7 slick">
-                <div id="commentsCarousel" class="carousel">
-                    <div class="carousel-inner slick">
-                        <div class="carousel-item active">
-                          <canvas id="c1" style="width:500px;height:300px;"></canvas>
-                        </div>
-                        <div class="carousel-item">
-                          <canvas id="c2" style="width:500px;height:300px;"></canvas>
-                        </div>
-                        <div class="carousel-item">
-                          <canvas id="c3" style="width:500px;height:300px;"></canvas>
-                        </div>
-                    </div>
+            <div class="col-md-7">
+              <div class="chart-wrapper">
+                <div class="chart-header">
+                  <div id="chartTitle">商品价格 7 年走势对比</div>
                 </div>
+                <div class="chart-content">
+                  <div class="contianer slick">
+                    <div id="commentsCarousel" class="carousel">
+                      <div class="carousel-inner slick">
+                        <div class="carousel-item active">
+                          <canvas id="c1" style="width:375px;height:320px;"></canvas>
+                        </div>
+                        <div class="carousel-item">
+                          <canvas id="c2" style="width:375px;height:320px;"></canvas>
+                        </div>
+                        <div class="carousel-item">
+                          <canvas id="c3" style="width:375px;height:320px;"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
@@ -81,164 +91,214 @@ resource:
 <a href="{{ products.f2.links.tutorial.href }}"  class="btn btn-primary btn-lg btn-round-link more-tutorial">更多教程</a>
 </section>
 
+<div style="position: absolute;">
+  <div class="scancode-wrapper">
+    <div class="scancode-content">
+      <div class="scancode-arrow"></div>
+      <div class="scancode-inner">
+        <div id="scanCode" data-url={{ products.f2.qrCode.href }} ></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- chart1 -->
 
 ```js-
-
-F2.Global.pixelRatio = window.devicePixelRatio;
-
-  const data = [
-      { time: '周一', tem: 10, city: 'beijing' },
-      { time: '周二', tem: 22, city: 'beijing' },
-      { time: '周三', tem: 20, city: 'beijing' },
-      { time: '周四', tem: 26, city: 'beijing' },
-      { time: '周五', tem: 20, city: 'beijing' },
-      { time: '周六', tem: 26, city: 'beijing' },
-      { time: '周日', tem: 28, city: 'beijing' },
-      { time: '周一', tem: 5, city: 'newYork' },
-      { time: '周二', tem: 12, city: 'newYork' },
-      { time: '周三', tem: 26, city: 'newYork' },
-      { time: '周四', tem: 20, city: 'newYork' },
-      { time: '周五', tem: 28, city: 'newYork' },
-      { time: '周六', tem: 26, city: 'newYork' },
-      { time: '周日', tem: 20, city: 'newYork' }
-  ];
-  const chart = new F2.Chart({
-    id: 'c1'
-  });
-  const defs = {
-    time: {
-      tickCount: 7,
-      range: [ 0, 1 ]
-    },
-    tem: {
-      tickCount: 5,
-      min: 0
-    }
-  };
-    // 配置time刻度文字样式
-  const label = {
-    fill: '#979797',
-    font: '14px san-serif',
-    offset: 6
-  };
-  chart.axis('time', {
-    label(text, index, total) {
-      const cfg = label;
-        // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
-      if (index === 0) {
-        cfg.textAlign = 'start';
+  $.getJSON('/assets/data/f2-series-line.json', function(data) {
+    const chart = new F2.Chart({
+      id: 'c1',
+      pixelRatio: window.devicePixelRatio
+    });
+    chart.source(data);
+    chart.scale('date', {
+      type: 'timeCat',
+      tickCount: 3
+    });
+    chart.scale('value', {
+      tickCount: 5
+    });
+    chart.axis('date', {
+      label(text, index, total) {
+        // 只显示每一年的第一天
+        const textCfg = {};
+        if (index === 0) {
+          textCfg.textAlign = 'left';
+        }
+        if (index === total - 1) {
+          textCfg.textAlign = 'right';
+        }
+        return textCfg;
       }
-      if (index > 0 && index === total - 1) {
-        cfg.textAlign = 'end';
+    });
+    chart.tooltip({
+      custom(obj) {
+        const legend = chart.get('legendController').legends.top[0];
+        const tooltipItems = obj.items;
+        const legendItems = legend.items;
+        const map = {};
+        legendItems.map(item => {
+          map[item.name] = _.clone(item);
+        });
+        tooltipItems.map(item => {
+          const { name, value } = item;
+          if (map[name]) {
+            map[name].value = value;
+          }
+        });
+        legend.setItems(Object.values(map));
+      },
+      onHide() {
+        const legend = chart.get('legendController').legends.top[0];
+        legend.setItems(chart.getLegendItems().country);
       }
-      return cfg;
-    }
-  });
-    // 配置刻度文字大小，供PC端显示用(移动端可以使用默认值20px)
-  chart.axis('tem', {
-    label: {
-      fontSize: 14
-    }
-  });
-  chart.source(data, defs);
-  chart.line().position('time*tem')
-    .color('city')
-    .shape('smooth');
-  chart.render();
+    });
+    chart.line().position('date*value').color('type');
+    chart.render();
 
+  });
 ```
 
 <!-- chart2 -->
 
 ```js-
-
-const data = [
-    { tem: 500, month: '3月' },
-    { tem: -50, month: '4月' },
-    { tem: 450, month: '5月' },
-    { tem: -40, month: '6月' },
-    { tem: 690, month: '7月' },
-    { tem: 346, month: '8月' }
+  const data = [
+    { State: 'WY', 年龄段 : '小于5岁', 人口数量: 25635 },
+    { State: 'WY', 年龄段 : '5至13岁', 人口数量: 1890 },
+    { State: 'WY', 年龄段 : '14至17岁', 人口数量: 9314 },
+    { State: 'DC', 年龄段 : '小于5岁', 人口数量: 30352 },
+    { State: 'DC', 年龄段 : '5至13岁', 人口数量: 20439 },
+    { State: 'DC', 年龄段 : '14至17岁', 人口数量: 10225 },
+    { State: 'VT', 年龄段 : '小于5岁', 人口数量: 38253 },
+    { State: 'VT', 年龄段 : '5至13岁', 人口数量: 42538 },
+    { State: 'VT', 年龄段 : '14至17岁', 人口数量: 15757 },
+    { State: 'ND', 年龄段 : '小于5岁', 人口数量: 51896 },
+    { State: 'ND', 年龄段 : '5至13岁', 人口数量: 67358 },
+    { State: 'ND', 年龄段 : '14至17岁', 人口数量: 18794 },
+    { State: 'AK', 年龄段 : '小于5岁', 人口数量: 72083 },
+    { State: 'AK', 年龄段 : '5至13岁', 人口数量: 85640 },
+    { State: 'AK', 年龄段 : '14至17岁', 人口数量: 22153 }
   ];
   const chart = new F2.Chart({
-    id: 'c2'
+    id: 'c2',
+    pixelRatio: window.devicePixelRatio
   });
+
   chart.source(data, {
-    tem: {
+    '人口数量': {
       tickCount: 5
     }
   });
-  chart.axis('month', {
-    label: {
-      font: 'sans-serif '
-    },
-    line: null,
+  chart.coord({
+    transposed: true
+  });
+  chart.axis('State', {
+    line: F2.Global._defaultAxis.line,
     grid: null
   });
-  chart.axis('tem', {
-    label: null,
-    grid: {
-      stroke: '#f8f8f8'
+  chart.axis('人口数量', {
+    line: null,
+    grid: F2.Global._defaultAxis.grid,
+    label(text, index, total) {
+      const textCfg = {
+        text: text / 1000 + ' k'
+      };
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
     }
   });
-  chart.interval().position('month*tem').color('tem*month', function(tem, month) {
-    if (month === '8月') {
-      return '#f5623a';
-    }
-    if (tem >= 0) {
-      return '#f8bdad';
-    }
-    if (tem < 0) {
-      return '#99d6c0';
+  chart.tooltip({
+    custom(obj) {
+      const legend = chart.get('legendController').legends.top[0];
+      const tooltipItems = obj.items;
+      const legendItems = legend.items;
+      const map = {};
+      legendItems.map(item => {
+        map[item.name] = _.clone(item);
+      });
+      tooltipItems.map(item => {
+        const { name, value } = item;
+        if (map[name]) {
+          map[name].value = (value);
+        }
+      });
+      legend.setItems(Object.values(map));
+    },
+    onHide() {
+      const legend = chart.get('legendController').legends.top[0];
+      legend.setItems(chart.getLegendItems().country);
     }
   });
-  // y轴方向的缩放动画
-  chart.animate({
-    type: 'scaley'
-  });
-  // 辅助元素
-  data.forEach(function(obj, index) {
-    // 文字部分
-    const offsetY = obj.tem > 0 ? -16 : 14;
-    chart.guide().html([ obj.month, obj.tem ], `<div style='color: #999999;'><span>${obj.tem}</span></div>`, {
-      align: 'cc',
-      offset: [ 0, offsetY ]
-    });
-    // 背景部分
-    const offset = 0.25;
-    chart.guide().rect([ index - offset, 'max' ], [ index + offset, 'min' ], { fill: '#f8f8f8' });
-  });
+  chart.interval().position('State*人口数量').color('年龄段').adjust('stack');
+
   chart.render();
 ```
 
 <!-- chart3 -->
 
 ```js-
+  const map = {
+    '芳华': '40%',
+    '妖猫传': '20%',
+    '机器之血': '18%',
+    '心理罪': '15%',
+    '寻梦环游记': '5%',
+    '其他': '2%',
+  };
+  const data = [
+    { name: '芳华', percent: 0.4, a: '1' },
+    { name: '妖猫传', percent: 0.2, a: '1' },
+    { name: '机器之血', percent: 0.18, a: '1' },
+    { name: '心理罪', percent: 0.15, a: '1' },
+    { name: '寻梦环游记', percent: 0.05, a: '1' },
+    { name: '其他', percent: 0.02, a: '1' }
+  ];
+  const chart = new F2.Chart({
+    id: 'c3',
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data, {
+    percent: {
+      formatter(val) {
+        return val * 100 + '%';
+      }
+    }
+  });
+  chart.legend({
+    position: 'right',
+    itemFormatter(val) {
+      return val + '  ' + map[val];
+    }
+  });
+  chart.tooltip(false);
+  chart.coord('polar', {
+    transposed: true,
+    radius: 0.85
+  });
+  chart.axis(false);
+  chart.interval()
+    .position('a*percent')
+    .color('name', [ '#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0' ])
+    .adjust('stack')
+    .style({
+      lineWidth: 1,
+      stroke: '#fff',
+      lineJoin: 'round',
+      lineCap: 'round'
+    })
+    .animate({
+      appear: {
+        duration: 1200,
+        easing: 'bounceOut'
+      }
+    });
 
-const  data = [
-  {a: '1', b: 0.3, c: '1'},
-  {a: '1', b: 0.3, c: '2'},
-  {a: '1', b: 0.4, c: '3'}
-];
-
-const chart = new F2.Chart({
-  id: 'c3'
-});
-
-chart.source(data);
-
-chart.coord('polar', {
-  transposed: true,
-  inner: 0.6
-});
-
-chart.axis(false);
-chart.interval().position('a*b').color('c').adjust('stack');
-chart.animate({
-  type: 'wavec'
-});
-chart.render();
+  chart.render();
 
 ```
 

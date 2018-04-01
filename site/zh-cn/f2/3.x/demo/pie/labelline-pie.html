@@ -1,0 +1,287 @@
+<!--
+index: 4
+title: 带文本的饼图
+screenshot: https://gw.alipayobjects.com/zos/rmsportal/iGeyvgHZNpMEIJSvsaHe.png
+resource:
+  jsFiles:
+    - ${url.lodash}
+-->
+
+<script>
+  const data = [
+    { iconType: 'learn', amount: 16, ratio: 0.1, memo: '学习', namekey: 'namekey' },
+    { iconType: 'foo', amount: 16, ratio: 0.5, memo: '睡觉', namekey: 'namekey' },
+    { iconType: 'foo', amount: 16, ratio: 0.05, memo: '吃饭', namekey: 'namekey' },
+    { iconType: 'manner', amount: 2, ratio: 0.15, memo: '讲礼貌', namekey: 'namekey' },
+    { iconType: 'other', amount: 4, ratio: 0.05, memo: '其他', namekey: 'namekey' },
+    { iconType: 'sport', amount: 81, ratio: 0.1, memo: '运动', namekey: 'namekey' },
+    { iconType: 'none', amount: 20, ratio: 0.05, memo: '暂无备注', namekey: 'namekey' }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+
+
+  chart.source(data);
+  chart.coord('polar', {
+    transposed: true,
+    innerRadius: 0.4,
+    radius: 0.85
+  });
+  chart.axis(false);
+  chart.legend(false);
+  chart.tooltip(false);
+  chart.interval().position('namekey*ratio')
+    .color('memo')
+    .adjust('stack');
+  chart.render();
+
+// >>>>>>>>>>>>>>>>>>>>>>>>> labeling <<<<<<<<<<<<<<<<<<<<<<<<<<
+  function getEndPoint(center, angle, r) {
+      return {
+          x: center.x + r * Math.cos(angle),
+          y: center.y + r * Math.sin(angle)
+      };
+  }
+  function getPointAngle(center, point) {
+    return Math.atan2(point.y - center.y, point.x - center.x);
+  }
+
+  const geom = chart.get('geoms')[0];
+  const shapesData = geom.get('dataArray');
+  const coord = geom.get('coord');
+  const center = coord.center;
+  const r = coord.circleRadius;
+
+  let sum = 0;
+  const OFFSET = 15;
+  const lineHeight = 32;
+  const totalHeight = 2 * r + 2 * OFFSET + lineHeight;
+  const LABEL_LEN = 50;
+  const lineStyle = {
+    lineWidth: 1,
+    fill: 'transparent',
+    stroke: 'none',
+    opacity: 0.3,
+    z: false,
+  };
+
+  function drawLabel(label) {
+    const origin = label._origin;
+    const canvas = chart.get('canvas');
+    const pos = { // label position
+      y: label.y,
+    };
+    if (label._side === 'left') { // 具体文本的位置
+      pos.x = 70;
+      label.textAlign = 'left';
+      canvas.addShape('Line', {
+        attrs: F2.Util.mix({
+          x1: pos.x,
+          y1: pos.y,
+          x2: pos.x - LABEL_LEN,
+          y2: pos.y
+        }, lineStyle)
+      });
+    } else {
+      pos.x = r * 2 + 170;
+      label.textAlign = 'right';
+      canvas.addShape('Line', {
+        attrs: F2.Util.mix({
+          x1: pos.x,
+          y1: pos.y,
+          x2: pos.x,
+          y2: pos.y
+        }, lineStyle)
+      });
+    }
+
+    canvas.addShape('Circle', {
+      attrs: {
+        x: label._anchor.x,
+        y: label._anchor.y,
+        r: 1,
+        fill: 'grey'
+      }
+    });
+    canvas.addShape('Text', {
+      attrs: F2.Util.mix(_.assign({}, label), {
+        x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
+        y: pos.y,
+        text: origin.memo,
+      })
+    });
+    canvas.addShape('Text', {
+      attrs: F2.Util.mix(_.assign({}, label, {fill: '#8A8A8F' }), {
+        x: label._side === 'left' ? pos.x - LABEL_LEN : pos.x,
+        y: pos.y + 16,
+        text: origin.amount.toFixed(2)
+      })
+    });
+    canvas.addShape('Polyline', {
+      attrs: F2.Util.mix({
+        points: [label._anchor, label._router, pos]
+      }, lineStyle)
+    });
+  }
+
+  // distribute labels
+  // step 1: separate labels
+  const labels = [];
+  const halves = [
+      [], // left
+      [], // right
+  ];
+  shapesData.forEach(data => {
+      data = data[0];
+      const label = {};
+      let angle;
+      const percent = label._percent = data._origin.ratio;
+      if (_.isNumber(data.x)) {
+          angle = getPointAngle(center, {
+              x: data.x,
+              y: data.y[0]
+          });
+      } else {
+          const startAngle = getPointAngle(center, {
+              x: data.x[0],
+              y: data.y[0],
+          });
+          let endAngle = getPointAngle(center, {
+              x: data.x[1],
+              y: data.y[1],
+          });
+          if (startAngle >= endAngle) {
+              endAngle = endAngle + Math.PI * 2;
+          }
+          angle = ( startAngle + endAngle ) / 2;
+      }
+      const edgePoint = getEndPoint(center, angle, r);
+      const routerPoint = getEndPoint(center, angle, r + OFFSET);
+      _.merge(label, {
+          _angle: angle,
+          _anchor: edgePoint,
+          _router: routerPoint,
+          _origin: data._origin,
+          _side: 'right',
+          fontSize: 12,
+          x: routerPoint.x,
+          y: routerPoint.y,
+          r: r + OFFSET,
+          fill: data.color
+      });
+      if ((sum + percent / 2) > 0.5 || (sum === 0.5 && percent === 0)) {
+          label._side = 'left';
+          halves[0].push(label);
+      } else {
+          halves[1].push(label);
+      }
+      sum += percent;
+      labels.push(label);
+  });
+
+  const maxCountForOneSide = parseInt(totalHeight / lineHeight, 10);
+  const startY = center.y - r - OFFSET - lineHeight / 2;
+
+  setTimeout(() => {
+      halves.forEach((half, index) => {
+          // step 2: reduce labels
+          if (half.length > maxCountForOneSide) {
+              half.sort((a, b) => {
+                  return b._percent - a._percent;
+              });
+              half.splice(maxCountForOneSide, half.length - maxCountForOneSide);
+          }
+
+          // step 3: distribute position (x and y)
+          half.sort((a, b) => a.y - b.y);
+          antiCollision(half, index);
+          chart.get('canvas').draw();
+      });
+
+  }, 455);
+
+  function antiCollision(half, isRight) {
+      let overlapping = true;
+      let totalH = totalHeight;
+      let i;
+
+      let maxY = 0;
+      let minY = Number.MIN_VALUE;
+      const boxes = half.map(label => {
+          const labelY = label.y;
+          if (labelY > maxY) {
+              maxY = labelY;
+          }
+          if (labelY < minY) {
+              minY = labelY;
+          }
+          return {
+              size: lineHeight,
+              targets: [labelY - startY]
+          };
+      });
+      if ((maxY - startY) > totalH) {
+          totalH = maxY - startY;
+      }
+
+      while (overlapping) {
+          boxes.forEach(box => {
+              const target = (Math.min.apply(minY, box.targets) + Math.max.apply(minY, box.targets)) / 2;
+              box.pos = Math.min(Math.max(minY, target - box.size / 2), totalH - box.size);
+          });
+
+          // detect overlapping and join boxes
+          overlapping = false;
+          i = boxes.length;
+          while (i--) {
+              if (i > 0) {
+                  const previousBox = boxes[i - 1];
+                  const box = boxes[i];
+                  if (previousBox.pos + previousBox.size > box.pos) { // overlapping
+                      previousBox.size += box.size;
+                      previousBox.targets = previousBox.targets.concat(box.targets);
+
+                      // overflow, shift up
+                      if (previousBox.pos + previousBox.size > totalH) {
+                          previousBox.pos = totalH - previousBox.size;
+                      }
+                      boxes.splice(i, 1); // removing box
+                      overlapping = true;
+                  }
+              }
+          }
+      }
+
+      // step 4: normalize y and adjust x
+      i = 0;
+      boxes.forEach(b => {
+          let posInCompositeBox = startY; // middle of the label
+          b.targets.forEach(() => {
+              half[i].y = b.pos + posInCompositeBox + lineHeight / 2;
+              posInCompositeBox += lineHeight;
+              i++;
+          });
+      });
+
+      // (x - cx)^2 + (y - cy)^2 = totalR^2
+      half.forEach(label => {
+          const rPow2 = label.r * label.r;
+          const dyPow2 = Math.pow(Math.abs(label.y - center.y), 2);
+          if (rPow2 < dyPow2) {
+              label.x = center.x;
+          } else {
+              const dx = Math.sqrt(rPow2 - dyPow2);
+              if (!isRight) { // left
+                  label.x = center.x - dx;
+              } else { // right
+                  label.x = center.x + dx;
+              }
+          }
+          drawLabel(label);
+      });
+  }
+</script>
