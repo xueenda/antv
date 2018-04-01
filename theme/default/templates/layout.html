@@ -31,7 +31,7 @@
 {% if showFooter %}
 {% include "partial/footer.html" %}
 {% endif %}
-<script type="text/javascript">
+<script type="text/javascript">/* eslint-disable */
 {% if isDev %}window.__data = {{ __self | safe }}; console.log(window.__data);{% endif %}window.__meta = {{ __meta | safe }};
 </script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js"></script>
