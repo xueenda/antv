@@ -6,12 +6,15 @@ var pkg = require('./package.json');
 
 module.exports = {
     url: {
-        dataSet: 'https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.5/data-set.min.js',
+        d3: 'https://gw.alipayobjects.com/os/antv/assets/lib/d3-4.13.0.min.js',
+        dataSet: 'https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.6/data-set.min.js',
         f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.1.1/f2.js',
         g2: 'https://gw.alipayobjects.com/os/antv/assets/g2/3.0.5-beta.5/g2.min.js',
         g6: 'https://gw.alipayobjects.com/os/antv/assets/g6/1.2.5/g6.min.js',
         'g6-plugins': 'https://gw.alipayobjects.com/os/antv/assets/g6-plugins/1.0.1/g6-plugins.min.js',
         'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.0/g2-plugin-slider.js',
+        'g2-brush': 'https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js',
+        html2canvas: 'https://gw.alipayobjects.com/os/antv/assets/lib/html2canvas-1.0.0-alpha.10.min.js',
         katex:    'https://gw.alipayobjects.com/os/antv/assets/lib/katex-0.8.3/katex.min.js',
         katexCss: 'https://gw.alipayobjects.com/os/antv/assets/lib/katex-0.8.3/katex.min.css',
         jquery:   'https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js',

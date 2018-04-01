@@ -1,0 +1,48 @@
+<!--
+title: 玫瑰图-限定角度范围
+plotDescription: 限定玫瑰图的角度范围，以实现特殊的视觉效果
+plotUsage: 南丁格尔玫瑰图又名鸡冠花图、极坐标区域图，是南丁格尔在克里米亚战争期间提交的一份关于士兵死伤的报告时发明的一种图表,是在极坐标下绘制的柱状图，使用圆弧的半径长短表示数据的大小（数量的多少）。
+relativePlots:
+  - ${plotByName.rose}
+date: "2018-03-19"
+-->
+
+<script>
+    const data = [
+        {type: '分类一', value: 27},
+        {type: '分类二', value: 25},
+        {type: '分类三', value: 18},
+        {type: '分类四', value: 15},
+        {type: '分类五', value: 10},
+        {type: 'Other', value: 5}
+    ];
+
+    const chart = new G2.Chart({
+        container: 'mountNode',
+        forceFit: true,
+        height: window.innerHeight,
+        padding: [40, 0]
+    });
+
+    chart.source(data);
+    chart.coord('polar', {
+        startAngle: Math.PI, // 起始角度
+        endAngle: Math.PI * (3 / 2) // 结束角度
+    });
+    chart.interval()
+        .position('type*value')
+        .color('type', 'rgb(252,143,72)-rgb(255,215,135)')
+        .label('value', {
+            offset: -15,
+            label: {
+                textAlign: 'center',
+                fill: '#000'
+            }
+        })
+        .style({
+            lineWidth: 1,
+            stroke: '#fff'
+        });
+
+    chart.render();
+</script>

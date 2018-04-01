@@ -1,0 +1,66 @@
+<!--
+index: 4
+title: 带热力图的地图
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+plotDescription: 带热力图的地图，其实就是热力图和地图的结合
+plotUsage: 适合用于解读基于地理空间信息的数据密度信息
+relativePlots:
+  - ${plotByName.map}
+chartDetail: ${base}zh-cn/vis/chart/bubble-map.html
+-->
+<script>
+    $.getJSON('/assets/data/usa.geo.json', GeoJSON => {
+        const userData = [];
+        const geoDv = new DataSet.View().source(GeoJSON, {
+            type: 'GeoJSON'
+        }).transform({
+            type: 'map',
+            callback(row) {
+                userData.push({
+                    longitude: row.centroidX,
+                    latitude: row.centroidY,
+                    name: row.name,
+                    value: Math.random() * (1000 - 1)
+                });
+                return row;
+            }
+        });
+
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: 0
+        });
+        chart.scale({
+            latitude: {sync: true, nice: false},
+            longitude: {sync: true, nice: false}
+        });
+        chart.legend(false);
+        chart.axis(false);
+        chart.tooltip(false);
+
+        const geoView = chart.view();
+        geoView.source(geoDv);
+        geoView.polygon()
+            .position('longitude*latitude')
+            .color('grey')
+            .label('name', {
+                offset: 0
+            });
+
+        const userView = chart.view();
+        userView.source(userData);
+        userView.heatmap()
+            .position('longitude*latitude')
+            .color('value', '#F51D27-#FA541C-#FF8C12-#FFC838-#FAFFA8-#80FF73-#12CCCC-#1890FF-#6E32C2')
+            .size(window.innerHeight / 20)
+            .style({
+                blur: window.innerHeight / 15
+            });
+        chart.render();
+    });
+</script>

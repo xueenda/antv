@@ -1,0 +1,73 @@
+<!--
+title: g2-brush 过滤图形
+resource:
+  jsFiles:
+    - ${url.jquery}
+    - ${url.dataSet}
+    - ${url['g2-brush']}
+plotDescription: g2-brush 过滤图形
+plotUsage: g2-brush 框选过滤图形
+date: "2018-03-24"
+-->
+<script>
+    $.getJSON('/assets/data/cars.json', function (data) {
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+
+        const view1 = chart.view({
+            end: {
+                x: 0.45,
+                y: 1
+            }
+        });
+        view1.source(data);
+        view1.tooltip(false);
+        view1.point().position('Horsepower*Miles_per_Gallon');
+
+        const view2 = chart.view({
+            start: {
+                x: 0.55,
+                y: 0
+            }
+        });
+
+        view2.source(data);
+        view2.point().position('Acceleration*Displacement');
+
+        chart.render();
+
+        new Brush({
+            canvas: chart.get('canvas'),
+            dragable: true,
+            onBrushstart(ev) {
+                const {x, y} = ev;
+                const views = chart.getViewsByPoint({x, y});
+                if (views.length > 1) {
+                    this.chart = views[1];
+                    const coord = views[1].get('coord');
+                    this.plot = {
+                        start: coord.start,
+                        end: coord.end
+                    };
+                    this.xScale = views[1].getXScale();
+                    this.yScale = views[1].getYScales()[0];
+                }
+            },
+            onBrushmove(ev) {
+                const {data} = ev;
+                view2.filterShape(obj => {
+                    return data.indexOf(obj) > -1;
+                });
+            },
+            onDragmove(ev) {
+                const {data} = ev;
+                view2.filterShape(obj => {
+                    return data.indexOf(obj) > -1;
+                });
+            }
+        });
+    });
+</script>

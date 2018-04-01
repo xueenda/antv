@@ -6,6 +6,7 @@
   },
   "globals": {
     "$": true,
+    "Brush": true,
     "ChinaGeoJSON": true,
     "Clipboard": true,
     "CodeMirror": true,

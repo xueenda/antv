@@ -1,0 +1,60 @@
+<!--
+title: g2-brush 柱状图
+resource:
+  jsFiles:
+    - ${url.jquery}
+    - ${url.dataSet}
+    - ${url['g2-brush']}
+plotDescription: g2-brush 柱状图
+date: "2018-03-24"
+-->
+<script>
+    $.getJSON('/assets/data/top2000.json', data => {
+        const ds = new DataSet();
+        const dv = ds.createView('test')
+            .source(data)
+            .transform({
+                as: ['count'],
+                groupBy: ['release'],
+                operations: ['count'],
+                type: 'aggregate'
+            });
+
+        const chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight
+        });
+        chart.source(dv);
+        chart.scale({
+            count: {
+                alias: 'top2000 唱片总量'
+            },
+            release: {
+                tickInterval: 5,
+                alias: '唱片发行年份'
+            }
+        });
+        chart.interval()
+            .position('release*count')
+            .color('#e50000');
+
+        chart.render();
+
+        new Brush({
+            canvas: chart.get('canvas'),
+            chart,
+            type: 'X',
+            onBrushstart() {
+                chart.hideTooltip();
+            },
+            onBrushmove() {
+                chart.hideTooltip();
+            }
+        });
+        chart.on('plotdblclick', () => {
+            chart.get('options').filters = {};
+            chart.repaint();
+        });
+    });
+</script>

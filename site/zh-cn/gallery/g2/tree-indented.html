@@ -1,0 +1,95 @@
+<!--
+title: 缩进树布局
+plotDescription: 缩进树布局，用缩进表示层级关系
+plotUsage: 可用于文件夹目录结构、组织结构等（注意：仅作演示用，要获得更好的树图绘制结果和交互体验，请使用 G6）
+relativePlots:
+  - ${plotByName.relation}
+resource:
+  jsFiles:
+    - ${url.dataSet}
+    - ${url.jquery}
+date: "2018-03-17"
+-->
+
+<script>
+    $.getJSON('/assets/data/flare.json', function(data) {
+        var dv = new DataSet.View().source(data, {
+            type: 'hierarchy',
+            pureData: true
+        });
+        dv.transform({
+            type: 'hierarchy.indented', // this layout algorithm needs to use pure data
+            direction: 'LR',
+            getHGap() {
+                return 10;
+            },
+            getVGap() {
+                return 10;
+            },
+            getHeight() {
+                return 18;
+            },
+            getWidth(d) {
+                return 18 * d.name.length;
+            }
+        });
+
+        var chart = new G2.Chart({
+            container: 'mountNode',
+            forceFit: true,
+            height: window.innerHeight,
+            padding: [10, 60, 0, 20]
+        });
+        chart.coord().reflect('y');
+        chart.axis(false);
+        chart.legend(false);
+        // chart.coord('polar');
+
+        var edgeView = chart.view();
+        edgeView.source(dv.getAllLinks().map(link => ({
+            x: [link.source.x, link.target.x],
+            y: [link.source.y, link.target.y],
+            source: link.source.id,
+            target: link.target.id
+        })));
+        edgeView.edge()
+            .position('x*y')
+            .shape('smooth') // smooth
+            .color('grey')
+            .opacity(0.5)
+            .tooltip('source*target');
+
+        var nodeView = chart.view();
+        nodeView.source(dv.getAllNodes().map(node => ({
+            hasChildren: !!(node.children && node.children.length),
+            name: node.data.name,
+            value: node.value,
+            depth: node.depth,
+            side: node.side || 'root',
+            x: node.x,
+            y: node.y
+        })));
+        nodeView.point()
+            .position('x*y')
+            .color('hasChildren')
+            .label('name', {
+                offset: 0,
+                textStyle: (text, item) => {
+                    var textAlign;
+                    if (item.point.side === 'left') {
+                        textAlign = item.point.hasChildren ? 'left' : 'right';
+                    } else {
+                        textAlign = item.point.hasChildren ? 'right' : 'left';
+                    }
+                    return {
+                        fill: 'grey',
+                        fontSize: 9,
+                        textBaseline: 'middle',
+                        textAlign: textAlign
+                    };
+                }
+            });
+
+        chart.render();
+    });
+</script>
