@@ -1,128 +1,192 @@
 <!--
-index: 4
-title: Shape
-
+index: 13
+title: Shape 自定义 Shape
+resource:
+  jsFiles:
+    - ${url.f2}
 -->
 
 # Shape
 
-F2 主要应用于移动端的场景，在移动端存在各种定制图表的场景，所以提供了自定义图表的功能，可以通过 geometry 的 `shape()` 方法指定图形。
+**获取方式：`F2.Shape`**
+
+通过在 Shape 上注册图形，实现自定义 Shape 的功能。
+
+**创建方式**
+
+自定义 Shape 的入口如下：
 
 ```js
-chart.line().position('x*y').shape('smooth');
-```
+const Shape = F2.Shape;
+const shapeObj = Shape.registerShape('geomType', 'shapeName', { 
+  getPoints(pointInfo) {
+    // 获取每种 shape 绘制的关键点
+  },
+  draw(cfg, container) {
+    // 自定义最终绘制的逻辑
 
-F2 默认提供了以下种类的图形
-
-type | shape
---- | ---
-`point` | circle, rect, hollowCircle
-`path` | line, smooth, dash
-`line` | line, smooth, dash
-`area` | area, smooth
-`interval` | rect
-`polygon` | polygon
-`schema` | candle
-
-
-#### 示例
-
-```js
-F2.Shape.registerShape('interval', 'triangle', {
-  getPoints(cfg) {},
-  draw(cfg, canvas) {}
-});
-
-chart.interval().position('x*y').shape('triangle');
-```
-
-## registerShape
-
-`F2.Shape.registerShape(geomType, shapeName, cfg)` 注册图形
-
-* geomType: `String` Geometry 的类型，可以定义所有图表的类型
-* shapeName: `String` 自定义 shape 的名称，用于在 `chart.interval().shape(shapeName)` 中设定
-* cfg: 注册 shape 的对象，提供了多个方法
-
-```js
-F2.Shape.registerShape('interval', 'triangle', {
-  getPoints(cfg) {},
-  draw(cfg, canvas) {}
+    return shape; // 返回最后绘制的 shape
+  }
 });
 ```
+
+下面主要对其中需要覆写的方法做下详细说明：
+
+## 方法
 
 ### getPoints
 
-`getPoints(cfg)` 获取构成图形的点
-  * cfg 提供给获取构成图形的点时的信息
-    + cfg.x: x 数据
-    + cfg.y: y 数据
-    + cfg.y0: y轴对应数据为 0 或者最小值，保证柱状图、区域图有正确的起始位置
-    + cfg.size: 大小数据
+`getPoints` 方法用于计算绘制每种 shape 的关键点，在 F2 中每种几何形状都是由特定的几个关键点通过线连接而成。
 
-图形可以使用多个点来绘制，但是由于数据中无法包含所有的点，所以需要生成图形需要的点：
-* 柱状图需要 x,y 的值，但是需要 4 个顶点来绘制，需要柱状图的宽度、起始点信息
-* 区域图需要 x,y 的值，但是 y 轴方向需要跟 x 坐标轴封闭起来
-* 柱状图在极坐标系下会转换成玫瑰图
-* k 线图（蜡烛图）提供的 y 值，有 4 个值(开盘价、收盘价、最高价、最低价)，但是需要 8 个点才能绘制
+`getPoints` 方法中传入的参数 pointInfo 数据结构如下，所有的数值都是**归一化后的结果**（即 0 至 1 范围内的数据）：
 
-所以在自定义图表时如果需要生成的图形需要多个点来绘制，需要适应不同的坐标系，那么就需要生成图形需要的点。
+```js
+{
+  size: 0.1, // 形状的尺寸，不同的 shape 该含义不同，0 - 1 范围的数据
+  x: 0.2, // 该点归一化后的 x 坐标
+  y: 0.13, // 该点归一化后的 y 坐标
+  y0: 0.1 // 整个数据集 y 轴对应数据的最小值，也是归一化后的数据，注意如果 y 对应的源数据是数组则 y 也将是个数组
+}
+```
+
+下表列出了 F2 各个 geom 几何形状的关键点形成机制：
+
+geom 类型 | 解释
+---- | ----
+point | 点的绘制很简单，只要获取它的坐标以及大小即可，其中的 `size` 属性代表的是点的半径。<br>![image](https://zos.alipayobjects.com/skylark/940c75cf-8400-415a-9e2d-040ce46e6a03/attach/3378/269e0e2c77a555a5/image.png)
+line | 线其实是由无数个点组成，在 F2 中我们将参与绘制的各个数据转换成坐标上的点然后通过线将逐个点连接而成形成线图，其中的 `size` 属性代表的是线的粗细。<br>![image](https://zos.alipayobjects.com/skylark/f9b84b83-1cc8-4b81-9319-f643ef0e280a/attach/3378/d49e02be2f48a136/image.png)
+area | area 面其实是在 line 线的基础之上形成的, 它将折线图中折线与自变量坐标轴之间的区域使用颜色或者纹理填充。<br>![image](https://zos.alipayobjects.com/skylark/dbcd60f3-7662-4ebd-8e0e-85d7d754d0c7/attach/3378/f67277978d5d8e3e/image.png)
+interval | interval 默认的图形形状是矩形，而矩形实际是由四个点组成的，在 F2 中我们根据 pointInfo 中的 x、y、size 以及 y0 这四个值来计算出这四个点，然后顺时针连接而成。<br>![image](https://zos.alipayobjects.com/skylark/f36a2e27-13e8-4d55-8c93-b698e15bcc1f/attach/3378/94a6515e2eb60265/image.png)
+polygon | polygon 多边形其实也是由多个点连接而成，在 pointInfo 中 x 和 y 都是数组结构。<br>![image](https://zos.alipayobjects.com/skylark/b4f6981c-ccd3-4237-97bd-dd88950758ea/attach/3378/ed2b5c05a1ff3581/image.png)
+schema | schema 作为一种自定义的几何图形，在 F2 中默认提供了 candle（烛形图，又称股票图、k 线图） shape，用于绘制股票图，注意矩形部分四个点的连接顺序都是顺时针，并且起始点均为左下角，这样就可以无缝转换至极坐标。<br>![image](https://zos.alipayobjects.com/skylark/340c229d-be30-4f98-8a2a-8d55c8422645/attach/3378/1bfed6f3f5f90e13/image.png)![image](https://zos.alipayobjects.com/skylark/8afa13da-95d1-4282-a08b-f1c421b0d972/attach/3378/d82c45d3a526bd80/image.png)
 
 ### draw
 
-`draw(cfg, canvas)`
+`getPoints` 用于计算绘制 shape 的关键点，那么 `draw` 方法就是用来定义如何连接这些关键点的。
 
-* cfg 绘制图形的配置项
-  + points: `getPoints()` 方法返回的点的数组
-  + x: x 点的坐标
-  + y: y 点的坐标
-  + color: 颜色
-  + size: 大小
-  + shape: 形状
-  + style: 额外传入的形状
+注意：该方法需要返回最后绘制的 shape。
+
+#### 参数
+
+- `cfg`: Object
+
+该参数包含经过图形映射后的所有数据以及该数据对应的原始数据，结构如下图所示：
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/GIutZIjQWLrTeLxgQNMJ.png" style="width: 50%;">
+
+* 原始数据存储于 `cfg.origin._origin` 中；
+* 通过 getPoints 计算出的图形关键点都储存于 points 中；
+* cfg 对象中的 `color`、`size`、`shape` 都是通过映射之后的图形属性数据，可以直接使用。
+
+- `container`: F2.G.Group
+
+图形容器，需要将自定义的 shape 加入该容器中才能最终渲染出来。
+
+**另外我们还提供了一些工具类方法，帮助用户快速将归一化后的数据转换为画布上的坐标**，使用的时候直接在上述两个方法内通过如下方式调用即可：
 
 ```js
-chart.point().position('x*y').size(10).color('red').style({opacity: 0.5});
-
-draw(cfg, canvas) {
-  cfg.color // red
-  cfg.size // 10
-  cfg.style // {opacity: 0.5}
-}
-```
-
-* canvas: 原生的canvas 对象，可以使用 canvas 来绘制图形
-
-```js
-draw(cfg, cavas) {
-  const points = this.parsePoints(cfg.points); // 将点从0-1转换成画布坐标
-  const ctx = canvas.getContext('2d');
-  ctx.save();
-  ctx.strokeStyle = cfg.color;
-  ctx.lineWidth = cfg.size;
-  ctx.moveTo(points[0].x, points[0].y);
-
-  for(let i = 1; i < points.length; i++) {
-    ctx.lineTo(points[i].x, points[i].y);
+Shape.registerShape('interval', 'rect', {
+  getPoints(pointInfo) {
+    // ...
+  },
+  draw(cfg, container) {
+    // ...
+    path = this.parsePath(path);
+    // ...
+    // 
+    return shape; // 返回最后绘制的 shape
   }
-  ctx.stroke();
-  ctx.restore();
+});
+```
+
+### parsePoint
+
+方法名： `shapeObj.parsePoint(point)`
+
+说明：将 0 - 1 范围内的点转化为画布上的实际坐标。
+
+#### 参数
+
+- `point`: object
+
+结构如下：
+
+```js
+{
+  x: 0.3,
+  y: 0.34
 }
 ```
 
-由于 getPoints 方法返回的点是 0-1 范围的归一后的数据，所以需要将点转换成画布坐标，可以直接在 draw 方法中调用下面两个方法：
+### parsePoints
 
-* `parsePoint(point)` 将单个点转换成画布上的坐标
-* `parsePoints(points)` 将多个点转换成画布上的坐标
+方法名：`shapeObj.parsePoints(points)`
 
+说明：将一组 0 - 1 范围内的点转化为画布上的实际坐标。
 
-### 工具方法
+#### 参数
 
-直接使用 canvas 的原生 API 可以绘制出任意图形，但是存在几个不方便的地方：
+- `point`: Array
 
-* 需要手工调用 save(), restore() 方法
-* 需要设置各种属性
+结构如下：
 
-F2 提供了一系列绘制图形的工具方法，参考[绘制接口](graphic.html)。
+```js
+[
+  { x: 0.3, y: 0.34 },
+  { x: 0.3, y: 0.34 }
+]
+```
 
+## 代码示例
 
+<canvas id="mountNode"></canvas>
+
+```js+
+const Shape = F2.Shape;
+Shape.registerShape('interval', 'triangle', {
+  getPoints(cfg) {
+    const x = cfg.x;
+    const y = cfg.y;
+    const y0 = cfg.y0;
+    const width = cfg.size;
+    return [
+      { x: x - width / 2, y: y0 },
+      { x: x, y: y },
+      { x: x + width / 2, y: y0 }
+    ]
+  },
+  draw(cfg, group) {
+    const points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
+    const polygon = group.addShape('polygon', {
+      attrs: {
+        points: [
+          { x:points[0].x, y:points[0].y },
+          { x:points[1].x, y:points[1].y },
+          { x:points[2].x, y:points[2].y }
+        ],
+        fill: cfg.color
+      }
+    });
+    return polygon; // 将自定义Shape返回
+  }
+});
+
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
+];
+
+const chart = new F2.Chart({
+  id: 'mountNode',
+  width: 500,
+  height: 320,
+  pixelRatio: window.devicePixelRatio
+});
+
+chart.source(data);
+chart.interval().position('genre*sold').color('genre').shape('triangle');
+chart.render();
+```

@@ -1,0 +1,84 @@
+<!--
+index: 11
+title: 实时折线
+resource:
+  jsFiles:
+-->
+
+<script>
+  const data = [];
+
+  // 添加数据，模拟数据，可以指定当前时间的偏移的秒
+  function getRecord(offset) {
+    offset = offset || 0;
+    return {
+      time: new Date().getTime() + offset * 1000,
+      value: Math.random() + 10
+    };
+  }
+
+  data.push(getRecord(-2));
+  data.push(getRecord(-1));
+  data.push(getRecord());
+
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+
+  const defs = {
+    time: {
+      type: 'timeCat',
+      mask: 'hh:mm:ss',
+      tickCount: 3,
+      range: [ 0, 1 ]
+    },
+    value: {
+      tickCount: 5,
+      min: 8
+    }
+  };
+  chart.source(data, defs);
+  chart.axis('time', {
+    label(text, index, total) {
+      const textCfg = {};
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
+    }
+  });
+
+  chart.guide().html({
+    position(xScale, yScales) {
+      const xValues = xScale.values;
+      const yValues = yScales[0].values;
+      const xMax = xValues[xValues.length - 1];
+      const yMax = yValues[yValues.length - 1];
+      return [ xMax, yMax ];
+    },
+    html: '<div style="border-radius: 100%;border: none;width: 12px;height: 12px;background-color: rgb(24, 144, 255);transition: top 0.35s cubic-bezier(0.23, 1, 0.32, 1);"></div>'
+  });
+  chart.guide().html({
+    position(xScale, yScales) {
+      const xValues = xScale.values;
+      const yValues = yScales[0].values;
+      const xMax = xValues[xValues.length - 1];
+      const yMax = yValues[yValues.length - 1];
+      return [ xMax, yMax ];
+    },
+    html: '<div style="border-radius: 100%;border: none;width: 20px;height: 20px;background-color: rgba(24, 144, 255, 0.5);transition: top 0.35s cubic-bezier(0.23, 1, 0.32, 1);"></div>'
+  });
+  chart.line().position('time*value');
+  chart.render();
+
+  setInterval(function() {
+    data.push(getRecord());
+    chart.changeData(data);
+  }, 2000);
+</script>

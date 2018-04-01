@@ -1,0 +1,71 @@
+<!--
+index: 2
+title: 蜡烛图
+resource:
+  jsFiles:
+    - ${url.jquery}
+-->
+<script>
+  $.getJSON('/assets/data/candle-sticks.json', function(data) {
+    data = data.slice(0, 50); // 仅显示100 个
+    data.sort(function(obj1, obj2) {
+      return obj1.time > obj2.time ? 1 : -1;
+    });
+    data.forEach(function(obj) {
+      obj.range = [ obj.start, obj.end, obj.max, obj.min ];
+      obj.trend = (obj.start <= obj.end) ? 0 : 1;
+    });
+    const chart = new F2.Chart({
+      id: 'mountNode',
+      width: window.innerWidth,
+      height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+      pixelRatio: window.devicePixelRatio
+    });
+
+    chart.axis('time', {
+      label(text, index, total) {
+        const cfg = {
+          textAlign: 'center'
+        };
+        // 第一个点左对齐，最后一个点右对齐，其余居中，只有一个点时左对齐
+        if (index === 0) {
+          cfg.textAlign = 'start';
+        }
+        if (index > 0 && index === total - 1) {
+          cfg.textAlign = 'end';
+        }
+        return cfg;
+      }
+    });
+    chart.source(data, {
+      range: {
+        tickCount: 5
+      },
+      time: {
+        tickCount: 3
+      }
+    });
+    chart.legend({
+      custom: true,
+      itemWidth: null,
+      items: [
+        { name: '上涨', marker: 'circle', fill: '#FC674D' },
+        { name: '下降', marker: 'circle', fill: '#9AC2AB' },
+      ]
+    });
+    chart.tooltip(false);
+    chart.schema().position('time*range')
+      .color('trend', function(trend) {
+        return [ '#FC674D', '#fff' ][trend];
+      })
+      .shape('candle')
+      .style('trend', {
+        stroke(val) {
+          if (val === 1) {
+            return '#9AC2AB';
+          }
+        }
+      });
+    chart.render();
+  });
+</script>

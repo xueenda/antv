@@ -1,5 +1,5 @@
 <!--
-index: 5
+index: 10
 title: 常见问题
 resource:
   jsFiles:
@@ -65,9 +65,13 @@ chart.source(data, {
   }
 });
 chart.line().position('x*y');
-chart.guide().text([ 2, 3.5 ], 'pxielRatio = 1', {
-  textAlign: 'center',
-  fontSize: 14
+chart.guide().text({
+  position: [ 2, 3.5 ], 
+  content: 'pxielRatio = 1', 
+  style: {
+    textAlign: 'center',
+    fontSize: 14
+  }
 });
 chart.render();
 
@@ -87,9 +91,13 @@ chart1.source(data, {
   }
 });
 chart1.line().position('x*y');
-chart1.guide().text([ 2, 3.5 ], 'pxielRatio = 2', {
-  textAlign: 'center',
-  fontSize: 14
+chart.guide().text({
+  position: [ 2, 3.5 ], 
+  content: 'pxielRatio = 2', 
+  style: {
+    textAlign: 'center',
+    fontSize: 14
+  }
 });
 chart1.render();
 
@@ -222,38 +230,7 @@ canvas.onclick=function(event){
 
 用户获取到数据后可以进行任何自己想进行的交互。
 
-## 4. 如何显示 tooltip
-
-F2 没有内置 tooltip，如果想在图表上显示，需要先获取手滑动位置的信息，参考 [问题 3](/zh-cn/f2/3.x/tutorial/question.html#_3.-怎么跟图表交互) 
-
-* 绑定事件，获取到图表上对应的数据信息
-* 自己生成 dom 显示数据
-
-```js
-function getPoint(canvas, clientX, clientY) {  
-  const bbox = canvas.getBoundingClientRect();  
-  return {  
-    x: clientX - bbox.left,   
-    y: clientY - bbox.top 
-  };  
-} 
-
-// 绑定事件，可以用原生的写法
-$(canvas).on('touchmove', function(ev) {
-  const touch = ev.touches[0];
-  if (touch) {
-    const point = getPoint(canvas, touch.clientX, touch.clientY);
-    const records = chart.getSnapRecords(point);
-    // 生成 dom
-    // 移动 dom
-    // 显示 dom
-  }
-})
-```
-
-`touchstart` 和 `touchend` 也需要进行处理。
-
-## 5. 如何设置渐变色
+## 4. 如何设置渐变色
 
 #### 问题描述：
 
@@ -294,71 +271,7 @@ F2 的图表定义时有多种方式可以设置渐变色
 
 [示例](../demo/area/gradient.html)
 
-## 6. 怎么显示图例
-
-#### 问题描述
-
-如何在 F2 生成的图表上生成图例？
-
-#### 问题分析
-
-由于移动端的屏幕的限制和显示的多样性，所以无法生成通用的图例，往往需要用户自己用 Hmtl 生成图例，图例的颜色和图表的颜色的一致性和交互需求需要进行解决。
-
-#### 方案
-
-自定义图例有以下步骤：
-
-1. 定义每种分类的颜色
-2. 生成图表时指定分类的颜色
-3. 生成 DOM
-
-```js
-const data = [
-  { time: '2011-01-01', value: 10, type: '类型1' },
-  { time: '2011-01-02', value: 20, type: '类型1' },
-  { time: '2011-01-01', value: 10, type: '类型2' },
-  { time: '2011-01-02', value: 20, type: '类型2' }
-];
-
-const colors = {
-  '类型1': 'red',
-  '类型2': 'blue'
-};
-
-chart.source(data);
-
-chart.line().position('time*value').color('type', funciton(type) {
-  return colors[type];
-});
-
-chart.render();
-
-$.each(colors, function(k, v) {
-  const str = '<li class="legend-item"><span style="color:' + v +'"></span>k</li>';
-  $(str).appendTo('#legend-list');
-});
-
-```
-
-如果需要添加交互事件，点击隐藏、显示对应的分类，则需要
-
-* 监听点击事件
-* 过滤数据，更新数据
-
-```js
-$('#legend-list .legend-item').on('click', function(ev) {
-  const item = ev.target;
-  const type = $(item).text();
-  const filteredData = data.filter(function(obj) {
-    return obj.type === type;
-  });
-  chart.changeData(filteredData);
-});
-```
-
-[查看示例](../demo/other/legend.html)
-
-## 7. 坐标轴上数字混乱
+## 5. 坐标轴上数字混乱
 
 #### 问题描述
 
@@ -396,7 +309,7 @@ const data = [
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/IFtApeUkFWwnrdrodfve.png" style="width:500px" />
 
-## 8. 如何显示文本
+## 6. 如何显示文本
 
 #### 问题描述
 

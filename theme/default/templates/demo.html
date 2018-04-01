@@ -54,7 +54,22 @@
         <div class="col detail" id="detail-container">
             <div class="demo-preview" id="demo-preview">
                 <div class="navbar justify-content-between">
-                    <h4 class="nav-link">{{ title }}</h4>
+                    <h4 class="nav-link">{{ title }}
+                    {% if template == 'f2-demo' %}
+                    <div class="f2-qrcode">
+                        <span class="iconfont icon-erweima"></span>
+                        <div class="qrcode-wrapper">
+                            <div class="qrcode-content">
+                                <div class="qrcode-arrow"></div>
+                                <div class="qrcode-inner">
+                                    <div id="qrcode" data-url={{ currentDemo.naked }} ></div>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    </h4>
+
                     {% if canSwitchThemes %}
                     <form class="form-inline">
                         <label for="theme-switching">{{ resource.translate.themeSwitching }}: </label>
@@ -117,7 +132,24 @@
                     </form>
                     {% endif %}
                 </div>
+
+                {% if template != 'f2-demo' %}
                 <div class="demo" id="preview"></div>
+                {% else %}
+                <div id="qrcode" style="position: absolute; top: 32px; left: 0;" data-value={{ currentDemo.naked }}></div>
+                <div class="mobile-wrapper">
+                    <div class="content">
+                        <div class="content-header">
+                            <div class="content-statbar">
+                                <div class="url" data-url={{ currentDemo.naked }}></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo f2" id="preview"></div>
+
+                </div>
+                {% endif %}
+
             </div>
             <div class="card-extra container">
                 {% if plotDescription %}
@@ -207,4 +239,32 @@
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.js"></script>
 <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery.resizable-0.20.0.min.js"></script>
 <script src="{{ dist }}/demo.js"></script>
+
+{% if template == 'f2-demo' %}
+<script src="https://gw.alipayobjects.com/os/rmsportal/ZTwgYuEqPkjWTERMsszu.js"></script>
+<script type="text/javascript">
+const userAgent = navigator.userAgent;
+const mobile = !!userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+const currentUrl = window.location.protocol + '//' + window.location.host + $('#qrcode').data('url');
+$('.url').html(currentUrl);
+
+if (!mobile) { // in mobile
+    new QRCode(document.getElementById("qrcode"), {
+        text: currentUrl,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    $('.icon-erweima').hover(() => {
+        $('.qrcode-wrapper').toggle();
+    });
+} else {
+    $('.icon-erweima').hide();
+}
+</script>
+{% endif %}
+
 {% endblock %}

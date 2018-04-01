@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ dist }}/mobile-demos.css"/>
+<style>
+    .demos {
+        padding-top: 32px;
+    }
+    .demos .flex-xl-nowrap {
+        margin-top: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% set currentDemo = demoByHref[__href] %}
+<div class="drawer-toggle">
+    <span class="iconfont icon-menu-fold"></span>
+</div>
+<div class="drawer-overlay"></div>
+
+<div class="demos container-fluid">
+    <div class="row flex-xl-nowrap">
+        <!-- <div class="col-xl-1"> -->
+
+            <div class="col menu expanded drawer">
+                <div class="menu-inner">
+                    <div id="accordion" role="tablist" data-children=".item">
+                        {% for cat in demos %}
+                        <div class="item">
+                            <div class="card-header" role="tab">
+                            <h6>
+                                <a data-toggle="collapse" aria-expanded="false" href="#collapse-{{ cat.category }}"
+                                   class="menu-header collapsed"
+                                   aria-controls="collapse-{{ cat.category }}">
+                                    <span class="iconfont icon-{{ cat.category }}"></span>
+                                    {{ cat.title }}
+                                    <span class="float-right arrow"></span>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapse-{{ cat.category }}" class="collapse"
+                             role="tabpanel" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {% for demo in cat.demos %}
+                                    {% set isCurrentPage = (__href === demo.href) %}
+                                    <li class="list-group-item">
+                                        <a href="#{{ demo.title }}">{{ demo.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- </div> -->
+        <div class="col-12 col-md-12 col-xl-10">
+            <div class="container content">
+                {% for cat in demos %}
+                <h5>{{ cat.title }}</h5>
+                <div class="row">
+                    {% for demo in cat.demos %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                        <div class="card" id="{{ demo.title }}">
+                            <a class="screenshot-container" href="{{ demo.naked }}">
+                                <!--data-original="{{ demo.screenshot }}"-->
+                                <img src="{{ assets }}/image/screenshot-placeholder.png"
+                                     class="card-img-top screenshot lazyload"
+                                     data-default="{{ demo.screenshot }}"
+                                     data-dark="{{ demo.screenshotDark }}"
+                                     alt="{{ demo.title }}">
+                            </a>
+                            <div class="card-body">
+                                <a href="{{ demo.href }}"> {{ demo.title }} </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="https://gw.alipayobjects.com/os/antv/assets/lib/routie-0.3.2.min.js"></script>
+<script src="{{ dist }}/mobile-demos.js"></script>
+{% endblock %}
+

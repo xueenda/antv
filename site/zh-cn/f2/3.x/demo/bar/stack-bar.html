@@ -1,0 +1,91 @@
+<!--
+index: 6
+title: 层叠条形图
+resource:
+  jsFiles:
+    - ${url.lodash}
+plotDescription: Stacked Bar Chart，层叠条形图。将每个柱子进行分割以显示相同类型下各个数据的大小情况。
+plotUsage: 可以形象得展示一个大分类包含的每个小分类的数据，以及各个小分类的占比，显示的是单个项目与整体之间的关系。
+chartDetail: ${base}zh-cn/vis/chart/stacked-bar.html
+-->
+
+<script>
+  const data = [
+    { State: 'WY', 年龄段 : '小于5岁', 人口数量: 25635 },
+    { State: 'WY', 年龄段 : '5至13岁', 人口数量: 1890 },
+    { State: 'WY', 年龄段 : '14至17岁', 人口数量: 9314 },
+    { State: 'DC', 年龄段 : '小于5岁', 人口数量: 30352 },
+    { State: 'DC', 年龄段 : '5至13岁', 人口数量: 20439 },
+    { State: 'DC', 年龄段 : '14至17岁', 人口数量: 10225 },
+    { State: 'VT', 年龄段 : '小于5岁', 人口数量: 38253 },
+    { State: 'VT', 年龄段 : '5至13岁', 人口数量: 42538 },
+    { State: 'VT', 年龄段 : '14至17岁', 人口数量: 15757 },
+    { State: 'ND', 年龄段 : '小于5岁', 人口数量: 51896 },
+    { State: 'ND', 年龄段 : '5至13岁', 人口数量: 67358 },
+    { State: 'ND', 年龄段 : '14至17岁', 人口数量: 18794 },
+    { State: 'AK', 年龄段 : '小于5岁', 人口数量: 72083 },
+    { State: 'AK', 年龄段 : '5至13岁', 人口数量: 85640 },
+    { State: 'AK', 年龄段 : '14至17岁', 人口数量: 22153 }
+  ];
+  const chart = new F2.Chart({
+    id: 'mountNode',
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+    pixelRatio: window.devicePixelRatio
+  });
+
+  chart.source(data, {
+    '人口数量': {
+      tickCount: 5
+    }
+  });
+  chart.coord({
+    transposed: true
+  });
+  chart.axis('State', {
+    line: F2.Global._defaultAxis.line,
+    grid: null
+  });
+  chart.axis('人口数量', {
+    line: null,
+    grid: F2.Global._defaultAxis.grid,
+    label(text, index, total) {
+      const textCfg = {
+        text: text / 1000 + ' k'
+      };
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
+    }
+  });
+  chart.tooltip({
+    custom: true, // 自定义 tooltip 内容框
+    onChange(obj) {
+      const legend = chart.get('legendController').legends.top[0];
+      const tooltipItems = obj.items;
+      const legendItems = legend.items;
+      const map = {};
+      legendItems.map(item => {
+        map[item.name] = _.clone(item);
+      });
+      tooltipItems.map(item => {
+        const { name, value } = item;
+        if (map[name]) {
+          map[name].value = (value);
+        }
+      });
+      legend.setItems(Object.values(map));
+    },
+    onHide() {
+      const legend = chart.get('legendController').legends.top[0];
+      legend.setItems(chart.getLegendItems().country);
+    }
+  });
+  chart.interval().position('State*人口数量').color('年龄段').adjust('stack');
+
+  chart.render();
+</script>

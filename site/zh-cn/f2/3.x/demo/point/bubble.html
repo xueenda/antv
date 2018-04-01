@@ -1,8 +1,9 @@
 <!--
 index: 1
 title: 气泡图
-resource:
-  jsFiles:
+plotDescription: Bubble Chart，气泡图，是一种多变量图表，是散点图的变体，也可以认为是散点图和百分比区域图的组合。
+plotUsage: 气泡图最基本的用法是使用三个值来确定每个数据序列，和散点图一样，气泡图将两个维度的数据值分别映射为笛卡尔坐标系上的坐标点，其中 X 和 Y 轴分别代表不同的两个维度的数据，但是不同于散点图的是，气泡图的每个气泡都有分类信息（他们显示在点旁边或者作为图例）。每一个气泡的面积代表第三个数值数据。另外还可以使用不同的颜色来区分分类数据或者其他的数值数据，或者使用亮度或者透明度。表示时间维度的数据时，可以将时间维度作为直角坐标系中的一个维度，或者结合动画来表现数据随着时间的变化情况。气泡图通常用于比较和展示不同类别圆点（这里我们称为气泡）之间的关系，通过气泡的位置以及面积大小。从整体上看，气泡图可用于分析数据之间的相关性。需要注意的是，气泡图的数据大小容量有限，气泡太多会使图表难以阅读。但是可以通过增加一些交互行为弥补：隐藏一些信息，当鼠标点击或者悬浮时显示，或者添加一个选项用于重组或者过滤分组类别。另外，气泡的大小是映射到面积而不是半径或者直径绘制的。因为如果是基于半径或者直径的话，圆的大小不仅会呈指数级变化，而且还会导致视觉误差。
+chartDetail: ${base}zh-cn/vis/chart/bubble.html
 -->
 
 <script>
@@ -21,36 +22,81 @@ resource:
     { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
     { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
     { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
-    { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
+    { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' },
   ];
   const chart = new F2.Chart({
     id: 'mountNode',
-    padding: [20, 20, 50, 60],
+    width: window.innerWidth,
+    height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
     pixelRatio: window.devicePixelRatio
   });
   chart.source(data, {
-    y: {
-      min: 0
-    },
     x: {
-      max: 100
+      alias: 'Daily fat intake', // 定义别名
+      tickInterval: 5, // 自定义刻度间距
+      nice: false, // 不对最大最小值优化
+      max: 96, // 自定义最大值
+      min: 62, // 自定义最小是
+    },
+    y: {
+      alias: 'Daily sugar intake',
+      tickInterval: 50,
+      nice: false,
+      max: 165,
+      min: 0,
+    },
+    z: {
+      alias: 'Obesity(adults) %',
+    },
+  });
+  // 开始配置坐标轴
+  chart.axis('x', {
+    label(text) {
+      return {
+        text: text + ' gr' // 格式化坐标轴显示文本
+      };
+    },
+    grid: {
+      stroke: '#d9d9d9',
+      lineWidth: 1,
+      lineDash: [ 2, 2 ]
     }
   });
-
-  chart.point().position('x*y')
-    .size('z', [10, 40])
-    .color('#3182bd')
+  chart.axis('y', {
+    line: F2.Util.mix({}, F2.Global._defaultAxis.line, {
+      top: false
+    }),
+    label(text) {
+      if (text > 0) {
+        return {
+          text: text + ' gr'
+        };
+      }
+    }
+  });
+  chart.tooltip(false);
+  chart
+    .point()
+    .position('x*y')
+    .color('#1890ff')
+    .size('z', [ 10, 40 ])
     .shape('circle')
     .style({
-      opacity: 0.7
+      lineWidth: 1,
+      stroke: '#1890ff',
+      opacity: 0.3
     });
 
-  // F2 没有提供 riddle 所以需要用户使用guide 来生成文本
-  data.forEach(function (obj) {
-    chart.guide().text([obj.x, obj.y], obj.name, {
-      textAlign: 'center',
-      fontSize: 14,
-      textBaseline: 'middle'
+  // 绘制辅助文本
+  data.map(item => {
+    chart.guide().text({
+      position: [ item.x, item.y ],
+      content: item.name,
+      style: {
+        textAlign: 'center',
+        textBaseline: 'middle',
+        fill: '#1890FF'
+      }
     });
   });
   chart.render();
