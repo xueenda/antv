@@ -1,6 +1,6 @@
 <!--
-index: 7
-title: 镜像分面
+index: 8
+title: 镜像分面(转置)
 resource:
   jsFiles:
     - ${url.dataSet}
@@ -65,8 +65,8 @@ relativePlots:
     });
     chart.facet('mirror', {
       fields: [ 'gender' ],
-      transpose: false,
-      padding: [0, 0, 40, 0], // 分面间的
+      transpose: true,
+      padding: [0, 60, 0, 0],
       eachView(view) {
         view.interval().position('age*total_percentage')
           .color('gender', [ '#1890ff', '#f04864' ]);

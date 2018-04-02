@@ -424,6 +424,7 @@ chart.axis('x', {
     htmlTemplate(text, item, index) {}
   }
   ```
+  * textStyle 的更详细的配置项 [绘图属性](graphic.html)
 
   4. `title`: object | null
 
@@ -449,6 +450,7 @@ chart.axis('x', {
     position: 'start' | 'center' | 'end' // 标题的显示位置（相对于坐标轴线），可取值为 start center end
   }
   ```
+  * textStyle 的更详细的配置项 [绘图属性](graphic.html)
 
   5. `tickLine`: object | null
 
@@ -503,6 +505,8 @@ chart.axis('x', {
     hideLastLine: true | false // 是否隐藏最后一条网格线，默认为 false
   }
   ```
+
+  * lineStyle 的更详细的配置项 [绘图属性](graphic.html)
 
 ### legend
 
@@ -1049,6 +1053,7 @@ chart.tooltip(true, {
     }
   }
   ```
+  * style 的更详细的配置项 [绘图属性](graphic.html)
 
   > crosshairs.type 说明： `rect` 表示矩形框，`x` 表示水平辅助线，`y` 表示垂直辅助线，`cross` 表示十字辅助线。
 
@@ -1213,6 +1218,8 @@ chart.guide().line({
 });
 ```
 
+* lineStyle, style 的更详细的配置项 [绘图属性](graphic.html)
+
 ##### 参数
 
 - `top`: boolean
@@ -1264,6 +1271,7 @@ text: {
   offsetY: {number} // y 方向的偏移量
 }
 ```
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 #### chart.guide().text(cfg)
 
@@ -1284,6 +1292,7 @@ chart.guide().text({
   offsetY: {number} // y 方向偏移量
 });
 ```
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1317,7 +1326,7 @@ chart.guide().text({
 
 - `style`: object
 
-用于设置辅助文本的显示样式。
+用于设置辅助文本的显示样式。 style 的更详细的配置项 [绘图属性](graphic.html)
 
 - `offsetX`: number
 
@@ -1420,6 +1429,7 @@ chart.guide().region({
   } // 辅助框的图形样式属性
 });
 ```
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1454,6 +1464,8 @@ chart.guide().region({
 - `style`: object
 
 用于设置辅助背景框的样式。
+
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 #### chart.guide().html(cfg)
 
@@ -1529,6 +1541,7 @@ chart.guide().arc({
   style: {object} // 图形样式属性
 });
 ```
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ##### 参数
 
@@ -1563,6 +1576,8 @@ chart.guide().arc({
 - `style`: object
 
 设置圆弧的显示样式。
+
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 ### facet
 
@@ -1655,6 +1670,7 @@ colTitle: {
   } // 标题文本样式
 }
 ```
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 - `rowTitle`: object | null
 
@@ -1670,6 +1686,7 @@ rowTitle: {
   } // 标题文本样式
 }
 ```
+* style 的更详细的配置项 [绘图属性](graphic.html)
 
 !注意：`showTitle` 和 `autoSetAxis` 用于控制分面的默认行为；`colTitle` 和 `rowTitle` 是通过 `chart.guild().text()` 来实现的，所以所有 `chart.guild().text()` 的参数都生效。
 
@@ -2126,6 +2143,8 @@ chart.on('guide-line-text:click', ev => {
 });
 ```
 
+* lineStyle, style 的更详细的配置项 [绘图属性](graphic.html)
+
 <img src="https://gw.alipayobjects.com/zos/rmsportal/eFRpBGmvDRAhYnCcrnnh.png" style="width: 50%;">
 
 下图展示了图表各个组件的名称：
@@ -2198,9 +2217,6 @@ chart.on('interval:mouseenter', ev => {
   const shape = ev.shape;
   const coord = chart.get('coord');
   if (!shape.get('selected')) {
-    if (!shape.get('_originAttrs')) {
-      shape.set('_originAttrs', G2.Util.cloneDeep(shape.__attrs));
-    }
     shape.attr('shadowBlur', 40);
     shape.attr('shadowColor', 'rgba(0, 0, 0, 0.3)');
     shape.attr('transform', [
@@ -2213,10 +2229,20 @@ chart.on('interval:mouseenter', ev => {
 });
 chart.on('interval:mouseleave', ev => {
   const shape = ev.shape;
-  if (!shape.get('selected') && shape.get('_originAttrs')) {
-    shape.__attrs = shape.get('_originAttrs');
-    shape.set('_originAttrs', null);
+  if (!shape.get('selected')) {
+    shape.attr({
+      shadowBlur: null,
+      shadowColor: null,
+      transform: null
+    });
+    shape.setTransform(null);
     canvas.draw();
   }
 });
 ```
+
+* style 的更详细的配置项 [绘图属性](graphic.html)
+
+### 更多
+
+更多的信息可以查看[几何标记](geom.html)使用各种具体的图表
