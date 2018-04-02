@@ -43,7 +43,7 @@ chart.legend(false); //所有的图例都不显示
 
 属性名 | 解释 | 默认值 
 ----|----|----
-position |图例的显示位置，可配置值 'top','left','right','bottom' 。| 'right'
+position |图例的显示位置，可配置值 'top','left','right','bottom' 。| 'bottom'
 title | 用于图例标题的显示样式配置，如果值为 null 则不展示。| 左右两侧图例默认展示标题，上下图例默认不展示标题 
 background | 用于图例背景色的配置 | 默认没有背景色 
 offsetX | 整个图例的水平偏移距离 | -- 
