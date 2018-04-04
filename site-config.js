@@ -12,7 +12,7 @@ module.exports = {
         g2: 'https://gw.alipayobjects.com/os/antv/assets/g2/3.0.5-beta.5/g2.min.js',
         g6: 'https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js',
         'g6-plugins': 'https://gw.alipayobjects.com/os/antv/assets/g6-plugins/1.0.8/g6-plugins.min.js',
-        'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.0/g2-plugin-slider.js',
+        'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.2/g2-plugin-slider.js',
         'g2-brush': 'https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js',
         html2canvas: 'https://gw.alipayobjects.com/os/antv/assets/lib/html2canvas-1.0.0-alpha.10.min.js',
         katex:    'https://gw.alipayobjects.com/os/antv/assets/lib/katex-0.8.3/katex.min.js',
