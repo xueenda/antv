@@ -8,6 +8,22 @@
 
 # 更新日志
 
+# History
+
+---
+
+## v1.2.8
+
+* improve: 改进 打包机制
+
+## v1.2.7
+
+* improve: 改进 聚焦机制
+
+## v1.2.6
+
+* fix:     修复 autoText 触发时机
+
 ## v1.2.5
 
 * fix:     修复 clickFocus bug
