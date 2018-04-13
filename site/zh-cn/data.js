@@ -158,6 +158,7 @@ module.exports = {
         { name: '再飞'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/zaifei.jpg'   , weibo: 'https://weibo.com/simaoohappy'    , github: 'https://github.com/simaQ'       } ,
         { name: '张初尘', jobTitle: '产品经理'   , avatar: '${assets}/image/members/chuchen.png'  , weibo: 'https://weibo.com/u/1824917073'   , github: 'https://github.com/lilyal'      } ,
         { name: '祯逸'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/zhenyi.png'   , weibo: ''                                 , github: ''                               } ,
+        { name: '杍鱼'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/ziyu.png'   , weibo: ''                                 , github: 'https://github.com/cycgit'                               } ,
     ],
     showFooter: true,
     footer: {
