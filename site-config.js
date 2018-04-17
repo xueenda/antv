@@ -14,7 +14,7 @@ module.exports = {
         'g6-plugins': 'https://gw.alipayobjects.com/os/antv/assets/g6-plugins/1.0.9/g6-plugins.min.js',
         'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.2/g2-plugin-slider.js',
         'g2-brush': 'https://gw.alipayobjects.com/os/antv/assets/g2-brush/0.0.2/g2-brush.min.js',
-        html2canvas: 'https://gw.alipayobjects.com/os/antv/assets/lib/html2canvas-1.0.0-alpha.10.min.js',
+        html2canvas: 'https://html2canvas.hertzen.com/dist/html2canvas.min.js',
         katex:    'https://gw.alipayobjects.com/os/antv/assets/lib/katex-0.8.3/katex.min.js',
         katexCss: 'https://gw.alipayobjects.com/os/antv/assets/lib/katex-0.8.3/katex.min.css',
         jquery:   'https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js',

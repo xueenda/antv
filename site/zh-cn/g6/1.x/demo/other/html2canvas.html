@@ -80,8 +80,7 @@ function downloadImage(bool) {
   if (bool) {
     net.autoZoom(); // 图自动缩放以适应画布尺寸
   }
-  html2canvas(graphContainer, {
-    onrendered(canvas) {
+  html2canvas(graphContainer).then(canvas => {
       const dataURL = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       const saveName = 'graph.png';
@@ -90,7 +89,6 @@ function downloadImage(bool) {
       link.click();
       net.updateMatrix(matrixStash); // 还原矩阵
       net.refresh();
-    }
   });
 }
 </script>
