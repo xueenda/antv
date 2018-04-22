@@ -6,7 +6,7 @@ import {
     Link
 } from 'react-router';
 
-console.log(window.innerWidth);
+const AD_LINK = 'http://www.anijue.com/p/q/yuque423/pages/home/index.html?chInfo=ch_yuquebooks__chsub_antv';
 
 class SEEConfAd extends React.Component {
     constructor(props) {
@@ -14,22 +14,22 @@ class SEEConfAd extends React.Component {
         this.state = {
             animation: {
                 position: 'relative',
-                height: window.innerWidth / 1440 * 500,
+                height: window.innerWidth / 1440 * 80,
                 top: 64,
                 repeat: 0,
                 duration: 1000
             }
-        }
+        };
     }
 
     componentDidMount() {
         const openNotification = () => {
             const args = {
-                message: 'See Conf 首届蚂蚁金服体验科技大会',
-                description: <a target='_blank' href='https://seeconf.alipay.com/'
+                message: '你写书单、语雀买单',
+                description: <a target='_blank' href={AD_LINK}
                                 style={{color: '#108ee9'}}>点击进入</a>,
-                icon: <img src="https://gw.alipayobjects.com/zos/rmsportal/wYfEimhPlttSsAKyiTzR.png"
-                           style={{width: '24px', height: '24px'}}/>,
+                icon: <img src="https://gw.alipayobjects.com/zos/rmsportal/CTfFnlpReiwSVlAQIJUj.png"
+                           style={{width: '48px', height: '48px'}}/>,
                 duration: 0,
                 style: {
                     top: 60,
@@ -60,7 +60,6 @@ class SEEConfAd extends React.Component {
     }
 
     render() {
-        const link = 'https://seeconf.alipay.com/';
         return (
             <TweenOne
                 animation={this.state.animation}
@@ -69,8 +68,8 @@ class SEEConfAd extends React.Component {
                     height: 0
                 }}
                 className="see-conf-banner">
-                <a target='_blank' href={link}>
-                    <img src="https://gw.alipayobjects.com/zos/rmsportal/srgGWDMwzIsmDIlJDrXk.png"/>
+                <a target='_blank' href={AD_LINK}>
+                    <img src="https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png"/>
                 </a>
             </TweenOne>
         );
