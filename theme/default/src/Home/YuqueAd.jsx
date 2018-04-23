@@ -48,10 +48,10 @@ class SEEConfAd extends React.Component {
                     duration: 1000
                 }
             });
-        }, 3000);
+        }, 3600000);
         this.noticeTimeout = setTimeout(() => {
             openNotification();
-        }, 4000);
+        }, 3600000);
     }
 
     componentWillUnmount() {
