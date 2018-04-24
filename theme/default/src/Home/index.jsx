@@ -46,11 +46,11 @@ class Home extends React.PureComponent {
 
     render() {
         const content = [];
-        const AD_DATE = moment('2018-04-28');
-        const now = moment();
-        if (now < AD_DATE) {
-            content.push(<YuqueAd/>);
-        }
+        // const AD_DATE = moment('2018-04-28');
+        // const now = moment();
+        // if (now < AD_DATE) {
+        //   content.push(<YuqueAd/>);
+        // }
         return (
             content.concat([
                 <Banner key="banner" isMobile={this.state.isMobile}/>,

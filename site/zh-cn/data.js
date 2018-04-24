@@ -1,5 +1,6 @@
 module.exports = {
     locale: 'zh-cn',
+    currentProduct: 'antv',
     products: {
         g2: {
             version: '3.0.0',
