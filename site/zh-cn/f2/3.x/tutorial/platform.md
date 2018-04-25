@@ -97,15 +97,15 @@ const path = require('path');
 const Canvas = require('canvas'); // 引入 node canvas
 
 // 引入 F2: start
-const F2 = require('./core'); // 引入核心包
-require('./geom/'); // 几何标记对象
-require('./geom/adjust/'); // 数据调整
-require('./coord/polar'); // 极坐标系
-require('./component/axis/circle'); // 极坐标系下的弧长坐标轴
-require('./scale/time-cat'); // timeCat 类型的度量
-require('./component/guide'); // 加载 guide 组件
-const Guide =  require('./plugin/guide'); // Guide 插件
-const Legend =  require('./plugin/legend'); // Legend 插件
+const F2 = require('@antv/lib/core'); // 引入核心包
+require('@antv/lib/geom/'); // 几何标记对象
+require('@antv/lib/geom/adjust/'); // 数据调整
+require('@antv/lib/coord/polar'); // 极坐标系
+require('@antv/lib/component/axis/circle'); // 极坐标系下的弧长坐标轴
+require('@antv/lib/scale/time-cat'); // timeCat 类型的度量
+require('@antv/lib/component/guide'); // 加载 guide 组件
+const Guide =  require('@antv/lib/plugin/guide'); // Guide 插件
+const Legend =  require('@antv/lib/plugin/legend'); // Legend 插件
 F2.Chart.plugins.register([ Legend, Guide ]); // 注册以上插件
 // 引入 F2: end
 

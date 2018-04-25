@@ -19,12 +19,10 @@ F2.version // F2 的版本
 ## 类 Classes
 
 * [F2.Chart](./chart.html)：图表的入口类
-* [F2.Shape](./shape.html)：Shape 类型，自定义 Shape 的接口
-* [F2.G](./graphic.html)：绘图引擎 API，基于原生的 html5 canvas 接口封装，引入容器、分层以及 Shape 等概念，使用更便利
-* [F2.Global](./global.html)：用于设置全局的样式和更改皮肤
-* F2.Util：常见的工具方法
-* [F2.Plugin](./plugin.html): 用于获取提供的插件
-* [F2.Animate](./animation.html): 用于自定义动画函数
+* [F2.Shape](./shape.html)：F2 Shape 图形扩展接口，用于自定义各种几何标记的 shape
+* [F2.G](./graphic.html)：底层绘图引擎，基于原生的 Html5 Canvas 接口封装，引入容器、分层以及 Shape 等概念，使用更加便利
+* [F2.Global](./global.html)：F2 的全局配置，包含图表的皮肤样式
+* [F2.Util](./util.html)：辅助类工具函数
 
 更多 API：
 * [Chart](./chart.html)
@@ -35,7 +33,6 @@ F2.version // F2 的版本
 * [Legend](./legend.html)
 * [Tooltip](./tooltip.html)
 * [Guide](./guide.html)
-* [Interaction](./interaction.html)
 * [Animation](./animation.html)
-* [Global](./global.html)
-* [Canvas](./canvas.html)
+* [Plugin](./plugin.html)
+* [绘图属性](./canvas.html)

@@ -53,7 +53,7 @@ title: Axis 坐标轴
 | `top`     | Boolean     | 调整图层层级，true 表示展示在最上层图形，false 表示展示在最下层图形 |
 
 
-注意：grid 和 label 为回调函数时，返回值必须是对象。
+**注意：grid 和 label 为回调函数时，返回值必须是对象!**
 
 示例：
 

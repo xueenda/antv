@@ -142,11 +142,31 @@ const chart = new F2.Chart({
 - 描述：是否关闭 chart 的动画
 - 默认值：null
 
+
 ## 方法
+
+### `get`
+
+* 描述：获取属性
+* 返回：返回对应的属性值
+
+该方法用于获取 chart 内部的属性，如 `chart.get('width')`，包含的属性如下：
+
+| 属性名  | 解释  |
+| -------- | -------- |
+| id    | 对应 canvas 的 id |
+| padding     | 当前的图表绘图区域和画布边框的间距  |
+| data     | 原始数据 |
+| width     | 图表宽度 |
+| height     | 图表高度 |
+| pixelRatio  | 图表的屏幕像素比 |
+| el     | 对应 canvas 的 dom 对象 |
+| canvas     | 对应的 canvas 对象（G.Canvas） |
+| geoms     | chart render 之后可获取，返回所有的 geoms 对象 |
 
 ### `source`
 
-* 描述： 装载数据
+* 描述：装载数据
 * 返回：当前 chart 实例
 
 #### `chart.source(data)`
@@ -278,6 +298,15 @@ chart.scale({
 * 返回：当前 guideController 实例
 
 详见 [Guide](./guide.html)。
+
+### `animate`
+
+`chart.animate()` 
+
+* 描述：配置图表的动画
+* 返回：当前 chart 实例
+
+详见 [Animation](./animation.html)。
 
 ### 创建 Geometry 对象
 
