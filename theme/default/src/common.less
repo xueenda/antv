@@ -303,6 +303,26 @@ img {
   }
 }
 
+header.navbar {
+  z-index: 10;
+}
+
+/* promote banner */
+.promote-banner .cross {
+  position: absolute;
+  font-size: 24px;
+  cursor: pointer;
+  right: 24px;
+  top: 12px;
+  color: #fff;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  opacity: 0;
+}
+.promote-banner:hover .cross {
+  opacity: 1;
+}
+
 @media only screen and  (min-width: @screen-lg) {
   .container {
     max-width: @screen-lg;

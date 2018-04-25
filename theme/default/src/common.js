@@ -31,7 +31,7 @@ function buildFlattenIndices(docs, invertedList) {
     _.forIn(invertedList, (referenceIds, word) => {
         referenceIds.forEach(ids => {
             if (_.isArray(ids)) {
-                const [ id, anchorId ] = ids;
+                const [id, anchorId] = ids;
                 indices.push({
                     data: {
                         title: docById[id].anchors[0].title,
@@ -151,3 +151,44 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
 });
 
 // FIXME doc filtering is in ./common.js
+
+// FIXME promote banner(AD)
+const localStorage = window.localStorage;
+const promoteStatusKey = 'hide-yuque-20180428';
+const promoteStatus = localStorage.getItem(promoteStatusKey);
+if (localStorage && (!promoteStatus || promoteStatus !== 'true' )) {
+    $('.promote-banner a .cross').click(e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const height = $('.promote-banner').height();
+        $('.promote-banner').animate({
+            height: 0,
+            top: -height
+        }, 1000);
+        $('.promote-banner').addClass('hiden');
+        localStorage.setItem(promoteStatusKey, 'true');
+    });
+    $('.promote-banner a').click(() => {
+        localStorage.setItem(promoteStatusKey, 'true');
+    });
+    const adBannerHeight = $('.promote-banner a img').height();
+    $('.promote-banner').css({
+        top: -adBannerHeight,
+        display: 'block'
+    });
+    setTimeout(() => {
+        $('.promote-banner').animate({
+            height: adBannerHeight,
+            top: 0,
+            opacity: 1
+        }, 1000);
+    }, 300);
+
+    $(window).on('resize', () => {
+        if (!$('.promote-banner').hasClass('hiden')) {
+            $('.promote-banner').css({
+                height: $('.promote-banner a img').height()
+            });
+        }
+    });
+}

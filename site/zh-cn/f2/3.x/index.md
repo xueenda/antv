@@ -22,7 +22,6 @@ featuresCards:
 resource:
   jsFiles:
     - ${url.f2}
-    - ${url.jquery}
 -->
 
 <section class="intro">
@@ -101,6 +100,28 @@ resource:
     </div>
   </div>
 </div>
+
+```js-
+const names = ['商品价格 7 年走势对比', '层叠条形图', '饼图'];
+
+$('.slick').each(function () {
+    const $target = $(this);
+    $target.slick({
+        // dots: !!$target.data('dots'),
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        infinite: true,
+        speed: 500,
+        cssEase: 'linear',
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        fade: true,
+    }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        $('#chartTitle').text(names[nextSlide]);
+    });
+});
+```
 
 <!-- chart1 -->
 
@@ -301,4 +322,3 @@ resource:
   chart.render();
 
 ```
-

@@ -7,8 +7,6 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
 import Page5 from './Page5';
-import YuqueAd from './YuqueAd';
-import moment from 'moment';
 import './home.index.less';
 
 function enquireScreen(cb) {
@@ -46,11 +44,6 @@ class Home extends React.PureComponent {
 
     render() {
         const content = [];
-        // const AD_DATE = moment('2018-04-28');
-        // const now = moment();
-        // if (now < AD_DATE) {
-        //   content.push(<YuqueAd/>);
-        // }
         return (
             content.concat([
                 <Banner key="banner" isMobile={this.state.isMobile}/>,
