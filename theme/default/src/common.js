@@ -156,7 +156,7 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
 const localStorage = window.localStorage;
 const promoteStatusKey = 'hide-yuque-20180428';
 const promoteStatus = localStorage.getItem(promoteStatusKey);
-if (localStorage && (!promoteStatus || promoteStatus !== 'true' )) {
+if (localStorage && (!promoteStatus || promoteStatus !== 'true')) {
     $('.promote-banner a .cross').click(e => {
         e.preventDefault();
         e.stopPropagation();
@@ -181,8 +181,8 @@ if (localStorage && (!promoteStatus || promoteStatus !== 'true' )) {
             height: adBannerHeight,
             top: 0,
             opacity: 1
-        }, 1000);
-    }, 300);
+        }, 300);
+    }, 10);
 
     $(window).on('resize', () => {
         if (!$('.promote-banner').hasClass('hiden')) {
