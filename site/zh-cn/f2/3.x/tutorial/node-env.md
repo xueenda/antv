@@ -150,3 +150,25 @@ drawPie();
 
 canvas.createPNGStream().pipe(fs.createWriteStream(path.join(__dirname, 'pie.png'))) // 导出图片
 ```
+
+## 不同设备分辨率适配方案
+
+适配方案很简单，假设当前设备的像素比为 2，那么在创建 F2 图表的时候，设置下 `pixelRatio` 属性即可：
+
+```js
+const chart = new F2.Chart({
+  el: canvas,
+  width: 375,
+  height: 260,
+  padding: [ 45, 'auto', 'auto' ],
+  pixelRatio: 2
+});
+```
+
+这里我们设置的画布宽高为 375 * 260，在设置了 `pixelRatio: 2` 后生成的图表宽高会相应放大 2 倍，尺寸为 750 * 520，这个时候在显示图片时，将图片的实际显示大小设置为 375 * 260，就可以保证图片的清晰显示了，如下图所示：
+
+- 屏幕分辨率： 2
+- 图片实际大小：750 * 520
+- 图片的样式(显示大小)： `style="width: 375px;height: 260px;"`
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/IWrhQtTcEaBxGnXsPwiP.png" style="width: 375px;height: 260px;">
