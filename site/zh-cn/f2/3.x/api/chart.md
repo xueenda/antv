@@ -8,6 +8,8 @@ resource:
 
 # Chart
 
+---
+
 ## 创建 chart 实例
 
 绘制图表前必须创建一个 `<canvas>` 元素或者一个 canvas 上下文环境。

@@ -8,6 +8,8 @@ resource:
 
 # Tooltip
 
+---
+
 Tooltip 作为 F2 的插件，如要使用，请将其注册如 Chart 类或者 chart 实例。
 
 如果你默认加载的是完整的 F2 代码，那么 Tooltip 已经注册至 Chart 类中，如果您采用动态引用的策略，那么需要先将该组件注册入 Chart 类或者 Chart 实例。

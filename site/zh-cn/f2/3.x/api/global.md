@@ -1,9 +1,11 @@
 <!--
-index: 12
+index: 14
 title: Global 全局配置
 -->
 
 # Global
+
+---
 
 Global 是 F2 中的全局配置项，全局配置项包含了以下内容：
 

@@ -1,5 +1,5 @@
 <!--
-index: 6
+index: 5
 title: 度量 Scale
 resource:
   jsFiles:

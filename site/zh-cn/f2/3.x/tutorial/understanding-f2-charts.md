@@ -1,5 +1,5 @@
 <!--
-index: 4
+index: 3
 title: F2 图表组成
 resource:
   jsFiles:

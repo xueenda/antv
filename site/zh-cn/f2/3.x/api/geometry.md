@@ -5,6 +5,8 @@ title: Geometry 几何标记
 
 # Geometry 
 
+---
+
 几何标记对象，决定了图表的类型，具体的概念介绍请参见 [Geom](../tutorial/geometry.html)。
 
 语法实例：

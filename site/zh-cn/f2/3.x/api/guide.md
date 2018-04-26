@@ -5,6 +5,8 @@ title: Guide 辅助元素
 
 # Guide
 
+---
+
 用于绘制图表的辅助元素，该方法的返回值不为 chart 对象，而是一个 guide 对应的控制类 guideController。 包括辅助线、辅助文本、辅助框、辅助弧线（只在极坐标下适用）、辅助 html。
 
 ## 如何引入 Guide

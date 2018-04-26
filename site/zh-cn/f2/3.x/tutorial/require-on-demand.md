@@ -1,5 +1,5 @@
 <!--
-index: 2
+index: 9
 title: 按需引用
 resource:
   jsFiles:
@@ -108,7 +108,7 @@ require('@antv/f2/lib/scale/time-cat'); // 加载 timeCat 类型的度量
 
 **动画模块也作为 Chart 的插件，所以在加载该模块之后，还需要将模块注册至 Chart 上。**
 
-1. 仅包含入场的动画
+1. 仅包含入场的群组
 
 ```js
 const GroupAnimation = require('@antv/f2/lib/animation/group');
@@ -175,4 +175,17 @@ const F2 = require('@antv/f2/lib/core'); // 必须引入
 require('@antv/f2/lib/geom/interval'); // 引入 interval 几何标记
 require('@antv/f2/lib/coord/polar'); // 引入 极坐标
 ```
+
+## 按需打包工具 
+
+为了方便用户，我们提供了 UI 化的按需打包工具，帮助用户自由选择所需图表和组件进行打包下载，使用方法如下：
+
+```bash
+# 进入 f2 项目根目录，运行如下命令
+$ npm run bundler
+```
+
+在出现的界面中进行需要模块的勾选，最后打包下载即可。
+
+<img src="https://gw.alipayobjects.com/zos/rmsportal/RmUwBPLSWIbecmKEgoSw.png">
 

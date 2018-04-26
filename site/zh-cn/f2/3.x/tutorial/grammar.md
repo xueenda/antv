@@ -1,5 +1,5 @@
 <!--
-index: 3
+index: 2
 title: F2 图形理论
 resource:
   jsFiles:

@@ -1,5 +1,5 @@
 <!--
-index: 13
+index: 11
 title: Shape 自定义 Shape
 resource:
   jsFiles:
@@ -7,6 +7,8 @@ resource:
 -->
 
 # Shape
+
+---
 
 **获取方式：`F2.Shape`**
 

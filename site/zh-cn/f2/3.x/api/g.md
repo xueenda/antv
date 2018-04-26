@@ -1,5 +1,5 @@
 <!--
-index: 15
+index: 13
 title: G 绘图接口
 resource:
   jsFiles:
@@ -7,6 +7,8 @@ resource:
 -->
 
 # 绘图引擎 G
+
+---
 
 F2 3.1 版本之前底层直接采用原生 Canvas 绘制，虽然在性能上占据优势，但是过于底层，api 粗糙，加上即时绘制无状态无对象特性，使得它内部的图形不支持动画更不支持任何交互事件。于是在 3.1 版本我们引入了全新的绘图引擎 G，它具备：
 
@@ -41,6 +43,12 @@ const { G } = F2; // 引入
 const { Canvas, Group, Shape, Matrix, Vector2 } = G;
 ```
 
+- [Canvas](#_Canvas)
+- [Group](#_Group)
+- [Shape](#_Shape)
+- [Matrix](#_Matrix)
+- [Vector2](#_Vector2)
+
 ### Canvas
 
 `new Canvas(config)` 创建 canvas 对象。
@@ -69,6 +77,10 @@ new Canvas({
 
 #### 属性
 
+快速索引：
+- [children](#_children)
+- [destroyed](#_destroyed)
+
 属性的获取方式：`canvas.get(attributeName)`
 
 ##### `children`
@@ -82,6 +94,22 @@ new Canvas({
 描述：标识对象是否已被销毁
 
 #### 方法
+
+快速索引：
+- [getWidth()](#_getWidth-)
+- [getHeight()](#_getHeight-)
+- [changeSize(width, height)](#_changeSize-width,-height-)
+- [getPointByClient(clientX, clientY)](#_getPointByClient-clientX,-clientY-)
+- [addShape(type, config)](#_addShape-type,-config-)
+- [addGroup(config)](#_addGroup-config-)
+- [add(items)](#_add-items-)
+- [contain(item)](#_contain-item-)
+- [sort()](#_sort-)
+- [get(name)](#_get-name-)
+- [set(name, value)](#_set-name,-value-)
+- [clear()](#_clear-)
+- [draw()](#_draw-)
+- [destroy()](#_destroy-)
 
 ##### `getWidth()`
 
@@ -252,6 +280,13 @@ new Group({
 
 #### 属性
 
+快速索引：
+- [children](#__children)
+- [destroyed](#__destroyed)
+- [visible](#_visible)
+- [isGroup](#_isGroup)
+- [attrs](#_attrs)
+
 属性的获取方式：`group.get(attributeName)`
 
 ##### `children`
@@ -280,6 +315,30 @@ new Group({
 描述：group 对象的图形属性，目前该属性只包含 `matrix` 矩阵属性。
 
 #### 方法
+
+快速索引：
+- [addShape(type, config)](#__addShape-type,-config-)
+- [addGroup(config)](#__addGroup-config-)
+- [add(items)](l#__add-items-)
+- [contain(item)](#__contain-item-)
+- [sort()](#__sort-)
+- [getBBox()](#_getBBox-)
+- [getParent()](#_getParent-)
+- [show()](#_show-)
+- [hide()](#_hide-)
+- [get(name)](#__get-name-)
+- [set(name, value)](#__set-name,-value-)
+- [getMatrix()](#_getMatrix-)
+- [setMatrix(m)](#_setMatrix-m-)
+- [transform(actions)](#_transform-actions-)
+- [translate(x, y)](#_translate-x,-y-)
+- [rotate(radian)](#_rotate-radian-)
+- [scale(sx, sy)](#_scale-sx,-sy-)
+- [setTransform(actions)](#_setTransform-actions-)
+- [clear()](#__clear-)
+- [remove(destroy)](#_remove-destroy-)
+- [destroy()](#__destroy-)
+
 
 ##### `addShape(type, config)`
 
@@ -478,7 +537,7 @@ rotate(radian)
 scale(sx, sy)
 ```
 
-##### `setTransform`
+##### `setTransform(actions)`
 
 重置矩阵后，进行平移、旋转、缩放操作
 
@@ -559,6 +618,13 @@ new Shape.Line({
 
 #### 通用属性
 
+快速索引：
+- [type](#_type)
+- [attrs](#__attrs)
+- [destroyed](#___destroyed)
+- [visible](#__visible)
+- [isShape](#_isShape)
+
 属性的获取方式：`shape.get(attributeName)`
 
 ##### `type`
@@ -588,6 +654,24 @@ new Shape.Line({
 
 
 #### 通用方法
+
+快速索引：
+- [attr()](#_attr-)
+- [getBBox()](#__getBBox-)
+- [getParent()](#__getParent-)
+- [show()](#__show-)
+- [hide()](#__hide-)
+- [get(name)](#___get-name-)
+- [set(name, value)](#___set-name,-value-)
+- [getMatrix()](#__getMatrix-)
+- [setMatrix(m)](#__setMatrix-m-)
+- [transform(actions)](#__transform-actions-)
+- [translate(x, y)](#__translate-x,-y-)
+- [rotate(radian)](#__rotate-radian-)
+- [scale(sx, sy)](#__scale-sx,-sy-)
+- [setTransform(actions)](#__setTransform-actions-)
+- [remove(destroy)](#__remove-destroy-)
+- [destroy()](#___destroy-)
 
 ##### `attr()` 
 
@@ -746,7 +830,7 @@ rotate(radian)
 scale(sx, sy)
 ```
 
-##### `setTransform`
+##### `setTransform(actions)`
 
 重置矩阵后，进行平移、旋转、缩放操作
 
@@ -926,6 +1010,13 @@ new G.Shape.Custom({
 
 提供 3x2 矩阵操作方法，具体提供了以下方法：
 
+快速索引：
+- [multiply(m1, m2)](#_multiply-m1,-m2-)
+- [scale(out, m, v)](#_scale-out,-m,-v-)
+- [rotate(out, m, radian)](#_rotate-out,-m,-radian-)
+- [translate(out, m, v)](#_translate-out,-m,-v-)
+- [transform(m, actions)](#_transform-m,-actions-)
+
 #### `multiply(m1, m2)`
 
 两个矩阵相乘。
@@ -1011,6 +1102,24 @@ transform(m, actions)
 ### Vector2
 
 二维向量操作方法，具体提供的方法如下：
+
+快速索引：
+- [create()](#_create-)
+- [length(v)](#_length-v-)
+- [normalize(out, v)](#_normalize-out,-v-)
+- [add(out, v1, v2)](#_add-out,-v1,-v2-)
+- [sub(out, v1, v2)](#_sub-out,-v1,-v2-)
+- [scale(out, v, s)](#_scale-out,-v,-s-)
+- [dot(v1, v2)](#_dot-v1,-v2-)
+- [direction(v1, v2)](#_direction-v1,-v2-)
+- [angle(v1, v2)](#_angle-v1,-v2-)
+- [angleTo(v1, v2, direction)](#_angleTo-v1,-v2,-direction-)
+- [zero(v)](#_zero-v-)
+- [distance(v1, v2)](#_distance-v1,-v2-)
+- [clone(v)](#_clone-v-)
+- [min(out, v1, v2)](#_min-out,-v1,-v2-)
+- [max(out, v1, v2)](#_max-out,-v1,-v2-)
+- [transformMat2d(out, v, m)](#_transformMat2d-out,-v,-m-)
 
 #### `create()`
 
@@ -1106,10 +1215,6 @@ scale(out, v, s)
 #### `clone(v)`
 
 克隆向量。
-
-#### `min(out, v1, v2)`
-
-求最小向量。
 
 #### `min(out, v1, v2)`
 

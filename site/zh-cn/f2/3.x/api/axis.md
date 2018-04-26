@@ -5,6 +5,8 @@ title: Axis 坐标轴
 
 # Axis
 
+---
+
 坐标轴配置。F2 的坐标轴的组成如下：
 
 <img src="https://gw.alipayobjects.com/zos/rmsportal/YhhBplZmzxzwvUBeEvPE.png" style="width: 500px;">

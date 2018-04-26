@@ -5,6 +5,8 @@ title: 绘图属性
 
 # 绘图属性
 
+---
+
 由于 F2 使用的是 canvas，绘制的所有图形都支持 canvas 的属性，本章列出常用的属性，详细信息参考[ canvas 属性](http://www.w3school.com.cn/tags/html_ref_canvas.asp)。
 
 ## 通用属性
