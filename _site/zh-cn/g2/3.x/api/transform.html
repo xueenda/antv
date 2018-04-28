@@ -1,0 +1,420 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Transform - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/api/index.html>G2</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/chart.html>Chart</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/view.html>View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/geom.html>Geom</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/scale.html>Scale</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/shape.html>Shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/animate.html>Animate</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/options.html>&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;&#x65B9;&#x5F0F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/slider.html>Slider</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/connector.html>Connector</a></li><li class="list-group-item active"><a href=/zh-cn/g2/3.x/api/transform.html>Transform</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/graphic.html>&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_Transform-&#x6570;&#x636E;&#x8F6C;&#x6362;><a href=#_Transform-&#x6570;&#x636E;&#x8F6C;&#x6362; class=anchor></a>Transform &#x6570;&#x636E;&#x8F6C;&#x6362;</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x9759;&#x6001;&#x5904;&#x7406;&#x76F8;&#x5173;>&#x9759;&#x6001;&#x5904;&#x7406;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_filter-&#x6570;&#x636E;&#x8FC7;&#x6EE4;>filter &#x6570;&#x636E;&#x8FC7;&#x6EE4;</a><a class="col-md-3 level-3" href=#_map-&#x6570;&#x636E;&#x52A0;&#x5DE5;>map &#x6570;&#x636E;&#x52A0;&#x5DE5;</a><a class="col-md-3 level-3" href=#_pick-&#x5B57;&#x6BB5;&#x8FC7;&#x6EE4;>pick &#x5B57;&#x6BB5;&#x8FC7;&#x6EE4;</a><a class="col-md-3 level-3" href=#_rename-&#x5B57;&#x6BB5;&#x91CD;&#x547D;&#x540D;>rename &#x5B57;&#x6BB5;&#x91CD;&#x547D;&#x540D;</a><a class="col-md-3 level-3" href=#_reverse-&#x9006;&#x5E8F;&#x6392;&#x5217;>reverse &#x9006;&#x5E8F;&#x6392;&#x5217;</a><a class="col-md-3 level-3" href=#_sort-&#x6570;&#x636E;&#x6392;&#x5E8F;>sort &#x6570;&#x636E;&#x6392;&#x5E8F;</a><a class="col-md-3 level-3" href=#_sort-by-&#x6309;&#x5B57;&#x6BB5;&#x6392;&#x5E8F;>sort-by &#x6309;&#x5B57;&#x6BB5;&#x6392;&#x5E8F;</a><a class="col-md-3 level-3" href=#_subset-&#x83B7;&#x53D6;&#x5B50;&#x96C6;>subset &#x83B7;&#x53D6;&#x5B50;&#x96C6;</a><a class="col-md-3 level-3" href=#_partition-&#x6570;&#x636E;&#x5206;&#x7EC4;>partition &#x6570;&#x636E;&#x5206;&#x7EC4;</a><a class="col-md-3 level-2" href=#_&#x6570;&#x636E;&#x5F62;&#x53D8;-&#x6570;&#x636E;&#x8865;&#x5168;&#x76F8;&#x5173;>&#x6570;&#x636E;&#x5F62;&#x53D8;/&#x6570;&#x636E;&#x8865;&#x5168;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_fill-rows-&#x8865;&#x5168;&#x884C;>fill-rows &#x8865;&#x5168;&#x884C;</a><a class="col-md-3 level-3" href=#_impute-&#x8865;&#x5168;&#x5217;-&#x8865;&#x5168;&#x5B57;&#x6BB5;>impute &#x8865;&#x5168;&#x5217;/&#x8865;&#x5168;&#x5B57;&#x6BB5;</a><a class="col-md-3 level-3" href=#_fold-&#x5B57;&#x6BB5;&#x5C55;&#x5F00;>fold &#x5B57;&#x6BB5;&#x5C55;&#x5F00;</a><a class="col-md-3 level-2" href=#_&#x6570;&#x636E;&#x6BD4;&#x4F8B;&#xFF08;&#x767E;&#x5206;&#x6BD4;&#xFF09;&#x76F8;&#x5173;-Transform>&#x6570;&#x636E;&#x6BD4;&#x4F8B;&#xFF08;&#x767E;&#x5206;&#x6BD4;&#xFF09;&#x76F8;&#x5173; Transform</a><a class="col-md-3 level-3" href=#_percent-&#x603B;&#x548C;&#x767E;&#x5206;&#x6BD4;>percent &#x603B;&#x548C;&#x767E;&#x5206;&#x6BD4;</a><a class="col-md-3 level-3" href=#_proportion-&#x884C;&#x6570;&#x767E;&#x5206;&#x6BD4;>proportion &#x884C;&#x6570;&#x767E;&#x5206;&#x6BD4;</a><a class="col-md-3 level-2" href=#_&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x76F8;&#x5173;>&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_aggregate-&#x805A;&#x5408;&#x7EDF;&#x8BA1;>aggregate &#x805A;&#x5408;&#x7EDF;&#x8BA1;</a><a class="col-md-3 level-3" href=#_regression-&#x56DE;&#x5F52;&#x66F2;&#x7EBF;>regression &#x56DE;&#x5F52;&#x66F2;&#x7EBF;</a><a class="col-md-3 level-2" href=#_&#x6570;&#x636E;&#x5206;&#x7BB1;&#x76F8;&#x5173;>&#x6570;&#x636E;&#x5206;&#x7BB1;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_bin.histogram-&#x76F4;&#x65B9;&#x56FE;&#x5206;&#x7BB1;>bin.histogram &#x76F4;&#x65B9;&#x56FE;&#x5206;&#x7BB1;</a><a class="col-md-3 level-3" href=#_bin.quantile-&#x5206;&#x4F4D;&#x503C;&#x5206;&#x7BB1;>bin.quantile &#x5206;&#x4F4D;&#x503C;&#x5206;&#x7BB1;</a><a class="col-md-3 level-3" href=#_bin.hexagon-&#x516D;&#x8FB9;&#x5F62;&#x5206;&#x7BB1;>bin.hexagon &#x516D;&#x8FB9;&#x5F62;&#x5206;&#x7BB1;</a><a class="col-md-3 level-3" href=#_bin.rectangle-&#x77E9;&#x5F62;&#x5206;&#x7BB1;>bin.rectangle &#x77E9;&#x5F62;&#x5206;&#x7BB1;</a><a class="col-md-3 level-2" href=#_&#x6838;&#x51FD;&#x6570;&#x76F8;&#x5173;>&#x6838;&#x51FD;&#x6570;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_kernel-smooth.regression-&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x56DE;&#x5F52;>kernel-smooth.regression &#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x56DE;&#x5F52;</a><a class="col-md-3 level-3" href=#_kernel-smooth.density-&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x5206;&#x5E03;>kernel-smooth.density &#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x5206;&#x5E03;</a><a class="col-md-3 level-2" href=#_&#x6811;&#x76F8;&#x5173;>&#x6811;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_hierarchy.treemap-&#x6811;&#x5F62;&#x56FE;>hierarchy.treemap &#x6811;&#x5F62;&#x56FE;</a><a class="col-md-3 level-3" href=#_hierarchy.partition-&#x76F8;&#x90BB;&#x5C42;&#x6B21;&#x56FE;>hierarchy.partition &#x76F8;&#x90BB;&#x5C42;&#x6B21;&#x56FE;</a><a class="col-md-3 level-2" href=#_&#x56FE;&#x76F8;&#x5173;>&#x56FE;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_diagram.arc-&#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE;>diagram.arc &#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE;</a><a class="col-md-3 level-3" href=#_diagram.sankey-&#x6851;&#x57FA;&#x56FE;>diagram.sankey &#x6851;&#x57FA;&#x56FE;</a><a class="col-md-3 level-3" href=#_diagram.voronoi>diagram.voronoi</a><a class="col-md-3 level-2" href=#_Geo-&#x5730;&#x7406;&#x6570;&#x636E;&#x76F8;&#x5173;>Geo &#x5730;&#x7406;&#x6570;&#x636E;&#x76F8;&#x5173;</a><a class="col-md-3 level-3" href=#_geo.projection-&#x5730;&#x7406;&#x6620;&#x5C04;>geo.projection &#x5730;&#x7406;&#x6620;&#x5C04;</a><a class="col-md-3 level-3" href=#_geo.centroid-&#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x70B9;>geo.centroid &#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x70B9;</a><a class="col-md-3 level-3" href=#_geo.region-&#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x533A;&#x57DF;>geo.region &#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x533A;&#x57DF;</a><a class="col-md-3 level-2" href=#_&#x5176;&#x4ED6;>&#x5176;&#x4ED6;</a><a class="col-md-3 level-3" href=#_tag-cloud-&#x8BCD;&#x4E91;&#x5E03;&#x5C40;>tag-cloud &#x8BCD;&#x4E91;&#x5E03;&#x5C40;</a></div><p>&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x89C6;&#x56FE;&#xFF08;DataSet.View&#xFF09;&#x901A;&#x8FC7; Transform &#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#xFF0C;&#x5176;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: connectorName,
+  ...otherOptions
+});
+</pre></div><p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p><div class=highlight><pre><span class=hljs-keyword>const</span> testCSV = <span class=hljs-string>`Expt,Run,Speed
+ 1,1,850
+ 1,2,740
+ 1,3,900
+ 1,4,1070`</span>;
+
+<span class=hljs-keyword>const</span> dv = <span class=hljs-keyword>new</span> DataSet.View().source(testCSV, {
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;csv&apos;</span>
+});
+<span class=hljs-built_in>console</span>.log(dv.rows);
+<span class=hljs-comment>/*
+ * dv.rows:
+ * [
+ *   {Expt: &quot; 1&quot;, Run: &quot;1&quot;, Speed: &quot;850&quot;}
+ *   {Expt: &quot; 1&quot;, Run: &quot;2&quot;, Speed: &quot;740&quot;}
+ *   {Expt: &quot; 1&quot;, Run: &quot;3&quot;, Speed: &quot;900&quot;}
+ *   {Expt: &quot; 1&quot;, Run: &quot;4&quot;, Speed: &quot;1070&quot;}
+ * ]
+ */</span>
+
+dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;filter&apos;</span>,
+  callback(row) {
+    <span class=hljs-keyword>return</span> row.Run !== <span class=hljs-string>&quot;1&quot;</span>;
+  }
+});
+<span class=hljs-built_in>console</span>.log(dv.rows);
+<span class=hljs-comment>/*
+ * dv.rows:
+ * [
+ *   {Expt: &quot; 1&quot;, Run: &quot;2&quot;, Speed: &quot;740&quot;}
+ *   {Expt: &quot; 1&quot;, Run: &quot;3&quot;, Speed: &quot;900&quot;}
+ *   {Expt: &quot; 1&quot;, Run: &quot;4&quot;, Speed: &quot;1070&quot;}
+ * ]
+ */</span>
+
+</pre></div><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x89C6;&#x56FE;&#x5B9E;&#x4F8B; <code>dv</code> &#x4F7F;&#x7528; <code>csv</code> &#x7C7B;&#x578B;&#x7684; Connector &#x8F7D;&#x5165;&#x4E86;&#x4E00;&#x6BB5; CSV &#x6587;&#x672C;&#xFF0C;&#x4E4B;&#x540E;&#x6267;&#x884C; <code>filter</code> Transform&#xFF0C;&#x8FC7;&#x6EE4;&#x4E86;&#x67D0;&#x4E9B;&#x6570;&#x636E;&#x3002;</p><p>&#x76EE;&#x524D; DataSet &#x652F;&#x6301;&#x4EE5;&#x4E0B; Transform&#xFF1A;</p><h2 id=_&#x9759;&#x6001;&#x5904;&#x7406;&#x76F8;&#x5173;><a href=#_&#x9759;&#x6001;&#x5904;&#x7406;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x9759;&#x6001;&#x5904;&#x7406;&#x76F8;&#x5173;</h2><h3 id=_filter-&#x6570;&#x636E;&#x8FC7;&#x6EE4;><a href=#_filter-&#x6570;&#x636E;&#x8FC7;&#x6EE4; class=anchor><span class="iconfont icon-link"></span></a>filter &#x6570;&#x636E;&#x8FC7;&#x6EE4;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;filter&apos;</span>,
+  callback(row) { <span class=hljs-comment>// &#x5224;&#x65AD;&#x67D0;&#x4E00;&#x884C;&#x662F;&#x5426;&#x4FDD;&#x7559;&#xFF0C;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;true</span>
+    <span class=hljs-keyword>return</span> row.year &gt; <span class=hljs-number>1998</span>;
+  }
+});
+</pre></div><h3 id=_map-&#x6570;&#x636E;&#x52A0;&#x5DE5;><a href=#_map-&#x6570;&#x636E;&#x52A0;&#x5DE5; class=anchor><span class="iconfont icon-link"></span></a>map &#x6570;&#x636E;&#x52A0;&#x5DE5;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;map&apos;</span>,
+  callback(row) { <span class=hljs-comment>// &#x52A0;&#x5DE5;&#x6570;&#x636E;&#x540E;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#x4E00;&#x884C;&#xFF0C;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;&#x884C;&#x6570;&#x636E;&#x672C;&#x8EAB;</span>
+    row.newCol = row.xxx + row.yyy;
+    <span class=hljs-keyword>return</span> row;
+  }
+});
+</pre></div><h3 id=_pick-&#x5B57;&#x6BB5;&#x8FC7;&#x6EE4;><a href=#_pick-&#x5B57;&#x6BB5;&#x8FC7;&#x6EE4; class=anchor><span class="iconfont icon-link"></span></a>pick &#x5B57;&#x6BB5;&#x8FC7;&#x6EE4;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;pick&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;xxx&apos;</span>, <span class=hljs-string>&apos;yyy&apos;</span> ] <span class=hljs-comment>// &#x51B3;&#x5B9A;&#x4FDD;&#x7559;&#x54EA;&#x4E9B;&#x5B57;&#x6BB5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x4F20;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x5B57;&#x6BB5;</span>
+});
+</pre></div><h3 id=_rename-&#x5B57;&#x6BB5;&#x91CD;&#x547D;&#x540D;><a href=#_rename-&#x5B57;&#x6BB5;&#x91CD;&#x547D;&#x540D; class=anchor><span class="iconfont icon-link"></span></a>rename &#x5B57;&#x6BB5;&#x91CD;&#x547D;&#x540D;</h3><blockquote><p>alias: rename-fields</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;rename&apos;</span>,
+  <span class=hljs-attr>map</span>: {
+    <span class=hljs-attr>xxx</span>: <span class=hljs-string>&apos;yyy&apos;</span> <span class=hljs-comment>// row.xxx &#x4F1A;&#x88AB;&#x66FF;&#x6362;&#x6210; row.yyy</span>
+  }
+});
+</pre></div><h3 id=_reverse-&#x9006;&#x5E8F;&#x6392;&#x5217;><a href=#_reverse-&#x9006;&#x5E8F;&#x6392;&#x5217; class=anchor><span class="iconfont icon-link"></span></a>reverse &#x9006;&#x5E8F;&#x6392;&#x5217;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({ <span class=hljs-comment>// &#x628A;&#x6570;&#x636E;&#x884C;&#x9006;&#x5E8F;&#x6392;&#x5217;</span>
+  type: <span class=hljs-string>&apos;reverse&apos;</span>,
+});
+</pre></div><h3 id=_sort-&#x6570;&#x636E;&#x6392;&#x5E8F;><a href=#_sort-&#x6570;&#x636E;&#x6392;&#x5E8F; class=anchor><span class="iconfont icon-link"></span></a>sort &#x6570;&#x636E;&#x6392;&#x5E8F;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;sort&apos;</span>,
+  callback(a, b) { <span class=hljs-comment>// &#x6392;&#x5E8F;&#x4F9D;&#x636E;&#xFF0C;&#x548C;&#x539F;&#x751F;js&#x7684;&#x6392;&#x5E8F;callback&#x4E00;&#x81F4;</span>
+    <span class=hljs-keyword>return</span> a.year - b.year;
+  }
+});
+</pre></div><h3 id=_sort-by-&#x6309;&#x5B57;&#x6BB5;&#x6392;&#x5E8F;><a href=#_sort-by-&#x6309;&#x5B57;&#x6BB5;&#x6392;&#x5E8F; class=anchor><span class="iconfont icon-link"></span></a>sort-by &#x6309;&#x5B57;&#x6BB5;&#x6392;&#x5E8F;</h3><blockquote><p>alias: sortBy</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;sort-by&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;year&apos;</span> ], <span class=hljs-comment>// &#x6839;&#x636E;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#x96C6;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x4E0E;lodash&#x7684;sortBy&#x884C;&#x4E3A;&#x4E00;&#x81F4;</span>
+  order: <span class=hljs-string>&apos;DESC&apos;</span>        <span class=hljs-comment>// &#x9ED8;&#x8BA4;&#x4E3A; ASC&#xFF0C;DESC &#x5219;&#x4E3A;&#x9006;&#x5E8F;</span>
+})
+</pre></div><h3 id=_subset-&#x83B7;&#x53D6;&#x5B50;&#x96C6;><a href=#_subset-&#x83B7;&#x53D6;&#x5B50;&#x96C6; class=anchor><span class="iconfont icon-link"></span></a>subset &#x83B7;&#x53D6;&#x5B50;&#x96C6;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;subset&apos;</span>,
+  <span class=hljs-attr>startRowIndex</span>: <span class=hljs-number>1</span>,  <span class=hljs-comment>// &#x4FDD;&#x7559;&#x884C;&#x7684;&#x8D77;&#x59CB;&#x7D22;&#x5F15;</span>
+  endRowIndex: <span class=hljs-number>2</span>,    <span class=hljs-comment>// &#x4FDD;&#x7559;&#x884C;&#x7684;&#x7ED3;&#x675F;&#x7D22;&#x5F15;</span>
+  fields: [ <span class=hljs-string>&apos;year&apos;</span> ] <span class=hljs-comment>// &#x4FDD;&#x7559;&#x5B57;&#x6BB5;&#x96C6;</span>
+})
+</pre></div><h3 id=_partition-&#x6570;&#x636E;&#x5206;&#x7EC4;><a href=#_partition-&#x6570;&#x636E;&#x5206;&#x7EC4; class=anchor><span class="iconfont icon-link"></span></a>partition &#x6570;&#x636E;&#x5206;&#x7EC4;</h3><blockquote><p>alias: group | groups</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;partition&apos;</span>,
+  <span class=hljs-attr>groupBy</span>: [ <span class=hljs-string>&apos;year&apos;</span> ], <span class=hljs-comment>// &#x4EE5;year&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x5206;&#x7EC4;</span>
+  orderBy: [ <span class=hljs-string>&apos;month&apos;</span> ] <span class=hljs-comment>// &#x4EE5;month&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+});
+</pre></div><h2 id=_&#x6570;&#x636E;&#x5F62;&#x53D8;-&#x6570;&#x636E;&#x8865;&#x5168;&#x76F8;&#x5173;><a href=#_&#x6570;&#x636E;&#x5F62;&#x53D8;-&#x6570;&#x636E;&#x8865;&#x5168;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x6570;&#x636E;&#x5F62;&#x53D8;/&#x6570;&#x636E;&#x8865;&#x5168;&#x76F8;&#x5173;</h2><h3 id=_fill-rows-&#x8865;&#x5168;&#x884C;><a href=#_fill-rows-&#x8865;&#x5168;&#x884C; class=anchor><span class="iconfont icon-link"></span></a>fill-rows &#x8865;&#x5168;&#x884C;</h3><blockquote><p>alias: fillRows</p></blockquote><p>&#x5148;&#x6309;&#x7167; <code>groupBy</code> &#x548C; <code>orderBy</code> &#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x5982;&#x679C;&#x4EE5;&#x5206;&#x7EC4;&#x4F5C;&#x4E3A;&#x8865;&#x5168;&#x4F9D;&#x636E;&#xFF08;<code>fillBy: &apos;group&apos;</code>&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5BF9;&#x6BD4;&#x6BCF;&#x4E2A;&#x5206;&#x7EC4;&#xFF0C;&#x4EE5; <code>orderBy</code> &#x5E8F;&#x5217;&#x5B57;&#x6BB5;&#x503C;&#x6700;&#x5168;&#x7684;&#x5206;&#x7EC4;&#x4E3A;&#x6807;&#x51C6;&#x8865;&#x5168;&#x6570;&#x636E;&#x884C;&#x6570;&#x4E0D;&#x8DB3;&#x7684;&#x5206;&#x7EC4;&#x3002;&#x5982;&#x679C;&#x4EE5;&#x5E8F;&#x5217;&#x4F5C;&#x4E3A;&#x8865;&#x5168;&#x4F9D;&#x636E;&#xFF08;<code>fillBy: &apos;order&apos;</code>&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x53D6;&#x6240;&#x6709; <code>orderBy</code> &#x5E8F;&#x5217;&#x5B57;&#x6BB5;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E2A;&#x5206;&#x7EC4;&#x90FD;&#x8865;&#x5145;&#x5168;&#x91CF;&#x7684;&#x5E8F;&#x5217;&#x3002;</p><blockquote><p>&#x6CE8;&#x610F;&#xFF01;&#x5982;&#x679C;&#x539F;&#x59CB;&#x6570;&#x636E;&#x6709;&#x9664; groupBy &#x548C; orderBy &#x6307;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#x4EE5;&#x5916;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x90A3;&#x4E48;&#x8865;&#x5145;&#x7684;&#x6570;&#x636E;&#x884C;&#x91CC;&#x4F1A;&#x7F3A;&#x5931;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x3002;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x7ED3;&#x5408; impute Transform &#x6765;&#x505A;&#x5B57;&#x6BB5;&#x6570;&#x636E;&#x8865;&#x5168;&#x3002;</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><blockquote><p>fillBy: group</p></blockquote><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>0</span> },
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>1</span> },
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>2</span> },
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>1</span> },
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>2</span> },
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>3</span> },
+  { <span class=hljs-attr>a</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>b</span>: <span class=hljs-number>0</span> }
+];
+<span class=hljs-keyword>const</span> dv = <span class=hljs-keyword>new</span> DataSet.View().source(data)
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;fill-rows&apos;</span>,
+    <span class=hljs-attr>groupBy</span>: [ <span class=hljs-string>&apos;a&apos;</span> ],
+    <span class=hljs-attr>orderBy</span>: [ <span class=hljs-string>&apos;b&apos;</span> ],
+    <span class=hljs-attr>fillBy</span>: <span class=hljs-string>&apos;group&apos;</span> <span class=hljs-comment>// &#x9ED8;&#x8BA4;&#x4E3A; group&#xFF0C;&#x53EF;&#x9009;&#x503C;&#xFF1A;order</span>
+  });
+<span class=hljs-built_in>console</span>.log(dv.rows);
+<span class=hljs-comment>/*
+ * dv.rows &#x53D8;&#x4E3A;:
+ * [
+ *   { a: 0, b: 0 }, // &#x5206;&#x7EC4;1 &#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x5B57;&#x6BB5;&#x6700;&#x5168;&#xFF08;b&#xFF09;&#x7684;&#x7EC4;&#xFF0C;&#x88AB;&#x9009;&#x4E3A;&#x57FA;&#x51C6;
+ *   { a: 0, b: 1 },
+ *   { a: 0, b: 2 },
+ *   { a: 1, b: 1 }, // &#x5206;&#x7EC4;2 &#x5E8F;&#x5217;&#x5B57;&#x6BB5;&#x4E2A;&#x6570;&#x548C;&#x57FA;&#x51C6;&#x7EC4;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x8865;&#x5145;&#x6570;&#x636E;
+ *   { a: 1, b: 2 },
+ *   { a: 1, b: 3 },
+ *   { a: 2, b: 0 }, // &#x5206;&#x7EC4;3 &#x7F3A;&#x7701;&#x6570;&#x636E;&#xFF0C;&#x6839;&#x636E;&#x57FA;&#x51C6;&#x7EC4;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x8865;&#x5168;
+ *   { a: 2, b: 1 }, // &#x8FD9;&#x884C;&#x6570;&#x636E;&#x88AB;&#x8865;&#x5145;
+ *   { a: 2, b: 2 }, // &#x8FD9;&#x884C;&#x6570;&#x636E;&#x88AB;&#x8865;&#x5145;
+ * ]
+ */</span>
+</pre></div><blockquote><p>fillBy: order</p></blockquote><div class=highlight><pre><span class=hljs-comment>// &#x4F7F;&#x7528;&#x548C;&#x4E0A;&#x4F8B;&#x540C;&#x6837;&#x7684;&#x6570;&#x636E;</span>
+<span class=hljs-keyword>const</span> dv = <span class=hljs-keyword>new</span> DataSet.View().source(data)
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;fill-rows&apos;</span>,
+    <span class=hljs-attr>groupBy</span>: [ <span class=hljs-string>&apos;a&apos;</span> ],
+    <span class=hljs-attr>orderBy</span>: [ <span class=hljs-string>&apos;b&apos;</span> ],
+    <span class=hljs-attr>fillBy</span>: <span class=hljs-string>&apos;order&apos;</span> <span class=hljs-comment>// &#x9ED8;&#x8BA4;&#x4E3A; group&#xFF0C;&#x53EF;&#x9009;&#x503C;&#xFF1A;order</span>
+  });
+<span class=hljs-built_in>console</span>.log(dv.rows);
+<span class=hljs-comment>/*
+ * dv.rows &#x53D8;&#x4E3A;:
+ * [
+ *   { a: 0, b: 0 }, // &#x5206;&#x7EC4;1
+ *   { a: 0, b: 1 },
+ *   { a: 0, b: 2 },
+ *   { a: 0, b: 3 }, // &#x5206;&#x7EC4;1 &#x8865;&#x5145;&#x4E86;&#x8FD9;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x5168;&#x91CF;&#x7684;&#x5E8F;&#x5217;&#x5B57;&#x6BB5;&#xFF08;b&#xFF09;&#x6709;&#x8FD9;&#x4E2A;&#x503C;
+ *   { a: 1, b: 0 }, // &#x5206;&#x7EC4;2 &#x8865;&#x5145;&#x4E86;&#x8FD9;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;&#x5168;&#x91CF;&#x7684;&#x5E8F;&#x5217;&#x5B57;&#x6BB5;&#xFF08;b&#xFF09;&#x6709;&#x8FD9;&#x4E2A;&#x503C;
+ *   { a: 1, b: 1 },
+ *   { a: 1, b: 2 },
+ *   { a: 1, b: 3 },
+ *   { a: 2, b: 0 }, // &#x5206;&#x7EC4;3 &#x7F3A;&#x7701;&#x6570;&#x636E;&#xFF0C;&#x6839;&#x636E;&#x57FA;&#x51C6;&#x7EC4;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x8865;&#x5168;
+ *   { a: 2, b: 1 }, // &#x8FD9;&#x884C;&#x6570;&#x636E;&#x88AB;&#x8865;&#x5145;
+ *   { a: 2, b: 2 }, // &#x8FD9;&#x884C;&#x6570;&#x636E;&#x88AB;&#x8865;&#x5145;
+ *   { a: 2, b: 3 }, // &#x8FD9;&#x884C;&#x6570;&#x636E;&#x88AB;&#x8865;&#x5145;
+ * ]
+ */</span>
+</pre></div><h3 id=_impute-&#x8865;&#x5168;&#x5217;-&#x8865;&#x5168;&#x5B57;&#x6BB5;><a href=#_impute-&#x8865;&#x5168;&#x5217;-&#x8865;&#x5168;&#x5B57;&#x6BB5; class=anchor><span class="iconfont icon-link"></span></a>impute &#x8865;&#x5168;&#x5217;/&#x8865;&#x5168;&#x5B57;&#x6BB5;</h3><p>&#x6839;&#x636E;&#x914D;&#x7F6E;&#x89C4;&#x5219;&#x4E3A;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;&#x8865;&#x5168;&#x7F3A;&#x5931;&#x503C;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>1</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>2</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>3</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>0</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>5</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>6</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>7</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>1</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>9</span> },
+  { <span class=hljs-attr>x</span>: <span class=hljs-number>2</span> }
+];
+<span class=hljs-keyword>const</span> dv = <span class=hljs-keyword>new</span> DataSet.View().source(data)
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;impute&apos;</span>,
+    <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;y&apos;</span>,       <span class=hljs-comment>// &#x5F85;&#x8865;&#x5168;&#x5B57;&#x6BB5;</span>
+    groupBy: [ <span class=hljs-string>&apos;x&apos;</span> ], <span class=hljs-comment>// &#x5206;&#x7EC4;&#x5B57;&#x6BB5;&#x96C6;&#xFF08;&#x4F20;&#x7A7A;&#x5219;&#x4E0D;&#x5206;&#x7EC4;&#xFF09;</span>
+    method: <span class=hljs-string>&apos;max&apos;</span>     <span class=hljs-comment>// &#x8865;&#x5168;&#x5B57;&#x6BB5;&#x503C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x89C4;&#x5219;</span>
+  });
+<span class=hljs-comment>/*
+ dv.rows &#x53D8;&#x4E3A;
+[
+  { x: 0, y: 1 },
+  { x: 0, y: 2 },
+  { x: 0, y: 3 },
+  { x: 0, y: 3 },
+  { x: 1, y: 5 },
+  { x: 1, y: 6 },
+  { x: 1, y: 7 },
+  { x: 1, y: 7 },
+  { x: 1, y: 9 },
+  { x: 2, y: 9 }
+]
+ */</span>
+</pre></div><blockquote><p>&#x8865;&#x5168;&#x5B57;&#x6BB5;&#x7684;&#x89C4;&#x5219;&#xFF08;method&#xFF09;&#x6709;&#x5E38;&#x89C1;&#x7684;&#x7EDF;&#x8BA1;&#x51FD;&#x6570;&#xFF1A;max, min, median, mean</p></blockquote><blockquote><p>&#x8FD8;&#x6709;&#x8865;&#x5145;&#x56FA;&#x5B9A;&#x503C;&#x7684;&#x5199;&#x6CD5;&#xFF1A;method &#x6307;&#x5B9A;&#x4E3A; value&#xFF0C;&#x7136;&#x540E; value &#x6307;&#x5B9A;&#x4E3A;&#x586B;&#x5145;&#x7684;&#x5E38;&#x91CF;&#xFF0C;&#x8B6C;&#x5982;</p></blockquote><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;impute&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;y&apos;</span>,       <span class=hljs-comment>// &#x5F85;&#x8865;&#x5168;&#x5B57;&#x6BB5;</span>
+  groupBy: [ <span class=hljs-string>&apos;x&apos;</span> ], <span class=hljs-comment>// &#x5206;&#x7EC4;&#x5B57;&#x6BB5;&#x96C6;&#xFF08;&#x4F20;&#x7A7A;&#x5219;&#x4E0D;&#x5206;&#x7EC4;&#xFF09;</span>
+  method: <span class=hljs-string>&apos;value&apos;</span>,  <span class=hljs-comment>// &#x8865;&#x5168;&#x5E38;&#x91CF;</span>
+  value: <span class=hljs-number>10</span>         <span class=hljs-comment>// &#x8865;&#x5168;&#x7684;&#x5E38;&#x91CF;&#x4E3A;10</span>
+});
+</pre></div><h3 id=_fold-&#x5B57;&#x6BB5;&#x5C55;&#x5F00;><a href=#_fold-&#x5B57;&#x6BB5;&#x5C55;&#x5F00; class=anchor><span class="iconfont icon-link"></span></a>fold &#x5B57;&#x6BB5;&#x5C55;&#x5F00;</h3><p>&#x4EE5;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;&#x96C6;&#x4E3A;key&#xFF0C;&#x5C55;&#x5F00;&#x6570;&#x636E;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&quot;USA&quot;</span>, <span class=hljs-attr>gold</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>silver</span>: <span class=hljs-number>20</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&quot;Canada&quot;</span>, <span class=hljs-attr>gold</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>silver</span>: <span class=hljs-number>26</span> }
+];
+<span class=hljs-keyword>const</span> dv = ds.createView()
+  .source(data)
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;fold&apos;</span>,
+    <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;gold&apos;</span>, <span class=hljs-string>&apos;silver&apos;</span> ], <span class=hljs-comment>// &#x5C55;&#x5F00;&#x5B57;&#x6BB5;&#x96C6;</span>
+    key: <span class=hljs-string>&apos;key&apos;</span>,                   <span class=hljs-comment>// key&#x5B57;&#x6BB5;</span>
+    value: <span class=hljs-string>&apos;value&apos;</span>,               <span class=hljs-comment>// value&#x5B57;&#x6BB5;</span>
+    retains: [ <span class=hljs-string>&apos;country&apos;</span> ]        <span class=hljs-comment>// &#x4FDD;&#x7559;&#x5B57;&#x6BB5;&#x96C6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x9664; fields &#x4EE5;&#x5916;&#x7684;&#x6240;&#x6709;&#x5B57;&#x6BB5;</span>
+  });
+<span class=hljs-comment>/*
+ dv.rows &#x53D8;&#x4E3A;
+[
+  { key: gold, value: 10, country: &quot;USA&quot; },
+  { key: silver, value: 20, country: &quot;USA&quot; },
+  { key: gold, value: 7, country: &quot;Canada&quot; },
+  { key: silver, value: 26, country: &quot;Canada&quot; }
+]
+ */</span>
+</pre></div><h2 id=_&#x6570;&#x636E;&#x6BD4;&#x4F8B;&#xFF08;&#x767E;&#x5206;&#x6BD4;&#xFF09;&#x76F8;&#x5173;-Transform><a href=#_&#x6570;&#x636E;&#x6BD4;&#x4F8B;&#xFF08;&#x767E;&#x5206;&#x6BD4;&#xFF09;&#x76F8;&#x5173;-Transform class=anchor><span class="iconfont icon-link"></span></a>&#x6570;&#x636E;&#x6BD4;&#x4F8B;&#xFF08;&#x767E;&#x5206;&#x6BD4;&#xFF09;&#x76F8;&#x5173; Transform</h2><h3 id=_percent-&#x603B;&#x548C;&#x767E;&#x5206;&#x6BD4;><a href=#_percent-&#x603B;&#x548C;&#x767E;&#x5206;&#x6BD4; class=anchor><span class="iconfont icon-link"></span></a>percent &#x603B;&#x548C;&#x767E;&#x5206;&#x6BD4;</h3><p>&#x7EDF;&#x8BA1;&#x67D0;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0B;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x7684;&#x548C;&#x5360;&#x603B;&#x548C;&#x7684;&#x6BD4;&#x4F8B;&#xFF08;&#x53EF;&#x4EE5;&#x5206;&#x7EC4;&#xFF09;&#x3002;</p><p><code>field</code> &#x662F;&#x7EDF;&#x8BA1;&#x53D1;&#x751F;&#x7684;&#x5B57;&#x6BB5;&#xFF08;&#x6C42;&#x548C;&#xFF0C;&#x6C42;&#x767E;&#x5206;&#x6BD4;&#xFF09;&#xFF0C;<code>dimension</code> &#x662F;&#x7EDF;&#x8BA1;&#x7684;&#x7EF4;&#x5EA6;&#x5B57;&#x6BB5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&quot;&#x6BCF;&#x4E2A;&#x4E0D;&#x540C;&#x7684; <code>dimension</code> &#x4E0B;&#xFF0C;<code>field</code> &#x503C;&#x5360;&#x603B;&#x548C;&#x7684;&#x767E;&#x5206;&#x6BD4;&quot;&#xFF0C;<code>groupBy</code> &#x5219;&#x662F;&#x5206;&#x7EC4;&#x5B57;&#x6BB5;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x7EC4;&#x5185;&#x90E8;&#x72EC;&#x7ACB;&#x6C42;&#x767E;&#x5206;&#x6BD4;&#xFF08;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x7EC4;&#x5185;&#xFF0C;&#x6700;&#x540E;&#x7684; <code>percent</code> &#x5B57;&#x6BB5;&#x76F8;&#x52A0;&#x4E4B;&#x548C;&#x4E3A; 1&#xFF09;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;percent&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;sold&apos;</span>,           <span class=hljs-comment>// &#x7EDF;&#x8BA1;&#x9500;&#x91CF;</span>
+  dimension: <span class=hljs-string>&apos;year&apos;</span>,       <span class=hljs-comment>// &#x6BCF;&#x5E74;&#x7684;&#x5360;&#x6BD4;</span>
+  groupBy: [ <span class=hljs-string>&apos;category&apos;</span> ], <span class=hljs-comment>// &#x4EE5;&#x4E0D;&#x540C;&#x4EA7;&#x54C1;&#x7C7B;&#x522B;&#x4E3A;&#x5206;&#x7EC4;</span>
+  <span class=hljs-keyword>as</span>: <span class=hljs-string>&apos;percent&apos;</span>            <span class=hljs-comment>// &#x7ED3;&#x679C;&#x5B58;&#x50A8;&#x5728; percent &#x5B57;&#x6BB5;</span>
+});
+</pre></div><h3 id=_proportion-&#x884C;&#x6570;&#x767E;&#x5206;&#x6BD4;><a href=#_proportion-&#x884C;&#x6570;&#x767E;&#x5206;&#x6BD4; class=anchor><span class="iconfont icon-link"></span></a>proportion &#x884C;&#x6570;&#x767E;&#x5206;&#x6BD4;</h3><p>&#x7EDF;&#x8BA1;&#x67D0;&#x4E2A;&#x7EF4;&#x5EA6;&#x4E0B;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x6570;&#x636E;&#x6761;&#x6570;&#x5360;&#x603B;&#x6761;&#x6570;&#x7684;&#x6BD4;&#x4F8B;&#xFF08;&#x53EF;&#x4EE5;&#x5206;&#x7EC4;&#xFF09;&#x3002;&#x548C; percent Transform &#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x7EDF;&#x8BA1;&#x7684;&#x662F;&#x6570;&#x636E;&#x6761;&#x76EE;&#x7684;&#x5360;&#x6BD4;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6570;&#x636E;&#x603B;&#x548C;&#x7684;&#x5360;&#x6BD4;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;proportion&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;id&apos;</span>,             <span class=hljs-comment>// &#x7EDF;&#x8BA1;&#x6761;&#x6570;</span>
+  dimension: <span class=hljs-string>&apos;year&apos;</span>,       <span class=hljs-comment>// &#x6BCF;&#x5E74;&#x7684;&#x5360;&#x6BD4;</span>
+  groupBy: [ <span class=hljs-string>&apos;category&apos;</span> ], <span class=hljs-comment>// &#x4EE5;&#x4E0D;&#x540C;&#x4EA7;&#x54C1;&#x7C7B;&#x522B;&#x4E3A;&#x5206;&#x7EC4;</span>
+  <span class=hljs-keyword>as</span>: <span class=hljs-string>&apos;proportion&apos;</span>         <span class=hljs-comment>// &#x7ED3;&#x679C;&#x5B58;&#x50A8;&#x5728;proportion&#x5B57;&#x6BB5;</span>
+});
+</pre></div><h2 id=_&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x76F8;&#x5173;><a href=#_&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x6570;&#x636E;&#x7EDF;&#x8BA1;&#x76F8;&#x5173;</h2><h3 id=_aggregate-&#x805A;&#x5408;&#x7EDF;&#x8BA1;><a href=#_aggregate-&#x805A;&#x5408;&#x7EDF;&#x8BA1; class=anchor><span class="iconfont icon-link"></span></a>aggregate &#x805A;&#x5408;&#x7EDF;&#x8BA1;</h3><p>&#x7EDF;&#x8BA1;&#x5904;&#x7406;&#xFF0C;&#x652F;&#x6301;&#x5E76;&#x884C;&#x7684;&#x591A;&#x79CD;&#x7EDF;&#x8BA1;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;aggregate&apos;</span>, <span class=hljs-comment>// &#x522B;&#x540D;summary</span>
+  fields: [],        <span class=hljs-comment>// &#x7EDF;&#x8BA1;&#x5B57;&#x6BB5;&#x96C6;</span>
+  operations: [],    <span class=hljs-comment>// &#x7EDF;&#x8BA1;&#x64CD;&#x4F5C;&#x96C6;</span>
+  <span class=hljs-keyword>as</span>: [],            <span class=hljs-comment>// &#x5B58;&#x50A8;&#x5B57;&#x6BB5;&#x96C6;</span>
+  groupBy: []        <span class=hljs-comment>// &#x5206;&#x7EC4;&#x5B57;&#x6BB5;&#x96C6;</span>
+})
+</pre></div><blockquote><p>&#x4EE5;&#x4E0A;fields/operations/as&#x8FD9;&#x4E09;&#x4E2A;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x3002;&#x201C;&#x5BF9;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;field&#x8FDB;&#x884C;&#x67D0;&#x79CD;&#x7EDF;&#x8BA1;&#x64CD;&#x4F5C;operation&#x7ED3;&#x679C;&#x5B58;&#x50A8;&#x5728;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;&#x4E0A;as&#x201D;</p></blockquote><p>&#x652F;&#x6301;&#x7684;operations: <a href=https://simplestatistics.org/ >&#x8BE6;&#x89C1;simple-statistics</a></p><ul><li>count</li><li>max</li><li>min</li><li>mean</li><li>median</li><li>mode</li><li>product</li><li>standardDeviation</li><li>sum</li><li>sumSimple</li><li>variance</li></ul><h3 id=_regression-&#x56DE;&#x5F52;&#x66F2;&#x7EBF;><a href=#_regression-&#x56DE;&#x5F52;&#x66F2;&#x7EBF; class=anchor><span class="iconfont icon-link"></span></a>regression &#x56DE;&#x5F52;&#x66F2;&#x7EBF;</h3><p>&#x8BA1;&#x7B97;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x56DE;&#x5F52;&#x62DF;&#x5408;&#x66F2;&#x7EBF;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;regression&apos;</span>,
+  <span class=hljs-attr>method</span>: <span class=hljs-string>&apos;linear&apos;</span>,     <span class=hljs-comment>// &#x56DE;&#x5F52;&#x7B97;&#x6CD5;&#x7C7B;&#x578B;</span>
+  fields: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ], <span class=hljs-comment>// &#x7EDF;&#x8BA1;&#x5B57;&#x6BB5;</span>
+  bandwidth: <span class=hljs-number>0.1</span>,       <span class=hljs-comment>// &#x6B65;&#x957F;</span>
+  extent: [ <span class=hljs-number>0</span>, <span class=hljs-number>4</span> ],     <span class=hljs-comment>// &#x7ED3;&#x679C;&#x96C6;&#x91CC;&#xFF0C;x&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ]      <span class=hljs-comment>// &#x7ED3;&#x679C;&#x5B57;&#x6BB5;</span>
+});
+</pre></div><p>&#x652F;&#x6301;&#x7684;&#x56DE;&#x5F52;&#x7B97;&#x6CD5;&#x7C7B;&#x578B;&#xFF1A;</p><ul><li>linear</li><li>exponential</li><li>logarithmic</li><li>power</li><li>polynomial</li></ul><h2 id=_&#x6570;&#x636E;&#x5206;&#x7BB1;&#x76F8;&#x5173;><a href=#_&#x6570;&#x636E;&#x5206;&#x7BB1;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x6570;&#x636E;&#x5206;&#x7BB1;&#x76F8;&#x5173;</h2><h3 id=_bin.histogram-&#x76F4;&#x65B9;&#x56FE;&#x5206;&#x7BB1;><a href=#_bin.histogram-&#x76F4;&#x65B9;&#x56FE;&#x5206;&#x7BB1; class=anchor><span class="iconfont icon-link"></span></a>bin.histogram &#x76F4;&#x65B9;&#x56FE;&#x5206;&#x7BB1;</h3><p>&#x5355;&#x5B57;&#x6BB5;</p><blockquote><p>alias: bin.dot</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;bin.histogram&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;a&apos;</span>,             <span class=hljs-comment>// &#x5BF9;&#x5E94;&#x6570;&#x8F74;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x70B9;</span>
+  bins: <span class=hljs-number>30</span>,               <span class=hljs-comment>// &#x5206;&#x7BB1;&#x4E2A;&#x6570;</span>
+  binWidth: <span class=hljs-number>10</span>,           <span class=hljs-comment>// &#x5206;&#x7BB1;&#x6B65;&#x957F;&#xFF08;&#x4F1A;&#x8986;&#x76D6;bins&#x9009;&#x9879;&#xFF09;</span>
+  offset: <span class=hljs-number>0</span>,              <span class=hljs-comment>// &#x5206;&#x7BB1;&#x504F;&#x79FB;&#x91CF;</span>
+  groupBy: [],            <span class=hljs-comment>// &#x5206;&#x7EC4;&#xFF08;&#x7528;&#x4E8E;&#x5C42;&#x53E0;&#x76F4;&#x65B9;&#x56FE;&#xFF09;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;count&apos;</span> ],   <span class=hljs-comment>// x &#x4E3A;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x50A8;&#x4E86;&#x67D0;&#x4E2A;&#x5206;&#x7BB1;&#x7684;&#x4E0A;&#x4E0B;&#x9650; [x0, x1]</span>
+});
+</pre></div><h3 id=_bin.quantile-&#x5206;&#x4F4D;&#x503C;&#x5206;&#x7BB1;><a href=#_bin.quantile-&#x5206;&#x4F4D;&#x503C;&#x5206;&#x7BB1; class=anchor><span class="iconfont icon-link"></span></a>bin.quantile &#x5206;&#x4F4D;&#x503C;&#x5206;&#x7BB1;</h3><p>&#x5355;&#x5B57;&#x6BB5;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;bin.quantile&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;y&apos;</span>,    <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x5206;&#x4E3A;&#x503C;&#x7684;&#x5B57;&#x6BB5;</span>
+  <span class=hljs-keyword>as</span>: <span class=hljs-string>&apos;_bin&apos;</span>,    <span class=hljs-comment>// &#x4FDD;&#x5B58;&#x5206;&#x4E3A;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x5B57;&#x6BB5;</span>
+  groupBy: [],   <span class=hljs-comment>// &#x5206;&#x7EC4;</span>
+  fraction: <span class=hljs-number>4</span>,   <span class=hljs-comment>// &#x53EF;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x56DB;&#x5206;&#x4F4D;</span>
+  p: [ <span class=hljs-number>0.5</span>, <span class=hljs-number>0.3</span> ]  <span class=hljs-comment>// &#x53EF;&#x9009;&#xFF0C;p&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF0C;&#x4E0E; fraction &#x4E8C;&#x9009;&#x4E00;</span>
+});
+</pre></div><h3 id=_bin.hexagon-&#x516D;&#x8FB9;&#x5F62;&#x5206;&#x7BB1;><a href=#_bin.hexagon-&#x516D;&#x8FB9;&#x5F62;&#x5206;&#x7BB1; class=anchor><span class="iconfont icon-link"></span></a>bin.hexagon &#x516D;&#x8FB9;&#x5F62;&#x5206;&#x7BB1;</h3><p>&#x53CC;&#x5B57;&#x6BB5;</p><blockquote><p>alias: bin.hex | hexbin</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;bin.hexagon&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;a&apos;</span>, <span class=hljs-string>&apos;b&apos;</span> ],      <span class=hljs-comment>// &#x5BF9;&#x5E94;&#x5750;&#x6807;&#x8F74;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x70B9;</span>
+  bins: [ <span class=hljs-number>30</span>, <span class=hljs-number>30</span> ],          <span class=hljs-comment>// &#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5206;&#x7BB1;&#x4E2A;&#x6570;</span>
+  binWidth: [ <span class=hljs-number>10</span>, <span class=hljs-number>1000</span> ],    <span class=hljs-comment>// &#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5206;&#x7BB1;&#x6B65;&#x957F;&#xFF08;&#x4F1A;&#x8986;&#x76D6;bins&#x7684;&#x914D;&#x7F6E;&#xFF09;</span>
+  offset: [ <span class=hljs-number>0</span>, <span class=hljs-number>0</span> ],          <span class=hljs-comment>// &#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5206;&#x7BB1;&#x504F;&#x79FB;&#x91CF;</span>
+  sizeByCount: <span class=hljs-literal>false</span>,        <span class=hljs-comment>// &#x662F;&#x5426;&#x6839;&#x636E;&#x5206;&#x7BB1;&#x4E2A;&#x6570;&#x8C03;&#x6574;&#x5206;&#x7BB1;&#x5927;&#x5C0F;&#xFF08;&#x516D;&#x8FB9;&#x5F62;&#x7684;&#x534A;&#x5F84;&#xFF09;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span>, <span class=hljs-string>&apos;count&apos;</span> ], <span class=hljs-comment>// &#x8FD9;&#x4E2A;&#x70B9;&#x843D;&#x5728;&#x7684;&#x516D;&#x8FB9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x5750;&#x6807;&#x96C6;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x4E2A;&#x5206;&#x7BB1;&#x5185;&#x7684;&#x6570;&#x636E;&#x6761;&#x6570;</span>
+                               <span class=hljs-comment>// x: [ x0, x1, x2, x3, x4, x5 ], y: [ y0, y1, y2, y3, y4, y5 ]</span>
+                               <span class=hljs-comment>// count: Number</span>
+});
+<span class=hljs-comment>/*
+ * &#x9876;&#x70B9;&#x987A;&#x5E8F;&#xFF1A;
+ *      3
+ * 4          2
+ *
+ * 5          1
+ *      0
+ */</span>
+</pre></div><h3 id=_bin.rectangle-&#x77E9;&#x5F62;&#x5206;&#x7BB1;><a href=#_bin.rectangle-&#x77E9;&#x5F62;&#x5206;&#x7BB1; class=anchor><span class="iconfont icon-link"></span></a>bin.rectangle &#x77E9;&#x5F62;&#x5206;&#x7BB1;</h3><p>&#x53CC;&#x5B57;&#x6BB5;</p><blockquote><p>alias: bin.rect</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;bin.rectangle&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;a&apos;</span>, <span class=hljs-string>&apos;b&apos;</span> ],        <span class=hljs-comment>// &#x5BF9;&#x5E94;&#x5750;&#x6807;&#x8F74;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x70B9;</span>
+  bins: [ <span class=hljs-number>30</span>, <span class=hljs-number>30</span> ],          <span class=hljs-comment>// &#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5206;&#x7BB1;&#x4E2A;&#x6570;</span>
+  binsWidth: [ <span class=hljs-number>10</span>, <span class=hljs-number>10</span> ],     <span class=hljs-comment>// &#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5206;&#x7BB1;&#x6B65;&#x957F;&#xFF08;&#x4F1A;&#x8986;&#x76D6;bins&#x914D;&#x7F6E;&#xFF09;</span>
+  offset: [ <span class=hljs-number>0</span>, <span class=hljs-number>0</span> ],          <span class=hljs-comment>// &#x4E24;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x5206;&#x7BB1;&#x504F;&#x79FB;&#x91CF;</span>
+  sizeByCount: <span class=hljs-literal>false</span>,        <span class=hljs-comment>// &#x662F;&#x5426;&#x6839;&#x636E;&#x5206;&#x7BB1;&#x4E2A;&#x6570;&#x8C03;&#x6574;&#x5206;&#x7BB1;&#x5927;&#x5C0F;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span>, <span class=hljs-string>&apos;count&apos;</span> ], <span class=hljs-comment>// &#x8FD9;&#x4E2A;&#x70B9;&#x843D;&#x5728;&#x7684;&#x516D;&#x8FB9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x5750;&#x6807;&#x96C6;</span>
+                               <span class=hljs-comment>// x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]</span>
+                               <span class=hljs-comment>// count: Number</span>
+});
+<span class=hljs-comment>/*
+ * &#x9876;&#x70B9;&#x987A;&#x5E8F;&#xFF1A;
+ * 3 - 2
+ * |   |
+ * 0 - 1
+ */</span>
+</pre></div><h2 id=_&#x6838;&#x51FD;&#x6570;&#x76F8;&#x5173;><a href=#_&#x6838;&#x51FD;&#x6570;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x6838;&#x51FD;&#x6570;&#x76F8;&#x5173;</h2><h3 id=_kernel-smooth.regression-&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x56DE;&#x5F52;><a href=#_kernel-smooth.regression-&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x56DE;&#x5F52; class=anchor><span class="iconfont icon-link"></span></a>kernel-smooth.regression &#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x56DE;&#x5F52;</h3><p>&#x7528;&#x4E8E;&#x753B;&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x56DE;&#x5F52;&#x66F2;&#x7EBF;&#xFF0C;&#x652F;&#x6301;&#x5355;&#x5B57;&#x6BB5;&#x6216;&#x8005;&#x53CC;&#x5B57;&#x6BB5;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;kernel-smooth.regression&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ],             <span class=hljs-comment>// &#x5FC5;&#x586B;&#xFF0C;1 &#x6216; 2 &#x5B57;&#x6BB5;</span>
+  method: <span class=hljs-string>&apos;gaussian&apos;</span>,               <span class=hljs-comment>// &#x91C7;&#x7528;&#x7684;&#x6838;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;</span>
+  extent: [ min(x), max(x) ],       <span class=hljs-comment>// &#x6570;&#x503C;&#x8303;&#x56F4;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; x &#x5B57;&#x6BB5;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;</span>
+  bandwidth: <span class=hljs-number>0.4</span>,                   <span class=hljs-comment>// &#x6B65;&#x957F;&#xFF0C;&#x9ED8;&#x8BA4;&#x91C7;&#x7528; silverman &#x7684;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ],                 <span class=hljs-comment>// &#x7ED3;&#x679C;&#x5B57;&#x6BB5;&#xFF0C;&#x5355;&#x5B57;&#x6BB5;&#x65F6;&#xFF0C;y &#x4E3A; x &#x503C;&#x5BF9;&#x5E94;&#x7684;&#x6982;&#x7387;</span>
+});
+</pre></div><p>&#x652F;&#x6301;&#x7684;&#x6838;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#xFF1A;</p><ul><li>cosine</li><li>epanechnikov</li><li>gaussian (default)</li><li>quartic</li><li>triangular</li><li>tricube</li><li>triweight</li><li>uniform</li></ul><h3 id=_kernel-smooth.density-&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x5206;&#x5E03;><a href=#_kernel-smooth.density-&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x5206;&#x5E03; class=anchor><span class="iconfont icon-link"></span></a>kernel-smooth.density &#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x5206;&#x5E03;</h3><p>&#x7528;&#x4E8E;&#x753B;&#x6838;&#x51FD;&#x6570;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x5206;&#x5E03;&#x70ED;&#x529B;&#x56FE;&#xFF0C;&#x53CC;&#x5B57;&#x6BB5;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;kernel-smooth.density&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ],                            <span class=hljs-comment>// &#x5FC5;&#x586B;</span>
+  method: <span class=hljs-string>&apos;gaussian&apos;</span>,                              <span class=hljs-comment>// &#x91C7;&#x7528;&#x7684;&#x6838;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;</span>
+  extent: [ [ min(x), max(x) ], [ min(y), max(y)] ], <span class=hljs-comment>// &#x6570;&#x503C;&#x8303;&#x56F4;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; x &#x4EE5;&#x53CA; y &#x5B57;&#x6BB5;&#x5404;&#x81EA;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;</span>
+  bandwidth: <span class=hljs-number>0.4</span>,                                  <span class=hljs-comment>// &#x6B65;&#x957F;&#xFF0C;&#x9ED8;&#x8BA4;&#x91C7;&#x7528; silverman &#x7684;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ],                                <span class=hljs-comment>// &#x7ED3;&#x679C;&#x5B57;&#x6BB5;&#xFF0C;&#x5355;&#x5B57;&#x6BB5;&#x65F6;&#xFF0C;y &#x4E3A; x &#x503C;&#x5BF9;&#x5E94;&#x7684;&#x6982;&#x7387;</span>
+});
+</pre></div><blockquote><p>silverman &#x63D0;&#x51FA;&#x7684; bandwidth &#x8BA1;&#x7B97;&#x7B97;&#x6CD5;: <a href=https://ned.ipac.caltech.edu/level5/March02/Silverman/paper.pdf>paper</a></p></blockquote><p>&#x652F;&#x6301;&#x7684;&#x6838;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x540C;&#x4E0A;</p><h2 id=_&#x6811;&#x76F8;&#x5173;><a href=#_&#x6811;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x6811;&#x76F8;&#x5173;</h2><h3 id=_hierarchy.treemap-&#x6811;&#x5F62;&#x56FE;><a href=#_hierarchy.treemap-&#x6811;&#x5F62;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>hierarchy.treemap &#x6811;&#x5F62;&#x56FE;</h3><blockquote><p>alias: treemap</p></blockquote><p>&#x6839;&#x636E;&#x6811;&#x5F62;&#x6570;&#x636E;&#x751F;&#x6210;&#x6811;&#x5F62;&#x56FE; Treemap &#x5E03;&#x5C40;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;hierarchy.treemap&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;value&apos;</span>,
+  <span class=hljs-attr>tile</span>: <span class=hljs-string>&apos;treemapSquarify&apos;</span>,     <span class=hljs-comment>// &#x5E03;&#x5C40;&#x7C7B;&#x578B;</span>
+  size: [ <span class=hljs-number>1</span>, <span class=hljs-number>1</span> ],              <span class=hljs-comment>// width, height</span>
+  round: <span class=hljs-literal>false</span>,
+  <span class=hljs-comment>// ratio: 1.618033988749895, // golden ratio</span>
+  padding: <span class=hljs-number>0</span>,                  <span class=hljs-comment>// &#x5404;&#x79CD; padding &#x914D;&#x7F6E;</span>
+  paddingInner: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>paddingOuter</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>paddingTop</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>paddingRight</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>paddingBottom</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>paddingLeft</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ]             <span class=hljs-comment>// &#x77E9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x96C6;</span>
+                               <span class=hljs-comment>// x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]</span>
+});
+</pre></div><p>&#x652F;&#x6301;&#x7684;&#x5E03;&#x5C40;&#x7C7B;&#x578B;&#xFF1A;</p><ul><li>treemapBinary</li><li>treemapDice</li><li>treemapSlice</li><li>treemapSliceDice</li><li>treemapSquarify</li><li>treemapResquarify</li></ul><h3 id=_hierarchy.partition-&#x76F8;&#x90BB;&#x5C42;&#x6B21;&#x56FE;><a href=#_hierarchy.partition-&#x76F8;&#x90BB;&#x5C42;&#x6B21;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>hierarchy.partition &#x76F8;&#x90BB;&#x5C42;&#x6B21;&#x56FE;</h3><blockquote><p>alias: adjacency</p></blockquote><p>&#x6839;&#x636E;&#x6811;&#x5F62;&#x6570;&#x636E;&#x751F;&#x6210;&#x76F8;&#x90BB;&#x5C42;&#x6B21;&#x56FE; Adjacency Diagram &#x5E03;&#x5C40;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5750;&#x6807;&#x53D8;&#x6362;&#x53D8;&#x5F62;&#x4E3A; Sunburst &#x56FE;&#x3002;</p><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;hierarchy.partition&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;value&apos;</span>,
+  <span class=hljs-attr>size</span>: [ <span class=hljs-number>1</span>, <span class=hljs-number>1</span> ],              <span class=hljs-comment>// width, height</span>
+  round: <span class=hljs-literal>false</span>,
+  <span class=hljs-comment>// ratio: 1.618033988749895, // golden ratio</span>
+  padding: <span class=hljs-number>0</span>,                  <span class=hljs-comment>// &#x5404;&#x79CD; padding &#x914D;&#x7F6E;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ],            <span class=hljs-comment>// &#x77E9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x96C6;</span>
+                               <span class=hljs-comment>// x: [ x0, x1, x2, x3 ], y: [ y0, y1, y2, y3 ]</span>
+});
+</pre></div><h2 id=_&#x56FE;&#x76F8;&#x5173;><a href=#_&#x56FE;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;&#x76F8;&#x5173;</h2><h3 id=_diagram.arc-&#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE;><a href=#_diagram.arc-&#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>diagram.arc &#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE;</h3><p>&#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE;&#xFF08;Arc Diagram&#xFF09;&#x53EF;&#x4EE5;&#x53D8;&#x5F62;&#x4E3A;&#x548C;&#x5F26;&#x56FE;&#xFF08;Chord Diagram&#xFF09;&#x3002;</p><blockquote><p>alias: arc</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;diagram.arc&apos;</span>,
+  <span class=hljs-attr>y</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>thickness</span>: <span class=hljs-number>0.05</span>,                   <span class=hljs-comment>// &#x8282;&#x70B9;&#x9AD8;&#x5EA6;&#xFF0C;&#x533A;&#x95F4; (0, 1)</span>
+  weight: <span class=hljs-literal>false</span>,                     <span class=hljs-comment>// &#x662F;&#x5426;&#x5E26;&#x6743;&#x91CD;&#xFF0C;&#x65E0;&#x6743;&#x91CD;&#x4E3A;&#x5F27;&#x957F;&#x94FE;&#x63A5;&#x56FE;&#xFF0C;&#x5E26;&#x6743;&#x91CD;&#x4E3A;&#x548C;&#x5F26;&#x56FE;</span>
+  marginRatio: <span class=hljs-number>0.1</span>,                  <span class=hljs-comment>// &#x7A7A;&#x9699;&#x6BD4;&#x4F8B;&#xFF0C;&#x533A;&#x95F4;[0, 1)</span>
+  id: <span class=hljs-function><span class=hljs-params>node</span> =&gt;</span> node.id,               <span class=hljs-comment>// &#x83B7;&#x53D6;&#x8282;&#x70B9;id</span>
+  source: <span class=hljs-function><span class=hljs-params>edge</span> =&gt;</span> edge.source,       <span class=hljs-comment>// &#x83B7;&#x53D6;&#x8FB9;&#x8D77;&#x59CB;&#x70B9;id</span>
+  target: <span class=hljs-function><span class=hljs-params>edge</span> =&gt;</span> edge.target,       <span class=hljs-comment>// &#x83B7;&#x53D6;&#x8FB9;&#x7ED3;&#x675F;&#x70B9;id</span>
+  sourceWeight: <span class=hljs-function><span class=hljs-params>edge</span> =&gt;</span> edge.value,  <span class=hljs-comment>// &#x83B7;&#x53D6;&#x8FB9;&#x8D77;&#x59CB;&#x70B9;&#x6743;&#x91CD;</span>
+  targetWeight: <span class=hljs-function><span class=hljs-params>edge</span> =&gt;</span> edge.value1, <span class=hljs-comment>// &#x83B7;&#x53D6;&#x8FB9;&#x7ED3;&#x675F;&#x70B9;&#x6743;&#x91CD;</span>
+  sortBy: <span class=hljs-literal>null</span>,                      <span class=hljs-comment>// &#x6392;&#x5E8F;&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x7167;id&#xFF0C;&#x6743;&#x91CD;&#xFF08;&apos;weight&apos;&#xFF09;&#x6216;&#x8005;&#x8FB9;&#x6570;&#x91CF;&#xFF08;&apos;frequency&apos;&#xFF09;&#x6392;&#x5E8F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x6392;&#x5E8F;&#x51FD;&#x6570;</span>
+});
+</pre></div><blockquote><p>&#x6CE8;&#x610F;&#xFF01;&#x8FD9;&#x4E2A; Transform &#x505A;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x6709;&#x4E24;&#x90E8;&#x5206;&#x6570;&#x636E;&#xFF08;&#x9876;&#x70B9;&#x548C;&#x8FB9;&#x6570;&#x636E;&#xFF09;&#xFF0C;G2 &#x5728;&#x4F7F;&#x7528;&#x662F;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x901A;&#x8FC7; chart.source(dv) &#x6765;&#x5BFC;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x53EA;&#x80FD;&#x5206;&#x522B;&#x5BFC;&#x5165;&#x9876;&#x70B9;&#x548C;&#x8FB9;&#x96C6;&#x5408;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p></blockquote><div class=highlight><pre><span class=hljs-keyword>const</span> nodeView = chart.view();
+nodeView.source(dv.nodes);
+
+<span class=hljs-keyword>const</span> edgeView = chart.view();
+edgeView.source(dv.edges);
+</pre></div><h3 id=_diagram.sankey-&#x6851;&#x57FA;&#x56FE;><a href=#_diagram.sankey-&#x6851;&#x57FA;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>diagram.sankey &#x6851;&#x57FA;&#x56FE;</h3><blockquote><p>alias: sankey</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;diagram.sankey&apos;</span>,
+  <span class=hljs-attr>value</span>: <span class=hljs-function><span class=hljs-params>node</span> =&gt;</span> node.value,    <span class=hljs-comment>// &#x6743;&#x91CD;</span>
+  source: <span class=hljs-function><span class=hljs-params>edge</span> =&gt;</span> edge.source,  <span class=hljs-comment>// &#x8FB9;&#x8D77;&#x70B9;id</span>
+  target: <span class=hljs-function><span class=hljs-params>edge</span> =&gt;</span> edge.target,  <span class=hljs-comment>// &#x8FB9;&#x7EC8;&#x70B9;id</span>
+  nodeAlign: <span class=hljs-string>&apos;sankeyJustify&apos;</span>,   <span class=hljs-comment>// sankeyLeft / sankeyRight / sankeyCenter</span>
+  nodeWidth: <span class=hljs-number>0.02</span>,              <span class=hljs-comment>// &#x8282;&#x70B9;&#x5BBD;&#xFF0C;&#x8303;&#x56F4;&#xFF1A;(0, 1)</span>
+  nodePadding: <span class=hljs-number>0.02</span>,            <span class=hljs-comment>// &#x8282;&#x70B9;&#x4E0A;&#x4E0B;&#x95F4;&#x8DDD;&#xFF0C;&#x8303;&#x56F4;&#xFF1A;(0, 1)</span>
+});
+</pre></div><blockquote><p>&#x6CE8;&#x610F;&#xFF01;&#x8FD9;&#x4E2A; Transform &#x505A;&#x5B8C;&#x540E;&#x540C;&#x6837;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x4E0A;&#x8FF0; arc transform &#x4E00;&#x6837;&#x7684;&#x6570;&#x636E;&#x5BFC;&#x5165;&#x95EE;&#x9898;</p></blockquote><h3 id=_diagram.voronoi><a href=#_diagram.voronoi class=anchor><span class="iconfont icon-link"></span></a>diagram.voronoi</h3><p>voronoi &#x56FE;</p><blockquote><p>alias: voronoi</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;diagram.voronoi&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;field0&apos;</span>, <span class=hljs-string>&apos;field1&apos;</span> ], <span class=hljs-comment>// &#x5BF9;&#x5E94;&#x5750;&#x6807;&#x8F74;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x70B9;</span>
+  extend: [ [ x0, y0 ], [ x1, y1 ] ], <span class=hljs-comment>// &#x8303;&#x56F4;</span>
+  size: [ width, height ],        <span class=hljs-comment>// &#x8303;&#x56F4;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span> ],             <span class=hljs-comment>// &#x6BCF;&#x4E2A;&#x70B9;&#x5305;&#x56F4;&#x591A;&#x8FB9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x96C6;</span>
+                                <span class=hljs-comment>// x: [ x0, x1, x2, ... ], y: [ y0, y1, y2, ... ]</span>
+})
+</pre></div><h2 id=_Geo-&#x5730;&#x7406;&#x6570;&#x636E;&#x76F8;&#x5173;><a href=#_Geo-&#x5730;&#x7406;&#x6570;&#x636E;&#x76F8;&#x5173; class=anchor><span class="iconfont icon-link"></span></a>Geo &#x5730;&#x7406;&#x6570;&#x636E;&#x76F8;&#x5173;</h2><h3 id=_geo.projection-&#x5730;&#x7406;&#x6620;&#x5C04;><a href=#_geo.projection-&#x5730;&#x7406;&#x6620;&#x5C04; class=anchor><span class="iconfont icon-link"></span></a>geo.projection &#x5730;&#x7406;&#x6620;&#x5C04;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.projection&apos;</span>,
+  <span class=hljs-attr>projection</span>: <span class=hljs-string>&apos;geoAiry&apos;</span>,                        <span class=hljs-comment>// &#x6307;&#x5B9A;&#x6620;&#x5C04;&#x7C7B;&#x578B;</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-string>&apos;y&apos;</span>, <span class=hljs-string>&apos;centroid_x&apos;</span>, <span class=hljs-string>&apos;centroid_y&apos;</span> ], <span class=hljs-comment>// x&#xFF0C;y&#x662F;&#x5BF9;&#x5E94;&#x591A;&#x8FB9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x96C6;</span>
+                                                <span class=hljs-comment>// centroid_x&#x662F;&#x4E2D;&#x5FC3;&#x70B9;&#x7684;x&#x5750;&#x6807;</span>
+                                                <span class=hljs-comment>// centroid_y&#x662F;&#x4E2D;&#x5FC3;&#x70B9;y&#x5750;&#x6807;</span>
+});
+</pre></div><h3 id=_geo.centroid-&#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x70B9;><a href=#_geo.centroid-&#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x70B9; class=anchor><span class="iconfont icon-link"></span></a>geo.centroid &#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x70B9;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.centroid&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;name&apos;</span>,                        <span class=hljs-comment>// &#x6807;&#x6CE8;&#x5730;&#x540D;&#x7684;&#x5B57;&#x6BB5;</span>
+  geoDataView: geoDataView,             <span class=hljs-comment>// &#x4F7F;&#x7528;&#x7684;geo&#x6570;&#x636E;&#x6765;&#x6E90;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;DataView&#x5B9E;&#x4F8B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;DataView&#x5B9E;&#x4F8B;&#x7684;name</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;_centroid_x&apos;</span>, <span class=hljs-string>&apos;_centroid_y&apos;</span> ], <span class=hljs-comment>// _centroid_x&#x662F;&#x4E2D;&#x5FC3;&#x70B9;&#x7684;x&#x5750;&#x6807;</span>
+                                        <span class=hljs-comment>// _centroid_y&#x662F;&#x4E2D;&#x5FC3;&#x70B9;y&#x5750;&#x6807;</span>
+});
+</pre></div><h3 id=_geo.region-&#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x533A;&#x57DF;><a href=#_geo.region-&#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x533A;&#x57DF; class=anchor><span class="iconfont icon-link"></span></a>geo.region &#x7531;&#x5730;&#x540D;&#x83B7;&#x53D6;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x533A;&#x57DF;</h3><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.region&apos;</span>,
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;name&apos;</span>,            <span class=hljs-comment>// &#x6807;&#x6CE8;&#x5730;&#x540D;&#x7684;&#x5B57;&#x6BB5;</span>
+  geoDataView: geoDataView, <span class=hljs-comment>// &#x4F7F;&#x7528;&#x7684;geo&#x6570;&#x636E;&#x6765;&#x6E90;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;DataView&#x5B9E;&#x4F8B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;DataView&#x5B9E;&#x4F8B;&#x7684;name</span>
+  <span class=hljs-keyword>as</span>: [ <span class=hljs-string>&apos;_x&apos;</span>, <span class=hljs-string>&apos;_y&apos;</span> ],       <span class=hljs-comment>// &#x591A;&#x8FB9;&#x5F62;&#x7684;&#x9876;&#x70B9;&#x96C6;</span>
+                            <span class=hljs-comment>// _x: [ x0, x1, x2, ... ], _y: [ y0, y1, y2, ... ]</span>
+});
+</pre></div><h2 id=_&#x5176;&#x4ED6;><a href=#_&#x5176;&#x4ED6; class=anchor><span class="iconfont icon-link"></span></a>&#x5176;&#x4ED6;</h2><h3 id=_tag-cloud-&#x8BCD;&#x4E91;&#x5E03;&#x5C40;><a href=#_tag-cloud-&#x8BCD;&#x4E91;&#x5E03;&#x5C40; class=anchor><span class="iconfont icon-link"></span></a>tag-cloud &#x8BCD;&#x4E91;&#x5E03;&#x5C40;</h3><blockquote><p>alias: word-cloud</p></blockquote><p>&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x89C1;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>dv.transform({
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;tag-cloud&apos;</span>,
+  <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;text&apos;</span>, <span class=hljs-string>&apos;value&apos;</span> ],    <span class=hljs-comment>// &#x53C2;&#x4E0E;&#x6807;&#x7B7E;&#x4E91;layout&#x7684;&#x5B57;&#x6BB5;&#x96C6;</span>
+  font: <span class=hljs-string>&apos;serif&apos;</span>,                  <span class=hljs-comment>// &#x6807;&#x7B7E;&#x5B57;&#x4F53;</span>
+  size: [ <span class=hljs-number>500</span>, <span class=hljs-number>500</span> ],             <span class=hljs-comment>// &#x753B;&#x5E03;size&#xFF0C;[ width, height ]</span>
+  padding: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>spiral</span>: <span class=hljs-string>&apos;archimedean&apos;</span>,          <span class=hljs-comment>// &#x6807;&#x7B7E;&#x87BA;&#x65CB;&#x6392;&#x5E03;&#x89C4;&#x5F8B;&#x51FD;&#x6570; &apos;archimedean&apos; || &apos;rectangular&apos; || {function}</span>
+  fontSize(d) { <span class=hljs-keyword>return</span> d.value }, <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x6807;&#x7B7E;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;d&#x4E3A;&#x4E00;&#x884C;&#x6570;&#x636E;</span>
+  text(d) { <span class=hljs-keyword>return</span> d.text },      <span class=hljs-comment>// &#x751F;&#x6210;&#x6807;&#x7B7E;&#x6587;&#x672C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;d&#x4E3A;&#x4E00;&#x884C;&#x6570;&#x636E;</span>
+  timeInterval: <span class=hljs-literal>Infinity</span>,         <span class=hljs-comment>// &#x6700;&#x5927;&#x8FED;&#x4EE3;&#x65F6;&#x95F4;</span>
+  imageMask: {Image},             <span class=hljs-comment>// Image&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5FC5;&#x987B;&#x662F;loaded&#x72B6;&#x6001;</span>
+})
+</pre></div><blockquote><p>&#x5E26;&#x56FE;&#x7247;&#x5F62;&#x72B6;&#x7684;&#x8BCD;&#x4E91;&#x5E03;&#x5C40;&#x5B9E;&#x4F8B;</p></blockquote><div class=highlight><pre><span class=hljs-keyword>const</span> imageMask = <span class=hljs-keyword>new</span> Image()
+imageMask.crossOrigin = <span class=hljs-string>&apos;&apos;</span>
+imageMask.src = <span class=hljs-string>&apos;https://zos.alipayobjects.com/rmsportal/EEFqYWuloqIHRnh.jpg&apos;</span>
+imageMask.onload = <span class=hljs-function><span class=hljs-params>()</span> =&gt;</span> {
+  dv.transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;tag-cloud&apos;</span>,
+    imageMask
+  });
+};
+</pre></div><div class=prev-next><a href=/zh-cn/g2/3.x/api/connector.html class="float-left pre">Connector </a><a href=/zh-cn/g2/3.x/api/graphic.html class="float-right next">&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g2/3.x/api/transform.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script></body></html>

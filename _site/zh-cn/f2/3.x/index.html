@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=F2,Chart,&#x56FE;&#x8868;,&#x79FB;&#x52A8;&#x7AEF;,Mobile,H5><meta name=description content="F2 &#x662F;&#x4E13;&#x4E3A;&#x79FB;&#x52A8;&#x7AEF;&#x5B9A;&#x5236;&#x7684;&#x4E00;&#x5957;&#x5F00;&#x7BB1;&#x5373;&#x7528;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x57FA;&#x4E8E;&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7406;&#x8BBA;&#xFF0C;&#x5177;&#x6709;&#x7CBE;&#x7B80;&#x3001;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x6613;&#x6269;&#x5C55;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x5BF9;&#x6027;&#x80FD;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x6269;&#x5C55;&#x6027;&#x8981;&#x6C42;&#x4E25;&#x82DB;&#x7684;&#x573A;&#x666F;&#x3002;"><meta name=viewport content="width=device-width,initial-scale=1"><title>F2 - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick-theme.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=/assets/dist/3.0.0/home.css></head><body class=template-home><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>F2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/f2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/f2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/f2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><section class=intro><div class=container><div class="header row"><div class=col-md-5><h1 id=_F2-&#x79FB;&#x52A8;&#x7AEF;&#x53EF;&#x89C6;&#x5316;&#x89E3;&#x51B3;&#x65B9;&#x6848;>F2 &#x79FB;&#x52A8;&#x7AEF;&#x53EF;&#x89C6;&#x5316;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h1><p class=main-info>F2 &#x662F;&#x4E13;&#x4E3A;&#x79FB;&#x52A8;&#x7AEF;&#x5B9A;&#x5236;&#x7684;&#x4E00;&#x5957;&#x5F00;&#x7BB1;&#x5373;&#x7528;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x5177;&#x6709;&#x7CBE;&#x7B80;&#x3001;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x6613;&#x6269;&#x5C55;&#x7684;&#x7279;&#x6027;&#x3002;&#x9002;&#x7528;&#x4E8E;&#x5BF9;&#x6027;&#x80FD;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x6269;&#x5C55;&#x6027;&#x8981;&#x6C42;&#x4E25;&#x82DB;&#x7684;&#x573A;&#x666F;&#x3002;</p><a href=/zh-cn/f2/3.x/tutorial/index.html class="btn btn-primary btn-lg btn-round-link">&#x5F00;&#x59CB;&#x4F7F;&#x7528;</a> <button class="btn btn-light border btn-lg btn-round-link" id=scanCodeBtn>&#x626B;&#x7801;&#x6F14;&#x793A;</button><iframe class="btn-round-link btn btn-light btn-lg github-btn" src="https://ghbtns.com/github-btn.html?user=antvis&amp;repo=f2&amp;type=star&amp;count=true&amp;size=large" frameborder=0 scrolling=0 width=170px height=20px></iframe></div><div class=col-md-7><div class=chart-wrapper><div class=chart-header><div id=chartTitle>&#x5546;&#x54C1;&#x4EF7;&#x683C; 7 &#x5E74;&#x8D70;&#x52BF;&#x5BF9;&#x6BD4;</div></div><div class=chart-content><div class="contianer slick"><div id=commentsCarousel class=carousel><div class="carousel-inner slick"><div class="carousel-item active"><canvas id=c1 style=width:375px;height:320px;></canvas></div><div class=carousel-item><canvas id=c2 style=width:375px;height:320px;></canvas></div><div class=carousel-item><canvas id=c3 style=width:375px;height:320px;></canvas></div></div></div></div></div></div></div></div></div></section><section class="features text-center"><div class=container><div class=row><div class="feature col-md-4 text-center"><img src=/assets/image/home/features-simple.svg alt="" width=120 height=120><h5 id=_&#x6781;&#x5C0F;>&#x6781;&#x5C0F;</h5><div class=detail>&#x5728;&#x652F;&#x6301;&#x4E30;&#x5BCC;&#xFF08;45+&#xFF09;&#x56FE;&#x8868;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x4FDD;&#x6301;&#x4EE3;&#x7801;&#x91CF;&#x7684;&#x5C0F;&#x5DE7;&#x3002;</div></div><div class="feature col-md-4 text-center"><img src=/assets/image/home/features-professional.svg alt="" width=120 height=120><h5 id=_&#x9AD8;&#x6027;&#x80FD;>&#x9AD8;&#x6027;&#x80FD;</h5><div class=detail>&#x6027;&#x80FD;&#x6781;&#x81F4;&#x8FFD;&#x6C42;&#xFF0C;&#x9488;&#x5BF9;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x505A;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x4F18;&#x5316;&#x3002;</div></div><div class="feature col-md-4 text-center"><img src=/assets/image/home/features-powerful.svg alt="" width=120 height=120><h5 id=_&#x5F3A;&#x5927;&#x6269;&#x5C55;&#x80FD;&#x529B;>&#x5F3A;&#x5927;&#x6269;&#x5C55;&#x80FD;&#x529B;</h5><div class=detail>&#x4EFB;&#x4F55;&#x56FE;&#x8868;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7075;&#x6D3B;&#x7ED8;&#x5236;&#xFF0C;&#x6EE1;&#x8DB3;&#x4F60;&#x65E0;&#x9650;&#x7684;&#x521B;&#x610F;&#x3002;</div></div></div></div></section><section class="get-started text-center"><div class=container><h2 id=_&#x5FEB;&#x901F;&#x63A5;&#x5165;>&#x5FEB;&#x901F;&#x63A5;&#x5165;</h2><p>&#x901A;&#x8FC7; <code>&lt;script&gt;</code> &#x6807;&#x7B7E;&#x5F15;&#x5165;&#xFF1A;</p><div class=highlight><pre><span class=hljs-comment>&lt;!-- &#x5F15;&#x5165;&#x5728;&#x7EBF;&#x8D44;&#x6E90; --&gt;</span>
+<span class=hljs-tag>&lt;<span class=hljs-name>script</span> <span class=hljs-attr>src</span>=<span class=hljs-string>&quot;https://gw.alipayobjects.com/os/antv/assets/f2/3.1.3/f2.js&quot;</span>&gt;</span><span class="undefined"></span><span class=hljs-tag>&lt;/<span class=hljs-name>script</span>&gt;</span>
+</pre></div></div><a href=/zh-cn/f2/3.x/tutorial/index.html class="btn btn-primary btn-lg btn-round-link more-tutorial">&#x66F4;&#x591A;&#x6559;&#x7A0B;</a></section><div style="position: absolute;"><div class=scancode-wrapper><div class=scancode-content><div class=scancode-arrow></div><div class=scancode-inner><div id=scanCode data-url=/zh-cn/f2/3.x/demo/mobile-index.html></div></div></div></div></div><div class=site-map><div class=container><div class=row><div class="sites col-md-5ths col-sm-4 col-xs-12"><h5><a href=/zh-cn/g2/3.x/index.html>G2</a></h5><div class="nav flex-column"><div class=nav-item><a href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a></div><div class=nav-item><a href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a></div><div class=nav-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a></div></div></div><div class="sites col-md-5ths col-sm-4 col-xs-12"><h5><a href=/zh-cn/g6/1.x/index.html>G6</a></h5><div class="nav flex-column"><div class=nav-item><a href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a></div><div class=nav-item><a href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a></div><div class=nav-item><a href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a></div></div></div><div class="sites col-md-5ths col-sm-4 col-xs-12"><h5><a href=/zh-cn/f2/3.x/index.html>F2</a></h5><div class="nav flex-column"><div class=nav-item><a href=/zh-cn/f2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a></div><div class=nav-item><a href=/zh-cn/f2/3.x/api/index.html>API &#x6587;&#x6863;</a></div><div class=nav-item><a href=/zh-cn/f2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a></div></div></div><div class="sites col-md-5ths col-sm-4 col-xs-12"><h5><a href=/zh-cn/vis/index.html>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></h5><div class="nav flex-column"><div class=nav-item><a href=/zh-cn/vis/blog/index.html>&#x535A;&#x5BA2;</a></div><div class=nav-item><a href=/zh-cn/vis/design/index.html>&#x8BBE;&#x8BA1;&#x539F;&#x5219;</a></div><div class=nav-item><a href=/zh-cn/vis/chart/index.html>&#x56FE;&#x8868;&#x7528;&#x6CD5;</a></div><div class=nav-item><a href=/zh-cn/vis/resource/index.html>&#x8D44;&#x6E90;</a></div></div></div><div class="sites col-md-5ths col-sm-4 col-xs-12"><h5><a>&#x66F4;&#x591A;&#x4EA7;&#x54C1;</a></h5><div class="nav flex-column"><div class=nav-item><a href=https://ant.design/index-cn target=_blank>Ant Design</a> <span class=description>- &#x8682;&#x8681; UI &#x8BBE;&#x8BA1;&#x4F53;&#x7CFB;</span></div><div class=nav-item><a href=https://eggjs.org/ target=_blank>Egg</a> <span class=description>- &#x4F01;&#x4E1A;&#x7EA7; Node Web &#x5F00;&#x53D1;&#x6846;&#x67B6;</span></div></div></div></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"f2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/f2/3.x/index.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/f2/3.1.3/f2.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/slick-1.8.0/slick.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=/assets/dist/3.0.0/home.js></script><script src=https://gw.alipayobjects.com/os/rmsportal/ZTwgYuEqPkjWTERMsszu.js></script><script type=text/javascript>new QRCode(document.getElementById("scanCode"), {
+    text: window.location.protocol + '//' + window.location.host + $('#scanCode').data('url'),
+    width: 273,
+    height: 273,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+const scanCodeBtn = $('#scanCodeBtn');
+const btnPos = scanCodeBtn.offset();
+const scancodeWrapper = $('.scancode-wrapper');
+$('#scanCodeBtn').click(() => {
+  scancodeWrapper.parent().css('left', btnPos.left + (scanCodeBtn.outerWidth() / 2) - (scancodeWrapper.outerWidth() / 2));
+  scancodeWrapper.parent().css('top', btnPos.top + scanCodeBtn.outerHeight());
+  scancodeWrapper.toggle();
+});
+
+$('body').click(event => {
+  const target = $(event.target);
+  if (!target.is( "button#scanCodeBtn") && !target.parents('.scancode-wrapper').length) {
+    $('.scancode-wrapper').hide();
+  }
+});</script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const names = ['商品价格 7 年走势对比', '层叠条形图', '饼图'];
+
+$('.slick').each(function () {
+    const $target = $(this);
+    $target.slick({
+        // dots: !!$target.data('dots'),
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        infinite: true,
+        speed: 500,
+        cssEase: 'linear',
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        fade: true,
+    }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        $('#chartTitle').text(names[nextSlide]);
+    });
+});
+
+})();</script><script>(function(){
+'use strict';
+  $.getJSON('/assets/data/f2-series-line.json', function(data) {
+    const chart = new F2.Chart({
+      id: 'c1',
+      pixelRatio: window.devicePixelRatio
+    });
+    chart.source(data);
+    chart.scale('date', {
+      type: 'timeCat',
+      tickCount: 3
+    });
+    chart.scale('value', {
+      tickCount: 5
+    });
+    chart.axis('date', {
+      label(text, index, total) {
+        // 只显示每一年的第一天
+        const textCfg = {};
+        if (index === 0) {
+          textCfg.textAlign = 'left';
+        }
+        if (index === total - 1) {
+          textCfg.textAlign = 'right';
+        }
+        return textCfg;
+      }
+    });
+    chart.tooltip({
+      custom(obj) {
+        const legend = chart.get('legendController').legends.top[0];
+        const tooltipItems = obj.items;
+        const legendItems = legend.items;
+        const map = {};
+        legendItems.map(item => {
+          map[item.name] = _.clone(item);
+        });
+        tooltipItems.map(item => {
+          const { name, value } = item;
+          if (map[name]) {
+            map[name].value = value;
+          }
+        });
+        legend.setItems(Object.values(map));
+      },
+      onHide() {
+        const legend = chart.get('legendController').legends.top[0];
+        legend.setItems(chart.getLegendItems().country);
+      }
+    });
+    chart.line().position('date*value').color('type');
+    chart.render();
+
+  });
+
+})();</script><script>(function(){
+'use strict';
+  const data = [
+    { State: 'WY', 年龄段 : '小于5岁', 人口数量: 25635 },
+    { State: 'WY', 年龄段 : '5至13岁', 人口数量: 1890 },
+    { State: 'WY', 年龄段 : '14至17岁', 人口数量: 9314 },
+    { State: 'DC', 年龄段 : '小于5岁', 人口数量: 30352 },
+    { State: 'DC', 年龄段 : '5至13岁', 人口数量: 20439 },
+    { State: 'DC', 年龄段 : '14至17岁', 人口数量: 10225 },
+    { State: 'VT', 年龄段 : '小于5岁', 人口数量: 38253 },
+    { State: 'VT', 年龄段 : '5至13岁', 人口数量: 42538 },
+    { State: 'VT', 年龄段 : '14至17岁', 人口数量: 15757 },
+    { State: 'ND', 年龄段 : '小于5岁', 人口数量: 51896 },
+    { State: 'ND', 年龄段 : '5至13岁', 人口数量: 67358 },
+    { State: 'ND', 年龄段 : '14至17岁', 人口数量: 18794 },
+    { State: 'AK', 年龄段 : '小于5岁', 人口数量: 72083 },
+    { State: 'AK', 年龄段 : '5至13岁', 人口数量: 85640 },
+    { State: 'AK', 年龄段 : '14至17岁', 人口数量: 22153 }
+  ];
+  const chart = new F2.Chart({
+    id: 'c2',
+    pixelRatio: window.devicePixelRatio
+  });
+
+  chart.source(data, {
+    '人口数量': {
+      tickCount: 5
+    }
+  });
+  chart.coord({
+    transposed: true
+  });
+  chart.axis('State', {
+    line: F2.Global._defaultAxis.line,
+    grid: null
+  });
+  chart.axis('人口数量', {
+    line: null,
+    grid: F2.Global._defaultAxis.grid,
+    label(text, index, total) {
+      const textCfg = {
+        text: text / 1000 + ' k'
+      };
+      if (index === 0) {
+        textCfg.textAlign = 'left';
+      }
+      if (index === total - 1) {
+        textCfg.textAlign = 'right';
+      }
+      return textCfg;
+    }
+  });
+  chart.tooltip({
+    custom(obj) {
+      const legend = chart.get('legendController').legends.top[0];
+      const tooltipItems = obj.items;
+      const legendItems = legend.items;
+      const map = {};
+      legendItems.map(item => {
+        map[item.name] = _.clone(item);
+      });
+      tooltipItems.map(item => {
+        const { name, value } = item;
+        if (map[name]) {
+          map[name].value = (value);
+        }
+      });
+      legend.setItems(Object.values(map));
+    },
+    onHide() {
+      const legend = chart.get('legendController').legends.top[0];
+      legend.setItems(chart.getLegendItems().country);
+    }
+  });
+  chart.interval().position('State*人口数量').color('年龄段').adjust('stack');
+
+  chart.render();
+
+})();</script><script>(function(){
+'use strict';
+  const map = {
+    '芳华': '40%',
+    '妖猫传': '20%',
+    '机器之血': '18%',
+    '心理罪': '15%',
+    '寻梦环游记': '5%',
+    '其他': '2%',
+  };
+  const data = [
+    { name: '芳华', percent: 0.4, a: '1' },
+    { name: '妖猫传', percent: 0.2, a: '1' },
+    { name: '机器之血', percent: 0.18, a: '1' },
+    { name: '心理罪', percent: 0.15, a: '1' },
+    { name: '寻梦环游记', percent: 0.05, a: '1' },
+    { name: '其他', percent: 0.02, a: '1' }
+  ];
+  const chart = new F2.Chart({
+    id: 'c3',
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.source(data, {
+    percent: {
+      formatter(val) {
+        return val * 100 + '%';
+      }
+    }
+  });
+  chart.legend({
+    position: 'right',
+    itemFormatter(val) {
+      return val + '  ' + map[val];
+    }
+  });
+  chart.tooltip(false);
+  chart.coord('polar', {
+    transposed: true,
+    radius: 0.85
+  });
+  chart.axis(false);
+  chart.interval()
+    .position('a*percent')
+    .color('name', [ '#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0' ])
+    .adjust('stack')
+    .style({
+      lineWidth: 1,
+      stroke: '#fff',
+      lineJoin: 'round',
+      lineCap: 'round'
+    })
+    .animate({
+      appear: {
+        duration: 1200,
+        easing: 'bounceOut'
+      }
+    });
+
+  chart.render();
+
+
+})();</script></body></html>

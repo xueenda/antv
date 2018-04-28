@@ -1,0 +1,574 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>&#x57FA;&#x7840;&#x6307;&#x5357; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G6</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class="list-group-item active"><a href=/zh-cn/g6/1.x/tutorial/base.html>&#x57FA;&#x7840;&#x6307;&#x5357;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/tutorial/net.html>&#x7F51;&#x56FE;&#x6307;&#x5357;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/tutorial/updateDoc.html>&#x5347;&#x7EA7;&#x6307;&#x5357;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/tutorial/custom-shape.html>&#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x5F62;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/tutorial/history.html>&#x66F4;&#x65B0;&#x65E5;&#x5FD7;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h2 id=_&#x6982;&#x8FF0;><a href=#_&#x6982;&#x8FF0; class=anchor><span class="iconfont icon-link"></span></a>&#x6982;&#x8FF0;</h2><p>&#x672C;&#x6587;&#x6863;&#x662F;&#x5173;&#x7CFB;&#x56FE;&#x5E93;&#x56FE; &#x2014;&#x2014; G6 &#x7684;&#x57FA;&#x7840;&#x4F7F;&#x7528;&#x6587;&#x6863;&#xFF0C;&#x672C;&#x6587;&#x65E8;&#x5728;&#x8BF4;&#x660E; G6 &#x7684;&#x7EC4;&#x6210;&#x7ED3;&#x6784;&#xFF0C;&#x548C;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x7684;<code>&#x6982;&#x5FF5;</code>&#x3001;<code>&#x5C5E;&#x6027;</code>&#x548C;<code>&#x63A5;&#x53E3;</code>&#xFF0C;&#x8BE6;&#x7EC6;&#x5185;&#x5BB9;&#x8BF7;&#x53C2;&#x770B;<a href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a>&#x3002;</p><ul><li><a href=#_%E5%AE%89%E8%A3%85>&#x5B89;&#x88C5;--install</a></li><li><a href=#_%E7%BB%93%E6%9E%84>&#x7ED3;&#x6784;--construction</a></li><li><a href=#_%E5%9B%BE>&#x56FE;--graph</a></li><li><a href=#_%E7%BD%91>&#x7F51;--net</a></li><li><a href=#_%E6%A0%91>&#x6811;--tree</a></li><li><a href=#_%E6%95%B0%E6%8D%AE>&#x6570;&#x636E;--data</a></li><li><a href=#_%E4%BA%A4%E4%BA%92>&#x4EA4;&#x4E92;--interaction</a></li></ul><h2 id=_&#x5B89;&#x88C5;><a href=#_&#x5B89;&#x88C5; class=anchor><span class="iconfont icon-link"></span></a>&#x5B89;&#x88C5;</h2><h3 id=_&#x6D4F;&#x89C8;&#x5668;&#x5F15;&#x5165;><a href=#_&#x6D4F;&#x89C8;&#x5668;&#x5F15;&#x5165; class=anchor><span class="iconfont icon-link"></span></a>&#x6D4F;&#x89C8;&#x5668;&#x5F15;&#x5165;</h3><div class=highlight><pre>&lt;script src=<span class=hljs-string>&quot;https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js&quot;</span>&gt;<span class=xml><span class=hljs-tag>&lt;/<span class=hljs-name>script</span>&gt;</span></span>
+</pre></div><h3 id=_&#x901A;&#x8FC7;-npm-&#x5B89;&#x88C5;><a href=#_&#x901A;&#x8FC7;-npm-&#x5B89;&#x88C5; class=anchor><span class="iconfont icon-link"></span></a>&#x901A;&#x8FC7; npm &#x5B89;&#x88C5;</h3><p>&#x5916;&#x90E8;&#x7528;&#x6237;&#x6682;&#x65F6;&#x4E0D;&#x63D0;&#x4F9B; npm &#x5B89;&#x88C5;&#xFF0C;&#x963F;&#x91CC;&#x96C6;&#x56E2;&#x5185;&#x90E8;&#x540C;&#x5B66;&#xFF0C;&#x53EF;&#x901A;&#x8FC7; <code>tnpm i @ali/g6</code> &#x5B89;&#x88C5;&#x3002;</p><h2 id=_&#x7ED3;&#x6784;><a href=#_&#x7ED3;&#x6784; class=anchor><span class="iconfont icon-link"></span></a>&#x7ED3;&#x6784;</h2><style type=text/css>.g6-tooltip ul li {
+    list-style: none;
+    color: #fff;
+  }
+  .g6-tooltip h4 {
+    font-size: 18px;
+  }
+  .g6-tooltip h4 {
+    background: none;
+    color: #fff;
+    padding-left: 0px;
+  }</style><div id=construction></div><h2 id=_&#x56FE;><a href=#_&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;</h2><p>&#x56FE; Graph &#x662F;&#x6240;&#x6709;&#x4E0A;&#x5C42;&#x56FE;&#x7C7B;&#x7684;&#x57FA;&#x7C7B;&#xFF0C;&#x5982;&#xFF1A;Net &#x7F51;&#x3001; Tree &#x6811;&#xFF0C;&#x90FD;&#x7EE7;&#x627F;&#x4E8E;Graph&#x3002;&#x4E0E;&#x4EE5;&#x5F80;&#x4E0D;&#x540C;&#xFF0C;1.0 &#x540E;&#xFF0C;Graph &#x5DF2;&#x6C89;&#x4E3A;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;(Abstract)&#xFF0C;&#x53EA;&#x5B9E;&#x73B0;&#x4E86;&#x57FA;&#x7840;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x63A5;&#x53E3;&#x89C4;&#x8303;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x57FA;&#x4E8E; Graph &#x8FDB;&#x884C;&#x62D3;&#x5C55;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x7528;&#x4E8E;&#x753B;&#x5173;&#x7CFB;&#x56FE;&#x3002;&#x4EE5;&#x540E; G6 &#x91CC;&#x8FD8;&#x8981;&#x5BB9;&#x7EB3;&#x66F4;&#x591A;&#x7684;&#x5173;&#x7CFB;&#x56FE;&#x5982; UML&#x3001;Flow&#x3001;Force&#x90FD;&#x5C06;&#x57FA;&#x4E8E; Graph &#xFF0C;&#x8BE6;&#x89C1;&#xFF1A;<a href=../api/graph.html>Graph API</a>&#x3002;</p><div id=graph></div><h2 id=_&#x7F51;><a href=#_&#x7F51; class=anchor><span class="iconfont icon-link"></span></a>&#x7F51;</h2><p>&#x7F51;&#x56FE; Net &#x662F; G6 &#x63D0;&#x4F9B;&#x7684;&#x3001;&#x53EF;&#x7528;&#x4E8E;&#x76F4;&#x63A5;&#x753B;&#x5173;&#x7CFB;&#x56FE;&#x7684;&#x3001;&#x6700;&#x57FA;&#x7840;&#x7684;&#x56FE;&#x7C7B;&#x3002;&#x5B83;&#x4E0D;&#x4EC5;&#x80FD;&#x753B;&#x7531;&#x4E00;&#x7EC4;<code>nodes</code>&#x3001;<code>edges</code>&#xFF0C;&#x786E;&#x5B9A;&#x7684;&#x5173;&#x7CFB;&#x56FE;&#xFF0C;&#x8FD8;&#x96C6;&#x6210;&#x4E86;&#xFF0C;&#x5982;&#xFF1A;&#x62D6;&#x62FD;&#x8282;&#x70B9;&#xFF08;dragNode&#xFF09;&#x3001;&#x62D6;&#x62FD;&#x753B;&#x5E03;&#xFF08;dragCanvas&#xFF09;&#x3001;&#x62D6;&#x62FD;&#x8FB9;&#xFF08;dragEdge&#xFF09;&#x3001;&#x8282;&#x70B9;&#x53D8;&#x5F62;&#xFF08;resizeNode&#xFF09;&#x7B49;&#x7B49;&#xFF0C;&#x4E00;&#x7CFB;&#x5217;&#x7684;<code>&#x57FA;&#x7840;</code>&#x7684;&#x7F16;&#x8F91;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#x7684;&#x57FA;&#x4E8E;&#x8BE5;&#x7C7B;&#xFF0C;&#x7ED8;&#x5236;&#x505A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x56FE;&#x7684;&#x5C55;&#x793A;&#x89C6;&#x56FE;&#x6216;&#x56FE;&#x7F16;&#x8F91;&#x5668;&#x3002;&#x8BE6;&#x89C1;&#xFF1A;<a href=./net.html>&#x7F51;&#x56FE;&#x6307;&#x5357;</a>&#xFF0C;<a href=../api/net.html>Net API</a>&#x3002;</p><div id=net style="width: 800px;background: #222222"></div><h2 id=_&#x6811;><a href=#_&#x6811; class=anchor><span class="iconfont icon-link"></span></a>&#x6811;</h2><p>&#x6811; Tree &#x662F; G6 1.0 &#x53D1;&#x5E03;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x5C01;&#x88C5;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7684;&#x56FE;&#x7C7B;&#x3002;&#x6211;&#x4EEC;&#x7CBE;&#x7EC6;&#x6253;&#x78E8;&#x7684;&#x6811;&#x76F8;&#x5173;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B; <code>20 +</code> &#x79CD;&#x6811;&#x7684;&#x5E03;&#x5C40;&#xFF0C;&#x6B22;&#x8FCE;&#x5927;&#x5BB6;&#x4F7F;&#x7528;&#xFF01;&#x8BE6;&#x89C1;<a href=../demo/index.html#%E6%A0%91%E5%9B%BE>Tree Demo</a>&#xFF0C;<a href=../api/tree.html>Tree API</a>&#x3002;</p><div id=tree></div><h2 id=_&#x6570;&#x636E;><a href=#_&#x6570;&#x636E; class=anchor><span class="iconfont icon-link"></span></a>&#x6570;&#x636E;</h2><p>&#x5728;&#x4F7F;&#x7528;&#x5173;&#x7CFB;&#x56FE;&#x5F00;&#x53D1;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x9700;&#x8981;&#x5BFC;&#x51FA;&#x5BFC;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x6EE1;&#x8DB3;&#x5173;&#x7CFB;&#x56FE;&#x7684;&#x5B58;&#x50A8;&#x3001;&#x5206;&#x4EAB;&#x3001;&#x7F16;&#x8F91;&#x7684;&#x529F;&#x80FD;&#x3002; G6 1.0 &#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x9700;&#x6C42;&#x505A;&#x4E86;&#x603B;&#x7ED3;&#x3002;&#x5728; Graph &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x5BF9;&#x76F8;&#x4E92;&#x5BF9;&#x7167;&#x7684;&#x63A5;&#x53E3;&#xFF0C;read &lt;==&gt; save&#xFF0C;&#x540E;&#x9762;&#x7528;&#x6237;&#x5E94;&#x8BE5;&#x4E25;&#x683C;&#x901A;&#x8FC7;&#x8FD9;&#x4E24;&#x4E2A;&#x8BE5;&#x63A5;&#x53E3;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x3002;&#x53C2;&#x770B;<a href=../demo/other/save-and-read.html>Demo</a></p><h3 id=_&#x5BFC;&#x5165;----read><a href=#_&#x5BFC;&#x5165;----read class=anchor><span class="iconfont icon-link"></span></a>&#x5BFC;&#x5165; -- read</h3><p>&#x5BFC;&#x5165;&#x6570;&#x636E;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5BFC;&#x5165;&#x6570;&#x636E;
+ * @param  {Object}  data   &#x901A;&#x8FC7;save&#x5BFC;&#x51FA;&#x7684;&#x6570;&#x636E;
+ */</span>
+graph.read(data);
+</pre></div><h3 id=_&#x5BFC;&#x51FA;----save><a href=#_&#x5BFC;&#x51FA;----save class=anchor><span class="iconfont icon-link"></span></a>&#x5BFC;&#x51FA; -- save</h3><p>&#x5BFC;&#x51FA;&#x6570;&#x636E;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5BFC;&#x51FA;&#x6570;&#x636E;
+ * @return  {Object}  data  &#x5BFC;&#x51FA;&#x7684;&#x6570;&#x636E;
+ */</span>
+graph.save();
+</pre></div><h2 id=_&#x4EA4;&#x4E92;><a href=#_&#x4EA4;&#x4E92; class=anchor><span class="iconfont icon-link"></span></a>&#x4EA4;&#x4E92;</h2><p>G6 1.0 &#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x6237;&#x80FD;&#x590D;&#x7528; G6 &#x5185;&#x7F6E;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x5E76;&#x80FD;&#x968F;&#x610F;&#x63D2;&#x62D4;&#xFF0C;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x5957;&#x7531;<code>&#x4E8B;&#x4EF6;</code>&#x7EC4;&#x6210;<code>&#x884C;&#x4E3A;</code>&#xFF0C;&#x7531;<code>&#x884C;&#x4E3A;</code>&#x7EC4;&#x6210;<code>&#x6A21;&#x5F0F;</code>&#x7684;&#x4EA4;&#x4E92;&#x673A;&#x5236;&#x3002;&#x7528;&#x4E8E;&#x80FD;&#x901A;&#x8FC7;&#xFF0C;graph &#x4E0A;&#x884C;&#x4E3A;&#x3001;&#x6A21;&#x5F0F;&#x3001;&#x76F8;&#x5173;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x968F;&#x610F;<code>&#x7EC4;&#x88C5;</code>&#xFF0C;<code>&#x63D2;&#x62D4;</code>&#xFF0C;&#x4EA4;&#x4E92;&#x884C;&#x4E3A;&#x3002;</p><div id=interaction style=800px></div><h3 id=_&#x4E8B;&#x4EF6;----event><a href=#_&#x4E8B;&#x4EF6;----event class=anchor><span class="iconfont icon-link"></span></a>&#x4E8B;&#x4EF6; -- event</h3><div id=c0></div><p><a href=../demo/other/event.html>Demo&#x6E90;&#x7801;</a></p><p>G6 &#x5C01;&#x88C5;&#x4E86;&#x4E00;&#x5957;&#x57FA;&#x7840;&#x7684;&#x9F20;&#x6807;&#x4E8B;&#x4EF6;&#x3002;&#x901A;&#x8FC7;<code>graph.on()</code> &#x7ED1;&#x5B9A;&#xFF0C;<code>graph.off()</code>&#x89E3;&#x9664;&#x3002;</p><ul><li><p>&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;</p><ul><li>x &#x5728;&#x753B;&#x5E03;&#x4E0A;&#x7684;&#x5750;&#x6807;x</li><li>y &#x5728;&#x753B;&#x5E03;&#x4E0A;&#x7684;&#x5750;&#x6807;y</li><li>domX &#x76F8;&#x5BF9;&#x4E8E;&#x753B;&#x5E03;&#x5BB9;&#x5668;&#x7684;&#x5750;&#x6807;</li><li>domY &#x76F8;&#x5BF9;&#x4E8E;&#x753B;&#x5E03;&#x5BB9;&#x5668;&#x7684;&#x5750;&#x6807;y</li><li>item &#x8282;&#x70B9;&#x6216;&#x8005;&#x8FB9;</li><li>shape &#x5F53;&#x524D;&#x7684;&#x5F62;</li><li>itemType &apos;node&apos; or &apos;edge&apos;</li><li>toEvObj &#x5230;&#x8FBE;&#x7684;&#x76EE;&#x6807;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;</li></ul></li><li><p>&#x4E8B;&#x4EF6;&#x7C7B;&#x578B;</p><ul><li>&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x2014;&#x2014;click</li><li>&#x9F20;&#x6807;&#x6309;&#x4E0B;&#x2014;&#x2014;mousedown</li><li>&#x9F20;&#x6807;&#x8D77;&#x6765;&#x2014;&#x2014;mouseup</li><li>&#x9F20;&#x6807;&#x79FB;&#x52A8;&#x2014;&#x2014;mousemove</li><li>&#x9F20;&#x6807;&#x79FB;&#x5165;&#x2014;&#x2014;mouseenter</li><li>&#x9F20;&#x6807;&#x79FB;&#x51FA;&#x2014;&#x2014;mouseleave</li></ul><p>&#x2026;&#x2026;</p></li></ul><h3 id=_&#x884C;&#x4E3A;----behaviour><a href=#_&#x884C;&#x4E3A;----behaviour class=anchor><span class="iconfont icon-link"></span></a>&#x884C;&#x4E3A; -- behaviour</h3><p>&#x884C;&#x4E3A;&#x7531;&#x4E8B;&#x4EF6;&#x7EC4;&#x6210;&#xFF0C;&#x6240;&#x63CF;&#x8FF0;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x6BD4;&#x4E8B;&#x4EF6;&#x66F4;&#x5177;&#x4F53;&#xFF0C;&#x5982; &#x62D6;&#x52A8;&#x8282;&#x70B9;&#xFF08;dragNode&#xFF09;&#xFF0C;&#x6EDA;&#x8F6E;&#x7F29;&#x653E;&#x753B;&#x5E03;&#xFF08;wheelZoom&#xFF09;&#xFF0C;&#x62D6;&#x52A8;&#x753B;&#x5E03;&#xFF08;dragCanvas&#xFF09;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x8981;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x6B64;&#x5916; Graph &#x4E0A;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x7B80;&#x4FBF;&#x65B9;&#x6CD5;&#x7BA1;&#x7406;&#x884C;&#x4E3A;&#x3002;&#x8BE6;&#x89C1;&#xFF1A;<a href=../api/graph.html>Graph API</a>&#xFF0C;&#x884C;&#x4E3A;&#x5217;&#x8868;&#x8BE6;&#x89C1;&#xFF1A;<a href=../api/handler.html>Handle API</a></p><h4 id=_addBehaviour-&#x6DFB;&#x52A0;&#x884C;&#x4E3A;><a href=#_addBehaviour-&#x6DFB;&#x52A0;&#x884C;&#x4E3A; class=anchor><span class="iconfont icon-link"></span></a>addBehaviour &#x6DFB;&#x52A0;&#x884C;&#x4E3A;</h4><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6DFB;&#x52A0;&#x884C;&#x4E3A;
+ * @param  {String} modeName   &#x6A21;&#x5F0F;
+ * @param  {String} behaviours &#x884C;&#x4E3A;
+ */</span>
+graph.addBehaviour(modeName, behaviours);
+</pre></div><h4 id=_removeBehaviour-&#x6DFB;&#x52A0;&#x884C;&#x4E3A;><a href=#_removeBehaviour-&#x6DFB;&#x52A0;&#x884C;&#x4E3A; class=anchor><span class="iconfont icon-link"></span></a>removeBehaviour &#x6DFB;&#x52A0;&#x884C;&#x4E3A;</h4><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6DFB;&#x52A0;&#x884C;&#x4E3A;
+ * @param  {String} modeName   &#x6A21;&#x5F0F;
+ * @param  {String} behaviours &#x884C;&#x4E3A;
+ */</span>
+graph.removeBehaviour(modeName, behaviours);
+</pre></div><p>&#x53C2;&#x770B;<a href=../demo/other/mode.html>Demo</a></p><h3 id=_&#x6A21;&#x5F0F;----mode><a href=#_&#x6A21;&#x5F0F;----mode class=anchor><span class="iconfont icon-link"></span></a>&#x6A21;&#x5F0F; -- mode</h3><p>&#x5927;&#x591A;&#x6570;&#x884C;&#x4E3A;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x76F8;&#x4E92;&#x7EC4;&#x5408;&#xFF0C;&#x4E5F;&#x6709;&#x90E8;&#x5206;&#x884C;&#x4E3A;&#x4E4B;&#x95F4;&#x6709;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x77DB;&#x76FE;&#xFF0C;&#x6BD4;&#x5982; &#x62D6;&#x52A8;&#x753B;&#x5E03;&#xFF08;dragCanvas&#xFF09;&#x884C;&#x4E3A;&#x548C;&#x591A;&#x9009;&#x884C;&#x4E3A;&#xFF08;multiSelect&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x9700;&#x8981;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x7EF4;&#x62A4;&#x5404;&#x79CD;&#x884C;&#x4E3A;&#x96C6;&#x5408;&#x7EC4;&#x6210;&#x6A21;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;<code>&#x62D6;&#x62FD;&#x6A21;&#x5F0F;&#xFF08;drag&#xFF09;</code>&#xFF0C;<code>&#x7F16;&#x8F91;&#x6A21;&#x5F0F;&#xFF08;edit&#xFF09;</code>&#xFF0C;&#x4EE5;&#x4FBF;&#x7BA1;&#x7406;&#x3001;&#x5207;&#x6362;&#x3002;</p><h4 id=_changeMode-&#x5207;&#x6362;&#x6A21;&#x5F0F;><a href=#_changeMode-&#x5207;&#x6362;&#x6A21;&#x5F0F; class=anchor><span class="iconfont icon-link"></span></a>changeMode &#x5207;&#x6362;&#x6A21;&#x5F0F;</h4><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5207;&#x6362;&#x6A21;&#x5F0F;
+ * @param  {String} modeName   &#x6A21;&#x5F0F;&#x540D;
+ */</span>
+graph.changeMode(modeName);
+</pre></div><p>&#x53C2;&#x770B;<a href=../demo/other/mode.html>Demo</a></p><div class=prev-next><a href=/zh-cn/g6/1.x/tutorial/index.html class="float-left pre">&#x5FEB;&#x901F;&#x4E0A;&#x624B; </a><a href=/zh-cn/g6/1.x/tutorial/net.html class="float-right next">&#x7F51;&#x56FE;&#x6307;&#x5357;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g6","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g6/1.x/tutorial/base.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+  const tree = new G6.Tree({
+    id: 'construction',
+    height: 500,
+    fitView: 'autoSize',
+    behaviourFilter: ['wheelZoom', 'dragBlank', 'dragCanvas']
+  });
+  tree.source({
+    label: 'G6',
+    children: [{
+      label: '图类',
+      children: [
+        {
+          label: 'Graph'
+        },
+        {
+          label: 'Net'
+        },
+        {
+          label: 'Tree'
+        },
+        {
+          label: '……'
+        }
+      ]
+    },
+    {
+      label: '基础类',
+      children: [
+        {
+          label: 'Canvas'
+        },
+        {
+          label: 'Handler'
+        },
+        {
+          label: 'Layout'
+        },
+        {
+          label: 'Global'
+        }
+      ]
+    },
+    {
+      label: '工具类',
+      children: [
+        {
+          label: 'Matrix'
+        },
+        {
+          label: 'Color'
+        },
+        {
+          label: 'Util'
+        }
+      ]
+    }]
+  });
+  tree.edge().shape('smooth');
+  tree.render();
+
+})();</script><script>(function(){
+'use strict';
+  const tree = new G6.Tree({
+    id: 'graph',
+    height: 500,
+    fitView: 'autoSize',
+    behaviourFilter: ['wheelZoom', 'dragBlank', 'dragCanvas']
+  });
+  tree.source({
+    label: 'Graph 基类',
+    children: [{
+      label: '树图'
+    },
+    {
+      label: '网图'
+    }]
+  });
+  tree.edge()
+    .shape('smooth')
+    .label('继承');
+  tree.render();
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/influence-network.json',function(data){
+  var Util = G6.Util;
+  console.log(data)
+  G6.registerNode('circle', {
+    afterDraw: function(cfg, group, keyShape){
+      var model = cfg.model;
+      var size = model.size;
+      var bbox = keyShape.getBBox();
+      var paddingLeft = 20;
+      var y = (bbox.maxY + bbox.minY)/2;
+      var x = bbox.maxX + paddingLeft;
+
+      if(size > 20){ // 只展示影响力大于 10 的线
+        group.addShape('text', {
+          attrs: {
+            x: x,
+            y: y,
+            fill: '#fff',
+            text: model.language,
+            textAlign: 'left',
+            fontSize: 80,
+            textBaseline: 'middle'
+          }
+        })
+      }
+    }
+  });
+
+  var net = new G6.Net({
+   id: "net",           // 此处替换容器id
+   height: 500,        // 此处替换高度
+   fitView: 'autoZoom',
+   useAnchor: false,
+   mode: 'complicated',
+   behaviourFilter: ['wheelZoom', 'wheelZoomHideEdges'],
+   grid: null
+  });
+  var nodeMap = {};
+  var hideItem;
+  Util.each(data.nodes, function(node){
+    nodeMap[node.id] = node;
+    Util.mix(node, node.attributes);
+    delete node.attributes;
+  });
+  net.tooltip(true);
+  net.source(data.nodes, data.edges);
+  net.node()
+     .tooltip('language*size*modularityClass', function(language, size, modularityClass){
+       return [
+         ['语言', language],
+         ['影响力', size],
+         ['模块数', modularityClass]
+       ];
+     })
+     .size('size', function(size){
+       size = size <= 10 ? 10 : size;
+       return rst;
+     })
+     .shape('circle')
+     .style({
+       fillOpacity: 1
+     });
+  net.edge()
+     .shape('bezierQuadratic')
+     .style({
+       strokeOpacity: 0.8
+     })
+     .color('source', function(source){
+       return nodeMap[source].color;
+     });
+  net.render();
+  net.on('mouseenter', function(ev){
+    var item = ev.item;
+    var keyShape;
+    var edges;
+    var id;
+    if(item.get('type') === 'node') {
+      id = item.get('id');
+      edges = item.get('edges');
+      Util.each(edges, function(edge){
+        if(edge.get('model').source === id ){
+          keyShape = edge.getKeyShape();
+          keyShape.attr('lineWidth', 4);
+        }
+      });
+      net.refresh();
+    }
+  });
+  net.on('mouseleave', function(ev) {
+    var item = ev.item;
+    var keyShape;
+    var edges;
+    var id;
+    if(item.get('type') === 'node') {
+      id = item.get('id');
+      edges = item.get('edges');
+      Util.each(edges, function(edge){
+        if(edge.get('model').source === id ){
+          keyShape = edge.getKeyShape();
+          keyShape.attr('lineWidth', 1);
+        }
+      });
+      net.refresh();
+    }
+  });
+  net.on('click', function(ev) {
+    var item = ev.item;
+    var unRelativeItems;
+
+    if(item && item.get('type') === 'node') {
+      if(hideItem){
+        Util.each(hideItem, function(subItem){
+          subItem.show();
+        });
+        hideItem = null;
+      }
+      unRelativeItems = item.getUnRelativeItems();
+      Util.each(unRelativeItems, function(subItem){
+        subItem.hide();
+      });
+      net.autoZoom();
+      hideItem = unRelativeItems; // 缓存被隐藏的子项
+    }
+  });
+  net.on('dblclick', function(ev) {
+    if(hideItem){
+      Util.each(hideItem, function(subItem){
+        subItem.show();
+      });
+      hideItem = null;
+    }
+    net.autoZoom();
+  });
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/g6-npm-ls-tiny-tree.json',function(data){
+  function hasClass (shape, className) {
+    if (shape) {
+     var clasees = shape.get('class');
+     if (clasees && clasees.indexOf(className) !== -1) {
+       return true;
+     }
+    }
+    return false;
+  }
+
+  var Util = G6.Util;
+  // 准备布局配置
+  var layoutCfg = {
+   "direction": "LR",
+   "nodeSep": 20,
+   "nodeSize": 20,
+   "rankSep": 200
+  };
+  // 自定义树节点
+  var DEFAULT_NODE_SIZE = 5;
+  G6.registerNode('treeNode', {
+   draw(cfg, group) {
+     var model = cfg.model;
+     var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+     var shapeCfg = {
+       attrs: {
+         x: cfg.x,
+         y: cfg.y,
+         r: r,
+         stroke: '#003380',
+         fill: 'white',
+         fillOpacity: 1,
+       },
+     };
+     if (model.children && model.children.length) {
+       shapeCfg.class = model.isCollapsed ? 'spreadoutButton' : 'collapseButton';
+       shapeCfg.attrs.fill = '#044A9A';
+       shapeCfg.attrs.stroke = '#003380';
+       shapeCfg.attrs.fillOpacity = 0.4;
+     }
+     if (model.root) {
+       shapeCfg.attrs.fill = '#044A9A';
+       shapeCfg.attrs.stroke = '#003380';
+       shapeCfg.attrs.fillOpacity = 0.7;
+     }
+     shapeCfg.attrStash = Util.mix({}, shapeCfg.attrs);
+     return group.addShape('circle', shapeCfg);
+   },
+   afterDraw(cfg, group) {
+     var model = cfg.model;
+     var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+     var align = model.align;
+     var labelAttrs = {
+       text: model.name,
+       fill: '#666',
+       textBaseline: 'middle',
+       fontSize: 20,
+       x: cfg.x + r + DEFAULT_NODE_SIZE,
+       y: cfg.y,
+       textAlign: 'left',
+     };
+     if (align === 'R') {
+       Util.mix(labelAttrs, {
+         x: cfg.x - r - DEFAULT_NODE_SIZE,
+         y: cfg.y,
+         textAlign: 'right',
+       });
+     } else if (align === 'T' || align === 'CH') {
+       Util.mix(labelAttrs, {
+         x: cfg.x,
+         y: cfg.y + r + DEFAULT_NODE_SIZE,
+         textAlign: 'right',
+         rotate: -Math.PI / 2,
+       });
+     } else if (align === 'B') {
+       Util.mix(labelAttrs, {
+         x: cfg.x,
+         y: cfg.y - r - DEFAULT_NODE_SIZE,
+         textAlign: 'left',
+         rotate: -Math.PI / 2,
+       });
+     }
+     var label = group.addShape('text', {
+       attrs: labelAttrs,
+     });
+     return label;
+   }
+  });
+
+  // 生成树图实例
+  var tree = new G6.Tree({
+   id: 'tree', // 容器ID
+   layoutCfg: layoutCfg,       // 布局配置
+   showButton: false,
+   width: 600,
+   height: 450,     // 画布高
+   fitView: 'autoZoom',
+   behaviourFilter: ['wheelZoom'],
+   layoutFn: G6.Layouts.LayeredTidyTree, // 布局类型
+  });
+
+  // 加载数据
+  tree.source(data);
+  tree.node().shape('treeNode');
+  tree.edge()
+     .shape('smooth')
+     .style({
+       stroke: '#A9BCD3'
+     });
+
+  // 渲染树图
+  tree.render();
+
+  // 添加事件
+  tree.on('mouseenter', function(ev){
+   var item = ev.item;
+   var keyShape;
+   if (item && item.get('type') === 'node') {
+     keyShape = item.getKeyShape();
+     if( hasClass(keyShape, 'Button') ){
+       keyShape.attr('fillOpacity', 0.2);
+       keyShape.attr('strokeOpacity', 0.8);
+       tree.refresh();
+     }
+   }
+  });
+  tree.on('mouseleave', function(ev){
+   var item = ev.item;
+   var keyShape;
+   var attrStash;
+   if (item && item.get('type') === 'node') {
+     keyShape = item.getKeyShape();
+     if( hasClass(keyShape, 'Button') ){
+       attrStash = keyShape.get('attrStash');
+       keyShape.attr(attrStash);
+       tree.refresh();
+     }
+   }
+  });
+});
+
+})();</script><script>(function(){
+'use strict';
+var data = {
+  source: {
+    "nodes": [
+      {
+        "shape": "rect",
+        "label": "行为",
+        "x": 910,
+        "y": 230,
+        "id": "244aba8a"
+      },
+      {
+        "shape": "rect",
+        "label": "模式",
+        "x": 1060,
+        "y": 230,
+        "id": "b5ac2003"
+      },
+      {
+        "shape": "rect",
+        "label": "事件",
+        "x": 760,
+        "y": 230,
+        "id": "d16a14a7"
+      }
+    ],
+    "edges": [
+      {
+        "shape": "arrow",
+        "source": "244aba8a",
+        "target": "b5ac2003",
+        "id": "c7ac7b93",
+        "style": {
+          "lineDash": [
+            10,
+            5
+          ]
+        },
+        "label": "信号量反馈",
+        "controlPoints": [
+          {
+            "x": 910,
+            "y": 246
+          },
+          {
+            "x": 910,
+            "y": 300
+          },
+          {
+            "x": 1060,
+            "y": 300
+          },
+          {
+            "x": 1060,
+            "y": 246
+          }
+        ]
+      },
+      {
+        "shape": "arrow",
+        "source": "d16a14a7",
+        "target": "244aba8a",
+        "label": "组成",
+        "id": "5b97ec58"
+      },
+      {
+        "shape": "arrow",
+        "source": "244aba8a",
+        "target": "b5ac2003",
+        "label": "组成",
+        "id": "60dcc6a9"
+      }
+    ]
+  }
+};
+var net = new G6.Net({
+  id: 'interaction',
+  height: 500,
+  grid: null,
+  fitView: 'autoSize',
+  modes: {
+    none: []
+  },
+  mode: 'none'
+});
+net.read(data);
+net.render();
+
+})();</script><script>(function(){
+'use strict';
+$(function() {
+  var data = {
+    nodes: [
+      {
+        "id": "node1",
+        "x": 100,
+        "y": 160
+      },
+      {
+        "id": "node2",
+        "x": 290,
+        "y": 160
+      }
+    ],
+    edges: [
+      {
+        "id": "node1-node2",
+        "target": "node1",
+        "source": "node2"
+      }
+    ]
+  };
+  var net = new G6.Net({
+    id: 'c0',           // 容器ID
+    width: 500,         // 宽度自适应
+    height: 500,        // 画布高
+    fitView: 'autoSize',
+    mode: 'none',
+    grid: null
+  });
+  net.source(data.nodes, data.edges);
+  net.render();
+  net.on('click', function(ev){
+    alert("击中" + ev.item.get('model').id + "!");
+  });
+  net.on('mousedown', function(ev){
+    var item = ev.item;
+    if(net.isNode(item)){
+      net.update(item, {
+        shape: 'circle'
+      });
+      net.refresh();
+    }
+  });
+  net.on('mouseup', function(ev){
+    var item = ev.item;
+    if(net.isNode(item)){
+      net.update(item, {
+        shape: 'rect'
+      });
+      net.refresh();
+    }
+  });
+  net.on('mouseenter', function(ev){
+    var item = ev.item;
+    net.update(item, {
+      color: 'red'
+    });
+    net.refresh();
+  });
+  net.on('mouseleave', function(ev){
+    var item = ev.item;
+    net.update(item, {
+      color: null
+    });
+    net.refresh();
+  });
+});
+
+})();</script></body></html>

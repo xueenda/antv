@@ -1,0 +1,1334 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Canvas - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G6</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/api/index.html>G6</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/graph.html>Graph</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/node.html>Node</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/edge.html>Edge</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/net.html>Net</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/tree.html>Tree</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/handler.html>Handler</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/Layouts.html>Layouts</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/matrix.html>Matrix</a></li><li class="list-group-item active"><a href=/zh-cn/g6/1.x/api/canvas.html>Canvas</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/global.html>Global</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/util.html>Util</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/plugins.html>Plugins</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><style>.inner-page-toc{
+  display: none;
+}</style><h1 id=_Canvas><a href=#_Canvas class=anchor></a>Canvas</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x76F4;&#x7EBF;-line>&#x76F4;&#x7EBF;-line</a><a class="col-md-3 level-2" href=#_&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_x1>x1</a><a class="col-md-3 level-3" href=#_y1>y1</a><a class="col-md-3 level-3" href=#_x2>x2</a><a class="col-md-3 level-3" href=#_y2>y2</a><a class="col-md-3 level-3" href=#_arrow>arrow</a><a class="col-md-3 level-3" href=#_lineWidth>lineWidth</a><a class="col-md-3 level-3" href=#_lineDash>lineDash</a><a class="col-md-3 level-3" href=#_stroke>stroke</a><a class="col-md-3 level-3" href=#_storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#_getPoint>getPoint</a><a class="col-md-3 level-2" href=#_&#x4E8C;&#x9636;bezier&#x66F2;&#x7EBF;-quadratic>&#x4E8C;&#x9636;bezier&#x66F2;&#x7EBF;-quadratic</a><a class="col-md-3 level-2" href=#__&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_p1>p1</a><a class="col-md-3 level-3" href=#_p2>p2</a><a class="col-md-3 level-3" href=#_p3>p3</a><a class="col-md-3 level-3" href=#__arrow>arrow</a><a class="col-md-3 level-3" href=#__stroke>stroke</a><a class="col-md-3 level-3" href=#__storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#__&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#__getPoint>getPoint</a><a class="col-md-3 level-2" href=#_&#x4E09;&#x9636;bezier&#x66F2;&#x7EBF;-cubic>&#x4E09;&#x9636;bezier&#x66F2;&#x7EBF;-cubic</a><a class="col-md-3 level-2" href=#___&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#__p1>p1</a><a class="col-md-3 level-3" href=#__p2>p2</a><a class="col-md-3 level-3" href=#__p3>p3</a><a class="col-md-3 level-3" href=#_p4>p4</a><a class="col-md-3 level-3" href=#___arrow>arrow</a><a class="col-md-3 level-3" href=#___stroke>stroke</a><a class="col-md-3 level-3" href=#___storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#___&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#___getPoint>getPoint</a><a class="col-md-3 level-2" href=#_&#x5706;&#x5F27;&#x7EBF;-arc>&#x5706;&#x5F27;&#x7EBF;-arc</a><a class="col-md-3 level-2" href=#____&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_x>x</a><a class="col-md-3 level-3" href=#_y>y</a><a class="col-md-3 level-3" href=#_r>r</a><a class="col-md-3 level-3" href=#_startAngle>startAngle</a><a class="col-md-3 level-3" href=#_endAngle>endAngle</a><a class="col-md-3 level-3" href=#_clockwise>clockwise</a><a class="col-md-3 level-3" href=#____arrow>arrow</a><a class="col-md-3 level-3" href=#____stroke>stroke</a><a class="col-md-3 level-3" href=#____storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#____&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#____getPoint>getPoint</a><a class="col-md-3 level-2" href=#_&#x591A;&#x6BB5;&#x7EBF;-polyline>&#x591A;&#x6BB5;&#x7EBF;-polyline</a><a class="col-md-3 level-2" href=#_____&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_points>points</a><a class="col-md-3 level-3" href=#_____arrow>arrow</a><a class="col-md-3 level-3" href=#_____stroke>stroke</a><a class="col-md-3 level-3" href=#_____storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_____&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#_____getPoint>getPoint</a><a class="col-md-3 level-2" href=#_&#x77E9;&#x5F62;-rect>&#x77E9;&#x5F62;-rect</a><a class="col-md-3 level-2" href=#______&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#__x>x</a><a class="col-md-3 level-3" href=#__y>y</a><a class="col-md-3 level-3" href=#_width>width</a><a class="col-md-3 level-3" href=#_height>height</a><a class="col-md-3 level-3" href=#_radius>radius</a><a class="col-md-3 level-3" href=#_fill>fill</a><a class="col-md-3 level-3" href=#_fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#______stroke>stroke</a><a class="col-md-3 level-3" href=#______storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_&#x5706;-circle>&#x5706;-circle</a><a class="col-md-3 level-2" href=#_______&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#___x>x</a><a class="col-md-3 level-3" href=#___y>y</a><a class="col-md-3 level-3" href=#__r>r</a><a class="col-md-3 level-3" href=#__fill>fill</a><a class="col-md-3 level-3" href=#__fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#_______stroke>stroke</a><a class="col-md-3 level-3" href=#_______storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_&#x692D;&#x5706;&#x5F62;-ellipse>&#x692D;&#x5706;&#x5F62;-ellipse</a><a class="col-md-3 level-2" href=#________&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#____x>x</a><a class="col-md-3 level-3" href=#____y>y</a><a class="col-md-3 level-3" href=#_rx>rx</a><a class="col-md-3 level-3" href=#_ry>ry</a><a class="col-md-3 level-3" href=#___fill>fill</a><a class="col-md-3 level-3" href=#___fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#________stroke>stroke</a><a class="col-md-3 level-3" href=#________storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_________&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_____x>x</a><a class="col-md-3 level-3" href=#_____y>y</a><a class="col-md-3 level-3" href=#_rs>rs</a><a class="col-md-3 level-3" href=#_re>re</a><a class="col-md-3 level-3" href=#__startAngle>startAngle</a><a class="col-md-3 level-3" href=#__endAngle>endAngle</a><a class="col-md-3 level-3" href=#__clockwise>clockwise</a><a class="col-md-3 level-3" href=#____fill>fill</a><a class="col-md-3 level-3" href=#____fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#_________stroke>stroke</a><a class="col-md-3 level-3" href=#_________storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_&#x591A;&#x8FB9;&#x5F62;-polygon>&#x591A;&#x8FB9;&#x5F62;-polygon</a><a class="col-md-3 level-2" href=#__________&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#__points>points</a><a class="col-md-3 level-3" href=#_____fill>fill</a><a class="col-md-3 level-3" href=#_____fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#__________stroke>stroke</a><a class="col-md-3 level-3" href=#__________storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_&#x56FE;&#x50CF;-image>&#x56FE;&#x50CF;-image</a><a class="col-md-3 level-2" href=#___________&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#______x>x</a><a class="col-md-3 level-3" href=#______y>y</a><a class="col-md-3 level-3" href=#_img>img</a><a class="col-md-3 level-3" href=#__width>width</a><a class="col-md-3 level-3" href=#__height>height</a><a class="col-md-3 level-3" href=#_sx>sx</a><a class="col-md-3 level-3" href=#_sy>sy</a><a class="col-md-3 level-3" href=#_swidth>swidth</a><a class="col-md-3 level-3" href=#_sheight>sheight</a><a class="col-md-3 level-3" href=#______fill>fill</a><a class="col-md-3 level-3" href=#______fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#___________stroke>stroke</a><a class="col-md-3 level-3" href=#___________storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_&#x6587;&#x672C;-text>&#x6587;&#x672C;-text</a><a class="col-md-3 level-2" href=#____________&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_______x>x</a><a class="col-md-3 level-3" href=#_______y>y</a><a class="col-md-3 level-3" href=#_text>text</a><a class="col-md-3 level-3" href=#_fontFamily>fontFamily</a><a class="col-md-3 level-3" href=#_fontSize>fontSize</a><a class="col-md-3 level-3" href=#_fontWeight>fontWeight</a><a class="col-md-3 level-3" href=#_fontStyle>fontStyle</a><a class="col-md-3 level-3" href=#_textAlign>textAlign</a><a class="col-md-3 level-3" href=#_textBaseline>textBaseline</a><a class="col-md-3 level-3" href=#_______fill>fill</a><a class="col-md-3 level-3" href=#_______fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#____________stroke>stroke</a><a class="col-md-3 level-3" href=#____________storkeOpacity>storkeOpacity</a><a class="col-md-3 level-2" href=#_svg&#x7684;path-path>svg&#x7684;path-path</a><a class="col-md-3 level-2" href=#_____________&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#________fill>fill</a><a class="col-md-3 level-3" href=#________fillOpacity>fillOpacity</a><a class="col-md-3 level-3" href=#_____________stroke>stroke</a><a class="col-md-3 level-3" href=#_____________storkeOpacity>storkeOpacity</a><a class="col-md-3 level-3" href=#______getPoint>getPoint</a><a class="col-md-3 level-2" href=#_&#x52A8;&#x753B;-animate>&#x52A8;&#x753B;-animate</a><a class="col-md-3 level-2" href=#______&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#_animate>animate</a><a class="col-md-3 level-2" href=#_&#x793A;&#x4F8B;>&#x793A;&#x4F8B;</a><a class="col-md-3 level-2" href=#_&#x901A;&#x7528;&#x5C5E;&#x6027;>&#x901A;&#x7528;&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_capture>capture</a><a class="col-md-3 level-3" href=#_zIndex>zIndex</a><a class="col-md-3 level-3" href=#__lineWidth>lineWidth</a><a class="col-md-3 level-3" href=#__lineDash>lineDash</a><a class="col-md-3 level-3" href=#_clip>clip</a><a class="col-md-3 level-2" href=#_&#x53D8;&#x6362;-transform>&#x53D8;&#x6362;-transform</a><a class="col-md-3 level-2" href=#_&#x901A;&#x7528;&#x5C5E;&#x6027;&#x503C;>&#x901A;&#x7528;&#x5C5E;&#x6027;&#x503C;</a><a class="col-md-3 level-2" href=#_&#x901A;&#x7528;&#x65B9;&#x6CD5;>&#x901A;&#x7528;&#x65B9;&#x6CD5;</a></div><p>&#x672C;&#x6587;&#x6863;&#x662F;G6&#x56FE;&#x5F62;&#x5E93;-G6.Canvas&#x7684;API&#x6587;&#x6863;, &#x60A8;&#x80FD;&#x4ECE;&#x8BE5;&#x6587;&#x6863;&#x4E2D;&#x5FEB;&#x901F;&#x67E5;&#x627E;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x7ED8;&#x56FE;&#x5F15;&#x64CE;&#x63D0;&#x4F9B;&#x7684;&#x6240;&#x6709;<strong>&#x5BF9;&#x5916;&#x53D1;&#x5E03;</strong>&#x7684;<code>&#x65B9;&#x6CD5;</code>&#x3001;<code>&#x914D;&#x7F6E;</code>&#x3001;<code>&#x5C5E;&#x6027;</code> &#x53CA;&#x5B83;&#x4EEC;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x6709;&#x4F60;&#x89C9;&#x5F97;&#x63CF;&#x8FF0;&#x7684;&#x4E0D;&#x591F;&#x6E05;&#x6670;&#x7684;&#x5730;&#x65B9;&#x656C;&#x8BF7;<a href=/about/index.html>&#x8054;&#x7CFB;&#x6211;&#x4EEC;</a>&#xFF01;</p><ul><li><a href=#_%E7%9B%B4%E7%BA%BF-line>&#x76F4;&#x7EBF;-line</a></li><li><a href=#_%E4%BA%8C%E9%98%B6bezier%E6%9B%B2%E7%BA%BF-quadratic>&#x4E8C;&#x9636;bezier&#x66F2;&#x7EBF;-quadratic</a></li><li><a href=#_%E4%B8%89%E9%98%B6bezier%E6%9B%B2%E7%BA%BF-cubic>&#x4E09;&#x9636;bezier&#x66F2;&#x7EBF;-cubic</a></li><li><a href=#_%E5%9C%86%E5%BC%A7%E7%BA%BF-arc>&#x5706;&#x5F27;&#x7EBF;-arc</a></li><li><a href=#_%E5%A4%9A%E6%AE%B5%E7%BA%BF-polyline>&#x591A;&#x6BB5;&#x7EBF;-polyline</a></li><li><a href=#_%E7%9F%A9%E5%BD%A2-rect>&#x77E9;&#x5F62;-rect</a></li><li><a href=#_%E5%9C%86-circle>&#x5706;-circle</a></li><li><a href=#_%E6%A4%AD%E5%9C%86%E5%BD%A2-ellipse>&#x692D;&#x5706;&#x5F62;-ellipse</a></li><li><a href=#_%E6%89%87%E5%BD%A2-fan>&#x6247;&#x5F62;-fan</a></li><li><a href=#_%E5%A4%9A%E8%BE%B9%E5%BD%A2-polygon>&#x591A;&#x8FB9;&#x5F62;-polygon</a></li><li><a href=#_%E5%9B%BE%E5%83%8F-image>&#x56FE;&#x50CF;-image</a></li><li><a href=#_%E6%96%87%E6%9C%AC-text>&#x6587;&#x672C;-text</a></li><li><a href=#_svg%E7%9A%84path-path>svg&#x7684;path-path</a></li><li><a href=#_%E5%8A%A8%E7%94%BB-animate>&#x52A8;&#x753B;-animate</a></li><li><a href=#_%E5%8F%98%E6%8D%A2-transform>&#x53D8;&#x6362;-transform</a></li><li><a href=#_%E9%80%9A%E7%94%A8%E5%B1%9E%E6%80%A7>&#x901A;&#x7528;&#x5C5E;&#x6027;</a></li><li><a href=#_%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95>&#x901A;&#x7528;&#x65B9;&#x6CD5;</a></li></ul><h2 id=_&#x76F4;&#x7EBF;-line><a href=#_&#x76F4;&#x7EBF;-line class=anchor><span class="iconfont icon-link"></span></a>&#x76F4;&#x7EBF;-line</h2><div id=c1></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.scale(<span class=hljs-number>0.5</span>, <span class=hljs-number>0.5</span>);
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>280</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>                       <span class=hljs-comment>// &#x989C;&#x8272;&#x540D;&#x5B57;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>300</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>300</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>arrow</span>: <span class=hljs-literal>true</span>,                                             <span class=hljs-comment>// &#x663E;&#x793A;&#x7BAD;&#x5934;</span>
+      stroke: <span class=hljs-string>&apos;#00ff00&apos;</span>                   <span class=hljs-comment>// 6&#x4F4D;&#x5341;&#x516D;&#x8FDB;&#x5236;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>300</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>300</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>300</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>300</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>arrow</span>: <span class=hljs-literal>true</span>,                                             <span class=hljs-comment>// &#x663E;&#x793A;&#x7BAD;&#x5934;</span>
+      stroke: <span class=hljs-string>&apos;#00f&apos;</span>                      <span class=hljs-comment>// 3&#x4F4D;&#x5341;&#x516D;&#x8FDB;&#x5236;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>600</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>600</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>10</span>,<span class=hljs-number>10</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;rgb(100, 100, 200)&apos;</span>         <span class=hljs-comment>// rgb&#x6570;&#x5B57;&#x6A21;&#x5F0F;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>300</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>600</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>300</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>600</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>10</span>,<span class=hljs-number>20</span>, <span class=hljs-number>10</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;rgba(100, 100, 200, 0.5)&apos;</span>   <span class=hljs-comment>// rgba&#x6570;&#x5B57;&#x6A21;&#x5F0F;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>600</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>600</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>600</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>600</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>50</span>,<span class=hljs-number>50</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;rgb(34%, 85%, 48%)&apos;</span>         <span class=hljs-comment>// rgb&#x767E;&#x5206;&#x6BD4;&#x6A21;&#x5F0F;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>900</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>600</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>900</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>600</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>50</span>,<span class=hljs-number>5</span>,<span class=hljs-number>50</span>,<span class=hljs-number>5</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;rgba(34%, 85%, 48%, 0.5)&apos;</span>   <span class=hljs-comment>// rgba&#x767E;&#x5206;&#x6BD4;&#x6A21;&#x5F0F;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>900</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>900</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;l (0) 0:#ff0000 1:#0000ff&apos;</span>                      <span class=hljs-comment>// &#x7EBF;&#x6027;&#x6E10;&#x53D8;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>300</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>900</span> + <span class=hljs-number>20</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>300</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>900</span> + <span class=hljs-number>280</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;r (0.5, 0.5, 0) 0:rgb(0, 0, 255) 1:#ff0000&apos;</span>    <span class=hljs-comment>// &#x8FF3;&#x5411;&#x6E10;&#x53D8;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=_&#x5C5E;&#x6027;><a href=#_&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_x1><a href=#_x1 class=anchor><span class="iconfont icon-link"></span></a>x1</h3><p>[Number]&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;: 0 &#x7B2C;&#x4E00;&#x4E2A;&#x70B9;&#x7684; x &#x503C;&#x3002;</p><h3 id=_y1><a href=#_y1 class=anchor><span class="iconfont icon-link"></span></a>y1</h3><p>[Number]&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;: 0 &#x7B2C;&#x4E00;&#x4E2A;&#x70B9;&#x7684; y &#x503C;&#x3002;</p><h3 id=_x2><a href=#_x2 class=anchor><span class="iconfont icon-link"></span></a>x2</h3><p>[Number]&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;: 0 &#x7B2C;&#x4E8C;&#x4E2A;&#x70B9;&#x7684; x &#x503C;&#x3002;</p><h3 id=_y2><a href=#_y2 class=anchor><span class="iconfont icon-link"></span></a>y2</h3><p>[Number]&#x9ED8;&#x8BA4;&#x503C;: 0 &#x7B2C;&#x4E8C;&#x70B9;&#x7684; y &#x503C;&#x3002;</p><h3 id=_arrow><a href=#_arrow class=anchor><span class="iconfont icon-link"></span></a>arrow</h3><p>[Boolean]&#xFF0C;&#x7BAD;&#x5934;&#x6709;&#x7B2C;&#x4E00;&#x4E2A;&#x70B9;&#x6307;&#x5411;&#x7B2C;&#x4E8C;&#x4E2A;&#x70B9;</p><h3 id=_lineWidth><a href=#_lineWidth class=anchor><span class="iconfont icon-link"></span></a>lineWidth</h3><p>[Number]&#xFF0C;&#x7EBF;&#x5BBD;&#x3002;</p><h3 id=_lineDash><a href=#_lineDash class=anchor><span class="iconfont icon-link"></span></a>lineDash</h3><p>[String || Array]&#xFF0C;&#x865A;&#x7EBF;&#x3002;</p><h3 id=_stroke><a href=#_stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>[String]&#xFF0C;&#x8FB9;&#x6846;&#x989C;&#x8272;&#x3002;</p><h3 id=_storkeOpacity><a href=#_storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>[Number]&#xFF0C;&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;&#x3002;</p><h2 id=_&#x65B9;&#x6CD5;><a href=#_&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=_getPoint><a href=#_getPoint class=anchor><span class="iconfont icon-link"></span></a>getPoint</h3><h4 id=_&#x53C2;&#x6570;><a href=#_&#x53C2;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x53C2;&#x6570;</h4><ul><li>t &#x767E;&#x5206;&#x6BD4;</li></ul><h4 id=_&#x8FD4;&#x56DE;><a href=#_&#x8FD4;&#x56DE; class=anchor><span class="iconfont icon-link"></span></a>&#x8FD4;&#x56DE;</h4><ul><li>point &#x753B;&#x5E03;&#x5750;&#x6807;&#x70B9;</li></ul><h2 id=_&#x4E8C;&#x9636;bezier&#x66F2;&#x7EBF;-quadratic><a href=#_&#x4E8C;&#x9636;bezier&#x66F2;&#x7EBF;-quadratic class=anchor><span class="iconfont icon-link"></span></a>&#x4E8C;&#x9636;bezier&#x66F2;&#x7EBF;-quadratic</h2><div id=c2></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c2&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.scale(<span class=hljs-number>0.5</span>, <span class=hljs-number>0.5</span>);
+  canvas.addShape(<span class=hljs-string>&apos;quadratic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>100</span>, <span class=hljs-number>600</span><span class=hljs-number>-250</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>300</span>, <span class=hljs-number>500</span><span class=hljs-number>-250</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>500</span>, <span class=hljs-number>600</span><span class=hljs-number>-250</span>],
+      <span class=hljs-attr>arrow</span>: <span class=hljs-literal>true</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;quadratic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>700</span>, <span class=hljs-number>600</span><span class=hljs-number>-250</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>900</span>, <span class=hljs-number>800</span><span class=hljs-number>-250</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>1100</span>, <span class=hljs-number>500</span><span class=hljs-number>-250</span>],
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>20</span>, <span class=hljs-number>20</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;quadratic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>100</span>, <span class=hljs-number>600</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>300</span>, <span class=hljs-number>500</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>500</span>, <span class=hljs-number>600</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;quadratic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>700</span>, <span class=hljs-number>600</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>900</span>, <span class=hljs-number>800</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>1100</span>, <span class=hljs-number>500</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  addMarker(canvas, [
+    [<span class=hljs-number>100</span>, <span class=hljs-number>600</span>],
+    [<span class=hljs-number>300</span>, <span class=hljs-number>500</span>],
+    [<span class=hljs-number>500</span>, <span class=hljs-number>600</span>],
+    [<span class=hljs-number>700</span>, <span class=hljs-number>600</span>],
+    [<span class=hljs-number>900</span>, <span class=hljs-number>800</span>],
+    [<span class=hljs-number>1100</span>, <span class=hljs-number>500</span>]
+  ]);
+  <span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>addMarker</span>(<span class=hljs-params>canvas, points, cfg</span>)</span>{
+    <span class=hljs-keyword>for</span> (<span class=hljs-keyword>var</span> i = <span class=hljs-number>0</span>; i &lt; points.length; i++) {
+      <span class=hljs-keyword>var</span> circle = canvas.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+        <span class=hljs-attr>attrs</span>: {
+          <span class=hljs-attr>x</span>: points[i][<span class=hljs-number>0</span>],
+          <span class=hljs-attr>y</span>: points[i][<span class=hljs-number>1</span>],
+          <span class=hljs-attr>r</span>: <span class=hljs-number>8</span>,
+          <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#F93D26&apos;</span>
+        }
+      });
+    }
+  }
+  canvas.draw();
+</pre></div><h2 id=__&#x5C5E;&#x6027;><a href=#__&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_p1><a href=#_p1 class=anchor><span class="iconfont icon-link"></span></a>p1</h3><p>&#x4E8C;&#x9636;&#x8D1D;&#x8D5B;&#x5C14;&#x66F2;&#x7EBF;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x5F00;&#x59CB;&#x4E8E;&#x8FD9;&#x4E2A;&#x70B9;&#x3002;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p1&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=_p2><a href=#_p2 class=anchor><span class="iconfont icon-link"></span></a>p2</h3><p>&#x4E8C;&#x9636;&#x8D1D;&#x8D5B;&#x5C14;&#x66F2;&#x7EBF;&#x63A7;&#x5236;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x4E0D;&#x7ECF;&#x8FC7;&#x8FD9;&#x4E2A;&#x70B9;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x70B9;&#x4F1A;&#x5F71;&#x54CD;&#x66F2;&#x7EBF;&#x7684;&#x5F62;&#x72B6;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p2&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=_p3><a href=#_p3 class=anchor><span class="iconfont icon-link"></span></a>p3</h3><p>&#x4E8C;&#x9636;&#x8D1D;&#x8D5B;&#x5C14;&#x66F2;&#x7EBF;&#x7684;&#x7EC8;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x7ED3;&#x675F;&#x4E8E;&#x8FD9;&#x4E2A;&#x70B9;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p3&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=__arrow><a href=#__arrow class=anchor><span class="iconfont icon-link"></span></a>arrow</h3><p>&#x7BAD;&#x5934;&#x53EA;&#x4F1A;&#x51FA;&#x73B0;&#x5728;p3&#x8FD9;&#x4E2A;&#x70B9;</p><h3 id=__stroke><a href=#__stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=__storkeOpacity><a href=#__storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=__&#x65B9;&#x6CD5;><a href=#__&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=__getPoint><a href=#__getPoint class=anchor><span class="iconfont icon-link"></span></a>getPoint</h3><h5 id=__&#x53C2;&#x6570;><a href=#__&#x53C2;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x53C2;&#x6570;</h5><ul><li>t &#x767E;&#x5206;&#x6BD4;</li></ul><h4 id=__&#x8FD4;&#x56DE;><a href=#__&#x8FD4;&#x56DE; class=anchor><span class="iconfont icon-link"></span></a>&#x8FD4;&#x56DE;</h4><ul><li>point &#x753B;&#x5E03;&#x5750;&#x6807;&#x70B9;</li></ul><h2 id=_&#x4E09;&#x9636;bezier&#x66F2;&#x7EBF;-cubic><a href=#_&#x4E09;&#x9636;bezier&#x66F2;&#x7EBF;-cubic class=anchor><span class="iconfont icon-link"></span></a>&#x4E09;&#x9636;bezier&#x66F2;&#x7EBF;-cubic</h2><div id=c3></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c3&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.scale(<span class=hljs-number>0.5</span>, <span class=hljs-number>0.5</span>);
+  canvas.addShape(<span class=hljs-string>&apos;cubic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>75</span>, <span class=hljs-number>300</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>200</span>, <span class=hljs-number>120</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>450</span>, <span class=hljs-number>350</span>],
+      <span class=hljs-attr>p4</span>: [<span class=hljs-number>510</span>, <span class=hljs-number>150</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>20</span>,<span class=hljs-number>20</span>]
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;cubic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>90</span>, <span class=hljs-number>150</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>150</span>, <span class=hljs-number>350</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>300</span>, <span class=hljs-number>120</span>],
+      <span class=hljs-attr>p4</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>525</span>, <span class=hljs-number>300</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#42E1DC&apos;</span>,
+      <span class=hljs-attr>arrow</span>: <span class=hljs-literal>true</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;cubic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>20</span>, <span class=hljs-number>600</span> + <span class=hljs-number>100</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>200</span>, <span class=hljs-number>600</span> + <span class=hljs-number>100</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>400</span>, <span class=hljs-number>600</span> + <span class=hljs-number>500</span>],
+      <span class=hljs-attr>p4</span>: [<span class=hljs-number>520</span>, <span class=hljs-number>600</span> + <span class=hljs-number>200</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;r (0.5, 0.5, 1) 0:#ffaa00 1:#11aacc&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;cubic&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>p1</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>20</span>, <span class=hljs-number>600</span> + <span class=hljs-number>100</span>],
+      <span class=hljs-attr>p2</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>200</span>, <span class=hljs-number>600</span> + <span class=hljs-number>100</span>],
+      <span class=hljs-attr>p3</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>400</span>, <span class=hljs-number>600</span> + <span class=hljs-number>500</span>],
+      <span class=hljs-attr>p4</span>: [<span class=hljs-number>600</span> + <span class=hljs-number>520</span>, <span class=hljs-number>600</span> + <span class=hljs-number>200</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;r (0.5, 0.5, 1) 0:#ffaa00 0.5:#00ffff 1:#11aacc&apos;</span>
+    }
+  });
+  addMarker(canvas, [
+    [<span class=hljs-number>75</span>, <span class=hljs-number>300</span>],
+    [<span class=hljs-number>200</span>, <span class=hljs-number>120</span>],
+    [<span class=hljs-number>450</span>, <span class=hljs-number>350</span>],
+    [<span class=hljs-number>510</span>, <span class=hljs-number>150</span>]
+  ]);
+  <span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>addMarker</span>(<span class=hljs-params>canvas, points, cfg</span>)</span>{
+    <span class=hljs-keyword>for</span> (<span class=hljs-keyword>var</span> i = <span class=hljs-number>0</span>; i &lt; points.length; i++) {
+      <span class=hljs-keyword>var</span> circle = canvas.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+        <span class=hljs-attr>attrs</span>: {
+          <span class=hljs-attr>x</span>: points[i][<span class=hljs-number>0</span>],
+          <span class=hljs-attr>y</span>: points[i][<span class=hljs-number>1</span>],
+          <span class=hljs-attr>r</span>: <span class=hljs-number>8</span>,
+          <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#F93D26&apos;</span>
+        }
+      });
+    }
+  }
+  canvas.draw();
+</pre></div><h2 id=___&#x5C5E;&#x6027;><a href=#___&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=__p1><a href=#__p1 class=anchor><span class="iconfont icon-link"></span></a>p1</h3><p>cubic&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x5F00;&#x59CB;&#x4E8E;&#x8FD9;&#x4E2A;&#x70B9;&#x3002;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p1&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=__p2><a href=#__p2 class=anchor><span class="iconfont icon-link"></span></a>p2</h3><p>cubic&#x7B2C;&#x4E00;&#x4E2A;&#x63A7;&#x5236;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x4E0D;&#x7ECF;&#x8FC7;&#x8FD9;&#x4E2A;&#x70B9;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x70B9;&#x4F1A;&#x5F71;&#x54CD;&#x66F2;&#x7EBF;&#x7684;&#x5F62;&#x72B6;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p2&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=__p3><a href=#__p3 class=anchor><span class="iconfont icon-link"></span></a>p3</h3><p>cubic&#x7B2C;&#x4E8C;&#x4E2A;&#x63A7;&#x5236;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x4E0D;&#x7ECF;&#x8FC7;&#x8FD9;&#x4E2A;&#x70B9;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x70B9;&#x4F1A;&#x5F71;&#x54CD;&#x66F2;&#x7EBF;&#x7684;&#x5F62;&#x72B6;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p3&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=_p4><a href=#_p4 class=anchor><span class="iconfont icon-link"></span></a>p4</h3><p>cubic&#x7684;&#x7EC8;&#x70B9;&#xFF0C;&#x66F2;&#x7EBF;&#x603B;&#x662F;&#x7ED3;&#x675F;&#x4E8E;&#x8FD9;&#x4E2A;&#x70B9;</p><span style=font-style:italic;color:#F93D26>&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E00;&#x70B9;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x91CF;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x5C31;&#x628A;&#x6574;&#x4E2A;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;quadratic.attr(&apos;p4&apos;, [200, 300]) &#x8FD9;&#x6837;&#x505A;&#x662F;&#x6B63;&#x786E;&#x7684;&#x3002;</span><h3 id=___arrow><a href=#___arrow class=anchor><span class="iconfont icon-link"></span></a>arrow</h3><p>&#x7BAD;&#x5934;&#x53EA;&#x4F1A;&#x51FA;&#x73B0;&#x5728;p3&#x8FD9;&#x4E2A;&#x70B9;</p><h3 id=___stroke><a href=#___stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=___storkeOpacity><a href=#___storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=___&#x65B9;&#x6CD5;><a href=#___&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=___getPoint><a href=#___getPoint class=anchor><span class="iconfont icon-link"></span></a>getPoint</h3><h5 id=___&#x53C2;&#x6570;><a href=#___&#x53C2;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x53C2;&#x6570;</h5><ul><li>t &#x767E;&#x5206;&#x6BD4;</li></ul><h5 id=___&#x8FD4;&#x56DE;><a href=#___&#x8FD4;&#x56DE; class=anchor><span class="iconfont icon-link"></span></a>&#x8FD4;&#x56DE;</h5><ul><li>point &#x753B;&#x5E03;&#x5750;&#x6807;&#x70B9;</li></ul><h2 id=_&#x5706;&#x5F27;&#x7EBF;-arc><a href=#_&#x5706;&#x5F27;&#x7EBF;-arc class=anchor><span class="iconfont icon-link"></span></a>&#x5706;&#x5F27;&#x7EBF;-arc</h2><div id=c4></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c4&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.scale(<span class=hljs-number>0.5</span>, <span class=hljs-number>0.5</span>);
+  canvas.addShape(<span class=hljs-string>&apos;arc&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>300</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>200</span>,
+      <span class=hljs-attr>startAngle</span>: <span class=hljs-number>1</span>/<span class=hljs-number>6</span> * <span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>endAngle</span>: <span class=hljs-number>5</span>/<span class=hljs-number>4</span> * <span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>20</span>,<span class=hljs-number>20</span>]
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;arc&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>600</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>200</span>,
+      <span class=hljs-attr>startAngle</span>: <span class=hljs-number>1</span>/<span class=hljs-number>6</span> * <span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>endAngle</span>: <span class=hljs-number>1</span>/<span class=hljs-number>2</span> * <span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#0D2031&apos;</span>,
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;arc&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>900</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>600</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>startAngle</span>: <span class=hljs-number>1</span>/<span class=hljs-number>6</span> * <span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>endAngle</span>: <span class=hljs-number>5</span>/<span class=hljs-number>4</span> * <span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>,
+      <span class=hljs-attr>arrow</span>: <span class=hljs-literal>true</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=____&#x5C5E;&#x6027;><a href=#____&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_x><a href=#_x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x9ED8;&#x8BA4;&#x503C;: 0 &#x5706;&#x5FC3;&#x7684;x&#x503C;</p><h3 id=_y><a href=#_y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x9ED8;&#x8BA4;&#x503C;: 0 &#x5706;&#x5FC3;&#x7684;y&#x503C;</p><h3 id=_r><a href=#_r class=anchor><span class="iconfont icon-link"></span></a>r</h3><p>&#x9ED8;&#x8BA4;&#x503C;: 0 &#x5706;&#x5F27;&#x7684;&#x534A;&#x5F84;</p><h3 id=_startAngle><a href=#_startAngle class=anchor><span class="iconfont icon-link"></span></a>startAngle</h3><p>&#x9ED8;&#x8BA4;&#x503C;: 0 &#x5F00;&#x59CB;&#x89D2;&#x5EA6; &#x89D2;&#x5EA6;&#x5236;</p><h3 id=_endAngle><a href=#_endAngle class=anchor><span class="iconfont icon-link"></span></a>endAngle</h3><p>&#x9ED8;&#x8BA4;&#x503C;: 0 &#x7ED3;&#x675F;&#x89D2;&#x5EA6; &#x89D2;&#x5EA6;&#x5236;</p><h3 id=_clockwise><a href=#_clockwise class=anchor><span class="iconfont icon-link"></span></a>clockwise</h3><p>&#x9ED8;&#x8BA4;&#x503C;: false</p><p>&#x8868;&#x793A;&#x753B;&#x8F74;&#x7684;&#x65B9;&#x5411;</p><p>&#x503C;&#x7684;&#x8303;&#x56F4;: true&#x8868;&#x793A;&#x9006;&#x65F6;&#x9488;&#xFF0C;false&#x987A;&#x65F6;&#x9488;</p><h3 id=____arrow><a href=#____arrow class=anchor><span class="iconfont icon-link"></span></a>arrow</h3><p>&#x9ED8;&#x8BA4;&#x503C;: false</p><p>&#x5706;&#x5F27;&#x662F;&#x5426;&#x5E26;&#x6709;&#x7BAD;&#x5934;&#xFF0C;false&#x4E0D;&#x5E26;&#xFF0C;true&#x5E26;</p><p>&#x7BAD;&#x5934;&#x603B;&#x662F;&#x51FA;&#x73B0;&#x5728;endAngle&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;</p><h3 id=____stroke><a href=#____stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=____storkeOpacity><a href=#____storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=____&#x65B9;&#x6CD5;><a href=#____&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=____getPoint><a href=#____getPoint class=anchor><span class="iconfont icon-link"></span></a>getPoint</h3><h5 id=____&#x53C2;&#x6570;><a href=#____&#x53C2;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x53C2;&#x6570;</h5><ul><li>t &#x767E;&#x5206;&#x6BD4;</li></ul><h5 id=____&#x8FD4;&#x56DE;><a href=#____&#x8FD4;&#x56DE; class=anchor><span class="iconfont icon-link"></span></a>&#x8FD4;&#x56DE;</h5><ul><li>point &#x753B;&#x5E03;&#x5750;&#x6807;&#x70B9;</li></ul><h2 id=_&#x591A;&#x6BB5;&#x7EBF;-polyline><a href=#_&#x591A;&#x6BB5;&#x7EBF;-polyline class=anchor><span class="iconfont icon-link"></span></a>&#x591A;&#x6BB5;&#x7EBF;-polyline</h2><div id=c5></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c5&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.scale(<span class=hljs-number>0.5</span>, <span class=hljs-number>0.5</span>);
+  canvas.addShape(<span class=hljs-string>&apos;polyline&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>points</span>: [[<span class=hljs-number>741.6487813219777</span>,<span class=hljs-number>1183.92131359719</span>],[<span class=hljs-number>583.1709046233477</span>,<span class=hljs-number>33.93352498571885</span>],[<span class=hljs-number>1098.3455104904451</span>,<span class=hljs-number>246.13363066051957</span>],[<span class=hljs-number>211.30437444177633</span>,<span class=hljs-number>420.3306748934016</span>],[<span class=hljs-number>980.3732054245157</span>,<span class=hljs-number>756.2252762234709</span>],[<span class=hljs-number>374.28495603818607</span>,<span class=hljs-number>108.15975006182006</span>],[<span class=hljs-number>422.7940564389682</span>,<span class=hljs-number>1119.2144105552136</span>],[<span class=hljs-number>833.5078092462321</span>,<span class=hljs-number>586.7198136138784</span>]],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=_____&#x5C5E;&#x6027;><a href=#_____&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_points><a href=#_points class=anchor><span class="iconfont icon-link"></span></a>points</h3><p>&#x591A;&#x4E2A;&#x70B9;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x7EC4;, &#x6570;&#x7EC4;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;[x, y], &#x8FD9;&#x4E2A;&#x6837;&#x4E2A;&#x6570;&#x7EC4;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x70B9;&#xFF0C;x&#x662F;&#x8FD9;&#x4E2A;&#x70B9;&#x7684;x&#x5750;&#x6807;&#xFF0C;y&#x662F;&#x8FD9;&#x4E2A;&#x70B9;&#x7684;y&#x5750;&#x6807;</p><h3 id=_____arrow><a href=#_____arrow class=anchor><span class="iconfont icon-link"></span></a>arrow</h3><p>&#x9ED8;&#x8BA4;&#x503C;: false</p><p>&#x662F;&#x5426;&#x663E;&#x793A;&#x7BAD;&#x5934;, true&#x663E;&#x793A;, false&#x4E0D;&#x663E;&#x793A;</p><p>&#x7BAD;&#x5934;&#x53EA;&#x4F1A;&#x51FA;&#x73B0;&#x5728;points&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x70B9;</p><h3 id=_____stroke><a href=#_____stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=_____storkeOpacity><a href=#_____storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_____&#x65B9;&#x6CD5;><a href=#_____&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=_____getPoint><a href=#_____getPoint class=anchor><span class="iconfont icon-link"></span></a>getPoint</h3><h5 id=_____&#x53C2;&#x6570;><a href=#_____&#x53C2;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x53C2;&#x6570;</h5><ul><li>t &#x767E;&#x5206;&#x6BD4;</li></ul><h5 id=_____&#x8FD4;&#x56DE;><a href=#_____&#x8FD4;&#x56DE; class=anchor><span class="iconfont icon-link"></span></a>&#x8FD4;&#x56DE;</h5><ul><li>point &#x753B;&#x5E03;&#x5750;&#x6807;&#x70B9;</li></ul><h2 id=_&#x77E9;&#x5F62;-rect><a href=#_&#x77E9;&#x5F62;-rect class=anchor><span class="iconfont icon-link"></span></a>&#x77E9;&#x5F62;-rect</h2><div id=c6></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c6&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;rect&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>width</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>height</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;rect&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>width</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>height</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;rect&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>width</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>height</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(129,9,39,0.5)&apos;</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;blue&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=______&#x5C5E;&#x6027;><a href=#______&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=__x><a href=#__x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x77E9;&#x5F62;&#x7684;&#x5DE6;&#x4E0A;&#x89D2;x&#x7684;&#x5750;&#x6807;</p><h3 id=__y><a href=#__y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x77E9;&#x5F62;&#x7684;&#x5DE6;&#x4E0A;&#x89D2;y&#x7684;&#x5750;&#x6807;</p><h3 id=_width><a href=#_width class=anchor><span class="iconfont icon-link"></span></a>width</h3><p>&#x77E9;&#x5F62;&#x7684;&#x5BBD;&#x5EA6;</p><h3 id=_height><a href=#_height class=anchor><span class="iconfont icon-link"></span></a>height</h3><p>&#x77E9;&#x5F62;&#x7684;&#x9AD8;&#x5EA6;</p><h3 id=_radius><a href=#_radius class=anchor><span class="iconfont icon-link"></span></a>radius</h3><p>&#x77E9;&#x5F62;&#x7684;&#x5706;&#x89D2;&#x534A;&#x5F84;</p><h3 id=_fill><a href=#_fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=_fillOpacity><a href=#_fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=______stroke><a href=#______stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=______storkeOpacity><a href=#______storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_&#x5706;-circle><a href=#_&#x5706;-circle class=anchor><span class="iconfont icon-link"></span></a>&#x5706;-circle</h2><div id=c7></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c7&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>200</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>70</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>60</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>20</span>, <span class=hljs-number>20</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>+<span class=hljs-number>150</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>100</span>,
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(129,9,39,0.5)&apos;</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;blue&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=_______&#x5C5E;&#x6027;><a href=#_______&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=___x><a href=#___x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x5706;&#x5FC3;&#x5750;&#x6807;&#x7684;x&#x5750;&#x6807;</p><h3 id=___y><a href=#___y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x5706;&#x5FC3;&#x5750;&#x6807;&#x7684;y&#x5750;&#x6807;</p><h3 id=__r><a href=#__r class=anchor><span class="iconfont icon-link"></span></a>r</h3><p>&#x5706;&#x7684;&#x534A;&#x5F84;</p><h3 id=__fill><a href=#__fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=__fillOpacity><a href=#__fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=_______stroke><a href=#_______stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=_______storkeOpacity><a href=#_______storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_&#x692D;&#x5706;&#x5F62;-ellipse><a href=#_&#x692D;&#x5706;&#x5F62;-ellipse class=anchor><span class="iconfont icon-link"></span></a>&#x692D;&#x5706;&#x5F62;-ellipse</h2><div id=c8></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c8&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;ellipse&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>200</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>rx</span>: <span class=hljs-number>70</span>,
+      <span class=hljs-attr>ry</span>: <span class=hljs-number>30</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;ellipse&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>rx</span>: <span class=hljs-number>50</span>,
+      <span class=hljs-attr>ry</span>: <span class=hljs-number>50</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>20</span>, <span class=hljs-number>20</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;ellipse&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>+<span class=hljs-number>150</span>,
+      <span class=hljs-attr>rx</span>: <span class=hljs-number>30</span>,
+      <span class=hljs-attr>ry</span>: <span class=hljs-number>100</span>,
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(129,9,39,0.5)&apos;</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;blue&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=________&#x5C5E;&#x6027;><a href=#________&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=____x><a href=#____x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x692D;&#x5706;&#x5706;&#x5FC3;&#x5750;&#x6807;&#xFF0C;x&#x5750;&#x6807;&#x7684;&#x503C;</p><h3 id=____y><a href=#____y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x692D;&#x5706;&#x5706;&#x5FC3;&#x5750;&#x6807;&#xFF0C;y&#x5750;&#x6807;&#x7684;&#x503C;</p><h3 id=_rx><a href=#_rx class=anchor><span class="iconfont icon-link"></span></a>rx</h3><p>&#x692D;&#x5706;&#x6A2A;&#x534A;&#x8F74;&#x7684;&#x5927;&#x5C0F;</p><h3 id=_ry><a href=#_ry class=anchor><span class="iconfont icon-link"></span></a>ry</h3><p>&#x692D;&#x5706;&#x7EB5;&#x534A;&#x8F74;&#x7684;&#x5927;&#x5C0F;</p><h3 id=___fill><a href=#___fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=___fillOpacity><a href=#___fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=________stroke><a href=#________stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=________storkeOpacity><a href=#________storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h1 id=_&#x6247;&#x5F62;-fan><a href=#_&#x6247;&#x5F62;-fan class=anchor></a>&#x6247;&#x5F62;-fan</h1><div id=c9></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c9&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;fan&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>200</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>rs</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>re</span>: <span class=hljs-number>80</span>,
+      <span class=hljs-attr>startAngle</span>: <span class=hljs-number>1</span>/<span class=hljs-number>6</span>*<span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>endAngle</span>: <span class=hljs-number>3</span>/<span class=hljs-number>2</span>*<span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;fan&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>rs</span>: <span class=hljs-number>30</span>,
+      <span class=hljs-attr>re</span>: <span class=hljs-number>70</span>,
+      <span class=hljs-attr>startAngle</span>: <span class=hljs-number>0</span>,
+      <span class=hljs-attr>endAngle</span>: <span class=hljs-number>3</span>/<span class=hljs-number>2</span>*<span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>10</span>, <span class=hljs-number>10</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;fan&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>+<span class=hljs-number>150</span>,
+      <span class=hljs-attr>rs</span>: <span class=hljs-number>5</span>,
+      <span class=hljs-attr>re</span>: <span class=hljs-number>40</span>,
+      <span class=hljs-attr>startAngle</span>: <span class=hljs-number>1</span>/<span class=hljs-number>6</span>*<span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>endAngle</span>: <span class=hljs-number>13</span>/<span class=hljs-number>9</span>*<span class=hljs-built_in>Math</span>.PI,
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(129,9,39,0.5)&apos;</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;blue&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=_________&#x5C5E;&#x6027;><a href=#_________&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_____x><a href=#_____x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x6247;&#x5F62;&#x5706;&#x5FC3;&#x7684;&#x5750;&#x6807;&#x7684;x&#x5750;&#x6807;</p><h3 id=_____y><a href=#_____y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x6247;&#x5F62;&#x5706;&#x5FC3;&#x7684;&#x5750;&#x6807;&#x7684;y&#x5750;&#x6807;</p><h3 id=_rs><a href=#_rs class=anchor><span class="iconfont icon-link"></span></a>rs</h3><p>&#x6247;&#x5F62;&#x534A;&#x5F84;&#x7684;&#x5185;&#x534A;&#x5F84;</p><h3 id=_re><a href=#_re class=anchor><span class="iconfont icon-link"></span></a>re</h3><p>&#x6247;&#x5F62;&#x534A;&#x5F84;&#x7684;&#x5916;&#x534A;&#x5F84;</p><h3 id=__startAngle><a href=#__startAngle class=anchor><span class="iconfont icon-link"></span></a>startAngle</h3><p>&#x6247;&#x5F62;&#x7684;&#x8D77;&#x59CB;&#x89D2;&#x5EA6;</p><h3 id=__endAngle><a href=#__endAngle class=anchor><span class="iconfont icon-link"></span></a>endAngle</h3><p>&#x6247;&#x5F62;&#x7684;&#x7ED3;&#x675F;&#x89D2;&#x5EA6;</p><h3 id=__clockwise><a href=#__clockwise class=anchor><span class="iconfont icon-link"></span></a>clockwise</h3><p>&#x5F00;&#x59CB;&#x89D2;&#x5EA6;&#x5230;&#x7ED3;&#x675F;&#x89D2;&#x5EA6;&#x7684;&#x65CB;&#x8F6C;&#x65B9;&#x5411;</p><h3 id=____fill><a href=#____fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=____fillOpacity><a href=#____fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=_________stroke><a href=#_________stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=_________storkeOpacity><a href=#_________storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_&#x591A;&#x8FB9;&#x5F62;-polygon><a href=#_&#x591A;&#x8FB9;&#x5F62;-polygon class=anchor><span class="iconfont icon-link"></span></a>&#x591A;&#x8FB9;&#x5F62;-polygon</h2><div id=c9.1></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c9.1&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>points</span>: [
+        [<span class=hljs-number>150</span>, <span class=hljs-number>350</span>],
+        [<span class=hljs-number>100</span>, <span class=hljs-number>90</span>],
+        [<span class=hljs-number>150</span>, <span class=hljs-number>160</span>],
+        [<span class=hljs-number>240</span>, <span class=hljs-number>120</span>]
+      ],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;l (0) 0.2:#ff00ff 1:#0000ff&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=__________&#x5C5E;&#x6027;><a href=#__________&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=__points><a href=#__points class=anchor><span class="iconfont icon-link"></span></a>points</h3><p>&#x591A;&#x8FB9;&#x5F62;&#x7684;&#x5404;&#x4E2A;&#x9876;&#x70B9;</p><h3 id=_____fill><a href=#_____fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=_____fillOpacity><a href=#_____fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=__________stroke><a href=#__________stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=__________storkeOpacity><a href=#__________storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_&#x56FE;&#x50CF;-image><a href=#_&#x56FE;&#x50CF;-image class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;&#x50CF;-image</h2><div id=c10></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c10&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;image&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>200</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>img</span>: <span class=hljs-string>&apos;https://zos.alipayobjects.com/rmsportal/FDWrsEmamcNvtEf.png&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;image&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span><span class=hljs-number>-50</span>,
+      <span class=hljs-attr>img</span>: <span class=hljs-string>&apos;https://zos.alipayobjects.com/rmsportal/nAVchPnSaAWncPj.png&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;image&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>+<span class=hljs-number>150</span>,
+      <span class=hljs-attr>img</span>: <span class=hljs-string>&apos;https://zos.alipayobjects.com/rmsportal/GHGrgIDTVMCaYZT.png&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=___________&#x5C5E;&#x6027;><a href=#___________&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=______x><a href=#______x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x56FE;&#x7247;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;&#x7684;x&#x503C;</p><h3 id=______y><a href=#______y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x56FE;&#x7247;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;&#x7684;y&#x503C;</p><h3 id=_img><a href=#_img class=anchor><span class="iconfont icon-link"></span></a>img</h3><p>&#x56FE;&#x7247;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x56FE;&#x7247;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;image&#x5BF9;&#x8C61;</p><h3 id=__width><a href=#__width class=anchor><span class="iconfont icon-link"></span></a>width</h3><p>&#x56FE;&#x7247;&#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#xFF0C;&#x5219;&#x6309;&#x7167;&#x6E90;&#x56FE;&#x50CF;&#x7684;&#x5BBD;&#x5EA6;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;</p><h3 id=__height><a href=#__height class=anchor><span class="iconfont icon-link"></span></a>height</h3><p>&#x56FE;&#x7247;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#xFF0C;&#x5219;&#x6309;&#x7167;&#x6E90;&#x56FE;&#x5F62;&#x7684;&#x9AD8;&#x5EA6;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;</p><h3 id=_sx><a href=#_sx class=anchor><span class="iconfont icon-link"></span></a>sx</h3><p>&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x56FE;&#x5F62;&#x4E2D;&#x622A;&#x53D6;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x7684;&#x6E90;&#x56FE;&#x5F62;&#xFF0C;&#x8FD9;&#x662F;&#x622A;&#x53D6;&#x7684;&#x533A;&#x57DF;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;&#x7684;x&#x503C;</p><h3 id=_sy><a href=#_sy class=anchor><span class="iconfont icon-link"></span></a>sy</h3><p>&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x56FE;&#x5F62;&#x4E2D;&#x622A;&#x53D6;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x7684;&#x6E90;&#x56FE;&#x5F62;&#xFF0C;&#x8FD9;&#x662F;&#x622A;&#x53D6;&#x7684;&#x533A;&#x57DF;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;&#x7684;y&#x503C;</p><h3 id=_swidth><a href=#_swidth class=anchor><span class="iconfont icon-link"></span></a>swidth</h3><p>&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x56FE;&#x5F62;&#x4E2D;&#x622A;&#x53D6;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x7684;&#x6E90;&#x56FE;&#x5F62;&#xFF0C;&#x8FD9;&#x662F;&#x622A;&#x53D6;&#x7684;&#x533A;&#x57DF;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;&#x7684;swidth&#x503C;</p><h3 id=_sheight><a href=#_sheight class=anchor><span class="iconfont icon-link"></span></a>sheight</h3><p>&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x56FE;&#x5F62;&#x4E2D;&#x622A;&#x53D6;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x7684;&#x6E90;&#x56FE;&#x5F62;&#xFF0C;&#x8FD9;&#x662F;&#x622A;&#x53D6;&#x7684;&#x533A;&#x57DF;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;&#x7684;sheight&#x503C;</p><h3 id=______fill><a href=#______fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=______fillOpacity><a href=#______fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=___________stroke><a href=#___________stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=___________storkeOpacity><a href=#___________storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_&#x6587;&#x672C;-text><a href=#_&#x6587;&#x672C;-text class=anchor><span class="iconfont icon-link"></span></a>&#x6587;&#x672C;-text</h2><div id=c11></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c11&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.addShape(<span class=hljs-string>&apos;text&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>fontFamily</span>: <span class=hljs-string>&apos;PingFang SC&apos;</span>,
+      <span class=hljs-attr>text</span>: <span class=hljs-string>&apos;&#x6587;&#x672C;&#x6587;&#x672C;&apos;</span>,
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>90</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;black&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;text&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>100</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>250</span>,
+      <span class=hljs-attr>fontFamily</span>: <span class=hljs-string>&apos;PingFang SC&apos;</span>,
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>90</span>,
+      <span class=hljs-attr>text</span>: <span class=hljs-string>&apos;&#x5B57;&#x4F53;&apos;</span>,
+      <span class=hljs-attr>lineDash</span>: [<span class=hljs-number>10</span>, <span class=hljs-number>10</span>],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;red&apos;</span>
+    }
+  });
+  canvas.addShape(<span class=hljs-string>&apos;text&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>150</span>+<span class=hljs-number>50</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>+<span class=hljs-number>150</span>,
+      <span class=hljs-attr>text</span>: <span class=hljs-string>&apos;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&apos;</span>,
+      <span class=hljs-attr>fontFamily</span>: <span class=hljs-string>&apos;Hiragino Sans GB&apos;</span>,
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>100</span>,
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;center&apos;</span>,
+      <span class=hljs-attr>textBaseline</span>: <span class=hljs-string>&apos;top&apos;</span>,
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(129,9,39,0.5)&apos;</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;blue&apos;</span>
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=____________&#x5C5E;&#x6027;><a href=#____________&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_______x><a href=#_______x class=anchor><span class="iconfont icon-link"></span></a>x</h3><p>&#x6587;&#x5B57;&#x7684;&#x5DE6;&#x4E0A;&#x89D2;&#x7684;x&#x503C;</p><h3 id=_______y><a href=#_______y class=anchor><span class="iconfont icon-link"></span></a>y</h3><p>&#x6587;&#x5B57;&#x7684;&#x5DE6;&#x4E0A;&#x89D2;&#x7684;y&#x503C;</p><h3 id=_text><a href=#_text class=anchor><span class="iconfont icon-link"></span></a>text</h3><p>&#x6587;&#x5B57;&#x5185;&#x5BB9;</p><h3 id=_fontFamily><a href=#_fontFamily class=anchor><span class="iconfont icon-link"></span></a>fontFamily</h3><p>&#x5B57;&#x4F53; <a href=http://www.w3school.com.cn/tags/canvas_font.asp>&#x53C2;&#x89C1;</a></p><h3 id=_fontSize><a href=#_fontSize class=anchor><span class="iconfont icon-link"></span></a>fontSize</h3><p>&#x5B57;&#x4F53;&#x5927;&#x5C0F; <a href=http://www.w3school.com.cn/tags/canvas_font.asp>&#x53C2;&#x89C1;</a></p><h3 id=_fontWeight><a href=#_fontWeight class=anchor><span class="iconfont icon-link"></span></a>fontWeight</h3><p>&#x5B57;&#x4F53;&#x7C97;&#x7EC6; <a href=http://www.w3school.com.cn/tags/canvas_font.asp>&#x53C2;&#x89C1;</a></p><h3 id=_fontStyle><a href=#_fontStyle class=anchor><span class="iconfont icon-link"></span></a>fontStyle</h3><p>&#x5B57;&#x4F53;&#x6837;&#x5F0F; <a href=http://www.w3school.com.cn/tags/canvas_font.asp>&#x53C2;&#x89C1;</a></p><h3 id=_textAlign><a href=#_textAlign class=anchor><span class="iconfont icon-link"></span></a>textAlign</h3><p>&#x5DE6;&#x53F3;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</p><p><img src=https://zos.alipayobjects.com/rmsportal/oMVFeaVCYNkDCeN.png alt=image></p><h3 id=_textBaseline><a href=#_textBaseline class=anchor><span class="iconfont icon-link"></span></a>textBaseline</h3><p>&#x4E0A;&#x4E0B;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</p><p><img src=https://zos.alipayobjects.com/rmsportal/VejEpbzakKrESzH.png alt=image></p><h3 id=_______fill><a href=#_______fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=_______fillOpacity><a href=#_______fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=____________stroke><a href=#____________stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=____________storkeOpacity><a href=#____________storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h2 id=_svg&#x7684;path-path><a href=#_svg&#x7684;path-path class=anchor><span class="iconfont icon-link"></span></a>svg&#x7684;path-path</h2><div id=c12></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c12&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  <span class=hljs-keyword>const</span> path = canvas.addShape(<span class=hljs-string>&apos;path&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>path</span>: <span class=hljs-string>&apos;M100,600&apos;</span> +
+            <span class=hljs-string>&apos;l 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;a25,25 -30 0,1 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;l 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;a25,50 -30 0,1 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;l 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;a25,75 -30 0,1 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;l 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;a25,100 -30 0,1 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;l 50,-25&apos;</span> +
+            <span class=hljs-string>&apos;l 0, 200,&apos;</span> +
+            <span class=hljs-string>&apos;z&apos;</span>,
+      <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>10</span>,
+      <span class=hljs-attr>lineJoin</span>: <span class=hljs-string>&apos;round&apos;</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#54BECC&apos;</span>
+    }
+  });
+  path.translate(<span class=hljs-number>0</span>, <span class=hljs-number>-200</span>);
+  canvas.draw();
+</pre></div><h2 id=_____________&#x5C5E;&#x6027;><a href=#_____________&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><p>path&#x89C4;&#x8303;&#x7684;&#x547D;&#x4EE4; <a href=https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths>&#x53C2;&#x89C1;</a></p><h3 id=________fill><a href=#________fill class=anchor><span class="iconfont icon-link"></span></a>fill</h3><p>&#x586B;&#x5145;&#x989C;&#x8272;</p><h3 id=________fillOpacity><a href=#________fillOpacity class=anchor><span class="iconfont icon-link"></span></a>fillOpacity</h3><p>&#x586B;&#x5145;&#x900F;&#x660E;&#x5EA6;</p><h3 id=_____________stroke><a href=#_____________stroke class=anchor><span class="iconfont icon-link"></span></a>stroke</h3><p>&#x8FB9;&#x6846;&#x989C;&#x8272;</p><h3 id=_____________storkeOpacity><a href=#_____________storkeOpacity class=anchor><span class="iconfont icon-link"></span></a>storkeOpacity</h3><p>&#x8FB9;&#x6846;&#x900F;&#x660E;&#x5EA6;</p><h3 id=______getPoint><a href=#______getPoint class=anchor><span class="iconfont icon-link"></span></a>getPoint</h3><h4 id=______&#x53C2;&#x6570;><a href=#______&#x53C2;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x53C2;&#x6570;</h4><ul><li>t &#x767E;&#x5206;&#x6BD4;</li></ul><h5 id=______&#x8FD4;&#x56DE;><a href=#______&#x8FD4;&#x56DE; class=anchor><span class="iconfont icon-link"></span></a>&#x8FD4;&#x56DE;</h5><ul><li>point &#x753B;&#x5E03;&#x5750;&#x6807;&#x70B9;</li></ul><h2 id=_&#x52A8;&#x753B;-animate><a href=#_&#x52A8;&#x753B;-animate class=anchor><span class="iconfont icon-link"></span></a>&#x52A8;&#x753B;-animate</h2><p>&#x52A8;&#x753B;</p><h2 id=______&#x65B9;&#x6CD5;><a href=#______&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=_animate><a href=#_animate class=anchor><span class="iconfont icon-link"></span></a>animate</h3><p><code>cfg</code> &#x914D;&#x7F6E;&#x9879;{Object}&#x542B;&#xFF1A;</p><ul><li>attrs &#x56FE;&#x5F62;&#x5C5E;&#x6027;</li><li>matrix &#x56FE;&#x5F62;&#x77E9;&#x9635;</li><li>repeat &#x662F;&#x5426;&#x91CD;&#x590D;</li><li>destroy &#x662F;&#x5426;&#x6267;&#x884C;&#x5B8C;&#x81EA;&#x52A8;&#x9500;&#x6BC1;</li></ul><p><code>duration</code> &#x6301;&#x7EED;&#x65F6;&#x95F4;{Number}&#x6BEB;&#x79D2; ms</p><p><code>easing</code> &#x7F13;&#x52A8;&#x51FD;&#x6570;{Sring}&#x542B;&#xFF1A;</p><ul><li>linear</li><li>easeInQuad</li><li>easeOutQuad</li><li>easeInOutQuad</li><li>easeInCubic</li><li>easeOutCubic</li><li>easeInOutCubic</li><li>easeInQuart</li><li>easeOutQuart</li><li>easeInOutQuart</li><li>easeInQuint</li><li>easeOutQuint</li><li>easeInOutQuint</li><li>easeInSine</li><li>easeOutSine</li><li>easeInOutSine</li><li>easeInExpo</li><li>easeOutExpo</li><li>easeInOutExpo</li><li>easeInCirc</li><li>easeOutCirc</li><li>easeInOutCirc</li><li>easeInElastic</li><li>easeOutElastic</li><li>easeInOutElastic</li><li>easeInBack</li><li>easeOutBack</li><li>easeInOutBack</li><li>easeInBounce</li><li>easeOutBounce</li><li>easeInOutBounce</li></ul><p><code>callback</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x52A8;&#x753B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x6267;&#x884C;</p><div class=highlight><pre>shape.animate(cfg, duration, easing, callback);
+</pre></div><h2 id=_&#x793A;&#x4F8B;><a href=#_&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h2><div id=c_animate></div><div class=highlight><pre>  <span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c_animate&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>300</span>
+  });
+  <span class=hljs-keyword>const</span> circle = canvas.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>,
+      <span class=hljs-attr>y</span>: <span class=hljs-number>150</span>,
+      <span class=hljs-attr>r</span>: <span class=hljs-number>70</span>,
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;blue&apos;</span>,
+      <span class=hljs-attr>opacity</span>: <span class=hljs-number>0.6</span>
+    }
+  });
+  circle.animate({
+    <span class=hljs-attr>x</span>: <span class=hljs-number>500</span>,
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;red&apos;</span>,
+    <span class=hljs-attr>repeat</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>r</span>: <span class=hljs-number>40</span>
+  },<span class=hljs-number>5000</span>, <span class=hljs-string>&apos;linear&apos;</span>);
+</pre></div><h2 id=_&#x901A;&#x7528;&#x5C5E;&#x6027;><a href=#_&#x901A;&#x7528;&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x901A;&#x7528;&#x5C5E;&#x6027;</h2><p>&#x4E0B;&#x5217;&#x5C5E;&#x6027;&#x662F;&#x6240;&#x6709;&#x5143;&#x7D20;&#x90FD;&#x5171;&#x6709;&#x7684;&#x3002;</p><h3 id=_capture><a href=#_capture class=anchor><span class="iconfont icon-link"></span></a>capture</h3><p>&#x662F;&#x5426;&#x53EF;&#x88AB;&#x6355;&#x6349;</p><h3 id=_zIndex><a href=#_zIndex class=anchor><span class="iconfont icon-link"></span></a>zIndex</h3><p>&#x56FE;&#x5C42;&#x5C42;&#x7EA7;</p><h3 id=__lineWidth><a href=#__lineWidth class=anchor><span class="iconfont icon-link"></span></a>lineWidth</h3><p>&#x7EBF;&#x5BBD;</p><p>&#x753B;&#x5E03;&#x5750;&#x6807;</p><h3 id=__lineDash><a href=#__lineDash class=anchor><span class="iconfont icon-link"></span></a>lineDash</h3><p>&#x865A;&#x7EBF;</p><p>a1, a2 &#x2026;&#x2026; &#x5206;&#x522B;&#x6307;&#x7684;&#x662F;&#x5B9E;&#x7EBF;&#x548C;&#x7A7A;&#x7EBF;&#x6240;&#x5360;&#x50CF;&#x7D20;&#x7684;&#x591A;&#x5C11;</p><ul><li>[a1, a2, a3&#x2026;&#x2026;]</li><li>&quot;a1 a2&quot;</li></ul><h3 id=_clip><a href=#_clip class=anchor><span class="iconfont icon-link"></span></a>clip</h3><p>&#x526A;&#x5207;</p><p>&#x56FE;&#x5F62;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x56FE;&#x5F62;&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x526A;&#x5207;&#x56FE;&#x5F62;, &#x7528;&#x4F5C;&#x526A;&#x5207;&#x7684;&#x56FE;&#x5F62;&#x5FC5;&#x987B;&#x662F;&#x80FD;&#x591F;&#x586B;&#x5145;(fill)&#x7684;&#x56FE;&#x5F62;&#x3002;</p><div id=c100></div><div class=highlight><pre>  <span class=hljs-keyword>var</span> canvas = <span class=hljs-keyword>new</span> G6.Canvas({
+    <span class=hljs-attr>containerId</span>: <span class=hljs-string>&apos;c100&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>600</span>
+  });
+  canvas.scale(<span class=hljs-number>0.5</span>, <span class=hljs-number>0.5</span>);
+  <span class=hljs-keyword>var</span> line1 = canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>120</span>,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>580</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>120</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;l (0) 0:#ff0000 1:#0000ff&apos;</span>
+    }
+  });
+
+  <span class=hljs-keyword>var</span> polygon1 = canvas.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>points</span>: [
+        [<span class=hljs-number>600</span> + <span class=hljs-number>100</span>, <span class=hljs-number>20</span>],
+        [<span class=hljs-number>600</span> + <span class=hljs-number>20</span>, <span class=hljs-number>200</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>20</span>, <span class=hljs-number>100</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>100</span>, <span class=hljs-number>300</span> - <span class=hljs-number>20</span>]
+      ],
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;green&apos;</span>
+    }
+  });
+
+  <span class=hljs-keyword>var</span> line2 = canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>120</span> + <span class=hljs-number>300</span> ,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>580</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>120</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;l (0) 0:#ff0000 1:#0000ff&apos;</span>
+    }
+  });
+
+  <span class=hljs-keyword>var</span> polygon2 = canvas.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>points</span>: [
+        [<span class=hljs-number>600</span> + <span class=hljs-number>100</span> - <span class=hljs-number>300</span>, <span class=hljs-number>20</span> + <span class=hljs-number>300</span>],
+        [<span class=hljs-number>600</span> + <span class=hljs-number>20</span> - <span class=hljs-number>300</span>, <span class=hljs-number>200</span> + <span class=hljs-number>300</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>20</span> - <span class=hljs-number>300</span>, <span class=hljs-number>100</span> + <span class=hljs-number>300</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>100</span> - <span class=hljs-number>300</span>, <span class=hljs-number>300</span> - <span class=hljs-number>20</span> + <span class=hljs-number>300</span>]
+      ],
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;green&apos;</span>
+    }
+  });
+
+  <span class=hljs-keyword>var</span> line3 = canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>120</span> + <span class=hljs-number>600</span> ,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>580</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>120</span> + <span class=hljs-number>600</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;l (0) 0:#ff0000 1:#0000ff&apos;</span>
+    }
+  });
+
+  <span class=hljs-keyword>var</span> polygon3 = canvas.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>points</span>: [
+        [<span class=hljs-number>600</span> + <span class=hljs-number>100</span> - <span class=hljs-number>300</span>, <span class=hljs-number>20</span> + <span class=hljs-number>600</span>],
+        [<span class=hljs-number>600</span> + <span class=hljs-number>20</span> - <span class=hljs-number>300</span>, <span class=hljs-number>200</span> + <span class=hljs-number>600</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>20</span> - <span class=hljs-number>300</span>, <span class=hljs-number>100</span> + <span class=hljs-number>600</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>100</span> - <span class=hljs-number>300</span>, <span class=hljs-number>300</span> - <span class=hljs-number>20</span> + <span class=hljs-number>600</span>]
+      ],
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;green&apos;</span>
+    }
+  });
+
+  <span class=hljs-keyword>var</span> polygon4 = canvas.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>points</span>: [
+        [<span class=hljs-number>600</span> + <span class=hljs-number>100</span> - <span class=hljs-number>300</span>, <span class=hljs-number>20</span> + <span class=hljs-number>900</span>],
+        [<span class=hljs-number>600</span> + <span class=hljs-number>20</span> - <span class=hljs-number>300</span>, <span class=hljs-number>200</span> + <span class=hljs-number>900</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>20</span> - <span class=hljs-number>300</span>, <span class=hljs-number>100</span> + <span class=hljs-number>900</span>],
+        [<span class=hljs-number>1200</span> - <span class=hljs-number>100</span> - <span class=hljs-number>300</span>, <span class=hljs-number>300</span> - <span class=hljs-number>20</span> + <span class=hljs-number>900</span>]
+      ]
+    }
+  });
+
+  <span class=hljs-keyword>var</span> line4 = canvas.addShape(<span class=hljs-string>&apos;line&apos;</span>, {
+    <span class=hljs-attr>attrs</span>: {
+      <span class=hljs-attr>x1</span>: <span class=hljs-number>20</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y1</span>: <span class=hljs-number>120</span> + <span class=hljs-number>900</span> ,
+      <span class=hljs-attr>x2</span>: <span class=hljs-number>580</span> + <span class=hljs-number>300</span>,
+      <span class=hljs-attr>y2</span>: <span class=hljs-number>120</span> + <span class=hljs-number>900</span>,
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;l (0) 0:#ff0000 1:#0000ff&apos;</span>,
+      <span class=hljs-attr>clip</span>: polygon4
+    }
+  });
+  canvas.draw();
+</pre></div><h2 id=_&#x53D8;&#x6362;-transform><a href=#_&#x53D8;&#x6362;-transform class=anchor><span class="iconfont icon-link"></span></a>&#x53D8;&#x6362;-transform</h2><h4 id=_translate-tx,-ty-><a href=#_translate-tx,-ty- class=anchor><span class="iconfont icon-link"></span></a>translate(tx, ty)</h4><p><img src=https://zos.alipayobjects.com/rmsportal/NPknvcCQMFCFsSjBNwdc.png alt=""></p><p>&#x5E73;&#x79FB;&#x65B9;&#x6CD5;</p><p>tx&#x8868;&#x793A;x&#x65B9;&#x5411;&#x7684;&#x5E73;&#x79FB;&#x91CF;</p><p>ty&#x8868;&#x793A;y&#x65B9;&#x5411;&#x7684;&#x5E73;&#x79FB;&#x91CF;</p><h4 id=_rotate-r-><a href=#_rotate-r- class=anchor><span class="iconfont icon-link"></span></a>rotate(r)</h4><p><img src=https://zos.alipayobjects.com/rmsportal/sBfEFXCtPpSdZTNlXeOb.png alt=""></p><p>angle&#x8868;&#x793A;&#x65CB;&#x8F6C;&#x89D2;&#x5EA6;, &#x5F27;&#x5EA6;&#x5236;(0 &#xFF5E; 2*PI)</p><p>&#x65CB;&#x8F6C;&#xFF0C;&#x65CB;&#x8F6C;&#x4E2D;&#x5FC3;&#x662F;&#x5176;&#x7236;&#x5143;&#x7D20;&#x7684;&#x81EA;&#x8EAB;&#x5750;&#x6807;&#x8F74;&#x539F;&#x70B9;</p><h4 id=_scale-sx,-sy-&#x7F29;&#x653E;><a href=#_scale-sx,-sy-&#x7F29;&#x653E; class=anchor><span class="iconfont icon-link"></span></a>scale(sx, sy) &#x7F29;&#x653E;</h4><p>&#x7F29;&#x653E;&#xFF0C;&#x7F29;&#x653E;&#x4E2D;&#x5FC3;&#x662F;&#x5176;&#x7236;&#x5143;&#x7D20;&#x7684;&#x81EA;&#x8EAB;&#x5750;&#x6807;&#x8F74;&#x539F;&#x70B9;</p><p>sx&#x8868;&#x793A;x&#x65B9;&#x5411;&#x7684;&#x7F29;&#x653E;&#x91CF;</p><p>sy&#x8868;&#x793A;y&#x65B9;&#x5411;&#x7684;&#x7F29;&#x653E;&#x91CF;</p><h4 id=_setMatrix-Matrix-><a href=#_setMatrix-Matrix- class=anchor><span class="iconfont icon-link"></span></a>setMatrix(Matrix)</h4><p>&#x8BBE;&#x7F6E;&#x53D8;&#x6362;&#x77E9;&#x9635;</p><h4 id=_getMatrix-><a href=#_getMatrix- class=anchor><span class="iconfont icon-link"></span></a>getMatrix()</h4><p>&#x83B7;&#x53D6;&#x53D8;&#x6362;&#x77E9;&#x9635;</p><h2 id=_&#x901A;&#x7528;&#x5C5E;&#x6027;&#x503C;><a href=#_&#x901A;&#x7528;&#x5C5E;&#x6027;&#x503C; class=anchor><span class="iconfont icon-link"></span></a>&#x901A;&#x7528;&#x5C5E;&#x6027;&#x503C;</h2><h4 id=_&#x989C;&#x8272;><a href=#_&#x989C;&#x8272; class=anchor><span class="iconfont icon-link"></span></a>&#x989C;&#x8272;</h4><ul><li>&#x7EAF;&#x8272; #fff || #ffffff || red || rgb(255,255,255) || rgba(255,255,255,1) || hsl(255, 100%, 50%)</li><li>&#x6E10;&#x53D8;&#x8272;<ul><li>&#x7EBF;&#x6027;&#x6E10;&#x53D8; &apos;l (45) 0:#ffff00 1:#00ffff&apos; // &#x4E00;&#x4E2A;&#x659C;&#x5411;45&#x5EA6;&#x7684;&#x6E10;&#x53D8;</li><li>&#x5F84;&#x5411;&#x6E10;&#x53D8; &apos;r (0.5, 0.5, 0) 0:#fff 1:#ff0000&apos; // &#x6E10;&#x53D8;&#x5728;&#x6B63;&#x4E2D;&#x5FC3;&#x53D1;&#x751F;</li></ul></li></ul><h4 id=_&#x900F;&#x660E;&#x5EA6;><a href=#_&#x900F;&#x660E;&#x5EA6; class=anchor><span class="iconfont icon-link"></span></a>&#x900F;&#x660E;&#x5EA6;</h4><p>0&#xFF5E;1</p><ul><li>0 &#x5168;&#x900F;&#x660E;</li><li>1 &#x4E0D;&#x900F;&#x660E;</li></ul><h2 id=_&#x901A;&#x7528;&#x65B9;&#x6CD5;><a href=#_&#x901A;&#x7528;&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x901A;&#x7528;&#x65B9;&#x6CD5;</h2><h4 id=_find-id-><a href=#_find-id- class=anchor><span class="iconfont icon-link"></span></a>find(id)</h4><p>&#x901A;&#x8FC7;id&#x67E5;&#x627E;&#x5143;&#x7D20;</p><h4 id=_getBBox-><a href=#_getBBox- class=anchor><span class="iconfont icon-link"></span></a>getBBox()</h4><p>&#x83B7;&#x53D6;&#x5305;&#x56F4;&#x76D2;</p><h4 id=_hide-><a href=#_hide- class=anchor><span class="iconfont icon-link"></span></a>hide()</h4><p>&#x9690;&#x85CF;</p><h4 id=_show-><a href=#_show- class=anchor><span class="iconfont icon-link"></span></a>show()</h4><p>&#x663E;&#x793A;</p><h4 id=_destroy-><a href=#_destroy- class=anchor><span class="iconfont icon-link"></span></a>destroy()</h4><p>&#x9500;&#x6BC1;&#x81EA;&#x8EAB;</p><h4 id=_remove-destroy-><a href=#_remove-destroy- class=anchor><span class="iconfont icon-link"></span></a>remove(destroy)</h4><p>&#x5220;&#x9664;&#x81EA;&#x5DF1;, &#x4ECE;&#x7236;&#x5143;&#x7D20;&#x4E2D;&#x5220;&#x9664;&#x81EA;&#x5DF1; &#x5982;&#x679C;destroy&#x4E3A;true&#xFF0C;&#x5219;&#x79FB;&#x9664;&#x540E;&#x9500;&#x6BC1;&#x81EA;&#x8EAB;</p><div class=prev-next><a href=/zh-cn/g6/1.x/api/matrix.html class="float-left pre">Matrix </a><a href=/zh-cn/g6/1.x/api/global.html class="float-right next">Global</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g6","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g6/1.x/api/canvas.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c1',
+    width: 600,
+    height: 600
+  });
+  canvas.scale(0.5, 0.5);
+  canvas.addShape('line', {
+    attrs: {
+      x1: 20,
+      y1: 20,
+      x2: 280,
+      y2: 280,
+      stroke: 'red'                       // 颜色名字
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 20,
+      y1: 300 + 20,
+      x2: 280,
+      y2: 300 + 280,
+      arrow: true,                                             // 显示箭头
+      stroke: '#00ff00'                   // 6位十六进制
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x2: 300 + 20,
+      y2: 300 + 20,
+      x1: 300 + 280,
+      y1: 300 + 280,
+      arrow: true,                                             // 显示箭头
+      stroke: '#00f'                      // 3位十六进制
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 20,
+      y1: 600 + 20,
+      x2: 280,
+      y2: 600 + 280,
+      lineDash: [10,10],
+      stroke: 'rgb(100, 100, 200)'         // rgb数字模式
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 300 + 20,
+      y1: 600 + 20,
+      x2: 300 + 280,
+      y2: 600 + 280,
+      lineDash: [10,20, 10],
+      stroke: 'rgba(100, 100, 200, 0.5)'   // rgba数字模式
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 600 + 20,
+      y1: 600 + 20,
+      x2: 600 + 280,
+      y2: 600 + 280,
+      lineDash: [50,50],
+      stroke: 'rgb(34%, 85%, 48%)'         // rgb百分比模式
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 900 + 20,
+      y1: 600 + 20,
+      x2: 900 + 280,
+      y2: 600 + 280,
+      lineDash: [50,5,50,5],
+      stroke: 'rgba(34%, 85%, 48%, 0.5)'   // rgba百分比模式
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 20,
+      y1: 900 + 20,
+      x2: 280,
+      y2: 900 + 280,
+      stroke: 'l (0) 0:#ff0000 1:#0000ff'                      // 线性渐变
+    }
+  });
+  canvas.addShape('line', {
+    attrs: {
+      x1: 300 + 20,
+      y1: 900 + 20,
+      x2: 300 + 280,
+      y2: 900 + 280,
+      stroke: 'r (0.5, 0.5, 0) 0:rgb(0, 0, 255) 1:#ff0000'    // 迳向渐变
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c2',
+    width: 600,
+    height: 600
+  });
+  canvas.scale(0.5, 0.5);
+  canvas.addShape('quadratic', {
+    attrs: {
+      p1: [100, 600-250],
+      p2: [300, 500-250],
+      p3: [500, 600-250],
+      arrow: true,
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('quadratic', {
+    attrs: {
+      p1: [700, 600-250],
+      p2: [900, 800-250],
+      p3: [1100, 500-250],
+      lineDash: [20, 20],
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('quadratic', {
+    attrs: {
+      p1: [100, 600],
+      p2: [300, 500],
+      p3: [500, 600],
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('quadratic', {
+    attrs: {
+      p1: [700, 600],
+      p2: [900, 800],
+      p3: [1100, 500],
+      stroke: 'black'
+    }
+  });
+  addMarker(canvas, [
+    [100, 600],
+    [300, 500],
+    [500, 600],
+    [700, 600],
+    [900, 800],
+    [1100, 500]
+  ]);
+  function addMarker(canvas, points, cfg){
+    for (var i = 0; i < points.length; i++) {
+      var circle = canvas.addShape('circle', {
+        attrs: {
+          x: points[i][0],
+          y: points[i][1],
+          r: 8,
+          stroke: '#F93D26'
+        }
+      });
+    }
+  }
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c3',
+    width: 600,
+    height: 600
+  });
+  canvas.scale(0.5, 0.5);
+  canvas.addShape('cubic', {
+    attrs: {
+      p1: [75, 300],
+      p2: [200, 120],
+      p3: [450, 350],
+      p4: [510, 150],
+      stroke: 'black',
+      lineDash: [20,20]
+    }
+  });
+  canvas.addShape('cubic', {
+    attrs: {
+      p1: [600 + 90, 150],
+      p2: [600 + 150, 350],
+      p3: [600 + 300, 120],
+      p4: [600 + 525, 300],
+      stroke: '#42E1DC',
+      arrow: true
+    }
+  });
+  canvas.addShape('cubic', {
+    attrs: {
+      p1: [20, 600 + 100],
+      p2: [200, 600 + 100],
+      p3: [400, 600 + 500],
+      p4: [520, 600 + 200],
+      stroke: 'r (0.5, 0.5, 1) 0:#ffaa00 1:#11aacc'
+    }
+  });
+  canvas.addShape('cubic', {
+    attrs: {
+      p1: [600 + 20, 600 + 100],
+      p2: [600 + 200, 600 + 100],
+      p3: [600 + 400, 600 + 500],
+      p4: [600 + 520, 600 + 200],
+      stroke: 'r (0.5, 0.5, 1) 0:#ffaa00 0.5:#00ffff 1:#11aacc'
+    }
+  });
+  addMarker(canvas, [
+    [75, 300],
+    [200, 120],
+    [450, 350],
+    [510, 150]
+  ]);
+  function addMarker(canvas, points, cfg){
+    for (var i = 0; i < points.length; i++) {
+      var circle = canvas.addShape('circle', {
+        attrs: {
+          x: points[i][0],
+          y: points[i][1],
+          r: 8,
+          stroke: '#F93D26'
+        }
+      });
+    }
+  }
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c4',
+    width: 600,
+    height: 600
+  });
+  canvas.scale(0.5, 0.5);
+  canvas.addShape('arc', {
+    attrs: {
+      x: 300,
+      y: 300,
+      r: 200,
+      startAngle: 1/6 * Math.PI,
+      endAngle: 5/4 * Math.PI,
+      stroke: 'black',
+      lineDash: [20,20]
+    }
+  });
+  canvas.addShape('arc', {
+    attrs: {
+      x: 300,
+      y: 600,
+      r: 200,
+      startAngle: 1/6 * Math.PI,
+      endAngle: 1/2 * Math.PI,
+      stroke: '#0D2031',
+    }
+  });
+  canvas.addShape('arc', {
+    attrs: {
+      x: 900,
+      y: 600,
+      r: 150,
+      startAngle: 1/6 * Math.PI,
+      endAngle: 5/4 * Math.PI,
+      stroke: 'red',
+      arrow: true
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c5',
+    width: 600,
+    height: 600
+  });
+  canvas.scale(0.5, 0.5);
+  canvas.addShape('polyline', {
+    attrs: {
+      points: [[741.6487813219777,1183.92131359719],[583.1709046233477,33.93352498571885],[1098.3455104904451,246.13363066051957],[211.30437444177633,420.3306748934016],[980.3732054245157,756.2252762234709],[374.28495603818607,108.15975006182006],[422.7940564389682,1119.2144105552136],[833.5078092462321,586.7198136138784]],
+      stroke: 'red'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c6',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('rect', {
+    attrs: {
+      x: 150,
+      y: 150,
+      width: 150,
+      height: 150,
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('rect', {
+    attrs: {
+      x: 150-50,
+      y: 150-50,
+      width: 150,
+      height: 150,
+      stroke: 'red'
+    }
+  });
+  canvas.addShape('rect', {
+    attrs: {
+      x: 150+50,
+      y: 150+50,
+      width: 150,
+      height: 150,
+      fill: 'rgba(129,9,39,0.5)',
+      stroke: 'blue'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c7',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('circle', {
+    attrs: {
+      x: 150+200,
+      y: 150,
+      r: 70,
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('circle', {
+    attrs: {
+      x: 150-50,
+      y: 150-50,
+      r: 60,
+      lineDash: [20, 20],
+      stroke: 'red'
+    }
+  });
+  canvas.addShape('circle', {
+    attrs: {
+      x: 150+50,
+      y: 150+150,
+      r: 100,
+      fill: 'rgba(129,9,39,0.5)',
+      stroke: 'blue'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c8',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('ellipse', {
+    attrs: {
+      x: 150+200,
+      y: 150,
+      rx: 70,
+      ry: 30,
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('ellipse', {
+    attrs: {
+      x: 150-50,
+      y: 150-50,
+      rx: 50,
+      ry: 50,
+      lineDash: [20, 20],
+      stroke: 'red'
+    }
+  });
+  canvas.addShape('ellipse', {
+    attrs: {
+      x: 150+50,
+      y: 150+150,
+      rx: 30,
+      ry: 100,
+      fill: 'rgba(129,9,39,0.5)',
+      stroke: 'blue'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c9',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('fan', {
+    attrs: {
+      x: 150+200,
+      y: 150,
+      rs: 20,
+      re: 80,
+      startAngle: 1/6*Math.PI,
+      endAngle: 3/2*Math.PI,
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('fan', {
+    attrs: {
+      x: 150-50,
+      y: 150-50,
+      rs: 30,
+      re: 70,
+      startAngle: 0,
+      endAngle: 3/2*Math.PI,
+      lineDash: [10, 10],
+      stroke: 'red'
+    }
+  });
+  canvas.addShape('fan', {
+    attrs: {
+      x: 150+50,
+      y: 150+150,
+      rs: 5,
+      re: 40,
+      startAngle: 1/6*Math.PI,
+      endAngle: 13/9*Math.PI,
+      fill: 'rgba(129,9,39,0.5)',
+      stroke: 'blue'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c9.1',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('polygon', {
+    attrs: {
+      points: [
+        [150, 350],
+        [100, 90],
+        [150, 160],
+        [240, 120]
+      ],
+      stroke: 'l (0) 0.2:#ff00ff 1:#0000ff'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c10',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('image', {
+    attrs: {
+      x: 150+200,
+      y: 150,
+      img: 'https://zos.alipayobjects.com/rmsportal/FDWrsEmamcNvtEf.png'
+    }
+  });
+  canvas.addShape('image', {
+    attrs: {
+      x: 150-50,
+      y: 150-50,
+      img: 'https://zos.alipayobjects.com/rmsportal/nAVchPnSaAWncPj.png'
+    }
+  });
+  canvas.addShape('image', {
+    attrs: {
+      x: 150+50,
+      y: 150+150,
+      img: 'https://zos.alipayobjects.com/rmsportal/GHGrgIDTVMCaYZT.png'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c11',
+    width: 600,
+    height: 600
+  });
+  canvas.addShape('text', {
+    attrs: {
+      x: 150,
+      y: 150,
+      fontFamily: 'PingFang SC',
+      text: '文本文本',
+      fontSize: 90,
+      stroke: 'black'
+    }
+  });
+  canvas.addShape('text', {
+    attrs: {
+      x: 150+100,
+      y: 250,
+      fontFamily: 'PingFang SC',
+      fontSize: 90,
+      text: '字体',
+      lineDash: [10, 10],
+      stroke: 'red'
+    }
+  });
+  canvas.addShape('text', {
+    attrs: {
+      x: 150+50,
+      y: 150+150,
+      text: '对齐方式',
+      fontFamily: 'Hiragino Sans GB',
+      fontSize: 100,
+      textAlign: 'center',
+      textBaseline: 'top',
+      fill: 'rgba(129,9,39,0.5)',
+      stroke: 'blue'
+    }
+  });
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c12',
+    width: 600,
+    height: 600
+  });
+  const path = canvas.addShape('path', {
+    attrs: {
+      path: 'M100,600' +
+            'l 50,-25' +
+            'a25,25 -30 0,1 50,-25' +
+            'l 50,-25' +
+            'a25,50 -30 0,1 50,-25' +
+            'l 50,-25' +
+            'a25,75 -30 0,1 50,-25' +
+            'l 50,-25' +
+            'a25,100 -30 0,1 50,-25' +
+            'l 50,-25' +
+            'l 0, 200,' +
+            'z',
+      lineWidth: 10,
+      lineJoin: 'round',
+      stroke: '#54BECC'
+    }
+  });
+  path.translate(0, -200);
+  canvas.draw();
+
+})();</script><script>(function(){
+'use strict';
+shape.animate(cfg, duration, easing, callback);
+
+})();</script><script>(function(){
+'use strict';
+  const canvas = new G6.Canvas({
+    containerId: 'c_animate',
+    width: 600,
+    height: 300
+  });
+  const circle = canvas.addShape('circle', {
+    attrs: {
+      x: 0,
+      y: 150,
+      r: 70,
+      fill: 'blue',
+      opacity: 0.6
+    }
+  });
+  circle.animate({
+    x: 500,
+    fill: 'red',
+    repeat: true,
+    r: 40
+  },5000, 'linear');
+
+})();</script><script>(function(){
+'use strict';
+  var canvas = new G6.Canvas({
+    containerId: 'c100',
+    width: 600,
+    height: 600
+  });
+  canvas.scale(0.5, 0.5);
+  var line1 = canvas.addShape('line', {
+    attrs: {
+      x1: 20,
+      y1: 120,
+      x2: 580,
+      y2: 120,
+      stroke: 'l (0) 0:#ff0000 1:#0000ff'
+    }
+  });
+
+  var polygon1 = canvas.addShape('polygon', {
+    attrs: {
+      points: [
+        [600 + 100, 20],
+        [600 + 20, 200],
+        [1200 - 20, 100],
+        [1200 - 100, 300 - 20]
+      ],
+      fill: 'green'
+    }
+  });
+
+  var line2 = canvas.addShape('line', {
+    attrs: {
+      x1: 20 + 300,
+      y1: 120 + 300 ,
+      x2: 580 + 300,
+      y2: 120 + 300,
+      stroke: 'l (0) 0:#ff0000 1:#0000ff'
+    }
+  });
+
+  var polygon2 = canvas.addShape('polygon', {
+    attrs: {
+      points: [
+        [600 + 100 - 300, 20 + 300],
+        [600 + 20 - 300, 200 + 300],
+        [1200 - 20 - 300, 100 + 300],
+        [1200 - 100 - 300, 300 - 20 + 300]
+      ],
+      fill: 'green'
+    }
+  });
+
+  var line3 = canvas.addShape('line', {
+    attrs: {
+      x1: 20 + 300,
+      y1: 120 + 600 ,
+      x2: 580 + 300,
+      y2: 120 + 600,
+      stroke: 'l (0) 0:#ff0000 1:#0000ff'
+    }
+  });
+
+  var polygon3 = canvas.addShape('polygon', {
+    attrs: {
+      points: [
+        [600 + 100 - 300, 20 + 600],
+        [600 + 20 - 300, 200 + 600],
+        [1200 - 20 - 300, 100 + 600],
+        [1200 - 100 - 300, 300 - 20 + 600]
+      ],
+      stroke: 'green'
+    }
+  });
+
+  var polygon4 = canvas.addShape('polygon', {
+    attrs: {
+      points: [
+        [600 + 100 - 300, 20 + 900],
+        [600 + 20 - 300, 200 + 900],
+        [1200 - 20 - 300, 100 + 900],
+        [1200 - 100 - 300, 300 - 20 + 900]
+      ]
+    }
+  });
+
+  var line4 = canvas.addShape('line', {
+    attrs: {
+      x1: 20 + 300,
+      y1: 120 + 900 ,
+      x2: 580 + 300,
+      y2: 120 + 900,
+      stroke: 'l (0) 0:#ff0000 1:#0000ff',
+      clip: polygon4
+    }
+  });
+  canvas.draw();
+
+})();</script></body></html>

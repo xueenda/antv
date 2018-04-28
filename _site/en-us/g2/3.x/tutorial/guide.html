@@ -1,0 +1,603 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html>G2 &#x56FE;&#x8868;&#x7EC4;&#x6210;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/load-data.html>&#x88C5;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom.html>Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/attr.html>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/coord.html>Coord &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/axes.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/facet.html>Facet &#x5206;&#x9762;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/theme.html>Theme &#x56FE;&#x8868;&#x76AE;&#x80A4;&#x4E3B;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-label.html>Label &#x56FE;&#x5F62;&#x6587;&#x672C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-event.html>Event &#x56FE;&#x8868;&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/interaction.html>&#x56FE;&#x8868;&#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-use-slider.html>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/update-data.html>&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-shape.html>&#x81EA;&#x5B9A;&#x4E49; shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-animation.html>&#x81EA;&#x5B9A;&#x4E49; &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-create-view.html>&#x521B;&#x5EFA; View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/the-grammar-of-graphics.html>&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7B80;&#x4ECB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-flow.html>G2 &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-type-and-scale.html>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/deep-into-coord.html>&#x5750;&#x6807;&#x7CFB;&#x8BE6;&#x89E3;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-type.html>&#x56FE;&#x8868;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-and-adjust.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x548C;&#x6570;&#x636E;&#x8C03;&#x6574;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/faq.html>&#x5E38;&#x89C1;&#x95EE;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/g2-v3-changes.html>G2 3.0 &#x5347;&#x7EA7;&#x6307;&#x5F15;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_Guide-&#x8F85;&#x52A9;&#x5143;&#x7D20;><a href=#_Guide-&#x8F85;&#x52A9;&#x5143;&#x7D20; class=anchor></a>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</h1><p>Guide &#x4F5C;&#x4E3A; G2 &#x56FE;&#x8868;&#x7684;&#x8F85;&#x52A9;&#x5143;&#x7D20;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x5728;&#x56FE;&#x8868;&#x4E0A;&#x6807;&#x8BC6;&#x989D;&#x5916;&#x7684;&#x6807;&#x8BB0;&#x6CE8;&#x89E3;&#x3002;</p><img src=https://gw.alipayobjects.com/zos/rmsportal/ekrHtCkdfMttjnAXqApH.png style="width: 50%;"><h2 id=_guide-&#x7C7B;&#x578B;><a href=#_guide-&#x7C7B;&#x578B; class=anchor><span class="iconfont icon-link"></span></a>guide &#x7C7B;&#x578B;</h2><p>G2 &#x76EE;&#x524D;&#x652F;&#x6301; <strong>6</strong> &#x79CD;&#x8F85;&#x52A9;&#x6807;&#x8BB0;&#x7C7B;&#x578B;&#xFF1A;</p><ul><li>line&#xFF1A;&#x8F85;&#x52A9;&#x7EBF;&#xFF08;&#x53EF;&#x5E26;&#x6587;&#x672C;&#xFF09;&#xFF0C;&#x4F8B;&#x5982;&#x8868;&#x793A;&#x5E73;&#x5747;&#x503C;&#x6216;&#x8005;&#x9884;&#x671F;&#x5206;&#x5E03;&#x7684;&#x76F4;&#x7EBF;&#xFF1B;</li><li>image&#xFF1A;&#x8F85;&#x52A9;&#x56FE;&#x7247;&#xFF0C;&#x5728;&#x56FE;&#x8868;&#x4E0A;&#x6DFB;&#x52A0;&#x8F85;&#x52A9;&#x56FE;&#x7247;&#xFF1B;</li><li>text&#xFF1A;&#x8F85;&#x52A9;&#x6587;&#x672C;&#xFF0C;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;&#x6587;&#x672C;&#x8BF4;&#x660E;&#xFF1B;</li><li>region&#xFF1A;&#x8F85;&#x52A9;&#x6846;&#xFF0C;&#x6846;&#x9009;&#x4E00;&#x6BB5;&#x56FE;&#x533A;&#xFF0C;&#x8BBE;&#x7F6E;&#x80CC;&#x666F;&#x3001;&#x8FB9;&#x6846;&#x7B49;&#xFF1B;</li><li>html&#xFF1A;&#x8F85;&#x52A9; html&#xFF0C;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49; html&#xFF0C;&#x663E;&#x793A;&#x81EA;&#x5B9A;&#x4E49;&#x4FE1;&#x606F;&#xFF1B;</li><li>arc&#xFF1A;&#x8F85;&#x52A9;&#x5F27;&#x7EBF;&#x3002;</li></ul><h2 id=_&#x5982;&#x4F55;&#x4F7F;&#x7528;><a href=#_&#x5982;&#x4F55;&#x4F7F;&#x7528; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x4F7F;&#x7528;</h2><p>&#x4E0B;&#x9762;&#x5217;&#x51FA;&#x4E86;&#x5404;&#x4E2A; guide &#x8F85;&#x52A9;&#x6807;&#x8BB0;&#x7C7B;&#x578B;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x53C2;&#x89C1; <a href=/zh-cn/g2/3.x/api/chart.html#_guide>Guide API</a>&#x3002;</p><p>guide &#x8F85;&#x52A9;&#x6807;&#x8BB0;&#x7528;&#x4E8E;&#x6807;&#x793A;&#x4F4D;&#x7F6E;&#x7684;&#x65B9;&#x5F0F;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;</p><ul><li>&#x539F;&#x59CB;&#x6570;&#x636E;&#x7684;&#x503C; &#x5982;&#xFF1A; {time: &apos;2010-01-01&apos;, value: 100} &#x6216;&#x8005; [&apos;2010-01-01&apos;, 100]</li><li>&#x56FE;&#x8868;&#x7ED8;&#x56FE;&#x533A;&#x57DF;&#x7684;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#xFF0C;&#x4ECE;&#x5DE6;&#x4E0A;&#x89D2;&#x8BA1;&#x7B97; &#x5982;&#xFF1A;[&apos;50%&apos;, &apos;50%&apos;]</li></ul><p><code>&#x6CE8;&#x610F;</code>&#xFF1A;</p><ul><li>&#x539F;&#x59CB;&#x6570;&#x636E;&#x548C;&#x767E;&#x5206;&#x6BD4;&#x7684;&#x65B9;&#x5F0F;&#x4E0D;&#x80FD;&#x6DF7;&#x7528;&#xFF0C;&#x4E0D;&#x652F;&#x6301;[&apos;2010-01-01&apos;, &apos;50%&apos;]</li><li>&#x4E0D;&#x540C; guide &#x4E2D;&#x6807;&#x793A;&#x4F4D;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x4E3B;&#x8981;&#x662F; start, end, position</li></ul><h3 id=_line-&#x8F85;&#x52A9;&#x7EBF;><a href=#_line-&#x8F85;&#x52A9;&#x7EBF; class=anchor><span class="iconfont icon-link"></span></a>line &#x8F85;&#x52A9;&#x7EBF;</h3><div class=highlight><pre>chart.guide().line({
+  <span class=hljs-attr>start</span>: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x7EBF;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  end: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>}|| </span>{array},<span class=hljs-comment>// &#x8F85;&#x52A9;&#x7EBF;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  lineStyle: {
+    <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#999&apos;</span>, <span class=hljs-comment>// &#x7EBF;&#x7684;&#x989C;&#x8272;</span>
+    lineDash: [ <span class=hljs-number>0</span>, <span class=hljs-number>2</span>, <span class=hljs-number>2</span> ], <span class=hljs-comment>// &#x865A;&#x7EBF;&#x7684;&#x8BBE;&#x7F6E;</span>
+    lineWidth: <span class=hljs-number>3</span> <span class=hljs-comment>// &#x7EBF;&#x7684;&#x5BBD;&#x5EA6;</span>
+  }, <span class=hljs-comment>// &#x56FE;&#x5F62;&#x6837;&#x5F0F;&#x914D;&#x7F6E;</span>
+  text: {
+    <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;start&apos;</span> | <span class=hljs-string>&apos;center&apos;</span> | <span class=hljs-string>&apos;end&apos;</span> | <span class=hljs-string>&apos;39%&apos;</span> | <span class=hljs-number>0.5</span>, <span class=hljs-comment>// &#x6587;&#x672C;&#x7684;&#x663E;&#x793A;&#x4F4D;&#x7F6E;</span>
+    autoRotate: {boolean}, <span class=hljs-comment>// &#x662F;&#x5426;&#x6CBF;&#x7EBF;&#x7684;&#x89D2;&#x5EA6;&#x6392;&#x5E03;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; true</span>
+    style: {
+      <span class=hljs-comment>// &#x6587;&#x672C;&#x56FE;&#x5F62;&#x6837;&#x5F0F;&#x914D;&#x7F6E;</span>
+    },
+    <span class=hljs-attr>content</span>: {string}, <span class=hljs-comment>// &#x6587;&#x672C;&#x7684;&#x5185;&#x5BB9;</span>
+    offsetX: {number}, <span class=hljs-comment>// x &#x65B9;&#x5411;&#x7684;&#x504F;&#x79FB;&#x91CF;</span>
+    offsetY: {number} <span class=hljs-comment>// y &#x65B9;&#x5411;&#x7684;&#x504F;&#x79FB;&#x91CF;</span>
+  } <span class=hljs-comment>// &#x6587;&#x672C;&#x914D;&#x7F6E;</span>
+});
+</pre></div><div id=c1></div><div class=highlight><pre><span class=hljs-keyword>const</span> <span class=hljs-built_in>DataView</span> = DataSet.DataView;
+$.getJSON(<span class=hljs-string>&apos;/assets/data/diamond.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> dv = (<span class=hljs-keyword>new</span> <span class=hljs-built_in>DataView</span>()).source(data);
+  <span class=hljs-keyword>const</span> caratAvg = dv.mean(<span class=hljs-string>&apos;carat&apos;</span>); <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;</span>
+  <span class=hljs-keyword>const</span> priceAvg = dv.mean(<span class=hljs-string>&apos;price&apos;</span>); <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x4EF7;&#x683C;&#x5747;&#x503C;</span>
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({ <span class=hljs-comment>// &#x521B;&#x5EFA;&#x56FE;&#x8868;</span>
+    container : <span class=hljs-string>&apos;c1&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>
+  });
+ 
+  chart.source(data); <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x6E90;</span>
+  chart.point().position(<span class=hljs-string>&apos;carat*price&apos;</span>);
+  chart.guide().line({
+    <span class=hljs-attr>start</span>: [ caratAvg, <span class=hljs-number>0</span> ], <span class=hljs-comment>// &#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x683C;&#x5F0F;</span>
+    end: [ caratAvg, <span class=hljs-number>20000</span> ],
+    <span class=hljs-attr>text</span>: {
+      <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+      <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+      <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;:&apos;</span> + caratAvg
+    }
+  });
+  chart.guide().line({
+    <span class=hljs-attr>start</span>: {
+      <span class=hljs-attr>carat</span>: <span class=hljs-number>0</span>,
+      <span class=hljs-attr>price</span>: priceAvg
+    }, <span class=hljs-comment>// &#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x683C;&#x5F0F;</span>
+    end: {
+      <span class=hljs-attr>carat</span>: <span class=hljs-number>4</span>,
+      <span class=hljs-attr>price</span>: priceAvg
+    },
+    <span class=hljs-attr>text</span>: {
+      <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+      <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+      <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x4EF7;&#x683C;&#x5747;&#x503C;:&apos;</span> + priceAvg,
+      <span class=hljs-attr>style</span>: {
+        <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;end&apos;</span>
+      }
+    }
+  });
+  chart.render(); <span class=hljs-comment>// &#x56FE;&#x8868;&#x6E32;&#x67D3;</span>
+});
+</pre></div><h3 id=_image-&#x8F85;&#x52A9;&#x56FE;&#x7247;><a href=#_image-&#x8F85;&#x52A9;&#x56FE;&#x7247; class=anchor><span class="iconfont icon-link"></span></a>image &#x8F85;&#x52A9;&#x56FE;&#x7247;</h3><div class=highlight><pre><span class=hljs-comment>// &#x8F85;&#x52A9;&#x56FE;&#x7247; image&#xFF0C;&#x53EA;&#x662F;&#x6307;&#x5B9A;&#x4E86; start&#xFF0C;&#x5219;&#x8BE5;&#x70B9;&#x8868;&#x793A;&#x56FE;&#x7247;&#x5DE6;&#x4E0A;&#x89D2;&#x5750;&#x6807;</span>
+chart.guide().image({
+  <span class=hljs-attr>top</span>: {boolean}, <span class=hljs-comment>// &#x6307;&#x5B9A; giude &#x662F;&#x5426;&#x7ED8;&#x5236;&#x5728; canvas &#x6700;&#x4E0A;&#x5C42;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false, &#x5373;&#x7ED8;&#x5236;&#x5728;&#x6700;&#x4E0B;&#x5C42;</span>
+  zIndex: {number},
+  <span class=hljs-attr>start</span>: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x56FE;&#x7247;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C; &#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  src: {string}, <span class=hljs-comment>// &#x56FE;&#x7247;&#x8DEF;&#x5F84;</span>
+  width: {number},
+  <span class=hljs-attr>height</span>: {number},
+  <span class=hljs-attr>offsetX</span>: {number}, <span class=hljs-comment>// x &#x65B9;&#x5411;&#x7684;&#x504F;&#x79FB;&#x91CF;</span>
+  offsetY: {number} <span class=hljs-comment>// y &#x65B9;&#x5411;&#x504F;&#x79FB;&#x91CF;</span>
+});
+<span class=hljs-comment>// &#x8F85;&#x52A9;&#x56FE;&#x7247; image&#xFF0C;&#x901A;&#x8FC7;&#x6307;&#x5B9A; start &#x548C; end &#x786E;&#x5B9A;&#x56FE;&#x7247;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x5BBD;&#x9AD8;</span>
+chart.guide().image({
+  <span class=hljs-attr>top</span>: {boolean}, <span class=hljs-comment>// &#x6307;&#x5B9A; giude &#x662F;&#x5426;&#x7ED8;&#x5236;&#x5728; canvas &#x6700;&#x4E0A;&#x5C42;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false, &#x5373;&#x7ED8;&#x5236;&#x5728;&#x6700;&#x4E0B;&#x5C42; </span>
+  start: {array} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x56FE;&#x7247;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C; &#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  end: {array} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x56FE;&#x7247;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#xFF0C; &#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  src: {string}, <span class=hljs-comment>// &#x56FE;&#x7247;&#x8DEF;&#x5F84;</span>
+  offsetX: {number}, <span class=hljs-comment>// x &#x65B9;&#x5411;&#x7684;&#x504F;&#x79FB;&#x91CF;</span>
+  offsetY: {number} <span class=hljs-comment>// y &#x65B9;&#x5411;&#x504F;&#x79FB;&#x91CF;</span>
+});
+</pre></div><div id=c2></div><div class=highlight><pre><span class=hljs-keyword>const</span> <span class=hljs-built_in>DataView</span> = DataSet.DataView;
+$.getJSON(<span class=hljs-string>&apos;/assets/data/diamond.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> dv = <span class=hljs-keyword>new</span> <span class=hljs-built_in>DataView</span>();
+  dv.source(data).transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;bin.histogram&apos;</span>,
+    <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;depth&apos;</span>,
+    <span class=hljs-attr>binWidth</span>: <span class=hljs-number>0.5</span>,
+    <span class=hljs-attr>as</span>: [ <span class=hljs-string>&apos;depth&apos;</span>, <span class=hljs-string>&apos;count&apos;</span> ],
+  });
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c2&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>
+  });
+  chart.source(dv);
+  chart.tooltip({
+    <span class=hljs-attr>crosshairs</span>: <span class=hljs-literal>false</span>
+  });
+  chart.interval().position(<span class=hljs-string>&apos;depth*count&apos;</span>).shape(<span class=hljs-string>&apos;hollowRect&apos;</span>);
+
+  chart.guide().image({
+    <span class=hljs-attr>start</span>: [ <span class=hljs-number>55</span>, <span class=hljs-number>200</span> ],
+    <span class=hljs-attr>src</span>: <span class=hljs-string>&apos;https://os.alipayobjects.com/rmsportal/IUYwZOlOpysCUsl.png&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>60</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>100</span>
+  });
+  chart.render();
+});
+</pre></div><h3 id=_text-&#x8F85;&#x52A9;&#x6587;&#x672C;><a href=#_text-&#x8F85;&#x52A9;&#x6587;&#x672C; class=anchor><span class="iconfont icon-link"></span></a>text &#x8F85;&#x52A9;&#x6587;&#x672C;</h3><div class=highlight><pre>chart.guide().text({
+  <span class=hljs-attr>top</span>: {boolean}, <span class=hljs-comment>// &#x6307;&#x5B9A; giude &#x662F;&#x5426;&#x7ED8;&#x5236;&#x5728; canvas &#x6700;&#x4E0A;&#x5C42;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false, &#x5373;&#x7ED8;&#x5236;&#x5728;&#x6700;&#x4E0B;&#x5C42;</span>
+  zIndex: {number},
+  <span class=hljs-attr>position</span>: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x6587;&#x672C;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  content: {string}, <span class=hljs-comment>// &#x663E;&#x793A;&#x7684;&#x6587;&#x672C;&#x5185;&#x5BB9;</span>
+  style: {
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#666&apos;</span>, <span class=hljs-comment>// &#x6587;&#x672C;&#x989C;&#x8272;</span>
+    fontSize: <span class=hljs-string>&apos;12&apos;</span>, <span class=hljs-comment>// &#x6587;&#x672C;&#x5927;&#x5C0F;</span>
+    fontWeight: <span class=hljs-string>&apos;bold&apos;</span> <span class=hljs-comment>// &#x6587;&#x672C;&#x7C97;&#x7EC6;</span>
+    rotate: <span class=hljs-number>30</span> <span class=hljs-comment>// &#x65CB;&#x8F6C;&#x89D2;&#x5EA6;</span>
+  }, <span class=hljs-comment>// &#x6587;&#x672C;&#x7684;&#x56FE;&#x5F62;&#x6837;&#x5F0F;&#x5C5E;&#x6027;</span>
+  offsetX: {number}, <span class=hljs-comment>// x &#x65B9;&#x5411;&#x7684;&#x504F;&#x79FB;&#x91CF;</span>
+  offsetY: {number} <span class=hljs-comment>// y &#x65B9;&#x5411;&#x504F;&#x79FB;&#x91CF;</span>
+});
+</pre></div><div id=c3></div><div class=highlight><pre><span class=hljs-keyword>const</span> colors = G2.Global.colors;
+$.getJSON(<span class=hljs-string>&apos;/assets/data/diamond.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({ <span class=hljs-comment>// &#x521B;&#x5EFA;&#x56FE;&#x8868;</span>
+    container : <span class=hljs-string>&apos;c3&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>,
+    <span class=hljs-attr>padding</span>: [ <span class=hljs-number>20</span>, <span class=hljs-number>90</span>, <span class=hljs-number>60</span>, <span class=hljs-number>80</span> ]
+  });
+  <span class=hljs-keyword>const</span> defs = {
+    <span class=hljs-string>&apos;cut&apos;</span>: {
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;cat&apos;</span>,
+      <span class=hljs-attr>values</span>:[ <span class=hljs-string>&apos;Ideal&apos;</span>, <span class=hljs-string>&apos;Premium&apos;</span>, <span class=hljs-string>&apos;Very-Good&apos;</span>, <span class=hljs-string>&apos;Good&apos;</span>, <span class=hljs-string>&apos;Fair&apos;</span> ]
+    }
+  };
+  chart.source(data, defs); <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x6E90;</span>
+  chart.legend(<span class=hljs-literal>false</span>);
+  chart.pointJitter().position(<span class=hljs-string>&apos;cut*depth&apos;</span>).color(<span class=hljs-string>&apos;cut&apos;</span>);
+  chart.guide().text({
+    <span class=hljs-attr>position</span>: [ <span class=hljs-string>&apos;Ideal&apos;</span>, <span class=hljs-number>67</span> ], 
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x8D8A;&#x5B8C;&#x7F8E;&#x7684;&#x94BB;&#x77F3;&#x5207;&#x5272;&#x5DE5;&#x827A;&#x8D8A;&#x96C6;&#x4E2D;&apos;</span>, 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fill</span>: colors[<span class=hljs-number>0</span>],
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;center&apos;</span>,
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>14</span>
+    }
+  });
+  chart.guide().text({
+    <span class=hljs-attr>position</span>: [ <span class=hljs-string>&apos;Fair&apos;</span>, <span class=hljs-number>63</span> ], 
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x8D8A;&#x5DEE;&#x7684;&#x94BB;&#x77F3;&#x5207;&#x5272;&#x5DE5;&#x827A;&#x8D8A;&#x5206;&#x6563;&apos;</span>, 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fill</span>: colors[<span class=hljs-number>4</span>],
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;center&apos;</span>,
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>14</span>
+    }
+  });
+  chart.render(); <span class=hljs-comment>// &#x56FE;&#x8868;&#x6E32;&#x67D3;</span>
+});
+</pre></div><h3 id=_region-&#x8F85;&#x52A9;&#x6846;><a href=#_region-&#x8F85;&#x52A9;&#x6846; class=anchor><span class="iconfont icon-link"></span></a>region &#x8F85;&#x52A9;&#x6846;</h3><div class=highlight><pre>chart.guide().region({
+  <span class=hljs-attr>top</span>: {boolean}, <span class=hljs-comment>// &#x6307;&#x5B9A; giude &#x662F;&#x5426;&#x7ED8;&#x5236;&#x5728; canvas &#x6700;&#x4E0A;&#x5C42;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false, &#x5373;&#x7ED8;&#x5236;&#x5728;&#x6700;&#x4E0B;&#x5C42;</span>
+  start: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback </span>
+  end: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array},<span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  style: {
+    <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>0</span>, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x7684;&#x8FB9;&#x6846;&#x5BBD;&#x5EA6;</span>
+    fill: <span class=hljs-string>&apos;#f80&apos;</span>, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x586B;&#x5145;&#x7684;&#x989C;&#x8272;</span>
+    fillOpacity: <span class=hljs-number>0.1</span>, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x7684;&#x80CC;&#x666F;&#x900F;&#x660E;&#x5EA6;</span>
+    stroke: <span class=hljs-string>&apos;#ccc&apos;</span> <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x7684;&#x8FB9;&#x6846;&#x989C;&#x8272;&#x8BBE;&#x7F6E;</span>
+  } <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x7684;&#x56FE;&#x5F62;&#x6837;&#x5F0F;&#x5C5E;&#x6027;</span>
+});
+</pre></div><div id=c4></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>6.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>9.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>3</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>14.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>4</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>18.2</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>5</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>21.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>6</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>25.2</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>26.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>8</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>23.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>18.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>13.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>11</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>9.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>-0.2</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>0.8</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>5.7</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>3</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>11.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>4</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>17</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>5</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>22</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>6</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>24.8</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>24.1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>8</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>20.1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>14.1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>8.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>11</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>2.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>-0.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>0.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>3.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>3</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>8.4</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>4</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>13.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>5</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>17</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>6</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>18.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>17.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>8</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>14.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>3.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>11</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> }
+];
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c4&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>
+});
+chart.source(data);
+chart.line().position(<span class=hljs-string>&apos;month*tem&apos;</span>).color(<span class=hljs-string>&apos;city&apos;</span>);
+chart.guide().region({
+  <span class=hljs-attr>start</span>: [ <span class=hljs-number>5</span>, <span class=hljs-string>&apos;min&apos;</span> ], 
+  <span class=hljs-attr>end</span>: [ <span class=hljs-number>7</span>, <span class=hljs-string>&apos;max&apos;</span> ]
+}); <span class=hljs-comment>// 6&#x6708; - 8&#x6708;&#x6700;&#x4F4E;&#x6E29;&#x5EA6;</span>
+chart.render();
+</pre></div><h3 id=_&#x8F85;&#x52A9;-html><a href=#_&#x8F85;&#x52A9;-html class=anchor><span class="iconfont icon-link"></span></a>&#x8F85;&#x52A9; html</h3><div class=highlight><pre>chart.guide().html({
+  <span class=hljs-attr>position</span>: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// html &#x7684;&#x4E2D;&#x5FC3;&#x4F4D;&#x7F6E;&#xFF0C; &#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  alignX: <span class=hljs-string>&apos;left&apos;</span> | <span class=hljs-string>&apos;middle&apos;</span> | <span class=hljs-string>&apos;right&apos;</span>,
+  <span class=hljs-attr>alignY</span>: <span class=hljs-string>&apos;top&apos;</span> | <span class=hljs-string>&apos;middle&apos;</span> | <span class=hljs-string>&apos;bottom&apos;</span>,
+  <span class=hljs-attr>offsetX</span>: {number},
+  <span class=hljs-attr>offsetY</span>: {number},
+  <span class=hljs-attr>html</span>: {string}, <span class=hljs-comment>// html &#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x652F;&#x6301;callback,&#x53EF;&#x80FD;&#x662F;&#x6700;&#x5927;&#x503C;&#x3001;&#x6700;&#x5C0F;&#x503C;&#x4E4B;&#x7C7B;&#x7684;&#x5224;&#x5B9A;</span>
+  zIndex: {number}
+});
+</pre></div><div id=c5></div><div class=highlight><pre><span class=hljs-keyword>const</span> <span class=hljs-built_in>DataView</span> = DataSet.DataView;
+$.getJSON(<span class=hljs-string>&apos;/assets/data/diamond.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> dv = (<span class=hljs-keyword>new</span> <span class=hljs-built_in>DataView</span>()).source(data);
+  <span class=hljs-keyword>const</span> caratAvg = dv.mean(<span class=hljs-string>&apos;carat&apos;</span>); <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;</span>
+  <span class=hljs-keyword>const</span> priceAvg = dv.mean(<span class=hljs-string>&apos;price&apos;</span>); <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x4EF7;&#x683C;&#x5747;&#x503C;</span>
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c5&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>
+  });
+  chart.source(data);
+  chart.point().position(<span class=hljs-string>&apos;carat*price&apos;</span>);
+  <span class=hljs-comment>// &#x5750;&#x6807;&#x70B9;</span>
+  <span class=hljs-keyword>const</span> point = [ <span class=hljs-number>3.5</span>, <span class=hljs-number>12000</span> ];
+  <span class=hljs-comment>//html&#x5B57;&#x7B26;&#x4E32;</span>
+  <span class=hljs-keyword>const</span> tooltipHtml = <span class=hljs-string>&quot;&lt;div style=&apos;border: 2px solid #0f8de8;width: 50px;height: 26px;color: #0f8de8;position: relative;&apos;&gt;&quot;</span> +
+      <span class=hljs-string>&quot;&lt;span style=&apos;color:#63c6c2;font-size:15px&apos;&gt;&#x5F02;&#x5E38;&#x503C;&lt;/span&gt;&quot;</span> +
+      <span class=hljs-string>&quot;&lt;div style=&apos;width: 0;height: 0;border-bottom: 8px solid #0f8de8;border-right:10px solid transparent;position: absolute;top: 16px;left: 46px;&apos;&gt;&lt;/div&gt;&quot;</span> +
+      <span class=hljs-string>&quot;&lt;/div&gt;&quot;</span>;
+  chart.guide().html({
+    <span class=hljs-attr>position</span>: point, 
+    <span class=hljs-attr>html</span>: tooltipHtml, 
+    <span class=hljs-attr>alignX</span>: <span class=hljs-string>&apos;right&apos;</span>,
+    <span class=hljs-attr>alignY</span>: <span class=hljs-string>&apos;bottom&apos;</span>,
+    <span class=hljs-attr>offsetX</span>: <span class=hljs-number>10</span>
+  });
+  chart.render(); <span class=hljs-comment>// &#x56FE;&#x8868;&#x6E32;&#x67D3;</span>
+});
+</pre></div><h3 id=_arc-&#x8F85;&#x52A9;&#x5F27;&#x7EBF;><a href=#_arc-&#x8F85;&#x52A9;&#x5F27;&#x7EBF; class=anchor><span class="iconfont icon-link"></span></a>arc &#x8F85;&#x52A9;&#x5F27;&#x7EBF;</h3><div class=highlight><pre>chart.arc({
+  <span class=hljs-attr>top</span>: <span class=hljs-literal>true</span> | <span class=hljs-literal>false</span>, <span class=hljs-comment>// &#x6307;&#x5B9A; giude &#x662F;&#x5426;&#x7ED8;&#x5236;&#x5728; canvas &#x6700;&#x4E0A;&#x5C42;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false, &#x5373;&#x7ED8;&#x5236;&#x5728;&#x6700;&#x4E0B;&#x5C42;</span>
+  start: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array}, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback </span>
+  end: {object} | {<span class=hljs-function><span class=hljs-keyword>function</span>} | </span>{array},<span class=hljs-comment>// &#x8F85;&#x52A9;&#x6846;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#xFF0C;&#x503C;&#x4E3A;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x652F;&#x6301; callback</span>
+  style: {} <span class=hljs-comment>// &#x56FE;&#x5F62;&#x6837;&#x5F0F;&#x5C5E;&#x6027;</span>
+});
+</pre></div><p><code>&#x6CE8;&#x610F;</code>&#xFF1A;</p><ul><li>arc &#x8F85;&#x52A9;&#x5F27;&#x7EBF;&#xFF0C;&#x4EC5;&#x5728; polar <a href=coord.html>&#x5750;&#x6807;&#x7CFB;&#xFF08;Coord&#xFF09;</a>&#x4E0B;&#x751F;&#x6548;</li></ul><h3 id=_&#x52A8;&#x6001;&#x8F85;&#x52A9;&#x6807;&#x8BB0;><a href=#_&#x52A8;&#x6001;&#x8F85;&#x52A9;&#x6807;&#x8BB0; class=anchor><span class="iconfont icon-link"></span></a>&#x52A8;&#x6001;&#x8F85;&#x52A9;&#x6807;&#x8BB0;</h3><p>&#x8F85;&#x52A9;&#x6807;&#x8BB0;&#x63A5;&#x53D7;&#x7684;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x539F;&#x59CB;&#x6570;&#x636E;&#x503C;&#xFF0C;&#x8F85;&#x52A9;&#x6807;&#x8BB0;&#x4E00;&#x65E6;&#x751F;&#x6210;&#x540E;&#x5C31;&#x662F;&#x56FA;&#x5B9A;&#x4E86;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x636E;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x8F85;&#x52A9;&#x6807;&#x8BB0;&#x5C31;&#x9700;&#x8981;&#x5220;&#x9664;&#x6389;&#x91CD;&#x65B0;&#x521B;&#x5EFA;</p><div class=highlight><pre><span class=hljs-comment>// &#x6E05;&#x9664;&#x56FE;&#x8868;</span>
+chart.clear();
+<span class=hljs-comment>// &#x91CD;&#x65B0;&#x58F0;&#x660E;&#x56FE;&#x5F62;&#x8BED;&#x6CD5;</span>
+chart.point().position(<span class=hljs-string>&apos;carat*price&apos;</span>);
+chart.guide().html([ newX, newY ], htmlstring);
+chart.render();
+</pre></div><ul><li>newX,newY &#x662F;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x7684;&#x4F4D;&#x7F6E;</li></ul><p>&#x5982;&#x679C;&#x6570;&#x636E;&#x662F;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x9700;&#x8981;&#x9891;&#x7E41;&#x8FDB;&#x884C;&#xFF0C;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x573A;&#x666F; guide &#x63D0;&#x4F9B;&#x4E24;&#x79CD;&#x8BA1;&#x7B97;&#x52A8;&#x6001;&#x4F4D;&#x7F6E;&#x7684;&#xFF1A;</p><ul><li>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&apos;min&apos;, &apos;median&apos;, &apos;max&apos; &#x5B57;&#x7B26;&#x4E32;&#x4EE3;&#x8868;&#x539F;&#x59CB;&#x503C;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x3001;&#x5E73;&#x5747;&#x503C;&#x3001;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A; [0, &apos;min&apos;] &#x8868;&#x793A; x &#x8F74;&#x4E0A;&#x6570;&#x503C;&#x4E3A; 0&#xFF0C;y &#x8F74;&#x4F4D;&#x7F6E;&#x5728;&#x6570;&#x503C;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x4E0A;&#xFF1B;</li><li>&#x8868;&#x793A;&#x4F4D;&#x7F6E;&#x7684;&#x6570;&#x7EC4;&#x53EF;&#x4EE5;&#x6362;&#x6210;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x539F;&#x578B;&#xFF1A; <code>function(xScale, yScale) {return [];}</code><ul><li>xScale, yScale &#x6620;&#x5C04;&#x5230; x &#x8F74;&#x4E0A;&#x7684;&#x5B57;&#x6BB5;&#x751F;&#x6210;&#x7684;&#x5EA6;&#x91CF;&#xFF0C;&#x8BE6;&#x60C5;&#x67E5;&#x770B; <a href=./scale.html>&#x5EA6;&#x91CF;</a>, <a href=/zh-cn/g2/3.x/api/scale.html>api</a>;</li><li>&#x5206;&#x7C7B;&#x5EA6;&#x91CF;&#x5E38;&#x7528;&#x7684;&#x503C;&#x662F; <code>values</code> &#x5305;&#x542B;&#x4E86;&#x6240;&#x6709;&#x7684;&#x5206;&#x7C7B;&#xFF0C;&#x8FDE;&#x7EED;&#x5EA6;&#x91CF;&#x5E38;&#x7528;&#x7684;&#x662F; min, max</li></ul></li></ul><div id=c6></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [];                                                 
+<span class=hljs-keyword>const</span> time = <span class=hljs-built_in>Math</span>.floor((<span class=hljs-keyword>new</span> <span class=hljs-built_in>Date</span>()).getTime() / <span class=hljs-number>1000</span>) * <span class=hljs-number>1000</span>;                             
+                                                                
+<span class=hljs-keyword>for</span> (<span class=hljs-keyword>let</span> i = <span class=hljs-number>-19</span>; i &lt;= <span class=hljs-number>0</span>; i++) {                                    
+  data.push({                                                 
+    <span class=hljs-attr>time</span>: time + i * <span class=hljs-number>3</span> * <span class=hljs-number>1000</span>,                                     
+    <span class=hljs-attr>value</span>: <span class=hljs-built_in>Math</span>.random() + <span class=hljs-number>.25</span>                                      
+  });                                                         
+}   
+
+<span class=hljs-comment>// &#x67E5;&#x627E;&#x6700;&#x5927;&#x503C;</span>
+<span class=hljs-function><span class=hljs-keyword>function</span> <span class=hljs-title>findMax</span>(<span class=hljs-params></span>) </span>{
+  <span class=hljs-keyword>let</span> maxValue = <span class=hljs-number>0</span>;
+  <span class=hljs-keyword>let</span> maxObj = <span class=hljs-literal>null</span>;
+  data.forEach(<span class=hljs-function><span class=hljs-params>obj</span> =&gt;</span> {
+    <span class=hljs-keyword>if</span> (obj.value &gt; maxValue) {
+      maxValue = obj.value;
+      maxObj = obj;
+    }
+  });
+  <span class=hljs-keyword>return</span> maxObj;
+}
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({ <span class=hljs-comment>// &#x521B;&#x5EFA;&#x56FE;&#x8868;</span>
+  container: <span class=hljs-string>&apos;c6&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>
+});
+
+chart.source(data, {
+  <span class=hljs-attr>time</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;time&apos;</span>,
+    <span class=hljs-attr>mask</span>: <span class=hljs-string>&apos;HH:mm:ss&apos;</span>
+  }
+});
+
+chart.line().position(<span class=hljs-string>&apos;time*value&apos;</span>);
+<span class=hljs-comment>// &#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x865A;&#x7EBF;</span>
+chart.guide().line({
+  <span class=hljs-attr>start</span>: [ <span class=hljs-string>&apos;min&apos;</span>, <span class=hljs-number>0.25</span> ], 
+  <span class=hljs-attr>end</span>: [ <span class=hljs-string>&apos;max&apos;</span>, <span class=hljs-number>0.25</span>] 
+});
+chart.guide().text({
+  position() {
+    <span class=hljs-keyword>const</span> obj = findMax();
+    <span class=hljs-keyword>return</span> [ obj.time, obj.value ];
+  },
+  <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x6700;&#x5927;&#x503C;&apos;</span>
+});
+
+chart.render();
+
+setInterval(<span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params></span>) </span>{
+  data.shift();
+  data.push({
+    <span class=hljs-attr>time</span>: <span class=hljs-keyword>new</span> <span class=hljs-built_in>Date</span>().getTime(),
+    <span class=hljs-attr>value</span>: <span class=hljs-built_in>Math</span>.random() + <span class=hljs-number>.25</span>
+  });
+  chart.changeData(data);
+}, <span class=hljs-number>3000</span>);
+</pre></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/en-us/g2/3.x/tutorial/guide.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const DataView = DataSet.DataView;
+$.getJSON('/assets/data/diamond.json', function(data) {
+  const dv = (new DataView()).source(data);
+  const caratAvg = dv.mean('carat'); // 计算克拉数均值
+  const priceAvg = dv.mean('price'); // 计算价格均值
+  const chart = new G2.Chart({ // 创建图表
+    container : 'c1',
+    forceFit: true,
+    height: 450
+  });
+ 
+  chart.source(data); // 设置数据源
+  chart.point().position('carat*price');
+  chart.guide().line({
+    start: [ caratAvg, 0 ], // 使用数组格式
+    end: [ caratAvg, 20000 ],
+    text: {
+      position: 'end',
+      autoRotate: false,
+      content: '克拉数均值:' + caratAvg
+    }
+  });
+  chart.guide().line({
+    start: {
+      carat: 0,
+      price: priceAvg
+    }, // 使用对象格式
+    end: {
+      carat: 4,
+      price: priceAvg
+    },
+    text: {
+      position: 'end',
+      autoRotate: false,
+      content: '价格均值:' + priceAvg,
+      style: {
+        textAlign: 'end'
+      }
+    }
+  });
+  chart.render(); // 图表渲染
+});
+
+})();</script><script>(function(){
+'use strict';
+const DataView = DataSet.DataView;
+$.getJSON('/assets/data/diamond.json', function(data) {
+  const dv = new DataView();
+  dv.source(data).transform({
+    type: 'bin.histogram',
+    field: 'depth',
+    binWidth: 0.5,
+    as: [ 'depth', 'count' ],
+  });
+  const chart = new G2.Chart({
+    container: 'c2',
+    forceFit: true,
+    height: 450
+  });
+  chart.source(dv);
+  chart.tooltip({
+    crosshairs: false
+  });
+  chart.interval().position('depth*count').shape('hollowRect');
+
+  chart.guide().image({
+    start: [ 55, 200 ],
+    src: 'https://os.alipayobjects.com/rmsportal/IUYwZOlOpysCUsl.png',
+    width: 60,
+    height: 100
+  });
+  chart.render();
+});
+
+})();</script><script>(function(){
+'use strict';
+const colors = G2.Global.colors;
+$.getJSON('/assets/data/diamond.json', function(data) {
+  const chart = new G2.Chart({ // 创建图表
+    container : 'c3',
+    forceFit: true,
+    height: 450,
+    padding: [ 20, 90, 60, 80 ]
+  });
+  const defs = {
+    'cut': {
+      type: 'cat',
+      values:[ 'Ideal', 'Premium', 'Very-Good', 'Good', 'Fair' ]
+    }
+  };
+  chart.source(data, defs); // 设置数据源
+  chart.legend(false);
+  chart.pointJitter().position('cut*depth').color('cut');
+  chart.guide().text({
+    position: [ 'Ideal', 67 ], 
+    content: '越完美的钻石切割工艺越集中', 
+    style: {
+      fill: colors[0],
+      textAlign: 'center',
+      fontSize: 14
+    }
+  });
+  chart.guide().text({
+    position: [ 'Fair', 63 ], 
+    content: '越差的钻石切割工艺越分散', 
+    style: {
+      fill: colors[4],
+      textAlign: 'center',
+      fontSize: 14
+    }
+  });
+  chart.render(); // 图表渲染
+});
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { month: 0, tem: 7, city: 'tokyo' },
+  { month: 1, tem: 6.9, city: 'tokyo' },
+  { month: 2, tem: 9.5, city: 'tokyo' },
+  { month: 3, tem: 14.5, city: 'tokyo' },
+  { month: 4, tem: 18.2, city: 'tokyo' },
+  { month: 5, tem: 21.5, city: 'tokyo' },
+  { month: 6, tem: 25.2, city: 'tokyo' },
+  { month: 7, tem: 26.5, city: 'tokyo' },
+  { month: 8, tem: 23.3, city: 'tokyo' },
+  { month: 9, tem: 18.3, city: 'tokyo' },
+  { month: 10, tem: 13.9, city: 'tokyo' },
+  { month: 11, tem: 9.6, city: 'tokyo' },
+  { month: 0, tem: -0.2, city: 'newYork' },
+  { month: 1, tem: 0.8, city: 'newYork' },
+  { month: 2, tem: 5.7, city: 'newYork' },
+  { month: 3, tem: 11.3, city: 'newYork' },
+  { month: 4, tem: 17, city: 'newYork' },
+  { month: 5, tem: 22, city: 'newYork' },
+  { month: 6, tem: 24.8, city: 'newYork' },
+  { month: 7, tem: 24.1, city: 'newYork' },
+  { month: 8, tem: 20.1, city: 'newYork' },
+  { month: 9, tem: 14.1, city: 'newYork' },
+  { month: 10, tem: 8.6, city: 'newYork' },
+  { month: 11, tem: 2.5, city: 'newYork' },
+  { month: 0, tem: -0.9, city: 'berlin' },
+  { month: 1, tem: 0.6, city: 'berlin' },
+  { month: 2, tem: 3.5, city: 'berlin' },
+  { month: 3, tem: 8.4, city: 'berlin' },
+  { month: 4, tem: 13.5, city: 'berlin' },
+  { month: 5, tem: 17, city: 'berlin' },
+  { month: 6, tem: 18.6, city: 'berlin' },
+  { month: 7, tem: 17.9, city: 'berlin' },
+  { month: 8, tem: 14.3, city: 'berlin' },
+  { month: 9, tem: 9, city: 'berlin' },
+  { month: 10, tem: 3.9, city: 'berlin' },
+  { month: 11, tem: 1, city: 'berlin' }
+];
+const chart = new G2.Chart({
+  container: 'c4',
+  forceFit: true,
+  height: 450
+});
+chart.source(data);
+chart.line().position('month*tem').color('city');
+chart.guide().region({
+  start: [ 5, 'min' ], 
+  end: [ 7, 'max' ]
+}); // 6月 - 8月最低温度
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const DataView = DataSet.DataView;
+$.getJSON('/assets/data/diamond.json', function(data) {
+  const dv = (new DataView()).source(data);
+  const caratAvg = dv.mean('carat'); // 计算克拉数均值
+  const priceAvg = dv.mean('price'); // 计算价格均值
+  const chart = new G2.Chart({
+    container: 'c5',
+    forceFit: true,
+    height: 450
+  });
+  chart.source(data);
+  chart.point().position('carat*price');
+  // 坐标点
+  const point = [ 3.5, 12000 ];
+  //html字符串
+  const tooltipHtml = "<div style='border: 2px solid #0f8de8;width: 50px;height: 26px;color: #0f8de8;position: relative;'>" +
+      "<span style='color:#63c6c2;font-size:15px'>异常值</span>" +
+      "<div style='width: 0;height: 0;border-bottom: 8px solid #0f8de8;border-right:10px solid transparent;position: absolute;top: 16px;left: 46px;'></div>" +
+      "</div>";
+  chart.guide().html({
+    position: point, 
+    html: tooltipHtml, 
+    alignX: 'right',
+    alignY: 'bottom',
+    offsetX: 10
+  });
+  chart.render(); // 图表渲染
+});
+
+})();</script><script>(function(){
+'use strict';
+const data = [];                                                 
+const time = Math.floor((new Date()).getTime() / 1000) * 1000;                             
+                                                                
+for (let i = -19; i <= 0; i++) {                                    
+  data.push({                                                 
+    time: time + i * 3 * 1000,                                     
+    value: Math.random() + .25                                      
+  });                                                         
+}   
+
+// 查找最大值
+function findMax() {
+  let maxValue = 0;
+  let maxObj = null;
+  data.forEach(obj => {
+    if (obj.value > maxValue) {
+      maxValue = obj.value;
+      maxObj = obj;
+    }
+  });
+  return maxObj;
+}
+
+const chart = new G2.Chart({ // 创建图表
+  container: 'c6',
+  forceFit: true,
+  height: 450
+});
+
+chart.source(data, {
+  time: {
+    type: 'time',
+    mask: 'HH:mm:ss'
+  }
+});
+
+chart.line().position('time*value');
+// 添加一条虚线
+chart.guide().line({
+  start: [ 'min', 0.25 ], 
+  end: [ 'max', 0.25] 
+});
+chart.guide().text({
+  position() {
+    const obj = findMax();
+    return [ obj.time, obj.value ];
+  },
+  content: '最大值'
+});
+
+chart.render();
+
+setInterval(function() {
+  data.shift();
+  data.push({
+    time: new Date().getTime(),
+    value: Math.random() + .25
+  });
+  chart.changeData(data);
+}, 3000);
+
+})();</script></body></html>

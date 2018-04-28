@@ -1,0 +1,463 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Legend &#x56FE;&#x4F8B; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html>G2 &#x56FE;&#x8868;&#x7EC4;&#x6210;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/load-data.html>&#x88C5;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom.html>Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/attr.html>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/coord.html>Coord &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/axes.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/facet.html>Facet &#x5206;&#x9762;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/theme.html>Theme &#x56FE;&#x8868;&#x76AE;&#x80A4;&#x4E3B;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-label.html>Label &#x56FE;&#x5F62;&#x6587;&#x672C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-event.html>Event &#x56FE;&#x8868;&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/interaction.html>&#x56FE;&#x8868;&#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-use-slider.html>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/update-data.html>&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-shape.html>&#x81EA;&#x5B9A;&#x4E49; shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-animation.html>&#x81EA;&#x5B9A;&#x4E49; &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-create-view.html>&#x521B;&#x5EFA; View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/the-grammar-of-graphics.html>&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7B80;&#x4ECB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-flow.html>G2 &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-type-and-scale.html>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/deep-into-coord.html>&#x5750;&#x6807;&#x7CFB;&#x8BE6;&#x89E3;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-type.html>&#x56FE;&#x8868;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-and-adjust.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x548C;&#x6570;&#x636E;&#x8C03;&#x6574;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/faq.html>&#x5E38;&#x89C1;&#x95EE;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/g2-v3-changes.html>G2 3.0 &#x5347;&#x7EA7;&#x6307;&#x5F15;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x56FE;&#x4F8B;><a href=#_&#x56FE;&#x4F8B; class=anchor></a>&#x56FE;&#x4F8B;</h1><p>&#x56FE;&#x4F8B;&#xFF08;legend&#xFF09;&#x662F;&#x56FE;&#x8868;&#x7684;&#x8F85;&#x52A9;&#x5143;&#x7D20;&#xFF0C;&#x4F7F;&#x7528;&#x989C;&#x8272;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x5F62;&#x72B6;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x56FE;&#x8868;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x7B5B;&#x9009;&#x3002;G2 &#x4F1A;&#x6839;&#x636E;&#x8BBE;&#x7F6E;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x6620;&#x5C04;&#x4EE5;&#x53CA;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x4F8B;&#x3002;</p><ul><li>shape, color, size &#x8FD9;&#x4E09;&#x4E2A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x5982;&#x679C;&#x5224;&#x65AD;&#x63A5;&#x6536;&#x7684;&#x53C2;&#x6570;&#x662F;&#x6570;&#x636E;&#x6E90;&#x7684;&#x5B57;&#x6BB5;&#x65F6;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x4F8B;&#xFF1B;</li><li>shape &#x5C5E;&#x6027;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684; shape &#x7C7B;&#x578B;&#x751F;&#x6210;&#x56FE;&#x4F8B;&#xFF1B;</li><li>color &#x5C5E;&#x6027;, &#x4F1A;&#x8D4B;&#x4E88;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x4F8B;&#x9879;&#x4E0D;&#x540C;&#x7684;&#x989C;&#x8272;&#x6765;&#x533A;&#x5206;&#x56FE;&#x5F62;&#xFF1B;</li><li>size &#x5C5E;&#x6027;, &#x5728;&#x56FE;&#x4F8B;&#x4E0A;&#x663E;&#x793A;&#x56FE;&#x5F62;&#x7684;&#x5927;&#x5C0F;&#x3002;</li></ul><p>&#x901A;&#x8FC7; <code>chart.legend([field, ]false)</code> &#x53EF;&#x4EE5;&#x5173;&#x95ED;&#x56FE;&#x4F8B;&#x3002;</p><img src=https://gw.alipayobjects.com/zos/rmsportal/KNzuPncDjpmlchIzLnQM.png width=65%><h2 id=_&#x5982;&#x4F55;&#x914D;&#x7F6E;&#x56FE;&#x4F8B;><a href=#_&#x5982;&#x4F55;&#x914D;&#x7F6E;&#x56FE;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x914D;&#x7F6E;&#x56FE;&#x4F8B;</h2><p>&#x8C03;&#x7528; <code>chart.legend()</code> &#x8FDB;&#x884C;&#x56FE;&#x4F8B;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p><div class=highlight><pre>chart.legend({ 
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;bottom&apos;</span>, <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x4F4D;&#x7F6E;</span>
+  itemGap: <span class=hljs-number>20</span> <span class=hljs-comment>// &#x56FE;&#x4F8B;&#x9879;&#x4E4B;&#x95F4;&#x7684;&#x95F4;&#x8DDD;</span>
+});
+
+chart.legend(<span class=hljs-string>&apos;cut&apos;</span>, <span class=hljs-literal>false</span>); <span class=hljs-comment>// &#x4E0D;&#x663E;&#x793A; cut &#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x4F8B;</span>
+
+chart.legend(<span class=hljs-string>&apos;price&apos;</span>, {
+  <span class=hljs-attr>title</span>: <span class=hljs-literal>null</span> <span class=hljs-comment>// &#x4E0D;&#x5C55;&#x793A;&#x56FE;&#x4F8B; title</span>
+});
+
+chart.legend(<span class=hljs-literal>false</span>); <span class=hljs-comment>//&#x6240;&#x6709;&#x7684;&#x56FE;&#x4F8B;&#x90FD;&#x4E0D;&#x663E;&#x793A;</span>
+</pre></div><h2 id=_&#x56FE;&#x4F8B;&#x6574;&#x4F53;&#x6837;&#x5F0F;&#x8BBE;&#x7F6E;><a href=#_&#x56FE;&#x4F8B;&#x6574;&#x4F53;&#x6837;&#x5F0F;&#x8BBE;&#x7F6E; class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;&#x4F8B;&#x6574;&#x4F53;&#x6837;&#x5F0F;&#x8BBE;&#x7F6E;</h2><table><thead><tr><th>&#x5C5E;&#x6027;&#x540D;</th><th>&#x89E3;&#x91CA;</th><th>&#x9ED8;&#x8BA4;&#x503C;</th></tr></thead><tbody><tr><td>position</td><td>&#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x4F4D;&#x7F6E;&#xFF0C;&#x53EF;&#x914D;&#x7F6E;&#x503C; &apos;top&apos;,&apos;left&apos;,&apos;right&apos;,&apos;bottom&apos; &#x3002;</td><td>&apos;right&apos;</td></tr><tr><td>title</td><td>&#x7528;&#x4E8E;&#x56FE;&#x4F8B;&#x6807;&#x9898;&#x7684;&#x663E;&#x793A;&#x6837;&#x5F0F;&#x914D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x503C;&#x4E3A; null &#x5219;&#x4E0D;&#x5C55;&#x793A;&#x3002;</td><td>&#x5DE6;&#x53F3;&#x4E24;&#x4FA7;&#x56FE;&#x4F8B;&#x9ED8;&#x8BA4;&#x5C55;&#x793A;&#x6807;&#x9898;&#xFF0C;&#x4E0A;&#x4E0B;&#x56FE;&#x4F8B;&#x9ED8;&#x8BA4;&#x4E0D;&#x5C55;&#x793A;&#x6807;&#x9898;</td></tr><tr><td>background</td><td>&#x7528;&#x4E8E;&#x56FE;&#x4F8B;&#x80CC;&#x666F;&#x8272;&#x7684;&#x914D;&#x7F6E;</td><td>&#x9ED8;&#x8BA4;&#x6CA1;&#x6709;&#x80CC;&#x666F;&#x8272;</td></tr><tr><td>offsetX</td><td>&#x6574;&#x4E2A;&#x56FE;&#x4F8B;&#x7684;&#x6C34;&#x5E73;&#x504F;&#x79FB;&#x8DDD;&#x79BB;</td><td>--</td></tr><tr><td>offsetY</td><td>&#x6574;&#x4E2A;&#x56FE;&#x4F8B;&#x7684;&#x5782;&#x76F4;&#x504F;&#x79FB;&#x8DDD;&#x79BB;</td><td>--</td></tr><tr><td>width</td><td>&#x56FE;&#x4F8B;&#x7684;&#x6574;&#x4F53;&#x5BBD;&#x5EA6;&#xFF08;&#x7528;&#x4E8E;&#x8FDE;&#x7EED;&#x56FE;&#x4F8B;&#xFF09;</td><td>20</td></tr><tr><td>height</td><td>&#x56FE;&#x4F8B;&#x7684;&#x6574;&#x4F53;&#x9AD8;&#x5EA6;&#xFF08;&#x7528;&#x4E8E;&#x8FDE;&#x7EED;&#x56FE;&#x4F8B;&#xFF09;</td><td>156</td></tr><tr><td>autoWrap</td><td>&#x56FE;&#x4F8B;&#x9879;&#x8FC7;&#x591A;&#x65F6;&#x662F;&#x5426;&#x81EA;&#x52A8;&#x6362;&#x884C;&#xFF08;&#x7528;&#x4E8E;&#x5206;&#x7C7B;&#x56FE;&#x4F8B;&#xFF09;</td><td>true&#xFF0C;&#x81EA;&#x52A8;&#x6362;&#x884C;</td></tr><tr><td>marker</td><td>&#x914D;&#x7F6E;&#x56FE;&#x4F8B; marker &#x7684;&#x663E;&#x793A;&#x6837;&#x5F0F;&#xFF0C;&#x652F;&#x6301;&#x6307;&#x5B9A; <code>point</code> &#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x652F;&#x6301;&#x7684;&#x6240;&#x6709; shape(&#x9664;&#x53BB; &apos;rect&apos;)&#xFF1A;&apos;circle&apos;, &apos;square&apos;, &apos;bowtie&apos;, &apos;diamond&apos;, &apos;hexagon&apos;, &apos;triangle&apos;, &apos;triangle-down&apos;, &apos;hollowCircle&apos;, &apos;hollowSquare&apos;, &apos;hollowBowtie&apos;, &apos;hollowDiamond&apos;, &apos;hollowHexagon&apos;, &apos;hollowTriangle&apos;, &apos;hollowTriangle-down&apos;, &apos;cross&apos;, &apos;tick&apos;, &apos;plus&apos;, &apos;hyphen&apos;, &apos;line&apos;</td><td>&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x4E0D;&#x540C;&#x7684; marker</td></tr><tr><td>clickable</td><td>&#x56FE;&#x4F8B;&#x9879;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;</td><td>true</td></tr><tr><td>hoverable</td><td>&#x662F;&#x5426;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#x9F20;&#x6807; hover &#x5230;&#x56FE;&#x4F8B;&#x9879;&#x4E0A;&#x7684;&#x4EA4;&#x4E92;</td><td>true</td></tr><tr><td>selectedMode</td><td>clickable &#x4E3A; true &#x65F6;&#x751F;&#x6548;&#xFF0C;&#x56FE;&#x4F8B;&#x7684;&#x9009;&#x4E2D;&#x6A21;&#x5F0F;&#xFF0C;&#x5355;&#x9009;&#x6216;&#x8005;&#x591A;&#x9009;</td><td>&apos;multiple&apos; &#x9ED8;&#x8BA4;&#x591A;&#x9009;</td></tr><tr><td>onHover</td><td>&#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x4F8B;&#x9879;&#x9F20;&#x6807; hover &#x4E8B;&#x4EF6;&#xFF0C;hoverable &#x4E3A; false &#x4E0D;&#x751F;&#x6548;</td><td>--</td></tr><tr><td>onClick</td><td>&#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x4F8B;&#x9879;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF0C; clickable &#x4E3A; false &#x4E0D;&#x751F;&#x6548;</td><td>--</td></tr></tbody></table><div id=legendMarker></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1800&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Africa&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>107</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1900&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Africa&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>133</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 2012&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Africa&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>1052</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1800&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;America&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>31</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1900&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;America&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>156</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 2012&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;America&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>954</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1800&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Asia&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>635</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1900&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Asia&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>947</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 2012&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Asia&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>4250</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1800&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Europe&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>203</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1900&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Europe&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>408</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 2012&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Europe&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>740</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1800&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Oceania&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>2</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 1900&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Oceania&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>6</span> },
+  { <span class=hljs-attr>year</span>: <span class=hljs-string>&apos;Year 2012&apos;</span>, <span class=hljs-attr>region</span>: <span class=hljs-string>&apos;Oceania&apos;</span>, <span class=hljs-attr>population</span>: <span class=hljs-number>38</span> }
+];
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;legendMarker&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>600</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>350</span>,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>20</span>, <span class=hljs-number>90</span>, <span class=hljs-number>95</span>, <span class=hljs-number>80</span> ]
+});
+
+chart.source(data);
+chart.coord().transpose();
+chart.legend({
+  <span class=hljs-attr>title</span>: <span class=hljs-literal>null</span>, <span class=hljs-comment>// &#x4E0D;&#x5C55;&#x793A;&#x56FE;&#x4F8B;&#x7684;&#x6807;&#x9898;</span>
+  marker: <span class=hljs-string>&apos;square&apos;</span> <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x56FE;&#x4F8B; marker &#x7684;&#x663E;&#x793A;&#x6837;&#x5F0F;</span>
+});
+chart.intervalDodge().position(<span class=hljs-string>&apos;region*population&apos;</span>).color(<span class=hljs-string>&apos;year&apos;</span>).label(<span class=hljs-string>&apos;population&apos;</span>);
+chart.render();
+</pre></div><h2 id=_&#x5404;&#x4E2A;&#x56FE;&#x4F8B;&#x9879;&#x6837;&#x5F0F;&#x8BBE;&#x7F6E;><a href=#_&#x5404;&#x4E2A;&#x56FE;&#x4F8B;&#x9879;&#x6837;&#x5F0F;&#x8BBE;&#x7F6E; class=anchor><span class="iconfont icon-link"></span></a>&#x5404;&#x4E2A;&#x56FE;&#x4F8B;&#x9879;&#x6837;&#x5F0F;&#x8BBE;&#x7F6E;</h2><img src=https://gw.alipayobjects.com/zos/rmsportal/mzFuamQKWmDxGjkDmMkn.png width=225px><table><thead><tr><th>&#x5C5E;&#x6027;&#x540D;</th><th>&#x89E3;&#x91CA;</th><th>&#x9ED8;&#x8BA4;&#x503C;</th></tr></thead><tbody><tr><td>allowAllCanceled</td><td>(&#x5206;&#x7C7B;&#x56FE;&#x4F8B;)&#x662F;&#x5426;&#x4FDD;&#x7559;&#x4E00;&#x9879;&#x4E0D;&#x80FD;&#x53D6;&#x6D88;&#x52FE;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false&#xFF0C;&#x5373;&#x6700;&#x540E;&#x4E00;&#x9879;&#x4E0D;&#x80FD;&#x53D6;&#x6D88;&#x52FE;&#x9009;</td><td>false</td></tr><tr><td>unCheckColor</td><td>&#x672A;&#x9009;&#x4E2D;&#x65F6;marker&#x7684;&#x989C;&#x8272;</td><td>&apos;#bfbfbf&apos;</td></tr><tr><td>textStyle</td><td>&#x56FE;&#x4F8B;&#x9879;&#x6587;&#x672C;&#x7684;&#x6837;&#x5F0F;&#x914D;&#x7F6E;</td><td>{fill: &apos;#3c3c3c&apos;}</td></tr><tr><td>itemWidth</td><td>&#x56FE;&#x4F8B;&#x9879;&#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x5F53;&#x56FE;&#x4F8B;&#x6709;&#x5F88;&#x591A;&#x56FE;&#x4F8B;&#x9879;&#xFF0C;&#x5E76;&#x4E14;&#x7528;&#x6237;&#x60F3;&#x8981;&#x8FD9;&#x4E9B;&#x56FE;&#x4F8B;&#x9879;&#x5728;&#x540C;&#x4E00;&#x5E73;&#x9762;&#x5185;&#x5782;&#x76F4;&#x5BF9;&#x9F50;&#xFF0C;&#x6B64;&#x65F6;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EF;&#x5E2E;&#x7528;&#x6237;&#x5B9E;&#x73B0;&#x6B64;&#x6548;&#x679C;</td><td>--</td></tr><tr><td>itemFormatter</td><td>&#x7528;&#x4E8E;&#x683C;&#x5F0F;&#x5316;&#x56FE;&#x4F8B;&#x6BCF;&#x9879;&#x7684;&#x6587;&#x672C;&#x663E;&#x793A;&#xFF0C;&#x662F;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;</td><td>--</td></tr></tbody></table><h2 id=_&#x56FE;&#x4F8B;&#x7684;&#x9009;&#x62E9;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;><a href=#_&#x56FE;&#x4F8B;&#x7684;&#x9009;&#x62E9;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E; class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;&#x4F8B;&#x7684;&#x9009;&#x62E9;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;</h2><p>&#x5728; G2 &#x4E2D;&#xFF0C;&#x56FE;&#x4F8B;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF1A;</p><ol><li>&#x5206;&#x7C7B;&#x56FE;&#x4F8B;&#xFF1B;</li><li>&#x8FDE;&#x7EED;&#x56FE;&#x4F8B;&#x3002;</li></ol><p>&#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x56FE;&#x4F8B;&#x7684;&#x7B5B;&#x9009;&#xFF0C;G2 &#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p><ol><li><code>selectedMode: &apos;multiple&apos;</code> &#x591A;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#xFF1B;</li><li><code>selectedMode: &apos;single&apos;</code> &#x5355;&#x9009;&#xFF1B;</li><li><code>clickable: false</code> &#x7981;&#x7528;&#x7B5B;&#x9009;&#x3002;</li></ol><p>&#x5BF9;&#x4E8E;&#x8FDE;&#x7EED;&#x56FE;&#x4F8B;&#xFF0C;&#x58F0;&#x660E; <code>slidable: false</code> &#x5173;&#x95ED;&#x7B5B;&#x9009;&#x64CD;&#x4F5C;&#xFF0C;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#x7B5B;&#x9009;&#x64CD;&#x4F5C;&#x3002;</p><p>&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#xFF1A;</p><div class=highlight><pre><span class=hljs-comment>// &#x5BF9;&#x5206;&#x7C7B;&#x56FE;&#x4F8B;&#x8FDB;&#x884C;&#x914D;&#x7F6E;</span>
+chart.legend({
+  <span class=hljs-attr>selectedMode</span>: <span class=hljs-string>&apos;single&apos;</span> 
+});
+</pre></div><div id=c1></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;0&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>37</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>9</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;2&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>29</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>10</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;8&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>59</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>14</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;9&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>60</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>8</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;10&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>83</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>14</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;12&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>67</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>21</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;14&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>46</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>18</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;17&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>19</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>27</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;19&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>74</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>17</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;1&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;15&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>34</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>19</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;1&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;20&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>71</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>25</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;1&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;26&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>28</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>23</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;1&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;29&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>90</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>24</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;2&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;7&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>50</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>5</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;2&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;11&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>86</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>26</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;2&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;13&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>63</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>16</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;2&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;27&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>76</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>2</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;2&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;28&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>13</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>28</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;1&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>33</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>16</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;3&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>14</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>1</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;4&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>43</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>25</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;16&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>45</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>13</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;18&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>50</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>21</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;22&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>43</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>7</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;23&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>38</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>6</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;24&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>33</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>24</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;3&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;25&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>13</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>27</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;4&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;5&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>98</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>4</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;4&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;6&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>88</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>12</span> },
+  { &#x90E8;&#x95E8;: <span class=hljs-string>&apos;&#x90E8;&#x95E8;4&apos;</span>, &#x5C0F;&#x7EC4;: <span class=hljs-string>&apos;&#x7EC4;&#x540D;21&apos;</span>, &#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>52</span>, &#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;: <span class=hljs-number>9</span> }
+];
+ 
+<span class=hljs-keyword>const</span> <span class=hljs-built_in>DataView</span> = DataSet.DataView;
+<span class=hljs-keyword>const</span> dv = <span class=hljs-keyword>new</span> <span class=hljs-built_in>DataView</span>();
+dv.source(data)
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;sort&apos;</span>,
+    <span class=hljs-attr>callback</span>: <span class=hljs-function>(<span class=hljs-params>obj1, obj2</span>) =&gt;</span> {
+      <span class=hljs-keyword>return</span> obj1[<span class=hljs-string>&apos;&#x90E8;&#x95E8;&apos;</span>] &gt; obj2[<span class=hljs-string>&apos;&#x90E8;&#x95E8;&apos;</span>] ? <span class=hljs-number>1</span> : <span class=hljs-number>-1</span>;
+    }
+  })
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;map&apos;</span>,
+    <span class=hljs-attr>callback</span>: <span class=hljs-function><span class=hljs-params>obj</span> =&gt;</span> {
+      obj[<span class=hljs-string>&apos;&#x5B8C;&#x6210;&#x4EBA;&#x6570;&apos;</span>] *= <span class=hljs-number>-1</span>; <span class=hljs-comment>// &#x5C06;&#x5B8C;&#x6210;&#x4EBA;&#x6570;&#x8F6C;&#x6362;&#x6210;&#x8D1F;&#x6570;</span>
+      <span class=hljs-keyword>return</span> obj;
+    }
+  })
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;fold&apos;</span>,
+    <span class=hljs-attr>fields</span>: [<span class=hljs-string>&apos;&#x5B8C;&#x6210;&#x4EBA;&#x6570;&apos;</span>, <span class=hljs-string>&apos;&#x672A;&#x5B8C;&#x6210;&#x4EBA;&#x6570;&apos;</span>],
+    <span class=hljs-attr>key</span>: <span class=hljs-string>&apos;&#x5B8C;&#x6210;&#x72B6;&#x6001;&apos;</span>,
+    <span class=hljs-attr>value</span>: <span class=hljs-string>&apos;&#x4EBA;&#x6570;&apos;</span>
+  });
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>400</span>,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>5</span>, <span class=hljs-number>100</span>, <span class=hljs-number>80</span> ]
+});
+chart.source(dv);
+chart.filter(<span class=hljs-string>&apos;&#x90E8;&#x95E8;&apos;</span>, val =&gt; {
+  <span class=hljs-keyword>return</span> val === <span class=hljs-string>&apos;&#x90E8;&#x95E8;0&apos;</span>;
+});
+chart.coord().transpose();
+<span class=hljs-comment>// &#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF1A;&#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x56FE;&#x4F8B;&#x7684;&#x9009;&#x62E9;&#x6A21;&#x5F0F;</span>
+chart.legend(<span class=hljs-string>&apos;&#x90E8;&#x95E8;&apos;</span>, {
+  <span class=hljs-attr>selectedMode</span>: <span class=hljs-string>&apos;single&apos;</span>,
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;right&apos;</span>,
+  <span class=hljs-attr>hoverable</span>: <span class=hljs-literal>false</span>
+});
+chart.legend(<span class=hljs-string>&apos;&#x5B8C;&#x6210;&#x72B6;&#x6001;&apos;</span>, <span class=hljs-literal>false</span>);
+chart.axis(<span class=hljs-string>&apos;&#x4EBA;&#x6570;&apos;</span>, {
+  <span class=hljs-attr>label</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>value</span> =&gt;</span> {
+      value = <span class=hljs-built_in>parseInt</span>(value);
+      <span class=hljs-keyword>return</span> <span class=hljs-built_in>Math</span>.abs(value); <span class=hljs-comment>// &#x5C06;&#x8D1F;&#x6570;&#x683C;&#x5F0F;&#x5316;&#x6210;&#x6B63;&#x6570;</span>
+    }
+  }
+});
+chart.interval()
+  .position(<span class=hljs-string>&apos;&#x5C0F;&#x7EC4;*&#x4EBA;&#x6570;&apos;</span>)
+  .color(<span class=hljs-string>&apos;&#x90E8;&#x95E8;&apos;</span>)
+  .shape(<span class=hljs-string>&apos;&#x5B8C;&#x6210;&#x72B6;&#x6001;&apos;</span>, [ <span class=hljs-string>&apos;rect&apos;</span>, <span class=hljs-string>&apos;hollowRect&apos;</span> ])
+  .style({
+    <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>1</span>
+  });
+chart.render();
+</pre></div><h2 id=_&#x4F7F;&#x7528;-html-&#x6E32;&#x67D3;&#x56FE;&#x4F8B;><a href=#_&#x4F7F;&#x7528;-html-&#x6E32;&#x67D3;&#x56FE;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x4F7F;&#x7528; html &#x6E32;&#x67D3;&#x56FE;&#x4F8B;</h2><p>G2 &#x652F;&#x6301;&#x4F7F;&#x7528; html &#x6E32;&#x67D3;&#x56FE;&#x4F8B;&#xFF0C;&#x65B9;&#x5F0F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x8981;&#x58F0;&#x660E; <code>useHtml: true</code> &#x5373;&#x53EF;&#x3002;</p><div class=highlight><pre>chart.legend({
+  <span class=hljs-attr>useHtml</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>containerTpl</span>: {string}, <span class=hljs-comment>// &#x53EF;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x5BB9;&#x5668;&#x6A21;&#x677F;&#x4E0D;&#x6EE1;&#x8DB3;&#x8981;&#x6C42;&#x65F6;&#x4F7F;&#x7528;</span>
+  itemTpl: {string} | {<span class=hljs-function><span class=hljs-keyword>function</span>}, // &#x53EF;&#x9009;&#xFF0C;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x7684;&#x56FE;&#x4F8B;&#x9879; <span class=hljs-title>html</span> &#x6A21;&#x677F;&#xFF0C;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x6A21;&#x677F;&#x4E0D;&#x6EE1;&#x8DB3;&#x8981;&#x6C42;&#x65F6;&#x4F7F;&#x7528;
+});
+</span></pre></div><div id=c2></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Lithuania&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>501.9</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Czech Republic&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>301.9</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Ireland&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>201.1</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Germany&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>165.8</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Australia&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>139.9</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Austria&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>128.3</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;UK&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>99</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;Belgium&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>60</span> },
+  { <span class=hljs-attr>country</span>: <span class=hljs-string>&apos;The Netherlands&apos;</span>, <span class=hljs-attr>litres</span>: <span class=hljs-number>50</span> }
+];
+
+<span class=hljs-keyword>const</span> ds = <span class=hljs-keyword>new</span> DataSet();
+<span class=hljs-keyword>const</span> dv = ds.createView()
+  .source(data)
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;percent&apos;</span>,
+    <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;litres&apos;</span>,
+    <span class=hljs-attr>dimension</span>: <span class=hljs-string>&apos;country&apos;</span>,
+    <span class=hljs-attr>as</span>: <span class=hljs-string>&apos;percent&apos;</span>
+  });
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c2&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>500</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>500</span>,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>20</span>, <span class=hljs-number>120</span>, <span class=hljs-number>20</span>, <span class=hljs-number>160</span> ]
+});
+chart.source(dv, {
+  <span class=hljs-attr>percent</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      val = (val * <span class=hljs-number>100</span>).toFixed(<span class=hljs-number>2</span>) + <span class=hljs-string>&apos;%&apos;</span>;
+      <span class=hljs-keyword>return</span> val;
+    }
+  },
+  <span class=hljs-attr>nice</span>: <span class=hljs-literal>false</span>
+});
+chart.coord(<span class=hljs-string>&apos;theta&apos;</span>, {
+  <span class=hljs-attr>innerRadius</span>: <span class=hljs-number>0.3</span>,
+  <span class=hljs-attr>radius</span>: <span class=hljs-number>1</span>
+});
+chart.tooltip({
+  <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span>, <span class=hljs-comment>// &#x4E0D;&#x5C55;&#x793A;&#x6807;&#x9898;</span>
+  itemTpl: <span class=hljs-string>&apos;&lt;li data-index={index}&gt;&lt;span style=&quot;color:{color}&quot;&gt;{name}:&lt;/span&gt;{value}&lt;/li&gt;&apos;</span>
+});
+chart.legend({
+  <span class=hljs-attr>useHtml</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;right&apos;</span>,
+  <span class=hljs-attr>containerTpl</span>: <span class=hljs-string>&apos;&lt;div class=&quot;g2-legend&quot;&gt;&apos;</span> +
+    <span class=hljs-string>&apos;&lt;table class=&quot;g2-legend-list&quot; style=&quot;list-style-type:none;margin:0;padding:0;&quot;&gt;&lt;/table&gt;&apos;</span> +
+    <span class=hljs-string>&apos;&lt;/div&gt;&apos;</span>,
+  <span class=hljs-attr>itemTpl</span>: <span class=hljs-function>(<span class=hljs-params>value, color, checked, index</span>) =&gt;</span> {
+    <span class=hljs-keyword>const</span> obj = dv.rows[index];
+    checked = checked ? <span class=hljs-string>&apos;checked&apos;</span> : <span class=hljs-string>&apos;unChecked&apos;</span>;
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;&lt;tr class=&quot;g2-legend-list-item item-&apos;</span> + index + <span class=hljs-string>&apos; &apos;</span> + checked +
+      <span class=hljs-string>&apos;&quot; data-value=&quot;&apos;</span> + value + <span class=hljs-string>&apos;&quot; data-color=&apos;</span> + color +
+      <span class=hljs-string>&apos; style=&quot;cursor: pointer;font-size: 14px;&quot;&gt;&apos;</span> +
+      <span class=hljs-string>&apos;&lt;td width=150 style=&quot;border: none;padding:0;&quot;&gt;&lt;i class=&quot;g2-legend-marker&quot; style=&quot;width:10px;height:10px;display:inline-block;margin-right:10px;background-color:&apos;</span> + color + <span class=hljs-string>&apos;;&quot;&gt;&lt;/i&gt;&apos;</span> +
+      <span class=hljs-string>&apos;&lt;span class=&quot;g2-legend-text&quot;&gt;&apos;</span> + value + <span class=hljs-string>&apos;&lt;/span&gt;&lt;/td&gt;&apos;</span> +
+      <span class=hljs-string>&apos;&lt;td style=&quot;text-align: right;border: none;padding:0;&quot;&gt;&apos;</span> + obj.litres + <span class=hljs-string>&apos;&lt;/td&gt;&apos;</span> +
+      <span class=hljs-string>&apos;&lt;/tr&gt;&apos;</span>;
+  },
+  <span class=hljs-attr>offsetX</span>: <span class=hljs-number>15</span>,
+  <span class=hljs-string>&apos;g2-legend&apos;</span>: {
+    <span class=hljs-attr>marginLeft</span>: <span class=hljs-string>&apos;100px&apos;</span>,
+    <span class=hljs-attr>marginTop</span>: <span class=hljs-string>&apos;-107px&apos;</span>
+  },
+  <span class=hljs-string>&apos;g2-legend-list&apos;</span>: {
+    <span class=hljs-attr>border</span>: <span class=hljs-string>&apos;none&apos;</span>
+  }
+});
+chart.filter(<span class=hljs-string>&apos;country&apos;</span>, val =&gt; {
+  <span class=hljs-keyword>return</span> val !== <span class=hljs-string>&apos;UK&apos;</span>;
+});
+chart.intervalStack()
+  .position(<span class=hljs-string>&apos;percent&apos;</span>)
+  .color(<span class=hljs-string>&apos;country&apos;</span>, [ <span class=hljs-string>&apos;#67b7dc&apos;</span>, <span class=hljs-string>&apos;#84b761&apos;</span>, <span class=hljs-string>&apos;#fdd400&apos;</span>, <span class=hljs-string>&apos;#cc4748&apos;</span>, <span class=hljs-string>&apos;#cd82ad&apos;</span>, <span class=hljs-string>&apos;#2f4074&apos;</span>, <span class=hljs-string>&apos;#448e4d&apos;</span>, <span class=hljs-string>&apos;#b7b83f&apos;</span>, <span class=hljs-string>&apos;#b9783f&apos;</span> ])
+  .label(<span class=hljs-string>&apos;percent&apos;</span>, {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function>(<span class=hljs-params>val, item</span>) =&gt;</span> {
+      <span class=hljs-keyword>return</span> item.point.country + <span class=hljs-string>&apos;: &apos;</span> + val;
+    }
+  })
+  .style({
+    <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>2</span>,
+    <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#fff&apos;</span>
+  });
+chart.render();
+</pre></div><h2 id=_&#x5E38;&#x89C1;&#x95EE;&#x9898;><a href=#_&#x5E38;&#x89C1;&#x95EE;&#x9898; class=anchor><span class="iconfont icon-link"></span></a>&#x5E38;&#x89C1;&#x95EE;&#x9898;</h2><ul><li>1.&#x9690;&#x85CF;&#x56FE;&#x4F8B;</li></ul><div class=highlight><pre>chart.legend(<span class=hljs-literal>false</span>); <span class=hljs-comment>// &#x9690;&#x85CF;&#x5168;&#x90E8;&#x56FE;&#x4F8B;</span>
+chart.legend(<span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-literal>false</span>); <span class=hljs-comment>// &#x53EA;&#x9690;&#x85CF; x &#x7EF4;&#x5EA6;&#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x4F8B;</span>
+</pre></div><ul><li>2.&#x66F4;&#x6539;&#x56FE;&#x4F8B;&#x4F4D;&#x7F6E;</li></ul><div class=highlight><pre>chart.legend(<span class=hljs-string>&apos;x&apos;</span>, {
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;bottom&apos;</span>
+}); <span class=hljs-comment>// &#x53EA;&#x66F4;&#x6539; x &#x7EF4;&#x5EA6;&#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x4F4D;&#x7F6E;</span>
+</pre></div><ul><li>3.&#x56FE;&#x4F8B;&#x663E;&#x793A;&#x4F4D;&#x7F6E;&#x4E0D;&#x591F;</li></ul><p>&#x8C03;&#x6574; padding &#x503C;&#xFF08;padding &#x7684;&#x4ECB;&#x7ECD;&#x8BE6;&#x89C1;<a href=./create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;&#x4E4B;&#x56FE;&#x8868;&#x6837;&#x5F0F;</a>&#xFF09;&#x3002;</p></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/en-us/g2/3.x/tutorial/legend.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const data = [
+  { year: 'Year 1800', region: 'Africa', population: 107 },
+  { year: 'Year 1900', region: 'Africa', population: 133 },
+  { year: 'Year 2012', region: 'Africa', population: 1052 },
+  { year: 'Year 1800', region: 'America', population: 31 },
+  { year: 'Year 1900', region: 'America', population: 156 },
+  { year: 'Year 2012', region: 'America', population: 954 },
+  { year: 'Year 1800', region: 'Asia', population: 635 },
+  { year: 'Year 1900', region: 'Asia', population: 947 },
+  { year: 'Year 2012', region: 'Asia', population: 4250 },
+  { year: 'Year 1800', region: 'Europe', population: 203 },
+  { year: 'Year 1900', region: 'Europe', population: 408 },
+  { year: 'Year 2012', region: 'Europe', population: 740 },
+  { year: 'Year 1800', region: 'Oceania', population: 2 },
+  { year: 'Year 1900', region: 'Oceania', population: 6 },
+  { year: 'Year 2012', region: 'Oceania', population: 38 }
+];
+
+const chart = new G2.Chart({
+  container: 'legendMarker',
+  width: 600,
+  height: 350,
+  padding: [ 20, 90, 95, 80 ]
+});
+
+chart.source(data);
+chart.coord().transpose();
+chart.legend({
+  title: null, // 不展示图例的标题
+  marker: 'square' // 设置图例 marker 的显示样式
+});
+chart.intervalDodge().position('region*population').color('year').label('population');
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { 部门: '部门0', 小组: '组名0', 完成人数: 37, 未完成人数: 9 },
+  { 部门: '部门0', 小组: '组名2', 完成人数: 29, 未完成人数: 10 },
+  { 部门: '部门0', 小组: '组名8', 完成人数: 59, 未完成人数: 14 },
+  { 部门: '部门0', 小组: '组名9', 完成人数: 60, 未完成人数: 8 },
+  { 部门: '部门0', 小组: '组名10', 完成人数: 83, 未完成人数: 14 },
+  { 部门: '部门0', 小组: '组名12', 完成人数: 67, 未完成人数: 21 },
+  { 部门: '部门0', 小组: '组名14', 完成人数: 46, 未完成人数: 18 },
+  { 部门: '部门0', 小组: '组名17', 完成人数: 19, 未完成人数: 27 },
+  { 部门: '部门0', 小组: '组名19', 完成人数: 74, 未完成人数: 17 },
+  { 部门: '部门1', 小组: '组名15', 完成人数: 34, 未完成人数: 19 },
+  { 部门: '部门1', 小组: '组名20', 完成人数: 71, 未完成人数: 25 },
+  { 部门: '部门1', 小组: '组名26', 完成人数: 28, 未完成人数: 23 },
+  { 部门: '部门1', 小组: '组名29', 完成人数: 90, 未完成人数: 24 },
+  { 部门: '部门2', 小组: '组名7', 完成人数: 50, 未完成人数: 5 },
+  { 部门: '部门2', 小组: '组名11', 完成人数: 86, 未完成人数: 26 },
+  { 部门: '部门2', 小组: '组名13', 完成人数: 63, 未完成人数: 16 },
+  { 部门: '部门2', 小组: '组名27', 完成人数: 76, 未完成人数: 2 },
+  { 部门: '部门2', 小组: '组名28', 完成人数: 13, 未完成人数: 28 },
+  { 部门: '部门3', 小组: '组名1', 完成人数: 33, 未完成人数: 16 },
+  { 部门: '部门3', 小组: '组名3', 完成人数: 14, 未完成人数: 1 },
+  { 部门: '部门3', 小组: '组名4', 完成人数: 43, 未完成人数: 25 },
+  { 部门: '部门3', 小组: '组名16', 完成人数: 45, 未完成人数: 13 },
+  { 部门: '部门3', 小组: '组名18', 完成人数: 50, 未完成人数: 21 },
+  { 部门: '部门3', 小组: '组名22', 完成人数: 43, 未完成人数: 7 },
+  { 部门: '部门3', 小组: '组名23', 完成人数: 38, 未完成人数: 6 },
+  { 部门: '部门3', 小组: '组名24', 完成人数: 33, 未完成人数: 24 },
+  { 部门: '部门3', 小组: '组名25', 完成人数: 13, 未完成人数: 27 },
+  { 部门: '部门4', 小组: '组名5', 完成人数: 98, 未完成人数: 4 },
+  { 部门: '部门4', 小组: '组名6', 完成人数: 88, 未完成人数: 12 },
+  { 部门: '部门4', 小组: '组名21', 完成人数: 52, 未完成人数: 9 }
+];
+ 
+const DataView = DataSet.DataView;
+const dv = new DataView();
+dv.source(data)
+  .transform({
+    type: 'sort',
+    callback: (obj1, obj2) => {
+      return obj1['部门'] > obj2['部门'] ? 1 : -1;
+    }
+  })
+  .transform({
+    type: 'map',
+    callback: obj => {
+      obj['完成人数'] *= -1; // 将完成人数转换成负数
+      return obj;
+    }
+  })
+  .transform({
+    type: 'fold',
+    fields: ['完成人数', '未完成人数'],
+    key: '完成状态',
+    value: '人数'
+  });
+const chart = new G2.Chart({
+  container: 'c1',
+  forceFit: true,
+  height: 400,
+  padding: [ 5, 100, 80 ]
+});
+chart.source(dv);
+chart.filter('部门', val => {
+  return val === '部门0';
+});
+chart.coord().transpose();
+// 关键代码：设置对应图例的选择模式
+chart.legend('部门', {
+  selectedMode: 'single',
+  position: 'right',
+  hoverable: false
+});
+chart.legend('完成状态', false);
+chart.axis('人数', {
+  label: {
+    formatter: value => {
+      value = parseInt(value);
+      return Math.abs(value); // 将负数格式化成正数
+    }
+  }
+});
+chart.interval()
+  .position('小组*人数')
+  .color('部门')
+  .shape('完成状态', [ 'rect', 'hollowRect' ])
+  .style({
+    lineWidth: 1
+  });
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { country: 'Lithuania', litres: 501.9 },
+  { country: 'Czech Republic', litres: 301.9 },
+  { country: 'Ireland', litres: 201.1 },
+  { country: 'Germany', litres: 165.8 },
+  { country: 'Australia', litres: 139.9 },
+  { country: 'Austria', litres: 128.3 },
+  { country: 'UK', litres: 99 },
+  { country: 'Belgium', litres: 60 },
+  { country: 'The Netherlands', litres: 50 }
+];
+
+const ds = new DataSet();
+const dv = ds.createView()
+  .source(data)
+  .transform({
+    type: 'percent',
+    field: 'litres',
+    dimension: 'country',
+    as: 'percent'
+  });
+
+const chart = new G2.Chart({
+  container: 'c2',
+  width: 500,
+  height: 500,
+  padding: [ 20, 120, 20, 160 ]
+});
+chart.source(dv, {
+  percent: {
+    formatter: val => {
+      val = (val * 100).toFixed(2) + '%';
+      return val;
+    }
+  },
+  nice: false
+});
+chart.coord('theta', {
+  innerRadius: 0.3,
+  radius: 1
+});
+chart.tooltip({
+  showTitle: false, // 不展示标题
+  itemTpl: '<li data-index={index}><span style="color:{color}">{name}:</span>{value}</li>'
+});
+chart.legend({
+  useHtml: true,
+  position: 'right',
+  containerTpl: '<div class="g2-legend">' +
+    '<table class="g2-legend-list" style="list-style-type:none;margin:0;padding:0;"></table>' +
+    '</div>',
+  itemTpl: (value, color, checked, index) => {
+    const obj = dv.rows[index];
+    checked = checked ? 'checked' : 'unChecked';
+    return '<tr class="g2-legend-list-item item-' + index + ' ' + checked +
+      '" data-value="' + value + '" data-color=' + color +
+      ' style="cursor: pointer;font-size: 14px;">' +
+      '<td width=150 style="border: none;padding:0;"><i class="g2-legend-marker" style="width:10px;height:10px;display:inline-block;margin-right:10px;background-color:' + color + ';"></i>' +
+      '<span class="g2-legend-text">' + value + '</span></td>' +
+      '<td style="text-align: right;border: none;padding:0;">' + obj.litres + '</td>' +
+      '</tr>';
+  },
+  offsetX: 15,
+  'g2-legend': {
+    marginLeft: '100px',
+    marginTop: '-107px'
+  },
+  'g2-legend-list': {
+    border: 'none'
+  }
+});
+chart.filter('country', val => {
+  return val !== 'UK';
+});
+chart.intervalStack()
+  .position('percent')
+  .color('country', [ '#67b7dc', '#84b761', '#fdd400', '#cc4748', '#cd82ad', '#2f4074', '#448e4d', '#b7b83f', '#b9783f' ])
+  .label('percent', {
+    formatter: (val, item) => {
+      return item.point.country + ': ' + val;
+    }
+  })
+  .style({
+    lineWidth: 2,
+    stroke: '#fff'
+  });
+chart.render();
+
+})();</script></body></html>

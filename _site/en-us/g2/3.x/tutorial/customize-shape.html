@@ -1,0 +1,141 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>&#x81EA;&#x5B9A;&#x4E49; shape - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html>G2 &#x56FE;&#x8868;&#x7EC4;&#x6210;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/load-data.html>&#x88C5;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom.html>Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/attr.html>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/coord.html>Coord &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/axes.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/facet.html>Facet &#x5206;&#x9762;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/theme.html>Theme &#x56FE;&#x8868;&#x76AE;&#x80A4;&#x4E3B;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-label.html>Label &#x56FE;&#x5F62;&#x6587;&#x672C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-event.html>Event &#x56FE;&#x8868;&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/interaction.html>&#x56FE;&#x8868;&#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-use-slider.html>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/update-data.html>&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-shape.html>&#x81EA;&#x5B9A;&#x4E49; shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-animation.html>&#x81EA;&#x5B9A;&#x4E49; &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-create-view.html>&#x521B;&#x5EFA; View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/the-grammar-of-graphics.html>&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7B80;&#x4ECB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-flow.html>G2 &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-type-and-scale.html>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/deep-into-coord.html>&#x5750;&#x6807;&#x7CFB;&#x8BE6;&#x89E3;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-type.html>&#x56FE;&#x8868;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-and-adjust.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x548C;&#x6570;&#x636E;&#x8C03;&#x6574;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/faq.html>&#x5E38;&#x89C1;&#x95EE;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/g2-v3-changes.html>G2 3.0 &#x5347;&#x7EA7;&#x6307;&#x5F15;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x81EA;&#x5B9A;&#x4E49;-Shape><a href=#_&#x81EA;&#x5B9A;&#x4E49;-Shape class=anchor></a>&#x81EA;&#x5B9A;&#x4E49; Shape</h1><p>&#x81EA; G2 2.0.x &#x7248;&#x672C;&#x5F00;&#x59CB;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x4E86;&#x81EA;&#x5B9A;&#x4E49; Shape &#x7684;&#x673A;&#x5236;&#xFF0C;&#x4EE5;&#x652F;&#x6301;&#x90E8;&#x5206;&#x6709; <strong>&#x9AD8;&#x8BA2;&#x5236;&#x9700;&#x6C42;&#x7684;</strong> &#x56FE;&#x8868;&#x53EF;&#x89C6;&#x5316;&#x9700;&#x6C42;&#x3002;&#x8FD9;&#x4E5F;&#x662F; G2 &#x5728;&#x5411; <strong>&#x53EF;&#x7F16;&#x7A0B;&#x53EF;&#x89C6;&#x5316;&#x5F15;&#x64CE;</strong> &#x8FC8;&#x51FA;&#x7684;&#x91CD;&#x8981;&#x4E00;&#x6B65;&#x3002;</p><div class=highlight><pre><span class=hljs-keyword>const</span> Shape = G2.Shape;
+Shape.registerShape(geomName, shapeName, { <span class=hljs-comment>// &#x5411;Shape&#x5DE5;&#x5382;&#x6CE8;&#x518C;&#x67D0;&#x4E2A;geom&#x7684;&#x4E00;&#x4E2A;shape</span>
+  getPoints(cfg) {}, <span class=hljs-comment>// &#x81EA;&#x5B9A;&#x4E49;&#x5177;&#x4F53;&#x6807;&#x8BB0;&#x70B9;</span>
+  draw(cfg, container) {} <span class=hljs-comment>// &#x81EA;&#x5B9A;&#x4E49;&#x6700;&#x7EC8;&#x7ED8;&#x5236;</span>
+});
+</pre></div><p>&#x4E0A;&#x8FF0; 7 &#x884C;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x5373;&#x4F7F;&#x81EA;&#x5B9A;&#x4E49; Shape &#x7684;&#x6240;&#x6709;&#x63A5;&#x53E3;&#x3002;</p><ul><li>geomName <a href=geom.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;</a>&#x540D;, &#x5982; point, line &#x7B49;</li><li>shapeName &#x6CE8;&#x518C;&#x7684;&#x5177;&#x4F53;&#x56FE;&#x5F62;&#x540D;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x56FE;&#x5F62;&#x7684;&#x540D;&#x79F0;</li><li>getPoints &#x81EA;&#x5B9A;&#x4E49;&#x5F62;&#x72B6;&#x7ED8;&#x5236;&#x65F6;&#x9700;&#x8981;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;&#x67F1;&#x72B6;&#x56FE;&#x9700;&#x8981; 4 &#x4E2A;&#x8282;&#x70B9;</li><li>draw &#x6267;&#x884C;&#x56FE;&#x5F62;&#x7ED8;&#x5236;&#x903B;&#x8F91;&#x3001;&#x8C03;&#x7528;&#x7ED8;&#x56FE;&#x5F15;&#x64CE;</li></ul><p>&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x8BE6;&#x89C1;&#xFF1A; <a href=/zh-cn/g2/3.x/api/shape.html>Shape API</a>&#x3002;</p><h2 id=_1&#x5206;&#x949F;&#x4E0A;&#x624B;&#x81EA;&#x5B9A;&#x4E49;-Shape><a href=#_1&#x5206;&#x949F;&#x4E0A;&#x624B;&#x81EA;&#x5B9A;&#x4E49;-Shape class=anchor><span class="iconfont icon-link"></span></a>1&#x5206;&#x949F;&#x4E0A;&#x624B;&#x81EA;&#x5B9A;&#x4E49; Shape</h2><p>&#x4EE5;<a href=/zh-cn/g2/3.x/demo/bar/basic-column.html>&#x67F1;&#x72B6;&#x56FE;</a>&#x4E3E;&#x4F8B;&#xFF0C;&#x51E0;&#x4F55;&#x6807;&#x8BB0; interval &#x4F1A;&#x7ED9;&#x51FA;&#x56DB;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF08;&#x5373;&#x7EC4;&#x6210;&#x77E9;&#x5F62;&#x7684;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8FD9;&#x56DB;&#x4E2A;&#x70B9;&#x4F9D;&#x6B21;&#x8FDE;&#x63A5;&#xFF0C;&#x5F97;&#x5230;&#x6BCF;&#x4E2A;&#x67F1;&#x5B50;&#x7684;&#x5F62;&#x72B6;&#x3002;<strong>&#x7EA2;&#x8272;&#x5706;&#x5F62;</strong> &#x6807;&#x8BB0;&#x5C31;&#x662F;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x70B9;&#x3002;&#x9ED8;&#x8BA4;&#x7684;&#x67F1;&#x72B6;&#x56FE;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x56DB;&#x4E2A;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x70B9;&#xFF0C;&#x4F9D;&#x6B21;&#x76F8;&#x8FDE;&#x540E;&#x5F97;&#x5230;&#x7684;&#x3002;</p><p><img src=https://zos.alipayobjects.com/skylark/f56fb446-5395-48d5-9e20-8aa07d585c7f/attach/1996/198df5d694346bc9/image.png alt=image></p><p>&#x4E0B;&#x9762;&#x7684;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49; shape &#x7684;&#x529F;&#x80FD;&#xFF0C;&#x628A;&#x4E0A;&#x9762;&#x7684;&#x67F1;&#x72B6;&#x56FE;&#x7684;&#x67F1;&#x5B50;&#x53D8;&#x6210;&#x4E09;&#x89D2;&#x5F62;&#xFF0C;&#x5373;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p><p><img src=https://zos.alipayobjects.com/skylark/c3da8dc1-6d42-49a4-a5e5-e10430cc8ec7/attach/1996/d0c46539b2a3e329/image.png alt=image></p><div id=c1></div><div class=highlight><pre><span class=hljs-keyword>const</span> Shape = G2.Shape;
+Shape.registerShape(<span class=hljs-string>&apos;interval&apos;</span>, <span class=hljs-string>&apos;triangle&apos;</span>, {
+  getPoints(cfg) {
+    <span class=hljs-keyword>const</span> x = cfg.x;
+    <span class=hljs-keyword>const</span> y = cfg.y;
+    <span class=hljs-keyword>const</span> y0 = cfg.y0;
+    <span class=hljs-keyword>const</span> width = cfg.size;
+    <span class=hljs-keyword>return</span> [
+      { <span class=hljs-attr>x</span>: x - width / <span class=hljs-number>2</span>, <span class=hljs-attr>y</span>: y0 },
+      { <span class=hljs-attr>x</span>: x, <span class=hljs-attr>y</span>: y },
+      { <span class=hljs-attr>x</span>: x + width / <span class=hljs-number>2</span>, <span class=hljs-attr>y</span>: y0 }
+    ]
+  },
+  draw(cfg, group) { <span class=hljs-comment>// &#x81EA;&#x5B9A;&#x4E49;&#x6700;&#x7EC8;&#x7ED8;&#x5236;</span>
+    <span class=hljs-keyword>const</span> points = <span class=hljs-keyword>this</span>.parsePoints(cfg.points); <span class=hljs-comment>// &#x5C06;0-1&#x7A7A;&#x95F4;&#x7684;&#x5750;&#x6807;&#x8F6C;&#x6362;&#x4E3A;&#x753B;&#x5E03;&#x5750;&#x6807;</span>
+    <span class=hljs-keyword>const</span> polygon = group.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+      <span class=hljs-attr>attrs</span>: {
+        <span class=hljs-attr>points</span>: [
+          [ points[<span class=hljs-number>0</span>].x, points[<span class=hljs-number>0</span>].y ],
+          [ points[<span class=hljs-number>1</span>].x, points[<span class=hljs-number>1</span>].y ],
+          [ points[<span class=hljs-number>2</span>].x, points[<span class=hljs-number>2</span>].y ]
+        ],
+        <span class=hljs-attr>fill</span>: cfg.color
+      }
+    });
+    <span class=hljs-keyword>return</span> polygon; <span class=hljs-comment>// !&#x5FC5;&#x987B;&#x8FD4;&#x56DE; shape</span>
+  }
+});
+
+<span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>genre</span>:<span class=hljs-string>&apos;Sports&apos;</span>, <span class=hljs-attr>sold</span>:<span class=hljs-number>27500</span> },
+  { <span class=hljs-attr>genre</span>:<span class=hljs-string>&apos;Strategy&apos;</span>, <span class=hljs-attr>sold</span>:<span class=hljs-number>11500</span> },
+  { <span class=hljs-attr>genre</span>:<span class=hljs-string>&apos;Action&apos;</span>, <span class=hljs-attr>sold</span>:<span class=hljs-number>6000</span> },
+  { <span class=hljs-attr>genre</span>:<span class=hljs-string>&apos;Shooter&apos;</span>, <span class=hljs-attr>sold</span>:<span class=hljs-number>3500</span> },
+  { <span class=hljs-attr>genre</span>:<span class=hljs-string>&apos;Other&apos;</span>, <span class=hljs-attr>sold</span>:<span class=hljs-number>1500</span> }
+];
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>400</span>,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>20</span>, <span class=hljs-number>80</span>, <span class=hljs-number>95</span>, <span class=hljs-number>80</span> ]
+});
+
+chart.source(data);
+chart.interval().position(<span class=hljs-string>&apos;genre*sold&apos;</span>).color(<span class=hljs-string>&apos;genre&apos;</span>).shape(<span class=hljs-string>&apos;triangle&apos;</span>);
+chart.render();
+</pre></div><p>&#x4EE5;&#x4E0B;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x4E09;&#x89D2;&#x5F62;&#x67F1;&#x72B6;&#x56FE;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p><div class=highlight><pre>Shape.registerShape(<span class=hljs-string>&apos;interval&apos;</span>, <span class=hljs-string>&apos;triangle&apos;</span>, {
+  <span class=hljs-comment>// &#x8FD4;&#x56DE;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x4E09;&#x4E2A;&#x9876;&#x70B9;</span>
+  getPoints(cfg) {
+    <span class=hljs-keyword>const</span> x = cfg.x;
+    <span class=hljs-keyword>const</span> y = cfg.y;
+    <span class=hljs-keyword>const</span> y0 = cfg.y0;
+    <span class=hljs-keyword>const</span> width = cfg.size;
+    <span class=hljs-keyword>return</span> [
+      { <span class=hljs-attr>x</span>: x - width / <span class=hljs-number>2</span>, <span class=hljs-attr>y</span>: y0 },
+      { <span class=hljs-attr>x</span>: x, <span class=hljs-attr>y</span>: y },
+      { <span class=hljs-attr>x</span>: x + width / <span class=hljs-number>2</span>, <span class=hljs-attr>y</span>: y0 }
+    ]
+  },
+  <span class=hljs-comment>// &#x7ED8;&#x5236;&#x4E09;&#x89D2;&#x5F62;</span>
+  draw(cfg, group) { <span class=hljs-comment>// &#x81EA;&#x5B9A;&#x4E49;&#x6700;&#x7EC8;&#x7ED8;&#x5236;</span>
+    <span class=hljs-keyword>const</span> points = <span class=hljs-keyword>this</span>.parsePoints(cfg.points); <span class=hljs-comment>// &#x5C06;0-1&#x7A7A;&#x95F4;&#x7684;&#x5750;&#x6807;&#x8F6C;&#x6362;&#x4E3A;&#x753B;&#x5E03;&#x5750;&#x6807;</span>
+    <span class=hljs-keyword>const</span> polygon = group.addShape(<span class=hljs-string>&apos;polygon&apos;</span>, {
+      <span class=hljs-attr>attrs</span>: {
+        <span class=hljs-attr>points</span>: [
+          [ points[<span class=hljs-number>0</span>].x, points[<span class=hljs-number>0</span>].y ],
+          [ points[<span class=hljs-number>1</span>].x, points[<span class=hljs-number>1</span>].y ],
+          [ points[<span class=hljs-number>2</span>].x, points[<span class=hljs-number>2</span>].y ]
+        ],
+        <span class=hljs-attr>fill</span>: cfg.color
+      }
+    });
+    <span class=hljs-keyword>return</span> polygon; <span class=hljs-comment>// !&#x5FC5;&#x987B;&#x8FD4;&#x56DE; shape</span>
+  }
+});
+</pre></div><p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x4E86;&#x4E24;&#x6B65;&#x64CD;&#x4F5C;&#xFF1A;</p><ol><li><p>&#x901A;&#x8FC7; <code>getPoints()</code> &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF08;&#x5373;&#x4E09;&#x4E2A;&#x9876;&#x70B9;&#xFF09;&#x3002;&#x6B64;&#x65F6; cfg &#x4E2D;&#x4F1A;&#x4F20;&#x5165;&#xFF0C;x, y, y0, size&#x3002;&#x5176;&#x4E2D; x, y &#x662F;&#x67F1;&#x5B50;&#x6700;&#x9AD8;&#x70B9;&#x7684;&#x5750;&#x6807;&#xFF0C;y0 &#x662F;&#x6A2A;&#x5750;&#x6807;&#x8F74;&#x7684; y &#x5750;&#x6807;&#xFF0C;size &#x662F;&#x67F1;&#x5B50;&#x9ED8;&#x8BA4;&#x5BBD;&#x5EA6;&#x3002;</p></li><li><p>&#x5F97;&#x5230;&#x6807;&#x8BB0;&#x70B9;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5728; <code>draw()</code> &#x65B9;&#x6CD5;&#x4E2D;&#x62FF;&#x5230; cfg.points &#x6570;&#x636E;&#x548C;&#x6570;&#x636E;&#x6620;&#x5C04;&#x540E;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x6570;&#x636E;&#xFF08;&#x6BD4;&#x5982; cfg.color&#xFF09;&#xFF0C;&#x518D;&#x901A;&#x8FC7;&#x7ED8;&#x56FE;&#x5E93;&#x63D0;&#x4F9B;&#x7684;&#x591A;&#x8FB9;&#x5F62;&#x56FE;&#x5F62;&#xFF0C;&#x5C06;&#x4E09;&#x4E2A;&#x70B9;&#x4F9D;&#x6B21;&#x5934;&#x5C3E;&#x76F8;&#x8FDE;&#xFF0C;&#x751F;&#x6210;&#x6BCF;&#x4E2A;&#x4E09;&#x89D2;&#x5F62;&#x3002;</p></li></ol><blockquote><p>&#x6CE8;&#x610F;&#xFF1A;points &#x6570;&#x636E;&#x548C;&#x53C2;&#x4E0E; points &#x8BA1;&#x7B97;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x90FD;&#x662F; 0-1 &#x7A7A;&#x95F4;&#x7684;&#x6570;&#x636E;&#xFF01;</p></blockquote></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/en-us/g2/3.x/tutorial/customize-shape.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const Shape = G2.Shape;
+Shape.registerShape('interval', 'triangle', {
+  getPoints(cfg) {
+    const x = cfg.x;
+    const y = cfg.y;
+    const y0 = cfg.y0;
+    const width = cfg.size;
+    return [
+      { x: x - width / 2, y: y0 },
+      { x: x, y: y },
+      { x: x + width / 2, y: y0 }
+    ]
+  },
+  draw(cfg, group) { // 自定义最终绘制
+    const points = this.parsePoints(cfg.points); // 将0-1空间的坐标转换为画布坐标
+    const polygon = group.addShape('polygon', {
+      attrs: {
+        points: [
+          [ points[0].x, points[0].y ],
+          [ points[1].x, points[1].y ],
+          [ points[2].x, points[2].y ]
+        ],
+        fill: cfg.color
+      }
+    });
+    return polygon; // !必须返回 shape
+  }
+});
+
+const data = [
+  { genre:'Sports', sold:27500 },
+  { genre:'Strategy', sold:11500 },
+  { genre:'Action', sold:6000 },
+  { genre:'Shooter', sold:3500 },
+  { genre:'Other', sold:1500 }
+];
+
+const chart = new G2.Chart({
+  container: 'c1',
+  forceFit: true,
+  height: 400,
+  padding: [ 20, 80, 95, 80 ]
+});
+
+chart.source(data);
+chart.interval().position('genre*sold').color('genre').shape('triangle');
+chart.render();
+
+})();</script></body></html>

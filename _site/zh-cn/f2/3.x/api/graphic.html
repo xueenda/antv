@@ -1,0 +1,313 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>G &#x7ED8;&#x56FE;&#x63A5;&#x53E3; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>F2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/f2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/f2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/f2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/f2/3.x/api/index.html>F2</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/chart.html>Chart</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/geometry.html>Geometry &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/coordinate.html>Coordinate &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/axis.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/interaction.html>Interaction &#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/animation.html>Animation &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/global.html>Global &#x5168;&#x5C40;&#x914D;&#x7F6E;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/shape.html>Shape &#x81EA;&#x5B9A;&#x4E49; Shape</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/plugin.html>Plugin &#x63D2;&#x4EF6;</a></li><li class="list-group-item active"><a href=/zh-cn/f2/3.x/api/graphic.html>G &#x7ED8;&#x56FE;&#x63A5;&#x53E3;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/canvas.html>&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x7ED8;&#x56FE;&#x5F15;&#x64CE;><a href=#_&#x7ED8;&#x56FE;&#x5F15;&#x64CE; class=anchor></a>&#x7ED8;&#x56FE;&#x5F15;&#x64CE;</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x5BB9;&#x5668;&#x5C42;&#x6B21;&#x7ED3;&#x6784;>&#x5BB9;&#x5668;&#x5C42;&#x6B21;&#x7ED3;&#x6784;</a><a class="col-md-3 level-2" href=#_API>API</a><a class="col-md-3 level-3" href=#_Canvas>Canvas</a><a class="col-md-3 level-3" href=#_Group>Group</a><a class="col-md-3 level-3" href=#_Shape>Shape</a><a class="col-md-3 level-2" href=#_&#x5B9E;&#x4F8B;>&#x5B9E;&#x4F8B;</a></div><h2 id=_&#x5BB9;&#x5668;&#x5C42;&#x6B21;&#x7ED3;&#x6784;><a href=#_&#x5BB9;&#x5668;&#x5C42;&#x6B21;&#x7ED3;&#x6784; class=anchor><span class="iconfont icon-link"></span></a>&#x5BB9;&#x5668;&#x5C42;&#x6B21;&#x7ED3;&#x6784;</h2><img src=https://gw.alipayobjects.com/zos/skylark/bf8b4e5a-0421-48ae-ac32-a789b0079d17/2018/png/3c63f255-011a-4166-8715-0f72511175b5.png style="width: 248px;"><h2 id=_API><a href=#_API class=anchor><span class="iconfont icon-link"></span></a>API</h2><p>&#x901A;&#x8FC7; <code>F2.G</code> &#x5F15;&#x5165;&#x3002;</p><h3 id=_Canvas><a href=#_Canvas class=anchor><span class="iconfont icon-link"></span></a>Canvas</h3><div class=highlight><pre><span class=hljs-tag>&lt;<span class=hljs-name>canvas</span> <span class=hljs-attr>id</span>=<span class=hljs-string>&quot;c1&quot;</span>&gt;</span><span class=hljs-tag>&lt;/<span class=hljs-name>canvas</span>&gt;</span>
+</pre></div><div class=highlight><pre><span class=hljs-keyword>new</span> G.Canvas({
+  <span class=hljs-attr>el</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>500</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>500</span>
+});
+</pre></div><h4 id=_&#x5C5E;&#x6027;><a href=#_&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h4><ul><li><code>el</code>: String/HtmlElement&#xFF0C;canvas dom&#x7684; id &#x6216;&#x8005; canvas dom &#x5BF9;&#x8C61;&#x3002;</li><li><code>context</code>: CanvasRenderingContext2D&#xFF0C;canvas &#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x4F20;&#x5165; canvas &#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;&#x6765;&#x521B;&#x5EFA; Canvas &#x5BF9;&#x8C61;&#x3002;</li><li><code>width</code>: Number&#xFF0C;canvas &#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x53EF;&#x9009;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#x5219;&#x9ED8;&#x8BA4;&#x6309;&#x7167;&#x4F20;&#x5165; canvas &#x5143;&#x7D20;&#x7684;&#x5B9E;&#x9645;&#x5BBD;&#x5EA6;&#x3002;</li><li><code>height</code>: Number&#xFF0C;canvas &#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x53EF;&#x9009;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#x5219;&#x9ED8;&#x8BA4;&#x6309;&#x7167;&#x4F20;&#x5165; canvas &#x5143;&#x7D20;&#x7684;&#x5B9E;&#x9645;&#x9AD8;&#x5EA6;&#x3002;</li><li><code>pixelRatio</code>: Number&#xFF0C;canvas &#x7684;&#x663E;&#x793A;&#x7CBE;&#x5EA6;&#xFF0C;&#x9ED8;&#x8BA4;&#x8BFB;&#x53D6;&#x5F53;&#x524D;&#x8BBE;&#x5907;&#x7684;&#x50CF;&#x7D20;&#x6BD4;&#x3002;</li><li><code>children</code>: Array&#xFF0C;canvas &#x5BB9;&#x5668;&#x4E0B;&#x5305;&#x542B;&#x7684;&#x5143;&#x7D20;&#x96C6;&#x5408;&#x3002;</li><li><code>destroyed</code>: Boolean&#xFF0C;&#x6807;&#x8BC6;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5DF2;&#x88AB;&#x9500;&#x6BC1;</li></ul><h4 id=_&#x65B9;&#x6CD5;><a href=#_&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h4><ul><li><code>getWidth</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6; canvas &#x5BF9;&#x5E94; dom &#x5143;&#x7D20;&#x7684;&#x5BBD;&#x5EA6;
+ * @return {Number} &#x8FD4;&#x56DE;&#x5BBD;&#x5EA6;
+ */</span>
+getWidth()
+</pre></div><ul><li><code>getHeight</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6; canvas &#x5BF9;&#x5E94; dom &#x5143;&#x7D20;&#x7684;&#x9AD8;&#x5EA6;
+ * @return {Number} &#x8FD4;&#x56DE;&#x9AD8;&#x5EA6;
+ */</span>
+getHeight()
+</pre></div><ul><li><code>changeSize</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6539;&#x53D8; canvas &#x7684;&#x5BBD;&#x9AD8;
+ * @param  {Number} width  &#x5BBD;&#x5EA6;
+ * @param  {Number} height &#x9AD8;&#x5EA6;
+ */</span>
+changeSize(width, height)
+</pre></div><ul><li><code>getPointByClient</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5C06;&#x7A97;&#x53E3;&#x5750;&#x6807;&#x8F6C;&#x53D8;&#x6210; canvas &#x5750;&#x6807;
+ * @param  {Number} clientX &#x7A97;&#x53E3;x&#x5750;&#x6807;
+ * @param  {Number} clientY &#x7A97;&#x53E3;y&#x5750;&#x6807;
+ * @return {Object} canvas&#x5750;&#x6807;
+ */</span>
+getPointByClient(clientX, clientY)
+</pre></div><ul><li><code>addShape</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x521B;&#x5EFA;&#x5E76;&#x6DFB;&#x52A0; Shape
+ * @param {String} type &#x6DFB;&#x52A0;&#x7684; shape &#x7C7B;&#x578B;
+ * @param {Object} cfg  shape &#x7684;&#x914D;&#x7F6E;&#x9879;
+ * @return {Shape} &#x8FD4;&#x56DE;&#x521B;&#x5EFA;&#x7684; shape &#x5B9E;&#x4F8B;
+ */</span>
+addShape(type, cfg = {})
+</pre></div><ul><li><code>addGroup</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x521B;&#x5EFA;&#x5E76;&#x6DFB;&#x52A0; Group &#x7EC4;
+ * @param {Object||null} cfg &#x914D;&#x7F6E;&#x4FE1;&#x606F;
+ * @return {Group} &#x8FD4;&#x56DE;&#x521B;&#x5EFA;&#x7684; Group &#x5B9E;&#x4F8B;
+ */</span>
+addGroup(cfg)
+</pre></div><ul><li><code>add</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6DFB;&#x52A0;&#x5143;&#x7D20;
+ * @param {Array||Group||Shape} items group &#x5B9E;&#x4F8B;&#x6216;&#x8005; shape &#x5B9E;&#x4F8B;&#x6216;&#x8005;&#x4ED6;&#x4EEC;&#x7684;&#x6570;&#x7EC4;&#x96C6;&#x5408;
+ */</span>
+add(items)
+</pre></div><ul><li><code>contain</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x5305;&#x542B; item 
+ * @param  {Shape||Group} item shape &#x6216;&#x8005; group &#x5B9E;&#x4F8B;
+ * @return {Boolean}      true &#x8868;&#x793A;&#x5305;&#x542B;&#xFF0C;false &#x8868;&#x793A;&#x4E0D;&#x5305;&#x542B;
+ */</span>
+contain(item)
+</pre></div><ul><li><code>sort</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6309;&#x7167;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x7684; zIndex &#x8FDB;&#x884C;&#x4ECE;&#x5927;&#x5230;&#x5C0F;&#x7684;&#x6392;&#x5E8F;
+ * @return {Canvas||Group} &#x8FD4;&#x56DE;&#x81EA;&#x5DF1;
+ */</span>
+sort()
+</pre></div><div class=highlight><pre>get(name) <span class=hljs-comment>// &#x83B7;&#x53D6;&#x5C5E;&#x6027;</span>
+set(name, value) <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</span>
+clear() <span class=hljs-comment>// &#x6E05;&#x9664;&#x6240;&#x6709;&#x5143;&#x7D20;</span>
+draw() <span class=hljs-comment>// &#x7ED8;&#x5236;</span>
+destroy() <span class=hljs-comment>// &#x9500;&#x6BC1;</span>
+</pre></div><h3 id=_Group><a href=#_Group class=anchor><span class="iconfont icon-link"></span></a>Group</h3><div class=highlight><pre><span class=hljs-keyword>new</span> G.Group({
+  <span class=hljs-attr>zIndex</span>: <span class=hljs-number>0</span>
+});
+</pre></div><h4 id=__&#x5C5E;&#x6027;><a href=#__&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h4><ul><li><code>className</code> String: &#x6807;&#x8BB0;</li><li><code>zIndex</code> Number: &#x5C42;&#x7EA7;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 0</li><li><code>visible</code> Boolean&#xFF1A;&#x663E;&#x793A;&#x8FD8;&#x662F;&#x9690;&#x85CF;</li><li><code>children</code> Array&#xFF1A;&#x5B50;&#x5143;&#x7D20;&#x96C6;&#x5408;</li><li><code>isGroup</code> Boolean: true&#xFF0C;&#x6807;&#x8BC6; Group &#x8EAB;&#x4EFD;</li><li><code>destroyed</code> Boolean: &#x662F;&#x5426;&#x5BF9;&#x8C61;&#x5DF2;&#x88AB;&#x9500;&#x6BC1;</li></ul><h4 id=__&#x65B9;&#x6CD5;><a href=#__&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h4><ul><li><code>addShape</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x521B;&#x5EFA;&#x5E76;&#x6DFB;&#x52A0; Shape
+ * @param {String} type &#x6DFB;&#x52A0;&#x7684; shape &#x7C7B;&#x578B;
+ * @param {Object} cfg  shape &#x7684;&#x914D;&#x7F6E;&#x9879;
+ * @return {Shape} &#x8FD4;&#x56DE;&#x521B;&#x5EFA;&#x7684; shape &#x5B9E;&#x4F8B;
+ */</span>
+addShape(type, cfg = {})
+</pre></div><ul><li><code>addGroup</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x521B;&#x5EFA;&#x5E76;&#x6DFB;&#x52A0; Group &#x7EC4;
+ * @param {Object||null} cfg &#x914D;&#x7F6E;&#x4FE1;&#x606F;
+ * @return {Group} &#x8FD4;&#x56DE;&#x521B;&#x5EFA;&#x7684; Group &#x5B9E;&#x4F8B;
+ */</span>
+addGroup(cfg)
+</pre></div><ul><li><code>add</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6DFB;&#x52A0;&#x5143;&#x7D20;
+ * @param {Array||Group||Shape} items group &#x5B9E;&#x4F8B;&#x6216;&#x8005; shape &#x5B9E;&#x4F8B;&#x6216;&#x8005;&#x4ED6;&#x4EEC;&#x7684;&#x6570;&#x7EC4;&#x96C6;&#x5408;
+ */</span>
+add(items)
+</pre></div><ul><li><code>contain</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x5305;&#x542B; item 
+ * @param  {Shape||Group} item shape &#x6216;&#x8005; group &#x5B9E;&#x4F8B;
+ * @return {Boolean}      true &#x8868;&#x793A;&#x5305;&#x542B;&#xFF0C;false &#x8868;&#x793A;&#x4E0D;&#x5305;&#x542B;
+ */</span>
+contain(item)
+</pre></div><ul><li><code>sort</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6309;&#x7167;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x7684; zIndex &#x8FDB;&#x884C;&#x4ECE;&#x5927;&#x5230;&#x5C0F;&#x7684;&#x6392;&#x5E8F;
+ * @return {Canvas||Group} &#x8FD4;&#x56DE;&#x81EA;&#x5DF1;
+ */</span>
+sort()
+</pre></div><ul><li><code>getBBox</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6;&#x6700;&#x5C0F;&#x5305;&#x56F4;&#x76D2;
+ * @return {Object} &#x8FD4;&#x56DE;&#x5305;&#x56F4;&#x76D2;
+ */</span>
+getBBox()
+</pre></div><ul><li><code>remove</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x79FB;&#x9664;
+ * @param  {Boolean} destroy true &#x8868;&#x793A;&#x5C06;&#x81EA;&#x5DF1;&#x79FB;&#x9664;&#x7684;&#x540C;&#x65F6;&#x9500;&#x6BC1;&#x81EA;&#x5DF1;&#xFF0C;false &#x8868;&#x793A;&#x4EC5;&#x79FB;&#x9664;&#x81EA;&#x5DF1;
+ * @return {null}
+ */</span>
+remove(destroy)
+</pre></div><ul><li><code>transform</code> &#x5E73;&#x79FB;&#x3001;&#x65CB;&#x8F6C;&#x3001;&#x7F29;&#x653E;</li></ul><div class=highlight><pre>transform(actions) <span class=hljs-comment>// actions &#x4E3A; Array &#x7C7B;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7684;&#x96C6;&#x5408;</span>
+</pre></div><p>actions &#x683C;&#x5F0F;&#xFF1A;</p><div class=highlight><pre>[
+  [ <span class=hljs-string>&apos;t&apos;</span>, x, y ], <span class=hljs-comment>// t &#x8868;&#x793A; translate, x &#x8868;&#x793A; x &#x65B9;&#x5411;&#x7684;&#x4F4D;&#x79FB;&#x503C;&#xFF0C;y &#x8868;&#x793A; y &#x65B9;&#x5411;&#x7684;&#x4F4D;&#x79FB;&#x503C;</span>
+  [ <span class=hljs-string>&apos;s&apos;</span>, sx, sy ], <span class=hljs-comment>// s &#x8868;&#x793A; scale, sx &#x8868;&#x793A; x &#x65B9;&#x5411;&#x4E0A;&#x7684;&#x7F29;&#x653E;&#x503C;&#xFF0C;sy &#x8868;&#x793A; y &#x65B9;&#x5411;&#x7684;&#x7F29;&#x653E;&#x503C;</span>
+  [ <span class=hljs-string>&apos;r&apos;</span>, radian] <span class=hljs-comment>// r &#x8868;&#x793A; rotate&#xFF0C;radian &#x8868;&#x793A;&#x65CB;&#x8F6C;&#x7684;&#x5F27;&#x5EA6;&#x503C;</span>
+]
+</pre></div><ul><li><code>setTransform</code> &#x91CD;&#x65B0;&#x8BBE;&#x7F6E;&#x77E9;&#x9635;&#x540E;&#xFF0C;&#x5728;&#x8FDB;&#x884C;&#x5E73;&#x79FB;&#x3001;&#x65CB;&#x8F6C;&#x3001;&#x7F29;&#x653E;&#x64CD;&#x4F5C;</li></ul><div class=highlight><pre>setTransform(actions) <span class=hljs-comment>// actions &#x4E3A; Array &#x7C7B;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7684;&#x96C6;&#x5408;setTransform</span>
+</pre></div><ul><li><code>translate(x, y)</code> &#x5E73;&#x79FB;</li><li><code>rotate(radian)</code> &#x65CB;&#x8F6C;</li><li><code>scale(sx, sy)</code> &#x7F29;&#x653E;</li><li><code>moveTo(x, y)</code> &#x79FB;&#x52A8;&#x5230;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;</li></ul><div class=highlight><pre>get(name) <span class=hljs-comment>// &#x83B7;&#x53D6;&#x5C5E;&#x6027;</span>
+set(name, value) <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</span>
+getParent() <span class=hljs-comment>// &#x83B7;&#x53D6;&#x7236;&#x4EB2;&#x5143;&#x7D20;</span>
+show() <span class=hljs-comment>// &#x663E;&#x793A;</span>
+hide() <span class=hljs-comment>// &#x9690;&#x85CF;</span>
+clear() <span class=hljs-comment>// &#x6E05;&#x9664;&#x6240;&#x6709;&#x5143;&#x7D20;</span>
+destroy() <span class=hljs-comment>// &#x9500;&#x6BC1;&#x5E76;&#x5C06;&#x81EA;&#x5DF1;&#x4ECE;&#x7236;&#x5143;&#x7D20;&#x4E2D;&#x79FB;&#x9664;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7236;&#x5143;&#x7D20;&#x7684;&#x8BDD;&#xFF09;</span>
+</pre></div><h3 id=_Shape><a href=#_Shape class=anchor><span class="iconfont icon-link"></span></a>Shape</h3><h4 id=_&#x901A;&#x7528;&#x5C5E;&#x6027;><a href=#_&#x901A;&#x7528;&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x901A;&#x7528;&#x5C5E;&#x6027;</h4><ul><li><code>type</code> String: &#x56FE;&#x5F62;&#x7C7B;&#x578B;</li><li><code>attrs</code> Object&#xFF1A;&#x7ED8;&#x56FE;&#x5C5E;&#x6027;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x5F62;&#x6709;&#x6240;&#x5DEE;&#x5F02;</li><li><code>zIndex</code> Number: &#x5C42;&#x7EA7;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 0</li><li><code>visible</code> Boolean&#xFF1A;&#x663E;&#x793A;&#x8FD8;&#x662F;&#x9690;&#x85CF;</li><li><code>isShape</code> Boolean: true&#xFF0C;&#x6807;&#x8BC6; Shape &#x8EAB;&#x4EFD;</li><li><code>destroyed</code> Boolean: &#x662F;&#x5426;&#x5BF9;&#x8C61;&#x5DF2;&#x88AB;&#x9500;&#x6BC1;</li><li><code>className</code> String: &#x6807;&#x8BB0;</li></ul><h4 id=_&#x901A;&#x7528;&#x65B9;&#x6CD5;><a href=#_&#x901A;&#x7528;&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x901A;&#x7528;&#x65B9;&#x6CD5;</h4><ul><li><code>attr</code> &#x83B7;&#x53D6;/&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</li></ul><div class=highlight><pre>attr() <span class=hljs-comment>// &#x8FD4;&#x56DE;&#x6240;&#x6709;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;</span>
+attr(name) <span class=hljs-comment>// &#x8FD4;&#x56DE; name &#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x503C;</span>
+attr(name, value) <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x5355;&#x4E2A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;</span>
+attr({}) <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;</span>
+</pre></div><p>&#x83B7;&#x53D6; matrix &#x5C5E;&#x6027;&#xFF1A;<code>attr(&apos;matrix&apos;)</code>; &#x83B7;&#x53D6; clip&#xFF1A;<code>attr(&apos;clip&apos;,)</code>;</p><ul><li><code>getBBox</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6;&#x6700;&#x5C0F;&#x5305;&#x56F4;&#x76D2;
+ * @return {Object} &#x8FD4;&#x56DE;&#x5305;&#x56F4;&#x76D2;
+ */</span>
+getBBox()
+</pre></div><ul><li><code>remove</code></li></ul><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x79FB;&#x9664;
+ * @param  {Boolean} destroy true &#x8868;&#x793A;&#x5C06;&#x81EA;&#x5DF1;&#x79FB;&#x9664;&#x7684;&#x540C;&#x65F6;&#x9500;&#x6BC1;&#x81EA;&#x5DF1;&#xFF0C;false &#x8868;&#x793A;&#x4EC5;&#x79FB;&#x9664;&#x81EA;&#x5DF1;
+ * @return {null}
+ */</span>
+remove(destroy)
+</pre></div><ul><li><code>transform</code> &#x5E73;&#x79FB;&#x3001;&#x65CB;&#x8F6C;&#x3001;&#x7F29;&#x653E;</li></ul><div class=highlight><pre>transform(actions) <span class=hljs-comment>// actions &#x4E3A; Array &#x7C7B;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7684;&#x96C6;&#x5408;</span>
+</pre></div><p>actions &#x683C;&#x5F0F;&#xFF1A;</p><div class=highlight><pre>[
+  [ <span class=hljs-string>&apos;t&apos;</span>, x, y ], <span class=hljs-comment>// t &#x8868;&#x793A; translate, x &#x8868;&#x793A; x &#x65B9;&#x5411;&#x7684;&#x4F4D;&#x79FB;&#x503C;&#xFF0C;y &#x8868;&#x793A; y &#x65B9;&#x5411;&#x7684;&#x4F4D;&#x79FB;&#x503C;</span>
+  [ <span class=hljs-string>&apos;s&apos;</span>, sx, sy ], <span class=hljs-comment>// s &#x8868;&#x793A; scale, sx &#x8868;&#x793A; x &#x65B9;&#x5411;&#x4E0A;&#x7684;&#x7F29;&#x653E;&#x503C;&#xFF0C;sy &#x8868;&#x793A; y &#x65B9;&#x5411;&#x7684;&#x7F29;&#x653E;&#x503C;</span>
+  [ <span class=hljs-string>&apos;r&apos;</span>, radian] <span class=hljs-comment>// r &#x8868;&#x793A; rotate&#xFF0C;radian &#x8868;&#x793A;&#x65CB;&#x8F6C;&#x7684;&#x5F27;&#x5EA6;&#x503C;</span>
+]
+</pre></div><ul><li><code>setTransform</code> &#x91CD;&#x65B0;&#x8BBE;&#x7F6E;&#x77E9;&#x9635;&#x540E;&#xFF0C;&#x5728;&#x8FDB;&#x884C;&#x5E73;&#x79FB;&#x3001;&#x65CB;&#x8F6C;&#x3001;&#x7F29;&#x653E;&#x64CD;&#x4F5C;</li></ul><div class=highlight><pre>setTransform(actions) <span class=hljs-comment>// actions &#x4E3A; Array &#x7C7B;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x64CD;&#x4F5C;&#x7684;&#x96C6;&#x5408;setTransform</span>
+</pre></div><ul><li><code>translate(x, y)</code> &#x5E73;&#x79FB;</li><li><code>rotate(radian)</code> &#x65CB;&#x8F6C;</li><li><code>scale(sx, sy)</code> &#x7F29;&#x653E;</li><li><code>moveTo(x, y)</code> &#x79FB;&#x52A8;&#x5230;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;</li></ul><div class=highlight><pre>get(name) <span class=hljs-comment>// &#x83B7;&#x53D6;&#x5C5E;&#x6027;</span>
+set(name, value) <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</span>
+getParent() <span class=hljs-comment>// &#x83B7;&#x53D6;&#x7236;&#x4EB2;&#x5143;&#x7D20;</span>
+show() <span class=hljs-comment>// &#x663E;&#x793A;</span>
+hide() <span class=hljs-comment>// &#x9690;&#x85CF;</span>
+destroy() <span class=hljs-comment>// &#x9500;&#x6BC1;&#x5E76;&#x5C06;&#x81EA;&#x5DF1;&#x4ECE;&#x7236;&#x5143;&#x7D20;&#x4E2D;&#x79FB;&#x9664;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7236;&#x5143;&#x7D20;&#x7684;&#x8BDD;&#xFF09;</span>
+</pre></div><h4 id=_Line-&#x7EBF;><a href=#_Line-&#x7EBF; class=anchor><span class="iconfont icon-link"></span></a>Line &#x7EBF;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Line({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x1</span>: <span class=hljs-number>50</span>, <span class=hljs-comment>// &#x7EBF;&#x6BB5;&#x8D77;&#x59CB;&#x70B9; x &#x5750;&#x6807;</span>
+    y1: <span class=hljs-number>50</span>,<span class=hljs-comment>// &#x7EBF;&#x6BB5;&#x8D77;&#x59CB;&#x70B9; y &#x5750;&#x6807;</span>
+    x2: <span class=hljs-number>100</span>,<span class=hljs-comment>// &#x7EBF;&#x6BB5;&#x7ED3;&#x675F;&#x70B9; x &#x5750;&#x6807;</span>
+    y2: <span class=hljs-number>100</span>,<span class=hljs-comment>// &#x7EBF;&#x6BB5;&#x7ED3;&#x675F;&#x70B9; y &#x5750;&#x6807;</span>
+    lineWidth: <span class=hljs-number>40</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    strokeStyle: <span class=hljs-string>&apos;#223273&apos;</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    lineCap: <span class=hljs-string>&apos;round&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+})
+</pre></div><h4 id=_Arc-&#x5706;&#x5F27;><a href=#_Arc-&#x5706;&#x5F27; class=anchor><span class="iconfont icon-link"></span></a>Arc &#x5706;&#x5F27;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Arc({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>20</span>, <span class=hljs-comment>// &#x5706;&#x5FC3; x &#x5750;&#x6807;</span>
+    y: <span class=hljs-number>20</span>, <span class=hljs-comment>// &#x5706;&#x5FC3; y &#x5750;&#x6807;</span>
+    r: <span class=hljs-number>50</span>, <span class=hljs-comment>// &#x534A;&#x5F84;</span>
+    startAngle: <span class=hljs-number>0</span>, <span class=hljs-comment>// &#x8D77;&#x59CB;&#x5F27;&#x5EA6;</span>
+    endAngle: <span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>2</span>, <span class=hljs-comment>// &#x7ED3;&#x675F;&#x5F27;&#x5EA6;</span>
+    lineWidth: <span class=hljs-number>2</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    stroke: <span class=hljs-string>&apos;#18901f&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+})
+</pre></div><h4 id=_Circle-&#x5706;><a href=#_Circle-&#x5706; class=anchor><span class="iconfont icon-link"></span></a>Circle &#x5706;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Circle({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>10</span>, <span class=hljs-comment>// &#x5706;&#x5FC3; x &#x5750;&#x6807;</span>
+    y: <span class=hljs-number>10</span>, <span class=hljs-comment>// &#x5706;&#x5FC3; y &#x5750;&#x6807;</span>
+    r: <span class=hljs-number>50</span>, <span class=hljs-comment>// &#x534A;&#x5F84;</span>
+    fill: <span class=hljs-string>&apos;red&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+});
+</pre></div><h4 id=_Polygon-&#x591A;&#x8FB9;&#x5F62;><a href=#_Polygon-&#x591A;&#x8FB9;&#x5F62; class=anchor><span class="iconfont icon-link"></span></a>Polygon &#x591A;&#x8FB9;&#x5F62;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Polygon({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>points</span>: [
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>10</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>20</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>45</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>40</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>80</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>123</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>70</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>80</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>32</span> }
+    ], <span class=hljs-comment>// &#x7EC4;&#x6210;&#x591A;&#x8FB9;&#x5F62;&#x7684;&#x5404;&#x4E2A;&#x70B9;</span>
+    lineWidth: <span class=hljs-number>1</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    fill: <span class=hljs-string>&apos;red&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+})
+</pre></div><h4 id=_Polyline-&#x591A;&#x70B9;&#x7EBF;&#x6BB5;><a href=#_Polyline-&#x591A;&#x70B9;&#x7EBF;&#x6BB5; class=anchor><span class="iconfont icon-link"></span></a>Polyline &#x591A;&#x70B9;&#x7EBF;&#x6BB5;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Polyline({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>points</span>: [
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>10</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>20</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>45</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>40</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>80</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>123</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>70</span> },
+      { <span class=hljs-attr>x</span>: <span class=hljs-number>80</span>, <span class=hljs-attr>y</span>: <span class=hljs-number>32</span> }
+    ],
+    <span class=hljs-attr>smooth</span>: <span class=hljs-literal>true</span> | <span class=hljs-literal>false</span>, <span class=hljs-comment>// &#x662F;&#x5426;&#x8F6C;&#x66F2;&#x7EBF;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; false&#xFF0C;&#x7ED8;&#x5236;&#x66F2;&#x7EBF;&#x65F6;&#x4F7F;&#x7528;</span>
+    lineWidth: <span class=hljs-number>1</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    stroke: <span class=hljs-string>&apos;red&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+})
+</pre></div><h4 id=_Rect-&#x77E9;&#x5F62;><a href=#_Rect-&#x77E9;&#x5F62; class=anchor><span class="iconfont icon-link"></span></a>Rect &#x77E9;&#x5F62;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Rect({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>50</span>, <span class=hljs-comment>// &#x77E9;&#x5F62;&#x5DE6;&#x4E0A;&#x89D2; x &#x5750;&#x6807;</span>
+    y: <span class=hljs-number>50</span>, <span class=hljs-comment>// &#x77E9;&#x5F62;&#x5DE6;&#x4E0A;&#x89D2; y &#x5750;&#x6807;</span>
+    height: <span class=hljs-number>20</span>, <span class=hljs-comment>// &#x77E9;&#x5F62;&#x9AD8;&#x5EA6;</span>
+    width: <span class=hljs-number>80</span>, <span class=hljs-comment>// &#x77E9;&#x5F62;&#x5BBD;&#x5EA6;</span>
+    lineWidth: <span class=hljs-number>1</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    fill: <span class=hljs-string>&apos;#1890FF&apos;</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    strokeStyle: <span class=hljs-string>&apos;#000&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    radius: <span class=hljs-number>0</span> <span class=hljs-comment>// &#x5706;&#x89D2;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x6570;&#x503C;&#x6216;&#x8005;&#x6570;&#x7EC4;&#x683C;&#x5F0F;&#xFF0C;&#x7528;&#x6CD5;&#x540C; padding</span>
+  }
+})
+</pre></div><h4 id=_Sector-&#x6247;&#x5F62;><a href=#_Sector-&#x6247;&#x5F62; class=anchor><span class="iconfont icon-link"></span></a>Sector &#x6247;&#x5F62;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Sector({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>100</span>, <span class=hljs-comment>// &#x5706;&#x5FC3; x &#x5750;&#x6807; </span>
+    y: <span class=hljs-number>150</span>, <span class=hljs-comment>// &#x5706;&#x5FC3; y &#x5750;&#x6807; </span>
+    r: <span class=hljs-number>50</span>, <span class=hljs-comment>// &#x5706;&#x73AF;&#x5916;&#x534A;&#x5F84;</span>
+    r0: <span class=hljs-number>30</span>, <span class=hljs-comment>// &#x5706;&#x73AF;&#x5185;&#x534A;&#x5F84;</span>
+    startAngle: -<span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>3</span>, <span class=hljs-comment>// &#x8D77;&#x59CB;&#x5F27;&#x5EA6;</span>
+    endAngle: <span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>2</span>, <span class=hljs-comment>// &#x7ED3;&#x675F;&#x5F27;&#x5EA6;</span>
+    lineWidth: <span class=hljs-number>0</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    fill: <span class=hljs-string>&apos;#223273&apos;</span> <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+});
+</pre></div><h4 id=_Text-&#x6587;&#x672C;><a href=#_Text-&#x6587;&#x672C; class=anchor><span class="iconfont icon-link"></span></a>Text &#x6587;&#x672C;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Text({
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>30</span>, <span class=hljs-comment>// &#x663E;&#x793A;&#x4F4D;&#x7F6E; x &#x5750;&#x6807;</span>
+    y: <span class=hljs-number>30</span>, <span class=hljs-comment>// &#x663E;&#x793A;&#x4F4D;&#x7F6E; x &#x5750;&#x6807;</span>
+    fontFamily: <span class=hljs-string>&apos;Arial&apos;</span>, <span class=hljs-comment>// &#x5B57;&#x4F53;</span>
+    fontSize: <span class=hljs-number>12</span>, <span class=hljs-comment>// &#x5B57;&#x4F53;&#x5927;&#x5C0F;</span>
+    fontStyle: <span class=hljs-string>&apos;normal&apos;</span>,
+    <span class=hljs-attr>fontWeight</span>: <span class=hljs-string>&apos;normal&apos;</span>,
+    <span class=hljs-attr>fontVariant</span>: <span class=hljs-string>&apos;normal&apos;</span>,
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;red&apos;</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+    lineWidth: <span class=hljs-number>1</span>, <span class=hljs-comment>// html5 canvas &#x7ED8;&#x56FE;&#x5C5E;&#x6027;</span>
+  }
+});
+</pre></div><h4 id=_Custom-&#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x5F62;><a href=#_Custom-&#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x5F62; class=anchor><span class="iconfont icon-link"></span></a>Custom &#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x5F62;</h4><div class=highlight><pre><span class=hljs-keyword>new</span> G.Shape.Custom({
+  <span class=hljs-attr>attrs</span>: {},
+  createPath(context) {
+    <span class=hljs-comment>// &#x5728;&#x8FD9;&#x91CC;&#x7ED8;&#x5236;&#x56FE;&#x5F62;</span>
+  },
+  calculateBox() {
+ &#xA0; &#xA0;<span class=hljs-comment>// &#x81EA;&#x5B9A;&#x4E49;&#x5305;&#x56F4;&#x76D2;</span>
+ &#xA0;}
+})
+</pre></div><h2 id=_&#x5B9E;&#x4F8B;><a href=#_&#x5B9E;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x5B9E;&#x4F8B;</h2><img src=https://gw.alipayobjects.com/zos/skylark/dd38786f-e8c1-41f9-9832-15b08b93dccc/2018/png/09c8c952-7f5f-4abc-8706-c479b53f0d62.png><div class=highlight><pre><span class=hljs-keyword>const</span> canvas = <span class=hljs-keyword>new</span> Canvas({
+  <span class=hljs-attr>el</span>: <span class=hljs-string>&apos;canvas&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>200</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>100</span>
+});
+<span class=hljs-keyword>const</span> container = canvas.addGroup();
+<span class=hljs-keyword>const</span> itemGroup = container.addGroup();
+itemGroup.addShape(<span class=hljs-string>&apos;circle&apos;</span>, {
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>5</span>,
+    <span class=hljs-attr>y</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>r</span>: <span class=hljs-number>5</span>,
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;red&apos;</span>
+  }
+});
+itemGroup.addShape(<span class=hljs-string>&apos;text&apos;</span>, {
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>17</span>,
+    <span class=hljs-attr>y</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;start&apos;</span>,
+    <span class=hljs-attr>textBaseline</span>: <span class=hljs-string>&apos;middle&apos;</span>,
+    <span class=hljs-attr>fontSize</span>: <span class=hljs-number>12</span>,
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;red&apos;</span>,
+    <span class=hljs-attr>text</span>: <span class=hljs-string>&apos;&#x5206;&#x7C7B;&#x4E00;&apos;</span>
+  }
+});
+<span class=hljs-keyword>const</span> bbox = itemGroup.getBBox();
+container.addShape(<span class=hljs-string>&apos;rect&apos;</span>, {
+  <span class=hljs-attr>zIndex</span>: <span class=hljs-number>-1</span>,
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: bbox.minX - <span class=hljs-number>5</span>,
+    <span class=hljs-attr>y</span>: bbox.minY - <span class=hljs-number>5</span>,
+    <span class=hljs-attr>width</span>: bbox.width + <span class=hljs-number>10</span>,
+    <span class=hljs-attr>height</span>: bbox.height + <span class=hljs-number>10</span>,
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(0, 0, 0, 0.09)&apos;</span>
+  }
+});
+
+canvas.addShape(<span class=hljs-string>&apos;rect&apos;</span>, {
+  <span class=hljs-attr>zIndex</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>attrs</span>: {
+    <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>y</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>200</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>100</span>,
+    <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;rgba(0, 0, 0, 0.09)&apos;</span>
+  }
+});
+
+container.sort();
+container.moveTo(<span class=hljs-number>30</span>, <span class=hljs-number>50</span>);
+canvas.draw();
+</pre></div><div class=prev-next><a href=/zh-cn/f2/3.x/api/plugin.html class="float-left pre">Plugin &#x63D2;&#x4EF6; </a><a href=/zh-cn/f2/3.x/api/canvas.html class="float-right next">&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"f2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/f2/3.x/api/graphic.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/f2/3.1.3/f2.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script></body></html>

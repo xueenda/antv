@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="50px" viewBox="0 0 56 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="6.94649175%" y1="50%" x2="91.5683962%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#6A68F8" offset="0%"></stop>
+            <stop stop-color="#4B49D6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="视觉稿" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-867.000000, -721.000000)">
+            <g id="g6" transform="translate(719.500000, 632.000000)">
+                <g id="icon" transform="translate(148.000000, 89.000000)">
+                    <circle id="Oval-12" fill="#E4E4FF" cx="38" cy="17" r="17"></circle>
+                    <g id="Group-27" transform="translate(0.000000, 11.000000)">
+                        <path d="M6.60714286,5.61538462 L22.3928571,20.3846154" id="Line-2" stroke="#4B49D6" stroke-width="2" stroke-linecap="square"></path>
+                        <path d="M39.4,10.6111111 L22.6,20.3888889" id="Line-2" stroke="#4B49D6" stroke-width="2" stroke-linecap="square"></path>
+                        <path d="M42.3823529,32.4090909 L22.6176471,20.5909091" id="Line-2" stroke="#4B49D6" stroke-width="2" stroke-linecap="square"></path>
+                        <path d="M7.61538462,31.4 L22.3846154,20.6" id="Line-2" stroke="#4B49D6" stroke-width="2" stroke-linecap="square"></path>
+                        <circle id="Oval-11" fill="url(#linearGradient-1)" cx="39" cy="11" r="5"></circle>
+                        <circle id="Oval-11" fill="url(#linearGradient-1)" cx="8.5" cy="31.5" r="4.5"></circle>
+                        <circle id="Oval-11" fill="url(#linearGradient-1)" cx="23" cy="21" r="10"></circle>
+                        <circle id="Oval-11" fill="url(#linearGradient-1)" cx="6" cy="6" r="6"></circle>
+                        <circle id="Oval-11" fill="url(#linearGradient-1)" cx="43" cy="33" r="6"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

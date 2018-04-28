@@ -1,0 +1,549 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>&#x5E38;&#x89C1;&#x95EE;&#x9898; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html>G2 &#x56FE;&#x8868;&#x7EC4;&#x6210;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/load-data.html>&#x88C5;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom.html>Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/attr.html>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/coord.html>Coord &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/axes.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/facet.html>Facet &#x5206;&#x9762;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/theme.html>Theme &#x56FE;&#x8868;&#x76AE;&#x80A4;&#x4E3B;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-label.html>Label &#x56FE;&#x5F62;&#x6587;&#x672C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-event.html>Event &#x56FE;&#x8868;&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/interaction.html>&#x56FE;&#x8868;&#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-use-slider.html>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/update-data.html>&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-shape.html>&#x81EA;&#x5B9A;&#x4E49; shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-animation.html>&#x81EA;&#x5B9A;&#x4E49; &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-create-view.html>&#x521B;&#x5EFA; View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/the-grammar-of-graphics.html>&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7B80;&#x4ECB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-flow.html>G2 &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-type-and-scale.html>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/deep-into-coord.html>&#x5750;&#x6807;&#x7CFB;&#x8BE6;&#x89E3;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-type.html>&#x56FE;&#x8868;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-and-adjust.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x548C;&#x6570;&#x636E;&#x8C03;&#x6574;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/faq.html>&#x5E38;&#x89C1;&#x95EE;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/g2-v3-changes.html>G2 3.0 &#x5347;&#x7EA7;&#x6307;&#x5F15;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_G2-&#x5E38;&#x89C1;&#x95EE;&#x9898;><a href=#_G2-&#x5E38;&#x89C1;&#x95EE;&#x9898; class=anchor></a>G2 &#x5E38;&#x89C1;&#x95EE;&#x9898;</h1><h2 id=_&#x56FE;&#x8868;&#x5982;&#x4F55;&#x652F;&#x6301;&#x81EA;&#x9002;&#x5E94;&#x5BBD;&#x5EA6;><a href=#_&#x56FE;&#x8868;&#x5982;&#x4F55;&#x652F;&#x6301;&#x81EA;&#x9002;&#x5E94;&#x5BBD;&#x5EA6; class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;&#x8868;&#x5982;&#x4F55;&#x652F;&#x6301;&#x81EA;&#x9002;&#x5E94;&#x5BBD;&#x5EA6;</h2><p>(1) &#x65B9;&#x5F0F;&#x4E00;</p><div class=highlight><pre><span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span> : <span class=hljs-number>400</span>
+});
+</pre></div><p>(2) &#x65B9;&#x5F0F;&#x4E8C;</p><p><code>chart.forceFit();</code></p><h2 id=_&#x5982;&#x4F55;&#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x6587;&#x672C;><a href=#_&#x5982;&#x4F55;&#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x6587;&#x672C; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x6587;&#x672C;</h2><div class=highlight><pre>chart.axis(<span class=hljs-string>&apos;field&apos;</span>, {
+  <span class=hljs-attr>label</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>return</span> val + <span class=hljs-string>&apos;k&apos;</span>;
+    }
+  }
+});
+</pre></div><h2 id=_&#x600E;&#x4E48;&#x63A7;&#x5236;&#x5750;&#x6807;&#x8F74;&#x523B;&#x5EA6;&#x7EBF;&#x4E2A;&#x6570;&#x4EE5;&#x53CA;&#x523B;&#x5EA6;&#x7EBF;&#x7684;&#x95F4;&#x8DDD;><a href=#_&#x600E;&#x4E48;&#x63A7;&#x5236;&#x5750;&#x6807;&#x8F74;&#x523B;&#x5EA6;&#x7EBF;&#x4E2A;&#x6570;&#x4EE5;&#x53CA;&#x523B;&#x5EA6;&#x7EBF;&#x7684;&#x95F4;&#x8DDD; class=anchor><span class="iconfont icon-link"></span></a>&#x600E;&#x4E48;&#x63A7;&#x5236;&#x5750;&#x6807;&#x8F74;&#x523B;&#x5EA6;&#x7EBF;&#x4E2A;&#x6570;&#x4EE5;&#x53CA;&#x523B;&#x5EA6;&#x7EBF;&#x7684;&#x95F4;&#x8DDD;</h2><p>&#x5217;&#x5B9A;&#x4E49;&#x4E2D;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x8BBE;&#x7F6E; tickCount &#x7528;&#x4E8E;&#x63A7;&#x5236;&#x523B;&#x5EA6;&#x7EBF;&#x7684;&#x4E2A;&#x6570;&#xFF1B;</p><div class=highlight><pre>chart.source(data, {
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>tickCount</span>: <span class=hljs-number>8</span>
+  }
+});
+</pre></div><div class=highlight><pre><span class=hljs-comment>// &#x6216;&#x8005;&#x4F7F;&#x7528; chart.scale()</span>
+chart.scale(<span class=hljs-string>&apos;y&apos;</span>, {
+  <span class=hljs-attr>tickCount</span>: <span class=hljs-number>8</span>
+});
+</pre></div><p>&#x5217;&#x5B9A;&#x4E49;&#x4E2D;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x8BBE;&#x7F6E; tickInterval &#x7528;&#x4E8E;&#x63A7;&#x5236;&#x523B;&#x5EA6;&#x7EBF;&#x7684;&#x95F4;&#x8DDD;&#xFF1B;</p><div class=highlight><pre>chart.source(data, {
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x5F53;&#x4E3A;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x8BF7;&#x4F20;&#x5165;&#x5355;&#x4F4D;&#x4E3A;&#x5FAE;&#x79D2;&#x7684;&#x6570;&#x636E;</span>
+  }
+});
+</pre></div><div class=highlight><pre><span class=hljs-comment>// &#x6216;&#x8005;&#x4F7F;&#x7528; chart.scale()</span>
+chart.scale(<span class=hljs-string>&apos;y&apos;</span>, {
+  <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>1000</span>
+});
+</pre></div><blockquote><p>!&#x6CE8;&#x610F;: tickCount &#x548C; tickInterval &#x4E0D;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8BBE;&#x7F6E;&#x3002;</p></blockquote><p>&#x793A;&#x4F8B;&#xFF1A;</p><div id=chart1></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-01T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>15</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-02T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>26</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-03T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-04T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>12</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-05T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>23</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-06T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>18</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-07T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>21</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-08T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>52</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-09T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>35</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-10T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>47</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-11T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>30</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-12T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>45</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-13T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>75</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-14T00:00:00.000Z&apos;</span> },
+  { <span class=hljs-attr>value</span>: <span class=hljs-number>34</span>, <span class=hljs-attr>time</span>: <span class=hljs-string>&apos;2015-03-15T00:00:00.000Z&apos;</span> }
+];
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;chart1&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>334</span>
+});
+<span class=hljs-keyword>const</span> defs = {
+  <span class=hljs-string>&apos;time&apos;</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;time&apos;</span>,
+    <span class=hljs-attr>nice</span>: <span class=hljs-literal>false</span>,
+    <span class=hljs-attr>mask</span>: <span class=hljs-string>&apos;MM-DD&apos;</span>,
+    <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>2</span> * <span class=hljs-number>24</span> * <span class=hljs-number>60</span> * <span class=hljs-number>60</span> * <span class=hljs-number>1000</span> <span class=hljs-comment>// &#x5BF9;&#x4E8E; linear &#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E; tickInterval &#x53C2;&#x6570;&#x6765;&#x8BBE;&#x5B9A;&#x6BCF;&#x4E2A;&#x523B;&#x5EA6;&#x4E4B;&#x95F4;&#x7684;&#x95F4;&#x8DDD;&#xFF0C;time &#x7C7B;&#x578B;&#x7684;&#x5355;&#x4F4D;&#x4E3A;&#x5FAE;&#x79D2;</span>
+  },
+  <span class=hljs-attr>value</span>: {
+    <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>10</span>
+  }
+};
+chart.source(data,defs);
+chart.line().position(<span class=hljs-string>&apos;time*value&apos;</span>).color(<span class=hljs-string>&apos;red&apos;</span>);
+chart.render();
+</pre></div><h2 id=_&#x5982;&#x4F55;&#x63A7;&#x5236;&#x5750;&#x6807;&#x8F74;&#x7684;&#x663E;&#x793A;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;><a href=#_&#x5982;&#x4F55;&#x63A7;&#x5236;&#x5750;&#x6807;&#x8F74;&#x7684;&#x663E;&#x793A;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x63A7;&#x5236;&#x5750;&#x6807;&#x8F74;&#x7684;&#x663E;&#x793A;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;</h2><p>&#x5217;&#x5B9A;&#x4E49;&#x4E2D;&#xFF0C;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x8BBE;&#x7F6E; <code>min</code> &#x548C; <code>max</code> &#x5B57;&#x6BB5;&#x3002;</p><div class=highlight><pre>chart.source(data, {
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>min</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>max</span>: <span class=hljs-number>100</span>
+  }
+});
+</pre></div><div class=highlight><pre><span class=hljs-comment>// &#x6216;&#x8005;&#x4F7F;&#x7528; chart.scale()</span>
+chart.scale(<span class=hljs-string>&apos;y&apos;</span>, {
+  <span class=hljs-attr>min</span>: <span class=hljs-number>0</span>,
+  <span class=hljs-attr>max</span>: <span class=hljs-number>100</span>
+});
+</pre></div><h2 id=_&#x5982;&#x4F55;&#x683C;&#x5F0F;&#x5316;&#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x6587;&#x672C;><a href=#_&#x5982;&#x4F55;&#x683C;&#x5F0F;&#x5316;&#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x6587;&#x672C; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x683C;&#x5F0F;&#x5316;&#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x6587;&#x672C;</h2><p>&#x5728;&#x5217;&#x5B9A;&#x4E49;&#x4E2D;&#xFF0C;&#x4E3A;&#x5BF9;&#x5E94;&#x5B57;&#x6BB5;&#x8BBE;&#x7F6E; formatter &#x51FD;&#x6570;&#x3002;</p><div class=highlight><pre>chart.source(data, {
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>if</span> (val === <span class=hljs-string>&apos;male&apos;</span>) {
+        <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;&#x7537;&apos;</span>;
+      }
+      <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;&#x5973;&apos;</span>;
+    }
+  }
+});
+</pre></div><div class=highlight><pre><span class=hljs-comment>// &#x6216;&#x8005;&#x4F7F;&#x7528; chart.scale()</span>
+chart.scale(<span class=hljs-string>&apos;y&apos;</span>, {
+  <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+    <span class=hljs-keyword>if</span> (val === <span class=hljs-string>&apos;male&apos;</span>) {
+      <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;&#x7537;&apos;</span>;
+    }
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;&#x5973;&apos;</span>;
+  }
+});
+</pre></div><p>&#x793A;&#x4F8B;&#xFF1A;</p><div id=chart2></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Sports&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>275</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Strategy&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>115</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Action&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>120</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Shooter&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>350</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Other&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>150</span> }
+];
+
+<span class=hljs-keyword>const</span> map = {
+  <span class=hljs-attr>Sports</span>: <span class=hljs-string>&apos;&#x8FD0;&#x52A8;&apos;</span>,
+  <span class=hljs-attr>Strategy</span>: <span class=hljs-string>&apos;&#x7B56;&#x7565;&apos;</span>,
+  <span class=hljs-attr>Action</span>: <span class=hljs-string>&apos;&#x52A8;&#x4F5C;&#x7C7B;&apos;</span>,
+  <span class=hljs-attr>Shooter</span>: <span class=hljs-string>&apos;&#x5C04;&#x51FB;&#x7C7B;&apos;</span>,
+  <span class=hljs-attr>Other</span>: <span class=hljs-string>&apos;&#x5176;&#x4ED6;&apos;</span>
+};
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;chart2&apos;</span>,  <span class=hljs-comment>// &#x6307;&#x5B9A;&#x56FE;&#x8868;&#x5BB9;&#x5668; ID</span>
+  height : <span class=hljs-number>300</span>,     <span class=hljs-comment>// &#x6307;&#x5B9A;&#x56FE;&#x8868;&#x9AD8;&#x5EA6;</span>
+  forceFit: <span class=hljs-literal>true</span>,
+});
+
+chart.source(data, {
+  <span class=hljs-attr>genre</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>return</span> map[val];
+    }, <span class=hljs-comment>// **&#x5173;&#x952E;&#x4EE3;&#x7801;**&#xFF1A;&#x5728;&#x5217;&#x5B9A;&#x4E49;&#x4E2D;&#x8C03;&#x7528; formatter &#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;</span>
+    alias: <span class=hljs-string>&apos;&#x6E38;&#x620F;&#x79CD;&#x7C7B;&apos;</span> <span class=hljs-comment>// &#x5217;&#x5B9A;&#x4E49;&#xFF0C;&#x5B9A;&#x4E49;&#x8BE5;&#x5C5E;&#x6027;&#x663E;&#x793A;&#x7684;&#x522B;&#x540D;</span>
+  },
+  <span class=hljs-attr>sold</span>: {
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x9500;&#x552E;&#x91CF;&apos;</span>
+  }
+});
+chart.interval().position(<span class=hljs-string>&apos;genre*sold&apos;</span>).color(<span class=hljs-string>&apos;genre&apos;</span>);
+chart.render();
+</pre></div><h2 id=_&#x5982;&#x4F55;&#x8BBE;&#x7F6E;&#x56FE;&#x4F8B;&#x9879;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;><a href=#_&#x5982;&#x4F55;&#x8BBE;&#x7F6E;&#x56FE;&#x4F8B;&#x9879;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x8BBE;&#x7F6E;&#x56FE;&#x4F8B;&#x9879;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;</h2><p><code>chart.filter(&apos;field&apos;, callback)</code></p><p>&#x53EF;&#x4EE5;&#x8FC7;&#x6EE4;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5176;&#x4E2D; callback &#x662F;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570; field &#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x53C2;&#x8003;&#x4E0B;&#x9762; demo&#xFF1A;</p><div id=c1></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>6.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>9.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>3</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>14.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>4</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>18.2</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>5</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>21.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>6</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>25.2</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>26.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>8</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>23.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>18.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>13.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>11</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>9.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;tokyo&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>-0.2</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>0.8</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>5.7</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>3</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>11.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>4</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>17</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>5</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>22</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>6</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>24.8</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>24.1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>8</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>20.1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>14.1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>8.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>11</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>2.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;newYork&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>0</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>-0.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>0.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>2</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>3.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>3</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>8.4</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>4</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>13.5</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>5</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>17</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>6</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>18.6</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>7</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>17.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>8</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>14.3</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>10</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>3.9</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-number>11</span>, <span class=hljs-attr>tem</span>: <span class=hljs-number>1</span>, <span class=hljs-attr>city</span>: <span class=hljs-string>&apos;berlin&apos;</span> }
+];
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>800</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>350</span>
+});
+
+<span class=hljs-keyword>const</span> defs = {
+  <span class=hljs-attr>month</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;cat&apos;</span>,
+    <span class=hljs-attr>values</span>: [ <span class=hljs-string>&apos;&#x4E00;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x4E8C;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x4E09;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x56DB;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x4E94;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x516D;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x4E03;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x516B;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x4E5D;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x5341;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x5341;&#x4E00;&#x6708;&apos;</span>, <span class=hljs-string>&apos;&#x5341;&#x4E8C;&#x6708;&apos;</span> ]
+  }
+};
+
+chart.source(data,defs);
+chart.filter(<span class=hljs-string>&apos;city&apos;</span>, val =&gt; {
+  <span class=hljs-keyword>return</span> val === <span class=hljs-string>&apos;berlin&apos;</span>;
+}); <span class=hljs-comment>// &#x53EA;&#x5C55;&#x793A; berlin &#x7684;&#x6570;&#x636E;</span>
+chart.line().position(<span class=hljs-string>&apos;month*tem&apos;</span>).color(<span class=hljs-string>&apos;city&apos;</span>);
+chart.render();
+</pre></div><h2 id=_&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x591A;-y-&#x8F74;&#x56FE;&#x8868;><a href=#_&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x591A;-y-&#x8F74;&#x56FE;&#x8868; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x591A; y &#x8F74;&#x56FE;&#x8868;</h2><p>&#x5728; G2 &#x4E2D;&#xFF0C;&#x5B9E;&#x73B0;&#x591A; Y &#x8F74;&#x7684;&#x7ED8;&#x5236;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x6237;&#x5B8C;&#x5168;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x4EFB;&#x4F55;&#x914D;&#x7F6E;&#x3002;&#x53EA;&#x8981;&#x505A;&#x5230;&#x5404;&#x4E2A; geom &#x7684; X &#x8F74;&#x5C5E;&#x6027;&#x76F8;&#x540C;&#xFF0C; Y &#x8F74;&#x5C5E;&#x6027;&#x4E0D;&#x540C;&#xFF0C;G2 &#x5C31;&#x4F1A;&#x4E3A;&#x60A8;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x3002;</p><div class=highlight><pre>chart.interval().position(<span class=hljs-string>&apos;month*rainfall&apos;</span>).color(<span class=hljs-string>&apos;#95ceff&apos;</span>); 
+chart.line().position(<span class=hljs-string>&apos;month*temperature&apos;</span>).color(<span class=hljs-string>&apos;#90ed7d&apos;</span>).size(<span class=hljs-number>2</span>).shape(<span class=hljs-string>&apos;smooth&apos;</span>);
+</pre></div><p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E24;&#x6761; y &#x8F74;&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94; <code>rainfall</code> &#x548C; <code>temperature</code>&#x3002;</p><p>&#x793A;&#x4F8B;&#xFF1A;</p><div id=chart3></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Jan&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>49.9</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1016</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>7</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Feb&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>71.5</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1016</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>6.9</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Mar&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>106.4</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1015.9</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>9.5</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Apr&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>129.2</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1015.5</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>14.5</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;May&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>144</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1012.3</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>18.2</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Jun&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>176</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1009.5</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>21.5</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Jul&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>135.6</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1009.6</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>25.2</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Aug&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>148.5</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1010.2</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>26.5</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Sep&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>216.4</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1013.1</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>23.3</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Oct&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>194.1</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1016.9</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>18.3</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Nov&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>95.6</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1018.2</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>13.9</span> },
+  { <span class=hljs-attr>month</span>: <span class=hljs-string>&apos;Dec&apos;</span>, <span class=hljs-attr>rainfall</span>: <span class=hljs-number>54.4</span>, <span class=hljs-attr>seaLevelPressure</span>: <span class=hljs-number>1016.7</span>, <span class=hljs-attr>temperature</span>: <span class=hljs-number>9.6</span> }
+];
+
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;chart3&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>, <span class=hljs-comment>// &#x5BBD;&#x5EA6;&#x81EA;&#x9002;&#x5E94;</span>
+  height: <span class=hljs-number>300</span>,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>60</span>, <span class=hljs-number>160</span>, <span class=hljs-number>60</span>, <span class=hljs-number>90</span> ]
+});
+
+chart.source(data, {
+  <span class=hljs-attr>rainfall</span>: {
+    <span class=hljs-attr>min</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>50</span>,
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x964D;&#x96E8;&#x91CF;&apos;</span>
+  },
+  <span class=hljs-attr>temperature</span>: {
+    <span class=hljs-attr>min</span>: <span class=hljs-number>5</span>,
+    <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>5</span>,
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x6E29;&#x5EA6;&apos;</span>
+  },
+  <span class=hljs-attr>seaLevelPressure</span>: {
+    <span class=hljs-attr>min</span>: <span class=hljs-number>1008</span>,
+    <span class=hljs-attr>max</span>: <span class=hljs-number>1028</span>,
+    <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>4</span>,
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x6D77;&#x5E73;&#x9762;&#x6C14;&#x538B;&apos;</span>
+  }
+});
+<span class=hljs-comment>// &#x5DE6;&#x4FA7; Y &#x8F74;&#xFF0C;&#x5373;&#x964D;&#x96E8;&#x91CF;&#x8F74;</span>
+chart.axis(<span class=hljs-string>&apos;rainfall&apos;</span>, {
+  <span class=hljs-attr>label</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>return</span> val + <span class=hljs-string>&apos; mm&apos;</span>; <span class=hljs-comment>// &#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x663E;&#x793A;</span>
+    },
+    <span class=hljs-attr>textStyle</span>: {
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#95ceff&apos;</span>
+    }
+  },
+  <span class=hljs-attr>line</span>: <span class=hljs-literal>null</span>,
+  <span class=hljs-attr>tickLine</span>: <span class=hljs-literal>null</span>
+});
+<span class=hljs-comment>// &#x53F3;&#x4FA7;&#x7B2C;&#x4E00;&#x4E2A; Y &#x8F74;&#xFF0C;&#x5373;&#x6E29;&#x5EA6;&#x8F74;</span>
+chart.axis(<span class=hljs-string>&apos;temperature&apos;</span>, {
+  <span class=hljs-attr>line</span>: <span class=hljs-literal>null</span>,
+  <span class=hljs-attr>tickLine</span>: <span class=hljs-literal>null</span>,
+  <span class=hljs-attr>label</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>return</span> val + <span class=hljs-string>&apos; &#xB0;C&apos;</span>; <span class=hljs-comment>// &#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x663E;&#x793A;</span>
+    },
+    <span class=hljs-attr>textStyle</span>: {
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#90ed7d&apos;</span>
+    }
+  }
+});
+<span class=hljs-comment>// &#x53F3;&#x4FA7;&#x7B2C;&#x4E8C;&#x4E2A; Y &#x8F74;&#xFF0C;&#x5373;&#x6D77;&#x5E73;&#x9762;&#x6C14;&#x538B;&#x8F74;</span>
+chart.axis(<span class=hljs-string>&apos;seaLevelPressure&apos;</span>, {
+  <span class=hljs-attr>line</span>: <span class=hljs-literal>null</span>,
+  <span class=hljs-attr>tickLine</span>: <span class=hljs-literal>null</span>,
+  <span class=hljs-attr>label</span>: {
+    <span class=hljs-attr>offset</span>: <span class=hljs-number>80</span>,
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>return</span> val + <span class=hljs-string>&apos; mb&apos;</span>; <span class=hljs-comment>// &#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x663E;&#x793A;</span>
+    },
+    <span class=hljs-attr>textStyle</span>: {
+      <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#333&apos;</span>
+    }
+  }
+});
+
+chart.legend({
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;top&apos;</span>
+});
+chart.tooltip({
+  <span class=hljs-attr>crosshairs</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;line&apos;</span>
+  }
+});
+
+chart.interval().position(<span class=hljs-string>&apos;month*rainfall&apos;</span>).color(<span class=hljs-string>&apos;#95ceff&apos;</span>); <span class=hljs-comment>// &#x964D;&#x96E8;&#x91CF;</span>
+chart.line().position(<span class=hljs-string>&apos;month*temperature&apos;</span>).color(<span class=hljs-string>&apos;#90ed7d&apos;</span>).size(<span class=hljs-number>2</span>).shape(<span class=hljs-string>&apos;smooth&apos;</span>); <span class=hljs-comment>// &#x6E29;&#x5EA6;</span>
+chart.point().position(<span class=hljs-string>&apos;month*temperature&apos;</span>).color(<span class=hljs-string>&apos;#90ed7d&apos;</span>).shape(<span class=hljs-string>&apos;diamond&apos;</span>);
+chart.line()
+  .position(<span class=hljs-string>&apos;month*seaLevelPressure&apos;</span>)
+  .shape(<span class=hljs-string>&apos;smooth&apos;</span>)
+  .size(<span class=hljs-number>2</span>)
+  .color(<span class=hljs-string>&apos;#333&apos;</span>)
+  .style({
+    <span class=hljs-attr>lineDash</span>: [ <span class=hljs-number>3</span>, <span class=hljs-number>3</span> ]
+  }); <span class=hljs-comment>// &#x6D77;&#x5E73;&#x9762;&#x6C14;&#x538B;</span>
+chart.render();
+</pre></div><h2 id=_&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x6DF7;&#x5408;&#x56FE;&#x8868;><a href=#_&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x6DF7;&#x5408;&#x56FE;&#x8868; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x6DF7;&#x5408;&#x56FE;&#x8868;</h2><p>G2 &#x91C7;&#x7528;&#x56FE;&#x5C42;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x51E0;&#x4F55;&#x6807;&#x8BB0; geom &#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x56FE;&#x5F62;&#xFF0C;&#x5F53;&#x9700;&#x8981;&#x7ED8;&#x5236;&#x6DF7;&#x5408;&#x56FE;&#x8868;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x5728; chart &#x5BF9;&#x8C61;&#x4E0A;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x7684; geom &#x51E0;&#x4F55;&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#x3002;</p><img src=https://gw.alipayobjects.com/zos/rmsportal/jpAgivmGbFwUhULQyvUq.png width=80%><p>&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x9664;&#x4E86;&#x751F;&#x6210;&#x591A; Y &#x8F74;&#x4E4B;&#x5916;&#x8FD8;&#x7ED8;&#x5236;&#x4E86;&#x6DF7;&#x5408;&#x56FE;&#x8868;&#xFF08;&#x67F1;&#x72B6;&#x56FE;&#x3001;&#x7EBF;&#x56FE;&#x4EE5;&#x53CA;&#x70B9;&#x56FE;&#xFF09;&#x3002;</p><p>&#x53C2;&#x8003;<a href=#%E5%A6%82%E4%BD%95%E7%BB%98%E5%88%B6%E5%A4%9A-y-%E8%BD%B4%E5%9B%BE%E8%A1%A8>&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x591A; y &#x8F74;&#x56FE;&#x8868;</a>&#x3002;</p><h2 id=_&#x5982;&#x4F55;&#x4FEE;&#x6539;-tooltip-&#x7684;&#x663E;&#x793A;&#x5185;&#x5BB9;><a href=#_&#x5982;&#x4F55;&#x4FEE;&#x6539;-tooltip-&#x7684;&#x663E;&#x793A;&#x5185;&#x5BB9; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x4FEE;&#x6539; tooltip &#x7684;&#x663E;&#x793A;&#x5185;&#x5BB9;</h2><p>G2 &#x63D0;&#x4F9B;&#x4E86;&#x591A;&#x79CD;&#x4FEE;&#x6539; tooltip &#x663E;&#x793A;&#x5185;&#x5BB9;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8BE6;&#x89C1; <a href=./tooltip.html>tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a> &#x6559;&#x7A0B;&#x3002;</p><h2 id=_&#x5982;&#x4F55;&#x5BFC;&#x51FA;&#x56FE;&#x7247;><a href=#_&#x5982;&#x4F55;&#x5BFC;&#x51FA;&#x56FE;&#x7247; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x5BFC;&#x51FA;&#x56FE;&#x7247;</h2><p>&#x76F4;&#x63A5;&#x8C03;&#x7528; <code>chart.downloadImage();</code> &#x5373;&#x53EF;&#x5BFC;&#x51FA;&#x56FE;&#x7247;&#x3002;</p><p>&#x4F46;&#x662F;&#x6CE8;&#x610F;&#x6700;&#x597D;&#x5728; chart &#x751F;&#x6210;&#x540E;&#x5EF6;&#x65F6;&#x51E0;&#x79D2;&#x8C03;&#x7528;&#xFF0C;&#x56E0;&#x4E3A; chart &#x9ED8;&#x8BA4;&#x662F;&#x6709;&#x6267;&#x884C;&#x52A8;&#x753B;&#x7684;&#xFF0C;&#x5982;&#xFF1A;</p><div class=highlight><pre>setTimeout(<span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params></span>) </span>{
+  chart.downloadImage();
+}, <span class=hljs-number>1500</span>);
+</pre></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/en-us/g2/3.x/tutorial/faq.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const data = [
+  { value: 10, time: '2015-03-01T00:00:00.000Z' },
+  { value: 15, time: '2015-03-02T00:00:00.000Z' },
+  { value: 26, time: '2015-03-03T00:00:00.000Z' },
+  { value: 9, time: '2015-03-04T00:00:00.000Z' },
+  { value: 12, time: '2015-03-05T00:00:00.000Z' },
+  { value: 23, time: '2015-03-06T00:00:00.000Z' },
+  { value: 18, time: '2015-03-07T00:00:00.000Z' },
+  { value: 21, time: '2015-03-08T00:00:00.000Z' },
+  { value: 52, time: '2015-03-09T00:00:00.000Z' },
+  { value: 35, time: '2015-03-10T00:00:00.000Z' },
+  { value: 47, time: '2015-03-11T00:00:00.000Z' },
+  { value: 30, time: '2015-03-12T00:00:00.000Z' },
+  { value: 45, time: '2015-03-13T00:00:00.000Z' },
+  { value: 75, time: '2015-03-14T00:00:00.000Z' },
+  { value: 34, time: '2015-03-15T00:00:00.000Z' }
+];
+const chart = new G2.Chart({
+  container: 'chart1',
+  forceFit: true,
+  height: 334
+});
+const defs = {
+  'time': {
+    type: 'time',
+    nice: false,
+    mask: 'MM-DD',
+    tickInterval: 2 * 24 * 60 * 60 * 1000 // 对于 linear 类型的数据，可以设置 tickInterval 参数来设定每个刻度之间的间距，time 类型的单位为微秒
+  },
+  value: {
+    tickInterval: 10
+  }
+};
+chart.source(data,defs);
+chart.line().position('time*value').color('red');
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
+];
+
+const map = {
+  Sports: '运动',
+  Strategy: '策略',
+  Action: '动作类',
+  Shooter: '射击类',
+  Other: '其他'
+};
+
+const chart = new G2.Chart({
+  container: 'chart2',  // 指定图表容器 ID
+  height : 300,     // 指定图表高度
+  forceFit: true,
+});
+
+chart.source(data, {
+  genre: {
+    formatter: val => {
+      return map[val];
+    }, // **关键代码**：在列定义中调用 formatter 回调函数，
+    alias: '游戏种类' // 列定义，定义该属性显示的别名
+  },
+  sold: {
+    alias: '销售量'
+  }
+});
+chart.interval().position('genre*sold').color('genre');
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { month: 0, tem: 7, city: 'tokyo' },
+  { month: 1, tem: 6.9, city: 'tokyo' },
+  { month: 2, tem: 9.5, city: 'tokyo' },
+  { month: 3, tem: 14.5, city: 'tokyo' },
+  { month: 4, tem: 18.2, city: 'tokyo' },
+  { month: 5, tem: 21.5, city: 'tokyo' },
+  { month: 6, tem: 25.2, city: 'tokyo' },
+  { month: 7, tem: 26.5, city: 'tokyo' },
+  { month: 8, tem: 23.3, city: 'tokyo' },
+  { month: 9, tem: 18.3, city: 'tokyo' },
+  { month: 10, tem: 13.9, city: 'tokyo' },
+  { month: 11, tem: 9.6, city: 'tokyo' },
+  { month: 0, tem: -0.2, city: 'newYork' },
+  { month: 1, tem: 0.8, city: 'newYork' },
+  { month: 2, tem: 5.7, city: 'newYork' },
+  { month: 3, tem: 11.3, city: 'newYork' },
+  { month: 4, tem: 17, city: 'newYork' },
+  { month: 5, tem: 22, city: 'newYork' },
+  { month: 6, tem: 24.8, city: 'newYork' },
+  { month: 7, tem: 24.1, city: 'newYork' },
+  { month: 8, tem: 20.1, city: 'newYork' },
+  { month: 9, tem: 14.1, city: 'newYork' },
+  { month: 10, tem: 8.6, city: 'newYork' },
+  { month: 11, tem: 2.5, city: 'newYork' },
+  { month: 0, tem: -0.9, city: 'berlin' },
+  { month: 1, tem: 0.6, city: 'berlin' },
+  { month: 2, tem: 3.5, city: 'berlin' },
+  { month: 3, tem: 8.4, city: 'berlin' },
+  { month: 4, tem: 13.5, city: 'berlin' },
+  { month: 5, tem: 17, city: 'berlin' },
+  { month: 6, tem: 18.6, city: 'berlin' },
+  { month: 7, tem: 17.9, city: 'berlin' },
+  { month: 8, tem: 14.3, city: 'berlin' },
+  { month: 9, tem: 9, city: 'berlin' },
+  { month: 10, tem: 3.9, city: 'berlin' },
+  { month: 11, tem: 1, city: 'berlin' }
+];
+
+const chart = new G2.Chart({
+  container: 'c1',
+  width: 800,
+  height: 350
+});
+
+const defs = {
+  month: {
+    type: 'cat',
+    values: [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月' ]
+  }
+};
+
+chart.source(data,defs);
+chart.filter('city', val => {
+  return val === 'berlin';
+}); // 只展示 berlin 的数据
+chart.line().position('month*tem').color('city');
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { month: 'Jan', rainfall: 49.9, seaLevelPressure: 1016, temperature: 7 },
+  { month: 'Feb', rainfall: 71.5, seaLevelPressure: 1016, temperature: 6.9 },
+  { month: 'Mar', rainfall: 106.4, seaLevelPressure: 1015.9, temperature: 9.5 },
+  { month: 'Apr', rainfall: 129.2, seaLevelPressure: 1015.5, temperature: 14.5 },
+  { month: 'May', rainfall: 144, seaLevelPressure: 1012.3, temperature: 18.2 },
+  { month: 'Jun', rainfall: 176, seaLevelPressure: 1009.5, temperature: 21.5 },
+  { month: 'Jul', rainfall: 135.6, seaLevelPressure: 1009.6, temperature: 25.2 },
+  { month: 'Aug', rainfall: 148.5, seaLevelPressure: 1010.2, temperature: 26.5 },
+  { month: 'Sep', rainfall: 216.4, seaLevelPressure: 1013.1, temperature: 23.3 },
+  { month: 'Oct', rainfall: 194.1, seaLevelPressure: 1016.9, temperature: 18.3 },
+  { month: 'Nov', rainfall: 95.6, seaLevelPressure: 1018.2, temperature: 13.9 },
+  { month: 'Dec', rainfall: 54.4, seaLevelPressure: 1016.7, temperature: 9.6 }
+];
+
+const chart = new G2.Chart({
+  container: 'chart3',
+  forceFit: true, // 宽度自适应
+  height: 300,
+  padding: [ 60, 160, 60, 90 ]
+});
+
+chart.source(data, {
+  rainfall: {
+    min: 0,
+    tickInterval: 50,
+    alias: '降雨量'
+  },
+  temperature: {
+    min: 5,
+    tickInterval: 5,
+    alias: '温度'
+  },
+  seaLevelPressure: {
+    min: 1008,
+    max: 1028,
+    tickInterval: 4,
+    alias: '海平面气压'
+  }
+});
+// 左侧 Y 轴，即降雨量轴
+chart.axis('rainfall', {
+  label: {
+    formatter: val => {
+      return val + ' mm'; // 格式化坐标轴显示
+    },
+    textStyle: {
+      fill: '#95ceff'
+    }
+  },
+  line: null,
+  tickLine: null
+});
+// 右侧第一个 Y 轴，即温度轴
+chart.axis('temperature', {
+  line: null,
+  tickLine: null,
+  label: {
+    formatter: val => {
+      return val + ' °C'; // 格式化坐标轴显示
+    },
+    textStyle: {
+      fill: '#90ed7d'
+    }
+  }
+});
+// 右侧第二个 Y 轴，即海平面气压轴
+chart.axis('seaLevelPressure', {
+  line: null,
+  tickLine: null,
+  label: {
+    offset: 80,
+    formatter: val => {
+      return val + ' mb'; // 格式化坐标轴显示
+    },
+    textStyle: {
+      fill: '#333'
+    }
+  }
+});
+
+chart.legend({
+  position: 'top'
+});
+chart.tooltip({
+  crosshairs: {
+    type: 'line'
+  }
+});
+
+chart.interval().position('month*rainfall').color('#95ceff'); // 降雨量
+chart.line().position('month*temperature').color('#90ed7d').size(2).shape('smooth'); // 温度
+chart.point().position('month*temperature').color('#90ed7d').shape('diamond');
+chart.line()
+  .position('month*seaLevelPressure')
+  .shape('smooth')
+  .size(2)
+  .color('#333')
+  .style({
+    lineDash: [ 3, 3 ]
+  }); // 海平面气压
+chart.render();
+
+})();</script></body></html>

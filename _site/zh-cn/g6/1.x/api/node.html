@@ -1,0 +1,201 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Node - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G6</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/api/index.html>G6</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/graph.html>Graph</a></li><li class="list-group-item active"><a href=/zh-cn/g6/1.x/api/node.html>Node</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/edge.html>Edge</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/net.html>Net</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/tree.html>Tree</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/handler.html>Handler</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/Layouts.html>Layouts</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/matrix.html>Matrix</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/canvas.html>Canvas</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/global.html>Global</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/util.html>Util</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/plugins.html>Plugins</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_Node><a href=#_Node class=anchor></a>Node</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#_show>show</a><a class="col-md-3 level-3" href=#_hide>hide</a><a class="col-md-3 level-3" href=#_getKeyShape>getKeyShape</a><a class="col-md-3 level-3" href=#_getBBox>getBBox</a><a class="col-md-3 level-3" href=#_getModel>getModel</a><a class="col-md-3 level-3" href=#_getGroup>getGroup</a><a class="col-md-3 level-3" href=#_getShapeCfg>getShapeCfg</a><a class="col-md-3 level-3" href=#_showAnchor>showAnchor</a><a class="col-md-3 level-3" href=#_getAnchor>getAnchor</a><a class="col-md-3 level-3" href=#_getEdges>getEdges</a><a class="col-md-3 level-3" href=#_getLinkNodes>getLinkNodes</a><a class="col-md-3 level-3" href=#_getUnLinkNodes>getUnLinkNodes</a><a class="col-md-3 level-3" href=#_getRelativeItems>getRelativeItems</a><a class="col-md-3 level-3" href=#_getUnRelativeItems>getUnRelativeItems</a></div><p>G6 &#x5185;&#x90E8;&#x7684;<code>&#x8282;&#x70B9;(node)</code>&#x3002;&#x672C;&#x6587;&#x6863;&#x5C06;&#x5411;&#x5927;&#x5BB6;&#x8BF4;&#x660E;&#xFF0C;&#x8282;&#x70B9;&#x5DF2;&#x5F00;&#x653E;&#x7684; API&#x3002;</p><h2 id=_&#x65B9;&#x6CD5;><a href=#_&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=_show><a href=#_show class=anchor><span class="iconfont icon-link"></span></a>show</h3><p>&#x663E;&#x793A;</p><h3 id=_hide><a href=#_hide class=anchor><span class="iconfont icon-link"></span></a>hide</h3><p>&#x9690;&#x85CF;</p><h3 id=_getKeyShape><a href=#_getKeyShape class=anchor><span class="iconfont icon-link"></span></a>getKeyShape</h3><p>&#x83B7;&#x53D6;&#x5173;&#x952E;&#x5F62;</p><h3 id=_getBBox><a href=#_getBBox class=anchor><span class="iconfont icon-link"></span></a>getBBox</h3><p>&#x83B7;&#x53D6;&#x5305;&#x56F4;&#x76D2;</p><h3 id=_getModel><a href=#_getModel class=anchor><span class="iconfont icon-link"></span></a>getModel</h3><p>&#x83B7;&#x53D6;&#x6570;&#x636E;&#x6A21;&#x578B;</p><h3 id=_getGroup><a href=#_getGroup class=anchor><span class="iconfont icon-link"></span></a>getGroup</h3><p>&#x83B7;&#x53D6;&#x56FE;&#x5F62;&#x56FE;&#x7EC4;</p><h3 id=_getShapeCfg><a href=#_getShapeCfg class=anchor><span class="iconfont icon-link"></span></a>getShapeCfg</h3><p>&#x83B7;&#x53D6;&#x7ED8;&#x5236;&#x914D;&#x7F6E;&#x9879;</p><h3 id=_showAnchor><a href=#_showAnchor class=anchor><span class="iconfont icon-link"></span></a>showAnchor</h3><p>&#x663E;&#x793A;&#x951A;&#x70B9;</p><h3 id=_getAnchor><a href=#_getAnchor class=anchor><span class="iconfont icon-link"></span></a>getAnchor</h3><p>&#x83B7;&#x53D6;&#x951A;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6;&#x951A;&#x70B9;
+ * @param  {Object} &#x8F93;&#x5165;&#x662F;&#x4E00;&#x4E2A;&#x70B9;&#x5219;&#x8FD4;&#x56DE;&#x8BE5;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x951A;&#x70B9; {x: number, y: number}
+ * @return {Object} point &#x951A;&#x70B9; {x: number, y: number}
+ */</span>
+node.getAnchor(param);
+</pre></div><h3 id=_getEdges><a href=#_getEdges class=anchor><span class="iconfont icon-link"></span></a>getEdges</h3><p>&#x83B7;&#x53D6;&#x8BE5;&#x8282;&#x70B9;&#x6240;&#x6709;&#x8FB9;</p><h3 id=_getLinkNodes><a href=#_getLinkNodes class=anchor><span class="iconfont icon-link"></span></a>getLinkNodes</h3><p>&#x83B7;&#x53D6;&#x6709;&#x8FDE;&#x63A5;&#x7684;&#x5B50;&#x9879;</p><h3 id=_getUnLinkNodes><a href=#_getUnLinkNodes class=anchor><span class="iconfont icon-link"></span></a>getUnLinkNodes</h3><p>&#x83B7;&#x53D6;&#x65E0;&#x8FDE;&#x63A5;&#x7684;&#x5B50;&#x9879;</p><h3 id=_getRelativeItems><a href=#_getRelativeItems class=anchor><span class="iconfont icon-link"></span></a>getRelativeItems</h3><p>&#x83B7;&#x53D6;&#x6709;&#x5173;&#x8054;&#x7684;&#x5B50;&#x9879;</p><h3 id=_getUnRelativeItems><a href=#_getUnRelativeItems class=anchor><span class="iconfont icon-link"></span></a>getUnRelativeItems</h3><p>&#x83B7;&#x53D6;&#x65E0;&#x5173;&#x8054;&#x7684;&#x5B50;&#x9879;</p><p><button id=getEdges>getEdges</button> &#xA0;&#xA0;<button id=getLinkNodes>getLinkNodes</button> &#xA0;&#xA0;<button id=getUnLinkNodes>getUnLinkNodes</button> &#xA0;&#xA0;<button id=getRelativeItems>getRelativeItems</button> &#xA0;&#xA0;<button id=getUnRelativeItems>getUnRelativeItems</button> &#xA0;&#xA0;</p><div id=c0></div><p><a href=../demo/other/node-get-fun.html>&#x793A;&#x4F8B;&#x6E90;&#x7801;</a></p><div class=prev-next><a href=/zh-cn/g6/1.x/api/graph.html class="float-left pre">Graph </a><a href=/zh-cn/g6/1.x/api/edge.html class="float-right next">Edge</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g6","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g6/1.x/api/node.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+var Util = G6.Util;
+// 第三步：设置数据
+var data = {
+  "source": {
+    "nodes": [
+      {
+        "shape": "rect",
+        "label": "节点",
+        "id": "keyNode",
+        "x": 710,
+        "y": 260,
+        "color": "#FF9D2D"
+      },
+      {
+        "shape": "rect",
+        "label": "节点1",
+        "x": 780,
+        "y": 150,
+        "id": "f7171de1"
+      },
+      {
+        "shape": "rect",
+        "label": "节点2",
+        "x": 550,
+        "y": 210,
+        "id": "f2201be8"
+      },
+      {
+        "shape": "rect",
+        "label": "节点3",
+        "x": 590,
+        "y": 340,
+        "id": "b5b421cf"
+      },
+      {
+        "shape": "rect",
+        "label": "节点4",
+        "x": 780,
+        "y": 360,
+        "id": "a285b5dc"
+      }
+    ],
+    "edges": [
+      {
+        "shape": "arrow",
+        "source": "keyNode",
+        "target": "f2201be8",
+        "id": "672f31fc"
+      },
+      {
+        "shape": "arrow",
+        "source": "keyNode",
+        "target": "b5b421cf",
+        "id": "62ed8cb2"
+      },
+      {
+        "shape": "arrow",
+        "source": "b5b421cf",
+        "target": "keyNode",
+        "id": "4542e914",
+        "controlPoints": [
+          {
+            "x": 590,
+            "y": 324
+          },
+          {
+            "x": 590,
+            "y": 260
+          },
+          {
+            "x": 679,
+            "y": 260
+          }
+        ]
+      },
+      {
+        "shape": "smoothArrow",
+        "source": "f7171de1",
+        "target": "keyNode",
+        "id": "58624bdb",
+        "controlPoints": [
+          {
+            "x": 749,
+            "y": 150
+          },
+          {
+            "x": 700,
+            "y": 150
+          },
+          {
+            "x": 710,
+            "y": 244
+          }
+        ]
+      },
+      {
+        "shape": "arrow",
+        "source": "f7171de1",
+        "target": "a285b5dc",
+        "id": "f119308c"
+      }
+    ]
+  }
+};
+// 第四步：配置G6画布
+var net = new G6.Net({
+    id: 'c0',      // 容器ID
+    fitView: 'autoZoom',
+    mode: 'none',
+    width: 500,    // 画布宽
+    height: 500    // 画布高
+  });
+// 第五步：载入数据
+net.read(Util.clone(data));
+// 第六步：渲染关系图
+net.render();
+
+$('#getEdges').on('click', function(){
+  reRender(); // 重新渲染
+  var keyNode = net.find('keyNode');
+  var edges = keyNode.getEdges();
+  Util.each(edges, function(edge){
+    net.update(edge, {
+      color: '#00B07C'  
+    });
+  });
+  net.refresh();
+});
+
+$('#getLinkNodes').on('click', function(){
+  reRender(); // 重新渲染
+  var keyNode = net.find('keyNode');
+  var nodes = keyNode.getLinkNodes();
+  Util.each(nodes, function(node){
+    net.update(node, {
+      color: '#00B07C'  
+    });
+  });
+  net.refresh();
+});
+
+$('#getUnLinkNodes').on('click', function(){
+  reRender(); // 重新渲染
+  var keyNode = net.find('keyNode');
+  var nodes = keyNode.getUnLinkNodes();
+  Util.each(nodes, function(node){
+    net.update(node, {
+      color: '#00B07C'  
+    });
+  });
+  net.refresh();
+});
+
+$('#getRelativeItems').on('click', function(){
+  reRender(); // 重新渲染
+  var keyNode = net.find('keyNode');
+  var items = keyNode.getRelativeItems();
+  Util.each(items, function(item){
+    net.update(item, {
+      color: '#00B07C'  
+    });
+  });
+  net.refresh();
+});
+
+$('#getUnRelativeItems').on('click', function(){
+  reRender(); // 重新渲染
+  var keyNode = net.find('keyNode');
+  var items = keyNode.getUnRelativeItems();
+  Util.each(items, function(item){
+    net.update(item, {
+      color: '#00B07C'  
+    });
+  });
+  net.refresh();
+});
+
+function reRender(){
+  net.clear();
+  net.read(Util.clone(data));
+  net.render();
+}
+
+})();</script></body></html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Animation &#x52A8;&#x753B; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>F2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/f2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/f2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/f2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/f2/3.x/api/index.html>F2</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/chart.html>Chart</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/geometry.html>Geometry &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/coordinate.html>Coordinate &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/axis.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/interaction.html>Interaction &#x4EA4;&#x4E92;</a></li><li class="list-group-item active"><a href=/zh-cn/f2/3.x/api/animation.html>Animation &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/global.html>Global &#x5168;&#x5C40;&#x914D;&#x7F6E;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/shape.html>Shape &#x81EA;&#x5B9A;&#x4E49; Shape</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/plugin.html>Plugin &#x63D2;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/graphic.html>G &#x7ED8;&#x56FE;&#x63A5;&#x53E3;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/canvas.html>&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x52A8;&#x753B;><a href=#_&#x52A8;&#x753B; class=anchor></a>&#x52A8;&#x753B;</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x5982;&#x4F55;&#x6309;&#x9700;&#x5F15;&#x7528;>&#x5982;&#x4F55;&#x6309;&#x9700;&#x5F15;&#x7528;</a><a class="col-md-3 level-2" href=#_&#x914D;&#x7F6E;&#x52A8;&#x753B;>&#x914D;&#x7F6E;&#x52A8;&#x753B;</a><a class="col-md-3 level-3" href=#_&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#xFF1A;>&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#xFF1A;</a><a class="col-md-3 level-3" href=#_geom.animate->geom.animate()</a><a class="col-md-3 level-3" href=#_&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;>&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;</a><a class="col-md-3 level-3" href=#_shape.animate->shape.animate()</a></div><p>F2 &#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x52A8;&#x753B;&#x7248;&#x672C;&#xFF1A;</p><ol><li>&#x5165;&#x573A;&#x52A8;&#x753B;</li><li>&#x7CBE;&#x7EC6;&#x52A8;&#x753B;&#xFF0C;&#x5305;&#x542B;&#x5165;&#x573A;&#x52A8;&#x753B;&#x3001;&#x66F4;&#x65B0;&#x52A8;&#x753B;&#x4EE5;&#x53CA;&#x9500;&#x6BC1;&#x52A8;&#x753B;</li></ol><p>&#x5F53;&#x56FE;&#x8868;&#x4EC5;&#x7528;&#x4E8E;&#x5C55;&#x793A;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x7F29;&#x51CF;&#x4EE3;&#x7801;&#x4F53;&#x91CF;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x7B2C;&#x4E00;&#x79CD;&#x52A8;&#x753B;&#xFF0C;&#x5373;&#x4EC5;&#x5305;&#x542B;&#x5165;&#x573A;&#x52A8;&#x753B;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x4E30;&#x5BCC;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x7B2C;&#x4E8C;&#x79CD;&#x52A8;&#x753B;&#x7B56;&#x7565;&#x3002;</p><p>&#x53E6;&#x5916; F2 &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x673A;&#x5236;&#xFF0C;&#x5E2E;&#x52A9;&#x7528;&#x6237;&#x5B9A;&#x5236;&#x66F4;&#x52A0;&#x751F;&#x52A8;&#x3001;&#x66F4;&#x5177;&#x573A;&#x666F;&#x7684;&#x52A8;&#x753B;&#x3002;</p><p>&#x5B8C;&#x6574;&#x7248;&#x7684; F2 &#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x7CBE;&#x7EC6;&#x52A8;&#x753B;&#xFF0C;&#x5F53;&#x7136;&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6309;&#x9700;&#x5F15;&#x7528;&#x7B56;&#x7565;&#xFF0C;&#x9009;&#x62E9;&#x9002;&#x5408;&#x81EA;&#x5DF1;&#x573A;&#x666F;&#x7684;&#x52A8;&#x753B;&#xFF1A;</p><h2 id=_&#x5982;&#x4F55;&#x6309;&#x9700;&#x5F15;&#x7528;><a href=#_&#x5982;&#x4F55;&#x6309;&#x9700;&#x5F15;&#x7528; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x6309;&#x9700;&#x5F15;&#x7528;</h2><ol><li>&#x4EC5;&#x5305;&#x542B;&#x5165;&#x573A;&#x52A8;&#x753B;&#x7248;&#x672C;</li></ol><div class=highlight><pre><span class=hljs-keyword>const</span> GroupAnimation = <span class=hljs-built_in>require</span>(<span class=hljs-string>&apos;@antv/f2/lib/animation/group&apos;</span>);
+Chart.plugins.register(GroupAnimation); <span class=hljs-comment>// &#x8FD9;&#x91CC;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x6CE8;&#x518C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7ED9; chart &#x7684;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;</span>
+</pre></div><ol start=2><li>&#x7CBE;&#x7EC6;&#x52A8;&#x753B;&#x7248;&#x672C;</li></ol><div class=highlight><pre><span class=hljs-keyword>const</span> Animation = <span class=hljs-built_in>require</span>(<span class=hljs-string>&apos;@antv/f2/lib/animation/detail&apos;</span>);
+Chart.plugins.register(Animation); <span class=hljs-comment>// &#x8FD9;&#x91CC;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x6CE8;&#x518C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7ED9; chart &#x7684;&#x5B9E;&#x4F8B;&#x6CE8;&#x518C;</span>
+</pre></div><p><strong>&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x52A8;&#x753B;&#x62E9;&#x5176;&#x4E00;&#x5373;&#x53EF;&#x3002;</strong></p><h2 id=_&#x914D;&#x7F6E;&#x52A8;&#x753B;><a href=#_&#x914D;&#x7F6E;&#x52A8;&#x753B; class=anchor><span class="iconfont icon-link"></span></a>&#x914D;&#x7F6E;&#x52A8;&#x753B;</h2><h3 id=_&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#xFF1A;><a href=#_&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#xFF1A; class=anchor><span class="iconfont icon-link"></span></a>&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#xFF1A;</h3><p>&#x5728; F2 &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x79CD;&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#xFF1A;</p><ul><li>appear: &#x521D;&#x59CB;&#x5316;&#x65F6;&#x7684;&#x5165;&#x573A;&#x52A8;&#x753B;&#xFF1B;</li><li>enter: &#x66F4;&#x65B0;&#x65F6;&#x7684;&#x51FA;&#x573A;&#x52A8;&#x753B;&#xFF1B;</li><li>update: &#x66F4;&#x65B0;&#x65F6;&#x7684;&#x53D8;&#x5316;&#x52A8;&#x753B;&#xFF1B;</li><li>leave: &#x66F4;&#x65B0;&#x65F6;&#x7684;&#x52A8;&#x753B;&#xFF1B;</li></ul><h3 id=_geom.animate-><a href=#_geom.animate- class=anchor><span class="iconfont icon-link"></span></a>geom.animate()</h3><p>&#x9ED8;&#x8BA4;&#x6211;&#x4EEC;&#x4E3A;&#x5404;&#x4E2A;&#x7C7B;&#x578B;&#x7684; geom &#x8BBE;&#x5B9A;&#x4E86;&#x52A8;&#x753B;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x914D;&#x7F6E;&#xFF0C;&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; geom.animate() &#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#xFF0C;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre><span class=hljs-comment>// &#x914D;&#x7F6E;&#x66F4;&#x65B0;&#x65F6;&#x7684;&#x5165;&#x573A;&#x52A8;&#x753B;&#xFF0C;&#x5176;&#x4ED6;&#x52A8;&#x753B;&#x573A;&#x666F;&#x7C7B;&#x578B;&#x76F8;&#x540C;</span>
+geom.animate({
+  <span class=hljs-attr>appear</span>: {
+    <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;fadeIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x540D;&#x79F0;</span>
+    easing: <span class=hljs-string>&apos;elasticIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x7F13;&#x52A8;&#x6548;&#x679C;</span>
+    delay: <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D; ms</span>
+    duration: <span class=hljs-number>600</span> || <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>index, id</span>) </span>{ 
+      <span class=hljs-comment>// &#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+    }  <span class=hljs-comment>// &#x52A8;&#x753B;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C; &#x5355;&#x4F4D; ms&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+  },
+  <span class=hljs-attr>enter</span>: {
+    <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;fadeIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x540D;&#x79F0;</span>
+    easing: <span class=hljs-string>&apos;elasticIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x7F13;&#x52A8;&#x6548;&#x679C;</span>
+    delay: <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D; ms</span>
+    duration: <span class=hljs-number>600</span> || <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>index, id</span>) </span>{ 
+      <span class=hljs-comment>// &#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+    }  <span class=hljs-comment>// &#x52A8;&#x753B;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C; &#x5355;&#x4F4D; ms&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+  },
+  <span class=hljs-attr>update</span>: {
+    <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;fadeIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x540D;&#x79F0;</span>
+    easing: <span class=hljs-string>&apos;elasticIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x7F13;&#x52A8;&#x6548;&#x679C;</span>
+    delay: <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D; ms</span>
+    duration: <span class=hljs-number>600</span> || <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>index, id</span>) </span>{ 
+      <span class=hljs-comment>// &#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+    }  <span class=hljs-comment>// &#x52A8;&#x753B;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C; &#x5355;&#x4F4D; ms&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+  },
+  <span class=hljs-attr>leave</span>: {
+    <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;fadeIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x540D;&#x79F0;</span>
+    easing: <span class=hljs-string>&apos;elasticIn&apos;</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x7F13;&#x52A8;&#x6548;&#x679C;</span>
+    delay: <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D; ms</span>
+    duration: <span class=hljs-number>600</span> || <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>index, id</span>) </span>{ 
+      <span class=hljs-comment>// &#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+    }  <span class=hljs-comment>// &#x52A8;&#x753B;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C; &#x5355;&#x4F4D; ms&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+  },
+});
+</pre></div><h4 id=_&#x914D;&#x7F6E;&#x5C5E;&#x6027;&#x8BF4;&#x660E;><a href=#_&#x914D;&#x7F6E;&#x5C5E;&#x6027;&#x8BF4;&#x660E; class=anchor><span class="iconfont icon-link"></span></a>&#x914D;&#x7F6E;&#x5C5E;&#x6027;&#x8BF4;&#x660E;</h4><ul><li><code>animation</code>&#xFF1A; String &#x7C7B;&#x578B;&#xFF0C;&#x52A8;&#x753B;&#x540D;&#x79F0;</li></ul><p>&#x9ED8;&#x8BA4;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#x52A8;&#x753B;&#xFF1A;</p><table><thead><tr><th>&#x52A8;&#x753B;&#x540D;&#x79F0;</th><th>&#x63CF;&#x8FF0;</th><th>&#x6548;&#x679C;</th></tr></thead><tbody><tr><td><code>groupWaveIn</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;&#xFF0C;&#x4E0D;&#x540C;&#x5750;&#x6807;&#x7CFB;&#x4E0B;&#x6548;&#x679C;&#x4E0D;&#x540C;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/7f6b6a19-b7bf-42ee-b8fd-d9128390ca02/2018/gif/b124e6f0-dcdd-4450-9cd6-fcd7e5ddfc8a.gif alt=line1.gif> <img src=https://gw.alipayobjects.com/zos/skylark/63413703-2864-4aa0-8066-895235a5ef44/2018/gif/aee88888-17b3-48ae-863b-8df3313afdbd.gif alt=pie1.gif></td></tr><tr><td><code>groupScaleInX</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/20b87a04-e640-4a0b-9fe7-55b0a66253e9/2018/gif/725dfd08-31be-4a40-aad7-79eafa0bf252.gif alt=bar1.gif> <img src=https://gw.alipayobjects.com/zos/skylark/7b038ba8-208f-4f69-859c-fe5f6867054c/2018/gif/07dd9c4b-547b-44f5-952f-7b5894f4191d.gif alt=bar3.gif></td></tr><tr><td><code>groupScaleInY</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/7f269fd8-2271-4074-8fac-615efc09b269/2018/gif/d9e0af21-e3ba-4394-a29a-db052e8a07bb.gif alt=bar2.gif> <img src=https://gw.alipayobjects.com/zos/skylark/64d238d0-6798-42b0-a3bb-5fbcb91faa5f/2018/gif/7493b01b-adf1-4603-8105-343c4eec718f.gif alt=bar5.gif></td></tr><tr><td><code>groupScaleInXY</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/46dcc363-ef4f-46e9-8ffb-fd2bc333381f/2018/gif/67a5bcec-fa9a-4880-9efd-9b8f1ad0d8a2.gif alt=POLAR1.gif> <img src=https://gw.alipayobjects.com/zos/skylark/d89e7fca-91db-4edf-93da-dc71e1646dc1/2018/gif/a20f8e21-3522-4c83-a36e-1ef6fde1f76e.gif alt=radar1.gif></td></tr><tr><td><code>shapesScaleInX</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;&#xFF0C;&#x4E0D;&#x540C;&#x4E8E; groupScale&#xFF0C;&#x6BCF;&#x4E2A; shape &#x90FD;&#x4F1A;&#x53C2;&#x4E0E;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/d2b714be-42aa-4183-8de6-249c39a8c2d3/2018/gif/65e050f2-1789-4b04-9a89-6552334c946c.gif alt=bar6.gif></td></tr><tr><td><code>shapesScaleInY</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;&#xFF0C;&#x4E0D;&#x540C;&#x4E8E; groupScale&#xFF0C;&#x6BCF;&#x4E2A; shape &#x90FD;&#x4F1A;&#x53C2;&#x4E0E;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/c7a90e7d-fdc3-4d72-b06b-60f9eecced4d/2018/gif/021ee262-e0a3-4396-8232-774f8136f138.gif alt=bar7.gif></td></tr><tr><td><code>shapesScaleInXY</code></td><td>&#x6574;&#x4F53;&#x52A8;&#x753B;&#xFF0C;&#x4E0D;&#x540C;&#x4E8E; groupScale&#xFF0C;&#x6BCF;&#x4E2A; shape &#x90FD;&#x4F1A;&#x53C2;&#x4E0E;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/cf2f660f-48d2-46e9-b7e2-e6b59f0333df/2018/gif/6d08442e-df89-4116-83e9-8a36c2459645.gif alt=scatter1.gif></td></tr><tr><td><code>fadeIn</code></td><td>&#x5355;&#x4E2A; shape &#x7684;&#x52A8;&#x753B;</td><td><img src=https://gw.alipayobjects.com/zos/skylark/1645e658-c007-43da-9d1f-baa326bcefef/2018/gif/2ea38ccf-8d7c-42c6-a1fb-7baf64026dd9.gif alt=fadeIn.gif></td></tr></tbody></table><ul><li><code>easing</code> &#x7F13;&#x52A8;&#x51FD;&#x6570;</li></ul><p>&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x7F13;&#x52A8;&#x51FD;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p><ol><li><code>linear</code></li><li><code>quadraticIn</code></li><li><code>quadraticOut</code></li><li><code>quadraticInOut</code></li><li><code>cubicIn</code></li><li><code>cubicOut</code></li><li><code>cubicInOut</code></li><li><code>elasticIn</code></li><li><code>elasticOut</code></li><li><code>elasticInOut</code></li><li><code>backIn</code></li><li><code>backOut</code></li><li><code>backInOut</code></li><li><code>bounceIn</code></li><li><code>bounceOut</code></li><li><code>bounceInOut</code></li></ol><p>&#x5404;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x7F13;&#x52A8;&#x6548;&#x679C;&#x53EF;&#x53C2;&#x8003;&#xFF1A;<a href=http://sole.github.io/tween.js/examples/03_graphs.html>http://sole.github.io/tween.js/examples/03_graphs.html</a></p><h3 id=_&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;><a href=#_&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B; class=anchor><span class="iconfont icon-link"></span></a>&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;</h3><p>&#x5982;&#x679C;&#x4E0A;&#x8FF0;&#x52A8;&#x753B;&#x52A8;&#x4F5C;&#x4E0D;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#xFF0C;&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x6CE8;&#x518C;&#x52A8;&#x753B;&#x52A8;&#x4F5C;&#xFF1A;</p><div class=highlight><pre><span class=hljs-comment>// &#x52A0;&#x8F7D;&#x52A8;&#x753B;&#x6CE8;&#x518C;&#x7C7B;</span>
+<span class=hljs-keyword>const</span> Animate = <span class=hljs-built_in>require</span>(<span class=hljs-string>&apos;@antv/f2/lib/animation/animate&apos;</span>);
+<span class=hljs-comment>/**
+ * @param  {String} &#x52A8;&#x753B;&#x540D;&#x79F0;&#xFF0C;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x5373;&#x53EF;
+ * @param  {Function} &#x52A8;&#x753B;&#x6267;&#x884C;&#x51FD;&#x6570;
+ **/</span>
+Animate.registerAnimation(animationName, animationFun);
+</pre></div><h4 id=_&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x5B9E;&#x4F8B;><a href=#_&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x5B9E;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x5B9E;&#x4F8B;</h4><p><canvas id=mountNode></canvas></p><div class=highlight><pre>  <span class=hljs-keyword>const</span> { Chart, Animate, Util, G } = F2;
+  Animate.registerAnimation(<span class=hljs-string>&apos;delayScaleInY&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>shape, animateCfg</span>) </span>{
+    <span class=hljs-keyword>const</span> box = shape.getBBox();
+    <span class=hljs-keyword>const</span> origin = shape.get(<span class=hljs-string>&apos;origin&apos;</span>);
+    <span class=hljs-keyword>const</span> points = origin.points; <span class=hljs-comment>// &#x83B7;&#x53D6;&#x67F1;&#x5B50;&#x9876;&#x70B9;</span>
+    <span class=hljs-keyword>const</span> centerX = (box.minX + box.maxX) / <span class=hljs-number>2</span>;
+    <span class=hljs-keyword>let</span> centerY;
+    <span class=hljs-keyword>if</span> (points[<span class=hljs-number>0</span>].y - points[<span class=hljs-number>1</span>].y &lt;= <span class=hljs-number>0</span>) { <span class=hljs-comment>// &#x5F53;&#x9876;&#x70B9;&#x5728;&#x96F6;&#x70B9;&#x4E4B;&#x4E0B;</span>
+      centerY = box.maxY;
+    } <span class=hljs-keyword>else</span> {
+      centerY = box.minY;
+    }
+
+    shape.transform([
+      [ <span class=hljs-string>&apos;t&apos;</span>, centerX, centerY ],
+      [ <span class=hljs-string>&apos;s&apos;</span>, <span class=hljs-number>1</span>, <span class=hljs-number>0.1</span> ],
+      [ <span class=hljs-string>&apos;t&apos;</span>, -centerX, -centerY ]
+    ]);
+    <span class=hljs-keyword>const</span> index = shape.get(<span class=hljs-string>&apos;index&apos;</span>);
+    <span class=hljs-keyword>let</span> delay = animateCfg.delay;
+    <span class=hljs-keyword>if</span> (Util.isFunction(delay)) {
+      delay = animateCfg.delay(index);
+    }
+    <span class=hljs-keyword>const</span> easing = animateCfg.easing;
+
+    <span class=hljs-keyword>const</span> matrix = shape.getMatrix();
+    <span class=hljs-keyword>const</span> endMatrix = G.Matrix.transform(matrix, [
+      [ <span class=hljs-string>&apos;t&apos;</span>, centerX, centerY ],
+      [ <span class=hljs-string>&apos;s&apos;</span>, <span class=hljs-number>1</span>, <span class=hljs-number>10</span> ],
+      [ <span class=hljs-string>&apos;t&apos;</span>, -centerX, -centerY ]
+    ]);
+
+    shape.animate().to({
+      <span class=hljs-attr>attrs</span>: {
+        <span class=hljs-attr>matrix</span>: endMatrix
+      },
+      delay,
+      easing,
+      <span class=hljs-attr>duration</span>: animateCfg.duration
+    });
+  });
+
+  <span class=hljs-keyword>const</span> data = [];
+  <span class=hljs-keyword>for</span> (<span class=hljs-keyword>let</span> i = <span class=hljs-number>0</span>; i &lt; <span class=hljs-number>50</span>; i++) {
+    data.push({
+      <span class=hljs-attr>x</span>: i,
+      <span class=hljs-attr>y</span>: (<span class=hljs-built_in>Math</span>.sin(i / <span class=hljs-number>5</span>) * (i / <span class=hljs-number>5</span> - <span class=hljs-number>10</span>) + i / <span class=hljs-number>6</span>) * <span class=hljs-number>5</span>
+    });
+  }
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> Chart({
+    <span class=hljs-attr>id</span>: <span class=hljs-string>&apos;mountNode&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>400</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>400</span> * <span class=hljs-number>0.64</span>,
+    <span class=hljs-attr>pixelRatio</span>: <span class=hljs-built_in>window</span>.devicePixelRatio
+  });
+  chart.axis(<span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-literal>false</span>);
+  chart.legend(<span class=hljs-literal>false</span>);
+  chart.source(data);
+  chart.interval()
+    .position(<span class=hljs-string>&apos;x*y&apos;</span>)
+    .color(<span class=hljs-string>&apos;y&apos;</span>, <span class=hljs-string>&apos;#4a657a-#308e92-#b1cfa5-#f5d69f-#f5898b-#ef5055&apos;</span>)
+    .animate({
+      <span class=hljs-attr>appear</span>: {
+        <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;delayScaleInY&apos;</span>,
+        <span class=hljs-attr>easing</span>: <span class=hljs-string>&apos;elasticOut&apos;</span>,
+        delay(index) {
+          <span class=hljs-keyword>return</span> index * <span class=hljs-number>10</span>;
+        }
+      }
+    });
+  chart.render();
+</pre></div><h3 id=_shape.animate-><a href=#_shape.animate- class=anchor><span class="iconfont icon-link"></span></a>shape.animate()</h3><p>&#x6211;&#x4EEC;&#x4E3A;&#x6BCF;&#x4E2A; shape &#x63D0;&#x4F9B;&#x4E86; animate &#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre>shape.animate().to({
+  <span class=hljs-attr>attrs</span>: {<span class=hljs-built_in>Object</span>}, <span class=hljs-comment>// shape &#x6700;&#x7EC8;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;</span>
+  easing: {<span class=hljs-built_in>String</span>}, <span class=hljs-comment>// &#x7F13;&#x52A8;&#x51FD;&#x6570;</span>
+  duration: {<span class=hljs-built_in>Number</span>}, <span class=hljs-comment>// &#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A; ms</span>
+  delay: {<span class=hljs-built_in>Number</span>} <span class=hljs-comment>// &#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A; ms</span>
+}).onStart(<span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params></span>) </span>{
+  <span class=hljs-comment>// &#x52A8;&#x753B;&#x5F00;&#x59CB;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+}).onUpdate(<span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params></span>) </span>{
+  <span class=hljs-comment>// &#x52A8;&#x753B;&#x8FDB;&#x884C;&#x65F6;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+}).onEnd(<span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params></span>) </span>{
+  <span class=hljs-comment>// &#x52A8;&#x753B;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+});
+</pre></div><div class=prev-next><a href=/zh-cn/f2/3.x/api/interaction.html class="float-left pre">Interaction &#x4EA4;&#x4E92; </a><a href=/zh-cn/f2/3.x/api/global.html class="float-right next">Global &#x5168;&#x5C40;&#x914D;&#x7F6E;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"f2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/f2/3.x/api/animation.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/f2/3.1.3/f2.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+  const { Chart, Animate, Util, G } = F2;
+  Animate.registerAnimation('delayScaleInY', function(shape, animateCfg) {
+    const box = shape.getBBox();
+    const origin = shape.get('origin');
+    const points = origin.points; // 获取柱子顶点
+    const centerX = (box.minX + box.maxX) / 2;
+    let centerY;
+    if (points[0].y - points[1].y <= 0) { // 当顶点在零点之下
+      centerY = box.maxY;
+    } else {
+      centerY = box.minY;
+    }
+
+    shape.transform([
+      [ 't', centerX, centerY ],
+      [ 's', 1, 0.1 ],
+      [ 't', -centerX, -centerY ]
+    ]);
+    const index = shape.get('index');
+    let delay = animateCfg.delay;
+    if (Util.isFunction(delay)) {
+      delay = animateCfg.delay(index);
+    }
+    const easing = animateCfg.easing;
+
+    const matrix = shape.getMatrix();
+    const endMatrix = G.Matrix.transform(matrix, [
+      [ 't', centerX, centerY ],
+      [ 's', 1, 10 ],
+      [ 't', -centerX, -centerY ]
+    ]);
+
+    shape.animate().to({
+      attrs: {
+        matrix: endMatrix
+      },
+      delay,
+      easing,
+      duration: animateCfg.duration
+    });
+  });
+
+  const data = [];
+  for (let i = 0; i < 50; i++) {
+    data.push({
+      x: i,
+      y: (Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5
+    });
+  }
+  const chart = new Chart({
+    id: 'mountNode',
+    width: 400,
+    height: 400 * 0.64,
+    pixelRatio: window.devicePixelRatio
+  });
+  chart.axis('x', false);
+  chart.legend(false);
+  chart.source(data);
+  chart.interval()
+    .position('x*y')
+    .color('y', '#4a657a-#308e92-#b1cfa5-#f5d69f-#f5898b-#ef5055')
+    .animate({
+      appear: {
+        animation: 'delayScaleInY',
+        easing: 'elasticOut',
+        delay(index) {
+          return index * 10;
+        }
+      }
+    });
+  chart.render();
+
+})();</script></body></html>

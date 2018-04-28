@@ -1,0 +1,176 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Util - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G6</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/api/index.html>G6</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/graph.html>Graph</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/node.html>Node</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/edge.html>Edge</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/net.html>Net</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/tree.html>Tree</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/handler.html>Handler</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/Layouts.html>Layouts</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/matrix.html>Matrix</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/canvas.html>Canvas</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/global.html>Global</a></li><li class="list-group-item active"><a href=/zh-cn/g6/1.x/api/util.html>Util</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/plugins.html>Plugins</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_Util><a href=#_Util class=anchor></a>Util</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x65B9;&#x6CD5;>&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#_isNode>isNode</a><a class="col-md-3 level-3" href=#_isEdge>isEdge</a><a class="col-md-3 level-3" href=#_substitute>substitute</a><a class="col-md-3 level-3" href=#_ucfirst>ucfirst</a><a class="col-md-3 level-3" href=#_isObject>isObject</a><a class="col-md-3 level-3" href=#_isNumber>isNumber</a><a class="col-md-3 level-3" href=#_isNumeric>isNumeric</a><a class="col-md-3 level-3" href=#_isBoolean>isBoolean</a><a class="col-md-3 level-3" href=#_isFunction>isFunction</a><a class="col-md-3 level-3" href=#_isArray>isArray</a><a class="col-md-3 level-3" href=#_isDate>isDate</a><a class="col-md-3 level-3" href=#_isNull>isNull</a><a class="col-md-3 level-3" href=#_mix>mix</a><a class="col-md-3 level-3" href=#_map>map</a><a class="col-md-3 level-3" href=#_filter>filter</a><a class="col-md-3 level-3" href=#_each>each</a><a class="col-md-3 level-3" href=#_indexOf>indexOf</a><a class="col-md-3 level-3" href=#_empty>empty</a><a class="col-md-3 level-3" href=#_guid>guid</a><a class="col-md-3 level-3" href=#_getEllipsePath>getEllipsePath</a><a class="col-md-3 level-3" href=#_pointsToPolygon>pointsToPolygon</a><a class="col-md-3 level-3" href=#_pointsToCurve>pointsToCurve</a><a class="col-md-3 level-3" href=#_arrowTo>arrowTo</a><a class="col-md-3 level-3" href=#_pathIntersection>pathIntersection</a><a class="col-md-3 level-3" href=#_getSnapAnchor>getSnapAnchor</a></div><p>G6.Util &#x662F;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x7C7B;&#xFF0C;&#x91CC;&#x9762;&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x5DE5;&#x5177;&#x65B9;&#x6CD5;&#x7ED9;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;&#x3002;</p><h2 id=_&#x65B9;&#x6CD5;><a href=#_&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x65B9;&#x6CD5;</h2><h3 id=_isNode><a href=#_isNode class=anchor><span class="iconfont icon-link"></span></a>isNode</h3><p>&#x5224;&#x65AD;&#x5B50;&#x9879;&#x662F;&#x5426;&#x662F;&#x8282;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x8282;&#x70B9;
+ * @param {Object} item &#x5B50;&#x9879;
+ * @return {Boolean}
+ */</span>
+G6.Util.isNode(item);
+</pre></div><h3 id=_isEdge><a href=#_isEdge class=anchor><span class="iconfont icon-link"></span></a>isEdge</h3><p>&#x5224;&#x65AD;&#x5B50;&#x9879;&#x662F;&#x5426;&#x662F;&#x8FB9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x8FB9;
+ * @param {Object} item &#x5B50;&#x9879;
+ * @return {Boolean}
+ */</span>
+G6.Util.isEdge(item);
+</pre></div><h3 id=_substitute><a href=#_substitute class=anchor><span class="iconfont icon-link"></span></a>substitute</h3><p>&#x66FF;&#x6362;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x8FD4;&#x56DE;&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x66FF;&#x6362;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;.
+ * @param  {String} str &#x6A21;&#x7248;&#x5B57;&#x7B26;&#x4E32;
+ * @param  {Object} o   json data
+ * @return {String} rst &#x5339;&#x914D;&#x540E;&#x7684;&#x5B57;&#x7B26;&#x4E32;
+ */</span>
+G6.Util.substitute(str, o);
+</pre></div><h3 id=_ucfirst><a href=#_ucfirst class=anchor><span class="iconfont icon-link"></span></a>ucfirst</h3><p>&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;&#x53D8;&#x6210;&#x5927;&#x5199;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x4F7F;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;&#x53D8;&#x6210;&#x5927;&#x5199;
+ * @param  {String} s &#x5B57;&#x7B26;&#x4E32;
+ * @return {String} &#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;&#x540E;&#x7684;&#x5B57;&#x7B26;&#x4E32;
+ */</span>
+G6.Util.ucfirst(s);
+</pre></div><h3 id=_isObject><a href=#_isObject class=anchor><span class="iconfont icon-link"></span></a>isObject</h3><p>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x5BF9;&#x8C61;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x662F;&#x5426;&#x662F;javascript&#x5BF9;&#x8C61;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isObject(value);
+</pre></div><h3 id=_isNumber><a href=#_isNumber class=anchor><span class="iconfont icon-link"></span></a>isNumber</h3><p>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x5B57;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x6570;&#x5B57;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isNumber(value);
+</pre></div><h3 id=_isNumeric><a href=#_isNumeric class=anchor><span class="iconfont icon-link"></span></a>isNumeric</h3><p>&#x662F;&#x5426;&#x662F;&#x6570;&#x5B57;&#x6216;&#x8005;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x4E32;&#xFF08;&#x7C7B;&#x4F3C; &apos;124&apos;&#xFF09;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5224;&#x65AD;&#x662F;&#x5426;&#x6570;&#x5B57;&#x6216;&#x8005;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7531;&#x4E8E;$.isNumberic&#x65B9;&#x6CD5;&#x4F1A;&#x628A; &apos;123&apos;&#x8BA4;&#x4E3A;&#x6570;&#x5B57;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean} &#x662F;&#x5426;&#x6570;&#x5B57;
+ */</span>
+G6.Util.isNumeric(value);
+</pre></div><h3 id=_isBoolean><a href=#_isBoolean class=anchor><span class="iconfont icon-link"></span></a>isBoolean</h3><p>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x5E03;&#x5C14;&#x503C;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x662F;&#x5426;&#x662F;&#x5E03;&#x5C14;&#x7C7B;&#x578B;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isBoolean(value);
+</pre></div><h3 id=_isFunction><a href=#_isFunction class=anchor><span class="iconfont icon-link"></span></a>isFunction</h3><p>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x51FD;&#x6570;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x662F;&#x5426;&#x4E3A;&#x51FD;&#x6570;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isFunction(value);
+</pre></div><h3 id=_isArray><a href=#_isArray class=anchor><span class="iconfont icon-link"></span></a>isArray</h3><p>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x7EC4;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x662F;&#x5426;&#x6570;&#x7EC4;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isArray(value);
+</pre></div><h3 id=_isDate><a href=#_isDate class=anchor><span class="iconfont icon-link"></span></a>isDate</h3><p>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A;&#x65E5;&#x671F;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x662F;&#x5426;&#x65E5;&#x671F;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isDate(value);
+</pre></div><h3 id=_isNull><a href=#_isNull class=anchor><span class="iconfont icon-link"></span></a>isNull</h3><p>&#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x662F; null &#x6216;&#x8005; undefined&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A;&#x7A7A;
+ * @param  {*} value &#x6D4B;&#x8BD5;&#x7684;&#x503C;
+ * @return {Boolean}
+ */</span>
+G6.Util.isNull(value);
+</pre></div><h3 id=_mix><a href=#_mix class=anchor><span class="iconfont icon-link"></span></a>mix</h3><p>&#x5408;&#x5E76;&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5408;&#x5E76;&#x6570;&#x636E;
+ * @return {Object} &#x5C06;&#x6570;&#x636E;&#x5408;&#x5E76;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;
+ */</span>
+G6.Util.mix(target, source1, source2....source);
+</pre></div><p>&#x82E5;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;true&#xFF0C;&#x5219;&#x4E3A;&#x6DF1;&#x5C42;&#x5408;&#x5E76;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x5408;&#x5E76;&#x6570;&#x636E;
+ * @return {Object} &#x5C06;&#x6570;&#x636E;&#x5408;&#x5E76;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;
+ */</span>
+G6.Util.mix(<span class=hljs-literal>true</span>, target, source1, source2....source);
+</pre></div><h3 id=_map><a href=#_map class=anchor><span class="iconfont icon-link"></span></a>map</h3><p>&#x8F6C;&#x6362;&#x6570;&#x503C;&#x7684;&#x503C;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * map &#x6570;&#x7EC4;
+ * @param  {Array} arr &#x6570;&#x7EC4;
+ */</span>
+G6.Util.map(arr);
+</pre></div><h3 id=_filter><a href=#_filter class=anchor><span class="iconfont icon-link"></span></a>filter</h3><p>&#x8FC7;&#x6EE4;&#x6570;&#x7EC4;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x8FC7;&#x6EE4;&#x6570;&#x7EC4;
+ * @param {Object|Array} element/Object &#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x503C;
+ * @param {Function} func &#x904D;&#x5386;&#x7684;&#x51FD;&#x6570; function(elememt,index){} &#x6216;&#x8005; function(value,key){},&#x5982;&#x679C;&#x8FD4;&#x56DE;true&#x5219;&#x6DFB;&#x52A0;&#x5230;&#x7ED3;&#x679C;&#x96C6;
+ * @return {Array} &#x8FC7;&#x6EE4;&#x7684;&#x7ED3;&#x679C;&#x96C6;
+ */</span>
+G6.Util.filter(arr, func);
+</pre></div><h3 id=_each><a href=#_each class=anchor><span class="iconfont icon-link"></span></a>each</h3><p>&#x904D;&#x5386;&#x6570;&#x7EC4;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x904D;&#x5386;&#x6570;&#x7EC4;&#x6216;&#x8005;&#x5BF9;&#x8C61;
+ * @param {Object|Array} element/Object &#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6216;&#x8005;&#x5BF9;&#x8C61;&#x7684;&#x503C;
+ * @param {Function} func &#x904D;&#x5386;&#x7684;&#x51FD;&#x6570; function(elememt,index){} &#x6216;&#x8005; function(value,key){}
+ */</span>
+G6.Util.each(elements, func);
+</pre></div><h3 id=_indexOf><a href=#_indexOf class=anchor><span class="iconfont icon-link"></span></a>indexOf</h3><p>&#x8FD4;&#x56DE; value &#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x67E5;&#x627E;&#x5143;&#x7D20;&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x8FD4;&#x56DE;-1
+ * @param  {Array} arr &#x6570;&#x7EC4;
+ * @param  {*} obj &#x67E5;&#x627E;&#x7684;&#x5143;&#x7D20;
+ * @return {Number} &#x4F4D;&#x7F6E;
+ */</span>
+G6.Util.indexOf(arr, obj);
+</pre></div><h3 id=_empty><a href=#_empty class=anchor><span class="iconfont icon-link"></span></a>empty</h3><p>&#x6E05;&#x7A7A;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x6E05;&#x7A7A;
+ * @param  {Array} array &#x6570;&#x7EC4;
+ */</span>
+G6.Util.empty(array);
+</pre></div><h3 id=_guid><a href=#_guid class=anchor><span class="iconfont icon-link"></span></a>guid</h3><p>&#x4EA7;&#x751F;&#x552F;&#x4E00;&#x7801;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x751F;&#x6210;&#x552F;&#x4E00;&#x7684;Id
+ * @return {String} &#x552F;&#x4E00;&#x7684;&#x7F16;&#x53F7;
+ */</span>
+G6.Util.guid();
+</pre></div><h3 id=_getEllipsePath><a href=#_getEllipsePath class=anchor><span class="iconfont icon-link"></span></a>getEllipsePath</h3><p>&#x83B7;&#x53D6;&#x692D;&#x5706;&#x8DEF;&#x5F84;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6;&#x692D;&#x5706;&#x8DEF;&#x5F84;
+ * @param {Number} x    &#x4E2D;&#x5FC3;x&#x5750;&#x6807;
+ * @param {Number} y    &#x4E2D;&#x5FC3;y&#x5750;&#x6807;
+ * @param {Number} rx   &#x6A2A;&#x8F74;&#x534A;&#x5F84;
+ * @param {Number} ry   &#x7EB5;&#x8F74;
+ * @return {Array} Path &#x8DEF;&#x5F84;
+ */</span>
+G6.Util.getEllipsePath(x, y, rx, ry);
+</pre></div><h3 id=_pointsToPolygon><a href=#_pointsToPolygon class=anchor><span class="iconfont icon-link"></span></a>pointsToPolygon</h3><p>&#x70B9;&#x96C6;&#x8F6C;&#x5316;&#x4E3A;Path&#x591A;&#x8FB9;&#x5F62;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x70B9;&#x96C6;&#x8F6C;&#x5316;&#x4E3A;Path&#x591A;&#x8FB9;&#x5F62;
+ * @param {Array}  points &#x70B9;&#x96C6;
+ * @param {Boolen} z      &#x662F;&#x5426;&#x5C01;&#x95ED;
+ * @return {Array} Path   &#x8DEF;&#x5F84;
+ */</span>
+G6.Util.pointsToPolygon(points, z);
+</pre></div><h3 id=_pointsToCurve><a href=#_pointsToCurve class=anchor><span class="iconfont icon-link"></span></a>pointsToCurve</h3><p>&#x70B9;&#x96C6;&#x5230;&#x66F2;&#x7EBF;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x70B9;&#x96C6;&#x5230;&#x8D1D;&#x585E;&#x5C14;&#x66F2;&#x7EBF;
+ * @param  {Array} points &#x70B9;&#x96C6;
+ * @return {Array} Path   &#x8DEF;&#x5F84;
+ */</span>
+G6.Util.pointsToCurve(points);
+</pre></div><h3 id=_arrowTo><a href=#_arrowTo class=anchor><span class="iconfont icon-link"></span></a>arrowTo</h3><p>&#x5C06;&#x56FE;&#x5F62;&#x6307;&#x5411;&#x6307;&#x5B9A;&#x65B9;&#x5411;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x653E;&#x7F6E;&#x7BAD;&#x5934;
+ * @param {Ganvas.Element}  element &#x5F62;
+ * @param {Number}          x       &#x4F4D;&#x7F6E;x
+ * @param {Number}          y       &#x4F4D;&#x7F6E;y
+ * @param {Number}          x0      &#x65B9;&#x5411;&#x8D77;&#x70B9;x
+ * @param {Number}          y0      &#x65B9;&#x5411;&#x8D77;&#x70B9;y
+ * @param {Number}          x1      &#x65B9;&#x5411;&#x7EC8;&#x70B9;x
+ * @param {Number}          y1      &#x65B9;&#x5411;&#x7EC8;&#x70B9;y
+ * @return {Ganvas.Element} element &#x5F62;
+ */</span>
+G6.Util.arrowTo(element, x, y, x0, y0, x1, y1);
+</pre></div><h3 id=_pathIntersection><a href=#_pathIntersection class=anchor><span class="iconfont icon-link"></span></a>pathIntersection</h3><p>&#x7B97;&#x4E24;&#x6761;path&#x7684;&#x4EA4;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * path&#x76F8;&#x4EA4;
+ * @param  {String|Array} path1 &#x8DEF;&#x5F84;1
+ * @param  {String|Array} path2 &#x8DEF;&#x5F84;2
+ * @return {Array} rst
+ */</span>
+G6.Util.pathIntersection(path1, path2);
+</pre></div><h3 id=_getSnapAnchor><a href=#_getSnapAnchor class=anchor><span class="iconfont icon-link"></span></a>getSnapAnchor</h3><p>&#x83B7;&#x53D6;&#x8282;&#x70B9;&#x903C;&#x8FD1;&#x7684;&#x951A;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x83B7;&#x53D6;&#x903C;&#x8FD1;&#x7684;&#x951A;&#x70B9;
+ * @param {Node}    node  &#x8282;&#x70B9;
+ * @param {Object}  point &#x7528;&#x4E8E;&#x903C;&#x8FD1;&#x70B9;
+ * @return {Object} rst   &#x903C;&#x8FD1;&#x70B9;
+ */</span>
+G6.Util.getSnapAnchor(node, point);
+</pre></div><div class=prev-next><a href=/zh-cn/g6/1.x/api/global.html class="float-left pre">Global </a><a href=/zh-cn/g6/1.x/api/plugins.html class="float-right next">Plugins</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g6","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g6/1.x/api/util.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script></body></html>

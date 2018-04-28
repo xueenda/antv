@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Net - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G6</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/api/index.html>G6</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/graph.html>Graph</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/node.html>Node</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/edge.html>Edge</a></li><li class="list-group-item active"><a href=/zh-cn/g6/1.x/api/net.html>Net</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/tree.html>Tree</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/handler.html>Handler</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/Layouts.html>Layouts</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/matrix.html>Matrix</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/canvas.html>Canvas</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/global.html>Global</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/util.html>Util</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/api/plugins.html>Plugins</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_Net><a href=#_Net class=anchor></a>Net</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x5C5E;&#x6027;>&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_layout>layout</a><a class="col-md-3 level-3" href=#_behaviourSignal>behaviourSignal</a><a class="col-md-3 level-3" href=#_clipboard>clipboard</a><a class="col-md-3 level-3" href=#_rollback>rollback</a><a class="col-md-3 level-3" href=#_modes>modes</a><a class="col-md-3 level-2" href=#_&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</a><a class="col-md-3 level-3" href=#_updateAnchor>updateAnchor</a><a class="col-md-3 level-3" href=#_showAnchor>showAnchor</a><a class="col-md-3 level-3" href=#_hideAnchor>hideAnchor</a><a class="col-md-3 level-3" href=#_add>add</a><a class="col-md-3 level-3" href=#_source>source</a><a class="col-md-3 level-3" href=#_beginAdd>beginAdd</a><a class="col-md-3 level-3" href=#_endAdd>endAdd</a><a class="col-md-3 level-3" href=#_copy>copy</a><a class="col-md-3 level-3" href=#_paste>paste</a><a class="col-md-3 level-3" href=#_del>del</a><a class="col-md-3 level-3" href=#_undo>undo</a><a class="col-md-3 level-3" href=#_redo>redo</a></div><p>&#x7F51;&#x56FE;&#x56FE;&#x7C7B;&#xFF0C;&#x7EE7;&#x627F;&#x4E8E;<a href=./graph.html>Graph</a>&#xFF0C;&#x4EAB;&#x6709; Graph &#x4E0A;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p><h2 id=_&#x5C5E;&#x6027;><a href=#_&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x5C5E;&#x6027;</h2><h3 id=_layout><a href=#_layout class=anchor><span class="iconfont icon-link"></span></a>layout</h3><p>[Function] &#x5E03;&#x5C40;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x4E2D;&#x4F1A;&#x4F20;&#x5165;&#xFF0C;&#x8282;&#x70B9;&#x548C;&#x8FB9;&#x6570;&#x636E;&#x3002;</p><h3 id=_behaviourSignal><a href=#_behaviourSignal class=anchor><span class="iconfont icon-link"></span></a>behaviourSignal</h3><p>[Object] &#x53EA;&#x8BFB;&#x5B57;&#x6BB5;&#xFF0C;&#x5B58;&#x50A8;&#x4E00;&#x4E9B;&#x884C;&#x4E3A;&#x7684;&#x4FE1;&#x53F7;&#x91CF;&#x3002;&#x5982;&#xFF1A;</p><div class=highlight><pre>{
+  draggingNode,   <span class=hljs-comment>// &#x662F;&#x5426;&#x6B63;&#x5728;&#x62D6;&#x62FD;&#x8282;&#x70B9;</span>
+  frameSelecting, <span class=hljs-comment>// &#x662F;&#x5426;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x6846;&#x9009;</span>
+  draggingEdge,   <span class=hljs-comment>// &#x662F;&#x5426;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x62D6;&#x62FD;&#x8FB9;&#x7AEF;&#x70B9;</span>
+  resizingNode,   <span class=hljs-comment>// &#x662F;&#x5426;&#x6B63;&#x5728;&#x8282;&#x70B9;&#x53D8;&#x5F62;&#x64CD;&#x4F5C;</span>
+}
+</pre></div><h3 id=_clipboard><a href=#_clipboard class=anchor><span class="iconfont icon-link"></span></a>clipboard</h3><p>[Boolean] &#x526A;&#x8D34;&#x677F; <code>false</code></p><h3 id=_rollback><a href=#_rollback class=anchor><span class="iconfont icon-link"></span></a>rollback</h3><p>[Boolean] &#x56DE;&#x6EDA;&#x5B58;&#x50A8;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C; <code>false</code></p><h3 id=_modes><a href=#_modes class=anchor><span class="iconfont icon-link"></span></a>modes</h3><p>[Object] &#x9ED8;&#x8BA4;&#x503C;</p><div class=highlight><pre>{
+  <span class=hljs-comment>// &#x9ED8;&#x8BA4;&#x6A21;&#x5F0F;</span>
+  <span class=hljs-keyword>default</span>: [
+    <span class=hljs-string>&apos;dragNode&apos;</span>, <span class=hljs-string>&apos;dragEdge&apos;</span>, <span class=hljs-string>&apos;dragBlank&apos;</span>, <span class=hljs-string>&apos;clickBlankClearActive&apos;</span>, <span class=hljs-string>&apos;resizeEdge&apos;</span>, <span class=hljs-string>&apos;clickActive&apos;</span>,
+    <span class=hljs-string>&apos;resizeNode&apos;</span>, <span class=hljs-string>&apos;wheelZoom&apos;</span>, <span class=hljs-string>&apos;dragNodeEndSetActive&apos;</span>
+  ],
+  <span class=hljs-comment>// &#x7F16;&#x8F91;&#x6A21;&#x5F0F;</span>
+  edit: [
+    <span class=hljs-string>&apos;dragNode&apos;</span>, <span class=hljs-string>&apos;dragEdge&apos;</span>, <span class=hljs-string>&apos;clickBlankClearActive&apos;</span>, <span class=hljs-string>&apos;resizeEdge&apos;</span>, <span class=hljs-string>&apos;clickActive&apos;</span>, <span class=hljs-string>&apos;dragNodeEndSetActive&apos;</span>,
+    <span class=hljs-string>&apos;multiSelect&apos;</span>, <span class=hljs-string>&apos;resizeNode&apos;</span>, <span class=hljs-string>&apos;shortcut&apos;</span>, <span class=hljs-string>&apos;wheelZoom&apos;</span>, <span class=hljs-string>&apos;hoverNodeShowAnchor&apos;</span>, <span class=hljs-string>&apos;hoverAnchorSetActived&apos;</span>, <span class=hljs-string>&apos;dragEdgeEndHideAnchor&apos;</span>, <span class=hljs-string>&apos;dragNodeEndHideAnchor&apos;</span>
+  ],
+  <span class=hljs-comment>// &#x62D6;&#x52A8;&#x6A21;&#x5F0F;&#xFF08;&#x67E5;&#x770B;&#x6A21;&#x5F0F;&#xFF09;</span>
+  drag: [<span class=hljs-string>&apos;shortcut&apos;</span>, <span class=hljs-string>&apos;dragCanvas&apos;</span>, <span class=hljs-string>&apos;wheelZoom&apos;</span>],
+  <span class=hljs-comment>// &#x6DFB;&#x52A0;&#x6A21;&#x5F0F;</span>
+  add: [<span class=hljs-string>&apos;clickAddNode&apos;</span>, <span class=hljs-string>&apos;dragAddEdge&apos;</span>, <span class=hljs-string>&apos;hoverAnchorSetActived&apos;</span>, <span class=hljs-string>&apos;hoverNodeShowAnchor&apos;</span>],
+  <span class=hljs-comment>// &#x56FE;&#x5206;&#x6790;&#x6A21;&#x5F0F;</span>
+  analysis: [
+    <span class=hljs-string>&apos;dragCanvas&apos;</span>, <span class=hljs-string>&apos;wheelZoom&apos;</span>, <span class=hljs-string>&apos;dragHideEdges&apos;</span>, <span class=hljs-string>&apos;dragHideTexts&apos;</span>, <span class=hljs-string>&apos;wheelZoomHideEdges&apos;</span>, <span class=hljs-string>&apos;wheelZoomHideTexts&apos;</span>
+  ],
+  <span class=hljs-comment>// &#x7A7A;&#x6A21;&#x5F0F;</span>
+  none: []
+}
+</pre></div><h2 id=_&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;><a href=#_&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</h2><h3 id=_updateAnchor><a href=#_updateAnchor class=anchor><span class="iconfont icon-link"></span></a>updateAnchor</h3><p>&#x66F4;&#x65B0;&#x951A;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+  * &#x66F4;&#x65B0;&#x951A;&#x70B9;
+  * @param {Object}  node          &#x8282;&#x70B9;
+  * @param {Object}  anchorIndex   &#x76EE;&#x6807;&#x951A;&#x70B9;&#x7D22;&#x5F15;
+  * @param {Object}  cfg           &#x914D;&#x7F6E;&#x9879;
+  * @return {Object} self
+  */</span>
+
+net.showAnchor(node, anchorIndex, {
+  linkable,  <span class=hljs-comment>// {Boolean} &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x8FDE;&#x63A5;</span>
+  style,     <span class=hljs-comment>// {Object}  &#x951A;&#x70B9;&#x6837;&#x5F0F;</span>
+  hoverStyle, <span class=hljs-comment>// {Object}  &#x9F20;&#x6807;&#x60AC;&#x6D6E;&#x951A;&#x70B9;&#x6837;&#x5F0F;</span>
+});
+</pre></div><h3 id=_showAnchor><a href=#_showAnchor class=anchor><span class="iconfont icon-link"></span></a>showAnchor</h3><p>&#x663E;&#x793A;&#x951A;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x663E;&#x793A;&#x951A;&#x70B9;
+ * @param {Object} node &#x5B50;&#x9879;
+ * @return {Object} self
+ */</span>
+net.showAnchor(node);
+</pre></div><h3 id=_hideAnchor><a href=#_hideAnchor class=anchor><span class="iconfont icon-link"></span></a>hideAnchor</h3><p>&#x9690;&#x85CF;&#x951A;&#x70B9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x9690;&#x85CF;&#x951A;&#x70B9;
+ * @param {Object} node &#x5B50;&#x9879;
+ * @return {Object} self
+ */</span>
+net.hideAnchor(node);
+</pre></div><h3 id=_add><a href=#_add class=anchor><span class="iconfont icon-link"></span></a>add</h3><p>&#x6DFB;&#x52A0;&#x8282;&#x70B9;&#x6216;&#x8FB9;</p><div class=highlight><pre><span class=hljs-comment>/**
+ * &#x589E;&#x52A0;&#x8282;&#x70B9;&#x3001;&#x8FB9;
+ * @param  {String} type &#x7C7B;&#x578B;&#xFF1A;node ,edge
+ * @param  {Object} model
+ * @return {Item}   item &#x5B50;&#x9879;
+ */</span>
+net.add(type, model);
+</pre></div><h3 id=_source><a href=#_source class=anchor><span class="iconfont icon-link"></span></a>source</h3><p>&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x6E90;</p><p><strong>&#x4EE5;&#x4E0B;&#x5B57;&#x6BB5;&#x5BF9;&#x9ED8;&#x8BA4;&#x7684;<code>node</code>&#x6709;&#x7279;&#x5B9A;&#x542B;&#x4E49;</strong></p><div class=highlight><pre>{
+  id,      <span class=hljs-comment>// &#x552F;&#x4E00;&#x6807;&#x8BC6;</span>
+  x,       <span class=hljs-comment>// x &#x5750;&#x6807;</span>
+  y,       <span class=hljs-comment>// y &#x5750;&#x6807;</span>
+  size,    <span class=hljs-comment>// &#x5C3A;&#x5BF8;  Number || Array [width, height] [&#x957F;, &#x5BBD;]</span>
+  style,   <span class=hljs-comment>// &#x6837;&#x5F0F;</span>
+  color,   <span class=hljs-comment>// &#x989C;&#x8272;</span>
+  shape,   <span class=hljs-comment>// &#x5F62;&#x72B6;</span>
+  label    <span class=hljs-comment>// &#x6807;&#x6CE8;</span>
+}
+</pre></div><p><strong>&#x4EE5;&#x4E0B;&#x5B57;&#x6BB5;&#x5BF9;&#x9ED8;&#x8BA4;&#x7684;<code>edge</code>&#x6709;&#x7279;&#x5B9A;&#x542B;&#x4E49;</strong></p><div class=highlight><pre>{
+  id,            <span class=hljs-comment>// &#x552F;&#x4E00;&#x6807;&#x8BC6;</span>
+  size,          <span class=hljs-comment>// &#x5C3A;&#x5BF8;</span>
+  style,         <span class=hljs-comment>// &#x6837;&#x5F0F;</span>
+  color,         <span class=hljs-comment>// &#x989C;&#x8272;</span>
+  shape,         <span class=hljs-comment>// &#x5F62;&#x72B6;</span>
+  label,         <span class=hljs-comment>// &#x6807;&#x6CE8;</span>
+  source,        <span class=hljs-comment>// &#x6765;&#x6E90;&#x8282;&#x70B9; id</span>
+  target,        <span class=hljs-comment>// &#x76EE;&#x6807;&#x8282;&#x70B9; id</span>
+  controlPoints, <span class=hljs-comment>// &#x63A7;&#x5236;&#x70B9;</span>
+  sourceAnchor,  <span class=hljs-comment>// &#x8FDE;&#x63A5;&#x6E90;&#x8282;&#x70B9;&#x951A;&#x70B9;&#x7D22;&#x5F15;</span>
+  targetAnchor   <span class=hljs-comment>// &#x8FDE;&#x63A5;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x951A;&#x70B9;&#x7D22;&#x5F15;</span>
+}
+</pre></div><p><a href=../demo/other/source.html>&#x793A;&#x4F8B;</a></p><p>&#x7F16;&#x8F91;&#x5668;&#x793A;&#x4F8B;&#xFF1A;</p><div id=editor></div><p><a href=../demo/other/editor.html>&#x793A;&#x4F8B;&#x6E90;&#x7801;</a></p><h3 id=_beginAdd><a href=#_beginAdd class=anchor><span class="iconfont icon-link"></span></a>beginAdd</h3><p>&#x5F00;&#x59CB;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x901A;&#x5E38;&#x914D;&#x5408;&#x7F16;&#x8F91;&#x5668;&#x4E00;&#x5E76;&#x4F7F;&#x7528;&#x3002;</p><h3 id=_endAdd><a href=#_endAdd class=anchor><span class="iconfont icon-link"></span></a>endAdd</h3><p>&#x7ED3;&#x675F;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x901A;&#x5E38;&#x914D;&#x5408;&#x7F16;&#x8F91;&#x5668;&#x4E00;&#x5E76;&#x4F7F;&#x7528;&#x3002;</p><h3 id=_copy><a href=#_copy class=anchor><span class="iconfont icon-link"></span></a>copy</h3><p>&#x590D;&#x5236;&#x6FC0;&#x6D3B;&#x5B50;&#x9879;</p><h3 id=_paste><a href=#_paste class=anchor><span class="iconfont icon-link"></span></a>paste</h3><p>&#x7C98;&#x8D34;&#x6FC0;&#x6D3B;&#x5B50;&#x9879;</p><h3 id=_del><a href=#_del class=anchor><span class="iconfont icon-link"></span></a>del</h3><p>&#x5220;&#x9664;&#x6FC0;&#x6D3B;&#x5B50;&#x9879;</p><h3 id=_undo><a href=#_undo class=anchor><span class="iconfont icon-link"></span></a>undo</h3><p>&#x64A4;&#x9500;</p><h3 id=_redo><a href=#_redo class=anchor><span class="iconfont icon-link"></span></a>redo</h3><p>&#x91CD;&#x505A;</p><div class=prev-next><a href=/zh-cn/g6/1.x/api/edge.html class="float-left pre">Edge </a><a href=/zh-cn/g6/1.x/api/tree.html class="float-right next">Tree</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g6","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g6/1.x/api/net.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+// 第一步：注册节点
+G6.registerNode('customNode', {
+  draw: function(cfg, group) {
+    var shape = group.addShape('rect', {
+      attrs: {
+        x: cfg.x,
+        y: cfg.y,
+        width: 80,
+        height: 20,
+        fill: '#fff',
+        stroke: 'green'
+      }
+    });
+    group.addShape('text', {
+      attrs: {
+        x: cfg.x,
+        y: cfg.y,
+        fill: 'black',
+        text: '自定义图形'
+      }
+    });
+    return shape;
+  },
+  getAnchorPoints: function(){
+    return [
+      [1, 0.5], // 右边边的中点
+      [0, 0.5] // 左边边的中点
+    ];
+  }
+});
+
+// 第二步：设置按钮
+$('#editor').append('<button id="addCircle">圆形</button>');
+$('#editor').append('<button id="addRect">方形</button>');
+$('#editor').append('<button id="addCustom">自定义形</button>');
+$('#editor').append('<button id="addLine">添加直线</button>');
+$('#editor').append('<button id="addSmooth">添加曲线</button>');
+$('#editor').append('<button id="save">保存</button>');
+var addCircle = $('#addCircle');
+var addRect = $('#addRect');
+var addCustom = $('#addCustom');
+var addLine = $('#addLine');
+var addSmooth = $('#addSmooth');
+var save = $('#save');
+
+// 第三步：配置画布
+var net = new G6.Net({
+  id: 'editor',      // 容器ID
+  width: 500,        // 画布宽
+  height: 500        // 画布高
+});
+net.filterBehaviour(['wheelZoom']);
+// 第四步：配置绑定事件
+addCircle.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'circle'
+  });
+});
+
+addRect.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'rect'
+  });
+});
+
+addCustom.on('click', function(ev){
+  net.beginAdd('node', {
+    shape: 'customNode'
+  });
+});
+
+addLine.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'line'
+  });
+});
+
+addSmooth.on('click', function(ev) {
+  net.beginAdd('edge', {
+    shape: 'smooth'
+  });
+});
+
+save.on('click', function(ev) {
+  var saveData = net.save();
+  var json = JSON.stringify(saveData, null, 2)
+  console.log(saveData, json);
+});
+
+// 第五步：渲染关系图
+net.render();
+
+})();</script></body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Coordinate &#x5750;&#x6807;&#x7CFB; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>F2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/f2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/f2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/f2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/f2/3.x/api/index.html>F2</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/chart.html>Chart</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/geometry.html>Geometry &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class="list-group-item active"><a href=/zh-cn/f2/3.x/api/coordinate.html>Coordinate &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/axis.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/interaction.html>Interaction &#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/animation.html>Animation &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/global.html>Global &#x5168;&#x5C40;&#x914D;&#x7F6E;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/shape.html>Shape &#x81EA;&#x5B9A;&#x4E49; Shape</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/plugin.html>Plugin &#x63D2;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/graphic.html>G &#x7ED8;&#x56FE;&#x63A5;&#x53E3;</a></li><li class=list-group-item><a href=/zh-cn/f2/3.x/api/canvas.html>&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_Coordinate><a href=#_Coordinate class=anchor></a>Coordinate</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_API>API</a><a class="col-md-3 level-3" href=#_&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB;>&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB;</a><a class="col-md-3 level-3" href=#_&#x6781;&#x5750;&#x6807;&#x7CFB;>&#x6781;&#x5750;&#x6807;&#x7CFB;</a><a class="col-md-3 level-2" href=#_&#x793A;&#x4F8B;>&#x793A;&#x4F8B;</a><a class="col-md-3 level-3" href=#_&#x73AF;&#x56FE;>&#x73AF;&#x56FE;</a><a class="col-md-3 level-3" href=#_&#x534A;&#x5706;>&#x534A;&#x5706;</a></div><p>&#x8BBE;&#x7F6E;&#x5750;&#x6807;&#x7CFB;&#xFF0C;F2 &#x652F;&#x6301;&#x4E24;&#x79CD;&#x5750;&#x6807;&#x7CFB;&#xFF1A;&#x7B1B;&#x5361;&#x5C14;&#x5750;&#x6807;&#x7CFB;&#x548C;&#x6781;&#x5750;&#x6807;&#x7CFB;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7B1B;&#x5361;&#x5C14;&#x5750;&#x6807;&#x7CFB;&#x3002;</p><h2 id=_API><a href=#_API class=anchor><span class="iconfont icon-link"></span></a>API</h2><h3 id=_&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB;><a href=#_&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB; class=anchor><span class="iconfont icon-link"></span></a>&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB;</h3><div class=highlight><pre><span class=hljs-comment>// &#x9009;&#x62E9;&#x7B1B;&#x5361;&#x5C14;&#x5750;&#x6807;&#x7CFB;</span>
+chart.coord(<span class=hljs-string>&apos;rect&apos;</span>);
+<span class=hljs-comment>// &#x5750;&#x6807;&#x7CFB;&#x7FFB;&#x8F6C;&#xFF0C;&#x7ED8;&#x5236;&#x6761;&#x5F62;&#x56FE;&#x65F6;&#x9700;&#x8981;</span>
+chart.coord({
+  <span class=hljs-attr>transposed</span>: <span class=hljs-literal>true</span>
+});
+chart.coord(<span class=hljs-string>&apos;rect&apos;</span>, {
+  <span class=hljs-attr>transposed</span>: <span class=hljs-literal>true</span>
+});
+</pre></div><h3 id=_&#x6781;&#x5750;&#x6807;&#x7CFB;><a href=#_&#x6781;&#x5750;&#x6807;&#x7CFB; class=anchor><span class="iconfont icon-link"></span></a>&#x6781;&#x5750;&#x6807;&#x7CFB;</h3><div class=highlight><pre><span class=hljs-comment>// &#x9009;&#x62E9;&#x6781;&#x5750;&#x6807;&#x7CFB;</span>
+chart.coord(<span class=hljs-string>&apos;polar&apos;</span>);
+<span class=hljs-comment>// &#x66F4;&#x591A;&#x914D;&#x7F6E;</span>
+chart.coord(<span class=hljs-string>&apos;polar&apos;</span>, {
+  <span class=hljs-attr>transposed</span>: <span class=hljs-literal>true</span>, <span class=hljs-comment>// &#x5750;&#x6807;&#x7CFB;&#x7FFB;&#x8F6C;</span>
+  startAngle: {<span class=hljs-built_in>Number</span>}, <span class=hljs-comment>// &#x8D77;&#x59CB;&#x5F27;&#x5EA6;</span>
+  endAngle: {<span class=hljs-built_in>Number</span>}, <span class=hljs-comment>// &#x7ED3;&#x675F;&#x5F27;&#x5EA6;</span>
+  innerRadius: {<span class=hljs-built_in>Number</span>}, <span class=hljs-comment>// &#x5185;&#x73AF;&#x534A;&#x5F84;&#xFF0C;&#x6570;&#x503C;&#x4E3A; 0 - 1 &#x8303;&#x56F4;</span>
+  radius: {<span class=hljs-built_in>Number</span>} <span class=hljs-comment>// &#x534A;&#x5F84;&#xFF0C;&#x6570;&#x503C;&#x4E3A; 0 - 1 &#x8303;&#x56F4;</span>
+});
+
+</pre></div><h2 id=_&#x793A;&#x4F8B;><a href=#_&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h2><h3 id=_&#x73AF;&#x56FE;><a href=#_&#x73AF;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>&#x73AF;&#x56FE;</h3><p><canvas id=ring></canvas></p><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x82B3;&#x534E;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.4</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5996;&#x732B;&#x4F20;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.2</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x673A;&#x5668;&#x4E4B;&#x8840;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.18</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5FC3;&#x7406;&#x7F6A;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.15</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5BFB;&#x68A6;&#x73AF;&#x6E38;&#x8BB0;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.05</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5176;&#x4ED6;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.02</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+];
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> F2.Chart({
+  <span class=hljs-attr>id</span>: <span class=hljs-string>&apos;ring&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>300</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>300</span> * <span class=hljs-number>0.64</span>,
+  <span class=hljs-attr>pixelRatio</span>: <span class=hljs-built_in>window</span>.devicePixelRatio,
+});
+chart.source(data);
+chart.legend({
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;right&apos;</span>
+});
+chart.coord(<span class=hljs-string>&apos;polar&apos;</span>, {
+  <span class=hljs-attr>transposed</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>innerRadius</span>: <span class=hljs-number>0.7</span>,
+});
+chart.axis(<span class=hljs-literal>false</span>);
+chart
+  .interval()
+  .position(<span class=hljs-string>&apos;a*proportion&apos;</span>)
+  .color(<span class=hljs-string>&apos;name&apos;</span>, [
+    <span class=hljs-string>&apos;#1890FF&apos;</span>,
+    <span class=hljs-string>&apos;#13C2C2&apos;</span>,
+    <span class=hljs-string>&apos;#2FC25B&apos;</span>,
+    <span class=hljs-string>&apos;#FACC14&apos;</span>,
+    <span class=hljs-string>&apos;#F04864&apos;</span>,
+    <span class=hljs-string>&apos;#8543E0&apos;</span>,
+  ])
+  .adjust(<span class=hljs-string>&apos;stack&apos;</span>);
+
+chart.render();
+</pre></div><h3 id=_&#x534A;&#x5706;><a href=#_&#x534A;&#x5706; class=anchor><span class="iconfont icon-link"></span></a>&#x534A;&#x5706;</h3><p><canvas id=pie></canvas></p><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x82B3;&#x534E;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.4</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5996;&#x732B;&#x4F20;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.2</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x673A;&#x5668;&#x4E4B;&#x8840;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.18</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5FC3;&#x7406;&#x7F6A;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.15</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5BFB;&#x68A6;&#x73AF;&#x6E38;&#x8BB0;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.05</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;&#x5176;&#x4ED6;&apos;</span>, <span class=hljs-attr>proportion</span>: <span class=hljs-number>0.02</span>, <span class=hljs-attr>a</span>: <span class=hljs-string>&apos;1&apos;</span> },
+];
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> F2.Chart({
+  <span class=hljs-attr>id</span>: <span class=hljs-string>&apos;pie&apos;</span>,
+  <span class=hljs-attr>width</span>: <span class=hljs-number>300</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>300</span> * <span class=hljs-number>0.64</span>,
+  <span class=hljs-attr>pixelRatio</span>: <span class=hljs-built_in>window</span>.devicePixelRatio,
+});
+chart.source(data);
+chart.legend({
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;bottom&apos;</span>,
+  <span class=hljs-attr>align</span>: <span class=hljs-string>&apos;center&apos;</span>
+});
+chart.coord(<span class=hljs-string>&apos;polar&apos;</span>, {
+  <span class=hljs-attr>transposed</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>startAngle</span>: -<span class=hljs-built_in>Math</span>.PI,
+  <span class=hljs-attr>endAngle</span>: <span class=hljs-number>0</span>,
+});
+chart.axis(<span class=hljs-literal>false</span>);
+chart
+  .interval()
+  .position(<span class=hljs-string>&apos;a*proportion&apos;</span>)
+  .color(<span class=hljs-string>&apos;name&apos;</span>, [
+    <span class=hljs-string>&apos;#1890FF&apos;</span>,
+    <span class=hljs-string>&apos;#13C2C2&apos;</span>,
+    <span class=hljs-string>&apos;#2FC25B&apos;</span>,
+    <span class=hljs-string>&apos;#FACC14&apos;</span>,
+    <span class=hljs-string>&apos;#F04864&apos;</span>,
+    <span class=hljs-string>&apos;#8543E0&apos;</span>,
+  ])
+  .adjust(<span class=hljs-string>&apos;stack&apos;</span>);
+
+chart.render();
+</pre></div><div class=prev-next><a href=/zh-cn/f2/3.x/api/scale.html class="float-left pre">Scale &#x5EA6;&#x91CF; </a><a href=/zh-cn/f2/3.x/api/axis.html class="float-right next">Axis &#x5750;&#x6807;&#x8F74;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"f2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/f2/3.x/api/coordinate.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/f2/3.1.3/f2.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const data = [
+  { name: '芳华', proportion: 0.4, a: '1' },
+  { name: '妖猫传', proportion: 0.2, a: '1' },
+  { name: '机器之血', proportion: 0.18, a: '1' },
+  { name: '心理罪', proportion: 0.15, a: '1' },
+  { name: '寻梦环游记', proportion: 0.05, a: '1' },
+  { name: '其他', proportion: 0.02, a: '1' },
+];
+const chart = new F2.Chart({
+  id: 'ring',
+  width: 300,
+  height: 300 * 0.64,
+  pixelRatio: window.devicePixelRatio,
+});
+chart.source(data);
+chart.legend({
+  position: 'right'
+});
+chart.coord('polar', {
+  transposed: true,
+  innerRadius: 0.7,
+});
+chart.axis(false);
+chart
+  .interval()
+  .position('a*proportion')
+  .color('name', [
+    '#1890FF',
+    '#13C2C2',
+    '#2FC25B',
+    '#FACC14',
+    '#F04864',
+    '#8543E0',
+  ])
+  .adjust('stack');
+
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const data = [
+  { name: '芳华', proportion: 0.4, a: '1' },
+  { name: '妖猫传', proportion: 0.2, a: '1' },
+  { name: '机器之血', proportion: 0.18, a: '1' },
+  { name: '心理罪', proportion: 0.15, a: '1' },
+  { name: '寻梦环游记', proportion: 0.05, a: '1' },
+  { name: '其他', proportion: 0.02, a: '1' },
+];
+const chart = new F2.Chart({
+  id: 'pie',
+  width: 300,
+  height: 300 * 0.64,
+  pixelRatio: window.devicePixelRatio,
+});
+chart.source(data);
+chart.legend({
+  position: 'bottom',
+  align: 'center'
+});
+chart.coord('polar', {
+  transposed: true,
+  startAngle: -Math.PI,
+  endAngle: 0,
+});
+chart.axis(false);
+chart
+  .interval()
+  .position('a*proportion')
+  .color('name', [
+    '#1890FF',
+    '#13C2C2',
+    '#2FC25B',
+    '#FACC14',
+    '#F04864',
+    '#8543E0',
+  ])
+  .adjust('stack');
+
+chart.render();
+
+})();</script></body></html>

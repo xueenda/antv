@@ -1,0 +1,885 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;&#x65B9;&#x5F0F; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/api/index.html>G2</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/chart.html>Chart</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/view.html>View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/geom.html>Geom</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/scale.html>Scale</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/shape.html>Shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/animate.html>Animate</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/options.html>&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;&#x65B9;&#x5F0F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/slider.html>Slider</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/connector.html>Connector</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/transform.html>Transform</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/api/graphic.html>&#x7ED8;&#x56FE;&#x5C5E;&#x6027;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;&#x65B9;&#x5F0F;><a href=#_&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;&#x65B9;&#x5F0F; class=anchor></a>&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;&#x65B9;&#x5F0F;</h1><div class="inner-page-toc row"><a class="col-md-3 level-2" href=#_&#x5B9E;&#x4F8B;-1&#xFF1A;&#x67F1;&#x72B6;&#x56FE;>&#x5B9E;&#x4F8B; 1&#xFF1A;&#x67F1;&#x72B6;&#x56FE;</a><a class="col-md-3 level-2" href=#_&#x5B9E;&#x4F8B;-2:-&#x6563;&#x70B9;&#x56FE;>&#x5B9E;&#x4F8B; 2: &#x6563;&#x70B9;&#x56FE;</a><a class="col-md-3 level-2" href=#_&#x5B9E;&#x4F8B;-3&#xFF1A;&#x591A;-views>&#x5B9E;&#x4F8B; 3&#xFF1A;&#x591A; views</a><a class="col-md-3 level-2" href=#_&#x914D;&#x7F6E;&#x9879;&#x5C5E;&#x6027;>&#x914D;&#x7F6E;&#x9879;&#x5C5E;&#x6027;</a><a class="col-md-3 level-3" href=#_scales>scales</a><a class="col-md-3 level-3" href=#_coord>coord</a><a class="col-md-3 level-3" href=#_axes>axes</a><a class="col-md-3 level-3" href=#_legends>legends</a><a class="col-md-3 level-3" href=#_guides>guides</a><a class="col-md-3 level-3" href=#_filters>filters</a><a class="col-md-3 level-3" href=#_tooltip>tooltip</a><a class="col-md-3 level-3" href=#_geoms>geoms</a></div><p>G2&#x9664;&#x4E86;&#x652F;&#x6301;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x5916;&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x5F0F;&#x58F0;&#x660E;&#x65B9;&#x5F0F;&#x3002;</p><p>&#x4E3A; <a href=./chart.html>Chart</a> &#x5BF9;&#x8C61;&#x65B0;&#x589E; <code>options</code> &#x5C5E;&#x6027;&#xFF0C;&#x7528;&#x4E8E;&#x652F;&#x6301;&#x914D;&#x7F6E;&#x9879;&#x5F0F;&#x58F0;&#x660E;&#x3002;</p><div class=highlight><pre><span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>width</span>: <span class=hljs-number>1000</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>500</span>,
+  <span class=hljs-attr>data</span>: data,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>20</span>, <span class=hljs-number>80</span>, <span class=hljs-number>60</span>, <span class=hljs-number>80</span> ]
+  options: {
+    <span class=hljs-comment>// &#x5728;&#x8FD9;&#x91CC;&#x58F0;&#x660E;&#x6240;&#x6709;&#x7684;&#x914D;&#x7F6E;&#x5C5E;&#x6027;</span>
+  }
+});
+chart.render();
+</pre></div><p>&#x53EF;&#x4EE5;&#x5148;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x4E86;&#x89E3;&#x4E0B;&#xFF1A;</p><h2 id=_&#x5B9E;&#x4F8B;-1&#xFF1A;&#x67F1;&#x72B6;&#x56FE;><a href=#_&#x5B9E;&#x4F8B;-1&#xFF1A;&#x67F1;&#x72B6;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>&#x5B9E;&#x4F8B; 1&#xFF1A;&#x67F1;&#x72B6;&#x56FE;</h2><div id=c1></div><div class=highlight><pre><span class=hljs-keyword>const</span> data = [
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Sports&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>275</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Strategy&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>115</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Action&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>120</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Shooter&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>350</span> },
+  { <span class=hljs-attr>genre</span>: <span class=hljs-string>&apos;Other&apos;</span>, <span class=hljs-attr>sold</span>: <span class=hljs-number>150</span> }
+];
+<span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>300</span>,
+  data,
+  <span class=hljs-attr>options</span>: {
+    <span class=hljs-attr>scales</span>: {
+      <span class=hljs-string>&apos;genre&apos;</span>: {
+        <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x6E38;&#x620F;&#x79CD;&#x7C7B;&apos;</span>
+      },
+      <span class=hljs-string>&apos;sold&apos;</span>: {
+        <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x9500;&#x552E;&#x91CF;&apos;</span>
+      }
+    },
+    <span class=hljs-attr>geoms</span>: [
+      {
+        <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;interval&apos;</span>,
+        <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;genre*sold&apos;</span>,
+        <span class=hljs-attr>color</span>: <span class=hljs-string>&apos;genre&apos;</span>
+      }
+    ]
+  }
+});
+chart.render();
+</pre></div><p>&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre><span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+  <span class=hljs-attr>height</span> : <span class=hljs-number>300</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+});
+chart.source(data, {
+  <span class=hljs-attr>genre</span>: {
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x6E38;&#x620F;&#x79CD;&#x7C7B;&apos;</span>
+  },
+  <span class=hljs-attr>sold</span>: {
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x9500;&#x552E;&#x91CF;&apos;</span>
+  }
+});
+chart.interval().position(<span class=hljs-string>&apos;genre*sold&apos;</span>).color(<span class=hljs-string>&apos;genre&apos;</span>)
+chart.render();
+</pre></div><h2 id=_&#x5B9E;&#x4F8B;-2:-&#x6563;&#x70B9;&#x56FE;><a href=#_&#x5B9E;&#x4F8B;-2:-&#x6563;&#x70B9;&#x56FE; class=anchor><span class="iconfont icon-link"></span></a>&#x5B9E;&#x4F8B; 2: &#x6563;&#x70B9;&#x56FE;</h2><div id=c2></div><div class=highlight><pre><span class=hljs-keyword>const</span> { <span class=hljs-built_in>DataView</span> } = DataSet;
+$.getJSON(<span class=hljs-string>&apos;/assets/data/diamond.json&apos;</span>, (data) =&gt; {
+  <span class=hljs-keyword>const</span> dv = (<span class=hljs-keyword>new</span> <span class=hljs-built_in>DataView</span>()).source(data);
+  <span class=hljs-keyword>const</span> caratAvg = dv.mean(<span class=hljs-string>&apos;carat&apos;</span>); <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;</span>
+  <span class=hljs-keyword>const</span> priceAvg = dv.mean(<span class=hljs-string>&apos;price&apos;</span>); <span class=hljs-comment>// &#x8BA1;&#x7B97;&#x4EF7;&#x683C;&#x5747;&#x503C;</span>
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c2&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>,
+    data,
+    <span class=hljs-attr>options</span>: {
+      <span class=hljs-attr>guides</span>: [
+        {
+          <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;line&apos;</span>,
+          <span class=hljs-attr>start</span>: [ caratAvg, <span class=hljs-number>0</span> ], <span class=hljs-comment>// &#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x683C;&#x5F0F;</span>
+          end: [ caratAvg, <span class=hljs-number>20000</span> ],
+          <span class=hljs-attr>text</span>: {
+            <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+            <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+            <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;:&apos;</span> + caratAvg
+          }
+        },
+        {
+          <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;line&apos;</span>,
+          <span class=hljs-attr>start</span>: {
+            <span class=hljs-attr>carat</span>: <span class=hljs-number>0</span>,
+            <span class=hljs-attr>price</span>: priceAvg
+          }, <span class=hljs-comment>// &#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x683C;&#x5F0F;</span>
+          end: {
+            <span class=hljs-attr>carat</span>: <span class=hljs-number>4</span>,
+            <span class=hljs-attr>price</span>: priceAvg
+          },
+          <span class=hljs-attr>text</span>: {
+            <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+            <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+            <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x4EF7;&#x683C;&#x5747;&#x503C;:&apos;</span> + priceAvg,
+            <span class=hljs-attr>style</span>: {
+              <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;end&apos;</span>
+            }
+          }
+        },
+      ],
+      <span class=hljs-attr>geoms</span>: [
+        {
+          <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;point&apos;</span>,
+          <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;carat*price&apos;</span>,
+          <span class=hljs-attr>shape</span>: <span class=hljs-string>&apos;circle&apos;</span>,
+          <span class=hljs-attr>opacity</span>: <span class=hljs-number>0.3</span>
+        }
+      ]
+    }
+  });
+  chart.render();
+});
+</pre></div><p>&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre><span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({ <span class=hljs-comment>// &#x521B;&#x5EFA;&#x56FE;&#x8868;</span>
+  container : <span class=hljs-string>&apos;c2&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>
+});
+ 
+chart.source(data); <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x6E90;</span>
+chart.point().position(<span class=hljs-string>&apos;carat*price&apos;</span>).shape(<span class=hljs-string>&apos;circle&apos;</span>).opacity(<span class=hljs-number>0.3</span>);
+chart.guide().line({
+  <span class=hljs-attr>start</span>: [ caratAvg, <span class=hljs-number>0</span> ], <span class=hljs-comment>// &#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x683C;&#x5F0F;</span>
+  end: [ caratAvg, <span class=hljs-number>20000</span> ],
+  <span class=hljs-attr>text</span>: {
+    <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+    <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;:&apos;</span> + caratAvg
+  }
+});
+chart.guide().line({
+  <span class=hljs-attr>start</span>: {
+    <span class=hljs-attr>carat</span>: <span class=hljs-number>0</span>,
+    <span class=hljs-attr>price</span>: priceAvg
+  }, <span class=hljs-comment>// &#x4F7F;&#x7528;&#x5BF9;&#x8C61;&#x683C;&#x5F0F;</span>
+  end: {
+    <span class=hljs-attr>carat</span>: <span class=hljs-number>4</span>,
+    <span class=hljs-attr>price</span>: priceAvg
+  },
+  <span class=hljs-attr>text</span>: {
+    <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+    <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x4EF7;&#x683C;&#x5747;&#x503C;:&apos;</span> + priceAvg,
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;end&apos;</span>
+    }
+  }
+});
+chart.render(); <span class=hljs-comment>// &#x56FE;&#x8868;&#x6E32;&#x67D3;</span>
+</pre></div><h2 id=_&#x5B9E;&#x4F8B;-3&#xFF1A;&#x591A;-views><a href=#_&#x5B9E;&#x4F8B;-3&#xFF1A;&#x591A;-views class=anchor><span class="iconfont icon-link"></span></a>&#x5B9E;&#x4F8B; 3&#xFF1A;&#x591A; views</h2><div id=c3></div><div class=highlight><pre>$.getJSON(<span class=hljs-string>&apos;/assets/data/world.geo.json&apos;</span>, (mapData) =&gt; {
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c3&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>,
+    <span class=hljs-attr>padding</span>: [ <span class=hljs-number>55</span>, <span class=hljs-number>20</span> ],
+    <span class=hljs-attr>options</span>: {
+      <span class=hljs-attr>tooltip</span>: {
+        <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span>
+      },
+      <span class=hljs-attr>scales</span>: {
+        <span class=hljs-attr>longitude</span>: {
+          <span class=hljs-attr>sync</span>: <span class=hljs-literal>true</span>
+        },
+        <span class=hljs-attr>latitude</span>: {
+          <span class=hljs-attr>sync</span>: <span class=hljs-literal>true</span>
+        }
+      },
+      <span class=hljs-attr>axes</span>: <span class=hljs-literal>false</span>,
+      <span class=hljs-attr>legends</span>: {
+        <span class=hljs-string>&apos;trend&apos;</span>: {
+          <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;left&apos;</span>
+        }
+      }
+    }
+  });
+  <span class=hljs-comment>// &#x7ED8;&#x5236;&#x4E16;&#x754C;&#x5730;&#x56FE;&#x80CC;&#x666F;</span>
+  <span class=hljs-keyword>const</span> ds = <span class=hljs-keyword>new</span> DataSet();
+  <span class=hljs-keyword>const</span> worldMap = ds.createView(<span class=hljs-string>&apos;back&apos;</span>)
+    .source(mapData, {
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;GeoJSON&apos;</span>
+    });
+  <span class=hljs-keyword>const</span> view = chart.view({
+    <span class=hljs-attr>data</span>: worldMap,
+    <span class=hljs-attr>options</span>: {
+      <span class=hljs-attr>tooltip</span>: <span class=hljs-literal>false</span>,
+      <span class=hljs-attr>geoms</span>: [
+        {
+          <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;polygon&apos;</span>,
+          <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;longitude*latitude&apos;</span>,
+          <span class=hljs-attr>style</span>: {
+            <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#fff&apos;</span>,
+            <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#ccc&apos;</span>,
+            <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>1</span>
+          }
+        }
+      ]
+    }
+  });
+
+  <span class=hljs-comment>// &#x7ED8;&#x5236;&#x5C55;&#x793A;&#x6570;&#x636E;</span>
+  <span class=hljs-comment>// &#x53EF;&#x89C6;&#x5316;&#x7528;&#x6237;&#x6570;&#x636E;</span>
+  <span class=hljs-keyword>const</span> userData = [
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Russia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>86.8</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;China&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>106.3</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Japan&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>94.7</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Mongolia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>98</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Canada&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>98.4</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;United Kingdom&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>97.2</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;United States of America&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>98.3</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Brazil&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>96.7</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Argentina&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>95.8</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Algeria&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>101.3</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;France&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>94.8</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Germany&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>96.6</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Ukraine&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>86.3</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Egypt&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>102.1</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;South Africa&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>101.3</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;India&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>107.6</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Australia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>99.9</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Saudi Arabia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>130.1</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Afghanistan&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>106.5</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Kazakhstan&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>93.4</span> },
+    { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Indonesia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>101.4</span> }
+  ];
+  <span class=hljs-keyword>const</span> userDv = ds.createView()
+    .source(userData)
+    .transform({
+      <span class=hljs-attr>geoDataView</span>: worldMap,
+      <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;name&apos;</span>,
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.region&apos;</span>,
+      <span class=hljs-attr>as</span>: [ <span class=hljs-string>&apos;longitude&apos;</span>, <span class=hljs-string>&apos;latitude&apos;</span> ]
+    })
+    .transform({
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;map&apos;</span>,
+      <span class=hljs-attr>callback</span>: <span class=hljs-function>(<span class=hljs-params>obj</span>) =&gt;</span> {
+        obj.trend = (obj.value &gt; <span class=hljs-number>100</span>) ? <span class=hljs-string>&apos;&#x7537;&#x6027;&#x66F4;&#x591A;&apos;</span> : <span class=hljs-string>&apos;&#x5973;&#x6027;&#x66F4;&#x591A;&apos;</span>;
+        <span class=hljs-keyword>return</span> obj;
+      }
+    });
+  <span class=hljs-keyword>const</span> userView = chart.view({
+    <span class=hljs-attr>data</span>: userDv,
+    <span class=hljs-attr>options</span>: {
+      <span class=hljs-attr>scales</span>: {
+        <span class=hljs-string>&apos;trend&apos;</span>: {
+          <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x6BCF;100&#x4F4D;&#x5973;&#x6027;&#x5BF9;&#x5E94;&#x7684;&#x7537;&#x6027;&#x6570;&#x91CF;&apos;</span>
+        }
+      },
+      <span class=hljs-attr>geoms</span>: [
+        {
+          <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;polygon&apos;</span>,
+          <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;longitude*latitude&apos;</span>,
+          <span class=hljs-attr>color</span>: {
+            <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;trend&apos;</span>,
+            <span class=hljs-attr>colors</span>: [ <span class=hljs-string>&apos;#C45A5A&apos;</span>, <span class=hljs-string>&apos;#14647D&apos;</span> ]
+          },
+          <span class=hljs-attr>opacity</span>: <span class=hljs-string>&apos;value&apos;</span>,
+          <span class=hljs-attr>tooltip</span>: <span class=hljs-string>&apos;name*trend&apos;</span>,
+          <span class=hljs-attr>animate</span>: {
+            <span class=hljs-attr>leave</span>: {
+              <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;fadeOut&apos;</span>
+            }
+          }
+        }
+      ]
+    }
+  });
+  chart.render();
+});
+</pre></div><p>&#x5BF9;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre><span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c3&apos;</span>,
+  <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+  <span class=hljs-attr>height</span>: <span class=hljs-number>450</span>,
+  <span class=hljs-attr>padding</span>: [ <span class=hljs-number>55</span>, <span class=hljs-number>20</span> ]
+});
+chart.tooltip({
+  <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span>
+});
+<span class=hljs-comment>// &#x540C;&#x6B65;&#x5EA6;&#x91CF;</span>
+chart.scale({
+  <span class=hljs-attr>longitude</span>: {
+    <span class=hljs-attr>sync</span>: <span class=hljs-literal>true</span>
+  },
+  <span class=hljs-attr>latitude</span>: {
+    <span class=hljs-attr>sync</span>: <span class=hljs-literal>true</span>
+  }
+});
+chart.axis(<span class=hljs-literal>false</span>);
+chart.legend(<span class=hljs-string>&apos;trend&apos;</span>, {
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;left&apos;</span>
+});
+  
+<span class=hljs-comment>// &#x7ED8;&#x5236;&#x4E16;&#x754C;&#x5730;&#x56FE;&#x80CC;&#x666F;</span>
+<span class=hljs-keyword>const</span> ds = <span class=hljs-keyword>new</span> DataSet();
+<span class=hljs-keyword>const</span> worldMap = ds.createView(<span class=hljs-string>&apos;back&apos;</span>)
+  .source(mapData, {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;GeoJSON&apos;</span>
+  });
+<span class=hljs-keyword>const</span> worldMapView = chart.view();
+worldMapView.source(worldMap);
+worldMapView.tooltip(<span class=hljs-literal>false</span>);
+worldMapView.polygon().position(<span class=hljs-string>&apos;longitude*latitude&apos;</span>).style({
+  <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#fff&apos;</span>,
+  <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#ccc&apos;</span>,
+  <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>1</span>
+});
+  
+<span class=hljs-comment>// &#x53EF;&#x89C6;&#x5316;&#x7528;&#x6237;&#x6570;&#x636E;</span>
+<span class=hljs-keyword>const</span> userData = [
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Russia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>86.8</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;China&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>106.3</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Japan&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>94.7</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Mongolia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>98</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Canada&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>98.4</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;United Kingdom&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>97.2</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;United States of America&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>98.3</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Brazil&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>96.7</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Argentina&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>95.8</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Algeria&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>101.3</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;France&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>94.8</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Germany&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>96.6</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Ukraine&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>86.3</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Egypt&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>102.1</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;South Africa&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>101.3</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;India&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>107.6</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Australia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>99.9</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Saudi Arabia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>130.1</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Afghanistan&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>106.5</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Kazakhstan&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>93.4</span> },
+  { <span class=hljs-attr>name</span>: <span class=hljs-string>&apos;Indonesia&apos;</span>, <span class=hljs-attr>value</span>: <span class=hljs-number>101.4</span>}
+  ];
+<span class=hljs-keyword>const</span> userDv = ds.createView()
+  .source(userData)
+  .transform({
+    <span class=hljs-attr>geoDataView</span>: worldMap,
+    <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;name&apos;</span>,
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.region&apos;</span>,
+    <span class=hljs-attr>as</span>: [ <span class=hljs-string>&apos;longitude&apos;</span>, <span class=hljs-string>&apos;latitude&apos;</span> ]
+  })
+  .transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;map&apos;</span>,
+    <span class=hljs-attr>callback</span>: <span class=hljs-function>(<span class=hljs-params>obj</span>) =&gt;</span> {
+      obj.trend = (obj.value &gt; <span class=hljs-number>100</span>) ? <span class=hljs-string>&apos;&#x7537;&#x6027;&#x66F4;&#x591A;&apos;</span> : <span class=hljs-string>&apos;&#x5973;&#x6027;&#x66F4;&#x591A;&apos;</span>;
+      <span class=hljs-keyword>return</span> obj;
+    }
+  });
+<span class=hljs-keyword>const</span> userView = chart.view();
+userView.source(userDv, {
+  <span class=hljs-string>&apos;trend&apos;</span>: {
+    <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x6BCF;100&#x4F4D;&#x5973;&#x6027;&#x5BF9;&#x5E94;&#x7684;&#x7537;&#x6027;&#x6570;&#x91CF;&apos;</span>
+  }
+});
+userView.polygon()
+  .position(<span class=hljs-string>&apos;longitude*latitude&apos;</span>)
+  .color(<span class=hljs-string>&apos;trend&apos;</span>, [ <span class=hljs-string>&apos;#C45A5A&apos;</span>, <span class=hljs-string>&apos;#14647D&apos;</span> ])
+  .opacity(<span class=hljs-string>&apos;value&apos;</span>)
+  .tooltip(<span class=hljs-string>&apos;name*trend&apos;</span>)
+  .animate({
+    <span class=hljs-attr>leave</span>: {
+      <span class=hljs-attr>animation</span>: <span class=hljs-string>&apos;fadeOut&apos;</span>
+    }
+  });
+chart.render();
+</pre></div><h2 id=_&#x914D;&#x7F6E;&#x9879;&#x5C5E;&#x6027;><a href=#_&#x914D;&#x7F6E;&#x9879;&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>&#x914D;&#x7F6E;&#x9879;&#x5C5E;&#x6027;</h2><div class=highlight><pre><span class=hljs-keyword>const</span> options = {
+  <span class=hljs-attr>scales</span>: {object}, <span class=hljs-comment>// &#x5217;&#x5B9A;&#x4E49;&#x58F0;&#x660E;</span>
+  coord: {object}, <span class=hljs-comment>// &#x5750;&#x6807;&#x7CFB;&#x914D;&#x7F6E;</span>
+  axes: {object}, <span class=hljs-comment>// &#x5750;&#x6807;&#x8F74;&#x914D;&#x7F6E;</span>
+  legends: {object}, <span class=hljs-comment>// &#x56FE;&#x4F8B;&#x914D;&#x7F6E;</span>
+  guides: {array}, <span class=hljs-comment>// &#x56FE;&#x8868;&#x8F85;&#x52A9;&#x5143;&#x7D20;&#x914D;&#x7F6E;</span>
+  filters: {object}, <span class=hljs-comment>// &#x6570;&#x636E;&#x8FC7;&#x6EE4;&#x914D;&#x7F6E;</span>
+  tooltip: {object}, <span class=hljs-comment>// &#x63D0;&#x793A;&#x4FE1;&#x606F;&#x914D;&#x7F6E;</span>
+  facet: {object}, <span class=hljs-comment>// &#x5206;&#x9762;&#x914D;&#x7F6E;</span>
+  geoms: {array} <span class=hljs-comment>// &#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x76F8;&#x5173;&#x914D;&#x7F6E;</span>
+}
+</pre></div><h3 id=_scales><a href=#_scales class=anchor><span class="iconfont icon-link"></span></a>scales</h3><p>&#x7C7B;&#x578B;&#xFF1A; <code>object</code></p><p>&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x6240;&#x6709;&#x7684;<a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;</a>&#x3002;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x540C; <code>chart.scale()</code>&#x3002;</p><p>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;</p><div class=highlight><pre>scales: {
+  <span class=hljs-attr>field1</span>: {object}, <span class=hljs-comment>// &#x4E3A;&#x6570;&#x636E;&#x5B57;&#x6BB5; field1 &#x8FDB;&#x884C;&#x5217;&#x5B9A;&#x4E49;</span>
+  field2: {object}, <span class=hljs-comment>// &#x4E3A;&#x6570;&#x636E;&#x5B57;&#x6BB5; field2 &#x8FDB;&#x884C;&#x5217;&#x5B9A;&#x4E49;</span>
+  ...
+}
+</pre></div><p>&#x5177;&#x4F53;&#x5217;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570; API&#xFF1A; <a href=./scale.html>Scale</a>&#x3002;</p><h4 id=_&#x793A;&#x4F8B;><a href=#_&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.scale({
+  <span class=hljs-attr>x</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;cat&apos;</span>,
+    <span class=hljs-attr>tickCount</span>: <span class=hljs-number>10</span>
+  },
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;linear&apos;</span>,
+    <span class=hljs-attr>nica</span>: <span class=hljs-literal>false</span>
+  }
+});
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;</span>
+scales: {
+  <span class=hljs-attr>x</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;cat&apos;</span>,
+    <span class=hljs-attr>tickCount</span>: <span class=hljs-number>10</span>
+  },
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;linear&apos;</span>,
+    <span class=hljs-attr>nica</span>: <span class=hljs-literal>false</span>
+  }
+}
+</pre></div><h3 id=_coord><a href=#_coord class=anchor><span class="iconfont icon-link"></span></a>coord</h3><p>&#x7C7B;&#x578B;&#xFF1A; <code>object</code></p><p>&#x5750;&#x6807;&#x7CFB;&#x914D;&#x7F6E;&#xFF0C;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528; api: <code>chart.coord(type, cfg)</code>&#x3002;</p><p>&#x5177;&#x4F53;&#x914D;&#x7F6E;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre>coord: {
+  <span class=hljs-attr>type</span>: {string}, <span class=hljs-comment>// &#x5750;&#x6807;&#x7CFB;&#x7C7B;&#x578B;&#x58F0;&#x660E;&#xFF0C;&#x53EF;&#x53D6;&#x503C;: rect polar theta map helix gauge clock</span>
+  cfg: {object}, <span class=hljs-comment>// &#x5BF9;&#x5E94;&#x5404;&#x4E2A; type &#x5750;&#x6807;&#x7CFB;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#xFF0C;&#x540C; `chart.coord(type, cfg)` &#x4E2D;&#x7684; cfg</span>
+  actions: {array} <span class=hljs-comment>// &#x58F0;&#x660E;&#x5750;&#x6807;&#x7CFB;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7684;&#x53D8;&#x6362;&#x64CD;&#x4F5C;</span>
+}
+</pre></div><p>actions &#x5C5E;&#x6027;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;:</p><div class=highlight><pre>actions: [
+  [ <span class=hljs-string>&apos;transpose&apos;</span> ],
+  [ <span class=hljs-string>&apos;rotate&apos;</span>, <span class=hljs-number>90</span> ],
+  [ <span class=hljs-string>&apos;scale&apos;</span>, <span class=hljs-number>1</span>, <span class=hljs-number>-1</span> ],
+  [ <span class=hljs-string>&apos;reflect&apos;</span>, <span class=hljs-string>&apos;x&apos;</span> ]
+]
+</pre></div><h4 id=__&#x793A;&#x4F8B;><a href=#__&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.coord(<span class=hljs-string>&apos;polar&apos;</span>, {
+  <span class=hljs-attr>innerRadius</span>: <span class=hljs-number>0.3</span>,
+  <span class=hljs-attr>startAngle</span>: - <span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>2</span>,
+  <span class=hljs-attr>endAngle</span>: <span class=hljs-number>3</span> * <span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>2</span>
+}).transpose();
+
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</span>
+coord: {
+  <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;polar&apos;</span>,
+  <span class=hljs-attr>cfg</span>: {
+    <span class=hljs-attr>innerRadius</span>: <span class=hljs-number>0.3</span>,
+    <span class=hljs-attr>startAngle</span>: - <span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>2</span>,
+    <span class=hljs-attr>endAngle</span>: <span class=hljs-number>3</span> * <span class=hljs-built_in>Math</span>.PI / <span class=hljs-number>2</span>
+  },
+  <span class=hljs-attr>actions</span>: [
+    [ <span class=hljs-string>&apos;transpose&apos;</span> ]
+  ]
+}
+</pre></div><h3 id=_axes><a href=#_axes class=anchor><span class="iconfont icon-link"></span></a>axes</h3><p>&#x7C7B;&#x578B;&#xFF1A;<code>object</code></p><p>&#x56FE;&#x8868;&#x5750;&#x6807;&#x8F74;&#x914D;&#x7F6E;&#xFF0C;&#x5BF9;&#x5E94; <code>chart.axis(dim, cfg)</code> &#x65B9;&#x6CD5;&#x3002;</p><p>&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#xFF1A;</p><ol><li>&#x4E0D;&#x5C55;&#x793A;&#x5750;&#x6807;&#x8F74;</li></ol><div class=highlight><pre>axes: <span class=hljs-literal>false</span>
+</pre></div><ol start=2><li>&#x4E0D;&#x5C55;&#x793A;&#x67D0;&#x6761;&#x5750;&#x6807;&#x8F74;</li></ol><div class=highlight><pre>axes: {
+  <span class=hljs-attr>field</span>: <span class=hljs-literal>false</span>, <span class=hljs-comment>// &#x4E0D;&#x5C55;&#x793A;&#x6570;&#x636E;&#x5B57;&#x6BB5; field1 &#x5BF9;&#x5E94;&#x7684;&#x5750;&#x6807;&#x8F74;</span>
+}
+</pre></div><ol start=3><li>&#x4E3A;&#x5404;&#x4E2A;&#x7684;&#x5750;&#x6807;&#x8F74;&#x8FDB;&#x884C;&#x914D;&#x7F6E;</li></ol><div class=highlight><pre>axes: {
+   <span class=hljs-attr>field1</span>: {object},
+   <span class=hljs-attr>field2</span>: {object}
+   <span class=hljs-comment>// ...</span>
+}
+</pre></div><p>&#x5177;&#x4F53;&#x7684;&#x914D;&#x7F6E;&#x5C5E;&#x6027;&#x540C; <code>chart.axis(field, cfg)</code>&#x3002;</p><h4 id=___&#x793A;&#x4F8B;><a href=#___&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.axis(<span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-literal>false</span>);
+chart.axis(<span class=hljs-string>&apos;y&apos;</span>, {
+  <span class=hljs-attr>tickLine</span>: {
+    <span class=hljs-attr>length</span>: <span class=hljs-number>5</span>,
+    <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>2</span>
+  },
+  <span class=hljs-attr>label</span>: {
+    <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+      <span class=hljs-keyword>return</span> val + <span class=hljs-string>&apos;$&apos;</span>;
+    },
+    <span class=hljs-attr>textStyle</span>: {
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>12</span>
+    }
+  }
+});
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</span>
+axes: {
+  <span class=hljs-attr>x</span>: <span class=hljs-literal>false</span>,
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>tickLine</span>: {
+      <span class=hljs-attr>length</span>: <span class=hljs-number>5</span>,
+      <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>2</span>
+    },
+    <span class=hljs-attr>label</span>: {
+      <span class=hljs-attr>formatter</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+        <span class=hljs-keyword>return</span> val + <span class=hljs-string>&apos;$&apos;</span>;
+      },
+      <span class=hljs-attr>textStyle</span>: {
+        <span class=hljs-attr>fontSize</span>: <span class=hljs-number>12</span>
+      }
+    }
+  }
+}
+</pre></div><h3 id=_legends><a href=#_legends class=anchor><span class="iconfont icon-link"></span></a>legends</h3><p>&#x7C7B;&#x578B;&#xFF1A; <code>object</code></p><p>&#x56FE;&#x8868;&#x56FE;&#x4F8B;&#x914D;&#x7F6E;&#xFF0C;&#x5BF9;&#x5E94; <code>chart.legend()</code>&#x3002;</p><ol><li>&#x4E0D;&#x663E;&#x793A;&#x6240;&#x6709;&#x7684;&#x56FE;&#x4F8B;</li></ol><div class=highlight><pre>legends: <span class=hljs-literal>false</span>
+</pre></div><ol start=2><li>&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#x56FE;&#x4F8B;&#x8FDB;&#x884C;&#x914D;&#x7F6E;</li></ol><div class=highlight><pre>legends: {
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;right&apos;</span>, <span class=hljs-comment>// &#x56FE;&#x4F8B;&#x7684;&#x663E;&#x793A;&#x4F4D;&#x7F6E;&#xFF0C;&#x6709; &apos;top&apos;,&apos;left&apos;,&apos;right&apos;,&apos;bottom&apos;&#x56DB;&#x79CD;&#x4F4D;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&apos;right&apos;</span>
+  <span class=hljs-comment>// ... &#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x540C; chart.legend()</span>
+}
+</pre></div><ol start=3><li>&#x4E3A;&#x5404;&#x4E2A;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x4F8B;&#x8FDB;&#x884C;&#x914D;&#x7F6E;</li></ol><div class=highlight><pre>legends: {
+  <span class=hljs-attr>field1</span>: {object}, 
+  <span class=hljs-attr>field2</span>: <span class=hljs-literal>false</span> <span class=hljs-comment>// &#x4E0D;&#x5C55;&#x793A; field2 &#x5BF9;&#x5E94;&#x7684;&#x56FE;&#x4F8B; </span>
+}
+</pre></div><h4 id=____&#x793A;&#x4F8B;><a href=#____&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.legend(<span class=hljs-string>&apos;x&apos;</span>, <span class=hljs-literal>false</span>);
+chart.legend(<span class=hljs-string>&apos;y&apos;</span>, {
+  <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;top&apos;</span>
+});
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</span>
+legends: {
+  <span class=hljs-attr>x</span>: <span class=hljs-literal>false</span>,
+  <span class=hljs-attr>y</span>: {
+    <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;top&apos;</span>
+  }
+}
+</pre></div><h3 id=_guides><a href=#_guides class=anchor><span class="iconfont icon-link"></span></a>guides</h3><p>&#x7C7B;&#x578B;&#xFF1A;<code>array</code></p><p>&#x56FE;&#x8868;&#x8F85;&#x52A9;&#x5143;&#x7D20;&#x5B9A;&#x4E49;&#xFF0C;&#x5BF9;&#x5E94; <code>chart.guide()</code>&#x3002;</p><div class=highlight><pre> [
+    {
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;line&apos;</span>, <span class=hljs-comment>// &#x58F0;&#x660E;&#x8F85;&#x52A9;&#x5143;&#x7D20;&#x7684;&#x7C7B;&#x578B;</span>
+      start: {array}, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x7EBF;&#x8D77;&#x59CB;&#x70B9;&#xFF0C;[startX, startY]</span>
+      end: {array}, <span class=hljs-comment>// &#x8F85;&#x52A9;&#x7EBF;&#x7ED3;&#x675F;&#x70B9;&#xFF0C;[endX, endY]</span>
+      style: {
+        <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#999&apos;</span>, <span class=hljs-comment>// &#x7EBF;&#x7684;&#x989C;&#x8272;</span>
+        lineDash: [ <span class=hljs-number>0</span>, <span class=hljs-number>2</span>, <span class=hljs-number>2</span> ], <span class=hljs-comment>// &#x865A;&#x7EBF;&#x7684;&#x8BBE;&#x7F6E;</span>
+        lineWidth: <span class=hljs-number>3</span> <span class=hljs-comment>// &#x7EBF;&#x7684;&#x5BBD;&#x5EA6;</span>
+      } <span class=hljs-comment>// {object} &#x914D;&#x7F6E;&#x9879;,&#x4E0E;&#x539F;&#x8BED;&#x6CD5;&#x76F8;&#x540C;</span>
+    }
+  ]
+</pre></div><h4 id=_____&#x793A;&#x4F8B;><a href=#_____&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.guide().line({
+    <span class=hljs-attr>start</span>: [ caratAvg, <span class=hljs-number>0</span> ], <span class=hljs-comment>// &#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x683C;&#x5F0F;</span>
+    end: [ caratAvg, <span class=hljs-number>20000</span> ],
+    <span class=hljs-attr>text</span>: {
+      <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+      <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+      <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;:&apos;</span> + caratAvg
+    }
+  });
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</span>
+guides: [
+  {
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;line&apos;</span>,
+    <span class=hljs-attr>start</span>: [ caratAvg, <span class=hljs-number>0</span> ], <span class=hljs-comment>// &#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x683C;&#x5F0F;</span>
+    end: [ caratAvg, <span class=hljs-number>20000</span> ],
+    <span class=hljs-attr>text</span>: {
+      <span class=hljs-attr>position</span>: <span class=hljs-string>&apos;end&apos;</span>,
+      <span class=hljs-attr>autoRotate</span>: <span class=hljs-literal>false</span>,
+      <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;&#x514B;&#x62C9;&#x6570;&#x5747;&#x503C;:&apos;</span> + caratAvg
+    }
+  }
+]
+</pre></div><h3 id=_filters><a href=#_filters class=anchor><span class="iconfont icon-link"></span></a>filters</h3><p>&#x7C7B;&#x578B;&#xFF1A;<code>object</code></p><p>&#x6570;&#x636E;&#x8FC7;&#x6EE4;&#xFF0C;&#x5BF9;&#x5E94; <code>chart.filter(dim, callback)</code>&#x3002;</p><div class=highlight><pre>filters: {
+  ${field1}: {<span class=hljs-function><span class=hljs-keyword>function</span>}, // &#x5BF9;&#x5B57;&#x6BB5;&#x540D;&#x4E3A; <span class=hljs-title>field1</span> &#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;
+  <span class=hljs-title>$</span></span>{field2}: {<span class=hljs-function><span class=hljs-keyword>function</span>}, // &#x5BF9;&#x5B57;&#x6BB5;&#x540D;&#x4E3A; <span class=hljs-title>field2</span> &#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;
+  ...
+}
+</span></pre></div><h4 id=______&#x793A;&#x4F8B;><a href=#______&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.filter(<span class=hljs-string>&apos;x&apos;</span>, val =&gt; {
+  <span class=hljs-keyword>return</span> val &gt; <span class=hljs-number>20</span>;
+});
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</span>
+filters: {
+  <span class=hljs-attr>x</span>: <span class=hljs-function><span class=hljs-params>val</span> =&gt;</span> {
+    <span class=hljs-keyword>return</span> val &gt; <span class=hljs-number>20</span>;
+  }
+}
+</pre></div><h3 id=_tooltip><a href=#_tooltip class=anchor><span class="iconfont icon-link"></span></a>tooltip</h3><p>&#x7C7B;&#x578B;&#xFF1A;<code>object</code></p><p>&#x5BF9;&#x5E94; <code>chart.tooltip()</code></p><h4 id=_______&#x793A;&#x4F8B;><a href=#_______&#x793A;&#x4F8B; class=anchor><span class="iconfont icon-link"></span></a>&#x793A;&#x4F8B;</h4><div class=highlight><pre>chart.tooltip(<span class=hljs-literal>false</span>);
+chart.tooltip({
+  <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span>
+});
+<span class=hljs-comment>// &#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528;&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;&#x914D;&#x7F6E;</span>
+tooltip: <span class=hljs-literal>false</span>,
+<span class=hljs-attr>tooltip</span>: {
+  <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span>
+}
+</pre></div><h3 id=_geoms><a href=#_geoms class=anchor><span class="iconfont icon-link"></span></a>geoms</h3><p>&#x7C7B;&#x578B;&#xFF1A;<code>array</code></p><p>&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x7ED8;&#x5236;&#x56FE;&#x8868;&#x7684;&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#xFF0C;&#x53EF;&#x540C;&#x65F6;&#x58F0;&#x660E;&#x591A;&#x79CD; geom &#x914D;&#x7F6E;&#x3002;&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#x5F0F;&#x8C03;&#x7528; api&#xFF1A; <a href=./geom.html>Geom</a>&#x3002;</p><div class=highlight><pre>geoms: [
+  {
+    <span class=hljs-attr>type</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E; geom &#x7684;&#x7C7B;&#x578B;&#xFF1A;point line path area interval polygon schema edge heatmap pointStack pointJitter pointDodge intervalStack intervalDodge intervalSymmetric areaStack schemaDodge</span>
+    adjust: {string} | {array}, <span class=hljs-comment>// &#x6570;&#x636E;&#x8C03;&#x6574;&#x65B9;&#x5F0F;&#x58F0;&#x660E;&#xFF0C;&#x5982;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x79CD;&#x8C03;&#x6574;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x58F0;&#x660E;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x79CD;&#x6DF7;&#x5408;&#x65B9;&#x5F0F;&#xFF0C;&#x5219;&#x4EE5;&#x6570;&#x7EC4;&#x683C;&#x5F0F;&#x4F20;&#x5165;</span>
+    position: {string} | {object}, <span class=hljs-comment>// potision &#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    color: {string} | {object}, <span class=hljs-comment>// color &#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    shape: {string} | {object}, <span class=hljs-comment>// shape &#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    size: {string} | {object}, <span class=hljs-comment>// size &#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    opacity: {string} | {object}, <span class=hljs-comment>// opacity &#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    label: {string} | {object}, <span class=hljs-comment>// &#x56FE;&#x5F62;&#x4E0A;&#x6587;&#x672C;&#x6807;&#x8BB0;&#x7684;&#x914D;&#x7F6E;</span>
+    tooltip: {string}, <span class=hljs-comment>// &#x914D;&#x7F6E; tooltip &#x4E0A;&#x663E;&#x793A;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;</span>
+    style: {object}, <span class=hljs-comment>// &#x56FE;&#x5F62;&#x7684;&#x6837;&#x5F0F;&#x5C5E;&#x6027;&#x914D;&#x7F6E;</span>
+    active: {boolean}, <span class=hljs-comment>// &#x5F00;&#x542F;&#x5173;&#x95ED; geom active &#x4EA4;&#x4E92;</span>
+    select: {object}, <span class=hljs-comment>// geom &#x9009;&#x4E2D;&#x4EA4;&#x4E92;&#x914D;&#x7F6E;</span>
+    animate: {object} <span class=hljs-comment>// &#x52A8;&#x753B;&#x914D;&#x7F6E;</span>
+  },
+  {
+    <span class=hljs-comment>// &#x540C;&#x4E0A;&#x8FF0;&#x914D;&#x7F6E;&#x76F8;&#x540C;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x591A;&#x4E2A; geom</span>
+  }
+]
+</pre></div><h4 id=_positon><a href=#_positon class=anchor><span class="iconfont icon-link"></span></a>positon</h4><p>&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3;&#x4F4D;&#x7F6E; position &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x5F88;&#x7B80;&#x5355;&#xFF1A;</p><div class=highlight><pre>position: <span class=hljs-string>&apos;field1*field2&apos;</span>
+</pre></div><p>&#x6216;&#x8005;</p><div class=highlight><pre>position: {
+  <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;field1*field2&apos;</span>
+}
+</pre></div><h4 id=_color><a href=#_color class=anchor><span class="iconfont icon-link"></span></a>color</h4><ol><li><code>chart.geom().color(value)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>color: value, <span class=hljs-comment>// value &#x53EF;&#x4EE5;&#x662F;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x989C;&#x8272;&#x503C;</span>
+</pre></div><p>&#x6216;&#x8005;</p><div class=highlight><pre>color: {
+  <span class=hljs-attr>field</span>: value, <span class=hljs-comment>// value &#x53EF;&#x4EE5;&#x662F;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x989C;&#x8272;&#x503C;</span>
+}
+</pre></div><ol start=2><li><code>chart.geom().color(field, colors)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>color: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; color &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  colors: {array | string } <span class=hljs-comment>// string | array&#xFF0C;&#x53EF;&#x58F0;&#x660E;&#x989C;&#x8272;&#x3001;&#x6E10;&#x53D8;&#x989C;&#x8272;&#x7B49;</span>
+}
+</pre></div><ol start=3><li>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x58F0;&#x660E; <code>chart.geom().color(field, colorCallback)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>color: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; color &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  callback: {<span class=hljs-function><span class=hljs-keyword>function</span>} // &#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+}
+</span></pre></div><h4 id=_shape><a href=#_shape class=anchor><span class="iconfont icon-link"></span></a>shape</h4><ol><li><code>chart.geom().shape(value)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>shape: value, <span class=hljs-comment>// value &#x53EF;&#x4EE5;&#x662F;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x56FE;&#x5F62;&#x5F62;&#x72B6;&#x540D;</span>
+</pre></div><p>&#x6216;&#x8005;</p><div class=highlight><pre>shape: {
+  <span class=hljs-attr>field</span>: value, <span class=hljs-comment>// value &#x53EF;&#x4EE5;&#x662F;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x56FE;&#x5F62;&#x5F62;&#x72B6;&#x540D;</span>
+}
+</pre></div><ol start=2><li><code>chart.geom().shape(field, shapes)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>shape: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; shape &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  shapes: {string | array} <span class=hljs-comment>// string | array</span>
+}
+</pre></div><ol start=3><li>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x58F0;&#x660E; <code>chart.geom().shape(field, callback)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>shape: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; shape &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  callback: {<span class=hljs-function><span class=hljs-keyword>function</span>} // &#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x56DE;&#x8C03;&#x51FD;&#x6570;
+}
+</span></pre></div><h4 id=_size><a href=#_size class=anchor><span class="iconfont icon-link"></span></a>size</h4><ol><li><code>chart.geom().size(value&#xFF09;</code> &#x5BF9;&#x5E94;</li></ol><div class=highlight><pre>size: value <span class=hljs-comment>// value &#x53EF;&#x4EE5;&#x662F;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x6570;&#x503C;</span>
+</pre></div><p>&#x6216;&#x8005;</p><div class=highlight><pre>size: {
+  <span class=hljs-attr>field</span>: value, <span class=hljs-comment>// value &#x53EF;&#x4EE5;&#x662F;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x56FE;&#x5F62;&#x5F62;&#x72B6;&#x540D;</span>
+}
+</pre></div><ol start=2><li><code>chart.geom().size(field, [ min, max ])</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>size: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; size &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  range: [min, max ] <span class=hljs-comment>// &#x58F0;&#x660E; size &#x7684;&#x6700;&#x5927;&#x548C;&#x6700;&#x5C0F;&#x503C;</span>
+}
+</pre></div><ol start=3><li><code>chart.geom().size(field, callback)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>size: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; size &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  callback: {<span class=hljs-function><span class=hljs-keyword>function</span>}
+}
+</span></pre></div><h4 id=_opacity><a href=#_opacity class=anchor><span class="iconfont icon-link"></span></a>opacity</h4><ol><li><code>chart.geom().opacity(field)</code> &#x5BF9;&#x5E94;&#xFF1A;</li></ol><div class=highlight><pre>opacity: field, <span class=hljs-comment>// field &#x5BF9;&#x5E94;&#x6620;&#x5C04;&#x81F3; opacity &#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x5177;&#x4F53;&#x900F;&#x660E;&#x5EA6;&#x6570;&#x503C;</span>
+</pre></div><p>&#x6216;&#x8005;</p><div class=highlight><pre>opacity: {
+  <span class=hljs-attr>field</span>: field <span class=hljs-comment>// field &#x5BF9;&#x5E94;&#x6620;&#x5C04;&#x81F3; opacity &#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;&#x3001;&#x5177;&#x4F53;&#x900F;&#x660E;&#x5EA6;&#x6570;&#x503C;</span>
+}
+</pre></div><ol start=2><li><code>chart.geom().opacity(field, callback)</code> &#x5BF9;&#x5E94;</li></ol><div class=highlight><pre>opacity: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x58F0;&#x660E;&#x6620;&#x5C04;&#x81F3; opacity &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  callback: {<span class=hljs-function><span class=hljs-keyword>function</span>}
+}
+</span></pre></div><h4 id=_label><a href=#_label class=anchor><span class="iconfont icon-link"></span></a>label</h4><ol><li><code>chart.geom().label(field)</code> &#x5BF9;&#x5E94;</li></ol><div class=highlight><pre>label: field, <span class=hljs-comment>// field &#x5BF9;&#x5E94;&#x5B57;&#x6BB5;&#x540D;&#x6216;&#x8005;&#x5E26;&#x6709;&#x7EDF;&#x8BA1;&#x7684;&#x58F0;&#x660E;</span>
+</pre></div><ol start=2><li><code>chart.geom().label(field, cfg)</code> &#x5BF9;&#x5E94;</li></ol><div class=highlight><pre>label: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x9700;&#x8981;&#x6807;&#x6CE8;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  cfg: {object} <span class=hljs-comment>// &#x5177;&#x4F53;&#x7684; label &#x914D;&#x7F6E;&#xFF0C;&#x53C2;&#x89C1; geom.label() &#x65B9;&#x6CD5;</span>
+}
+</pre></div><ol start=3><li>&#x5982;&#x679C; label &#x4E2D;&#x9700;&#x8981;&#x58F0;&#x660E;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x58F0;&#x660E; callback &#x5C5E;&#x6027;&#x5373;&#x53EF;&#xFF1A;</li></ol><div class=highlight><pre>label: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x9700;&#x8981;&#x6807;&#x6CE8;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x540D;</span>
+  cfg: {object}, <span class=hljs-comment>// &#x5177;&#x4F53;&#x7684; label &#x914D;&#x7F6E;</span>
+  callback: {<span class=hljs-function><span class=hljs-keyword>function</span>}
+}
+</span></pre></div><h4 id=__tooltip><a href=#__tooltip class=anchor><span class="iconfont icon-link"></span></a>tooltip</h4><div class=highlight><pre><span class=hljs-comment>// &#x5BF9;&#x5E94; geom.tooltip(&apos;x&apos;)</span>
+tooltip: {string} <span class=hljs-comment>// &#x76F4;&#x63A5;&#x58F0;&#x660E;&#x9700;&#x8981;&#x663E;&#x793A;&#x5728; tooltip &#x4E0A;&#x7684;&#x5B57;&#x6BB5;&#x540D;</span>
+<span class=hljs-comment>// &#x5BF9;&#x5E94; geom.tooltip(&apos;x&apos;, function(val){})</span>
+tooltip: {
+  <span class=hljs-attr>field</span>: {string},
+  <span class=hljs-attr>callback</span>: {<span class=hljs-function><span class=hljs-keyword>function</span>}
+}
+</span></pre></div><h4 id=_style><a href=#_style class=anchor><span class="iconfont icon-link"></span></a>style</h4><div class=highlight><pre><span class=hljs-comment>// &#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E00;</span>
+style: {
+  <span class=hljs-attr>field</span>: {string}, <span class=hljs-comment>// &#x6620;&#x5C04;&#x7684;&#x5B57;&#x6BB5;</span>
+  cfg: {object} <span class=hljs-comment>// &#x914D;&#x7F6E;&#x4FE1;&#x606F;</span>
+};
+<span class=hljs-comment>// &#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E8C;</span>
+style: {
+  <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>1</span> <span class=hljs-comment>// &#x6837;&#x5F0F;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;</span>
+}
+</pre></div><h4 id=_select><a href=#_select class=anchor><span class="iconfont icon-link"></span></a>select</h4><div class=highlight><pre>select: {boolean} <span class=hljs-comment>// &#x5F00;&#x542F;&#x5173;&#x95ED;&#x9009;&#x4E2D;&#x529F;&#x80FD;</span>
+</pre></div><div class=highlight><pre>select: {
+  <span class=hljs-attr>mode</span>:  <span class=hljs-string>&apos;multiple&apos;</span> | <span class=hljs-string>&apos;single&apos;</span>, <span class=hljs-comment>// multiple &#x4E3A;&#x591A;&#x9009;&#xFF0C;single &#x4E3A;&#x5355;&#x9009;&#xFF0C; false &#x4E3A;&#x5173;&#x95ED;&#x9009;&#x4E2D;&#x529F;&#x80FD;</span>
+  style: {
+    <span class=hljs-comment>// &#x8BBE;&#x7F6E;&#x9009;&#x4E2D;&#x56FE;&#x5F62;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;&#x5219;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x6837;&#x5F0F;</span>
+    <span class=hljs-comment>// &#x56FE;&#x5F62;&#x7ED8;&#x5236;&#x5C5E;&#x6027;&#xFF0C;&#x5982; fill stroke</span>
+  }
+}
+</pre></div><h4 id=_active><a href=#_active class=anchor><span class="iconfont icon-link"></span></a>active</h4><div class=highlight><pre>active: <span class=hljs-literal>false</span> | <span class=hljs-literal>true</span>
+</pre></div><h4 id=_animate><a href=#_animate class=anchor><span class="iconfont icon-link"></span></a>animate</h4><div class=highlight><pre>animate: {
+  <span class=hljs-comment>// &#x540C; geom.animate()</span>
+}
+</pre></div><h4 id=_View-&#x89C6;&#x56FE;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;><a href=#_View-&#x89C6;&#x56FE;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E; class=anchor><span class="iconfont icon-link"></span></a>View &#x89C6;&#x56FE;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x58F0;&#x660E;</h4><p>&#x89C6;&#x56FE;&#x7684;&#x914D;&#x7F6E;&#x9879;&#x540C; chart &#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x9664;&#x4E86;&#x4E0D;&#x652F;&#x6301; facet&#xFF0C;&#x4EE5;&#x53CA; tooltip &#x5C5E;&#x6027;&#x503C;&#x4E3A; boolean &#x7C7B;&#x578B;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x5747;&#x540C; chart &#x4E00;&#x81F4;&#x3002;</p><div class=highlight><pre><span class=hljs-keyword>const</span> view = chart.view({
+  <span class=hljs-attr>options</span>: {
+    <span class=hljs-attr>scales</span>: {object}, <span class=hljs-comment>// &#x5217;&#x5B9A;&#x4E49;&#x58F0;&#x660E;</span>
+    coord: {object}, <span class=hljs-comment>// &#x5750;&#x6807;&#x7CFB;&#x914D;&#x7F6E;</span>
+    axes: {object}, <span class=hljs-comment>// &#x5750;&#x6807;&#x8F74;&#x914D;&#x7F6E;</span>
+    legends: {object}, <span class=hljs-comment>// &#x56FE;&#x4F8B;&#x914D;&#x7F6E;</span>
+    guides: {array}, <span class=hljs-comment>// &#x56FE;&#x8868;&#x8F85;&#x52A9;&#x5143;&#x7D20;&#x914D;&#x7F6E;</span>
+    filters: {object}, <span class=hljs-comment>// &#x6570;&#x636E;&#x8FC7;&#x6EE4;&#x914D;&#x7F6E;</span>
+    tooltip: {boolean}, <span class=hljs-comment>// &#x9ED8;&#x8BA4;&#x503C;&#x4E3A; true&#xFF0C;&#x663E;&#x793A; tooltip&#xFF0C; false &#x4E3A;&#x5173;&#x95ED; tooltip</span>
+    geoms: {array} <span class=hljs-comment>// &#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x76F8;&#x5173;&#x914D;&#x7F6E;</span>
+  }
+});
+</pre></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/en-us/g2/3.x/api/options.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+const data = [
+  { genre: 'Sports', sold: 275 },
+  { genre: 'Strategy', sold: 115 },
+  { genre: 'Action', sold: 120 },
+  { genre: 'Shooter', sold: 350 },
+  { genre: 'Other', sold: 150 }
+];
+const chart = new G2.Chart({
+  container: 'c1',
+  forceFit: true,
+  height: 300,
+  data,
+  options: {
+    scales: {
+      'genre': {
+        alias: '游戏种类'
+      },
+      'sold': {
+        alias: '销售量'
+      }
+    },
+    geoms: [
+      {
+        type: 'interval',
+        position: 'genre*sold',
+        color: 'genre'
+      }
+    ]
+  }
+});
+chart.render();
+
+})();</script><script>(function(){
+'use strict';
+const { DataView } = DataSet;
+$.getJSON('/assets/data/diamond.json', (data) => {
+  const dv = (new DataView()).source(data);
+  const caratAvg = dv.mean('carat'); // 计算克拉数均值
+  const priceAvg = dv.mean('price'); // 计算价格均值
+  const chart = new G2.Chart({
+    container: 'c2',
+    forceFit: true,
+    height: 450,
+    data,
+    options: {
+      guides: [
+        {
+          type: 'line',
+          start: [ caratAvg, 0 ], // 使用数组格式
+          end: [ caratAvg, 20000 ],
+          text: {
+            position: 'end',
+            autoRotate: false,
+            content: '克拉数均值:' + caratAvg
+          }
+        },
+        {
+          type: 'line',
+          start: {
+            carat: 0,
+            price: priceAvg
+          }, // 使用对象格式
+          end: {
+            carat: 4,
+            price: priceAvg
+          },
+          text: {
+            position: 'end',
+            autoRotate: false,
+            content: '价格均值:' + priceAvg,
+            style: {
+              textAlign: 'end'
+            }
+          }
+        },
+      ],
+      geoms: [
+        {
+          type: 'point',
+          position: 'carat*price',
+          shape: 'circle',
+          opacity: 0.3
+        }
+      ]
+    }
+  });
+  chart.render();
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/world.geo.json', (mapData) => {
+  const chart = new G2.Chart({
+    container: 'c3',
+    forceFit: true,
+    height: 450,
+    padding: [ 55, 20 ],
+    options: {
+      tooltip: {
+        showTitle: false
+      },
+      scales: {
+        longitude: {
+          sync: true
+        },
+        latitude: {
+          sync: true
+        }
+      },
+      axes: false,
+      legends: {
+        'trend': {
+          position: 'left'
+        }
+      }
+    }
+  });
+  // 绘制世界地图背景
+  const ds = new DataSet();
+  const worldMap = ds.createView('back')
+    .source(mapData, {
+      type: 'GeoJSON'
+    });
+  const view = chart.view({
+    data: worldMap,
+    options: {
+      tooltip: false,
+      geoms: [
+        {
+          type: 'polygon',
+          position: 'longitude*latitude',
+          style: {
+            fill: '#fff',
+            stroke: '#ccc',
+            lineWidth: 1
+          }
+        }
+      ]
+    }
+  });
+
+  // 绘制展示数据
+  // 可视化用户数据
+  const userData = [
+    { name: 'Russia', value: 86.8 },
+    { name: 'China', value: 106.3 },
+    { name: 'Japan', value: 94.7 },
+    { name: 'Mongolia', value: 98 },
+    { name: 'Canada', value: 98.4 },
+    { name: 'United Kingdom', value: 97.2 },
+    { name: 'United States of America', value: 98.3 },
+    { name: 'Brazil', value: 96.7 },
+    { name: 'Argentina', value: 95.8 },
+    { name: 'Algeria', value: 101.3 },
+    { name: 'France', value: 94.8 },
+    { name: 'Germany', value: 96.6 },
+    { name: 'Ukraine', value: 86.3 },
+    { name: 'Egypt', value: 102.1 },
+    { name: 'South Africa', value: 101.3 },
+    { name: 'India', value: 107.6 },
+    { name: 'Australia', value: 99.9 },
+    { name: 'Saudi Arabia', value: 130.1 },
+    { name: 'Afghanistan', value: 106.5 },
+    { name: 'Kazakhstan', value: 93.4 },
+    { name: 'Indonesia', value: 101.4 }
+  ];
+  const userDv = ds.createView()
+    .source(userData)
+    .transform({
+      geoDataView: worldMap,
+      field: 'name',
+      type: 'geo.region',
+      as: [ 'longitude', 'latitude' ]
+    })
+    .transform({
+      type: 'map',
+      callback: (obj) => {
+        obj.trend = (obj.value > 100) ? '男性更多' : '女性更多';
+        return obj;
+      }
+    });
+  const userView = chart.view({
+    data: userDv,
+    options: {
+      scales: {
+        'trend': {
+          alias: '每100位女性对应的男性数量'
+        }
+      },
+      geoms: [
+        {
+          type: 'polygon',
+          position: 'longitude*latitude',
+          color: {
+            field: 'trend',
+            colors: [ '#C45A5A', '#14647D' ]
+          },
+          opacity: 'value',
+          tooltip: 'name*trend',
+          animate: {
+            leave: {
+              animation: 'fadeOut'
+            }
+          }
+        }
+      ]
+    }
+  });
+  chart.render();
+});
+
+})();</script></body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html>G2 &#x56FE;&#x8868;&#x7EC4;&#x6210;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/load-data.html>&#x88C5;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom.html>Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/attr.html>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/coord.html>Coord &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/axes.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/facet.html>Facet &#x5206;&#x9762;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/theme.html>Theme &#x56FE;&#x8868;&#x76AE;&#x80A4;&#x4E3B;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-label.html>Label &#x56FE;&#x5F62;&#x6587;&#x672C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-event.html>Event &#x56FE;&#x8868;&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/interaction.html>&#x56FE;&#x8868;&#x4EA4;&#x4E92;</a></li><li class="list-group-item active"><a href=/zh-cn/g2/3.x/tutorial/how-to-use-slider.html>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/update-data.html>&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-shape.html>&#x81EA;&#x5B9A;&#x4E49; shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-animation.html>&#x81EA;&#x5B9A;&#x4E49; &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-create-view.html>&#x521B;&#x5EFA; View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/the-grammar-of-graphics.html>&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7B80;&#x4ECB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-flow.html>G2 &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-type-and-scale.html>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/deep-into-coord.html>&#x5750;&#x6807;&#x7CFB;&#x8BE6;&#x89E3;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-type.html>&#x56FE;&#x8868;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-and-adjust.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x548C;&#x6570;&#x636E;&#x8C03;&#x6574;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/faq.html>&#x5E38;&#x89C1;&#x95EE;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/g2-v3-changes.html>G2 3.0 &#x5347;&#x7EA7;&#x6307;&#x5F15;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x7B80;&#x4ECB;><a href=#_&#x7B80;&#x4ECB; class=anchor></a>&#x7B80;&#x4ECB;</h1><p>&#x7528;&#x4E8E;&#x6570;&#x636E;&#x8303;&#x56F4;&#x7684;&#x9009;&#x62E9;&#x63D2;&#x4EF6;&#xFF0C;&#x5C24;&#x5176;&#x9002;&#x7528;&#x4E8E;&#x5927;&#x6570;&#x636E;&#x91CF;&#x7684;&#x56FE;&#x8868;&#x7ED8;&#x5236;&#xFF0C;&#x5E2E;&#x52A9;&#x7528;&#x6237;&#x66F4;&#x597D;&#x5730;&#x5173;&#x6CE8;&#x67D0;&#x4E00;&#x8303;&#x56F4;&#x7684;&#x6570;&#x636E;&#x53EF;&#x89C6;&#x5316;&#x7ED3;&#x679C;&#x3002;</p><p>&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p><img src=https://gw.alipayobjects.com/zos/rmsportal/XvhvibgjYpfyTDYHybjs.png style="width: 50%;"><h2 id=_Slider-&#x5DE5;&#x4F5C;&#x539F;&#x7406;><a href=#_Slider-&#x5DE5;&#x4F5C;&#x539F;&#x7406; class=anchor><span class="iconfont icon-link"></span></a>Slider &#x5DE5;&#x4F5C;&#x539F;&#x7406;</h2><p>Slider &#x7EC4;&#x4EF6;&#x662F;&#x5B8C;&#x5168;&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x4EA4;&#x4E92;&#x7EC4;&#x4EF6;&#xFF0C;&#x540C; chart &#x5E76;&#x65E0;&#x4EFB;&#x4F55;&#x5173;&#x8054;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x4F60;&#x7684;&#x6ED1;&#x52A8;&#x6761;&#x60F3;&#x8981;&#x64CD;&#x7EB5;&#x591A;&#x5C11;&#x4E2A; chart &#x6216;&#x8005; view &#x90FD;&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#x3002;&#x5176;&#x6ED1;&#x52A8;&#x65F6;&#x4E0E;&#x56FE;&#x8868;&#x7684;&#x8054;&#x52A8;&#x884C;&#x4E3A;&#xFF0C;&#x9700;&#x8981;&#x540C; <a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a> &#x4E2D;&#x7684;&#x72B6;&#x6001;&#x91CF;&#x76F8;&#x7ED3;&#x5408;&#xFF0C;&#x901A;&#x8FC7;&#x5B9A;&#x4E49;&#x6BCF;&#x4E2A; Slider &#x5BF9;&#x8C61;&#x7684; <code>onChange</code> &#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x52A8;&#x6001;&#x66F4;&#x65B0; DataSet &#x7684;&#x72B6;&#x6001;&#x91CF;&#x6765;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x8FC7;&#x6EE4;&#xFF0C;&#x4E0B;&#x9762;&#x4F1A;&#x901A;&#x8FC7;&#x5177;&#x4F53;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#xFF0C;&#x4F46;&#x662F;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x5982;&#x4F55;&#x5F15;&#x5165; Slider &#x7EC4;&#x4EF6;&#x3002;</p><h2 id=_&#x5982;&#x4F55;&#x4F7F;&#x7528;-Slider-&#x7EC4;&#x4EF6;><a href=#_&#x5982;&#x4F55;&#x4F7F;&#x7528;-Slider-&#x7EC4;&#x4EF6; class=anchor><span class="iconfont icon-link"></span></a>&#x5982;&#x4F55;&#x4F7F;&#x7528; Slider &#x7EC4;&#x4EF6;</h2><h3 id=_&#x5F15;&#x5165;-Slider-&#x7EC4;&#x4EF6;><a href=#_&#x5F15;&#x5165;-Slider-&#x7EC4;&#x4EF6; class=anchor><span class="iconfont icon-link"></span></a>&#x5F15;&#x5165; Slider &#x7EC4;&#x4EF6;</h3><p>&#x6709;&#x4E24;&#x79CD;&#x5F15;&#x5165; Slider &#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p><p>&#xFF08;1&#xFF09;&#x65B9;&#x5F0F; 1&#xFF1A; &#x901A;&#x8FC7;&#x4F7F;&#x7528; <code>&lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code> &#x6807;&#x7B7E;&#x5F15;&#x5165;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>&lt;!-- &#x5F15;&#x5165; Slider &#x7EC4;&#x4EF6;&#x811A;&#x672C; --&gt;</span>
+<span class=hljs-tag>&lt;<span class=hljs-name>script</span> <span class=hljs-attr>src</span>=<span class=hljs-string>&quot;https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.2/g2-plugin-slider.js&quot;</span>&gt;</span><span class="undefined"></span><span class=hljs-tag>&lt;/<span class=hljs-name>script</span>&gt;</span>
+</pre></div><p>&#xFF08;2&#xFF09;&#x65B9;&#x5F0F; 2&#xFF1A;npm &#x6A21;&#x5757;&#x5F15;&#x5165;&#x3002;</p><p>&#x9996;&#x5148;&#x9700;&#x8981;&#x5B89;&#x88C5; Slider &#x6A21;&#x5757;: <code>npm install @antv/g2-plugin-slider</code>&#xFF0C;&#x7136;&#x540E;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x5F15;&#x5165;</p><div class=highlight><pre><span class=hljs-keyword>import</span> G2 <span class=hljs-keyword>from</span> <span class=hljs-string>&apos;@antv/g2&apos;</span>;
+<span class=hljs-keyword>import</span> <span class=hljs-string>&apos;@antv/g2-plugin-slider&apos;</span>;
+</pre></div><blockquote><p>!&#x6CE8;&#x610F;&#xFF1A;Slider &#x7EC4;&#x4EF6;&#x4F5C;&#x4E3A; G2 &#x7684;&#x4EA4;&#x4E92;&#x63D2;&#x4EF6;&#xFF0C;&#x5FC5;&#x987B;&#x5728; G2 &#x5F15;&#x5165;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#x4F7F;&#x7528;&#x54E6;&#x3002;</p></blockquote><h3 id=_&#x521B;&#x5EFA;-Slider-&#x7684;-dom-&#x5BB9;&#x5668;><a href=#_&#x521B;&#x5EFA;-Slider-&#x7684;-dom-&#x5BB9;&#x5668; class=anchor><span class="iconfont icon-link"></span></a>&#x521B;&#x5EFA; Slider &#x7684; dom &#x5BB9;&#x5668;</h3><p>&#x7136;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5C55;&#x793A; Slider &#x63D2;&#x4EF6;&#x7684; DOM &#x5BB9;&#x5668;&#xFF0C;&#x5982;&#xFF1A;</p><div class=highlight><pre><span class=hljs-tag>&lt;<span class=hljs-name>div</span> <span class=hljs-attr>id</span>=<span class=hljs-string>&quot;slider&quot;</span>&gt;</span><span class=hljs-tag>&lt;/<span class=hljs-name>div</span>&gt;</span>
+</pre></div><h3 id=_&#x521B;&#x5EFA;-Slider-&#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x5E76;&#x6E32;&#x67D3;><a href=#_&#x521B;&#x5EFA;-Slider-&#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x5E76;&#x6E32;&#x67D3; class=anchor><span class="iconfont icon-link"></span></a>&#x521B;&#x5EFA; Slider &#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x5E76;&#x6E32;&#x67D3;</h3><div class=highlight><pre><span class=hljs-comment>// &#x521B;&#x5EFA; Slider</span>
+<span class=hljs-keyword>const</span> slider = <span class=hljs-keyword>new</span> Slider({
+  <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;slider&apos;</span>, <span class=hljs-comment>// dom &#x5BB9;&#x5668; id &#x6216;&#x8005; dom &#x5BB9;&#x5668;&#x5BF9;&#x8C61;</span>
+  width: <span class=hljs-number>600</span>, <span class=hljs-comment>// slider &#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; &apos;auto&apos;&#xFF0C;&#x5373;&#x81EA;&#x9002;&#x5E94;&#x5BBD;&#x5EA6;</span>
+  height: <span class=hljs-number>26</span>, <span class=hljs-comment>// slider &#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; &apos;26px&apos;</span>
+  padding: [ <span class=hljs-number>20</span>, <span class=hljs-number>120</span>, <span class=hljs-number>100</span> ], <span class=hljs-comment>// slider &#x6240;&#x5728;&#x753B;&#x5E03; canvas &#x7684;&#x5185;&#x8FB9;&#x8DDD;&#xFF0C;&#x7528;&#x4E8E;&#x5BF9;&#x9F50;&#x56FE;&#x8868;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0E;&#x56FE;&#x8868;&#x9ED8;&#x8BA4;&#x7684; padding &#x76F8;&#x540C;</span>
+  start: <span class=hljs-string>&apos;2015-04-07&apos;</span>, <span class=hljs-comment>// &#x548C;&#x72B6;&#x6001;&#x91CF;&#x5BF9;&#x5E94;&#xFF0C;&#x6ED1;&#x5757;&#x7684;&#x8D77;&#x59CB;&#x70B9;&#x6570;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#xFF0C;&#x5EFA;&#x8BAE;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x65B9;&#x4FBF;&#x6570;&#x636E;&#x8FC7;&#x6EE4;</span>
+  end: <span class=hljs-string>&apos;2015-08-01&apos;</span>, <span class=hljs-comment>// &#x548C;&#x72B6;&#x6001;&#x91CF;&#x5BF9;&#x5E94;&#xFF0C;&#x6ED1;&#x5757;&#x7684;&#x7ED3;&#x675F;&#x70B9;&#x6570;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#xFF0C;&#x5EFA;&#x8BAE;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x65B9;&#x4FBF;&#x6570;&#x636E;&#x8FC7;&#x6EE4;</span>
+  minSpan: <span class=hljs-number>30</span> * <span class=hljs-number>24</span> * <span class=hljs-number>60</span> * <span class=hljs-number>60</span> * <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x53EF;&#x9009;&#xFF0C;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x6ED1;&#x5757;&#x7684;&#x6700;&#x5C0F;&#x8303;&#x56F4;&#xFF0C;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x503C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x6700;&#x5C0F;&#x8303;&#x56F4;&#x4E3A; 30 &#x5929;</span>
+  maxSpan: <span class=hljs-number>120</span> * <span class=hljs-number>24</span> * <span class=hljs-number>60</span> * <span class=hljs-number>60</span> * <span class=hljs-number>1000</span>, <span class=hljs-comment>// &#x53EF;&#x9009;&#xFF0C;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x6ED1;&#x5757;&#x7684;&#x6700;&#x5927;&#x8303;&#x56F4;&#xFF0C;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x503C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x6700;&#x5927;&#x8303;&#x56F4;&#x4E3A; 120 &#x5929;</span>
+  data: [], <span class=hljs-comment>// slider &#x7684;&#x6570;&#x636E;&#x6E90;</span>
+  xAxis: <span class=hljs-string>&apos;time&apos;</span>, <span class=hljs-comment>// &#x80CC;&#x666F;&#x56FE;&#x7684;&#x6A2A;&#x8F74;&#x5BF9;&#x5E94;&#x5B57;&#x6BB5;&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x6570;&#x636E;&#x7B5B;&#x9009;&#x7684;&#x5B57;&#x6BB5;</span>
+  yAxis: <span class=hljs-string>&apos;volumn&apos;</span>, <span class=hljs-comment>// &#x80CC;&#x666F;&#x56FE;&#x7684;&#x7EB5;&#x8F74;&#x5BF9;&#x5E94;&#x5B57;&#x6BB5;</span>
+  onChange: <span class=hljs-function>(<span class=hljs-params>{ startValue, endValue }</span>) =&gt;</span> {
+    ds.setState(<span class=hljs-string>&apos;start&apos;</span>, startValue);
+    ds.setState(<span class=hljs-string>&apos;end&apos;</span>, endValue);
+  } <span class=hljs-comment>// &#x66F4;&#x65B0;&#x6570;&#x636E;&#x72B6;&#x6001;&#x91CF;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+});
+slider.render(); <span class=hljs-comment>// &#x6E32;&#x67D3;</span>
+</pre></div><h2 id=_&#x5FEB;&#x901F;&#x4E0A;&#x624B;><a href=#_&#x5FEB;&#x901F;&#x4E0A;&#x624B; class=anchor><span class="iconfont icon-link"></span></a>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</h2><blockquote><p>&#x8BF4;&#x660E;&#xFF1A;&#x91CD;&#x8981;&#x5E76;&#x4E14;&#x5FC5;&#x987B;&#x58F0;&#x660E;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x6211;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528; <code>// !!!</code> &#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#x7684;&#x6CE8;&#x91CA;&#x6807;&#x6CE8;&#x3002;</p></blockquote><p>&#x5F53;&#x7528;&#x6237;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E; <code>start</code> <code>end</code> &#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x65F6;&#xFF08;&#x5373;&#x6570;&#x636E;&#x7684;&#x9009;&#x62E9;&#x8303;&#x56F4;&#xFF09;&#xFF0C;slider &#x4F1A;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x9009;&#x62E9;&#x8303;&#x56F4;&#xFF0C;&#x5373;&#x5C55;&#x793A;&#x5168;&#x90E8;&#x6570;&#x636E;&#x3002;</p><div id=c1></div><div id=slider></div><p>&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p><div class=highlight><pre>$.getJSON(<span class=hljs-string>&apos;/assets/data/peking-aqi.json&apos;</span>, data =&gt; {
+    <span class=hljs-comment>// !!! &#x521B;&#x5EFA; DataSet&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#x91CF; start end</span>
+    <span class=hljs-keyword>const</span> ds = <span class=hljs-keyword>new</span> DataSet({
+      <span class=hljs-attr>state</span>: {
+        <span class=hljs-attr>start</span>: <span class=hljs-string>&apos;2004-01-01&apos;</span>,
+        <span class=hljs-attr>end</span>: <span class=hljs-string>&apos;2007-09-24&apos;</span>
+      }
+    });
+    <span class=hljs-comment>// !!! &#x901A;&#x8FC7; ds &#x521B;&#x5EFA; DataView</span>
+    <span class=hljs-keyword>const</span> dv = ds.createView();
+    dv.source(data)
+      .transform({ <span class=hljs-comment>// !!! &#x6839;&#x636E;&#x72B6;&#x6001;&#x91CF;&#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x8FC7;&#x6EE4;&#x89C4;&#x5219;&#xFF0C;</span>
+        type: <span class=hljs-string>&apos;filter&apos;</span>,
+        <span class=hljs-attr>callback</span>: <span class=hljs-function><span class=hljs-params>obj</span> =&gt;</span> { 
+          <span class=hljs-keyword>return</span> obj.date &lt;= ds.state.end &amp;&amp; obj.date &gt;= ds.state.start; 
+        }
+      });
+    <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+      <span class=hljs-attr>id</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+      <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+      <span class=hljs-attr>height</span>: <span class=hljs-number>400</span>,
+      <span class=hljs-attr>animate</span>: <span class=hljs-literal>false</span>
+    });
+
+    chart.scale({
+      <span class=hljs-attr>date</span>: {
+        <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;time&apos;</span>,
+        <span class=hljs-attr>mask</span>: <span class=hljs-string>&apos;MM-DD&apos;</span>,
+        <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x65E5;&#x671F;&apos;</span>
+      }
+    });
+
+    <span class=hljs-keyword>const</span> view1 = chart.view({
+      <span class=hljs-attr>start</span>: {
+        <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>,
+        <span class=hljs-attr>y</span>: <span class=hljs-number>0</span>
+      },
+      <span class=hljs-attr>end</span>: {
+        <span class=hljs-attr>x</span>: <span class=hljs-number>1</span>,
+        <span class=hljs-attr>y</span>: <span class=hljs-number>0.45</span>
+      }
+    });
+    view1.source(dv);  <span class=hljs-comment>// !!! &#x6CE8;&#x610F;&#x6570;&#x636E;&#x6E90;&#x662F; ds &#x521B;&#x5EFA; DataView &#x5BF9;&#x8C61;</span>
+    view1.line().position(<span class=hljs-string>&apos;date*aqi&apos;</span>);
+
+    <span class=hljs-keyword>const</span> view2 = chart.view({
+      <span class=hljs-attr>start</span>: {
+        <span class=hljs-attr>x</span>: <span class=hljs-number>0</span>,
+        <span class=hljs-attr>y</span>: <span class=hljs-number>0.55</span>
+      },
+      <span class=hljs-attr>end</span>: {
+        <span class=hljs-attr>x</span>: <span class=hljs-number>1</span>,
+        <span class=hljs-attr>y</span>: <span class=hljs-number>1</span>
+      }
+    });
+    view2.source(dv); <span class=hljs-comment>// !!! &#x6CE8;&#x610F;&#x6570;&#x636E;&#x6E90;&#x662F; ds &#x521B;&#x5EFA; DataView &#x5BF9;&#x8C61;</span>
+    view2.interval().position(<span class=hljs-string>&apos;date*aqi&apos;</span>);
+    chart.render();
+
+    <span class=hljs-comment>// !!! &#x521B;&#x5EFA; slider &#x5BF9;&#x8C61;</span>
+    <span class=hljs-keyword>const</span> slider = <span class=hljs-keyword>new</span> Slider({
+      <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;slider&apos;</span>, 
+      <span class=hljs-attr>start</span>: <span class=hljs-string>&apos;2004-01-01&apos;</span>,
+      <span class=hljs-attr>end</span>: <span class=hljs-string>&apos;2007-09-24&apos;</span>,
+      data, <span class=hljs-comment>// !!! &#x6CE8;&#x610F;&#x662F;&#x539F;&#x59CB;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x8981;&#x4F20;&#x5165; dv</span>
+      xAxis: <span class=hljs-string>&apos;date&apos;</span>,
+      <span class=hljs-attr>yAxis</span>: <span class=hljs-string>&apos;aqi&apos;</span>,
+      <span class=hljs-attr>onChange</span>: <span class=hljs-function>(<span class=hljs-params>{ startText, endText }</span>) =&gt;</span> {
+        <span class=hljs-comment>// !!! &#x66F4;&#x65B0;&#x72B6;&#x6001;&#x91CF;</span>
+        ds.setState(<span class=hljs-string>&apos;start&apos;</span>, startText);
+        ds.setState(<span class=hljs-string>&apos;end&apos;</span>, endText);
+      }
+    });
+    slider.render(); 
+});
+</pre></div><div class=prev-next><a href=/zh-cn/g2/3.x/tutorial/interaction.html class="float-left pre">&#x56FE;&#x8868;&#x4EA4;&#x4E92; </a><a href=/zh-cn/g2/3.x/tutorial/update-data.html class="float-right next">&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g2/3.x/tutorial/how-to-use-slider.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.2/g2-plugin-slider.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/peking-aqi.json', data => {
+    // !!! 创建 DataSet，并设置状态量 start end
+    const ds = new DataSet({
+      state: {
+        start: '2004-01-01',
+        end: '2007-09-24'
+      }
+    });
+    // !!! 通过 ds 创建 DataView
+    const dv = ds.createView();
+    dv.source(data)
+      .transform({ // !!! 根据状态量设置数据过滤规则，
+        type: 'filter',
+        callback: obj => { 
+          return obj.date <= ds.state.end && obj.date >= ds.state.start; 
+        }
+      });
+    const chart = new G2.Chart({
+      id: 'c1',
+      forceFit: true,
+      height: 400,
+      animate: false
+    });
+
+    chart.scale({
+      date: {
+        type: 'time',
+        mask: 'MM-DD',
+        alias: '日期'
+      }
+    });
+
+    const view1 = chart.view({
+      start: {
+        x: 0,
+        y: 0
+      },
+      end: {
+        x: 1,
+        y: 0.45
+      }
+    });
+    view1.source(dv);  // !!! 注意数据源是 ds 创建 DataView 对象
+    view1.line().position('date*aqi');
+
+    const view2 = chart.view({
+      start: {
+        x: 0,
+        y: 0.55
+      },
+      end: {
+        x: 1,
+        y: 1
+      }
+    });
+    view2.source(dv); // !!! 注意数据源是 ds 创建 DataView 对象
+    view2.interval().position('date*aqi');
+    chart.render();
+
+    // !!! 创建 slider 对象
+    const slider = new Slider({
+      container: 'slider', 
+      start: '2004-01-01',
+      end: '2007-09-24',
+      data, // !!! 注意是原始数据，不要传入 dv
+      xAxis: 'date',
+      yAxis: 'aqi',
+      onChange: ({ startText, endText }) => {
+        // !!! 更新状态量
+        ds.setState('start', startText);
+        ds.setState('end', endText);
+      }
+    });
+    slider.render(); 
+});
+
+})();</script></body></html>

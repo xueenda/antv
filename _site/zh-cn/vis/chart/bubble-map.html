@@ -1,0 +1,392 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>&#x58A8;&#x8005;&#x5B66;&#x9662;</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/vis/blog/index.html>&#x535A;&#x5BA2;</a> <a class=nav-link href=/zh-cn/vis/design/index.html>&#x8BBE;&#x8BA1;&#x539F;&#x5219;</a> <a class="nav-link active" href=/zh-cn/vis/chart/index.html>&#x56FE;&#x8868;&#x7528;&#x6CD5;</a> <a class=nav-link href=/zh-cn/vis/resource/index.html>&#x8D44;&#x6E90;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/vis/chart/index.html>&#x56FE;&#x8868;&#x7528;&#x6CD5;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-compare.html>&#x6BD4;&#x8F83;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-distribute.html>&#x5206;&#x5E03;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-flow.html>&#x6D41;&#x7A0B;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-proportion.html>&#x5360;&#x6BD4;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-range.html>&#x533A;&#x95F4;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-relation.html>&#x5173;&#x8054;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-trend.html>&#x8D8B;&#x52BF;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-time.html>&#x65F6;&#x95F4;&#x7C7B;</a></li><li class=list-group-item><a href=/zh-cn/vis/chart/tag-location.html>&#x5730;&#x56FE;&#x7C7B;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;><a href=#_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE; class=anchor></a>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;</h1><img src=https://t.alipayobjects.com/images/T1exRjXb4XXXXXXXXX.png><h2 id=_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x7B80;&#x4ECB;><a href=#_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x7B80;&#x4ECB; class=anchor><span class="iconfont icon-link"></span></a>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x7B80;&#x4ECB;</h2><p>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6C14;&#x6CE1;&#x56FE;&#x548C;&#x5730;&#x56FE;&#x7684;&#x7ED3;&#x5408;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;&#x5730;&#x56FE;&#x4E3A;&#x80CC;&#x666F;&#xFF0C;&#x5728;&#x4E0A;&#x9762;&#x7ED8;&#x5236;&#x6C14;&#x6CE1;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5706;&#xFF08;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EB;&#x5B83;&#x6C14;&#x6CE1;&#xFF09;&#x5C55;&#x793A;&#x5728;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x5730;&#x7406;&#x533A;&#x57DF;&#x5185;&#xFF0C;&#x6C14;&#x6CE1;&#x7684;&#x9762;&#x79EF;&#x4EE3;&#x8868;&#x4E86;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5927;&#x5C0F;&#x3002;</p><p>Bubble Map &#x6BD4;<a href=choropleth-map.html>&#x5206;&#x7EA7;&#x7EDF;&#x8BA1;&#x56FE;</a>&#x66F4;&#x9002;&#x7528;&#x4E8E;&#x6BD4;&#x8F83;&#x5E26;&#x5730;&#x7406;&#x4FE1;&#x606F;&#x7684;&#x6570;&#x636E;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x7F3A;&#x70B9;&#x662F;&#x5F53;&#x5730;&#x56FE;&#x4E0A;&#x7684;&#x6C14;&#x6CE1;&#x8FC7;&#x591A;&#x8FC7;&#x5927;&#x65F6;&#xFF0C;&#x6C14;&#x6CE1;&#x95F4;&#x4F1A;&#x76F8;&#x4E92;&#x906E;&#x76D6;&#x800C;&#x5F71;&#x54CD;&#x6570;&#x636E;&#x5C55;&#x793A;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x7ED8;&#x5236;&#x65F6;&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x70B9;&#x3002;</p><p>&#x82F1;&#x6587;&#x540D;&#xFF1A; Bubble Map</p><h2 id=_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x6784;&#x6210;><a href=#_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x6784;&#x6210; class=anchor><span class="iconfont icon-link"></span></a>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x6784;&#x6210;</h2><img class=constitute-img src=https://t.alipayobjects.com/images/T1yxpjXnVfXXXXXXXX.png width=400px><table class=struct-table><tbody><tr><th>&#x56FE;&#x8868;&#x7C7B;&#x578B;</th><th>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;</th></tr><tr><td>&#x9002;&#x5408;&#x7684;&#x6570;&#x636E;</td><td>&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5B57;&#x6BB5;&#xFF0C;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x5B57;&#x6BB5;</td></tr><tr><td>&#x529F;&#x80FD;</td><td><code>&#x5BF9;&#x6BD4;</code>&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7684;&#x6570;&#x503C;&#x5927;&#x5C0F;</td></tr><tr><td>&#x6570;&#x636E;&#x4E0E;&#x56FE;&#x5F62;&#x7684;&#x6620;&#x5C04;</td><td>&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x5230;&#x5730;&#x56FE;&#x7684;&#x5730;&#x7406;&#x4F4D;&#x7F6E;<code>&#x548C;</code>&#x6C14;&#x6CE1;&#x989C;&#x8272;<br>&#x53E6;&#x4E00;&#x4E2A;&#x8FDE;&#x7EED;&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x5230;&#x6C14;&#x6CE1;&#x5927;&#x5C0F;</td></tr><tr><td>&#x9002;&#x5408;&#x7684;&#x6570;&#x636E;&#x6761;&#x6570;</td><td>&#x6839;&#x636E;&#x5B9E;&#x9645;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x6682;&#x65E0;&#x9650;&#x5236;</td></tr></tbody></table><div style="clear: both;"></div><h2 id=_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;><a href=#_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F; class=anchor><span class="iconfont icon-link"></span></a>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;</h2><p>&#x4F8B;&#x5B50;1&#xFF1A;<strong>&#x5404;&#x4E2A;&#x56FD;&#x5BB6;&#x906D;&#x53D7;&#x7684;&#x6050;&#x6016;&#x88AD;&#x51FB;&#x6B21;&#x6570;&#x5C55;&#x793A;</strong></p><p>&#x5982;&#x56FE;&#xFF0C;&#x5C06;&#x5404;&#x4E2A;&#x56FD;&#x5BB6;&#x906D;&#x53D7;&#x7684;&#x6050;&#x6016;&#x88AD;&#x51FB;&#x6B21;&#x6570;&#x7528;&#x6C14;&#x6CE1;&#x56FE;&#x6765;&#x5C55;&#x793A;&#x7684;&#x6548;&#x679C;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x4F0A;&#x62C9;&#x514B;&#x906D;&#x53D7;&#x7684;&#x6050;&#x6016;&#x88AD;&#x51FB;&#x6B21;&#x6570;&#x6700;&#x591A;&#xFF0C;&#x5E76;&#x4E14;&#x6050;&#x6016;&#x88AD;&#x51FB;&#x4E3B;&#x8981;&#x96C6;&#x4E2D;&#x5728;&#x4E2D;&#x4E1C;&#x5730;&#x533A;&#x3002;</p><table><thead><tr><th>name(&#x56FD;&#x5BB6;/&#x5730;&#x533A;)</th><th>value&#xFF08;&#x88AD;&#x51FB;&#x6B21;&#x6570;&#xFF09;</th></tr></thead><tbody><tr><td>Iraq</td><td>10701</td></tr><tr><td>Pakistan</td><td>7725</td></tr><tr><td>...</td><td>...</td></tr></tbody></table><div id=c1></div><p>&#x4F8B;&#x5B50;2&#xFF1A;<strong>&#x5C55;&#x793A;&#x5404;&#x56FD;&#x764C;&#x75C7;&#x4E94;&#x5E74;&#x751F;&#x5B58;&#x7387;</strong></p><p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x989C;&#x8272;&#x6765;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x56FD;&#x5BB6;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5404;&#x56FD;&#x7684;&#x751F;&#x5B58;&#x7387;&#x6570;&#x636E;&#x6620;&#x5C04;&#x4E3A;&#x6C14;&#x6CE1;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6E05;&#x6670;&#x5BF9;&#x6BD4;&#x4E0D;&#x540C;&#x56FD;&#x5BB6;&#x7684;&#x751F;&#x5B58;&#x7387;&#x3002;&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x660E;&#x663E;&#x53D1;&#x73B0;&#x4E2D;&#x56FD;&#x764C;&#x75C7;&#x4E94;&#x5E74;&#x751F;&#x5B58;&#x7387;&#x4E3A;30.9%&#xFF0C;&#x8FDC;&#x4F4E;&#x4E8E;&#x53D1;&#x8FBE;&#x56FD;&#x5BB6;&#x6C34;&#x5E73;&#x3002;</p><table><thead><tr><th>name(&#x56FD;&#x5BB6;/&#x5730;&#x533A;)</th><th>value&#xFF08;&#x751F;&#x5B58;&#x7387;&#xFF09;</th></tr></thead><tbody><tr><td>Japan</td><td>81.6</td></tr><tr><td>South Korea</td><td>53.4</td></tr><tr><td>China</td><td>30.9</td></tr><tr><td>...</td><td>...</td></tr></tbody></table><div id=c2></div><p>&#x4F8B;&#x5B50;3&#xFF1A;<strong>&#x7F8E;&#x56FD;&#x5404;&#x5DDE;&#x53D1;&#x751F;&#x7684;&#x62A2;&#x52AB;&#x6848;&#x4EF6;&#x6570;&#x76EE;</strong></p><p>&#x7528;&#x6C14;&#x6CE1;&#x5927;&#x5C0F;&#x4EE3;&#x8868;&#x5404;&#x5DDE;&#x67D0;&#x5E74;&#x53D1;&#x751F;&#x7684;&#x62A2;&#x52AB;&#x6848;&#x4EF6;&#x6570;&#x76EE;&#xFF0C;&#x5F88;&#x6E05;&#x6670;&#x5F97;&#x5C31;&#x770B;&#x5230;&#x7F8E;&#x56FD;&#x7684;&#x4E1C;&#x90E8;&#x662F;&#x62A2;&#x52AB;&#x6848;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x96C6;&#x4E2D;&#x533A;&#x57DF;&#xFF0C;&#x5176;&#x4E2D; Maryland &#x6700;&#x591A;&#x3002;</p><table><thead><tr><th>name(&#x5DDE;&#x540D;)</th><th>Robbery&#xFF08;&#x62A2;&#x52AB;&#x6848;&#x4EF6;&#x6570;&#xFF09;</th></tr></thead><tbody><tr><td>Alabama</td><td>141.4</td></tr><tr><td>Arizona</td><td>144.4</td></tr><tr><td>Arkansas</td><td>91.1</td></tr><tr><td>...</td><td>...</td></tr></tbody></table><div id=c3></div><h3 id=_&#x4E0D;&#x9002;&#x5408;&#x7684;&#x573A;&#x666F;><a href=#_&#x4E0D;&#x9002;&#x5408;&#x7684;&#x573A;&#x666F; class=anchor><span class="iconfont icon-link"></span></a>&#x4E0D;&#x9002;&#x5408;&#x7684;&#x573A;&#x666F;</h3><p>&#x5F53;&#x6570;&#x503C;&#x5B57;&#x6BB5;&#x8868;&#x8FBE;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x533A;&#x57DF;&#x7684;&#x603B;&#x503C;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x662F;&#x4E2A;&#x53D6;&#x6837;&#x503C;(&#x6C14;&#x6E29;&#x3001;&#x964D;&#x6C34;&#x7B49;&#xFF09;&#x65F6;&#x4E0D;&#x9002;&#x5408;&#x4F7F;&#x7528;&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;</p><p>&#x4E0B;&#x56FE;&#x662F;&#x4E2D;&#x56FD;&#x6C14;&#x6E29;&#x7684;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x56FE;</p><table><thead><tr><th>longitude(&#x7ECF;&#x5EA6;)</th><th>latitude&#xFF08;&#x7EF4;&#x5EA6;&#xFF09;</th><th>temperature</th></tr></thead><tbody><tr><td>115.95</td><td>40</td><td>23.9</td></tr><tr><td>116.83</td><td>40</td><td>25.7</td></tr><tr><td>117.93</td><td>41</td><td>24.4</td></tr><tr><td>...</td><td>...</td><td>...</td></tr></tbody></table><div id=c4 style=position:relative;><div class="wrong tip">&#x9519;&#x8BEF;</div></div><p>&#x4E0D;&#x9002;&#x5408;&#x7684;&#x539F;&#x56E0;&#xFF1A;</p><ul><li>&#x6C14;&#x6CE1;&#x76F8;&#x4E92;&#x6298;&#x53E0;</li><li>&#x6C14;&#x6E29;&#x662F;&#x4E00;&#x4E2A;&#x91C7;&#x6837;&#x6570;&#x503C;&#xFF0C;&#x6709;&#x8FDE;&#x7EED;&#x6027;</li><li>&#x6E29;&#x5EA6;&#x7684;&#x53D8;&#x5316;&#x4E0D;&#x5927;&#xFF0C;&#x5BFC;&#x81F4;&#x6C14;&#x6CE1;&#x7684;&#x5927;&#x5C0F;&#x53D8;&#x5316;&#x4E0D;&#x5927;&#xFF0C;&#x65E0;&#x6CD5;&#x660E;&#x786E;&#x7684;&#x5BF9;&#x6BD4;&#x6570;&#x503C;&#x7684;&#x5927;&#x5C0F;</li></ul><p>&#x6B64;&#x65F6;&#x66F4;&#x9002;&#x5408;&#x70ED;&#x529B;&#x56FE;</p><div id=c5 style=position:relative;><div class="right tip">&#x6B63;&#x786E;</div></div><h2 id=_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x540C;&#x5176;&#x4ED6;&#x56FE;&#x8868;&#x7684;&#x5BF9;&#x6BD4;><a href=#_&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x540C;&#x5176;&#x4ED6;&#x56FE;&#x8868;&#x7684;&#x5BF9;&#x6BD4; class=anchor><span class="iconfont icon-link"></span></a>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x540C;&#x5176;&#x4ED6;&#x56FE;&#x8868;&#x7684;&#x5BF9;&#x6BD4;</h2><h3 id=_&#x8DDF;&#x4E00;&#x822C;&#x6C14;&#x6CE1;&#x56FE;&#x7684;&#x5BF9;&#x6BD4;><a href=#_&#x8DDF;&#x4E00;&#x822C;&#x6C14;&#x6CE1;&#x56FE;&#x7684;&#x5BF9;&#x6BD4; class=anchor><span class="iconfont icon-link"></span></a>&#x8DDF;<a href=bubble.html>&#x4E00;&#x822C;&#x6C14;&#x6CE1;&#x56FE;</a>&#x7684;&#x5BF9;&#x6BD4;</h3><ul><li>&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x6C14;&#x6CE1;&#x56FE;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E09;&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x6570;&#x636E;&#x5173;&#x7CFB;</li><li>&#x4E00;&#x822C;&#x7684;&#x6C14;&#x6CE1;&#x56FE;&#xFF0C;&#x4E24;&#x4E2A;&#x7EF4;&#x5EA6;&#x6620;&#x5C04;&#x5230;x,y&#x8F74;&#x8FD9;&#x4E24;&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x5B57;&#x6BB5;&#x7C7B;&#x578B;&#x548C;&#x542B;&#x4E49;&#x6CA1;&#x6709;&#x9650;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x5206;&#x7C7B;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x8FDE;&#x7EED;&#xFF1B;&#x4F46;&#x662F;&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#xFF0C;&#x6620;&#x5C04;&#x5230;&#x4E24;&#x4E2A;&#x8F74;&#x4E0A;&#x7684;&#x5750;&#x6807;&#x53EA;&#x80FD;&#x662F;&#x7ECF;&#x7EAC;&#x5EA6;&#xFF0C;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x5730;&#x7406;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5730;&#x5740;&#x540D;&#x79F0;&#x9700;&#x8981;&#x5148;&#x8F6C;&#x6362;&#x6210;&#x7ECF;&#x7EAC;&#x5EA6;</li></ul><h3 id=_&#x8DDF;&#x5206;&#x7EA7;&#x7EDF;&#x8BA1;&#x56FE;&#x7684;&#x5BF9;&#x6BD4;><a href=#_&#x8DDF;&#x5206;&#x7EA7;&#x7EDF;&#x8BA1;&#x56FE;&#x7684;&#x5BF9;&#x6BD4; class=anchor><span class="iconfont icon-link"></span></a>&#x8DDF;<a href=choropleth-map.html>&#x5206;&#x7EA7;&#x7EDF;&#x8BA1;&#x56FE;</a>&#x7684;&#x5BF9;&#x6BD4;</h3><ul><li>&#x5206;&#x7EA7;&#x7EDF;&#x8BA1;&#x56FE;&#x662F;&#x5C06;&#x67D0;&#x4E2A;&#x533A;&#x57DF;&#x67D3;&#x6210;&#x4E00;&#x5B9A;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x8DDF;&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x540C;&#x6837;&#x662F;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x533A;&#x57DF;&#x7684;&#x67D0;&#x4E2A;&#x503C;&#x7684;&#x5927;&#x5C0F;</li><li>&#x5206;&#x7EA7;&#x7EDF;&#x8BA1;&#x56FE;&#x4EC5;&#x80FD;&#x7528;&#x989C;&#x8272;&#x6DF1;&#x5EA6;&#x8868;&#x793A;&#x6570;&#x503C;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x800C;&#x5E26;&#x6C14;&#x6CE1;&#x7684;&#x5730;&#x56FE;&#x9664;&#x4E86;&#x6C14;&#x6CE1;&#x7684;&#x5927;&#x5C0F;&#x5916;&#xFF0C;&#x6C14;&#x6CE1;&#x7684;&#x989C;&#x8272;&#x4E5F;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x6570;&#x503C;&#x7684;&#x5927;&#x5C0F;</li></ul><h2 id=_&#x53D8;&#x5F62;><a href=#_&#x53D8;&#x5F62; class=anchor><span class="iconfont icon-link"></span></a>&#x53D8;&#x5F62;</h2><ul class=variations><li><a href=/zh-cn/vis/chart/dot-map.html><span class="iconfont icon-dot-map"></span> &#x70B9;&#x63CF;&#x6CD5;&#x5730;&#x56FE;</a></li></ul><h2 id=_&#x6807;&#x7B7E;><a href=#_&#x6807;&#x7B7E; class=anchor><span class="iconfont icon-link"></span></a>&#x6807;&#x7B7E;</h2><ul class=tags><li><a href=/zh-cn/vis/chart/tag-location.html><span class="iconfont icon-tag-location"></span> &#x5730;&#x56FE;&#x7C7B;</a></li></ul><div class=prev-next><a href=/zh-cn/vis/chart/box.html class="float-left pre">&#x7BB1;&#x5F62;&#x56FE; </a><a href=/zh-cn/vis/chart/bubble.html class="float-right next">&#x6C14;&#x6CE1;&#x56FE;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"vis","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/vis/chart/bubble-map.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
+  var ds = new DataSet();
+  var mapDv = ds.createView('map').source(mapData, {
+    type: 'GeoJSON'
+  });
+
+  var userData = [
+    {name: 'Iraq',value: 10701},
+    {name: 'Pakistan',value: 7725},
+    {name: 'Afghanistan',value: 5693},
+    {name: 'India',value: 3468},
+    {name: 'Nigeria',value: 1912},
+    {name: 'Philippines',value: 1850},
+    {name: 'Somalia',value: 1827},
+    {name: 'Yemen',value: 1726},
+    {name: 'Thailand',value: 1620},
+    {name: 'Libya',value: 1082}
+  ];
+
+  var userDv = ds.createView().source(userData);
+  userDv.transform({
+    type: 'geo.centroid',
+    geoDataView: 'map',
+    field: 'name',
+    as: [ 'longitude', 'latitude' ]
+  });
+
+  var chart = new G2.Chart({
+    id: 'c1',
+    forceFit: true,
+    height: 500,
+    padding: [20]
+  });
+
+  chart.source(userDv);
+  chart.tooltip({
+    showTitle: false
+  });
+  chart.axis(false);
+  chart.legend(false);
+  chart.scale({
+    longitude: {
+      min: -180,
+      max: 180,
+      sync: true
+    },
+    latitude: {
+      min: -55.61183,
+      max: 83.64513,
+      sync: true
+    },
+  });
+
+  // 绘制世界地图背景
+  var view = chart.view();
+  view.source(mapDv);
+  view.tooltip(false);
+  view.polygon()
+    .position('longitude*latitude')
+    .style({
+      fill: '#ccc',
+      stroke: '#bfbfbf',
+      lineWidth: 1
+    });
+
+  var userView = chart.view();
+  userView.source(userDv);
+  userView.point()
+    .position('longitude*latitude')
+    .size('value', [5, 25])
+    .opacity(0.85).shape('circle').color('value','#fee0d2-#de2d26')
+    .label('value', {offset: 0, textStyle:{fill:'#222', 'font-weight': 'bold'}})
+    .tooltip('name*value', (name, value) => {
+      return {
+        name,
+        value
+      };
+    });
+
+  chart.render();
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/world.geo.json?nowrap', function(mapData) {
+  var ds = new DataSet();
+  var mapDv = ds.createView('map').source(mapData, {
+    type: 'GeoJSON'
+  });
+
+  var userData = [
+    {name: 'Japan', alias: '日本', value: 81.6},
+    {name: 'South Korea',alias: '韩国', value: 53.4},
+    {name: 'China',alias: '中国', value: 30.9},
+    {name: 'India',alias: '印度', value: 28.6},
+    {name: 'Australia',alias: '澳大利亚', value: 80.7},
+    {name: 'United Kingdom',alias: '英国', value: 73.1},
+    {name: 'Spain',alias: '西班牙', value: 62.8},
+    {name: 'Algeria',alias: '阿尔及利亚', value: 39.3},
+    {name: 'Italy',alias: '意大利', value: 63.4},
+    {name: 'Slovenia',alias: '斯诺文尼亚', value: 57.9},
+    {name: 'Germany',alias: '德国', value: 78.4},
+    {name: 'Brazil',alias: '巴西', value: 53.9},
+    {name: 'United States of America',alias: '美国', value: 66.0},
+    {name: 'Canada',alias: '加拿大', value: 82.5}
+  ];
+  var userDv = ds.createView().source(userData);
+  userDv.transform({
+    type: 'geo.centroid',
+    geoDataView: 'map',
+    field: 'name',
+    as: [ 'longitude', 'latitude' ]
+  });
+
+  var chart = new G2.Chart({
+    id: 'c2',
+    forceFit: true,
+    height: 500,
+    padding: [20]
+  });
+
+  chart.tooltip({
+  showTitle: false
+});
+  chart.legend(false);
+  chart.axis(false);
+  chart.scale({
+    longitude: {
+      sync: true
+    },
+    latitude: {
+      sync: true
+    },
+  });
+
+  // 绘制世界地图背景
+  var view = chart.view();
+  view.source(mapDv);
+  view.tooltip(false);
+  view.polygon()
+    .position('longitude*latitude')
+    .style({
+      stroke: '#bfbfbf',
+      fill: '#E6E6E6',
+      lineWidth: 1
+    });
+
+  var userView = chart.view();
+  userView.source(userDv);
+  userView.point()
+    .position('longitude*latitude')
+    .size('value', [5, 25])
+    .opacity(0.8)
+    .shape('circle')
+    .color('name')
+    .label('alias', {
+      offset: 0,
+      textStyle: {
+        'fill': '#222'
+      }
+    });
+
+  chart.render();
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/usa.geo.json?nowrap', function(mapData) {
+  $.getJSON('/assets/data/usa-forcible.json?nowrap', function(data) {
+    var ds = new DataSet();
+    var mapDv = ds.createView('map').source(mapData, {
+      type: 'GeoJSON'
+    });
+    var userDv = ds.createView().source(data);
+    userDv
+      .transform({
+        type: 'geo.centroid',
+        geoDataView: 'map',
+        field: 'state',
+        as: [ 'longitude', 'latitude' ]
+      })
+      .transform({
+        type: 'filter',
+        callback: function(row) {
+          return !!row.longitude && !!row.latitude;
+        }
+      });
+
+    var chart = new G2.Chart({
+      id: 'c3',
+      forceFit: true,
+      aniamte:false,
+      height: 500,
+      padding: [20]
+    });
+    chart.tooltip({
+      showTitle: false
+    });
+    chart.axis(false);
+    chart.legend('Robbery', false);
+    chart.scale({
+      longitude: {
+        sync: true
+      },
+      latitude: {
+        sync: true
+      },
+    });
+
+    // 绘制世界地图背景
+    var view = chart.view();
+    view.source(mapDv);
+    view.tooltip(false);
+    view.polygon()
+      .position('longitude*latitude')
+      .style({
+        fill: '#fff',
+        stroke: '#E6E6E6',
+        lineWidth: 1
+      });
+
+    var userView = chart.view();
+    userView.source(userDv);
+    userView.point()
+      .position('longitude*latitude')
+      .size('Robbery', [5, 25])
+      .shape('circle')
+      .color('Robbery', '#fee0d2-#de2d26')
+      .tooltip('state*Robbery', (name, value) => {
+        return {
+          name,
+          value
+        };
+      })
+      .opacity(0.9);
+    
+    chart.render();
+  });
+});
+
+})();</script><script>(function(){
+'use strict';
+  $.getJSON('/assets/data/world.geo.json', function(mapData) {
+    $.getJSON('/assets/data/temp.json', function(data) {
+      var ds = new DataSet();
+      var mapDv = ds.createView('map').source(mapData, {
+        type: 'GeoJSON',
+      });
+      var userDv = ds.createView().source(data);
+      userDv
+        .transform({
+          type: 'geo.centroid',
+          geoDataView: 'map',
+          field: 'province',
+          as: [ 'longitude', 'latitude' ]
+        });
+
+      var chart = new G2.Chart({
+        container: 'c4',
+        forceFit: true,
+        aniamte:false,
+        height: 500,
+        padding: [20, 80]
+      });
+      chart.scale({
+        'out-temperature': {
+          alias: '室外温度'
+        },
+        longitude: {
+          sync: true
+        },
+        latitude: {
+          sync: true
+        },
+      });
+      chart.axis(false);
+      chart.legend(false);
+      chart.tooltip({
+      showTitle: false
+    });
+
+      // 绘制地图背景
+      var view = chart.view();
+      view.source(mapDv);
+      view.tooltip(false);
+      view.polygon()
+        .position('longitude*latitude')
+        .style({
+          fill: '#fff',
+          stroke: '#E6E6E6',
+          lineWidth: 1
+        });
+      var userView = chart.view();
+      userView.source(userDv);
+      userView.point()
+        .position('longitude*latitude')
+        .size('temperature', [1, 8])
+        .color('temperature','#50a3ba-#eac736-#d94e5d')
+        .shape('circle')
+        .tooltip('city*temperature')
+        .opacity(0.8)
+      chart.render();
+    });
+  });
+
+})();</script><script>(function(){
+'use strict';
+  $.getJSON('/assets/data/world.geo.json', function(mapData) {
+    $.getJSON('/assets/data/temp.json', function(data) {
+      var ds = new DataSet();
+      var mapDv = ds.createView('map').source(mapData, {
+        type: 'GeoJSON',
+      });
+      var userDv = ds.createView().source(data);
+      userDv
+        .transform({
+          type: 'geo.centroid',
+          geoDataView: 'map',
+          field: 'province',
+          as: [ 'longitude', 'latitude' ]
+        });
+
+      var chart = new G2.Chart({
+        container: 'c5',
+        forceFit: true,
+        aniamte:false,
+        height: 500,
+        padding: [20, 80]
+      });
+      chart.scale({
+        'out-temperature': {
+          alias: '室外温度'
+        },
+        longitude: {
+          sync: true
+        },
+        latitude: {
+          sync: true
+        },
+      });
+      chart.tooltip({
+      showTitle: false
+    });
+      chart.axis(false);
+      chart.tooltip({
+        map: {
+          'title': 'city',
+          value: 'out-temperature'
+        }
+      });
+
+      // 绘制地图背景
+      var view = chart.view();
+      view.source(mapDv);
+      view.tooltip(false);
+      view.polygon()
+        .position('longitude*latitude')
+        .style({
+          fill: '#fff',
+          stroke: '#E6E6E6',
+          lineWidth: 1
+        });
+
+      var userView = chart.view();
+      userView.source(userDv);
+      userView.heatmap()
+        .position('longitude*latitude')
+        .size(5)
+        .color('temperature','#50a3ba-#eac736-#d94e5d')
+        .shape('circle')
+        .opacity(0.8)
+        .tooltip('city*temperature')
+        .style({
+          blur: 10
+        });
+
+      chart.render();
+    });
+  });
+
+})();</script></body></html>

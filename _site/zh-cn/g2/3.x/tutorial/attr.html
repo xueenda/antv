@@ -1,0 +1,567 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/highlight-9.12.0/solarized-light.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.css><link rel=stylesheet href=/assets/dist/3.0.0/doc.css></head><body class=template-doc><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G2</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class=nav-link href=/zh-cn/g2/3.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g2/3.x/api/index.html>API &#x6587;&#x6863;</a> <a class="nav-link active" href=/zh-cn/g2/3.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="doc-container container-fluid"><div class="row flex-xl-nowrap"><div class="menu bd-sidebar drawer"><div class=inner><div class=filter-container><div class=inner><span class="iconfont icon-search"></span> <input type=text id=doc-filtering-query placeholder=&#x8F93;&#x5165;&#x5173;&#x952E;&#x5B57;></div></div><ul class=list-group><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/index.html>&#x5FEB;&#x901F;&#x4E0A;&#x624B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/understanding-g2-charts.html>G2 &#x56FE;&#x8868;&#x7EC4;&#x6210;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/create-chart.html>&#x521B;&#x5EFA;&#x56FE;&#x8868;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/load-data.html>&#x88C5;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-set.html>DataSet</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/scale.html>Scale &#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-scale.html>&#x5217;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom.html>Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;</a></li><li class="list-group-item active"><a href=/zh-cn/g2/3.x/tutorial/attr.html>Attr &#x56FE;&#x5F62;&#x5C5E;&#x6027;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/coord.html>Coord &#x5750;&#x6807;&#x7CFB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/axes.html>Axis &#x5750;&#x6807;&#x8F74;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/legend.html>Legend &#x56FE;&#x4F8B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/tooltip.html>Tooltip &#x63D0;&#x793A;&#x4FE1;&#x606F;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/guide.html>Guide &#x8F85;&#x52A9;&#x5143;&#x7D20;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/facet.html>Facet &#x5206;&#x9762;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/theme.html>Theme &#x56FE;&#x8868;&#x76AE;&#x80A4;&#x4E3B;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-label.html>Label &#x56FE;&#x5F62;&#x6587;&#x672C;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-event.html>Event &#x56FE;&#x8868;&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/interaction.html>&#x56FE;&#x8868;&#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-use-slider.html>Slider &#x6570;&#x636E;&#x6ED1;&#x52A8;&#x6761;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/update-data.html>&#x6570;&#x636E;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x4E0E;&#x52A8;&#x6001;&#x66F4;&#x65B0;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-shape.html>&#x81EA;&#x5B9A;&#x4E49; shape</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/customize-animation.html>&#x81EA;&#x5B9A;&#x4E49; &#x52A8;&#x753B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/how-to-create-view.html>&#x521B;&#x5EFA; View</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/the-grammar-of-graphics.html>&#x56FE;&#x5F62;&#x8BED;&#x6CD5;&#x7B80;&#x4ECB;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-flow.html>G2 &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/data-type-and-scale.html>&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x5EA6;&#x91CF;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/deep-into-coord.html>&#x5750;&#x6807;&#x7CFB;&#x8BE6;&#x89E3;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/chart-type.html>&#x56FE;&#x8868;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/geom-and-adjust.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x548C;&#x6570;&#x636E;&#x8C03;&#x6574;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/faq.html>&#x5E38;&#x89C1;&#x95EE;&#x9898;</a></li><li class=list-group-item><a href=/zh-cn/g2/3.x/tutorial/g2-v3-changes.html>G2 3.0 &#x5347;&#x7EA7;&#x6307;&#x5F15;</a></li></ul></div></div><div class="detail content"><div class=toc-container><div class=toc></div></div><article><h1 id=_&#x56FE;&#x5F62;&#x5C5E;&#x6027;><a href=#_&#x56FE;&#x5F62;&#x5C5E;&#x6027; class=anchor></a>&#x56FE;&#x5F62;&#x5C5E;&#x6027;</h1><p>&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x5BF9;&#x5E94;&#x89C6;&#x89C9;&#x7F16;&#x7801;&#x4E2D;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#xFF0C;&#x662F; G2 &#x8BED;&#x6CD5;&#x5143;&#x7D20;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x548C;&#x7075;&#x6D3B;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x62E5;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x3002;G2 &#x4E2D;&#x652F;&#x6301;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p><ol><li>position&#xFF1A;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E8C;&#x7EF4;&#x5750;&#x6807;&#x7CFB;&#x5185;&#x6620;&#x5C04;&#x81F3; x &#x8F74;&#x3001;y &#x8F74;&#xFF1B;</li><li>color&#xFF1A;&#x989C;&#x8272;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x8272;&#x8C03;&#x3001;&#x9971;&#x548C;&#x5EA6;&#x548C;&#x4EAE;&#x5EA6;&#xFF1B;</li><li>size&#xFF1A;&#x5927;&#x5C0F;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x5BF9;&#x5927;&#x5C0F;&#x7684;&#x5B9A;&#x4E49;&#x6709;&#x5DEE;&#x5F02;&#xFF1B;</li><li>shape&#xFF1A;&#x5F62;&#x72B6;&#xFF0C;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x7684;&#x5F62;&#x72B6;&#x51B3;&#x5B9A;&#x4E86;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x56FE;&#x8868;&#x7C7B;&#x578B;&#x7684;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#x70B9;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5706;&#x70B9;&#x3001;&#x4E09;&#x89D2;&#x5F62;&#x3001;&#x56FE;&#x7247;&#x8868;&#x793A;&#xFF1B;&#x7EBF;&#x56FE;&#x53EF;&#x4EE5;&#x6709;&#x6298;&#x7EBF;&#x3001;&#x66F2;&#x7EBF;&#x3001;&#x70B9;&#x7EBF;&#x7B49;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#xFF1B;</li><li>opacity&#xFF1A;&#x900F;&#x660E;&#x5EA6;&#xFF0C;&#x56FE;&#x5F62;&#x7684;&#x900F;&#x660E;&#x5EA6;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x4ECE;&#x67D0;&#x79CD;&#x610F;&#x4E49;&#x4E0A;&#x6765;&#x8BF4;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x989C;&#x8272;&#x4EE3;&#x66FF;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528; &apos;rgba&apos; &#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x5728; G2 &#x4E2D;&#x6211;&#x4EEC;&#x72EC;&#x7ACB;&#x51FA;&#x6765;&#x3002;</li></ol><h2 id=_&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x8BED;&#x6CD5;><a href=#_&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x8BED;&#x6CD5; class=anchor><span class="iconfont icon-link"></span></a>&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x58F0;&#x660E;&#x8BED;&#x6CD5;</h2><p>&#x5728; G2 &#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x6837;&#x5B9A;&#x4E49;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#x8BED;&#x6CD5;&#x3002;</p><p>&#x9996;&#x5148;&#x9700;&#x8981;&#x660E;&#x786E;&#x4E00;&#x70B9;&#xFF1A;<strong>&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x662F;&#x5C5E;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x51E0;&#x4F55;&#x6807;&#x8BB0; geom&#xFF08;Geometry) &#x7684;</strong>&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5148;&#x8981;&#x58F0;&#x660E;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5728;&#x8BE5;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x5BF9;&#x8C61;&#x4E0A;&#x8FDB;&#x884C;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre>chart.&lt;geomType&gt;().&lt;attrType&gt;(fields[, callback]);
+</pre></div><p>&#x5176;&#x4E2D;&#xFF1A;</p><ul><li>geomType&#xFF0C;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x7C7B;&#x578B;&#xFF0C;&#x5177;&#x4F53;&#x652F;&#x6301;&#x7684;&#x7C7B;&#x578B;&#x8BF7;&#x9605;&#x8BFB;<a href=./geom.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;</a>&#x7AE0;&#x8282;&#xFF1B;</li><li>attrType&#xFF0C;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#xFF0C;&#x5BF9;&#x5E94;&#x89C6;&#x89C9;&#x901A;&#x9053;&#xFF1B;</li><li>fields&#xFF0C;&#x53C2;&#x4E0E;&#x5355;&#x4E2A;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x6620;&#x5C04;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x5355;&#x4E2A;&#x5B57;&#x6BB5;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x4F7F;&#x7528; <code>*</code>&#x5206;&#x5272;</li><li>callback&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x5982;&#x4F55;&#x89E3;&#x6790;&#x89C6;&#x89C9;&#x901A;&#x9053;&#xFF0C;&#x5982;&#x4E0D;&#x63D0;&#x4F9B;&#x5219;&#x53EA;&#x7528; G2 &#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x89E3;&#x6790;&#x65B9;&#x5F0F;&#x3002;</li></ul><p>&#x9664;&#x4E86; <code>attr(fields[, callback])</code> &#x7684;&#x51FD;&#x6570;&#x539F;&#x578B;&#x5916;&#xFF0C;G2 &#x4E3A;&#x4E86;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x7684;&#x4FBF;&#x5229;&#x6027;&#xFF0C;&#x7ED3;&#x5408;&#x5404;&#x4E2A;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x4E3A;&#x4FBF;&#x6377;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#xFF0C;&#x5728;&#x672C;&#x7AE0;&#x540E;&#x9762;&#x4F1A;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</p><p>&#x8BED;&#x6CD5;&#x793A;&#x4F8B;&#xFF1A;</p><div class=highlight><pre>chart.point().position(<span class=hljs-string>&apos;a*b&apos;</span>).color(<span class=hljs-string>&apos;c&apos;</span>);
+
+chart.interval().position(<span class=hljs-string>&apos;a*b&apos;</span>).color(<span class=hljs-string>&apos;c&apos;</span>, (cValue) =&gt; {
+  <span class=hljs-keyword>if</span> (cvalue === <span class=hljs-string>&apos;fail&apos;</span>) {
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;red&apos;</span>;
+  }
+  <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;green&apos;</span>;
+});
+</pre></div><p>G2 &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x53C2;&#x6570; fields &#x7684;&#x89E3;&#x6790;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p><ul><li>&#x5982;&#x679C;&#x662F;&#x5355;&#x4E2A;&#x5355;&#x8BCD;&#xFF0C;&#x5982; <code>color(&apos;a&apos;)</code> &#x4F1A;&#x5224;&#x65AD;&#x8BE5;&#x5C5E;&#x6027;&#x662F;&#x5426;&#x662F;&#x8F93;&#x5165;&#x6570;&#x636E;&#x6E90;&#x7684;&#x5B57;&#x6BB5;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x5219;&#x4F1A;&#x5C06;&#x5176;&#x89E3;&#x6790;&#x4E3A;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#xFF1B;</li><li>&#x5982;&#x679C;&#x662F;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>*</code> &#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#xFF0C;G2 &#x4F1A;&#x4F9D;&#x6B21;&#x5BF9;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x548C;&#x6620;&#x5C04;&#xFF0C;&#x5982; <code>position(&apos;cut*price&apos;)</code>&#xFF1B;</li></ul><h2 id=_position-&#x4F4D;&#x7F6E;&#x5C5E;&#x6027;><a href=#_position-&#x4F4D;&#x7F6E;&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>position &#x4F4D;&#x7F6E;&#x5C5E;&#x6027;</h2><p>position &#x4F4D;&#x7F6E;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x7528;&#x4E8E;&#x786E;&#x5B9A;&#x7531;&#x6570;&#x636E;&#x4E2D;&#x7684;&#x54EA;&#x51E0;&#x4E2A;&#x5B57;&#x6BB5;&#x6765;&#x786E;&#x5B9A;&#x6570;&#x636E;&#x5728;&#x5E73;&#x9762;&#x5750;&#x6807;&#x7CFB;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x901A;&#x4FD7;&#x5730;&#x89E3;&#x91CA;&#xFF0C;&#x5373;&#x786E;&#x5B9A; x &#x8F74;&#x548C; y &#x8F74;&#x7684;&#x6570;&#x636E;&#x5B57;&#x6BB5;&#x3002;&#x5B83;&#x662F;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x7F16;&#x7801;&#x5206;&#x7C7B;&#x53C8;&#x53EF;&#x7528;&#x4E8E;&#x7F16;&#x7801;&#x5B9A;&#x5E8F;&#x6216;&#x8005;&#x5B9A;&#x91CF;&#x7684;&#x6570;&#x636E;&#x5C5E;&#x6027;&#x3002;</p><p>&#x4EE5;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x4E3A;&#x4F8B;&#xFF0C;&#x5728; position &#x5C5E;&#x6027;&#x4E0A;&#xFF0C;&#x6620;&#x5C04;&#x4E86;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A; cut &#x548C; price&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;&#x5C06; cut &#x6570;&#x636E;&#x503C;&#x6620;&#x5C04;&#x81F3; x &#x8F74;&#x5750;&#x6807;&#x70B9;&#xFF0C;price &#x6570;&#x636E;&#x503C;&#x6620;&#x5C04;&#x81F3; y &#x8F74;&#x5750;&#x6807;&#x70B9;&#x3002;</p><div class=highlight><pre>chart.point().position(<span class=hljs-string>&apos;cut*price&apos;</span>);
+</pre></div><p>&#x4E0B;&#x9762;&#x662F;&#x5BF9; &apos;*&apos; &#x8FDE;&#x63A5;&#x7B26;&#x7684;&#x89E3;&#x91CA;&#xFF1A;</p><p>&#x4EE5; <code>chart.point().position(&apos;x*y&apos;)</code> &#x4E3A;&#x4F8B;&#xFF0C;point &#x4EE3;&#x8868;&#x56FE;&#x5F62;&#xFF0C;&#x5373;&#x6700;&#x540E;&#x9700;&#x8981;&#x751F;&#x6210;&#x70B9;&#x56FE;&#xFF0C;&#x800C; position &#x4EE3;&#x8868;&#x4F4D;&#x7F6E;&#xFF0C;<code>position(&apos;x*y&apos;)</code> &#x4EE3;&#x8868;&#x6570;&#x636E;&#x5728;&#x56FE;&#x5F62;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x7531; x &#x548C; y &#x8FD9;&#x4E24;&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x53D8;&#x91CF;&#x51B3;&#x5B9A;&#xFF0C;x * y &#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#xFF1A;</p><img src=https://gw.alipayobjects.com/zos/rmsportal/EcuDeyeTOsztVOuxmZPe.png width=50%><p>(x1, y1) &#x8FD9;&#x6837;&#x7684;&#x6570;&#x503C;&#x5BF9;&#xFF0C;&#x6700;&#x540E;&#x5C31;&#x4F1A;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x753B;&#x5E03;&#x4E0A;&#x5BF9;&#x5E94;&#x7684;&#x5750;&#x6807;&#x70B9;&#x3002;</p><h2 id=_color><a href=#_color class=anchor><span class="iconfont icon-link"></span></a>color</h2><p>&#x4ECE;&#x53EF;&#x89C6;&#x5316;&#x7F16;&#x7801;&#x7684;&#x89D2;&#x5EA6;&#x5BF9;&#x989C;&#x8272;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x989C;&#x8272;&#x5206;&#x4E3A;&#x4EAE;&#x5EA6;&#x3001;&#x9971;&#x548C;&#x5EA6;&#x548C;&#x8272;&#x8C03;&#x4E09;&#x4E2A;&#x89C6;&#x89C9;&#x901A;&#x9053;&#xFF0C;&#x5176;&#x4E2D;&#x524D;&#x4E24;&#x4E2A;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x7528;&#x4E8E;&#x7F16;&#x7801;&#x5B9A;&#x91CF;&#x548C;&#x5B9A;&#x5E8F;&#x6570;&#x636E;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#xFF0C;&#x800C;&#x8272;&#x8C03;&#x5C5E;&#x4E8E;&#x7F16;&#x7801;&#x5B9A;&#x6027;&#x6570;&#x636E;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x3002;&#x800C;&#x5728; G2 &#x4E2D;&#x5E76;&#x4E0D;&#x5982;&#x6B64;&#x8BE6;&#x7EC6;&#x533A;&#x5206;&#xFF0C;&#x7EDF;&#x4E00;&#x4F7F;&#x7528; color &#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x6620;&#x5C04;&#x914D;&#x7F6E;&#x3002;</p><p>color &#x652F;&#x6301;&#x7684;&#x6620;&#x5C04;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p><ul><li><code>color(&apos;field&apos;)</code>&#xFF0C;field &#x4E3A;&#x6570;&#x636E;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x65F6;&#x5019; G2 &#x4F1A;&#x5728;&#x5185;&#x90E8;&#x8C03;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x8BFB;&#x53D6;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x989C;&#x8272;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x503C;&#x5230;&#x989C;&#x8272;&#x503C;&#x7684;&#x6620;&#x5C04;&#xFF1B;</li><li><code>color(&apos;field&apos;, colors)</code>&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x503C;&#x6620;&#x5C04;&#x81F3;&#x6307;&#x5B9A;&#x7684;&#x989C;&#x8272;&#x503C; colors&#xFF08;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x6570;&#x7EC4;&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x7528;&#x4E8E;&#x901A;&#x5E38;&#x6620;&#x5C04;&#x5206;&#x7C7B;&#x6570;&#x636E;&#xFF1B;</li><li><code>color(&apos;field&apos;, &apos;color1-color2-colorN&apos;)</code>&#xFF0C;&#x6307;&#x5B9A;&#x989C;&#x8272;&#x7684;&#x6E10;&#x53D8;&#x8DEF;&#x5F84;&#xFF0C;&#x7528;&#x4E8E;&#x6620;&#x5C04;&#x8FDE;&#x7EED;&#x7684;&#x6570;&#x636E;&#xFF1B;</li><li><code>color(&apos;field&apos;, callback)</code>&#xFF0C;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x989C;&#x8272;&#x503C;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#xFF1B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x4F7F;&#x7528;*&#x53F7;&#x8FDE;&#x63A5;</li><li><code>color(&apos;#ffffff&apos;)</code>&#xFF0C; &#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x989C;&#x8272;&#x5E38;&#x91CF;&#xFF0C;&#x4E0D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x6620;&#x5C04;&#x3002;</li></ul><h3 id=_&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7684;&#x989C;&#x8272;&#x6620;&#x5C04;><a href=#_&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7684;&#x989C;&#x8272;&#x6620;&#x5C04; class=anchor><span class="iconfont icon-link"></span></a>&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7684;&#x989C;&#x8272;&#x6620;&#x5C04;</h3><p>&#x5C06; <code>city</code> &#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x503C;&#x6620;&#x5C04;&#x81F3;&#x5236;&#x5B9A;&#x7684;&#x989C;&#x8272;&#x6765;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x57CE;&#x5E02;&#x3002;</p><p><code>.color(&apos;city&apos;, [ &apos;#1f77b4&apos;, &apos;#ff7f0e&apos;, &apos;#2ca02c&apos; ])</code></p><div id=c1></div><p>&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre>$.getJSON(<span class=hljs-string>&apos;/assets/data/avg-temp.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> ds = <span class=hljs-keyword>new</span> DataSet();
+  <span class=hljs-keyword>const</span> dv = ds.createView().source(data);
+  dv.transform({
+    <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;fold&apos;</span>,
+    <span class=hljs-attr>fields</span>: [ <span class=hljs-string>&apos;New York&apos;</span>, <span class=hljs-string>&apos;San Francisco&apos;</span>, <span class=hljs-string>&apos;Austin&apos;</span> ],
+    <span class=hljs-attr>key</span>: <span class=hljs-string>&apos;city&apos;</span>,
+    <span class=hljs-attr>value</span>: <span class=hljs-string>&apos;value&apos;</span> 
+  });
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c1&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span> : <span class=hljs-number>400</span>,
+    <span class=hljs-attr>padding</span>: [ <span class=hljs-number>20</span>, <span class=hljs-number>120</span>, <span class=hljs-number>80</span>, <span class=hljs-number>80</span> ]
+  });
+  chart.source(dv, {
+    <span class=hljs-attr>date</span>: {
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;time&apos;</span>,
+      <span class=hljs-attr>mask</span>: <span class=hljs-string>&apos;YYYY.MM&apos;</span>,
+      <span class=hljs-attr>tickCount</span>: <span class=hljs-number>12</span>
+    },
+    <span class=hljs-attr>value</span>: {
+      <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;Temperature, &#xBA;F&apos;</span>
+    }
+  });
+  chart.axis(<span class=hljs-string>&apos;date&apos;</span>, {
+    <span class=hljs-attr>line</span>: <span class=hljs-literal>null</span>,
+    <span class=hljs-attr>tickLine</span>: {
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#000&apos;</span>,
+      <span class=hljs-attr>length</span>: <span class=hljs-number>6</span> <span class=hljs-comment>// &#x523B;&#x5EA6;&#x7EBF;&#x957F;&#x5EA6;</span>
+    }
+  });
+  chart.axis(<span class=hljs-string>&apos;value&apos;</span>, {
+    <span class=hljs-attr>tickLine</span>: {
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#000&apos;</span>,
+      <span class=hljs-attr>length</span>: <span class=hljs-number>6</span> <span class=hljs-comment>// &#x523B;&#x5EA6;&#x7EBF;&#x957F;&#x5EA6;</span>
+    },
+    <span class=hljs-attr>label</span>: {
+      <span class=hljs-attr>textStyle</span>: {
+        <span class=hljs-attr>fill</span>: <span class=hljs-string>&apos;#000&apos;</span>
+      }
+    },
+    <span class=hljs-attr>line</span>: {
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#000&apos;</span>
+    },
+    <span class=hljs-attr>grid</span>: <span class=hljs-literal>null</span>
+  });
+  chart.line()
+    .position(<span class=hljs-string>&apos;date*value&apos;</span>)
+    .color(<span class=hljs-string>&apos;city&apos;</span>, [ <span class=hljs-string>&apos;#1f77b4&apos;</span>, <span class=hljs-string>&apos;#ff7f0e&apos;</span>, <span class=hljs-string>&apos;#2ca02c&apos;</span> ])
+    .shape(<span class=hljs-string>&apos;spline&apos;</span>)
+    .size(<span class=hljs-number>2</span>);
+  chart.render();
+});
+</pre></div><h3 id=_&#x8FDE;&#x7EED;&#x6570;&#x636E;&#x7684;&#x989C;&#x8272;&#x6620;&#x5C04;><a href=#_&#x8FDE;&#x7EED;&#x6570;&#x636E;&#x7684;&#x989C;&#x8272;&#x6620;&#x5C04; class=anchor><span class="iconfont icon-link"></span></a>&#x8FDE;&#x7EED;&#x6570;&#x636E;&#x7684;&#x989C;&#x8272;&#x6620;&#x5C04;</h3><p>&#x5BF9;&#x4E8E;&#x8FDE;&#x7EED;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E3A; color &#x6307;&#x5B9A;&#x989C;&#x8272;&#x6E10;&#x53D8;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4EE5;&#x53EF;&#x89C6;&#x5316;&#x6570;&#x636E;&#x5728;&#x67D0;&#x4E00;&#x8303;&#x56F4;&#x7684;&#x53D8;&#x5316;&#x8D8B;&#x52BF;&#x3002;</p><p><code>.color(&apos;Population&apos;, &apos;#e5f5e0-#31a354&apos;)</code></p><div id=c2></div><p>&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><div class=highlight><pre>$.getJSON(<span class=hljs-string>&apos;/assets/data/usa.geo.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>mapData</span>) </span>{
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c2&apos;</span>,
+    <span class=hljs-attr>width</span>: <span class=hljs-number>800</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>400</span>,
+    <span class=hljs-attr>padding</span>: [ <span class=hljs-number>40</span>, <span class=hljs-number>140</span> ]
+  });
+  chart.legend(<span class=hljs-literal>false</span>);
+  chart.axis(<span class=hljs-literal>false</span>);
+  chart.tooltip({
+    <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span>
+  });
+  <span class=hljs-comment>// &#x540C;&#x6B65;&#x5EA6;&#x91CF;</span>
+  chart.scale({
+    <span class=hljs-attr>longitude</span>: {
+      <span class=hljs-attr>sync</span>: <span class=hljs-literal>true</span>
+    },
+    <span class=hljs-attr>latitude</span>: {
+      <span class=hljs-attr>sync</span>: <span class=hljs-literal>true</span>
+    }
+  });
+  <span class=hljs-comment>// &#x7ED8;&#x5236;&#x5730;&#x56FE;&#x80CC;&#x666F;</span>
+  <span class=hljs-keyword>const</span> ds = <span class=hljs-keyword>new</span> DataSet();
+  <span class=hljs-keyword>const</span> bgDataView = ds.createView(<span class=hljs-string>&apos;back&apos;</span>)
+    .source(mapData, {
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;GeoJSON&apos;</span>
+    });
+  <span class=hljs-keyword>const</span> bgView = chart.view();
+  bgView.source(bgDataView);
+  bgView.polygon().position(<span class=hljs-string>&apos;longitude*latitude&apos;</span>)
+    .color(<span class=hljs-string>&apos;#e6e6e6&apos;</span>)
+    .active(<span class=hljs-literal>false</span>)
+    .tooltip(<span class=hljs-literal>false</span>)
+    .style({
+      <span class=hljs-attr>stroke</span>: <span class=hljs-string>&apos;#999&apos;</span>,
+      <span class=hljs-attr>lineWidth</span>: <span class=hljs-number>1</span>
+    });
+
+  $.getJSON(<span class=hljs-string>&apos;/assets/data/2014-usa-population.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+    <span class=hljs-comment>// &#x7ED8;&#x5236; choropleth map</span>
+    <span class=hljs-keyword>const</span> view = chart.view();
+    <span class=hljs-keyword>const</span> userPolygonDv = ds.createView()
+      .source(data)
+      .transform({
+        <span class=hljs-attr>geoDataView</span>: bgDataView,
+        <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;State&apos;</span>,
+        <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.region&apos;</span>,
+        <span class=hljs-attr>as</span>: [ <span class=hljs-string>&apos;longitude&apos;</span>, <span class=hljs-string>&apos;latitude&apos;</span> ]
+      });
+    view.source(userPolygonDv);
+    view.polygon()
+      .position(<span class=hljs-string>&apos;longitude*latitude&apos;</span>)
+      .color(<span class=hljs-string>&apos;Population&apos;</span>,<span class=hljs-string>&apos;#e5f5e0-#31a354&apos;</span>)
+      .tooltip(<span class=hljs-string>&apos;State*Population&apos;</span>);
+
+    <span class=hljs-comment>// &#x7ED8;&#x5236;&#x6587;&#x5B57;</span>
+    <span class=hljs-keyword>const</span> textView = chart.view();
+    <span class=hljs-keyword>const</span> centerDv = ds.createView()
+      .source(data)
+      .transform({
+        <span class=hljs-attr>geoDataView</span>: bgDataView,
+        <span class=hljs-attr>field</span>: <span class=hljs-string>&apos;State&apos;</span>,
+        <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;geo.centroid&apos;</span>,
+        <span class=hljs-attr>as</span>: [ <span class=hljs-string>&apos;longitude&apos;</span>, <span class=hljs-string>&apos;latitude&apos;</span> ]
+      });
+    textView.source(centerDv);
+    textView.point()
+      .position(<span class=hljs-string>&apos;longitude*latitude&apos;</span>)
+      .size(<span class=hljs-number>0</span>)
+      .label(<span class=hljs-string>&apos;code&apos;</span>, {
+        <span class=hljs-attr>offset</span>: <span class=hljs-number>0</span>,
+        <span class=hljs-attr>textStyle</span>: {
+          <span class=hljs-attr>fontSize</span>: <span class=hljs-number>10</span>
+        }
+      });
+    chart.render();
+  });
+});
+</pre></div><h3 id=_&#x989C;&#x8272;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;><a href=#_&#x989C;&#x8272;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x989C;&#x8272;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;</h3><p>&#x6709;&#x65F6;&#x5019;&#x989C;&#x8272;&#x9700;&#x8981;&#x6839;&#x636E;&#x5B57;&#x6BB5;&#x503C;&#x8FDB;&#x884C;&#x7279;&#x6B8A;&#x7684;&#x6307;&#x5B9A;&#xFF0C;&#x6240;&#x4EE5; G2 &#x63D0;&#x4F9B;&#x4E86;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6765;&#x6307;&#x5B9A;&#x56FE;&#x5F62;&#x7684;&#x989C;&#x8272;&#x3002;</p><div class=highlight><pre><span class=hljs-comment>// &#x6839;&#x636E;&#x5355;&#x4E2A;&#x5B57;&#x6BB5;&#x8BA1;&#x7B97;&#x989C;&#x8272;</span>
+chart.point().position(<span class=hljs-string>&apos;x*y&apos;</span>).color(<span class=hljs-string>&apos;z&apos;</span>, z =&gt; {
+  <span class=hljs-keyword>if</span> (z &gt;= <span class=hljs-number>100</span>) {
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;red&apos;</span>;
+  }
+  <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;blue&apos;</span>;
+});
+
+<span class=hljs-comment>// &#x6839;&#x636E;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x8BA1;&#x7B97;&#x989C;&#x8272;</span>
+chart.point().position(<span class=hljs-string>&apos;x*y&apos;</span>).color(<span class=hljs-string>&apos;level*value&apos;</span>, (level, value) =&gt; {
+  <span class=hljs-keyword>if</span> (level &lt; <span class=hljs-number>2</span>) {
+    <span class=hljs-keyword>if</span> (value &gt; <span class=hljs-number>10</span>) {
+      <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;green&apos;</span>;
+    }
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;blue&apos;</span>;
+  } <span class=hljs-keyword>else</span> {
+    <span class=hljs-keyword>if</span> (value &gt; <span class=hljs-number>20</span>) {
+      <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;#cdcdcd&apos;</span>;
+    }
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;red&apos;</span>;
+  }
+});
+</pre></div><p>&#x6CE8;&#x610F;&#xFF1A;</p><ul><li>color &#x5C5E;&#x6027;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E00;&#x822C;&#x8FD4;&#x56DE;&#x7684;&#x5355;&#x4E2A;&#x989C;&#x8272;&#xFF0C;&#x56E0;&#x4E3A; G2 &#x4E2D;&#x6240;&#x6709;&#x7684; shape &#x4EC5;&#x652F;&#x6301;&#x5355;&#x4E2A;&#x989C;&#x8272;</li><li>color &#x5C5E;&#x6027;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x989C;&#x8272;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x65F6;&#x5019;&#x9700;&#x8981; shape &#x652F;&#x6301;&#x591A;&#x989C;&#x8272;&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x8BE6;&#x7EC6;&#x60C5;&#x51B5;&#x67E5;&#x770B; <a href=./customize-shape.html>&#x81EA;&#x5B9A;&#x4E49;shape</a>&#x3002;</li></ul><h2 id=_shape><a href=#_shape class=anchor><span class="iconfont icon-link"></span></a>shape</h2><p>&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x6709;&#x4E0D;&#x540C;&#x7684; shape&#xFF08;&#x56FE;&#x5F62;&#x5F62;&#x72B6;&#xFF09;&#x3002;shape &#x8FD9;&#x4E2A;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x53D7;&#x5176;&#x4ED6;&#x51E0;&#x4E2A;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x5F71;&#x54CD;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;interval &#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x7684; shape &#x53EF;&#x4EE5;&#x662F;&#x586B;&#x5145;&#x7684;&#x77E9;&#x5F62; rect &#x4E5F;&#x53EF;&#x662F;&#x7A7A;&#x5FC3;&#x7684;&#x8FB9;&#x6846;&#x77E9;&#x5F62;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x51B3;&#x5B9A;&#x4E86;&#x662F;&#x5C06; color &#x6620;&#x5C04;&#x5230;&#x586B;&#x5145;&#x8272;&#x4E0A;&#x8FD8;&#x662F;&#x6620;&#x5C04;&#x5230;&#x8FB9;&#x6846;&#x989C;&#x8272;&#x4E0A;&#x3002;shape &#x65B9;&#x6CD5;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x6620;&#x5C04;&#x5206;&#x7C7B;&#x6570;&#x636E;&#xFF1A;</p><ul><li>shape(&apos;field&apos;)&#xFF0C;&#x5C06;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x5230;&#x5185;&#x7F6E;&#x7684; shapes &#x6570;&#x7EC4;&#x4E2D;&#xFF1B;</li><li>shape(&apos;field&apos;, shapes)&#xFF0C;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x63D0;&#x4F9B; shapes &#x6570;&#x636E;&#xFF0C;&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x6620;&#x5C04;&#xFF1B;</li><li>shape(&apos;fields&apos;, callback)&#xFF0C;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x83B7;&#x53D6; shape&#xFF0C;&#x7528;&#x4E8E;&#x4E2A;&#x6027;&#x5316;&#x7684; shape &#x5B9A;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5355;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x786E;&#x5B9A;&#xFF1B;</li><li>shape(&apos;circle&apos;)&#xFF0C;&#x6307;&#x5B9A;&#x5E38;&#x91CF;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x503C;&#x6620;&#x5C04;&#x5230;&#x56FA;&#x5B9A;&#x7684; shape&#x3002;</li></ul><p>&#x53E6;&#x5916; G2 &#x63D0;&#x4F9B;&#x4E86;&#x81EA;&#x5B9A;&#x4E49; shape &#x7684;&#x529F;&#x80FD;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x7ED8;&#x5236;&#x9700;&#x8981;&#x7684; shape&#xFF0C;&#x8BE6;&#x89C1;<a href=./customize-shape.html>&#x5982;&#x4F55;&#x5FEB;&#x901F;&#x5F97;&#x81EA;&#x5B9A;&#x4E49; shape</a>&#x3002;</p><h3 id=_geom-&#x548C;-shape><a href=#_geom-&#x548C;-shape class=anchor><span class="iconfont icon-link"></span></a>geom &#x548C; shape</h3><p>&#x4F7F;&#x7528;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x5B9E;&#x73B0;&#x5404;&#x79CD;&#x56FE;&#x8868;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x79CD;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x6765;&#x8BF4;&#xFF0C;&#x56FE;&#x5F62;&#x5728;&#x7ED8;&#x5236;&#x7684;&#x65F6;&#x5019;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x5F62;&#x72B6;&#xFF08;shape)&#xFF0C;&#x5728;<a href=./geom.html>&#x51E0;&#x4F55;&#x6807;&#x8BB0;</a> &#x7AE0;&#x8282;&#x5DF2;&#x5217;&#x51FA;&#x4E86;&#x76EE;&#x524D; G2 &#x63D0;&#x4F9B;&#x7684; geom &#x9ED8;&#x8BA4;&#x652F;&#x6301;&#x7684; shape&#x3002;</p><h4 id=_demo-&#x6F14;&#x793A;><a href=#_demo-&#x6F14;&#x793A; class=anchor><span class="iconfont icon-link"></span></a>demo &#x6F14;&#x793A;</h4><p><code>.shape(&apos;type&apos;, [ &apos;circle&apos;, &apos;triangle-down&apos;, &apos;square&apos;, &apos;diamond&apos; ])</code></p><div id=c3></div><p>&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#xFF1A;</p><div class=highlight><pre>$.getJSON(<span class=hljs-string>&apos;/assets/data/series-scatter.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c3&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>400</span>
+  });
+  chart.source(data, {
+    <span class=hljs-attr>x</span>: {
+      <span class=hljs-attr>tickInterval</span>: <span class=hljs-number>500</span>
+    }
+  });
+  chart.point()
+    .position(<span class=hljs-string>&apos;x*y&apos;</span>)
+    .color(<span class=hljs-string>&apos;type&apos;</span>)
+    .shape(<span class=hljs-string>&apos;type&apos;</span>, [ <span class=hljs-string>&apos;circle&apos;</span>, <span class=hljs-string>&apos;triangle-down&apos;</span>, <span class=hljs-string>&apos;square&apos;</span>, <span class=hljs-string>&apos;diamond&apos;</span> ])
+    .opacity(<span class=hljs-number>0.65</span>)
+    .size(<span class=hljs-number>7</span>);
+  <span class=hljs-comment>// &#x6DFB;&#x52A0;&#x8F85;&#x52A9;&#x5143;&#x7D20;</span>
+  chart.guide().text({
+    <span class=hljs-attr>position</span>: [ <span class=hljs-number>250</span>, <span class=hljs-number>550</span> ], 
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;0 - 500&apos;</span>, 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>14</span>,
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;center&apos;</span>
+    }
+  });
+  chart.guide().text({
+    <span class=hljs-attr>position</span>: [ <span class=hljs-number>1000</span>, <span class=hljs-number>550</span> ], 
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;500 - 1500&apos;</span>, 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>14</span>,
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;center&apos;</span>
+    }
+  });
+  chart.guide().text({
+    <span class=hljs-attr>position</span>: [ <span class=hljs-number>1700</span>, <span class=hljs-number>550</span> ], 
+    <span class=hljs-attr>content</span>: <span class=hljs-string>&apos;1500 - 2000&apos;</span>, 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fontSize</span>: <span class=hljs-number>14</span>,
+      <span class=hljs-attr>textAlign</span>: <span class=hljs-string>&apos;center&apos;</span>
+    }
+  });
+  chart.guide().region({
+    <span class=hljs-attr>start</span>: [ <span class=hljs-number>0</span>, <span class=hljs-number>-600</span> ], 
+    <span class=hljs-attr>end</span>: [ <span class=hljs-number>500</span>, <span class=hljs-number>600</span> ]
+  });
+  chart.guide().region({
+    <span class=hljs-attr>start</span>: [ <span class=hljs-number>500</span>, <span class=hljs-number>-600</span> ], 
+    <span class=hljs-attr>end</span>: [ <span class=hljs-number>1500</span>, <span class=hljs-number>600</span> ], 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fillOpacity</span>: <span class=hljs-number>0.2</span>
+    }
+  });
+  chart.guide().region({
+    <span class=hljs-attr>start</span>: [ <span class=hljs-number>1500</span>, <span class=hljs-number>-600</span> ], 
+    <span class=hljs-attr>end</span>: [ <span class=hljs-number>2000</span>, <span class=hljs-number>600</span> ], 
+    <span class=hljs-attr>style</span>: {
+      <span class=hljs-attr>fillOpacity</span>: <span class=hljs-number>0.3</span>
+    }
+  });
+  chart.render();
+});
+</pre></div><h3 id=_&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;><a href=#_&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570; class=anchor><span class="iconfont icon-link"></span></a>&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;</h3><p>shape &#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B57;&#x6BB5;&#x503C;&#x6765;&#x8BA1;&#x7B97;&#xFF0C;&#x53EF;&#x4EE5;&#x5728; shape &#x65B9;&#x6CD5;&#x4E2D;&#x6307;&#x5B9A;&#x5355;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7684; shape&#x3002;</p><div class=highlight><pre>chart.point()
+  .position(<span class=hljs-string>&apos;x*y&apos;</span>)
+  .shape(<span class=hljs-string>&apos;value&apos;</span>, (value) =&gt; {
+    <span class=hljs-keyword>if</span> (value &gt; <span class=hljs-number>10</span>) {
+      <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;circle&apos;</span>;
+    }
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;rect&apos;</span>;
+  });
+
+<span class=hljs-comment>// &#x6839;&#x636E;&#x662F;&#x5426;&#x6709;&#x5B50;&#x8282;&#x70B9;&#x548C;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5C55;&#x5F00;&#x786E;&#x5B9A;shape</span>
+chart.point()
+  .position(<span class=hljs-string>&apos;x*y&apos;</span>)
+  .shape(<span class=hljs-string>&apos;children*collapsed&apos;</span>, (children, collapsed) =&gt; {
+    <span class=hljs-keyword>if</span> (children) {
+      <span class=hljs-keyword>return</span> collapsed ? <span class=hljs-string>&apos;collapsed-node&apos;</span> : <span class=hljs-string>&apos;expand-node&apos;</span>;
+    }
+    <span class=hljs-keyword>return</span> <span class=hljs-string>&apos;leaf&apos;</span>;
+  });
+</pre></div><p>shape &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x6570;&#x7EC4;&#xFF0C;G2 &#x6839;&#x636E;&#x6570;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x503C;&#x6765;&#x786E;&#x5B9A; shape&#xFF0C;&#x5176;&#x4ED6;&#x503C;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49; shape &#x7684;&#x53C2;&#x6570;,&#x8BE6;&#x60C5;&#x67E5;&#x770B;<a href=./customize-shape.html>&#x81EA;&#x5B9A;&#x4E49;shape</a></p><div class=highlight><pre>chart.point().position(<span class=hljs-string>&apos;name*value&apos;</span>)
+  .size(<span class=hljs-string>&apos;value&apos;</span>)
+  .color(<span class=hljs-string>&apos;name&apos;</span>)
+  .shape(<span class=hljs-string>&apos;url&apos;</span>, url =&gt; {
+    <span class=hljs-keyword>return</span> [ <span class=hljs-string>&apos;image&apos;</span>, url ]; <span class=hljs-comment>// &#x6839;&#x636E;&#x5177;&#x4F53;&#x7684;&#x5B57;&#x6BB5;&#x6307;&#x5B9A; shape</span>
+  });
+
+</pre></div><p>&#x67E5;&#x770B;<a href=/zh-cn/gallery/g2/bubble-image.html>&#x81EA;&#x5B9A;&#x4E49;&#x6C14;&#x6CE1;&#x7684;&#x793A;&#x4F8B;</a></p><h2 id=_size><a href=#_size class=anchor><span class="iconfont icon-link"></span></a>size</h2><p>&#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x542B;&#x4E49;&#x4E0D;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#xFF1A;</p><ul><li>&#x5BF9;&#x4E8E; point &#x70B9;&#x6765;&#x8BF4;&#xFF0C;size &#x5BF9;&#x5E94;&#x7740;&#x70B9;&#x7684;&#x534A;&#x5F84;&#xFF1B;</li><li>&#x5BF9;&#x4E8E; line &#x7EBF;&#x6765;&#x8BF4;&#xFF0C;size &#x5BF9;&#x5E94;&#x7740;&#x7EBF;&#x7684;&#x7C97;&#x7EC6;&#xFF1B;</li><li>&#x5BF9;&#x4E8E; interval &#x67F1;&#x72B6;&#x56FE;&#x6765;&#x8BF4;&#xFF0C;size &#x5BF9;&#x5E94;&#x7740;&#x67F1;&#x5B50;&#x7684;&#x5BBD;&#x5EA6;&#x3002;</li></ul><p>&#x6240;&#x4EE5;&#x4ECE;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x89D2;&#x5EA6;&#x5206;&#x6790;&#xFF0C;&#x5927;&#x5C0F;&#xFF08;size)&#x662F;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x3002;</p><p>&#x5728; G2 &#x4E2D;&#xFF0C;&#x652F;&#x6301;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x6620;&#x5C04;&#x8BED;&#x6CD5;&#xFF1A;</p><ul><li>size(&apos;field&apos;)&#xFF0C;&#x6307;&#x5B9A;&#x6620;&#x5C04;&#x5230; size &#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x7684;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F;&#x8303;&#x56F4;&#x4E3A; [1, 10]&#xFF1B;</li><li>size(&apos;field&apos;, [ min, max ])&#xFF0C;&#x6307;&#x5B9A;&#x6620;&#x5C04;&#x5230; size &#x5B57;&#x6BB5;&#x5916;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86; size &#x7684;&#x6700;&#x5927;&#x503C;&#x548C;&#x6700;&#x5C0F;&#x503C;&#x8303;&#x56F4;&#xFF1B;</li><li>size(&apos;fields&apos;, callback)&#xFF0C;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6620;&#x5C04; size&#xFF0C;&#x7528;&#x4E8E;&#x4E2A;&#x6027;&#x5316;&#x7684; size &#x5B9A;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x6620;&#x5C04;&#xFF1B;</li><li>size(10) &#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x50CF;&#x7D20;&#x5927;&#x5C0F;&#x3002;</li></ul><p>&#x5728;&#x6C14;&#x6CE1;&#x56FE;&#x4E2D;&#xFF0C;&#x5E38;&#x5E38;&#x4F7F;&#x7528; size &#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x6620;&#x5C04;&#xFF0C;&#x7528;&#x4E8E;&#x7F16;&#x7801;&#x66F4;&#x591A;&#x7EF4;&#x5EA6;&#x7684;&#x6570;&#x636E;&#x3002;&#x5982;&#x4E0B;&#x4F8B;&#xFF0C;&#x4F7F;&#x7528;&#x6C14;&#x6CE1;&#x56FE;&#x6765;&#x53EF;&#x89C6;&#x5316;&#x6BCF;&#x4E2A;&#x56FD;&#x5BB6;&#x4EBA;&#x5747;&#x56FD;&#x5185;&#x751F;&#x4EA7;&#x603B;&#x503C;&#x540C;&#x4EBA;&#x5747;&#x5BFF;&#x547D;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5173;&#x5173;&#x7CFB;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x5404;&#x4E2A;&#x56FD;&#x5BB6;&#x4EBA;&#x53E3;&#x6570;&#x636E;&#x6620;&#x5C04;&#x81F3;&#x6C14;&#x6CE1;&#x7684;&#x5927;&#x5C0F;&#x3002;</p><p><code>.size(&apos;Population&apos;, [ 5, 35 ])</code></p><div id=c4></div><p>&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#xFF1A;</p><div class=highlight><pre>$.getJSON(<span class=hljs-string>&apos;/assets/data/bubble-population.json&apos;</span>, <span class=hljs-function><span class=hljs-keyword>function</span>(<span class=hljs-params>data</span>) </span>{
+  <span class=hljs-keyword>const</span> chart = <span class=hljs-keyword>new</span> G2.Chart({
+    <span class=hljs-attr>container</span>: <span class=hljs-string>&apos;c4&apos;</span>,
+    <span class=hljs-attr>forceFit</span>: <span class=hljs-literal>true</span>,
+    <span class=hljs-attr>height</span>: <span class=hljs-number>400</span>
+  });
+  chart.source(data, {
+    <span class=hljs-string>&apos;LifeExpectancy&apos;</span>: {
+      <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x4EBA;&#x5747;&#x5BFF;&#x547D;&#xFF08;&#x5E74;&#xFF09;&apos;</span>
+    },
+    <span class=hljs-string>&apos;Population&apos;</span>: {
+      <span class=hljs-attr>type</span>: <span class=hljs-string>&apos;pow&apos;</span>,
+      <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x4EBA;&#x53E3;&#x603B;&#x6570;&apos;</span>
+    },
+    <span class=hljs-string>&apos;GDP&apos;</span>: {
+      <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x4EBA;&#x5747;&#x56FD;&#x5185;&#x751F;&#x4EA7;&#x603B;&#x503C;($)&apos;</span>,
+      <span class=hljs-attr>tickCount</span>: <span class=hljs-number>10</span>
+    },
+    <span class=hljs-string>&apos;Country&apos;</span>: {
+      <span class=hljs-attr>alias</span>: <span class=hljs-string>&apos;&#x56FD;&#x5BB6;/&#x5730;&#x533A;&apos;</span>
+    }
+  });
+  chart.axis(<span class=hljs-string>&apos;GDP&apos;</span>, {
+    <span class=hljs-attr>label</span>: {
+      <span class=hljs-comment>// &#x683C;&#x5F0F;&#x5316;&#x5750;&#x6807;&#x8F74;&#x7684;&#x663E;&#x793A;</span>
+      formatter: <span class=hljs-function><span class=hljs-params>value</span> =&gt;</span> {
+        <span class=hljs-keyword>return</span> (value / <span class=hljs-number>1000</span>).toFixed(<span class=hljs-number>0</span>) + <span class=hljs-string>&apos;k&apos;</span>;
+      }
+    }
+  });
+  chart.tooltip({
+    <span class=hljs-attr>showTitle</span>: <span class=hljs-literal>false</span> <span class=hljs-comment>// &#x4E0D;&#x663E;&#x793A;&#x9ED8;&#x8BA4;&#x6807;&#x9898;</span>
+  });
+  chart.legend(<span class=hljs-string>&apos;Population&apos;</span>, <span class=hljs-literal>false</span>);
+  chart.legend(<span class=hljs-string>&apos;Country&apos;</span>, <span class=hljs-literal>false</span>);
+  chart.point().position(<span class=hljs-string>&apos;GDP*LifeExpectancy&apos;</span>)
+    .size(<span class=hljs-string>&apos;Population&apos;</span>, [ <span class=hljs-number>5</span>, <span class=hljs-number>35</span> ])
+    .color(<span class=hljs-string>&apos;continent&apos;</span>)
+    .opacity(<span class=hljs-number>0.65</span>)
+    .shape(<span class=hljs-string>&apos;circle&apos;</span>)
+    .tooltip(<span class=hljs-string>&apos;Country*Population*GDP*LifeExpectancy&apos;</span>);
+  chart.render();
+});
+</pre></div><h3 id=_&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;><a href=#_&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528; class=anchor><span class="iconfont icon-link"></span></a>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;</h3><p>size&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6570;&#x636E;&#x7684;&#x5B57;&#x6BB5;&#x503C;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8BA1;&#x7B97;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;</p><div class=highlight><pre>chart.point().position(<span class=hljs-string>&apos;x*y&apos;</span>).size(<span class=hljs-string>&apos;z&apos;</span>, z =&gt; {
+  <span class=hljs-keyword>if</span> (z &gt; <span class=hljs-number>10</span>) {
+    <span class=hljs-keyword>return</span> <span class=hljs-number>20</span>;
+  }
+  <span class=hljs-keyword>return</span> z * <span class=hljs-number>0.5</span>;
+});
+
+chart.point().position(<span class=hljs-string>&apos;x*y&apos;</span>).size(<span class=hljs-string>&apos;level*text&apos;</span>, (level, text) =&gt; {
+  <span class=hljs-keyword>if</span> (level === <span class=hljs-number>0</span>) {
+    <span class=hljs-keyword>return</span> <span class=hljs-number>50</span>;
+  }
+  <span class=hljs-keyword>return</span> text.length * <span class=hljs-number>10</span>; <span class=hljs-comment>// &#x6839;&#x636E;&#x6587;&#x672C;&#x957F;&#x5EA6;&#x8FD4;&#x56DE;&#x957F;&#x5EA6;</span>
+});
+
+</pre></div><p>size &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x7279;&#x522B;&#x5BF9;&#x5E94;<a href=./customize-shape.html>&#x81EA;&#x5B9A;&#x4E49;shape</a>&#x65F6;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x5BBD;&#x9AD8;&#x7684;&#x56FE;&#x5F62;&#x3002;</p><h2 id=_opacity><a href=#_opacity class=anchor><span class="iconfont icon-link"></span></a>opacity</h2><p>&#x900F;&#x660E;&#x5EA6;&#x5728;&#x89C6;&#x89C9;&#x7F16;&#x7801;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x5B9A;&#x91CF;&#xFF08;&#x8FDE;&#x7EED;&#xFF09;&#x6570;&#x636E;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x4F5C;&#x4E3A;&#x989C;&#x8272;&#x7684;&#x4E00;&#x4E2A;&#x8865;&#x5145;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;&#xFF1A;</p><ul><li><code>opacity(&apos;field&apos;)</code>&#xFF0C;&#x6307;&#x5B9A;&#x900F;&#x660E;&#x5EA6;&#x6620;&#x5C04;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x900F;&#x660E;&#x5EA6;&#x9ED8;&#x8BA4;&#x7684;&#x8303;&#x56F4;&#x4E3A; [0, 1]&#xFF1B;</li><li><code>opacity(0.5)</code>&#xFF0C;&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x900F;&#x660E;&#x5EA6;&#x5E38;&#x91CF;&#xFF1B;</li><li><code>opacity(&apos;field&apos;, callback)</code>&#xFF0C;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x900F;&#x660E;&#x5EA6;&#x3002;</li></ul><h2 id=_&#x66F4;&#x591A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;><a href=#_&#x66F4;&#x591A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04; class=anchor><span class="iconfont icon-link"></span></a>&#x66F4;&#x591A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x6620;&#x5C04;</h2><p>&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x6307;&#x5B9A;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x5916;&#xFF0C;G2 3.0 &#x8FD8;&#x5728; <a href=../api/geom.html#_style>geom.style()</a> &#x65B9;&#x6CD5;&#x4E2D;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x4EFB;&#x4F55;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x6620;&#x5C04;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x56FE;&#x4F8B;</p><h2 id=_Geom-&#x652F;&#x6301;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;><a href=#_Geom-&#x652F;&#x6301;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027; class=anchor><span class="iconfont icon-link"></span></a>Geom &#x652F;&#x6301;&#x7684;&#x56FE;&#x5F62;&#x5C5E;&#x6027;</h2><p>&#x524D;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x6BCF;&#x79CD;&#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x652F;&#x6301;&#x7684;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x6709;&#x6240;&#x5DEE;&#x5F02;&#xFF0C;&#x6570;&#x636E;&#x548C;&#x89C6;&#x89C9;&#x901A;&#x9053;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x4E5F;&#x4E0D;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x3002; &#x4E0B;&#x8868;&#x5217;&#x51FA;&#x4E86;&#x5404;&#x4E2A; geom &#x51E0;&#x4F55;&#x6807;&#x8BB0;&#x5BF9;&#x5404;&#x4E2A;&#x56FE;&#x5F62;&#x5C5E;&#x6027;&#x7684;&#x652F;&#x6301;&#x60C5;&#x51B5;&#xFF1A;</p><table><thead><tr><th>&#x51E0;&#x4F55;&#x6807;&#x8BB0;</th><th>position</th><th>color</th><th>size</th><th>shape</th><th>opacity</th></tr></thead><tbody><tr><td>point</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>path&#x3001;line</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>area</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td><code>&#x4E0D;&#x652F;&#x6301;</code></td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>interval</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>polygon</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td><code>&#x4E0D;&#x652F;&#x6301;</code></td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>edge</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>schema</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td></tr><tr><td>contour</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td><code>&#x4E0D;&#x652F;&#x6301;</code></td><td>&#x652F;&#x6301;</td></tr><tr><td>heatmap</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td>&#x652F;&#x6301;</td><td><code>&#x4E0D;&#x652F;&#x6301;</code></td><td><code>&#x4E0D;&#x652F;&#x6301;</code></td></tr></tbody></table><div class=prev-next><a href=/zh-cn/g2/3.x/tutorial/geom.html class="float-left pre">Geom &#x51E0;&#x4F55;&#x6807;&#x8BB0; </a><a href=/zh-cn/g2/3.x/tutorial/coord.html class="float-right next">Coord &#x5750;&#x6807;&#x7CFB;</a></div></article></div></div></div><footer class="navbar navbar-expand-lg bg-dark"><div class=container><div class=navbar-collapse id=navbarFooter><ul class="navbar-nav mr-auto mt-2 mt-lg-0"><li class=nav-item><a class=declaration href=https://weibo.com/antv2017><span class="iconfont icon-sinaweibo"></span></a></li><li class=nav-item><a class=declaration href=https://github.com/antvis/ ><span class="iconfont icon-github"></span></a></li><li class=nav-item><a class=declaration href=/zh-cn/about.html>&#x5173;&#x4E8E;&#x6211;&#x4EEC;</a></li></ul><a class=declaration href=https://docs.alipay.com/policies/privacy/antfin>&#x9690;&#x79C1;&#x6743;&#x653F;&#x7B56;</a> <span>|</span> <a class=declaration href=https://render.alipay.com/p/f/fd-izto3cem/index.html>&#x6743;&#x76CA;&#x4FDD;&#x969C;&#x627F;&#x8BFA;&#x4E66;</a> <span>ICP &#x8BC1;&#x6D59; B2-2-100257 Copyright &#xA9; &#x8682;&#x8681;&#x91D1;&#x878D;&#x670D;&#x52A1;&#x96C6;&#x56E2;</span></div></div></footer><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g2","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g2/3.x/tutorial/attr.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js></script><script type=text/javascript src=https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/tocbot-3.0.2/tocbot.min.js></script><script src=/assets/dist/3.0.0/doc.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/avg-temp.json', function(data) {
+  const ds = new DataSet();
+  const dv = ds.createView().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: [ 'New York', 'San Francisco', 'Austin' ],
+    key: 'city',
+    value: 'value' 
+  });
+  const chart = new G2.Chart({
+    container: 'c1',
+    forceFit: true,
+    height : 400,
+    padding: [ 20, 120, 80, 80 ]
+  });
+  chart.source(dv, {
+    date: {
+      type: 'time',
+      mask: 'YYYY.MM',
+      tickCount: 12
+    },
+    value: {
+      alias: 'Temperature, ºF'
+    }
+  });
+  chart.axis('date', {
+    line: null,
+    tickLine: {
+      stroke: '#000',
+      length: 6 // 刻度线长度
+    }
+  });
+  chart.axis('value', {
+    tickLine: {
+      stroke: '#000',
+      length: 6 // 刻度线长度
+    },
+    label: {
+      textStyle: {
+        fill: '#000'
+      }
+    },
+    line: {
+      stroke: '#000'
+    },
+    grid: null
+  });
+  chart.line()
+    .position('date*value')
+    .color('city', [ '#1f77b4', '#ff7f0e', '#2ca02c' ])
+    .shape('spline')
+    .size(2);
+  chart.render();
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/usa.geo.json', function(mapData) {
+  const chart = new G2.Chart({
+    container: 'c2',
+    width: 800,
+    height: 400,
+    padding: [ 40, 140 ]
+  });
+  chart.legend(false);
+  chart.axis(false);
+  chart.tooltip({
+    showTitle: false
+  });
+  // 同步度量
+  chart.scale({
+    longitude: {
+      sync: true
+    },
+    latitude: {
+      sync: true
+    }
+  });
+  // 绘制地图背景
+  const ds = new DataSet();
+  const bgDataView = ds.createView('back')
+    .source(mapData, {
+      type: 'GeoJSON'
+    });
+  const bgView = chart.view();
+  bgView.source(bgDataView);
+  bgView.polygon().position('longitude*latitude')
+    .color('#e6e6e6')
+    .active(false)
+    .tooltip(false)
+    .style({
+      stroke: '#999',
+      lineWidth: 1
+    });
+
+  $.getJSON('/assets/data/2014-usa-population.json', function(data) {
+    // 绘制 choropleth map
+    const view = chart.view();
+    const userPolygonDv = ds.createView()
+      .source(data)
+      .transform({
+        geoDataView: bgDataView,
+        field: 'State',
+        type: 'geo.region',
+        as: [ 'longitude', 'latitude' ]
+      });
+    view.source(userPolygonDv);
+    view.polygon()
+      .position('longitude*latitude')
+      .color('Population','#e5f5e0-#31a354')
+      .tooltip('State*Population');
+
+    // 绘制文字
+    const textView = chart.view();
+    const centerDv = ds.createView()
+      .source(data)
+      .transform({
+        geoDataView: bgDataView,
+        field: 'State',
+        type: 'geo.centroid',
+        as: [ 'longitude', 'latitude' ]
+      });
+    textView.source(centerDv);
+    textView.point()
+      .position('longitude*latitude')
+      .size(0)
+      .label('code', {
+        offset: 0,
+        textStyle: {
+          fontSize: 10
+        }
+      });
+    chart.render();
+  });
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/series-scatter.json', function(data) {
+  const chart = new G2.Chart({
+    container: 'c3',
+    forceFit: true,
+    height: 400
+  });
+  chart.source(data, {
+    x: {
+      tickInterval: 500
+    }
+  });
+  chart.point()
+    .position('x*y')
+    .color('type')
+    .shape('type', [ 'circle', 'triangle-down', 'square', 'diamond' ])
+    .opacity(0.65)
+    .size(7);
+  // 添加辅助元素
+  chart.guide().text({
+    position: [ 250, 550 ], 
+    content: '0 - 500', 
+    style: {
+      fontSize: 14,
+      textAlign: 'center'
+    }
+  });
+  chart.guide().text({
+    position: [ 1000, 550 ], 
+    content: '500 - 1500', 
+    style: {
+      fontSize: 14,
+      textAlign: 'center'
+    }
+  });
+  chart.guide().text({
+    position: [ 1700, 550 ], 
+    content: '1500 - 2000', 
+    style: {
+      fontSize: 14,
+      textAlign: 'center'
+    }
+  });
+  chart.guide().region({
+    start: [ 0, -600 ], 
+    end: [ 500, 600 ]
+  });
+  chart.guide().region({
+    start: [ 500, -600 ], 
+    end: [ 1500, 600 ], 
+    style: {
+      fillOpacity: 0.2
+    }
+  });
+  chart.guide().region({
+    start: [ 1500, -600 ], 
+    end: [ 2000, 600 ], 
+    style: {
+      fillOpacity: 0.3
+    }
+  });
+  chart.render();
+});
+
+})();</script><script>(function(){
+'use strict';
+$.getJSON('/assets/data/bubble-population.json', function(data) {
+  const chart = new G2.Chart({
+    container: 'c4',
+    forceFit: true,
+    height: 400
+  });
+  chart.source(data, {
+    'LifeExpectancy': {
+      alias: '人均寿命（年）'
+    },
+    'Population': {
+      type: 'pow',
+      alias: '人口总数'
+    },
+    'GDP': {
+      alias: '人均国内生产总值($)',
+      tickCount: 10
+    },
+    'Country': {
+      alias: '国家/地区'
+    }
+  });
+  chart.axis('GDP', {
+    label: {
+      // 格式化坐标轴的显示
+      formatter: value => {
+        return (value / 1000).toFixed(0) + 'k';
+      }
+    }
+  });
+  chart.tooltip({
+    showTitle: false // 不显示默认标题
+  });
+  chart.legend('Population', false);
+  chart.legend('Country', false);
+  chart.point().position('GDP*LifeExpectancy')
+    .size('Population', [ 5, 35 ])
+    .color('continent')
+    .opacity(0.65)
+    .shape('circle')
+    .tooltip('Country*Population*GDP*LifeExpectancy');
+  chart.render();
+});
+
+})();</script></body></html>

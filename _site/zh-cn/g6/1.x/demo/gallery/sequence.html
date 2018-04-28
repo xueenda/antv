@@ -1,0 +1,395 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=keywords content=""><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>&#x65F6;&#x5E8F;&#x56FE; - AntV</title><link rel=icon href=https://gw.alipayobjects.com/os/antv/assets/favoricon.png type=image/x-icon><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap-grid.min.css><link rel=stylesheet href=https://at.alicdn.com/t/font_470089_mjiz4j8t0ozuxr.css><link rel=stylesheet href=/assets/dist/3.0.0/common.css><link rel=stylesheet href=https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.css><link rel=stylesheet href=/assets/dist/3.0.0/demo.css></head><body class=template-g6-demo><div style="display: none;"><img src=/assets/image/logo-with-text.svg alt=""> <img src=https://gw.alipayobjects.com/zos/rmsportal/bpKcpwimYnZMTarUxCEd.png alt=""></div><div id=google_translate_element style="position: fixed;
+    top: 0;
+    left: calc(50vw - 75px);
+    z-index: 9999;"></div><script type=text/javascript>function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'zh-cn', includedLanguages: 'en'}, 'google_translate_element');
+  }</script><script type=text/javascript src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><header class="navbar navbar-expand-lg navbar-light"><a class=navbar-brand href=/zh-cn/index.html><img src=/assets/image/logo-with-text.svg alt=""> </a><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarHeader aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarHeader><ul class="navbar-nav mr-auto mt-2 mt-lg-0 query-group"><span class=nav-separator></span><li class="nav-item dropdown" id=sub-product-navs><a href=# class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle=dropdown aria-haspopup=true aria-expanded=true>G6</a><div class=dropdown-menu aria-labelledby=""><a href=/zh-cn/g2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g2.svg alt=""> </span>G2 </a><a href=/zh-cn/g6/1.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/g6.svg alt=""> </span>G6 </a><a href=/zh-cn/f2/3.x/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/f2.svg alt=""> </span>F2 </a><a href=/zh-cn/gallery/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/gallery.svg alt=""> </span>Gallery </a><a href=/zh-cn/vis/index.html class=dropdown-item><span class=icon-container><img src=/assets/image/icon/vis.svg alt=""> </span>&#x58A8;&#x8005;&#x5B66;&#x9662;</a></div></li><a id=btn-search class=nav-link><span class="iconfont icon-search"></span> </a><input id=query class=query type=text placeholder=&#x641C;&#x7D22;... aria-label=Search></ul><ul class="navbar-nav mt-2 mt-lg-0" id=sub-site-nav><a class="nav-link active" href=/zh-cn/g6/1.x/demo/index.html>&#x56FE;&#x8868;&#x793A;&#x4F8B;</a> <a class=nav-link href=/zh-cn/g6/1.x/api/index.html>API &#x6587;&#x6863;</a> <a class=nav-link href=/zh-cn/g6/1.x/tutorial/index.html>&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a> <a class=back2old-version href=http://antvis.github.io/ target=_blank><span class="btn border">&#x8FD4;&#x56DE;&#x65E7;&#x7248;</span></a></ul></div></header><div class=drawer-toggle><span class="iconfont icon-menu-fold"></span></div><div class=drawer-overlay></div><div class="container-fluid demo-container"><div class="d-flex flex-row border-secondary"><div class="col menu expanded drawer"><div class=menu-inner><div id=accordion role=tablist data-children=.item><div class="item card"><div class=card-header role=tab><h6><a data-toggle=collapse aria-expanded=false href=#collapse-net class="menu-header collapsed" aria-controls=collapse-net><span class="iconfont icon-net"></span> &#x7F51;&#x56FE; <span class="float-right arrow"></span></a></h6></div><div id=collapse-net class=collapse role=tabpanel data-parent=#accordion><div class=card-body><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/net/language-influence-network.html>&#x8BED;&#x8A00;&#x5F71;&#x54CD;&#x529B;&#x7F51;&#x7EDC;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/net/system-net.html>&#x7CFB;&#x7EDF;&#x7F51;&#x7EDC;</a></li></ul></div></div></div><div class="item card"><div class=card-header role=tab><h6><a data-toggle=collapse aria-expanded=false href=#collapse-flow class="menu-header collapsed" aria-controls=collapse-flow><span class="iconfont icon-flow"></span> &#x6D41;&#x56FE; <span class="float-right arrow"></span></a></h6></div><div id=collapse-flow class=collapse role=tabpanel data-parent=#accordion><div class=card-body><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/flow/page-flow1.html>&#x7EDF;&#x4E00;&#x5206;&#x5C42;&#x5E03;&#x5C40; DAGRE</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/flow/saoma.html>&#x626B;&#x7801;&#x4E1A;&#x52A1;&#x6D41;&#x7A0B;</a></li></ul></div></div></div><div class="item card"><div class=card-header role=tab><h6><a data-toggle=collapse aria-expanded=false href=#collapse-tree class="menu-header collapsed" aria-controls=collapse-tree><span class="iconfont icon-tree"></span> &#x6811;&#x56FE; <span class="float-right arrow"></span></a></h6></div><div id=collapse-tree class=collapse role=tabpanel data-parent=#accordion><div class=card-body><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/tree/compact-box.html>&#x7D27;&#x51D1;&#x6811;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/tree/dendrogram.html>&#x751F;&#x6001;&#x6811;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/tree/indented.html>&#x7F29;&#x8FDB;&#x6811;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/tree/layered-tidy.html>&#x5206;&#x5C42;&#x6811;</a></li></ul></div></div></div><div class="item card"><div class=card-header role=tab><h6><a data-toggle=collapse aria-expanded=false href=#collapse-editor class="menu-header collapsed" aria-controls=collapse-editor><span class="iconfont icon-editor"></span> &#x7F16;&#x8F91;&#x5668; <span class="float-right arrow"></span></a></h6></div><div id=collapse-editor class=collapse role=tabpanel data-parent=#accordion><div class=card-body><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/editor/editor.html>&#x7F51;&#x56FE;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x9ED8;&#x8BA4;&#xFF09;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/editor/editor-extend1.html>&#x7F51;&#x56FE;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x53D8;&#x578B;&#xFF09;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/editor/mind.html>&#x8111;&#x56FE;&#x7F16;&#x8F91;&#x5668;</a></li></ul></div></div></div><div class="item card"><div class=card-header role=tab><h6><a data-toggle=collapse aria-expanded=false href=#collapse-gallery class=menu-header aria-controls=collapse-gallery><span class="iconfont icon-gallery"></span> &#x753B;&#x5ECA; <span class="float-right arrow"></span></a></h6></div><div id=collapse-gallery class="collapse show" role=tabpanel data-parent=#accordion><div class=card-body><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/gallery/data-base.html>&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/gallery/iris-flower.html>&#x9E22;&#x5C3E;&#x82B1;-&#x5173;&#x8054;&#x56FE;</a></li><li class="list-group-item active"><a href=/zh-cn/g6/1.x/demo/gallery/sequence.html>&#x65F6;&#x5E8F;&#x56FE;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/gallery/us-cpi.html>&#x7F8E;&#x56FD; 2010 CPI &#x6570;&#x636E;</a></li></ul></div></div></div><div class="item card"><div class=card-header role=tab><h6><a data-toggle=collapse aria-expanded=false href=#collapse-other class="menu-header collapsed" aria-controls=collapse-other><span class="iconfont icon-other"></span> &#x5176;&#x4ED6; <span class="float-right arrow"></span></a></h6></div><div id=collapse-other class=collapse role=tabpanel data-parent=#accordion><div class=card-body><ul class=list-group><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/mode.html>&#x884C;&#x4E3A;&#x4E0E;&#x6A21;&#x5F0F;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/anchor-attr.html>&#x951A;&#x70B9;&#x914D;&#x7F6E;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/anchor-update.html>&#x951A;&#x70B9;&#x4EA4;&#x4E92;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/crud.html>&#x589E;&#x5220;&#x6539;&#x67E5;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/custom-arrow.html>&#x81EA;&#x5B9A;&#x4E49;&#x7BAD;&#x5934;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/editor.html>&#x56FE;&#x7F16;&#x8F91;&#x5668;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/event.html>&#x4E8B;&#x4EF6;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/fit-view.html>&#x89C6;&#x53E3;&#x81EA;&#x9002;&#x5E94;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/g6ppt.html>G6&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/html2canvas.html>&#x4FDD;&#x5B58;&#x4E3A;&#x56FE;&#x7247;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/htmlnode.html>HTML &#x8282;&#x70B9;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/mapping.html>&#x6620;&#x5C04;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/anchor-type.html>&#x951A;&#x70B9;&#x7C7B;&#x578B;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/node-get-fun.html>&#x8282;&#x70B9;&#x65B9;&#x6CD5;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/plugin-d3-force.html>&#x63D2;&#x4EF6;&#xFF1A;d3 &#x529B;&#x5BFC;&#x5E03;&#x5C40;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/plugin-d3-mapper.html>&#x63D2;&#x4EF6;&#xFF1A;d3 &#x6620;&#x5C04;&#x5668;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/plugin-dagre.html>&#x63D2;&#x4EF6;&#xFF1A;&#x7EDF;&#x4E00;&#x5206;&#x5C42;&#x5E03;&#x5C40;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/plugin-maxForest.html>&#x63D2;&#x4EF6;&#xFF1A;&#x6700;&#x5927;&#x751F;&#x6210;&#x68EE;&#x6797;&#x56FE;&#x5206;&#x6790;&#x6A21;&#x7248;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/plugin-minimap.html>&#x63D2;&#x4EF6;&#xFF1A;&#x7F29;&#x7565;&#x56FE;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/save-and-read.html>&#x8BFB;&#x6570;&#x636E;&#x4E0E;&#x4FDD;&#x5B58;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/source.html>&#x52A0;&#x8F7D;&#x6570;&#x636E;</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/tooltip-cfg.html>&#x63D0;&#x793A;&#x4FE1;&#x606F;-cfg</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/tooltip-true.html>&#x63D0;&#x793A;&#x4FE1;&#x606F;-true</a></li><li class=list-group-item><a href=/zh-cn/g6/1.x/demo/other/tree-source.html>&#x52A0;&#x8F7D;&#x6811;&#x6570;&#x636E;</a></li></ul></div></div></div></div></div><button type=button class="btn btn-light btn-lg btn-block collapse-expand"><span class="iconfont icon-left"></span></button></div><div class="col detail" id=detail-container><div class=demo-preview id=demo-preview><div class="navbar justify-content-between"><h4 class=nav-link id=_&#x65F6;&#x5E8F;&#x56FE;>&#x65F6;&#x5E8F;&#x56FE;</h4></div><div class=demo id=preview></div></div><div class="card-extra container"><section class=description><h4>&#x56FE;&#x8868;&#x7B80;&#x4ECB;</h4><div>&#x8BE5;&#x56FE;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; G6 &#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x65F6;&#x5E8F;&#x56FE;&#xFF0C;&#x4E3B;&#x8981;&#x5411;&#x5927;&#x5BB6;&#x5C55;&#x793A;&#x4E86;<a href=/g6/doc/tutorial/start/custom-shape.html>&#x81EA;&#x5B9A;&#x4E49;&#x56FE;&#x5F62;</a>&#x7684;&#x7528;&#x6CD5;</div></section></div></div><div id=resize-handler class=col></div><div class="col code-panel bg-secondary"><div class="d-flex flex-column"><div class="row toolbox navbar bg-light justify-content-between"><a href=# class="nav-link disabled">&#x6E90;&#x7801;</a><form class=form-inline><span id=alert-copy-success class=text-success style="display: none;">&#x590D;&#x5236;&#x6210;&#x529F; </span><span id=alert-copy-fail class=text-danger style="display: none;">&#x590D;&#x5236;&#x5931;&#x8D25; </span><button id=btn-copy type=button class="btn btn-light"><span class="iconfont icon-copy"></span> &#x590D;&#x5236;</button> <button id=btn-execute type=button class="btn btn-light"><span class="iconfont icon-execute"></span> &#x8FD0;&#x884C;</button></form></div><textarea id=code-default style="display: none;">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&#x65F6;&#x5E8F;&#x56FE;&lt;/title&gt;
+    &lt;style&gt;::-webkit-scrollbar{display:none;}html,body{overflow:hidden;}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;mountNode&quot;&gt;&lt;/div&gt;
+&lt;script&gt;/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;&lt;/script&gt;
+&lt;script src=&quot;https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+const Util = G6.Util;
+const G = G6.Canvas.G;
+const data = {
+  &quot;nodes&quot;: [
+    {
+      &quot;id&quot;: &quot;imbilegw&quot;,
+      &quot;active&quot;: false
+    },
+    {
+      &quot;id&quot;: &quot;msgbroker&quot;,
+      &quot;active&quot;: false
+    },
+    {
+      &quot;id&quot;: &quot;tthove&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;aliPlool&quot;,
+      &quot;active&quot;: false
+    }
+  ],
+  &quot;edges&quot;: [
+    {
+      &quot;id&quot;: &quot;imbilegw-msgbroker&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;imbilegw&quot;,
+      &quot;target&quot;: &quot;msgbroker&quot;,
+      &quot;order&quot;: 1
+    },
+    {
+      &quot;id&quot;: &quot;msgbroker-tthove&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;msgbroker&quot;,
+      &quot;target&quot;: &quot;tthove&quot;,
+      &quot;order&quot;: 2
+    },
+    {
+      &quot;id&quot;: &quot;tthove-imbilegw&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;tthove&quot;,
+      &quot;target&quot;: &quot;imbilegw&quot;,
+      &quot;order&quot;: 3
+    },
+    {
+      &quot;id&quot;: &quot;tthove-msgbroker&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;tthove&quot;,
+      &quot;target&quot;: &quot;msgbroker&quot;,
+      &quot;order&quot;: 4
+    },
+    {
+      &quot;id&quot;: &quot;aliPlool-msgbroker&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;aliPlool&quot;,
+      &quot;target&quot;: &quot;msgbroker&quot;,
+      &quot;order&quot;: 5
+    },
+    {
+      &quot;id&quot;: &quot;imbilegw-aliPlool&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;imbilegw&quot;,
+      &quot;target&quot;: &quot;aliPlool&quot;,
+      &quot;order&quot;: 6
+    },
+    {
+      &quot;id&quot;: &quot;tthove-aliPlool&quot;,
+      &quot;shape&quot;: &quot;line&quot;,
+      &quot;source&quot;: &quot;tthove&quot;,
+      &quot;target&quot;: &quot;aliPlool&quot;,
+      &quot;order&quot;: 7
+    }
+  ]
+};
+
+function findById(items, id) {
+  var rst;
+  Util.each(items, function(item) {
+    if (item.id === id) {
+      rst = item;
+      return false;
+    }
+  });
+  return rst;
+}
+
+function compareIndex(id1, id2, items) {
+  var node1 = findById(items, id1);
+  var node2 = findById(items, id2);
+  var index1 = items.indexOf(node1);
+  var index2 = items.indexOf(node2);
+  return index1 &gt; index2;
+}
+
+G6.registerNode(&apos;sequence-node&apos;, {
+  draw(cfg, group) {
+    const model = cfg.model;
+    const x = cfg.x;
+    const y = cfg.y;
+    const color = cfg.color;
+    const label = cfg.label;
+    const labelStyle = cfg.labelStyle ? cfg.labelStyle : {
+      fontSize: 12,
+      textAlign: &apos;center&apos;,
+      textBaseline: &apos;middle&apos;,
+      fill: &apos;#333&apos;
+    };
+    const size = cfg.size;
+    const width = size[0];
+    const height = size[1];
+    const barWidth = model.barWidth ? model.barWidth : 10;
+    const labelHeight = model.labelHeight ? model.labelHeight : 26; // &#x6807;&#x7B7E;&#x9AD8;&#x5EA6;
+    const slideMargin = model.slideMargin ? model.slideMargin : 20;
+    let keyShape; // &#x7528;&#x4F5C;&#x951A;&#x70B9;&#x8FDE;&#x63A5;&#x7684;&#x5173;&#x952E;shape
+
+    // &#x4E0A;&#x6807;&#x7B7E;&#x80CC;&#x666F;
+    group.addShape(&apos;rect&apos;, {
+      attrs: {
+        x: x - width / 2,
+        y: y - height / 2,
+        width: width,
+        height: labelHeight,
+        stroke: &apos;black&apos;,
+        radius: 5,
+        lineWidth: 1,
+        fill: color
+      }
+    });
+
+    // &#x4E0A;&#x6807;&#x7B7E;&#x6587;&#x5B57;
+    group.addShape(&apos;text&apos;, {
+      attrs: Util.mix({
+        x: x,
+        y: y - height / 2 + labelHeight / 2,
+        text: label
+      }, labelStyle)
+    });
+
+    // &#x4E0B;&#x6807;&#x7B7E;&#x80CC;&#x666F;
+    group.addShape(&apos;rect&apos;, {
+      attrs: {
+        x: x - width / 2,
+        y: y + height / 2 - labelHeight,
+        width: width,
+        height: labelHeight,
+        stroke: &apos;black&apos;,
+        radius: 5,
+        lineWidth: 1,
+        fill: color
+      }
+    });
+
+    // &#x4E0B;&#x6807;&#x7B7E;&#x6587;&#x5B57;
+    group.addShape(&apos;text&apos;, {
+      attrs: Util.mix({
+        x: x,
+        y: y + height / 2 - labelHeight / 2,
+        text: label
+      }, labelStyle)
+    });
+
+    // &#x4E2D;&#x95F4;&#x865A;&#x7EBF;
+    group.addShape(&apos;line&apos;, {
+      attrs: {
+        x1: x,
+        y1: y - height / 2 + labelHeight,
+        x2: x,
+        y2: y + height / 2 - labelHeight,
+        lineDash: [5, 5],
+        lineWidth: 0.5,
+        stroke: &apos;#333&apos;
+      }
+    });
+
+    // // &#x5173;&#x952E;&#x56FE;&#x5F62;
+    keyShape = group.addShape(&apos;rect&apos;, {
+      attrs: {
+        x: x - barWidth / 2,
+        y: y - height / 2 + labelHeight + slideMargin,
+        width: barWidth,
+        height: height - 2 * labelHeight - slideMargin * 2
+      }
+    });
+
+    return keyShape;
+  },
+  getAnchorPoints: cfg =&gt; {
+    const model = cfg.model;
+    const anchorNumber = model.anchorNumber;
+    const cellRatio = 1 / anchorNumber;
+    const rst = [];
+    let i;
+    for (i = 0; i &lt; anchorNumber; i++) {
+      rst.push([1, cellRatio * i + 1 / 2 * cellRatio]);
+    }
+    for (i = 0; i &lt; anchorNumber; i++) {
+      rst.push([0, cellRatio * i + 1 / 2 * cellRatio]);
+    }
+    return rst;
+  }
+});
+
+G6.registerEdge(&apos;sequence-edge&apos;, {
+  draw(cfg, group) {
+    const model = cfg.model;
+    const color = cfg.color;
+    const points = cfg.points;
+    const slideWidth = model.slideWidth;
+    const slideHeight = model.slideHeight;
+    const sourcePoint = points[0];
+    const targetPoint = points[points.length - 1];
+    const pointsArr = []; // points &#x6570;&#x7EC4;
+    let keyShape; // &#x5173;&#x952E;&#x56FE;&#x5F62;
+    let sourceX;
+    let targetX;
+
+    Util.each(points, p1 =&gt; {
+      pointsArr.push([p1.x, p1.y]);
+    });
+    sourceX = sourcePoint.x - slideWidth - 1;
+    targetX = targetPoint.x;
+    if (targetPoint.x &lt; sourcePoint.x) {
+      sourceX = sourcePoint.x;
+      targetX = targetPoint.x - slideWidth;
+    }
+    keyShape = group.addShape(&apos;polyline&apos;, {
+      attrs: {
+        points: pointsArr,
+        stroke: &apos;black&apos;,
+        arrow: true
+      }
+    });
+    group.addShape(&apos;rect&apos;, {
+      attrs: {
+        x: sourceX,
+        y: sourcePoint.y - slideHeight / 2,
+        width: slideWidth,
+        height: slideHeight,
+        fill: color[0]
+      }
+    });
+    group.addShape(&apos;rect&apos;, {
+      attrs: {
+        x: targetX,
+        y: targetPoint.y - slideHeight / 2,
+        width: slideWidth,
+        height: slideHeight,
+        fill: color[1]
+      }
+    });
+    return keyShape;
+  }
+}, &apos;arrow&apos;);
+
+const net = new G6.Net({
+  id: &apos;mountNode&apos;, // &#x5BB9;&#x5668;ID
+  forceFit: true,      // &#x5BBD;&#x5EA6;&#x81EA;&#x9002;&#x5E94;
+  height: window.innerHeight,         // &#x753B;&#x5E03;&#x9AD8;
+  dragable: true,      // &#x662F;&#x5426;&#x652F;&#x6301;&#x5143;&#x7D20;&#x62D6;&#x52A8;
+  resizeable: true,    // &#x662F;&#x5426;&#x652F;&#x6301;&#x5143;&#x7D20;&#x53D8;&#x5F62;
+  selectable: true,    // &#x662F;&#x5426;&#x5141;&#x8BB8;&#x9009;&#x4E2D;
+  fitView: &apos;autoZoom&apos;, // &#x81EA;&#x52A8;&#x7F29;&#x653E;
+  grid: {
+    forceAlign: true,  // &#x662F;&#x5426;&#x652F;&#x6301;&#x7F51;&#x683C;&#x5BF9;&#x9F50;
+    cell: 10           // &#x7F51;&#x683C;&#x5927;&#x5C0F;
+  }
+});
+
+// &#x6620;&#x5C04;&#x89C4;&#x5219;
+net.node().color(&quot;active&quot;, val =&gt; {
+  let rst;
+  if(val) {
+    rst = &apos;#FFC3CE&apos;;
+  } else {
+    rst = &apos;#FFFFD4&apos;;
+  }
+  return rst;
+})
+.label(&apos;id&apos;);
+net.edge().color(&quot;source*target&quot;, (val0, val1) =&gt; {
+  let rst = [];
+  if(val0 === &apos;imbilegw&apos;){
+    rst[0] = &apos;#3388B3&apos;;
+  }
+  if(val0 === &apos;msgbroker&apos;){
+    rst[0] = &apos;#FF8467&apos;;
+  }
+  if(val0 === &apos;tthove&apos;){
+    rst[0] = &apos;#00C3F8&apos;;
+  }
+  if(val0 === &apos;aliPlool&apos;){
+    rst[0] = &apos;#7FEF9F&apos;;
+  }
+  if(val1 === &apos;imbilegw&apos;){
+    rst[1] = &apos;#3388B3&apos;;
+  }
+  if(val1 === &apos;msgbroker&apos;){
+    rst[1] = &apos;#FF8467&apos;;
+  }
+  if(val1 === &apos;tthove&apos;){
+    rst[1] = &apos;#00C3F8&apos;;
+  }
+  if(val1 === &apos;aliPlool&apos;){
+    rst[1] = &apos;#7FEF9F&apos;;
+  }
+  return rst;
+});
+
+// &#x5E03;&#x5C40;
+const nodes = data.nodes;
+const edges = data.edges;
+const nodeMapper = net.get(&apos;nodeMapper&apos;);
+const height = net.getHeight();
+const marginLeft = 20;
+const padding = 6;
+const cellHeight = 500;
+const barWidth = 10;
+const labelHeight = 20;
+const barHeight = cellHeight - labelHeight * 2;
+const labelShape = new G.Text(); // &#x7528;&#x4E8E;&#x6D4B;&#x91CF;label&#x5BBD;&#x5EA6;
+const slideMargin = 10;
+let maxOrder = 0;
+let currentX = 1;
+let cellWidth;
+let cfg;
+let bbox;
+
+Util.each(edges, function(edge) {
+  if (edge.order &gt; maxOrder) {
+    maxOrder = edge.order;
+  }
+});
+
+Util.each(nodes, function(node) {
+  cfg = nodeMapper.mapping(node);
+  labelShape.attr(&apos;text&apos;, cfg.label);
+  labelShape.attr(&apos;x&apos;, 0);
+  labelShape.attr(&apos;y&apos;, 0);
+  bbox = labelShape.getBBox();
+  cellWidth = bbox.maxX - bbox.minX + 2 * padding;
+  node.shape = &apos;sequence-node&apos;;
+  node.x = currentX + cellWidth / 2;
+  node.y = 1 / 2 * height;
+  currentX += cellWidth + marginLeft;
+  node.size = [];
+  node.size[0] = cellWidth;
+  node.size[1] = cellHeight;
+  node.labelHeight = labelHeight;
+  node.barWidth = barWidth;
+  node.slideMargin = slideMargin;
+  node.anchorNumber = maxOrder;
+});
+
+Util.each(edges, function(edge) {
+  edge.shape = &apos;sequence-edge&apos;;
+  edge.slideHeight = (barHeight - slideMargin * 2) / maxOrder;
+  edge.slideWidth = barWidth;
+  if (compareIndex(edge.source, edge.target, nodes)) {
+    edge.sourceAnchor = edge.order + maxOrder - 1;
+    edge.targetAnchor = edge.order - 1;
+  } else {
+    edge.sourceAnchor = edge.order - 1;
+    edge.targetAnchor = edge.order + maxOrder - 1;
+  }
+});
+
+labelShape.destroy();
+
+net.source(nodes, edges); // source &#x5FC5;&#x987B;&#x5728;&#x5B9A;&#x4E49;&#x6620;&#x5C04;&#x89C4;&#x5219;&#x4E4B;&#x540E;
+net.render();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea> <textarea id=code-dark style="display: none;"></textarea><div class="row code"><textarea name=code id=code></textarea></div></div></div></div></div><script type=text/javascript>/* eslint-disable */
+window.__meta = {"currentProduct":"g6","assets":"/assets","dist":"/assets/dist/3.0.0","href":"/zh-cn/g6/1.x/demo/gallery/sequence.html","locale":"zh-cn","version":"3.0.0"};</script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lodash-4.17.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.autocomplete-1.4.3.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.visible-1.2.0.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/popper.js-1.12.5/umd/popper.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/bootstrap-4.0.0-beta/bootstrap.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/lazyload-2.0.0-beta.2.min.js></script><div id=___tracers style=display:none;><script async src="https://s11.cnzz.com/z_stat.php?id=1259109662&amp;web_id=1259109662"></script><script>!function(t,e,a,r,c){
+            t.TracertCmdCache=t.TracertCmdCache||[]; t[c]=window[c]|| { _isInit:!0, call:function(){t.TracertCmdCache.push(arguments)}, start:function(t){this.call('start',t)}}; t[c].l=new Date; var n=e.createElement(a),s=e.getElementsByTagName(a)[0]; n.async=!0; n.src=r; s.parentNode.insertBefore(n,s);
+        }(window,document,'script','https://tracert.alipay.com/tracert.js','Tracert');
+        Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a369', spmBPos: 'b3976', });</script></div><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.headroom-0.9.4.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/clipboard-1.7.1.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/routie-0.3.2.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/codemirror-5.29.0/codemirror-merged.min.js></script><script src=https://gw.alipayobjects.com/os/antv/assets/lib/jquery.resizable-0.20.0.min.js></script><script src=/assets/dist/3.0.0/demo.js></script><script type=text/javascript src=/assets/dist/3.0.0/common.js></script></body></html>
