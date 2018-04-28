@@ -9,7 +9,7 @@ module.exports = {
         d3: 'https://gw.alipayobjects.com/os/antv/assets/lib/d3-4.13.0.min.js',
         dataSet: 'https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js',
         f2: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.1.3/f2.js',
-        g2: 'https://gw.alipayobjects.com/os/antv/assets/g2/3.0.8/g2.min.js',
+        g2: 'https://gw.alipayobjects.com/os/antv/assets/g2/3.0.9/g2.min.js',
         g6: 'https://gw.alipayobjects.com/os/antv/assets/g6/1.2.8/g6.min.js',
         'g6-plugins': 'https://gw.alipayobjects.com/os/antv/assets/g6-plugins/1.0.9/g6-plugins.min.js',
         'g2-plugin-slider': 'https://gw.alipayobjects.com/os/antv/assets/g2-plugin-slider/2.0.2/g2-plugin-slider.js',

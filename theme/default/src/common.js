@@ -153,42 +153,42 @@ $.getJSON(`${meta.dist}/_indexing.${meta.locale}.json`, data => {
 // FIXME doc filtering is in ./common.js
 
 // FIXME promote banner(AD)
-const localStorage = window.localStorage;
-const promoteStatusKey = 'hide-yuque-20180428';
-const promoteStatus = localStorage.getItem(promoteStatusKey);
-if (localStorage && (!promoteStatus || promoteStatus !== 'true')) {
-    $('.promote-banner a .cross').click(e => {
-        e.preventDefault();
-        e.stopPropagation();
-        const height = $('.promote-banner').height();
-        $('.promote-banner').animate({
-            height: 0,
-            top: -height
-        }, 1000);
-        $('.promote-banner').addClass('hiden');
-        localStorage.setItem(promoteStatusKey, 'true');
-    });
-    $('.promote-banner a').click(() => {
-        localStorage.setItem(promoteStatusKey, 'true');
-    });
-    const adBannerHeight = $('.promote-banner a img').height();
-    $('.promote-banner').css({
-        top: -adBannerHeight,
-        display: 'block'
-    });
-    setTimeout(() => {
-        $('.promote-banner').animate({
-            height: adBannerHeight,
-            top: 0,
-            opacity: 1
-        }, 300);
-    }, 10);
+// const localStorage = window.localStorage;
+// const promoteStatusKey = 'hide-yuque-20180428';
+// const promoteStatus = localStorage.getItem(promoteStatusKey);
+// if (localStorage && (!promoteStatus || promoteStatus !== 'true')) {
+//     $('.promote-banner a .cross').click(e => {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         const height = $('.promote-banner').height();
+//         $('.promote-banner').animate({
+//             height: 0,
+//             top: -height
+//         }, 1000);
+//         $('.promote-banner').addClass('hiden');
+//         localStorage.setItem(promoteStatusKey, 'true');
+//     });
+//     $('.promote-banner a').click(() => {
+//         localStorage.setItem(promoteStatusKey, 'true');
+//     });
+//     const adBannerHeight = $('.promote-banner a img').height();
+//     $('.promote-banner').css({
+//         top: -adBannerHeight,
+//         display: 'block'
+//     });
+//     setTimeout(() => {
+//         $('.promote-banner').animate({
+//             height: adBannerHeight,
+//             top: 0,
+//             opacity: 1
+//         }, 300);
+//     }, 10);
 
-    $(window).on('resize', () => {
-        if (!$('.promote-banner').hasClass('hiden')) {
-            $('.promote-banner').css({
-                height: $('.promote-banner a img').height()
-            });
-        }
-    });
-}
+//     $(window).on('resize', () => {
+//         if (!$('.promote-banner').hasClass('hiden')) {
+//             $('.promote-banner').css({
+//                 height: $('.promote-banner a img').height()
+//             });
+//         }
+//     });
+// }
