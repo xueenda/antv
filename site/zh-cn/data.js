@@ -149,6 +149,8 @@ module.exports = {
         { name: '绝云'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/jueyun.png'   , weibo: 'https://weibo.com/omosirovincent' , github: 'https://github.com/leungwensen' } ,
         { name: '陆沉'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/luchen.jpeg'  , weibo: ''                                 , github: ''                               } ,
         { name: '罗宪'  , jobTitle: '动效设计师' , avatar: '${assets}/image/members/luoxian.png'  , weibo: ''                                 , github: ''                               } ,
+        { name: '米法'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/mifa.jpg'     , weibo: ''                                 , github: 'https://github.com/paleface001' } ,
+        { name: '芈乐'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/mile.jpg'     , weibo: ''                                 , github: 'https://github.com/weepy3641'   } ,
         { name: '完白'  , jobTitle: '设计师'     , avatar: '${assets}/image/members/wanbai.png'   , weibo: ''                                 , github: ''                               } ,
         { name: '萧庆'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/xiaoqing.jpg' , weibo: ''                                 , github: 'https://github.com/dxq613'      } ,
         { name: '亦叶'  , jobTitle: '设计师'     , avatar: '${assets}/image/members/yiye.png'     , weibo: ''                                 , github: ''                               } ,
@@ -158,7 +160,7 @@ module.exports = {
         { name: '再飞'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/zaifei.jpg'   , weibo: 'https://weibo.com/simaoohappy'    , github: 'https://github.com/simaQ'       } ,
         { name: '张初尘', jobTitle: '产品经理'   , avatar: '${assets}/image/members/chuchen.png'  , weibo: 'https://weibo.com/u/1824917073'   , github: 'https://github.com/lilyal'      } ,
         { name: '祯逸'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/zhenyi.png'   , weibo: ''                                 , github: ''                               } ,
-        { name: '杍鱼'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/ziyu.png'   , weibo: ''                                 , github: 'https://github.com/cycgit'                               } ,
+        { name: '杍鱼'  , jobTitle: '工程师'     , avatar: '${assets}/image/members/ziyu.png'     , weibo: ''                                 , github: 'https://github.com/cycgit'      } ,
     ],
     showFooter: true,
     footer: {
